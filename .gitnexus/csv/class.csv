@@ -1,0 +1,269 @@
+id,name,filePath,startLine,endLine,isExported,content,description
+"Class:common/settings.py:Settings","Settings","common/settings.py",9,9,true,"
+
+class Settings(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file="".env"",",""
+"Class:common/events.py:RunEvent","RunEvent","common/events.py",12,12,true,"
+
+class RunEvent(BaseModel):
+    timestamp: datetime = Field(default_factory=utc_now)
+    job_id: str",""
+"Class:common/events.py:MetricRecord","MetricRecord","common/events.py",24,24,true,"
+
+class MetricRecord(BaseModel):
+    metric_code: str
+    scope: Literal[""system"", ""task"", ""run""] = ""system""",""
+"Class:common/events.py:ArtifactRef","ArtifactRef","common/events.py",36,36,true,"
+
+class ArtifactRef(BaseModel):
+    artifact_type: str
+    uri: str",""
+"Class:workers/sandbox_runner/run_spec.py:RunSpec","RunSpec","workers/sandbox_runner/run_spec.py",12,12,true,"
+@dataclass
+class RunSpec:
+    setup_commands: list[str] = field(default_factory=list)
+    entry_command: str | None = None",""
+"Class:workers/sandbox_runner/docker_runner.py:RunResult","RunResult","workers/sandbox_runner/docker_runner.py",16,16,true,"
+@dataclass
+class RunResult:
+    run_id: str
+    exit_code: int",""
+"Class:workers/sandbox_runner/docker_runner.py:DockerSandboxRunner","DockerSandboxRunner","workers/sandbox_runner/docker_runner.py",27,27,true,"
+
+class DockerSandboxRunner:
+    def __init__(self) -> None:
+        self.image = settings.docker_image",""
+"Class:services/orchestrator/secrets.py:SecretStore","SecretStore","services/orchestrator/secrets.py",17,17,true,"
+
+class SecretStore:
+    def __init__(self) -> None:
+        self._memory: dict[str, tuple[str, float]] = {}",""
+"Class:services/orchestrator/schemas.py:RunSpecModel","RunSpecModel","services/orchestrator/schemas.py",8,8,true,"
+
+class RunSpecModel(BaseModel):
+    setup_commands: list[str] = Field(default_factory=list)
+    entry_command: str | None = None",""
+"Class:services/orchestrator/schemas.py:AnalysisCreateRequest","AnalysisCreateRequest","services/orchestrator/schemas.py",17,17,true,"
+
+class AnalysisCreateRequest(BaseModel):
+    repo_url: HttpUrl
+    git_ref: str = ""main""",""
+"Class:services/orchestrator/schemas.py:AnalysisCreateResponse","AnalysisCreateResponse","services/orchestrator/schemas.py",28,28,true,"
+
+class AnalysisCreateResponse(BaseModel):
+    analysis_id: str
+    status_url: str",""
+"Class:services/orchestrator/schemas.py:AnalysisStatusResponse","AnalysisStatusResponse","services/orchestrator/schemas.py",33,33,true,"
+
+class AnalysisStatusResponse(BaseModel):
+    analysis_id: str
+    status: str",""
+"Class:services/orchestrator/schemas.py:ReportInfoResponse","ReportInfoResponse","services/orchestrator/schemas.py",48,48,true,"
+
+class ReportInfoResponse(BaseModel):
+    analysis_id: str
+    status: str",""
+"Class:services/orchestrator/schemas.py:MetricResponse","MetricResponse","services/orchestrator/schemas.py",56,56,true,"
+
+class MetricResponse(BaseModel):
+    metric_code: str
+    scope: str",""
+"Class:services/orchestrator/schemas.py:ArtifactResponse","ArtifactResponse","services/orchestrator/schemas.py",68,68,true,"
+
+class ArtifactResponse(BaseModel):
+    artifact_type: str
+    uri: str",""
+"Class:services/orchestrator/repository.py:AnalysisRepository","AnalysisRepository","services/orchestrator/repository.py",18,18,true,"
+
+class AnalysisRepository:
+    def __init__(self, session: Session):
+        self.session = session",""
+"Class:services/orchestrator/models.py:AnalysisJob","AnalysisJob","services/orchestrator/models.py",17,17,true,"
+
+class AnalysisJob(Base):
+    __tablename__ = ""analysis_jobs""
+",""
+"Class:services/orchestrator/models.py:AnalysisMetric","AnalysisMetric","services/orchestrator/models.py",46,46,true,"
+
+class AnalysisMetric(Base):
+    __tablename__ = ""analysis_metrics""
+",""
+"Class:services/orchestrator/models.py:AnalysisArtifact","AnalysisArtifact","services/orchestrator/models.py",67,67,true,"
+
+class AnalysisArtifact(Base):
+    __tablename__ = ""analysis_artifacts""
+",""
+"Class:services/orchestrator/db.py:Base","Base","services/orchestrator/db.py",11,11,true,"
+
+class Base(DeclarativeBase):
+    pass
+",""
+"Class:services/orchestrator/constants.py:AnalysisStatus","AnalysisStatus","services/orchestrator/constants.py",5,5,true,"
+
+class AnalysisStatus(StrEnum):
+    QUEUED = ""queued""
+    RUNNING = ""running""",""
+"Class:analyzers/static_py/analyzer.py:FunctionCallCollector","FunctionCallCollector","analyzers/static_py/analyzer.py",64,64,true,"
+
+class FunctionCallCollector(ast.NodeVisitor):
+    def __init__(self, module_name: str):
+        self.module_name = module_name",""
+"Class:analyzers/static_py/analyzer.py:ComplexityCollector","ComplexityCollector","analyzers/static_py/analyzer.py",99,99,true,"
+
+class ComplexityCollector(ast.NodeVisitor):
+    def __init__(self) -> None:
+        self.function_count = 0",""
+"Class:analyzers/dynamic_runtime/instrumentor.py:CallInstrumentationTransformer","CallInstrumentationTransformer","analyzers/dynamic_runtime/instrumentor.py",34,34,true,"
+
+class CallInstrumentationTransformer(cst.CSTTransformer):
+    def __init__(self) -> None:
+        self.touched = False",""
+"Class:analyzers/dynamic_runtime/instrumentor.py:InstrumentationResult","InstrumentationResult","analyzers/dynamic_runtime/instrumentor.py",88,88,true,"
+@dataclass
+class InstrumentationResult:
+    files_total: int
+    files_touched: int",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/utils.py:api_schema","api_schema","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/utils.py",244,244,true,"
+
+class api_schema(BaseModel):
+    """"""api schema specification.""""""
+",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/utils.py:CustomBaseModel","CustomBaseModel","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/utils.py",465,465,true,"
+
+class CustomBaseModel(BaseModel):
+    api_schema: ClassVar[dict] = None  # Class variable to store api_schema
+",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/utils.py:ID","ID","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/utils.py",587,587,true,"
+
+class ID(enum.Enum):
+    ENTREZ = ""Entrez""
+    ENSEMBL = ""Ensembl without version""  # e.g. ENSG00000123374",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/utils.py:PromptLogger","PromptLogger","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/utils.py",677,677,true,"
+
+class PromptLogger(BaseCallbackHandler):
+    def on_chat_model_start(self, serialized, messages, **kwargs):
+        for message in messages[0]:",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/utils.py:NodeLogger","NodeLogger","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/utils.py",683,683,true,"
+
+class NodeLogger(BaseCallbackHandler):
+    def on_llm_end(self, response, **kwargs):  # response of type LLMResult
+        for generations in response.generations:  # response.generations of type List[List[Generations]] becuase ""each input could have multiple candidate generations""",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/llm.py:_ChatOpenAIResponsesNoStop","_ChatOpenAIResponsesNoStop","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/llm.py",113,113,false,"            # Define a minimal subclass that drops the `stop` field when using the
+            # Responses API, since certain models (gpt-5-*) reject it entirely.
+            class _ChatOpenAIResponsesNoStop(ChatOpenAI):
+                def _get_request_payload(self, input_, *, stop=None, **kwargs):  # type: ignore[override]
+                    payload = super()._get_request_payload(input_, stop=stop, **kwargs)",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/config.py:BiomniConfig","BiomniConfig","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/config.py",12,12,true,"
+@dataclass
+class BiomniConfig:
+    """"""Central configuration for Biomni agent.
+",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/tool_registry.py:ToolRegistry","ToolRegistry","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/tool_registry.py",6,6,true,"
+
+class ToolRegistry:
+    def __init__(self, tools):
+        self.tools = []",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/pharmacology.py:OpenFDAClient","OpenFDAClient","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/pharmacology.py",3456,3456,true,"
+
+class OpenFDAClient:
+    """"""
+    Client for interacting with the FDA's OpenFDA API.",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/genetics.py:VariationalFineMapping","VariationalFineMapping","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/genetics.py",199,199,true,"
+    # Define the variational inference model
+    class VariationalFineMapping(nn.Module):
+        def __init__(self, n_variants, hidden_dim):
+            super().__init__()",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/bioimaging.py:SegmentationTool","SegmentationTool","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/bioimaging.py",30,30,true,"
+
+class SegmentationTool:
+    """"""
+    A comprehensive tool for medical image segmentation using nnUNet.",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/bioimaging.py:ImageRegistrationTool","ImageRegistrationTool","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/bioimaging.py",579,579,true,"
+
+class ImageRegistrationTool:
+    """"""
+    A comprehensive tool for medical image registration using SimpleITK.",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:KnowHowLoader","KnowHowLoader","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",7,7,true,"
+
+class KnowHowLoader:
+    """"""Load and manage know-how documents for the agent.""""""
+",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/lab_bench.py:lab_bench","lab_bench","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/lab_bench.py",13,13,true,"
+
+class lab_bench(base_task):
+    def __init__(self, path=""./data"", dataset=""DbQA""):
+        if dataset not in [""DbQA"", ""SeqQA""]:",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/lab_bench.py:MultipleChoiceOutput","MultipleChoiceOutput","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/lab_bench.py",107,107,true,"        from pydantic import BaseModel, Field
+
+        class MultipleChoiceOutput(BaseModel):
+            """"""Multiple choice output.""""""
+",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/hle.py:humanity_last_exam","humanity_last_exam","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/hle.py",13,13,true,"
+
+class humanity_last_exam(base_task):
+    def __init__(self, path=""./data"", category=""Biology/Medicine"", answer_type=""multipleChoice""):
+        if category not in [",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/hle.py:MultipleChoiceOutput","MultipleChoiceOutput","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/hle.py",138,138,true,"        from pydantic import BaseModel, Field
+
+        class MultipleChoiceOutput(BaseModel):
+            """"""Multiple choice output.""""""
+",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/base_task.py:base_task","base_task","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/base_task.py",0,0,true,"class base_task:
+    def __init__(self):
+        pass",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py:ToolRetriever","ToolRetriever","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py",8,8,true,"
+
+class ToolRetriever:
+    """"""Retrieve tools from the tool registry.""""""
+",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/eval/biomni_eval1.py:BiomniEval1","BiomniEval1","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/eval/biomni_eval1.py",13,13,true,"
+
+class BiomniEval1:
+    """"""
+    Evaluation loader for BiomniEval1 benchmark",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/agent/react.py:AgentState","AgentState","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/agent/react.py",31,31,true,"
+# Define the AgentState TypedDict for our custom implementation
+class AgentState(TypedDict):
+    """"""The state of the agent.""""""
+",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/agent/react.py:react","react","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/agent/react.py",38,38,true,"
+
+class react:
+    def __init__(
+        self,",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/agent/qa_llm.py:qa_llm","qa_llm","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/agent/qa_llm.py",6,6,true,"
+
+class qa_llm:
+    def __init__(self, path=""./data"", llm=""claude-3-haiku-20240307"", lab_bench_reproduce=False):
+        self.path = path",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/agent/function_generator.py:base_agent","base_agent","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/agent/function_generator.py",6,6,true,"
+
+class base_agent:
+    def __init__(self, llm=""claude-3-haiku-20240307"", cheap_llm=None, tools=None, temperature=0.7):
+        self.tools = tools",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/agent/function_generator.py:FunctionGenerator","FunctionGenerator","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/agent/function_generator.py",22,22,true,"
+
+class FunctionGenerator(base_agent):
+    """"""Agent that generates executable Python code scripts given a task description.""""""
+",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/agent/env_collection.py:PaperTaskExtractor","PaperTaskExtractor","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/agent/env_collection.py",12,12,true,"
+
+class PaperTaskExtractor(base_agent):
+    """"""Agent that extracts generalizable tasks/experiments from academic papers.
+    It processes papers in chunks and identifies common research tasks that could be shared across papers.",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/agent/a1.py:AgentState","AgentState","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/agent/a1.py",51,51,true,"
+
+class AgentState(TypedDict):
+    messages: list[BaseMessage]
+    next_step: str | None",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/agent/a1.py:A1","A1","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/agent/a1.py",56,56,true,"
+
+class A1:
+    def __init__(
+        self,",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/example_mcp_tools/pubmed_mcp.py:Article","Article","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/example_mcp_tools/pubmed_mcp.py",11,11,true,"
+
+class Article(BaseModel):
+    pmid: str
+    title: str | None = None",""

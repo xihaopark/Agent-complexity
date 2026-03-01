@@ -1,0 +1,6 @@
+id,name,filePath,startLine,endLine,isExported,content,description
+"Interface:apps/web/lib/api.ts:AnalysisCreatePayload","AnalysisCreatePayload","apps/web/lib/api.ts",2,2,true,"const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || ""http://localhost:8000"";
+
+export interface AnalysisCreatePayload {
+  repo_url: string;
+  git_ref: string;",""

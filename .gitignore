@@ -16,17 +16,24 @@ node_modules/
 # Env
 .env
 
-# Runtime data
-data/
-!data/.gitkeep
+# Runtime data (repo root only; avoid ignoring every `data/` dir project-wide)
+/data/
+!/data/.gitkeep
+main/data/*
+!main/data/.gitkeep
+# Vendored workflow clones: dataset trees stay out of git
+main/finish/workflow_candidates/**/data/
+# App runtime DB / artifacts
+front/data/
 *.log
 
 # IDE
 .idea/
 .vscode/
 
-# External / sidecar repos (parallel experiments, not part of this codebase)
-external/
+# External / sidecar (sources vendored without nested .git; see external/README)
+# external/ is tracked — ignore only nested git metadata if re-cloned
+external/**/.git/
 
 # --- main/finish: Snakemake caches & large reproducible assets (keep Snakefiles, configs, reports)
 **/.snakemake/
@@ -56,8 +63,6 @@ main/finish/workflow_candidates/joncahn__epigeneticbutton/workflow/bin/modkit
 **/workflow_candidates/**/.test/**/*.fastq.gz
 main/finish/workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/scRNAseq/10x_*
 main/finish/workflow_candidates/**/*.svs
-main/finish/workflow_candidates/**/test/compressed_resources/
-main/finish/workflow_candidates/**/tests/compressed_resources/
 
 # Bundled archives in Renzo (optional tooling)
 main/finish/Renzo_DA_Agent/**/*.zip

@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+python-dotenv = "*"
+langchain-core = "*"
+langchain-openai = "*"
+langchain-anthropic = "*"
+langchain-google-genai = "*"
+langgraph = "*"
+pydantic = "*"
+tenacity = "*"
+Pillow = "*"
+pymupdf = "*"
+
+[requires]
+python_version = "3.12"
+
+[dev-packages]

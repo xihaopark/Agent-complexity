@@ -1,0 +1,112 @@
+workflow_id: epigen-fetch_ngs-finish
+source_cores: 8
+steps:
+  env_export:
+    summary: env_export
+    requires:
+    - ../workflow_candidates/epigen__fetch_ngs/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__fetch_ngs/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__fetch_ngs
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__fetch_ngs/config/config.yaml
+      root_target: all
+      until:
+      - env_export
+  config_export:
+    summary: config_export
+    requires:
+    - ../workflow_candidates/epigen__fetch_ngs/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__fetch_ngs/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__fetch_ngs
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__fetch_ngs/config/config.yaml
+      root_target: all
+      until:
+      - config_export
+    depends_on:
+    - env_export
+  iseq_download:
+    summary: iseq_download
+    requires:
+    - ../workflow_candidates/epigen__fetch_ngs/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__fetch_ngs/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__fetch_ngs
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__fetch_ngs/config/config.yaml
+      root_target: all
+      until:
+      - iseq_download
+    depends_on:
+    - config_export
+  fastq_to_bam:
+    summary: fastq_to_bam
+    requires:
+    - ../workflow_candidates/epigen__fetch_ngs/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__fetch_ngs/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__fetch_ngs
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__fetch_ngs/config/config.yaml
+      root_target: all
+      until:
+      - fastq_to_bam
+    depends_on:
+    - iseq_download
+  fetch_file:
+    summary: fetch_file
+    requires:
+    - ../workflow_candidates/epigen__fetch_ngs/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__fetch_ngs/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__fetch_ngs
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__fetch_ngs/config/config.yaml
+      root_target: all
+      until:
+      - fetch_file
+    depends_on:
+    - fastq_to_bam
+  merge_metadata:
+    summary: merge_metadata
+    requires:
+    - ../workflow_candidates/epigen__fetch_ngs/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__fetch_ngs/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__fetch_ngs
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__fetch_ngs/config/config.yaml
+      root_target: all
+      until:
+      - merge_metadata
+    depends_on:
+    - fetch_file
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/epigen__fetch_ngs/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__fetch_ngs/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__fetch_ngs
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__fetch_ngs/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - merge_metadata

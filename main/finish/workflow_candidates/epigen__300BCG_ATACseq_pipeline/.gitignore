@@ -1,0 +1,12 @@
+**/jupyterlab.err
+**/jupyterlab.log
+pipeline/env_config/src
+
+references/*
+!references/nextera_adapters.fa
+
+data
+
+tmp_files
+
+**/.ipynb_checkpoints

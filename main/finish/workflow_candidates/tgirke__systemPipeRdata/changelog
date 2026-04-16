@@ -1,0 +1,172 @@
+changelog
+    version 1.99.12
+	- Update systemPipeRdata vignette
+	
+    version 1.99.10
+	- remove old script from gatk.
+	
+    version 1.99.9
+	- batchtools.slurm.tmpl --> requires partition specification on the resources list.
+	- avoid x11 for chipseq template.
+	
+    version 1.99.8
+	- Cleanup NAMESPACE
+	- Set up actions: If vignettes/*Rmd are updated, automatically inst/extdata/workflows/*/*.Rmd and
+			inst/extdata/workflows/*/*.R, inst/extdata/workflows/*/*.html are updated. 
+			Also, the individual packages are updated on the SP organization.
+	
+    version 1.23.6/7
+	- RIBO-seq template
+	
+    version 1.23.3/4
+	- RNA-seq template
+	- Chip-seq template
+	- VAR-seq template
+	
+    version 1.23.2
+	- RNA-seq template
+	
+    version 1.23.1
+	- trim_galore cwl files
+	
+    version 1.21.4
+	- fastqc cwl files
+	
+    version 1.21.2/3
+	- New RNA-seq
+	
+    version 1.21.1
+	- Updated CWL param files
+	
+    version 1.19.10
+	- Vignette RIBO-seq
+	
+    version 1.19.9
+	- Vignette ChIP-seq
+	
+    version 1.19.6
+	- Removed .batchtools.conf.R file from .Rbuildignore
+	
+    version 1.19.5
+	- Copied the .batchtools.conf.R file to Github WF templates
+	
+    version 1.19.4
+	- Small updates, version up
+	
+    version 1.19.3
+	- Exported `getSubsetReads` function
+
+    version 1.19.2
+	- Added `getSubsetReads` function
+	- Added new cwl files
+	- Updated vignette
+	
+    version 1.19.1
+	- Updated systemPipeRNAseq and systemPipeVARseq vignettes
+	
+    version 1.17.4
+	- Updated systemPipeR* vignettes
+	
+    version 1.17.3
+	- Fixed typo systemPipeRdata vignette   
+	
+     version 1.17.2
+        - Updated systemPipeRdata vignette
+        - Updated help files
+        - New function: "availableWF" 
+        
+     version 1.17.1
+        - Fixed typo on the vignettes
+        
+     version 1.15.5
+        - Updating the order of the workflows on Bioc webpage
+        
+     version 1.15.3
+        - Added workflow "NEW" -  basic structure of the SYS_project
+	    - Updated 'genWorkenvir' function and help file (Added new arguments allowing to download/install and create a specific project from GitHub package)
+        
+     version 1.15.2
+        - Fixed message=FALSE load library vignette
+        
+     version 1.15.1
+        - Updated the vignettes 'inst/extdata/workflows/*"
+
+     version 1.13.5
+        - Added "cwl/*" files:
+            - GATK/*
+            - bcftools/*
+            - varseq/*
+        - Updated vignettes: 'varseq'
+
+     version 1.13.4
+        - Updated vignettes
+        - Added "cwl/*" files:
+            - MACS2/*
+            - annotate_peaks/*
+            - count_rangesets/*
+            - mergeBamByFactor/*
+            - rundiff/*
+
+    version 1.13.3
+	- Updated Vignettes
+	
+    version 1.13.2
+	- Added the param/docopt.R/*
+	- Added the data with valid Id Names
+	
+    version 1.13.1
+	- Added new *cwl files
+	
+    version 1.11.5
+	- Removed PDF from vignettes directory
+
+    version 1.11.5
+	- Added default *.html
+
+    version 1.11.4
+	- Added systemPipeR vignettes (*.pdf)
+
+    version 1.11.3
+	- Added systemPipeR vignettes
+
+    version 1.11.2
+	- Updated systemPipeRdata vignette   
+        
+    version 1.11.1
+	- Updated 'genWorkenvir' function and help file (Added new argument allowing to download a specific template file/version) 
+	- Makefile update (support for .Rmd)
+	- Removed old .tmpl files and added new batchtools files
+        - Bibtex update (in the workflows and systemPipeRdata vignette)
+	- Updated all the vignettes in the workflow (removed old .Rnw templates)
+	- Removed all the .pdf figures in the workflows subdirecty
+	- Updated systemPipeRdata vignette
+    
+    version 1.9.1
+        - Kallisto *.param added
+    
+    version 1.5.1
+        - Switched all vignettes to R markdown (*.Rmd)
+        
+    version 1.3.7 - 1.5.0
+        - various updates
+    
+    version 1.3.6
+        - Support for SLURM 
+        - R markdown template for RNA-Seq
+    
+    version 1.3.5
+        - added trim_galore.param
+
+    version 1.3.4
+        - Fixed path problem for Windows
+
+    version 1.3.3
+        - Started to change workflow scripts to R markdown with support to render to both HTML or PDF. 
+          So far this has been done only for RIBO-Seq workflow. Others will be added later.
+        - Added argument to include bam files in results directory
+    
+    version 1.1.1
+        - RIBO-Seq vignette update
+    
+    version 0.99.1
+        - initial package commit

@@ -1,0 +1,65 @@
+workflow_id: epigen-300bcg-atacseq_pipeline-finish
+source_cores: 8
+source_root: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/epigen__300BCG_ATACseq_pipeline
+sample_yaml: ''
+sample_name: ''
+genome: hg38
+command_conda_env: renzo-wf-300bcg
+steps:
+  prepare_references:
+    summary: Prepare genome references and chromosome sizes
+    command: bash -lc 'cd {source_root} && mkdir -p references/hg38 && echo Prepare
+      FASTA, Bowtie2 index, GTF, and chrom sizes as documented in README.MD'
+  parse_regulatory_build:
+    summary: Parse regulatory build files into project reference assets
+    depends_on:
+    - prepare_references
+    command: bash -lc 'cd {source_root} && /root/miniconda3/bin/python3 pipeline/parse_reg_build_file.py
+      references/homo_sapiens.GRCh38.Regulatory_Build.regulatory_features.20190329.gff.gz
+      references/hg38.chrom.sizes'
+  prepare_pipeline_input:
+    summary: Generate pipeline annotations and sample inputs
+    depends_on:
+    - parse_regulatory_build
+    command: bash -lc 'cd {source_root} && jupyter nbconvert --to notebook --execute
+      notebooks/0000.01-Prepare_pipeline_input.ipynb'
+  run_pipeline:
+    summary: Run looper pipeline over all samples
+    depends_on:
+    - prepare_pipeline_input
+    command: bash -lc 'cd {source_root} && python -m looper run ./pipeline/bcg_pipeline.yaml'
+  summarize_pipeline:
+    summary: Summarize looper results
+    depends_on:
+    - run_pipeline
+    command: bash -lc 'cd {source_root} && python -m looper summarize ./pipeline/bcg_pipeline.yaml'
+  create_annotations:
+    summary: Create complete metadata annotations
+    depends_on:
+    - summarize_pipeline
+    command: bash -lc 'cd {source_root} && jupyter nbconvert --to notebook --execute
+      notebooks/0001.01-Create_Annotations.ipynb'
+  qc_stats:
+    summary: Compute QC and QC flags
+    depends_on:
+    - create_annotations
+    command: bash -lc 'cd {source_root} && jupyter nbconvert --to notebook --execute
+      notebooks/0001.02-QC.stats.ipynb'
+  quantification:
+    summary: Create count matrix, binary matrix, and signal tracks
+    depends_on:
+    - qc_stats
+    command: bash -lc 'cd {source_root} && jupyter nbconvert --to notebook --execute
+      notebooks/0001.03-Quantification.ipynb'
+  features_analysis_a:
+    summary: Prepare UROPA configuration and feature characterization jobs
+    depends_on:
+    - quantification
+    command: bash -lc 'cd {source_root} && jupyter nbconvert --to notebook --execute
+      notebooks/0001.04.a-Features_analysis.ipynb'
+  features_analysis_b:
+    summary: Aggregate feature annotation results
+    depends_on:
+    - features_analysis_a
+    command: bash -lc 'cd {source_root} && jupyter nbconvert --to notebook --execute
+      notebooks/0001.04.b-Features_analysis.ipynb'

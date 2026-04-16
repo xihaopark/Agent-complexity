@@ -1,0 +1,624 @@
+workflow_id: maxplanck-ie-snakepipes-finish
+source_cores: 8
+steps:
+  link_bam:
+    summary: link_bam
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - link_bam
+  samtools_index_external:
+    summary: samtools_index_external
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - samtools_index_external
+    depends_on:
+    - link_bam
+  link_bam_bai_external:
+    summary: link_bam_bai_external
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - link_bam_bai_external
+    depends_on:
+    - samtools_index_external
+  sambamba_flagstat:
+    summary: sambamba_flagstat
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - sambamba_flagstat
+    depends_on:
+    - link_bam_bai_external
+  bamCoverage:
+    summary: bamCoverage
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - bamCoverage
+    depends_on:
+    - sambamba_flagstat
+  bamCoverage_filtered:
+    summary: bamCoverage_filtered
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - bamCoverage_filtered
+    depends_on:
+    - bamCoverage
+  plotCoverage:
+    summary: plotCoverage
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - plotCoverage
+    depends_on:
+    - bamCoverage_filtered
+  multiBamSummary:
+    summary: multiBamSummary
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - multiBamSummary
+    depends_on:
+    - plotCoverage
+  plotCorrelation_pearson:
+    summary: plotCorrelation_pearson
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - plotCorrelation_pearson
+    depends_on:
+    - multiBamSummary
+  plotCorrelation_spearman:
+    summary: plotCorrelation_spearman
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - plotCorrelation_spearman
+    depends_on:
+    - plotCorrelation_pearson
+  plotPCA:
+    summary: plotPCA
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - plotPCA
+    depends_on:
+    - plotCorrelation_spearman
+  estimate_read_filtering:
+    summary: estimate_read_filtering
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - estimate_read_filtering
+    depends_on:
+    - plotPCA
+  computeGCBias:
+    summary: computeGCBias
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - computeGCBias
+    depends_on:
+    - estimate_read_filtering
+  bamPE_fragment_size:
+    summary: bamPE_fragment_size
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - bamPE_fragment_size
+    depends_on:
+    - computeGCBias
+  bamcoverage_short_cleaned:
+    summary: bamcoverage_short_cleaned
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - bamcoverage_short_cleaned
+    depends_on:
+    - bamPE_fragment_size
+  multiQC:
+    summary: multiQC
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - multiQC
+    depends_on:
+    - bamcoverage_short_cleaned
+  filterFragments:
+    summary: filterFragments
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - filterFragments
+    depends_on:
+    - multiQC
+  filterCoveragePerScaffolds:
+    summary: filterCoveragePerScaffolds
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - filterCoveragePerScaffolds
+    depends_on:
+    - filterFragments
+  callOpenChromatin:
+    summary: callOpenChromatin
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - callOpenChromatin
+    depends_on:
+    - filterCoveragePerScaffolds
+  tempChromSizes:
+    summary: tempChromSizes
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - tempChromSizes
+    depends_on:
+    - callOpenChromatin
+  HMMRATAC_peaks:
+    summary: HMMRATAC_peaks
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - HMMRATAC_peaks
+    depends_on:
+    - tempChromSizes
+  namesort_bams:
+    summary: namesort_bams
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - namesort_bams
+    depends_on:
+    - HMMRATAC_peaks
+  Genrich_peaks:
+    summary: Genrich_peaks
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - Genrich_peaks
+    depends_on:
+    - namesort_bams
+  plotFingerprint:
+    summary: plotFingerprint
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - plotFingerprint
+    depends_on:
+    - Genrich_peaks
+  plotFingerprint_allelic:
+    summary: plotFingerprint_allelic
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - plotFingerprint_allelic
+    depends_on:
+    - plotFingerprint
+  MACS2_peak_qc:
+    summary: MACS2_peak_qc
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - MACS2_peak_qc
+    depends_on:
+    - plotFingerprint_allelic
+  CSAW:
+    summary: CSAW
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - CSAW
+    depends_on:
+    - MACS2_peak_qc
+  calc_matrix_log2r_CSAW:
+    summary: calc_matrix_log2r_CSAW
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - calc_matrix_log2r_CSAW
+    depends_on:
+    - CSAW
+  plot_heatmap_log2r_CSAW:
+    summary: plot_heatmap_log2r_CSAW
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - plot_heatmap_log2r_CSAW
+    depends_on:
+    - calc_matrix_log2r_CSAW
+  calc_matrix_cov_CSAW:
+    summary: calc_matrix_cov_CSAW
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - calc_matrix_cov_CSAW
+    depends_on:
+    - plot_heatmap_log2r_CSAW
+  plot_heatmap_cov_CSAW:
+    summary: plot_heatmap_cov_CSAW
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - plot_heatmap_cov_CSAW
+    depends_on:
+    - calc_matrix_cov_CSAW
+  CSAW_report:
+    summary: CSAW_report
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - CSAW_report
+    depends_on:
+    - plot_heatmap_cov_CSAW
+  get_nearest_transcript:
+    summary: get_nearest_transcript
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - get_nearest_transcript
+    depends_on:
+    - CSAW_report
+  get_nearest_gene:
+    summary: get_nearest_gene
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - get_nearest_gene
+    depends_on:
+    - get_nearest_transcript
+  split_sampleSheet:
+    summary: split_sampleSheet
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - split_sampleSheet
+    depends_on:
+    - get_nearest_gene
+  filter_gtf:
+    summary: filter_gtf
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - filter_gtf
+    depends_on:
+    - split_sampleSheet
+  gtf_to_files:
+    summary: gtf_to_files
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - gtf_to_files
+    depends_on:
+    - filter_gtf
+  annotation_bed2fasta:
+    summary: annotation_bed2fasta
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      root_target: all
+      until:
+      - annotation_bed2fasta
+    depends_on:
+    - gtf_to_files
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/ATACseq/Snakefile
+      directory: ../workflow_candidates/maxplanck-ie__snakePipes
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/maxplanck-ie__snakePipes/.ci_stuff/ChIP.sample_broad_config.yaml
+      targets:
+      - all
+    depends_on:
+    - annotation_bed2fasta

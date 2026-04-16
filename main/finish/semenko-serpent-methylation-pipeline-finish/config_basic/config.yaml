@@ -1,0 +1,384 @@
+workflow_id: semenko-serpent-methylation-pipeline-finish
+source_cores: 8
+steps:
+  get_reference_genome:
+    summary: get_reference_genome
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - get_reference_genome
+  mask_reference_fasta:
+    summary: mask_reference_fasta
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - mask_reference_fasta
+    depends_on:
+    - get_reference_genome
+  biscuit_index:
+    summary: biscuit_index
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - biscuit_index
+    depends_on:
+    - mask_reference_fasta
+  biscuit_qc_index:
+    summary: biscuit_qc_index
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - biscuit_qc_index
+    depends_on:
+    - biscuit_index
+  bwa_meth_index:
+    summary: bwa_meth_index
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - bwa_meth_index
+    depends_on:
+    - biscuit_qc_index
+  wgbs_tools_index:
+    summary: wgbs_tools_index
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - wgbs_tools_index
+    depends_on:
+    - bwa_meth_index
+  md5sum:
+    summary: md5sum
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - md5sum
+    depends_on:
+    - wgbs_tools_index
+  seqtk_subsample:
+    summary: seqtk_subsample
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - seqtk_subsample
+    depends_on:
+    - md5sum
+  fastp:
+    summary: fastp
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - fastp
+    depends_on:
+    - seqtk_subsample
+  bwa_meth:
+    summary: bwa_meth
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - bwa_meth
+    depends_on:
+    - fastp
+  mark_nonconverted:
+    summary: mark_nonconverted
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - mark_nonconverted
+    depends_on:
+    - bwa_meth
+  samtools_fixmate_sort_markdup:
+    summary: samtools_fixmate_sort_markdup
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - samtools_fixmate_sort_markdup
+    depends_on:
+    - mark_nonconverted
+  samtools_index:
+    summary: samtools_index
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - samtools_index
+    depends_on:
+    - samtools_fixmate_sort_markdup
+  samtools_statistics:
+    summary: samtools_statistics
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - samtools_statistics
+    depends_on:
+    - samtools_index
+  biscuit_bed:
+    summary: biscuit_bed
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - biscuit_bed
+    depends_on:
+    - samtools_statistics
+  biscuit_epiread:
+    summary: biscuit_epiread
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - biscuit_epiread
+    depends_on:
+    - biscuit_bed
+  biscuit_qc:
+    summary: biscuit_qc
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - biscuit_qc
+    depends_on:
+    - biscuit_epiread
+  methyldackel_mbias_plots:
+    summary: methyldackel_mbias_plots
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - methyldackel_mbias_plots
+    depends_on:
+    - biscuit_qc
+  fastqc_bam:
+    summary: fastqc_bam
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - fastqc_bam
+    depends_on:
+    - methyldackel_mbias_plots
+  goleft_indexcov:
+    summary: goleft_indexcov
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - goleft_indexcov
+    depends_on:
+    - fastqc_bam
+  wgbs_tools_pat_beta:
+    summary: wgbs_tools_pat_beta
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - wgbs_tools_pat_beta
+    depends_on:
+    - goleft_indexcov
+  touch_complete_flag:
+    summary: touch_complete_flag
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - touch_complete_flag
+    depends_on:
+    - wgbs_tools_pat_beta
+  multiqc:
+    summary: multiqc
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      root_target: all
+      until:
+      - multiqc
+    depends_on:
+    - touch_complete_flag
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/semenko__serpent-methylation-pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - multiqc

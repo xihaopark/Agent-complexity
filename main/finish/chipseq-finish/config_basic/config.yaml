@@ -1,0 +1,1120 @@
+workflow_id: chipseq-finish
+source_cores: 8
+steps:
+  get_genome:
+    summary: get_genome
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_genome
+  get_annotation:
+    summary: get_annotation
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_annotation
+    depends_on:
+    - get_genome
+  sra_get_fastq_pe:
+    summary: sra_get_fastq_pe
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - sra_get_fastq_pe
+    depends_on:
+    - get_annotation
+  sra_get_fastq_se:
+    summary: sra_get_fastq_se
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - sra_get_fastq_se
+    depends_on:
+    - sra_get_fastq_pe
+  gtf2bed:
+    summary: gtf2bed
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - gtf2bed
+    depends_on:
+    - sra_get_fastq_se
+  genome_faidx:
+    summary: genome_faidx
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - genome_faidx
+    depends_on:
+    - gtf2bed
+  bwa_index:
+    summary: bwa_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - bwa_index
+    depends_on:
+    - genome_faidx
+  chromosome_size:
+    summary: chromosome_size
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - chromosome_size
+    depends_on:
+    - bwa_index
+  generate_igenomes:
+    summary: generate_igenomes
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - generate_igenomes
+    depends_on:
+    - chromosome_size
+  generate_igenomes_blacklist:
+    summary: generate_igenomes_blacklist
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - generate_igenomes_blacklist
+    depends_on:
+    - generate_igenomes
+  bedtools_sort_blacklist:
+    summary: bedtools_sort_blacklist
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - bedtools_sort_blacklist
+    depends_on:
+    - generate_igenomes_blacklist
+  bedtools_complement_blacklist:
+    summary: bedtools_complement_blacklist
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - bedtools_complement_blacklist
+    depends_on:
+    - bedtools_sort_blacklist
+  get_gsize:
+    summary: get_gsize
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_gsize
+    depends_on:
+    - bedtools_complement_blacklist
+  fastqc:
+    summary: fastqc
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - fastqc
+    depends_on:
+    - get_gsize
+  multiqc:
+    summary: multiqc
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - multiqc
+    depends_on:
+    - fastqc
+  cutadapt_pe:
+    summary: cutadapt_pe
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - cutadapt_pe
+    depends_on:
+    - multiqc
+  cutadapt_se:
+    summary: cutadapt_se
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - cutadapt_se
+    depends_on:
+    - cutadapt_pe
+  bwa_mem:
+    summary: bwa_mem
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - bwa_mem
+    depends_on:
+    - cutadapt_se
+  merge_bams:
+    summary: merge_bams
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - merge_bams
+    depends_on:
+    - bwa_mem
+  mark_merged_duplicates:
+    summary: mark_merged_duplicates
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - mark_merged_duplicates
+    depends_on:
+    - merge_bams
+  samtools_view_filter:
+    summary: samtools_view_filter
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - samtools_view_filter
+    depends_on:
+    - mark_merged_duplicates
+  bamtools_filter_json:
+    summary: bamtools_filter_json
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - bamtools_filter_json
+    depends_on:
+    - samtools_view_filter
+  samtools_sort:
+    summary: samtools_sort
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - samtools_sort
+    depends_on:
+    - bamtools_filter_json
+  orphan_remove:
+    summary: orphan_remove
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - orphan_remove
+    depends_on:
+    - samtools_sort
+  samtools_sort_pe:
+    summary: samtools_sort_pe
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - samtools_sort_pe
+    depends_on:
+    - orphan_remove
+  merge_se_pe:
+    summary: merge_se_pe
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - merge_se_pe
+    depends_on:
+    - samtools_sort_pe
+  samtools_flagstat:
+    summary: samtools_flagstat
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - samtools_flagstat
+    depends_on:
+    - merge_se_pe
+  samtools_idxstats:
+    summary: samtools_idxstats
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - samtools_idxstats
+    depends_on:
+    - samtools_flagstat
+  samtools_stats:
+    summary: samtools_stats
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - samtools_stats
+    depends_on:
+    - samtools_idxstats
+  samtools_index:
+    summary: samtools_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - samtools_index
+    depends_on:
+    - samtools_stats
+  preseq_lc_extrap:
+    summary: preseq_lc_extrap
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - preseq_lc_extrap
+    depends_on:
+    - samtools_index
+  collect_multiple_metrics:
+    summary: collect_multiple_metrics
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - collect_multiple_metrics
+    depends_on:
+    - preseq_lc_extrap
+  genomecov:
+    summary: genomecov
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - genomecov
+    depends_on:
+    - collect_multiple_metrics
+  sort_genomecov:
+    summary: sort_genomecov
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - sort_genomecov
+    depends_on:
+    - genomecov
+  bedGraphToBigWig:
+    summary: bedGraphToBigWig
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - bedGraphToBigWig
+    depends_on:
+    - sort_genomecov
+  create_igv_bigwig:
+    summary: create_igv_bigwig
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - create_igv_bigwig
+    depends_on:
+    - bedGraphToBigWig
+  compute_matrix:
+    summary: compute_matrix
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - compute_matrix
+    depends_on:
+    - create_igv_bigwig
+  plot_profile:
+    summary: plot_profile
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - plot_profile
+    depends_on:
+    - compute_matrix
+  plot_heatmap:
+    summary: plot_heatmap
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - plot_heatmap
+    depends_on:
+    - plot_profile
+  phantompeakqualtools:
+    summary: phantompeakqualtools
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - phantompeakqualtools
+    depends_on:
+    - plot_heatmap
+  phantompeak_correlation:
+    summary: phantompeak_correlation
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - phantompeak_correlation
+    depends_on:
+    - phantompeakqualtools
+  phantompeak_multiqc:
+    summary: phantompeak_multiqc
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - phantompeak_multiqc
+    depends_on:
+    - phantompeak_correlation
+  plot_fingerprint:
+    summary: plot_fingerprint
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - plot_fingerprint
+    depends_on:
+    - phantompeak_multiqc
+  macs2_callpeak_broad:
+    summary: macs2_callpeak_broad
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - macs2_callpeak_broad
+    depends_on:
+    - plot_fingerprint
+  macs2_callpeak_narrow:
+    summary: macs2_callpeak_narrow
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - macs2_callpeak_narrow
+    depends_on:
+    - macs2_callpeak_broad
+  peaks_count:
+    summary: peaks_count
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - peaks_count
+    depends_on:
+    - macs2_callpeak_narrow
+  sm_report_peaks_count_plot:
+    summary: sm_report_peaks_count_plot
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - sm_report_peaks_count_plot
+    depends_on:
+    - peaks_count
+  bedtools_intersect:
+    summary: bedtools_intersect
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - bedtools_intersect
+    depends_on:
+    - sm_report_peaks_count_plot
+  frip_score:
+    summary: frip_score
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - frip_score
+    depends_on:
+    - bedtools_intersect
+  sm_rep_frip_score:
+    summary: sm_rep_frip_score
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - sm_rep_frip_score
+    depends_on:
+    - frip_score
+  create_igv_peaks:
+    summary: create_igv_peaks
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - create_igv_peaks
+    depends_on:
+    - sm_rep_frip_score
+  homer_annotatepeaks:
+    summary: homer_annotatepeaks
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - homer_annotatepeaks
+    depends_on:
+    - create_igv_peaks
+  plot_macs_qc:
+    summary: plot_macs_qc
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - plot_macs_qc
+    depends_on:
+    - homer_annotatepeaks
+  plot_homer_annotatepeaks:
+    summary: plot_homer_annotatepeaks
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - plot_homer_annotatepeaks
+    depends_on:
+    - plot_macs_qc
+  plot_sum_annotatepeaks:
+    summary: plot_sum_annotatepeaks
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - plot_sum_annotatepeaks
+    depends_on:
+    - plot_homer_annotatepeaks
+  bedtools_merge_broad:
+    summary: bedtools_merge_broad
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - bedtools_merge_broad
+    depends_on:
+    - plot_sum_annotatepeaks
+  bedtools_merge_narrow:
+    summary: bedtools_merge_narrow
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - bedtools_merge_narrow
+    depends_on:
+    - bedtools_merge_broad
+  macs2_merged_expand:
+    summary: macs2_merged_expand
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - macs2_merged_expand
+    depends_on:
+    - bedtools_merge_narrow
+  create_consensus_bed:
+    summary: create_consensus_bed
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - create_consensus_bed
+    depends_on:
+    - macs2_merged_expand
+  create_consensus_saf:
+    summary: create_consensus_saf
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - create_consensus_saf
+    depends_on:
+    - create_consensus_bed
+  plot_peak_intersect:
+    summary: plot_peak_intersect
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - plot_peak_intersect
+    depends_on:
+    - create_consensus_saf
+  create_consensus_igv:
+    summary: create_consensus_igv
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - create_consensus_igv
+    depends_on:
+    - plot_peak_intersect
+  homer_consensus_annotatepeaks:
+    summary: homer_consensus_annotatepeaks
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - homer_consensus_annotatepeaks
+    depends_on:
+    - create_consensus_igv
+  trim_homer_consensus_annotatepeaks:
+    summary: trim_homer_consensus_annotatepeaks
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - trim_homer_consensus_annotatepeaks
+    depends_on:
+    - homer_consensus_annotatepeaks
+  merge_bool_and_annotatepeaks:
+    summary: merge_bool_and_annotatepeaks
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - merge_bool_and_annotatepeaks
+    depends_on:
+    - trim_homer_consensus_annotatepeaks
+  feature_counts:
+    summary: feature_counts
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - feature_counts
+    depends_on:
+    - merge_bool_and_annotatepeaks
+  featurecounts_modified_colnames:
+    summary: featurecounts_modified_colnames
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - featurecounts_modified_colnames
+    depends_on:
+    - feature_counts
+  featurecounts_deseq2:
+    summary: featurecounts_deseq2
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - featurecounts_deseq2
+    depends_on:
+    - featurecounts_modified_colnames
+  create_deseq2_igv:
+    summary: create_deseq2_igv
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      root_target: all
+      until:
+      - create_deseq2_igv
+    depends_on:
+    - featurecounts_deseq2
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__chipseq/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__chipseq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__chipseq/.test/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - create_deseq2_igv

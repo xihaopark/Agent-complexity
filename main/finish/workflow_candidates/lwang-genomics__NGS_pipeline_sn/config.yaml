@@ -1,0 +1,17 @@
+genome:
+  name: hg38 #or mm10
+  bwa_index: path_to/bwa_index/genome # or path to mm10 genome folder; or any given species
+  star_index: path_to/star_index/ # star_index of a given species
+  salmon_index: path_to/salmon_index/ # salmon_index from a giving species. Only used in RNA-seq pseudo-alignment mode 
+  chrom_sizes: path_to/chrom.sizes  #the chrom info file for a given species
+  gtf: path_to/gtf/annotation.gtf # matching gene annotation gtf 
+
+peaktype: narrow     # or broad; useful for ChIP-seq and ATAC-seq
+threads: 4
+mapq: 5  # mapping quality threshold to retain aligned reads
+keep_intermediate: false # or true
+skip_trimming: false # or true
+read_type: paired  # or "single"; useful for ChIP-seq and RNA-seq
+strandness: forward # parameter for RNA-seq, choice: forward, reverse, none
+pseudo: false # RNA-seq flag to choose between traditional mapping (STAR) or pseudo-alignment (Salmon)
+

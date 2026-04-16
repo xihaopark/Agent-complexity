@@ -1,0 +1,1264 @@
+workflow_id: dna-seq-neoantigen-prediction-finish
+source_cores: 8
+steps:
+  bcf_index:
+    summary: bcf_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - bcf_index
+  bam_index:
+    summary: bam_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - bam_index
+    depends_on:
+    - bcf_index
+  tabix_known_variants:
+    summary: tabix_known_variants
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - tabix_known_variants
+    depends_on:
+    - bam_index
+  gzip_fastq:
+    summary: gzip_fastq
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - gzip_fastq
+    depends_on:
+    - tabix_known_variants
+  tsv_to_excel:
+    summary: tsv_to_excel
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - tsv_to_excel
+    depends_on:
+    - gzip_fastq
+  get_sra:
+    summary: get_sra
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_sra
+    depends_on:
+    - tsv_to_excel
+  cutadapt_pipe:
+    summary: cutadapt_pipe
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - cutadapt_pipe
+    depends_on:
+    - get_sra
+  cutadapt_pe:
+    summary: cutadapt_pe
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - cutadapt_pe
+    depends_on:
+    - cutadapt_pipe
+  cutadapt_se:
+    summary: cutadapt_se
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - cutadapt_se
+    depends_on:
+    - cutadapt_pe
+  merge_fastqs:
+    summary: merge_fastqs
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - merge_fastqs
+    depends_on:
+    - cutadapt_se
+  get_genome:
+    summary: get_genome
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_genome
+    depends_on:
+    - merge_fastqs
+  get_cdna:
+    summary: get_cdna
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_cdna
+    depends_on:
+    - get_genome
+  kallisto_index:
+    summary: kallisto_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - kallisto_index
+    depends_on:
+    - get_cdna
+  get_annotation:
+    summary: get_annotation
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_annotation
+    depends_on:
+    - kallisto_index
+  STAR_index:
+    summary: STAR_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - STAR_index
+    depends_on:
+    - get_annotation
+  split_annotation:
+    summary: split_annotation
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - split_annotation
+    depends_on:
+    - STAR_index
+  genome_faidx:
+    summary: genome_faidx
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - genome_faidx
+    depends_on:
+    - split_annotation
+  genome_dict:
+    summary: genome_dict
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - genome_dict
+    depends_on:
+    - genome_faidx
+  get_callregions:
+    summary: get_callregions
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_callregions
+    depends_on:
+    - genome_dict
+  get_known_variants:
+    summary: get_known_variants
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_known_variants
+    depends_on:
+    - get_callregions
+  remove_iupac_codes:
+    summary: remove_iupac_codes
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - remove_iupac_codes
+    depends_on:
+    - get_known_variants
+  bwa_index:
+    summary: bwa_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - bwa_index
+    depends_on:
+    - remove_iupac_codes
+  download_HLALA_graph:
+    summary: download_HLALA_graph
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - download_HLALA_graph
+    depends_on:
+    - bwa_index
+  index_HLALA:
+    summary: index_HLALA
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - index_HLALA
+    depends_on:
+    - download_HLALA_graph
+  get_vep_cache:
+    summary: get_vep_cache
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_vep_cache
+    depends_on:
+    - index_HLALA
+  get_vep_plugins:
+    summary: get_vep_plugins
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_vep_plugins
+    depends_on:
+    - get_vep_cache
+  make_sampleheader:
+    summary: make_sampleheader
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - make_sampleheader
+    depends_on:
+    - get_vep_plugins
+  map_reads:
+    summary: map_reads
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - map_reads
+    depends_on:
+    - make_sampleheader
+  mark_duplicates:
+    summary: mark_duplicates
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - mark_duplicates
+    depends_on:
+    - map_reads
+  recalibrate_base_qualities:
+    summary: recalibrate_base_qualities
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - recalibrate_base_qualities
+    depends_on:
+    - mark_duplicates
+  apply_bqsr:
+    summary: apply_bqsr
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - apply_bqsr
+    depends_on:
+    - recalibrate_base_qualities
+  strelka_somatic:
+    summary: strelka_somatic
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - strelka_somatic
+    depends_on:
+    - apply_bqsr
+  strelka_germline:
+    summary: strelka_germline
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - strelka_germline
+    depends_on:
+    - strelka_somatic
+  vcf_to_bcf:
+    summary: vcf_to_bcf
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - vcf_to_bcf
+    depends_on:
+    - strelka_germline
+  concat_somatic:
+    summary: concat_somatic
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - concat_somatic
+    depends_on:
+    - vcf_to_bcf
+  get_tumor_from_somatic:
+    summary: get_tumor_from_somatic
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_tumor_from_somatic
+    depends_on:
+    - concat_somatic
+  reheader_germline:
+    summary: reheader_germline
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - reheader_germline
+    depends_on:
+    - get_tumor_from_somatic
+  concat_variants:
+    summary: concat_variants
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - concat_variants
+    depends_on:
+    - reheader_germline
+  preprocess_variants:
+    summary: preprocess_variants
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - preprocess_variants
+    depends_on:
+    - concat_variants
+  norm_vcf:
+    summary: norm_vcf
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - norm_vcf
+    depends_on:
+    - preprocess_variants
+  freebayes:
+    summary: freebayes
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - freebayes
+    depends_on:
+    - norm_vcf
+  scatter_candidates:
+    summary: scatter_candidates
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - scatter_candidates
+    depends_on:
+    - freebayes
+  render_scenario:
+    summary: render_scenario
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - render_scenario
+    depends_on:
+    - scatter_candidates
+  varlociraptor_preprocess:
+    summary: varlociraptor_preprocess
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - varlociraptor_preprocess
+    depends_on:
+    - render_scenario
+  varlociraptor_call:
+    summary: varlociraptor_call
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - varlociraptor_call
+    depends_on:
+    - varlociraptor_preprocess
+  sort_calls:
+    summary: sort_calls
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - sort_calls
+    depends_on:
+    - varlociraptor_call
+  bcftools_concat:
+    summary: bcftools_concat
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - bcftools_concat
+    depends_on:
+    - sort_calls
+  annotate_variants:
+    summary: annotate_variants
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - annotate_variants
+    depends_on:
+    - bcftools_concat
+  annotate_strelka_variants:
+    summary: annotate_strelka_variants
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - annotate_strelka_variants
+    depends_on:
+    - annotate_variants
+  filter_by_annotation:
+    summary: filter_by_annotation
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - filter_by_annotation
+    depends_on:
+    - annotate_strelka_variants
+  filter_odds:
+    summary: filter_odds
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - filter_odds
+    depends_on:
+    - filter_by_annotation
+  gather_calls:
+    summary: gather_calls
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - gather_calls
+    depends_on:
+    - filter_odds
+  control_fdr:
+    summary: control_fdr
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - control_fdr
+    depends_on:
+    - gather_calls
+  merge_calls:
+    summary: merge_calls
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - merge_calls
+    depends_on:
+    - control_fdr
+  change_samplenames:
+    summary: change_samplenames
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - change_samplenames
+    depends_on:
+    - merge_calls
+  reheader_varlociraptor:
+    summary: reheader_varlociraptor
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - reheader_varlociraptor
+    depends_on:
+    - change_samplenames
+  microphaser_somatic:
+    summary: microphaser_somatic
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - microphaser_somatic
+    depends_on:
+    - reheader_varlociraptor
+  microphaser_germline:
+    summary: microphaser_germline
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - microphaser_germline
+    depends_on:
+    - microphaser_somatic
+  concat_proteome:
+    summary: concat_proteome
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - concat_proteome
+    depends_on:
+    - microphaser_germline
+  build_germline_proteome:
+    summary: build_germline_proteome
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - build_germline_proteome
+    depends_on:
+    - concat_proteome
+  microphaser_filter:
+    summary: microphaser_filter
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - microphaser_filter
+    depends_on:
+    - build_germline_proteome
+  concat_tsvs:
+    summary: concat_tsvs
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - concat_tsvs
+    depends_on:
+    - microphaser_filter
+  HLA_LA:
+    summary: HLA_LA
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - HLA_LA
+    depends_on:
+    - concat_tsvs
+  parse_HLA_LA:
+    summary: parse_HLA_LA
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - parse_HLA_LA
+    depends_on:
+    - HLA_LA
+  razers3:
+    summary: razers3
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - razers3
+    depends_on:
+    - parse_HLA_LA
+  bam2fq:
+    summary: bam2fq
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - bam2fq
+    depends_on:
+    - razers3
+  OptiType:
+    summary: OptiType
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - OptiType
+    depends_on:
+    - bam2fq
+  parse_Optitype:
+    summary: parse_Optitype
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - parse_Optitype
+    depends_on:
+    - OptiType
+  netMHCpan:
+    summary: netMHCpan
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - netMHCpan
+    depends_on:
+    - parse_Optitype
+  netMHCIIpan:
+    summary: netMHCIIpan
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - netMHCIIpan
+    depends_on:
+    - netMHCpan
+  parse_mhc_out:
+    summary: parse_mhc_out
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - parse_mhc_out
+    depends_on:
+    - netMHCIIpan
+  mhc_csv_table:
+    summary: mhc_csv_table
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - mhc_csv_table
+    depends_on:
+    - parse_mhc_out
+  add_RNA_info:
+    summary: add_RNA_info
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - add_RNA_info
+    depends_on:
+    - mhc_csv_table
+  kallisto_quant:
+    summary: kallisto_quant
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - kallisto_quant
+    depends_on:
+    - add_RNA_info
+  STAR_align:
+    summary: STAR_align
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - STAR_align
+    depends_on:
+    - kallisto_quant
+  arriba:
+    summary: arriba
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - arriba
+    depends_on:
+    - STAR_align
+  estimate_tmb:
+    summary: estimate_tmb
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - estimate_tmb
+    depends_on:
+    - arriba
+  vg2svg:
+    summary: vg2svg
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      root_target: all
+      until:
+      - vg2svg
+    depends_on:
+    - estimate_tmb
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-neoantigen-prediction/.test/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - vg2svg

@@ -1,0 +1,62 @@
+configfile: "config/config.yaml"
+
+
+# declare main workflow as a module
+module test_arriba_fusion_calling:
+    snakefile:
+        "../workflow/Snakefile"
+    config:
+        config
+
+
+# use all rules from the main workflow
+use rule * from test_arriba_fusion_calling
+
+
+# testing output
+
+
+rule testing_all:
+    input:
+        rules.all.input,
+        "<results>/validate_output/sample_1.validated.txt",
+    default_target: True
+
+
+# add rules for testing setup
+
+
+rule download_test_data:
+    output:
+        fq1="<results>/test_fq/{sample}.R1.fq.gz",
+        fq2="<results>/test_fq/{sample}.R2.fq.gz",
+    log:
+        "<logs>/data_download/{sample}.download.log",
+    params:
+        alias=lookup(
+            within=test_arriba_fusion_calling.samples,
+            query="sample_name == '{wildcards.sample}'",
+            cols="alias",
+        ),
+    conda:
+        "../workflow/envs/wget.yaml"
+    shell:
+        "( wget https://github.com/suhrig/arriba/raw/02bfd7d359130f653bbdad8563bcf3d03ee4b029/test/read1.fastq.gz; "
+        "  wget https://github.com/suhrig/arriba/raw/02bfd7d359130f653bbdad8563bcf3d03ee4b029/test/read2.fastq.gz; "
+        "  mv read1.fastq.gz {output.fq1}; "
+        "  mv read2.fastq.gz {output.fq2}; "
+        ") > {log} 2>&1"
+
+
+rule validate_output:
+    input:
+        expected="<resources>/expected_fusion.GRCh38.tsv",
+        called="<results>/arriba_fusions/{sample}/{sample}.tsv",
+    output:
+        "<results>/validate_output/{sample}.validated.txt",
+    log:
+        "<logs>/validate_output/{sample}.validated.txt",
+    conda:
+        "../workflow/envs/diffutils.yaml"
+    shell:
+        "diff {input.expected} {input.called} >{output} 2>{log}"

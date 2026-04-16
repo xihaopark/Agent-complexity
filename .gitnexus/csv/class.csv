@@ -184,11 +184,6 @@ class SegmentationTool:
 class ImageRegistrationTool:
     """"""
     A comprehensive tool for medical image registration using SimpleITK.",""
-"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:KnowHowLoader","KnowHowLoader","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",7,7,true,"
-
-class KnowHowLoader:
-    """"""Load and manage know-how documents for the agent.""""""
-",""
 "Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/lab_bench.py:lab_bench","lab_bench","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/lab_bench.py",13,13,true,"
 
 class lab_bench(base_task):
@@ -212,10 +207,10 @@ class humanity_last_exam(base_task):
 "Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/base_task.py:base_task","base_task","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/base_task.py",0,0,true,"class base_task:
     def __init__(self):
         pass",""
-"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py:ToolRetriever","ToolRetriever","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py",8,8,true,"
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:KnowHowLoader","KnowHowLoader","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",7,7,true,"
 
-class ToolRetriever:
-    """"""Retrieve tools from the tool registry.""""""
+class KnowHowLoader:
+    """"""Load and manage know-how documents for the agent.""""""
 ",""
 "Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/eval/biomni_eval1.py:BiomniEval1","BiomniEval1","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/eval/biomni_eval1.py",13,13,true,"
 
@@ -262,6 +257,11 @@ class AgentState(TypedDict):
 class A1:
     def __init__(
         self,",""
+"Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py:ToolRetriever","ToolRetriever","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py",8,8,true,"
+
+class ToolRetriever:
+    """"""Retrieve tools from the tool registry.""""""
+",""
 "Class:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/example_mcp_tools/pubmed_mcp.py:Article","Article","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/example_mcp_tools/pubmed_mcp.py",11,11,true,"
 
 class Article(BaseModel):

@@ -1,0 +1,85 @@
+{
+  "id": "jfnavarro-st_pipeline-finish",
+  "name": "jfnavarro st_pipeline finish",
+  "engine": "snakemake",
+  "entry_point": "run_workflow.py",
+  "description": "Manual finish workflow for st_pipeline split into preprocessing and downstream execution.",
+  "version": "0.1",
+  "aliases": [
+    "jfnavarro-st_pipeline"
+  ],
+  "tags": [
+    "finish",
+    "manual",
+    "candidate",
+    "r-workflow"
+  ],
+  "url": "https://github.com/jfnavarro/st_pipeline",
+  "know_how": "workflow/agent-steps.md",
+  "know_how_files": [
+    "workflow/agent-steps.md"
+  ],
+  "discovery": {
+    "kind": "finish_workflow",
+    "family": "candidate",
+    "aliases": [
+      "jfnavarro-st_pipeline"
+    ],
+    "retained_steps": [
+      "filtering",
+      "mapping_to_dataset"
+    ],
+    "supports_partial_run": true,
+    "runner": "python3 run_workflow.py --cores 8",
+    "standard_step_skills": false,
+    "generated_by": "tools/manual_finishify_specials.py",
+    "split_mode": "manual-special",
+    "source_repo": "jfnavarro__st_pipeline"
+  },
+  "input_hints": [],
+  "output_hints": [
+    "results/finish/*.done"
+  ],
+  "steps": [
+    {
+      "id": "filtering",
+      "name": "Filtering",
+      "targets": [
+        "filtering"
+      ],
+      "params": {
+        "snakefile": "steps/filtering.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/filtering.done"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "mapping_to_dataset",
+      "name": "Mapping To Dataset",
+      "targets": [
+        "mapping_to_dataset"
+      ],
+      "params": {
+        "snakefile": "steps/mapping_to_dataset.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/mapping_to_dataset.done"
+      ],
+      "depends_on": [
+        "filtering"
+      ]
+    }
+  ]
+}

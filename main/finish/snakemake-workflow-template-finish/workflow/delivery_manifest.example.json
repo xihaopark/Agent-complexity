@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "workflow_id": "snakemake-workflow-template",
+  "step_id": "step-6-aggregate-qc",
+  "manifest_type": "delivery_manifest",
+  "status": "completed",
+  "summary": {
+    "objective": "Produce the final workflow-level artifact from sample-level QC",
+    "execution_scope": "report_family",
+    "fanout_key": "none",
+    "next_step": "step-7-verify-lint-and-report",
+    "notes": [
+      "This workflow has one mandatory delivery artifact",
+      "Lint and report verification remain a separate final step"
+    ]
+  },
+  "subjects": [
+    {
+      "id": "multiqc",
+      "type": "report_family",
+      "status": "completed",
+      "metadata": {
+        "enabled": true
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "multiqc_report",
+      "kind": "report",
+      "path": "results/multiqc/multiqc_report.html",
+      "status": "verified",
+      "owner": "multiqc"
+    },
+    {
+      "name": "delivery_manifest",
+      "kind": "manifest",
+      "path": "manifests/delivery_manifest.json",
+      "status": "verified",
+      "owner": "run"
+    }
+  ],
+  "validations": [
+    {
+      "name": "multiqc_report_exists",
+      "passed": true,
+      "details": "The final MultiQC HTML report was found on disk"
+    },
+    {
+      "name": "delivery_manifest_records_final_artifact",
+      "passed": true,
+      "details": "The final report is listed in the delivery inventory"
+    }
+  ],
+  "errors": []
+}

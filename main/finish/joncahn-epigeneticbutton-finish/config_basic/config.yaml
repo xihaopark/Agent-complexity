@@ -1,0 +1,2016 @@
+workflow_id: joncahn-epigeneticbutton-finish
+source_cores: 8
+steps:
+  map_only:
+    summary: map_only
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - map_only
+  coverage_chip:
+    summary: coverage_chip
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - coverage_chip
+    depends_on:
+    - map_only
+  combined_analysis:
+    summary: combined_analysis
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - combined_analysis
+    depends_on:
+    - coverage_chip
+  prepare_reference:
+    summary: prepare_reference
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - prepare_reference
+    depends_on:
+    - combined_analysis
+  check_fasta:
+    summary: check_fasta
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - check_fasta
+    depends_on:
+    - prepare_reference
+  check_gff:
+    summary: check_gff
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - check_gff
+    depends_on:
+    - check_fasta
+  check_gtf:
+    summary: check_gtf
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - check_gtf
+    depends_on:
+    - check_gff
+  check_chrom_sizes:
+    summary: check_chrom_sizes
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - check_chrom_sizes
+    depends_on:
+    - check_gtf
+  prep_region_file:
+    summary: prep_region_file
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - prep_region_file
+    depends_on:
+    - check_chrom_sizes
+  check_te_file:
+    summary: check_te_file
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - check_te_file
+    depends_on:
+    - prep_region_file
+  get_fastq_pe:
+    summary: get_fastq_pe
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - get_fastq_pe
+    depends_on:
+    - check_te_file
+  get_fastq_se:
+    summary: get_fastq_se
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - get_fastq_se
+    depends_on:
+    - get_fastq_pe
+  run_fastqc:
+    summary: run_fastqc
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - run_fastqc
+    depends_on:
+    - get_fastq_se
+  process_fastq_pe:
+    summary: process_fastq_pe
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - process_fastq_pe
+    depends_on:
+    - run_fastqc
+  process_fastq_se:
+    summary: process_fastq_se
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - process_fastq_se
+    depends_on:
+    - process_fastq_pe
+  get_available_bam:
+    summary: get_available_bam
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - get_available_bam
+    depends_on:
+    - process_fastq_se
+  make_bt2_indices:
+    summary: make_bt2_indices
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_bt2_indices
+    depends_on:
+    - get_available_bam
+  bowtie2_map_pe:
+    summary: bowtie2_map_pe
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - bowtie2_map_pe
+    depends_on:
+    - make_bt2_indices
+  bowtie2_map_se:
+    summary: bowtie2_map_se
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - bowtie2_map_se
+    depends_on:
+    - bowtie2_map_pe
+  filter_chip_pe:
+    summary: filter_chip_pe
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - filter_chip_pe
+    depends_on:
+    - bowtie2_map_se
+  filter_chip_se:
+    summary: filter_chip_se
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - filter_chip_se
+    depends_on:
+    - filter_chip_pe
+  make_chip_stats_pe:
+    summary: make_chip_stats_pe
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_chip_stats_pe
+    depends_on:
+    - filter_chip_se
+  make_chip_stats_se:
+    summary: make_chip_stats_se
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_chip_stats_se
+    depends_on:
+    - make_chip_stats_pe
+  pe_or_se_chip_dispatch:
+    summary: pe_or_se_chip_dispatch
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - pe_or_se_chip_dispatch
+    depends_on:
+    - make_chip_stats_se
+  make_coverage_chip:
+    summary: make_coverage_chip
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_coverage_chip
+    depends_on:
+    - pe_or_se_chip_dispatch
+  make_bigwig_chip:
+    summary: make_bigwig_chip
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_bigwig_chip
+    depends_on:
+    - make_coverage_chip
+  make_fingerprint_plot:
+    summary: make_fingerprint_plot
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_fingerprint_plot
+    depends_on:
+    - make_bigwig_chip
+  calling_peaks_macs2_pe:
+    summary: calling_peaks_macs2_pe
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - calling_peaks_macs2_pe
+    depends_on:
+    - make_fingerprint_plot
+  calling_peaks_macs2_se:
+    summary: calling_peaks_macs2_se
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - calling_peaks_macs2_se
+    depends_on:
+    - calling_peaks_macs2_pe
+  idr_analysis_replicates:
+    summary: idr_analysis_replicates
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - idr_analysis_replicates
+    depends_on:
+    - calling_peaks_macs2_se
+  merging_chip_replicates:
+    summary: merging_chip_replicates
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - merging_chip_replicates
+    depends_on:
+    - idr_analysis_replicates
+  making_pseudo_replicates:
+    summary: making_pseudo_replicates
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - making_pseudo_replicates
+    depends_on:
+    - merging_chip_replicates
+  create_empty_file:
+    summary: create_empty_file
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - create_empty_file
+    depends_on:
+    - making_pseudo_replicates
+  best_peaks_pseudoreps:
+    summary: best_peaks_pseudoreps
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - best_peaks_pseudoreps
+    depends_on:
+    - create_empty_file
+  make_peak_stats:
+    summary: make_peak_stats
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_peak_stats
+    depends_on:
+    - best_peaks_pseudoreps
+  find_motifs_in_file:
+    summary: find_motifs_in_file
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - find_motifs_in_file
+    depends_on:
+    - make_peak_stats
+  perform_pairwise_diff_peaks:
+    summary: perform_pairwise_diff_peaks
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - perform_pairwise_diff_peaks
+    depends_on:
+    - find_motifs_in_file
+  all_chip:
+    summary: all_chip
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - all_chip
+    depends_on:
+    - perform_pairwise_diff_peaks
+  atac_shift_bam:
+    summary: atac_shift_bam
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - atac_shift_bam
+    depends_on:
+    - all_chip
+  atac_bam_to_bed:
+    summary: atac_bam_to_bed
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - atac_bam_to_bed
+    depends_on:
+    - atac_shift_bam
+  calling_peaks_atac:
+    summary: calling_peaks_atac
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - calling_peaks_atac
+    depends_on:
+    - atac_bam_to_bed
+  make_coverage_atac:
+    summary: make_coverage_atac
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_coverage_atac
+    depends_on:
+    - calling_peaks_atac
+  all_atac:
+    summary: all_atac
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - all_atac
+    depends_on:
+    - make_coverage_atac
+  make_STAR_indices:
+    summary: make_STAR_indices
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_STAR_indices
+    depends_on:
+    - all_atac
+  STAR_map_pe:
+    summary: STAR_map_pe
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - STAR_map_pe
+    depends_on:
+    - make_STAR_indices
+  STAR_map_se:
+    summary: STAR_map_se
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - STAR_map_se
+    depends_on:
+    - STAR_map_pe
+  filter_rna_pe:
+    summary: filter_rna_pe
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - filter_rna_pe
+    depends_on:
+    - STAR_map_se
+  filter_rna_se:
+    summary: filter_rna_se
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - filter_rna_se
+    depends_on:
+    - filter_rna_pe
+  make_rna_stats_pe:
+    summary: make_rna_stats_pe
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_rna_stats_pe
+    depends_on:
+    - filter_rna_se
+  make_rna_stats_se:
+    summary: make_rna_stats_se
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_rna_stats_se
+    depends_on:
+    - make_rna_stats_pe
+  pe_or_se_rna_dispatch:
+    summary: pe_or_se_rna_dispatch
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - pe_or_se_rna_dispatch
+    depends_on:
+    - make_rna_stats_se
+  merging_rna_replicates:
+    summary: merging_rna_replicates
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - merging_rna_replicates
+    depends_on:
+    - pe_or_se_rna_dispatch
+  make_rna_stranded_bigwigs:
+    summary: make_rna_stranded_bigwigs
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_rna_stranded_bigwigs
+    depends_on:
+    - merging_rna_replicates
+  make_rna_unstranded_bigwigs:
+    summary: make_rna_unstranded_bigwigs
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_rna_unstranded_bigwigs
+    depends_on:
+    - make_rna_stranded_bigwigs
+  prep_files_for_DEGs:
+    summary: prep_files_for_DEGs
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - prep_files_for_DEGs
+    depends_on:
+    - make_rna_unstranded_bigwigs
+  call_all_DEGs:
+    summary: call_all_DEGs
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - call_all_DEGs
+    depends_on:
+    - prep_files_for_DEGs
+  gather_gene_expression_rpkm:
+    summary: gather_gene_expression_rpkm
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - gather_gene_expression_rpkm
+    depends_on:
+    - call_all_DEGs
+  plot_expression_levels:
+    summary: plot_expression_levels
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - plot_expression_levels
+    depends_on:
+    - gather_gene_expression_rpkm
+  create_GO_database:
+    summary: create_GO_database
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - create_GO_database
+    depends_on:
+    - plot_expression_levels
+  perform_GO_on_target_file:
+    summary: perform_GO_on_target_file
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - perform_GO_on_target_file
+    depends_on:
+    - create_GO_database
+  call_rampage_TSS:
+    summary: call_rampage_TSS
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - call_rampage_TSS
+    depends_on:
+    - perform_GO_on_target_file
+  all_rna:
+    summary: all_rna
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - all_rna
+    depends_on:
+    - call_rampage_TSS
+  make_bismark_indices:
+    summary: make_bismark_indices
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_bismark_indices
+    depends_on:
+    - all_rna
+  bismark_map_pe:
+    summary: bismark_map_pe
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - bismark_map_pe
+    depends_on:
+    - make_bismark_indices
+  bismark_map_se:
+    summary: bismark_map_se
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - bismark_map_se
+    depends_on:
+    - bismark_map_pe
+  pe_or_se_mc_dispatch:
+    summary: pe_or_se_mc_dispatch
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - pe_or_se_mc_dispatch
+    depends_on:
+    - bismark_map_se
+  make_mc_stats_pe:
+    summary: make_mc_stats_pe
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_mc_stats_pe
+    depends_on:
+    - pe_or_se_mc_dispatch
+  make_mc_stats_se:
+    summary: make_mc_stats_se
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_mc_stats_se
+    depends_on:
+    - make_mc_stats_pe
+  merging_mc_replicates:
+    summary: merging_mc_replicates
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - merging_mc_replicates
+    depends_on:
+    - make_mc_stats_se
+  make_mc_bigwig_files:
+    summary: make_mc_bigwig_files
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_mc_bigwig_files
+    depends_on:
+    - merging_mc_replicates
+  call_DMRs_pairwise:
+    summary: call_DMRs_pairwise
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - call_DMRs_pairwise
+    depends_on:
+    - make_mc_bigwig_files
+  all_mc:
+    summary: all_mc
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - all_mc
+    depends_on:
+    - call_DMRs_pairwise
+  download_modkit:
+    summary: download_modkit
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - download_modkit
+    depends_on:
+    - all_mc
+  get_dmc_input:
+    summary: get_dmc_input
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - get_dmc_input
+    depends_on:
+    - download_modkit
+  dmc_input_checkpoint:
+    summary: dmc_input_checkpoint
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - dmc_input_checkpoint
+    depends_on:
+    - get_dmc_input
+  prepare_modbam_for_pileup:
+    summary: prepare_modbam_for_pileup
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - prepare_modbam_for_pileup
+    depends_on:
+    - dmc_input_checkpoint
+  modkit_pileup_dmc:
+    summary: modkit_pileup_dmc
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - modkit_pileup_dmc
+    depends_on:
+    - prepare_modbam_for_pileup
+  copy_bedmethyl_input:
+    summary: copy_bedmethyl_input
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - copy_bedmethyl_input
+    depends_on:
+    - modkit_pileup_dmc
+  merge_pileup_sources:
+    summary: merge_pileup_sources
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - merge_pileup_sources
+    depends_on:
+    - copy_bedmethyl_input
+  modkit_summary_dmc:
+    summary: modkit_summary_dmc
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - modkit_summary_dmc
+    depends_on:
+    - merge_pileup_sources
+  make_mc_stats_dmc:
+    summary: make_mc_stats_dmc
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_mc_stats_dmc
+    depends_on:
+    - modkit_summary_dmc
+  convert_bedmethyl_to_cx_report:
+    summary: convert_bedmethyl_to_cx_report
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - convert_bedmethyl_to_cx_report
+    depends_on:
+    - make_mc_stats_dmc
+  deduplicate_srna_nextflexv3:
+    summary: deduplicate_srna_nextflexv3
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - deduplicate_srna_nextflexv3
+    depends_on:
+    - convert_bedmethyl_to_cx_report
+  make_bt2_indices_for_structural_RNAs:
+    summary: make_bt2_indices_for_structural_RNAs
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_bt2_indices_for_structural_RNAs
+    depends_on:
+    - deduplicate_srna_nextflexv3
+  filter_structural_rna:
+    summary: filter_structural_rna
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - filter_structural_rna
+    depends_on:
+    - make_bt2_indices_for_structural_RNAs
+  dispatch_srna_fastq:
+    summary: dispatch_srna_fastq
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - dispatch_srna_fastq
+    depends_on:
+    - filter_structural_rna
+  make_bowtie1_indices:
+    summary: make_bowtie1_indices
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_bowtie1_indices
+    depends_on:
+    - dispatch_srna_fastq
+  make_bowtie1_indices_large:
+    summary: make_bowtie1_indices_large
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_bowtie1_indices_large
+    depends_on:
+    - make_bowtie1_indices
+  shortstack_map:
+    summary: shortstack_map
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - shortstack_map
+    depends_on:
+    - make_bowtie1_indices_large
+  make_cluster_bedfiles:
+    summary: make_cluster_bedfiles
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_cluster_bedfiles
+    depends_on:
+    - shortstack_map
+  make_srna_size_stats:
+    summary: make_srna_size_stats
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_srna_size_stats
+    depends_on:
+    - make_cluster_bedfiles
+  filter_size_srna_sample:
+    summary: filter_size_srna_sample
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - filter_size_srna_sample
+    depends_on:
+    - make_srna_size_stats
+  merging_srna_replicates:
+    summary: merging_srna_replicates
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - merging_srna_replicates
+    depends_on:
+    - filter_size_srna_sample
+  make_srna_stranded_bigwigs:
+    summary: make_srna_stranded_bigwigs
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_srna_stranded_bigwigs
+    depends_on:
+    - merging_srna_replicates
+  analyze_all_srna_samples_on_target_file:
+    summary: analyze_all_srna_samples_on_target_file
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - analyze_all_srna_samples_on_target_file
+    depends_on:
+    - make_srna_stranded_bigwigs
+  prep_files_for_differential_srna_clusters:
+    summary: prep_files_for_differential_srna_clusters
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - prep_files_for_differential_srna_clusters
+    depends_on:
+    - analyze_all_srna_samples_on_target_file
+  call_all_differential_srna_clusters:
+    summary: call_all_differential_srna_clusters
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - call_all_differential_srna_clusters
+    depends_on:
+    - prep_files_for_differential_srna_clusters
+  all_srna:
+    summary: all_srna
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - all_srna
+    depends_on:
+    - call_all_differential_srna_clusters
+  has_header:
+    summary: has_header
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - has_header
+    depends_on:
+    - all_srna
+  is_stranded:
+    summary: is_stranded
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - is_stranded
+    depends_on:
+    - has_header
+  prepping_mapping_stats:
+    summary: prepping_mapping_stats
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - prepping_mapping_stats
+    depends_on:
+    - is_stranded
+  plotting_mapping_stats:
+    summary: plotting_mapping_stats
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - plotting_mapping_stats
+    depends_on:
+    - prepping_mapping_stats
+  prepping_chip_peak_stats:
+    summary: prepping_chip_peak_stats
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - prepping_chip_peak_stats
+    depends_on:
+    - plotting_mapping_stats
+  plotting_peaks_stats_chip_tf:
+    summary: plotting_peaks_stats_chip_tf
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - plotting_peaks_stats_chip_tf
+    depends_on:
+    - prepping_chip_peak_stats
+  prepping_srna_sizes_stats:
+    summary: prepping_srna_sizes_stats
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - prepping_srna_sizes_stats
+    depends_on:
+    - plotting_peaks_stats_chip_tf
+  plotting_srna_sizes_stats:
+    summary: plotting_srna_sizes_stats
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - plotting_srna_sizes_stats
+    depends_on:
+    - prepping_srna_sizes_stats
+  combine_clusterfiles:
+    summary: combine_clusterfiles
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - combine_clusterfiles
+    depends_on:
+    - plotting_srna_sizes_stats
+  combine_peakfiles:
+    summary: combine_peakfiles
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - combine_peakfiles
+    depends_on:
+    - combine_clusterfiles
+  combine_TSS:
+    summary: combine_TSS
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - combine_TSS
+    depends_on:
+    - combine_peakfiles
+  get_annotations_for_bedfile:
+    summary: get_annotations_for_bedfile
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - get_annotations_for_bedfile
+    depends_on:
+    - combine_TSS
+  plotting_upset_regions:
+    summary: plotting_upset_regions
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - plotting_upset_regions
+    depends_on:
+    - get_annotations_for_bedfile
+  making_stranded_matrix_on_targetfile:
+    summary: making_stranded_matrix_on_targetfile
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - making_stranded_matrix_on_targetfile
+    depends_on:
+    - plotting_upset_regions
+  merging_matrix:
+    summary: merging_matrix
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - merging_matrix
+    depends_on:
+    - making_stranded_matrix_on_targetfile
+  computing_matrix_scales:
+    summary: computing_matrix_scales
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - computing_matrix_scales
+    depends_on:
+    - merging_matrix
+  plotting_heatmap_on_targetfile:
+    summary: plotting_heatmap_on_targetfile
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - plotting_heatmap_on_targetfile
+    depends_on:
+    - computing_matrix_scales
+  sort_heatmap:
+    summary: sort_heatmap
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - sort_heatmap
+    depends_on:
+    - plotting_heatmap_on_targetfile
+  plotting_sorted_heatmap_on_targetfile:
+    summary: plotting_sorted_heatmap_on_targetfile
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - plotting_sorted_heatmap_on_targetfile
+    depends_on:
+    - sort_heatmap
+  plotting_profile_on_targetfile:
+    summary: plotting_profile_on_targetfile
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - plotting_profile_on_targetfile
+    depends_on:
+    - plotting_sorted_heatmap_on_targetfile
+  prep_chromosomes_for_browser:
+    summary: prep_chromosomes_for_browser
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - prep_chromosomes_for_browser
+    depends_on:
+    - plotting_profile_on_targetfile
+  prep_browser_on_region:
+    summary: prep_browser_on_region
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - prep_browser_on_region
+    depends_on:
+    - prep_chromosomes_for_browser
+  make_single_loci_browser_plot:
+    summary: make_single_loci_browser_plot
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - make_single_loci_browser_plot
+    depends_on:
+    - prep_browser_on_region
+  merge_region_browser_plots:
+    summary: merge_region_browser_plots
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - merge_region_browser_plots
+    depends_on:
+    - make_single_loci_browser_plot
+  summarize_tracks_pca:
+    summary: summarize_tracks_pca
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - summarize_tracks_pca
+    depends_on:
+    - merge_region_browser_plots
+  plot_PCA_correlation:
+    summary: plot_PCA_correlation
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - plot_PCA_correlation
+    depends_on:
+    - summarize_tracks_pca
+  all_combined:
+    summary: all_combined
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      root_target: all
+      until:
+      - all_combined
+    depends_on:
+    - plot_PCA_correlation
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/joncahn__epigeneticbutton/workflow/Snakefile
+      directory: ../workflow_candidates/joncahn__epigeneticbutton
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/joncahn__epigeneticbutton/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - all_combined

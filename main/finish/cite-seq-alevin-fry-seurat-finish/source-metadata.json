@@ -1,0 +1,26 @@
+{
+  "source_repo_dir": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__cite-seq-alevin-fry-seurat",
+  "source_snakefile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__cite-seq-alevin-fry-seurat/workflow/Snakefile",
+  "source_configfile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__cite-seq-alevin-fry-seurat/config/config.yaml",
+  "step_count": 18,
+  "steps": [
+    "get_sra",
+    "get_genome",
+    "get_annotation",
+    "get_geneid2name",
+    "build_splici_transcriptome",
+    "spoof_t2g",
+    "salmon_index",
+    "salmon_alevin",
+    "alevin_fry_preprocess",
+    "alevin_fry_quant",
+    "seurat",
+    "plot_initial_hto_counts",
+    "filter_normalize_demux",
+    "plot_counts_hto_filtered",
+    "filter_negatives",
+    "plot_umap_singlets_doublets",
+    "filter_to_singlets",
+    "all"
+  ]
+}

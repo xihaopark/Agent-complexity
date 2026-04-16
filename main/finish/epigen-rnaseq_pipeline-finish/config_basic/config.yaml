@@ -1,0 +1,416 @@
+workflow_id: epigen-rnaseq_pipeline-finish
+source_cores: 8
+steps:
+  env_export:
+    summary: env_export
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - env_export
+  config_export:
+    summary: config_export
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - config_export
+    depends_on:
+    - env_export
+  annot_export:
+    summary: annot_export
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - annot_export
+    depends_on:
+    - config_export
+  get_genome:
+    summary: get_genome
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - get_genome
+    depends_on:
+    - annot_export
+  get_annotation:
+    summary: get_annotation
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - get_annotation
+    depends_on:
+    - get_genome
+  genome_faidx:
+    summary: genome_faidx
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - genome_faidx
+    depends_on:
+    - get_annotation
+  bwa_index:
+    summary: bwa_index
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - bwa_index
+    depends_on:
+    - genome_faidx
+  star_index:
+    summary: star_index
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - star_index
+    depends_on:
+    - bwa_index
+  rseqc_gtf2bed:
+    summary: rseqc_gtf2bed
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - rseqc_gtf2bed
+    depends_on:
+    - star_index
+  rseqc_junction_annotation:
+    summary: rseqc_junction_annotation
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - rseqc_junction_annotation
+    depends_on:
+    - rseqc_gtf2bed
+  rseqc_junction_saturation:
+    summary: rseqc_junction_saturation
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - rseqc_junction_saturation
+    depends_on:
+    - rseqc_junction_annotation
+  rseqc_stat:
+    summary: rseqc_stat
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - rseqc_stat
+    depends_on:
+    - rseqc_junction_saturation
+  rseqc_infer:
+    summary: rseqc_infer
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - rseqc_infer
+    depends_on:
+    - rseqc_stat
+  rseqc_innerdis:
+    summary: rseqc_innerdis
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - rseqc_innerdis
+    depends_on:
+    - rseqc_infer
+  rseqc_readdis:
+    summary: rseqc_readdis
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - rseqc_readdis
+    depends_on:
+    - rseqc_innerdis
+  rseqc_readdup:
+    summary: rseqc_readdup
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - rseqc_readdup
+    depends_on:
+    - rseqc_readdis
+  rseqc_readgc:
+    summary: rseqc_readgc
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - rseqc_readgc
+    depends_on:
+    - rseqc_readdup
+  multiqc:
+    summary: multiqc
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - multiqc
+    depends_on:
+    - rseqc_readgc
+  plot_sample_annotation:
+    summary: plot_sample_annotation
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - plot_sample_annotation
+    depends_on:
+    - multiqc
+  check_read_type:
+    summary: check_read_type
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - check_read_type
+    depends_on:
+    - plot_sample_annotation
+  trim_filter:
+    summary: trim_filter
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - trim_filter
+    depends_on:
+    - check_read_type
+  align:
+    summary: align
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - align
+    depends_on:
+    - trim_filter
+  count_matrix:
+    summary: count_matrix
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - count_matrix
+    depends_on:
+    - align
+  annotate_genes:
+    summary: annotate_genes
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - annotate_genes
+    depends_on:
+    - count_matrix
+  sample_annotation:
+    summary: sample_annotation
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - sample_annotation
+    depends_on:
+    - annotate_genes
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__rnaseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__rnaseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__rnaseq_pipeline/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - sample_annotation

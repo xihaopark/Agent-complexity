@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "review_target": "Biomni failure onset localization",
+  "fields": [
+    "workflow_id",
+    "agent_name",
+    "run_artifact",
+    "evaluable",
+    "gold_onset_stage",
+    "gold_onset_step_id",
+    "gold_onset_category",
+    "gold_onset_reason",
+    "terminal_symptom",
+    "replay_hypothesis",
+    "notes"
+  ],
+  "items": []
+}

@@ -1,0 +1,19 @@
+
+
+raw_counts: "data/GSE227982_all_counts.csv"
+
+
+contrasts:
+  - ["DUX4", "EV"]
+  - ["IGH", "EV"]
+  - ["delta_50", "EV"]
+
+filter_threshold: 20
+
+volcano:
+  log2FC: 2
+  padj: 0.0001
+
+gsea:
+  ontology: "BP"
+  nPerm: 1000   # keep small for quick local testing

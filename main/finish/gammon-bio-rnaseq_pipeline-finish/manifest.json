@@ -1,0 +1,131 @@
+{
+  "id": "gammon-bio-rnaseq_pipeline-finish",
+  "name": "gammon bio rnaseq_pipeline finish",
+  "engine": "snakemake",
+  "entry_point": "run_workflow.py",
+  "description": "Manual finish workflow for gammon-bio RNA-seq pipeline split by its documented shell/R stages.",
+  "version": "0.1",
+  "aliases": [
+    "gammon-bio-rnaseq_pipeline"
+  ],
+  "tags": [
+    "finish",
+    "manual",
+    "candidate",
+    "r-workflow"
+  ],
+  "url": "https://github.com/gammon-bio/rnaseq_pipeline",
+  "know_how": "workflow/agent-steps.md",
+  "know_how_files": [
+    "workflow/agent-steps.md"
+  ],
+  "discovery": {
+    "kind": "finish_workflow",
+    "family": "candidate",
+    "aliases": [
+      "gammon-bio-rnaseq_pipeline"
+    ],
+    "retained_steps": [
+      "get_refs",
+      "rename_fastqs",
+      "salmon_pipeline",
+      "run_deseq2"
+    ],
+    "supports_partial_run": true,
+    "runner": "python3 run_workflow.py --cores 8",
+    "standard_step_skills": false,
+    "generated_by": "tools/manual_finishify_specials.py",
+    "split_mode": "manual-special",
+    "source_repo": "gammon-bio__rnaseq_pipeline"
+  },
+  "input_hints": [
+    "../workflow_candidates/gammon-bio__rnaseq_pipeline/examples/sample_table.csv"
+  ],
+  "output_hints": [
+    "results/finish/*.done"
+  ],
+  "steps": [
+    {
+      "id": "get_refs",
+      "name": "Get Refs",
+      "targets": [
+        "get_refs"
+      ],
+      "params": {
+        "snakefile": "steps/get_refs.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/get_refs.done"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "rename_fastqs",
+      "name": "Rename Fastqs",
+      "targets": [
+        "rename_fastqs"
+      ],
+      "params": {
+        "snakefile": "steps/rename_fastqs.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/rename_fastqs.done"
+      ],
+      "depends_on": [
+        "get_refs"
+      ]
+    },
+    {
+      "id": "salmon_pipeline",
+      "name": "Salmon Pipeline",
+      "targets": [
+        "salmon_pipeline"
+      ],
+      "params": {
+        "snakefile": "steps/salmon_pipeline.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/salmon_pipeline.done"
+      ],
+      "depends_on": [
+        "rename_fastqs"
+      ]
+    },
+    {
+      "id": "run_deseq2",
+      "name": "Run DESeq2",
+      "targets": [
+        "run_deseq2"
+      ],
+      "params": {
+        "snakefile": "steps/run_deseq2.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/run_deseq2.done"
+      ],
+      "depends_on": [
+        "salmon_pipeline"
+      ]
+    }
+  ]
+}

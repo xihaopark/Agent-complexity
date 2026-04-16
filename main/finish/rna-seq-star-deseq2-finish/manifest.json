@@ -1,0 +1,229 @@
+{
+  "id": "rna-seq-star-deseq2-finish",
+  "name": "RNA-seq STAR DESeq2 Finish Workflow",
+  "engine": "snakemake",
+  "entry_point": "run_workflow.py",
+  "description": "Step-split Snakemake workflow for trimming, alignment, QC, count matrix generation, differential expression, and PCA plotting.",
+  "version": "1.0",
+  "aliases": [
+    "star",
+    "rna-seq-star",
+    "star-deseq2"
+  ],
+  "tags": [
+    "finish",
+    "rna-seq",
+    "star",
+    "deseq2"
+  ],
+  "know_how": "know-how.md",
+  "know_how_files": [
+    "know-how.md"
+  ],
+  "discovery": {
+    "kind": "finish_workflow",
+    "family": "rna_seq",
+    "aliases": [
+      "star",
+      "rna-seq-star",
+      "star-deseq2"
+    ],
+    "retained_steps": [
+      "trimming",
+      "alignment",
+      "rseqc_qc",
+      "multiqc_report",
+      "count_matrix",
+      "differential_expression",
+      "pca_plot"
+    ],
+    "supports_partial_run": true,
+    "runner": "python3 run_workflow.py --cores 8",
+    "standard_step_skills": true
+  },
+  "input_hints": [
+    "config_basic/config.yaml",
+    "config_basic/samples.tsv",
+    "config_basic/units.tsv",
+    "ngs-test-data/reads/*",
+    "resources/genome.fasta",
+    "resources/genome.gtf"
+  ],
+  "output_hints": [
+    "results/trimmed/*",
+    "results/star/*",
+    "results/qc/*",
+    "results/counts/*",
+    "results/deseq2/*",
+    "results/diffexp/*",
+    "results/pca.condition.svg"
+  ],
+  "steps": [
+    {
+      "id": "trimming",
+      "name": "Trimming reads",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/trimming.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": true,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/trimmed/A1/A1-1_R1.fastq.gz",
+        "results/trimmed/A1/A1-1_R2.fastq.gz",
+        "results/trimmed/B1/B1-1_R1.fastq.gz",
+        "results/trimmed/B1/B1-1_R2.fastq.gz",
+        "results/trimmed/A2/A2-1_R1.fastq.gz",
+        "results/trimmed/A2/A2-1_R2.fastq.gz",
+        "results/trimmed/B2/B2-1_R1.fastq.gz",
+        "results/trimmed/B2/B2-1_R2.fastq.gz"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "alignment",
+      "name": "Align reads with STAR",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/alignment.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": true,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/star/A1-1/Aligned.sortedByCoord.out.bam",
+        "results/star/A1-1/ReadsPerGene.out.tab",
+        "results/star/B1-1/Aligned.sortedByCoord.out.bam",
+        "results/star/B1-1/ReadsPerGene.out.tab",
+        "results/star/A2-1/Aligned.sortedByCoord.out.bam",
+        "results/star/A2-1/ReadsPerGene.out.tab",
+        "results/star/B2-1/Aligned.sortedByCoord.out.bam",
+        "results/star/B2-1/ReadsPerGene.out.tab"
+      ],
+      "depends_on": [
+        "trimming"
+      ]
+    },
+    {
+      "id": "rseqc_qc",
+      "name": "Run RSeQC quality control",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/rseqc_qc.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": true,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/qc/rseqc/A1-1.infer_experiment.txt",
+        "results/qc/rseqc/B1-1.infer_experiment.txt",
+        "results/qc/rseqc/A2-1.infer_experiment.txt",
+        "results/qc/rseqc/B2-1.infer_experiment.txt"
+      ],
+      "depends_on": [
+        "alignment"
+      ]
+    },
+    {
+      "id": "multiqc_report",
+      "name": "Aggregate QC with MultiQC",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/multiqc_report.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": true,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/qc/multiqc_report.html"
+      ],
+      "depends_on": [
+        "rseqc_qc"
+      ]
+    },
+    {
+      "id": "count_matrix",
+      "name": "Build count matrix",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/count_matrix.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": true,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/counts/all.tsv",
+        "results/counts/all.symbol.tsv"
+      ],
+      "depends_on": [
+        "alignment"
+      ]
+    },
+    {
+      "id": "differential_expression",
+      "name": "Run DESeq2 differential expression",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/differential_expression.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": true,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/deseq2/all.rds",
+        "results/deseq2/normcounts.symbol.tsv",
+        "results/diffexp/treated-vs-untreated.diffexp.symbol.tsv",
+        "results/diffexp/treated-vs-untreated.ma-plot.svg"
+      ],
+      "depends_on": [
+        "count_matrix"
+      ]
+    },
+    {
+      "id": "pca_plot",
+      "name": "Generate PCA plot",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/pca_plot.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": true,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/pca.condition.svg"
+      ],
+      "depends_on": [
+        "differential_expression"
+      ]
+    }
+  ]
+}

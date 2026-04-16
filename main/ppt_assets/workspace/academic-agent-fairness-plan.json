@@ -1,0 +1,68 @@
+{
+  "title": "面向生信工作流 Agent 的 Fair 评估框架",
+  "style": "minimal-swiss",
+  "style_guidelines": {
+    "color_palette": "White background (#FFFFFF), near-black text (#111111), single accent blue (#2563EB), light gray separators (#E5E7EB)",
+    "typography": "Clean sans-serif, strong hierarchy: large bold title, medium subtitle, concise bullet points",
+    "imagery": "Minimal geometric icons, thin lines, no decoration, high readability",
+    "layout": "Left-aligned grid, generous whitespace, 3–5 bullets per slide"
+  },
+  "aspect_ratio": "16:9",
+  "slides": [
+    {
+      "slide_number": 1,
+      "type": "content",
+      "title": "背景：Agent 做生信分析，但缺少“Fair”比较",
+      "key_points": [
+        "生信分析中，越来越多 workflow 由 Agent 编排与执行",
+        "“Fair” 概念与可操作定义缺失：同一 workflow 不同 Agent 难以对齐比较",
+        "评估空白：完成相同 workflow 的资源消耗与代价缺乏统一度量"
+      ],
+      "visual_description": "Minimal academic slide with a balance scale icon and a simple pipeline line; white background, blue accent, left-aligned text."
+    },
+    {
+      "slide_number": 2,
+      "type": "content",
+      "title": "问题：如何评估 Agent 执行 workflow 的代价？",
+      "key_points": [
+        "前人工作多为“握在手里”的私有 task：零散、难以体系化比较",
+        "计算 cost 与 I/O 开销缺少一致记录口径",
+        "LLM token / 调用成本往往不透明、难以计量与复现"
+      ],
+      "visual_description": "Minimal slide with a question mark and a small metrics dashboard icon (time, cost, token); strict grid and ample whitespace."
+    },
+    {
+      "slide_number": 3,
+      "type": "content",
+      "title": "现状不足：Benchmark 过于简单且不完备",
+      "key_points": [
+        "任务多为单步骤或极简流程，无法代表真实 pipeline",
+        "通用性描述强、约束弱：输出质量与失败模式难覆盖",
+        "缺少端到端可复现设置：环境/观测开销影响结论"
+      ],
+      "visual_description": "Minimal slide with a warning triangle and a broken chain icon, indicating incompleteness; monochrome with blue highlight."
+    },
+    {
+      "slide_number": 4,
+      "type": "content",
+      "title": "核心工作：拆分 workflow → 制作 skill → 提供可调用工具",
+      "key_points": [
+        "将 workflow 拆分为可复用的单步骤（atomic steps）",
+        "将每个步骤封装为 skill：标准化输入/输出与目标",
+        "为 Agent 提供结构化可输入的 tool 接口，支持一致执行与对比"
+      ],
+      "visual_description": "Minimal slide with modular blocks (steps) connecting into a pipeline and a toolbox icon; clean lines, blue accent."
+    },
+    {
+      "slide_number": 5,
+      "type": "conclusion",
+      "title": "结论：让比较“可复现、可解释、可量化”",
+      "key_points": [
+        "对齐执行环境与观测口径，减少“测量本身”的额外开销",
+        "支持跨 Agent 的 apples-to-apples workflow 比较",
+        "后续：扩展 workflow 库，完善 token/cost/资源监控与报告"
+      ],
+      "visual_description": "Minimal closing slide with a simple checklist icon and a clean upward trend line; strong title, concise bullets."
+    }
+  ]
+}

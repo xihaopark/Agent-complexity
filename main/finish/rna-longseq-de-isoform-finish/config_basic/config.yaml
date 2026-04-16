@@ -1,0 +1,688 @@
+workflow_id: rna-longseq-de-isoform-finish
+source_cores: 8
+steps:
+  sample_qa_plot:
+    summary: sample_qa_plot
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - sample_qa_plot
+  total_sample_qa_plot:
+    summary: total_sample_qa_plot
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - total_sample_qa_plot
+    depends_on:
+    - sample_qa_plot
+  alignment_qa:
+    summary: alignment_qa
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - alignment_qa
+    depends_on:
+    - total_sample_qa_plot
+  alignment_qa_report:
+    summary: alignment_qa_report
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - alignment_qa_report
+    depends_on:
+    - alignment_qa
+  bam_stats:
+    summary: bam_stats
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - bam_stats
+    depends_on:
+    - alignment_qa_report
+  download_ncbi_genome:
+    summary: download_ncbi_genome
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - download_ncbi_genome
+    depends_on:
+    - bam_stats
+  download_ncbi_annotation:
+    summary: download_ncbi_annotation
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - download_ncbi_annotation
+    depends_on:
+    - download_ncbi_genome
+  download_ensembl_genome:
+    summary: download_ensembl_genome
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - download_ensembl_genome
+    depends_on:
+    - download_ncbi_annotation
+  download_ensembl_annotation:
+    summary: download_ensembl_annotation
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - download_ensembl_annotation
+    depends_on:
+    - download_ensembl_genome
+  get_genome:
+    summary: get_genome
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - get_genome
+    depends_on:
+    - download_ensembl_annotation
+  get_annotation:
+    summary: get_annotation
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - get_annotation
+    depends_on:
+    - get_genome
+  standardize_gff:
+    summary: standardize_gff
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - standardize_gff
+    depends_on:
+    - get_annotation
+  genome_to_transcriptome:
+    summary: genome_to_transcriptome
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - genome_to_transcriptome
+    depends_on:
+    - standardize_gff
+  correct_transcriptome:
+    summary: correct_transcriptome
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - correct_transcriptome
+    depends_on:
+    - genome_to_transcriptome
+  filter_reads:
+    summary: filter_reads
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - filter_reads
+    depends_on:
+    - correct_transcriptome
+  build_minimap_index:
+    summary: build_minimap_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - build_minimap_index
+    depends_on:
+    - filter_reads
+  map_reads:
+    summary: map_reads
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - map_reads
+    depends_on:
+    - build_minimap_index
+  sam_to_bam:
+    summary: sam_to_bam
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - sam_to_bam
+    depends_on:
+    - map_reads
+  bam_sort:
+    summary: bam_sort
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - bam_sort
+    depends_on:
+    - sam_to_bam
+  bam_index:
+    summary: bam_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - bam_index
+    depends_on:
+    - bam_sort
+  count_reads:
+    summary: count_reads
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - count_reads
+    depends_on:
+    - bam_index
+  merge_read_counts:
+    summary: merge_read_counts
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - merge_read_counts
+    depends_on:
+    - count_reads
+  transcriptid_to_gene:
+    summary: transcriptid_to_gene
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - transcriptid_to_gene
+    depends_on:
+    - merge_read_counts
+  deseq2_init:
+    summary: deseq2_init
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - deseq2_init
+    depends_on:
+    - transcriptid_to_gene
+  deseq2:
+    summary: deseq2
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - deseq2
+    depends_on:
+    - deseq2_init
+  pca:
+    summary: pca
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - pca
+    depends_on:
+    - deseq2
+  reads_manifest:
+    summary: reads_manifest
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - reads_manifest
+    depends_on:
+    - pca
+  gff_to_gtf:
+    summary: gff_to_gtf
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - gff_to_gtf
+    depends_on:
+    - reads_manifest
+  bam_to_bed:
+    summary: bam_to_bed
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - bam_to_bed
+    depends_on:
+    - gff_to_gtf
+  concatenate_beds:
+    summary: concatenate_beds
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - concatenate_beds
+    depends_on:
+    - bam_to_bed
+  build_flair_genome_index:
+    summary: build_flair_genome_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - build_flair_genome_index
+    depends_on:
+    - concatenate_beds
+  flair_align:
+    summary: flair_align
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - flair_align
+    depends_on:
+    - build_flair_genome_index
+  flair_correct:
+    summary: flair_correct
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - flair_correct
+    depends_on:
+    - flair_align
+  flair_collapse:
+    summary: flair_collapse
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - flair_collapse
+    depends_on:
+    - flair_correct
+  flair_quantify:
+    summary: flair_quantify
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - flair_quantify
+    depends_on:
+    - flair_collapse
+  flair_diffexp:
+    summary: flair_diffexp
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - flair_diffexp
+    depends_on:
+    - flair_quantify
+  flair_plot_isoforms:
+    summary: flair_plot_isoforms
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - flair_plot_isoforms
+    depends_on:
+    - flair_diffexp
+  iso_analysis_report:
+    summary: iso_analysis_report
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - iso_analysis_report
+    depends_on:
+    - flair_plot_isoforms
+  get_indexed_protein_db:
+    summary: get_indexed_protein_db
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - get_indexed_protein_db
+    depends_on:
+    - iso_analysis_report
+  generate_gene_query:
+    summary: generate_gene_query
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - generate_gene_query
+    depends_on:
+    - get_indexed_protein_db
+  lambda_gene_annotation:
+    summary: lambda_gene_annotation
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - lambda_gene_annotation
+    depends_on:
+    - generate_gene_query
+  get_protein_names:
+    summary: get_protein_names
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      root_target: all
+      until:
+      - get_protein_names
+    depends_on:
+    - lambda_gene_annotation
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/config/config.yml
+      targets:
+      - all
+    depends_on:
+    - get_protein_names

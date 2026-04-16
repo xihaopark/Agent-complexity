@@ -1,0 +1,18 @@
+results/**
+resources/**
+logs/**
+.snakemake
+.snakemake/**
+.test/results/*
+workflow/notebooks/.ipynb_checkpoints/**
+**/.Rhistory
+**/*.Rproj
+**/.Rproj.user/**
+**/.RData
+**/Rplots.pdf
+__pycache__/
+*.pyc
+
+# local backups
+workflow/rules/*.bak
+workflow/rules/*.smk.*.bak

@@ -1,0 +1,21 @@
+# Environment configuration file for looper
+# This version describes the compute environment at CeMM
+
+compute:
+  default:
+    submission_template: templates/slurm_template.sub
+    submission_command: sbatch
+    partition: mediumq 
+    mem: 64000
+    cores: 4
+    time: 2-00:00:00
+  develop:
+    submission_template: templates/slurm_template.sub
+    submission_command: sbatch
+    partition: develop
+    mem: 8000
+    cores: 1
+    time: 08:00:00
+  local:
+    submission_template: templates/localhost_template.sub
+    submission_command: sh

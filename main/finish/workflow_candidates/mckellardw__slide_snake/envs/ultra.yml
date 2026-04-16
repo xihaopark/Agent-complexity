@@ -1,0 +1,12 @@
+name: ultra
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - gff3sort
+  - minimap2
+  - parasail-python
+  - pysam
+  - python=3.12
+  - samtools
+  - ultra_bioinformatics=0.1

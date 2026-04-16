@@ -1,0 +1,32 @@
+{
+  "source_repo_dir": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/semenko__serpent-methylation-pipeline",
+  "source_snakefile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/semenko__serpent-methylation-pipeline/workflow/Snakefile",
+  "source_configfile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/semenko__serpent-methylation-pipeline/config/config.yaml",
+  "step_count": 24,
+  "steps": [
+    "get_reference_genome",
+    "mask_reference_fasta",
+    "biscuit_index",
+    "biscuit_qc_index",
+    "bwa_meth_index",
+    "wgbs_tools_index",
+    "md5sum",
+    "seqtk_subsample",
+    "fastp",
+    "bwa_meth",
+    "mark_nonconverted",
+    "samtools_fixmate_sort_markdup",
+    "samtools_index",
+    "samtools_statistics",
+    "biscuit_bed",
+    "biscuit_epiread",
+    "biscuit_qc",
+    "methyldackel_mbias_plots",
+    "fastqc_bam",
+    "goleft_indexcov",
+    "wgbs_tools_pat_beta",
+    "touch_complete_flag",
+    "multiqc",
+    "all"
+  ]
+}

@@ -1,0 +1,747 @@
+{
+  "id": "tgirke-systempiperdata-riboseq-finish",
+  "name": "tgirke systempiperdata riboseq finish",
+  "engine": "snakemake",
+  "entry_point": "run_workflow.py",
+  "description": "Manual finish workflow for systemPipeRdata RIBO-seq template split by Rmd step_name declarations.",
+  "version": "0.1",
+  "aliases": [
+    "tgirke-systempiperdata-riboseq"
+  ],
+  "tags": [
+    "finish",
+    "manual",
+    "candidate",
+    "r-workflow"
+  ],
+  "url": "https://github.com/tgirke/systemPipeRdata",
+  "know_how": "workflow/agent-steps.md",
+  "know_how_files": [
+    "workflow/agent-steps.md"
+  ],
+  "discovery": {
+    "kind": "finish_workflow",
+    "family": "candidate",
+    "aliases": [
+      "tgirke-systempiperdata-riboseq"
+    ],
+    "retained_steps": [
+      "load_SPR",
+      "preprocessing",
+      "fastq_report",
+      "hisat2_index",
+      "hisat2_mapping",
+      "align_stats",
+      "bam_IGV",
+      "genFeatures",
+      "featuretypeCounts",
+      "featuretypeCounts_length",
+      "pred_ORF",
+      "scale_ranges",
+      "translate",
+      "add_features",
+      "pred_sORFs",
+      "binned_CDS_coverage",
+      "coverage_upstream_downstream",
+      "coverage_combined",
+      "coverage_nuc_level",
+      "read_counting",
+      "sample_tree",
+      "run_edgeR",
+      "custom_annot",
+      "filter_degs",
+      "venn_diagram",
+      "get_go_annot",
+      "go_enrich",
+      "go_plot",
+      "diff_loading",
+      "diff_translational_eff",
+      "heatmap",
+      "sessionInfo"
+    ],
+    "supports_partial_run": true,
+    "runner": "python3 run_workflow.py --cores 8",
+    "standard_step_skills": false,
+    "generated_by": "tools/manual_finishify_specials.py",
+    "split_mode": "manual-special",
+    "source_repo": "tgirke__systemPipeRdata"
+  },
+  "input_hints": [
+    "../workflow_candidates/tgirke__systemPipeRdata/inst/extdata/workflows/riboseq/systemPipeRIBOseq.Rmd"
+  ],
+  "output_hints": [
+    "results/finish/*.done"
+  ],
+  "steps": [
+    {
+      "id": "load_SPR",
+      "name": "load SPR",
+      "targets": [
+        "load_SPR"
+      ],
+      "params": {
+        "snakefile": "steps/load_SPR.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/load_SPR.done"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "preprocessing",
+      "name": "preprocessing",
+      "targets": [
+        "preprocessing"
+      ],
+      "params": {
+        "snakefile": "steps/preprocessing.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/preprocessing.done"
+      ],
+      "depends_on": [
+        "load_SPR"
+      ]
+    },
+    {
+      "id": "fastq_report",
+      "name": "fastq report",
+      "targets": [
+        "fastq_report"
+      ],
+      "params": {
+        "snakefile": "steps/fastq_report.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/fastq_report.done"
+      ],
+      "depends_on": [
+        "preprocessing"
+      ]
+    },
+    {
+      "id": "hisat2_index",
+      "name": "hisat2 index",
+      "targets": [
+        "hisat2_index"
+      ],
+      "params": {
+        "snakefile": "steps/hisat2_index.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/hisat2_index.done"
+      ],
+      "depends_on": [
+        "fastq_report"
+      ]
+    },
+    {
+      "id": "hisat2_mapping",
+      "name": "hisat2 mapping",
+      "targets": [
+        "hisat2_mapping"
+      ],
+      "params": {
+        "snakefile": "steps/hisat2_mapping.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/hisat2_mapping.done"
+      ],
+      "depends_on": [
+        "hisat2_index"
+      ]
+    },
+    {
+      "id": "align_stats",
+      "name": "align stats",
+      "targets": [
+        "align_stats"
+      ],
+      "params": {
+        "snakefile": "steps/align_stats.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/align_stats.done"
+      ],
+      "depends_on": [
+        "hisat2_mapping"
+      ]
+    },
+    {
+      "id": "bam_IGV",
+      "name": "bam IGV",
+      "targets": [
+        "bam_IGV"
+      ],
+      "params": {
+        "snakefile": "steps/bam_IGV.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/bam_IGV.done"
+      ],
+      "depends_on": [
+        "align_stats"
+      ]
+    },
+    {
+      "id": "genFeatures",
+      "name": "genFeatures",
+      "targets": [
+        "genFeatures"
+      ],
+      "params": {
+        "snakefile": "steps/genFeatures.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/genFeatures.done"
+      ],
+      "depends_on": [
+        "bam_IGV"
+      ]
+    },
+    {
+      "id": "featuretypeCounts",
+      "name": "featuretypeCounts",
+      "targets": [
+        "featuretypeCounts"
+      ],
+      "params": {
+        "snakefile": "steps/featuretypeCounts.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/featuretypeCounts.done"
+      ],
+      "depends_on": [
+        "genFeatures"
+      ]
+    },
+    {
+      "id": "featuretypeCounts_length",
+      "name": "featuretypeCounts length",
+      "targets": [
+        "featuretypeCounts_length"
+      ],
+      "params": {
+        "snakefile": "steps/featuretypeCounts_length.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/featuretypeCounts_length.done"
+      ],
+      "depends_on": [
+        "featuretypeCounts"
+      ]
+    },
+    {
+      "id": "pred_ORF",
+      "name": "pred ORF",
+      "targets": [
+        "pred_ORF"
+      ],
+      "params": {
+        "snakefile": "steps/pred_ORF.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/pred_ORF.done"
+      ],
+      "depends_on": [
+        "featuretypeCounts_length"
+      ]
+    },
+    {
+      "id": "scale_ranges",
+      "name": "scale ranges",
+      "targets": [
+        "scale_ranges"
+      ],
+      "params": {
+        "snakefile": "steps/scale_ranges.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/scale_ranges.done"
+      ],
+      "depends_on": [
+        "pred_ORF"
+      ]
+    },
+    {
+      "id": "translate",
+      "name": "translate",
+      "targets": [
+        "translate"
+      ],
+      "params": {
+        "snakefile": "steps/translate.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/translate.done"
+      ],
+      "depends_on": [
+        "scale_ranges"
+      ]
+    },
+    {
+      "id": "add_features",
+      "name": "add features",
+      "targets": [
+        "add_features"
+      ],
+      "params": {
+        "snakefile": "steps/add_features.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/add_features.done"
+      ],
+      "depends_on": [
+        "translate"
+      ]
+    },
+    {
+      "id": "pred_sORFs",
+      "name": "pred sORFs",
+      "targets": [
+        "pred_sORFs"
+      ],
+      "params": {
+        "snakefile": "steps/pred_sORFs.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/pred_sORFs.done"
+      ],
+      "depends_on": [
+        "add_features"
+      ]
+    },
+    {
+      "id": "binned_CDS_coverage",
+      "name": "binned CDS coverage",
+      "targets": [
+        "binned_CDS_coverage"
+      ],
+      "params": {
+        "snakefile": "steps/binned_CDS_coverage.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/binned_CDS_coverage.done"
+      ],
+      "depends_on": [
+        "pred_sORFs"
+      ]
+    },
+    {
+      "id": "coverage_upstream_downstream",
+      "name": "coverage upstream downstream",
+      "targets": [
+        "coverage_upstream_downstream"
+      ],
+      "params": {
+        "snakefile": "steps/coverage_upstream_downstream.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/coverage_upstream_downstream.done"
+      ],
+      "depends_on": [
+        "binned_CDS_coverage"
+      ]
+    },
+    {
+      "id": "coverage_combined",
+      "name": "coverage combined",
+      "targets": [
+        "coverage_combined"
+      ],
+      "params": {
+        "snakefile": "steps/coverage_combined.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/coverage_combined.done"
+      ],
+      "depends_on": [
+        "coverage_upstream_downstream"
+      ]
+    },
+    {
+      "id": "coverage_nuc_level",
+      "name": "coverage nuc level",
+      "targets": [
+        "coverage_nuc_level"
+      ],
+      "params": {
+        "snakefile": "steps/coverage_nuc_level.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/coverage_nuc_level.done"
+      ],
+      "depends_on": [
+        "coverage_combined"
+      ]
+    },
+    {
+      "id": "read_counting",
+      "name": "read counting",
+      "targets": [
+        "read_counting"
+      ],
+      "params": {
+        "snakefile": "steps/read_counting.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/read_counting.done"
+      ],
+      "depends_on": [
+        "coverage_nuc_level"
+      ]
+    },
+    {
+      "id": "sample_tree",
+      "name": "sample tree",
+      "targets": [
+        "sample_tree"
+      ],
+      "params": {
+        "snakefile": "steps/sample_tree.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/sample_tree.done"
+      ],
+      "depends_on": [
+        "read_counting"
+      ]
+    },
+    {
+      "id": "run_edgeR",
+      "name": "run edgeR",
+      "targets": [
+        "run_edgeR"
+      ],
+      "params": {
+        "snakefile": "steps/run_edgeR.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/run_edgeR.done"
+      ],
+      "depends_on": [
+        "sample_tree"
+      ]
+    },
+    {
+      "id": "custom_annot",
+      "name": "custom annot",
+      "targets": [
+        "custom_annot"
+      ],
+      "params": {
+        "snakefile": "steps/custom_annot.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/custom_annot.done"
+      ],
+      "depends_on": [
+        "run_edgeR"
+      ]
+    },
+    {
+      "id": "filter_degs",
+      "name": "filter degs",
+      "targets": [
+        "filter_degs"
+      ],
+      "params": {
+        "snakefile": "steps/filter_degs.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/filter_degs.done"
+      ],
+      "depends_on": [
+        "custom_annot"
+      ]
+    },
+    {
+      "id": "venn_diagram",
+      "name": "venn diagram",
+      "targets": [
+        "venn_diagram"
+      ],
+      "params": {
+        "snakefile": "steps/venn_diagram.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/venn_diagram.done"
+      ],
+      "depends_on": [
+        "filter_degs"
+      ]
+    },
+    {
+      "id": "get_go_annot",
+      "name": "get go annot",
+      "targets": [
+        "get_go_annot"
+      ],
+      "params": {
+        "snakefile": "steps/get_go_annot.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/get_go_annot.done"
+      ],
+      "depends_on": [
+        "venn_diagram"
+      ]
+    },
+    {
+      "id": "go_enrich",
+      "name": "go enrich",
+      "targets": [
+        "go_enrich"
+      ],
+      "params": {
+        "snakefile": "steps/go_enrich.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/go_enrich.done"
+      ],
+      "depends_on": [
+        "get_go_annot"
+      ]
+    },
+    {
+      "id": "go_plot",
+      "name": "go plot",
+      "targets": [
+        "go_plot"
+      ],
+      "params": {
+        "snakefile": "steps/go_plot.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/go_plot.done"
+      ],
+      "depends_on": [
+        "go_enrich"
+      ]
+    },
+    {
+      "id": "diff_loading",
+      "name": "diff loading",
+      "targets": [
+        "diff_loading"
+      ],
+      "params": {
+        "snakefile": "steps/diff_loading.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/diff_loading.done"
+      ],
+      "depends_on": [
+        "go_plot"
+      ]
+    },
+    {
+      "id": "diff_translational_eff",
+      "name": "diff translational eff",
+      "targets": [
+        "diff_translational_eff"
+      ],
+      "params": {
+        "snakefile": "steps/diff_translational_eff.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/diff_translational_eff.done"
+      ],
+      "depends_on": [
+        "diff_loading"
+      ]
+    },
+    {
+      "id": "heatmap",
+      "name": "heatmap",
+      "targets": [
+        "heatmap"
+      ],
+      "params": {
+        "snakefile": "steps/heatmap.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/heatmap.done"
+      ],
+      "depends_on": [
+        "diff_translational_eff"
+      ]
+    },
+    {
+      "id": "sessionInfo",
+      "name": "sessionInfo",
+      "targets": [
+        "sessionInfo"
+      ],
+      "params": {
+        "snakefile": "steps/sessionInfo.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/sessionInfo.done"
+      ],
+      "depends_on": [
+        "heatmap"
+      ]
+    }
+  ]
+}

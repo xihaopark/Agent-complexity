@@ -1,0 +1,136 @@
+workflow_id: dna-seq-varlociraptor
+source_cores: 1
+retries: 2
+steps:
+  validate_config:
+    summary: validate_config
+    requires:
+      - config_basic/source_config.yaml
+      - config_basic/samples.tsv
+      - config_basic/units.tsv
+      - config_basic/scenario.yaml
+    command: ""
+  inspect_inputs:
+    summary: inspect_inputs
+    requires:
+      - config_basic/source_config.yaml
+      - config_basic/samples.tsv
+      - config_basic/units.tsv
+    command: ""
+  prepare_references:
+    summary: prepare_references
+    requires:
+      - config_basic/source_config.yaml
+    command: >
+      snakemake -s workflow/Snakefile --configfile config_basic/source_config.yaml --use-conda --cores {source_cores} prepare_references_ready
+  prepare_reads:
+    summary: prepare_reads
+    requires:
+      - config_basic/source_config.yaml
+    snakemake:
+      snakefile: workflow/Snakefile
+      configfile: config_basic/source_config.yaml
+      use_conda: true
+      cores: "{source_cores}"
+      scheduler: greedy
+      targets_from_table:
+        - table: config_basic/samples.tsv
+          pattern: results/merged/{sample_name}_R1.fastq.gz
+        - table: config_basic/samples.tsv
+          pattern: results/merged/{sample_name}_R2.fastq.gz
+        - table: config_basic/units.tsv
+          pattern: results/qc/fastqc/{sample_name}/{unit_name}.fq1_fastqc.zip
+        - table: config_basic/units.tsv
+          pattern: results/qc/fastqc/{sample_name}/{unit_name}.fq2_fastqc.zip
+  mapping:
+    summary: mapping
+    requires:
+      - config_basic/source_config.yaml
+    snakemake:
+      snakefile: workflow/Snakefile
+      configfile: config_basic/source_config.yaml
+      use_conda: true
+      cores: "{source_cores}"
+      scheduler: greedy
+      targets_from_table:
+        - table: config_basic/samples.tsv
+          pattern: results/qc/{sample_name}.bam.idxstats
+        - table: config_basic/samples.tsv
+          pattern: results/qc/{sample_name}.bam.stats
+  candidate_calling:
+    summary: candidate_calling
+    requires:
+      - config_basic/source_config.yaml
+    snakemake:
+      snakefile: workflow/Snakefile
+      configfile: config_basic/source_config.yaml
+      use_conda: true
+      cores: "{source_cores}"
+      scheduler: greedy
+      targets_from_table:
+        - table: config_basic/samples.tsv
+          pattern: results/candidate-calls/freebayes/filtered/{group}/{group}.bcf
+        - table: config_basic/samples.tsv
+          pattern: results/candidate-calls/delly/filtered/{group}/{group}.bcf
+  evidence_build:
+    summary: evidence_build
+    requires:
+      - config_basic/source_config.yaml
+    snakemake:
+      snakefile: workflow/Snakefile
+      configfile: config_basic/source_config.yaml
+      use_conda: true
+      cores: "{source_cores}"
+      scheduler: greedy
+      targets_from_table:
+        - table: config_basic/samples.tsv
+          pattern: results/alignment-properties/{group}/{sample_name}.json
+        - table: config_basic/samples.tsv
+          pattern: results/observations/freebayes/{group}/{sample_name}.all.bcf
+        - table: config_basic/samples.tsv
+          pattern: results/observations/delly/{group}/{sample_name}.all.bcf
+        - table: config_basic/samples.tsv
+          pattern: results/scenarios/{group}.yaml
+  calling:
+    summary: calling
+    requires:
+      - config_basic/source_config.yaml
+    snakemake:
+      snakefile: workflow/Snakefile
+      configfile: config_basic/source_config.yaml
+      use_conda: true
+      cores: "{source_cores}"
+      scheduler: greedy
+      targets_from_table:
+        - table: config_basic/samples.tsv
+          pattern: results/final-calls/{group}/{group}.variants.annotated.bcf
+  annotation_filtering:
+    summary: annotation_filtering
+    requires:
+      - config_basic/source_config.yaml
+    snakemake:
+      snakefile: workflow/Snakefile
+      configfile: config_basic/source_config.yaml
+      use_conda: true
+      cores: "{source_cores}"
+      scheduler: greedy
+      targets_from_table:
+        - table: config_basic/samples.tsv
+          pattern: results/final-calls/{group}/{group}.present.variants.fdr-controlled.normal-probs.bcf
+  delivery_report:
+    summary: delivery_report
+    requires:
+      - config_basic/source_config.yaml
+    snakemake:
+      snakefile: workflow/Snakefile
+      configfile: config_basic/source_config.yaml
+      use_conda: true
+      cores: "{source_cores}"
+      scheduler: greedy
+      targets_from_table:
+        - table: config_basic/samples.tsv
+          pattern: results/maf/{group}/{group}.present.variants.fdr-controlled.maf
+        - table: config_basic/samples.tsv
+          pattern: results/tables/{group}/{group}.present.variants.fdr-controlled.tsv
+        - table: config_basic/samples.tsv
+          pattern: results/tables/{group}/{group}.present.variants.fdr-controlled.xlsx

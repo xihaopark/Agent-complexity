@@ -1,0 +1,18 @@
+{
+  "source_repo_dir": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts",
+  "source_snakefile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/Snakefile",
+  "source_configfile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml",
+  "step_count": 10,
+  "steps": [
+    "project_setup",
+    "make_index",
+    "qc_trim",
+    "aln",
+    "sam_to_bam",
+    "do_counts",
+    "log_count_result",
+    "make_latex_tables",
+    "clean",
+    "all"
+  ]
+}

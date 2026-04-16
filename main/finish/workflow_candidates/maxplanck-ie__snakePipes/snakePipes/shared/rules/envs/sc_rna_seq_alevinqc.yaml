@@ -1,0 +1,6 @@
+name: snakepipes_alevinqc_environment_v2.0
+channels:
+ - conda-forge
+ - bioconda
+dependencies:
+ - bioconductor-alevinqc = 1.10.0

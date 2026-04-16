@@ -1,0 +1,2336 @@
+workflow_id: mckellardw-slide_snake-finish
+source_cores: 8
+steps:
+  utils_index_BAM:
+    summary: utils_index_BAM
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - utils_index_BAM
+  BC_copy_barcode_map:
+    summary: BC_copy_barcode_map
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - BC_copy_barcode_map
+    depends_on:
+    - utils_index_BAM
+  BC_get_simple_whitelist:
+    summary: BC_get_simple_whitelist
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - BC_get_simple_whitelist
+    depends_on:
+    - BC_copy_barcode_map
+  BC_write_whitelist_variants:
+    summary: BC_write_whitelist_variants
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - BC_write_whitelist_variants
+    depends_on:
+    - BC_get_simple_whitelist
+  ilmn_1a_merge_fastqs:
+    summary: ilmn_1a_merge_fastqs
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_1a_merge_fastqs
+    depends_on:
+    - BC_write_whitelist_variants
+  ilmn_1b_cutadapt:
+    summary: ilmn_1b_cutadapt
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_1b_cutadapt
+    depends_on:
+    - ilmn_1a_merge_fastqs
+  ilmn_1b_cutadapt2:
+    summary: ilmn_1b_cutadapt2
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_1b_cutadapt2
+    depends_on:
+    - ilmn_1b_cutadapt
+  ilmn_1b_R1_hardTrimming:
+    summary: ilmn_1b_R1_hardTrimming
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_1b_R1_hardTrimming
+    depends_on:
+    - ilmn_1b_cutadapt2
+  ilmn_1b_R1_internalTrimming:
+    summary: ilmn_1b_R1_internalTrimming
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_1b_R1_internalTrimming
+    depends_on:
+    - ilmn_1b_R1_hardTrimming
+  ilmn_1c_fastq_call_bc_from_adapter:
+    summary: ilmn_1c_fastq_call_bc_from_adapter
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_1c_fastq_call_bc_from_adapter
+    depends_on:
+    - ilmn_1b_R1_internalTrimming
+  ilmn_1c_filter_barcodes:
+    summary: ilmn_1c_filter_barcodes
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_1c_filter_barcodes
+    depends_on:
+    - ilmn_1c_fastq_call_bc_from_adapter
+  ilmn_1c_tsv_bc_correction:
+    summary: ilmn_1c_tsv_bc_correction
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_1c_tsv_bc_correction
+    depends_on:
+    - ilmn_1c_filter_barcodes
+  ilmn_1c_summarize_bc_correction:
+    summary: ilmn_1c_summarize_bc_correction
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_1c_summarize_bc_correction
+    depends_on:
+    - ilmn_1c_tsv_bc_correction
+  ilmn_2a_extract_rRNA_fasta:
+    summary: ilmn_2a_extract_rRNA_fasta
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_2a_extract_rRNA_fasta
+    depends_on:
+    - ilmn_1c_summarize_bc_correction
+  ilmn_2a_build_rRNA_gtf:
+    summary: ilmn_2a_build_rRNA_gtf
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_2a_build_rRNA_gtf
+    depends_on:
+    - ilmn_2a_extract_rRNA_fasta
+  ilmn_2a_build_rRNA_bwa_index:
+    summary: ilmn_2a_build_rRNA_bwa_index
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_2a_build_rRNA_bwa_index
+    depends_on:
+    - ilmn_2a_build_rRNA_gtf
+  ilmn_2a_bwa_rRNA_align:
+    summary: ilmn_2a_bwa_rRNA_align
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_2a_bwa_rRNA_align
+    depends_on:
+    - ilmn_2a_build_rRNA_bwa_index
+  ilmn_2a_bwa_rRNA_get_no_rRNA_list:
+    summary: ilmn_2a_bwa_rRNA_get_no_rRNA_list
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_2a_bwa_rRNA_get_no_rRNA_list
+    depends_on:
+    - ilmn_2a_bwa_rRNA_align
+  ilmn_2a_bwa_rRNA_filter_R1:
+    summary: ilmn_2a_bwa_rRNA_filter_R1
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_2a_bwa_rRNA_filter_R1
+    depends_on:
+    - ilmn_2a_bwa_rRNA_get_no_rRNA_list
+  ilmn_2a_bwa_rRNA_filter_trimmed_R1:
+    summary: ilmn_2a_bwa_rRNA_filter_trimmed_R1
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_2a_bwa_rRNA_filter_trimmed_R1
+    depends_on:
+    - ilmn_2a_bwa_rRNA_filter_R1
+  ilmn_2a_bwa_rRNA_compress_unmapped:
+    summary: ilmn_2a_bwa_rRNA_compress_unmapped
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_2a_bwa_rRNA_compress_unmapped
+    depends_on:
+    - ilmn_2a_bwa_rRNA_filter_trimmed_R1
+  ilmn_2a_bwa_rRNA_filtered_fastqc:
+    summary: ilmn_2a_bwa_rRNA_filtered_fastqc
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_2a_bwa_rRNA_filtered_fastqc
+    depends_on:
+    - ilmn_2a_bwa_rRNA_compress_unmapped
+  ilmn_2b_ribodetector:
+    summary: ilmn_2b_ribodetector
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_2b_ribodetector
+    depends_on:
+    - ilmn_2a_bwa_rRNA_filtered_fastqc
+  ilmn_2b_ribodetector_get_no_rRNA_list:
+    summary: ilmn_2b_ribodetector_get_no_rRNA_list
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_2b_ribodetector_get_no_rRNA_list
+    depends_on:
+    - ilmn_2b_ribodetector
+  ilmn_2b_ribodetector_filter_R1:
+    summary: ilmn_2b_ribodetector_filter_R1
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_2b_ribodetector_filter_R1
+    depends_on:
+    - ilmn_2b_ribodetector_get_no_rRNA_list
+  ilmn_2b_ribodetector_filter_trimmed_R1:
+    summary: ilmn_2b_ribodetector_filter_trimmed_R1
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_2b_ribodetector_filter_trimmed_R1
+    depends_on:
+    - ilmn_2b_ribodetector_filter_R1
+  ilmn_2b_ribodetector_compress_fqs:
+    summary: ilmn_2b_ribodetector_compress_fqs
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_2b_ribodetector_compress_fqs
+    depends_on:
+    - ilmn_2b_ribodetector_filter_trimmed_R1
+  ilmn_2c_qualimapQC_rRNA_bwa:
+    summary: ilmn_2c_qualimapQC_rRNA_bwa
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_2c_qualimapQC_rRNA_bwa
+    depends_on:
+    - ilmn_2b_ribodetector_compress_fqs
+  ilmn_2c_qualimap_readqc_summary2csv_rRNA_bwa:
+    summary: ilmn_2c_qualimap_readqc_summary2csv_rRNA_bwa
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_2c_qualimap_readqc_summary2csv_rRNA_bwa
+    depends_on:
+    - ilmn_2c_qualimapQC_rRNA_bwa
+  ilmn_2c_qualimap_bamqc_rRNA_bwa:
+    summary: ilmn_2c_qualimap_bamqc_rRNA_bwa
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_2c_qualimap_bamqc_rRNA_bwa
+    depends_on:
+    - ilmn_2c_qualimap_readqc_summary2csv_rRNA_bwa
+  ilmn_2c_qualimap_bamqc_summary2csv_rRNA_bwa:
+    summary: ilmn_2c_qualimap_bamqc_summary2csv_rRNA_bwa
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_2c_qualimap_bamqc_summary2csv_rRNA_bwa
+    depends_on:
+    - ilmn_2c_qualimap_bamqc_rRNA_bwa
+  ilmn_3a_STARsolo_firstPass:
+    summary: ilmn_3a_STARsolo_firstPass
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3a_STARsolo_firstPass
+    depends_on:
+    - ilmn_2c_qualimap_bamqc_summary2csv_rRNA_bwa
+  ilmn_3a_STARsolo_secondPass:
+    summary: ilmn_3a_STARsolo_secondPass
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3a_STARsolo_secondPass
+    depends_on:
+    - ilmn_3a_STARsolo_firstPass
+  ilmn_3a_compress_STAR_outs:
+    summary: ilmn_3a_compress_STAR_outs
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3a_compress_STAR_outs
+    depends_on:
+    - ilmn_3a_STARsolo_secondPass
+  ilmn_3a_cache_seurat_STAR:
+    summary: ilmn_3a_cache_seurat_STAR
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3a_cache_seurat_STAR
+    depends_on:
+    - ilmn_3a_compress_STAR_outs
+  ilmn_3a_cache_h5ad_STAR:
+    summary: ilmn_3a_cache_h5ad_STAR
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3a_cache_h5ad_STAR
+    depends_on:
+    - ilmn_3a_cache_seurat_STAR
+  ilmn_3b_fastqc_unmapped:
+    summary: ilmn_3b_fastqc_unmapped
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3b_fastqc_unmapped
+    depends_on:
+    - ilmn_3a_cache_h5ad_STAR
+  ilmn_3c_strand_split_bam:
+    summary: ilmn_3c_strand_split_bam
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3c_strand_split_bam
+    depends_on:
+    - ilmn_3b_fastqc_unmapped
+  ilmn_3c_umitools_dedup_fwdBAM:
+    summary: ilmn_3c_umitools_dedup_fwdBAM
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3c_umitools_dedup_fwdBAM
+    depends_on:
+    - ilmn_3c_strand_split_bam
+  ilmn_3c_umitools_dedup_revBAM:
+    summary: ilmn_3c_umitools_dedup_revBAM
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3c_umitools_dedup_revBAM
+    depends_on:
+    - ilmn_3c_umitools_dedup_fwdBAM
+  ilmn_3c_merge_dedup_bam:
+    summary: ilmn_3c_merge_dedup_bam
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3c_merge_dedup_bam
+    depends_on:
+    - ilmn_3c_umitools_dedup_revBAM
+  ilmn_3q_qualimapQC_STAR:
+    summary: ilmn_3q_qualimapQC_STAR
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3q_qualimapQC_STAR
+    depends_on:
+    - ilmn_3c_merge_dedup_bam
+  ilmn_3q_qualimapQC_dedup_STAR:
+    summary: ilmn_3q_qualimapQC_dedup_STAR
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3q_qualimapQC_dedup_STAR
+    depends_on:
+    - ilmn_3q_qualimapQC_STAR
+  ilmn_3q_qualimap_rnaseq_summary2csv_STAR:
+    summary: ilmn_3q_qualimap_rnaseq_summary2csv_STAR
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3q_qualimap_rnaseq_summary2csv_STAR
+    depends_on:
+    - ilmn_3q_qualimapQC_dedup_STAR
+  ilmn_3q_qualimap_bamqc_STAR_raw:
+    summary: ilmn_3q_qualimap_bamqc_STAR_raw
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3q_qualimap_bamqc_STAR_raw
+    depends_on:
+    - ilmn_3q_qualimap_rnaseq_summary2csv_STAR
+  ilmn_3q_qualimap_bamqc_STAR_dedup:
+    summary: ilmn_3q_qualimap_bamqc_STAR_dedup
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3q_qualimap_bamqc_STAR_dedup
+    depends_on:
+    - ilmn_3q_qualimap_bamqc_STAR_raw
+  ilmn_3q_qualimap_bamqc_summary2csv_STAR:
+    summary: ilmn_3q_qualimap_bamqc_summary2csv_STAR
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3q_qualimap_bamqc_summary2csv_STAR
+    depends_on:
+    - ilmn_3q_qualimap_bamqc_STAR_dedup
+  ilmn_3u_filter_noGN:
+    summary: ilmn_3u_filter_noGN
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3u_filter_noGN
+    depends_on:
+    - ilmn_3q_qualimap_bamqc_summary2csv_STAR
+  ilmn_3u_calcHMMbed:
+    summary: ilmn_3u_calcHMMbed
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3u_calcHMMbed
+    depends_on:
+    - ilmn_3u_filter_noGN
+  ilmn_3u_filter_out_aTARs:
+    summary: ilmn_3u_filter_out_aTARs
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3u_filter_out_aTARs
+    depends_on:
+    - ilmn_3u_calcHMMbed
+  ilmn_3u_bed_to_gtf:
+    summary: ilmn_3u_bed_to_gtf
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3u_bed_to_gtf
+    depends_on:
+    - ilmn_3u_filter_out_aTARs
+  ilmn_3u_tagReads:
+    summary: ilmn_3u_tagReads
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3u_tagReads
+    depends_on:
+    - ilmn_3u_bed_to_gtf
+  ilmn_3u_sort_index_tagged_bam:
+    summary: ilmn_3u_sort_index_tagged_bam
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3u_sort_index_tagged_bam
+    depends_on:
+    - ilmn_3u_tagReads
+  ilmn_3u_extract_HMM_expression:
+    summary: ilmn_3u_extract_HMM_expression
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3u_extract_HMM_expression
+    depends_on:
+    - ilmn_3u_sort_index_tagged_bam
+  ilmn_3u_counts_long2mtx:
+    summary: ilmn_3u_counts_long2mtx
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3u_counts_long2mtx
+    depends_on:
+    - ilmn_3u_extract_HMM_expression
+  ilmn_3u_gzip_counts:
+    summary: ilmn_3u_gzip_counts
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3u_gzip_counts
+    depends_on:
+    - ilmn_3u_counts_long2mtx
+  ilmn_3u_plot_qc:
+    summary: ilmn_3u_plot_qc
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_3u_plot_qc
+    depends_on:
+    - ilmn_3u_gzip_counts
+  ilmn_4a_kbpython_std:
+    summary: ilmn_4a_kbpython_std
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_4a_kbpython_std
+    depends_on:
+    - ilmn_3u_plot_qc
+  ilmn_4a_kbpython_std_remove_suffix:
+    summary: ilmn_4a_kbpython_std_remove_suffix
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_4a_kbpython_std_remove_suffix
+    depends_on:
+    - ilmn_4a_kbpython_std
+  ilmn_4a_kbpython_std_compress_outs:
+    summary: ilmn_4a_kbpython_std_compress_outs
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_4a_kbpython_std_compress_outs
+    depends_on:
+    - ilmn_4a_kbpython_std_remove_suffix
+  ilmn_4a_cache_seurat_kbpython_std:
+    summary: ilmn_4a_cache_seurat_kbpython_std
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_4a_cache_seurat_kbpython_std
+    depends_on:
+    - ilmn_4a_kbpython_std_compress_outs
+  ilmn_4a_cache_h5ad_kbpython_std:
+    summary: ilmn_4a_cache_h5ad_kbpython_std
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_4a_cache_h5ad_kbpython_std
+    depends_on:
+    - ilmn_4a_cache_seurat_kbpython_std
+  ilmn_5a_copy_R2_fq_for_mirge:
+    summary: ilmn_5a_copy_R2_fq_for_mirge
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_5a_copy_R2_fq_for_mirge
+    depends_on:
+    - ilmn_4a_cache_h5ad_kbpython_std
+  ilmn_5a_miRge3_pseudobulk:
+    summary: ilmn_5a_miRge3_pseudobulk
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_5a_miRge3_pseudobulk
+    depends_on:
+    - ilmn_5a_copy_R2_fq_for_mirge
+  ilmn_7a_fastQC_preTrim:
+    summary: ilmn_7a_fastQC_preTrim
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_7a_fastQC_preTrim
+    depends_on:
+    - ilmn_5a_miRge3_pseudobulk
+  ilmn_7a_fastQC_postTrim:
+    summary: ilmn_7a_fastQC_postTrim
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_7a_fastQC_postTrim
+    depends_on:
+    - ilmn_7a_fastQC_preTrim
+  ilmn_7a_fastQC_twiceTrim:
+    summary: ilmn_7a_fastQC_twiceTrim
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_7a_fastQC_twiceTrim
+    depends_on:
+    - ilmn_7a_fastQC_postTrim
+  ilmn_7b_readQC_0_rawInput:
+    summary: ilmn_7b_readQC_0_rawInput
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_7b_readQC_0_rawInput
+    depends_on:
+    - ilmn_7a_fastQC_twiceTrim
+  ilmn_7b_readQC_1_preCutadapt:
+    summary: ilmn_7b_readQC_1_preCutadapt
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_7b_readQC_1_preCutadapt
+    depends_on:
+    - ilmn_7b_readQC_0_rawInput
+  ilmn_7b_readQC_2_postCutadapt:
+    summary: ilmn_7b_readQC_2_postCutadapt
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_7b_readQC_2_postCutadapt
+    depends_on:
+    - ilmn_7b_readQC_1_preCutadapt
+  ilmn_7b_readQC_3_twiceCutadapt:
+    summary: ilmn_7b_readQC_3_twiceCutadapt
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_7b_readQC_3_twiceCutadapt
+    depends_on:
+    - ilmn_7b_readQC_2_postCutadapt
+  ilmn_7b_readQC_3_bam:
+    summary: ilmn_7b_readQC_3_bam
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_7b_readQC_3_bam
+    depends_on:
+    - ilmn_7b_readQC_3_twiceCutadapt
+  ilmn_7b_readQC_downsample:
+    summary: ilmn_7b_readQC_downsample
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_7b_readQC_downsample
+    depends_on:
+    - ilmn_7b_readQC_3_bam
+  ilmn_7b_readQC_summaryplot:
+    summary: ilmn_7b_readQC_summaryplot
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_7b_readQC_summaryplot
+    depends_on:
+    - ilmn_7b_readQC_downsample
+  ilmn_7b_readQC_compress:
+    summary: ilmn_7b_readQC_compress
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ilmn_7b_readQC_compress
+    depends_on:
+    - ilmn_7b_readQC_summaryplot
+  ont_1a_merge_formats:
+    summary: ont_1a_merge_formats
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_1a_merge_formats
+    depends_on:
+    - ilmn_7b_readQC_compress
+  ont_1a_call_adapter_scan:
+    summary: ont_1a_call_adapter_scan
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_1a_call_adapter_scan
+    depends_on:
+    - ont_1a_merge_formats
+  ont_1a_readIDs_by_adapter_type:
+    summary: ont_1a_readIDs_by_adapter_type
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_1a_readIDs_by_adapter_type
+    depends_on:
+    - ont_1a_call_adapter_scan
+  ont_1a_adapter_scan_summary:
+    summary: ont_1a_adapter_scan_summary
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_1a_adapter_scan_summary
+    depends_on:
+    - ont_1a_readIDs_by_adapter_type
+  ont_1a_merge_scan_lists:
+    summary: ont_1a_merge_scan_lists
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_1a_merge_scan_lists
+    depends_on:
+    - ont_1a_adapter_scan_summary
+  ont_1a_subset_fastq_by_adapter_type:
+    summary: ont_1a_subset_fastq_by_adapter_type
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_1a_subset_fastq_by_adapter_type
+    depends_on:
+    - ont_1a_merge_scan_lists
+  ont_1a_compress_merged_fq:
+    summary: ont_1a_compress_merged_fq
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_1a_compress_merged_fq
+    depends_on:
+    - ont_1a_subset_fastq_by_adapter_type
+  ont_1a_split_fastq_to_R1_R2:
+    summary: ont_1a_split_fastq_to_R1_R2
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_1a_split_fastq_to_R1_R2
+    depends_on:
+    - ont_1a_compress_merged_fq
+  ont_1b_cutadapt:
+    summary: ont_1b_cutadapt
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_1b_cutadapt
+    depends_on:
+    - ont_1a_split_fastq_to_R1_R2
+  ont_1b_R1_hardTrimming:
+    summary: ont_1b_R1_hardTrimming
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_1b_R1_hardTrimming
+    depends_on:
+    - ont_1b_cutadapt
+  ont_1b_R1_internalTrim:
+    summary: ont_1b_R1_internalTrim
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_1b_R1_internalTrim
+    depends_on:
+    - ont_1b_R1_hardTrimming
+  ont_1b_cutadapt_internalTrimming:
+    summary: ont_1b_cutadapt_internalTrimming
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_1b_cutadapt_internalTrimming
+    depends_on:
+    - ont_1b_R1_internalTrim
+  ont_1b_cutadapt_summary:
+    summary: ont_1b_cutadapt_summary
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_1b_cutadapt_summary
+    depends_on:
+    - ont_1b_cutadapt_internalTrimming
+  ont_1c_fastq_call_bc_from_adapter:
+    summary: ont_1c_fastq_call_bc_from_adapter
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_1c_fastq_call_bc_from_adapter
+    depends_on:
+    - ont_1b_cutadapt_summary
+  ont_1c_filter_barcodes:
+    summary: ont_1c_filter_barcodes
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_1c_filter_barcodes
+    depends_on:
+    - ont_1c_fastq_call_bc_from_adapter
+  ont_1c_tsv_bc_correction:
+    summary: ont_1c_tsv_bc_correction
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_1c_tsv_bc_correction
+    depends_on:
+    - ont_1c_filter_barcodes
+  ont_1c_summarize_bc_correction:
+    summary: ont_1c_summarize_bc_correction
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_1c_summarize_bc_correction
+    depends_on:
+    - ont_1c_tsv_bc_correction
+  ont_2a_generate_junction_bed:
+    summary: ont_2a_generate_junction_bed
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2a_generate_junction_bed
+    depends_on:
+    - ont_1c_summarize_bc_correction
+  ont_2a_align_minimap2_genome:
+    summary: ont_2a_align_minimap2_genome
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2a_align_minimap2_genome
+    depends_on:
+    - ont_2a_generate_junction_bed
+  ont_2a_sort_compress_output:
+    summary: ont_2a_sort_compress_output
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2a_sort_compress_output
+    depends_on:
+    - ont_2a_align_minimap2_genome
+  ont_2a_add_corrected_barcodes:
+    summary: ont_2a_add_corrected_barcodes
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2a_add_corrected_barcodes
+    depends_on:
+    - ont_2a_sort_compress_output
+  ont_2a_add_umis:
+    summary: ont_2a_add_umis
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2a_add_umis
+    depends_on:
+    - ont_2a_add_corrected_barcodes
+  ont_2a_filter_bam_empty_tags:
+    summary: ont_2a_filter_bam_empty_tags
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2a_filter_bam_empty_tags
+    depends_on:
+    - ont_2a_add_umis
+  ont_2a_featureCounts:
+    summary: ont_2a_featureCounts
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2a_featureCounts
+    depends_on:
+    - ont_2a_filter_bam_empty_tags
+  ont_2a_add_featureCounts_to_bam:
+    summary: ont_2a_add_featureCounts_to_bam
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2a_add_featureCounts_to_bam
+    depends_on:
+    - ont_2a_featureCounts
+  ont_2a_split_bam_by_strand:
+    summary: ont_2a_split_bam_by_strand
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2a_split_bam_by_strand
+    depends_on:
+    - ont_2a_add_featureCounts_to_bam
+  ont_2a_umitools_count:
+    summary: ont_2a_umitools_count
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2a_umitools_count
+    depends_on:
+    - ont_2a_split_bam_by_strand
+  ont_2a_counts_to_sparse:
+    summary: ont_2a_counts_to_sparse
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2a_counts_to_sparse
+    depends_on:
+    - ont_2a_umitools_count
+  ont_2a_cache_h5ad:
+    summary: ont_2a_cache_h5ad
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2a_cache_h5ad
+    depends_on:
+    - ont_2a_counts_to_sparse
+  ont_2a_cache_seurat:
+    summary: ont_2a_cache_seurat
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2a_cache_seurat
+    depends_on:
+    - ont_2a_cache_h5ad
+  ont_2b_txome_align_minimap2_transcriptome:
+    summary: ont_2b_txome_align_minimap2_transcriptome
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2b_txome_align_minimap2_transcriptome
+    depends_on:
+    - ont_2a_cache_seurat
+  ont_2b_txome_add_corrected_barcodes:
+    summary: ont_2b_txome_add_corrected_barcodes
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2b_txome_add_corrected_barcodes
+    depends_on:
+    - ont_2b_txome_align_minimap2_transcriptome
+  ont_2b_txome_add_umis:
+    summary: ont_2b_txome_add_umis
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2b_txome_add_umis
+    depends_on:
+    - ont_2b_txome_add_corrected_barcodes
+  ont_2b_txome_filter_bam_empty_tags:
+    summary: ont_2b_txome_filter_bam_empty_tags
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2b_txome_filter_bam_empty_tags
+    depends_on:
+    - ont_2b_txome_add_umis
+  ont_2b_txome_dedup_by_xb:
+    summary: ont_2b_txome_dedup_by_xb
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2b_txome_dedup_by_xb
+    depends_on:
+    - ont_2b_txome_filter_bam_empty_tags
+  ont_2b_txome_sort_by_xb:
+    summary: ont_2b_txome_sort_by_xb
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2b_txome_sort_by_xb
+    depends_on:
+    - ont_2b_txome_dedup_by_xb
+  ont_2b_txome_oarfish_quant:
+    summary: ont_2b_txome_oarfish_quant
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2b_txome_oarfish_quant
+    depends_on:
+    - ont_2b_txome_sort_by_xb
+  ont_2b_txome_compress_oarfish_matrix:
+    summary: ont_2b_txome_compress_oarfish_matrix
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2b_txome_compress_oarfish_matrix
+    depends_on:
+    - ont_2b_txome_oarfish_quant
+  ont_2b_txome_cache_h5ad_minimap2:
+    summary: ont_2b_txome_cache_h5ad_minimap2
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2b_txome_cache_h5ad_minimap2
+    depends_on:
+    - ont_2b_txome_compress_oarfish_matrix
+  ont_2b_txome_cache_seurat_minimap2:
+    summary: ont_2b_txome_cache_seurat_minimap2
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2b_txome_cache_seurat_minimap2
+    depends_on:
+    - ont_2b_txome_cache_h5ad_minimap2
+  ont_1f_sort_gtf:
+    summary: ont_1f_sort_gtf
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_1f_sort_gtf
+    depends_on:
+    - ont_2b_txome_cache_seurat_minimap2
+  ont_2d_ultra_pipeline_genome:
+    summary: ont_2d_ultra_pipeline_genome
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2d_ultra_pipeline_genome
+    depends_on:
+    - ont_1f_sort_gtf
+  ont_2d_ultra_sort_compress_output:
+    summary: ont_2d_ultra_sort_compress_output
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2d_ultra_sort_compress_output
+    depends_on:
+    - ont_2d_ultra_pipeline_genome
+  ont_2d_ultra_add_corrected_barcodes:
+    summary: ont_2d_ultra_add_corrected_barcodes
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2d_ultra_add_corrected_barcodes
+    depends_on:
+    - ont_2d_ultra_sort_compress_output
+  ont_2d_ultra_add_umis:
+    summary: ont_2d_ultra_add_umis
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2d_ultra_add_umis
+    depends_on:
+    - ont_2d_ultra_add_corrected_barcodes
+  ont_2d_ultra_filter_bam_empty_tags:
+    summary: ont_2d_ultra_filter_bam_empty_tags
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2d_ultra_filter_bam_empty_tags
+    depends_on:
+    - ont_2d_ultra_add_umis
+  ont_2d_ultra_featureCounts:
+    summary: ont_2d_ultra_featureCounts
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2d_ultra_featureCounts
+    depends_on:
+    - ont_2d_ultra_filter_bam_empty_tags
+  ont_2d_ultra_add_featureCounts_to_bam:
+    summary: ont_2d_ultra_add_featureCounts_to_bam
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2d_ultra_add_featureCounts_to_bam
+    depends_on:
+    - ont_2d_ultra_featureCounts
+  ont_2d_ultra_umitools_count:
+    summary: ont_2d_ultra_umitools_count
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2d_ultra_umitools_count
+    depends_on:
+    - ont_2d_ultra_add_featureCounts_to_bam
+  ont_2d_ultra_counts_to_sparse:
+    summary: ont_2d_ultra_counts_to_sparse
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2d_ultra_counts_to_sparse
+    depends_on:
+    - ont_2d_ultra_umitools_count
+  ont_2d_ultra_cache_h5ad:
+    summary: ont_2d_ultra_cache_h5ad
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2d_ultra_cache_h5ad
+    depends_on:
+    - ont_2d_ultra_counts_to_sparse
+  ont_2d_ultra_cache_seurat:
+    summary: ont_2d_ultra_cache_seurat
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2d_ultra_cache_seurat
+    depends_on:
+    - ont_2d_ultra_cache_h5ad
+  ont_2e_isoquant:
+    summary: ont_2e_isoquant
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2e_isoquant
+    depends_on:
+    - ont_2d_ultra_cache_seurat
+  ont_2e_add_isoquant_genes_to_bam:
+    summary: ont_2e_add_isoquant_genes_to_bam
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2e_add_isoquant_genes_to_bam
+    depends_on:
+    - ont_2e_isoquant
+  ont_2e_add_isoquant_transcripts_to_bam:
+    summary: ont_2e_add_isoquant_transcripts_to_bam
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2e_add_isoquant_transcripts_to_bam
+    depends_on:
+    - ont_2e_add_isoquant_genes_to_bam
+  ont_2e_umitools_count:
+    summary: ont_2e_umitools_count
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2e_umitools_count
+    depends_on:
+    - ont_2e_add_isoquant_transcripts_to_bam
+  ont_2e_counts_to_sparse:
+    summary: ont_2e_counts_to_sparse
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2e_counts_to_sparse
+    depends_on:
+    - ont_2e_umitools_count
+  ont_2e_cache_h5ad:
+    summary: ont_2e_cache_h5ad
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2e_cache_h5ad
+    depends_on:
+    - ont_2e_counts_to_sparse
+  ont_2e_cache_seurat:
+    summary: ont_2e_cache_seurat
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_2e_cache_seurat
+    depends_on:
+    - ont_2e_cache_h5ad
+  ont_3a_readQC_0_rawInput:
+    summary: ont_3a_readQC_0_rawInput
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_3a_readQC_0_rawInput
+    depends_on:
+    - ont_2e_cache_seurat
+  ont_3a_readQC_1_preCutadapt:
+    summary: ont_3a_readQC_1_preCutadapt
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_3a_readQC_1_preCutadapt
+    depends_on:
+    - ont_3a_readQC_0_rawInput
+  ont_3a_readQC_2_postCutadapt:
+    summary: ont_3a_readQC_2_postCutadapt
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_3a_readQC_2_postCutadapt
+    depends_on:
+    - ont_3a_readQC_1_preCutadapt
+  ont_3a_readQC_3_bam:
+    summary: ont_3a_readQC_3_bam
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_3a_readQC_3_bam
+    depends_on:
+    - ont_3a_readQC_2_postCutadapt
+  ont_3a_readQC_downsample:
+    summary: ont_3a_readQC_downsample
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_3a_readQC_downsample
+    depends_on:
+    - ont_3a_readQC_3_bam
+  ont_3a_readQC_summaryplot:
+    summary: ont_3a_readQC_summaryplot
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_3a_readQC_summaryplot
+    depends_on:
+    - ont_3a_readQC_downsample
+  ont_3a_readQC_compress:
+    summary: ont_3a_readQC_compress
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_3a_readQC_compress
+    depends_on:
+    - ont_3a_readQC_summaryplot
+  ont_3b_qualimap:
+    summary: ont_3b_qualimap
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_3b_qualimap
+    depends_on:
+    - ont_3a_readQC_compress
+  ont_3b_qualimap_readqc_summary2csv:
+    summary: ont_3b_qualimap_readqc_summary2csv
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_3b_qualimap_readqc_summary2csv
+    depends_on:
+    - ont_3b_qualimap
+  ont_3b_qualimap_bamqc:
+    summary: ont_3b_qualimap_bamqc
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_3b_qualimap_bamqc
+    depends_on:
+    - ont_3b_qualimap_readqc_summary2csv
+  ont_3b_qualimap_bamqc_summary2csv:
+    summary: ont_3b_qualimap_bamqc_summary2csv
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      root_target: all
+      until:
+      - ont_3b_qualimap_bamqc_summary2csv
+    depends_on:
+    - ont_3b_qualimap_bamqc
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/mckellardw__slide_snake/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/mckellardw__slide_snake/Snakefile
+      directory: ../workflow_candidates/mckellardw__slide_snake
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/mckellardw__slide_snake/config.yaml
+      targets:
+      - all
+    depends_on:
+    - ont_3b_qualimap_bamqc_summary2csv

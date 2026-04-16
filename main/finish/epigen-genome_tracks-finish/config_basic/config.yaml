@@ -1,0 +1,192 @@
+workflow_id: epigen-genome_tracks-finish
+source_cores: 8
+steps:
+  env_export:
+    summary: env_export
+    requires:
+    - ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__genome_tracks/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__genome_tracks
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+      root_target: all
+      until:
+      - env_export
+  config_export:
+    summary: config_export
+    requires:
+    - ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__genome_tracks/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__genome_tracks
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+      root_target: all
+      until:
+      - config_export
+    depends_on:
+    - env_export
+  annot_export:
+    summary: annot_export
+    requires:
+    - ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__genome_tracks/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__genome_tracks
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+      root_target: all
+      until:
+      - annot_export
+    depends_on:
+    - config_export
+  gene_list_export:
+    summary: gene_list_export
+    requires:
+    - ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__genome_tracks/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__genome_tracks
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+      root_target: all
+      until:
+      - gene_list_export
+    depends_on:
+    - annot_export
+  make_bed:
+    summary: make_bed
+    requires:
+    - ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__genome_tracks/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__genome_tracks
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+      root_target: all
+      until:
+      - make_bed
+    depends_on:
+    - gene_list_export
+  split_sc_bam:
+    summary: split_sc_bam
+    requires:
+    - ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__genome_tracks/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__genome_tracks
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+      root_target: all
+      until:
+      - split_sc_bam
+    depends_on:
+    - make_bed
+  merge_bams:
+    summary: merge_bams
+    requires:
+    - ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__genome_tracks/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__genome_tracks
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+      root_target: all
+      until:
+      - merge_bams
+    depends_on:
+    - split_sc_bam
+  coverage:
+    summary: coverage
+    requires:
+    - ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__genome_tracks/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__genome_tracks
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+      root_target: all
+      until:
+      - coverage
+    depends_on:
+    - merge_bams
+  ucsc_hub:
+    summary: ucsc_hub
+    requires:
+    - ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__genome_tracks/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__genome_tracks
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+      root_target: all
+      until:
+      - ucsc_hub
+    depends_on:
+    - coverage
+  plot_tracks:
+    summary: plot_tracks
+    requires:
+    - ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__genome_tracks/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__genome_tracks
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+      root_target: all
+      until:
+      - plot_tracks
+    depends_on:
+    - ucsc_hub
+  igv_report:
+    summary: igv_report
+    requires:
+    - ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__genome_tracks/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__genome_tracks
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+      root_target: all
+      until:
+      - igv_report
+    depends_on:
+    - plot_tracks
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__genome_tracks/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__genome_tracks
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__genome_tracks/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - igv_report

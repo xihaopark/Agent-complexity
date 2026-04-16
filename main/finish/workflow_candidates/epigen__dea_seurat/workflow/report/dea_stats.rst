@@ -1,0 +1,1 @@
+Statistics and visualizations of filtered DEA results of analysis {{snakemake.wildcards["analysis"]}} using assay {{snakemake.params["assay"]}} to compare groups in {{snakemake.params["metadata"]}} versus {{snakemake.params["control"]}}.

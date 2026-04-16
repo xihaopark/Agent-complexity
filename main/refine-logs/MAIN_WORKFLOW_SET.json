@@ -1,0 +1,43 @@
+{
+  "version": "v2",
+  "updated_at": "2026-04-14",
+  "main_workflow_count": 30,
+  "smoke_workflow_count": 3,
+  "main_workflows": [
+    "rna-seq-kallisto-sleuth-finish",
+    "star-arriba-fusion-calling-finish",
+    "tgirke-systempiperdata-rnaseq-finish",
+    "rna-seq-star-deseq2-finish",
+    "epigen-dea_seurat-finish",
+    "epigen-scrnaseq_processing_seurat-finish",
+    "cite-seq-alevin-fry-seurat-finish",
+    "single-cell-rna-seq-finish",
+    "epigen-fetch_ngs-finish",
+    "epigen-dea_limma-finish",
+    "epigen-enrichment_analysis-finish",
+    "tgirke-systempiperdata-chipseq-finish",
+    "fritjoflammers-snakemake-methylanalysis-finish",
+    "microsatellite-instability-detection-with-msisensor-pro-finish",
+    "dna-seq-short-read-circle-map-finish",
+    "tgirke-systempiperdata-varseq-finish",
+    "gustaveroussy-sopa-finish",
+    "lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+    "tgirke-systempiperdata-riboseq-finish",
+    "cyrcular-calling-finish",
+    "epigen-300bcg-atacseq_pipeline-finish",
+    "lwang-genomics-ngs_pipeline_sn-chip_seq-finish",
+    "cellranger-multi-finish",
+    "tgirke-systempiperdata-spscrna-finish",
+    "epigen-atacseq_pipeline-finish",
+    "epigen-rnaseq_pipeline-finish",
+    "akinyi-onyango-rna_seq_pipeline-finish",
+    "maxplanck-ie-snakepipes-finish",
+    "epigen-spilterlize_integrate-finish",
+    "read-alignment-pangenome-finish"
+  ],
+  "smoke_workflows": [
+    "rna-seq-star-deseq2-finish",
+    "epigen-scrnaseq_processing_seurat-finish",
+    "dna-seq-varlociraptor-finish"
+  ]
+}

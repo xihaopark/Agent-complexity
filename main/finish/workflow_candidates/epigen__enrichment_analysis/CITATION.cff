@@ -1,0 +1,64 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  Genomic Region Set & (Ranked) Gene Set Enrichment Analysis
+  & Visualization Workflow for Human and Mouse Genomes.
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Stephan
+    family-names: Reichl
+    orcid: 'https://orcid.org/0000-0001-8555-7198'
+    affiliation: CeMM Research Center for Molecular Medicine
+  - given-names: Martin
+    family-names: Stoll
+    orcid: 'https://orcid.org/0009-0006-7160-2326'
+    affiliation: CeMM Research Center for Molecular Medicine
+  - given-names: Raphael
+    family-names: Bednarsky
+    orcid: 'https://orcid.org/0009-0005-0404-3424'
+    affiliation: CeMM Research Center for Molecular Medicine
+  - given-names: Fangwen
+    family-names: Zhao
+    affiliation: CeMM Research Center for Molecular Medicine
+  - given-names: Daria
+    family-names: Romanovskaia
+    orcid: 'https://orcid.org/0000-0003-2831-0919'
+    affiliation: CeMM Research Center for Molecular Medicine
+  - given-names: Rob
+    family-names: ter Horst
+    orcid: 'https://orcid.org/0000-0003-0576-5873'
+    affiliation: CeMM Research Center for Molecular Medicine
+  - given-names: Christoph
+    family-names: Bock
+    orcid: 'https://orcid.org/0000-0001-6091-3088'
+    affiliation: CeMM Research Center for Molecular Medicine
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.7810621
+    description: >-
+      This DOI represents all versions, and will always
+      resolve to the latest one.
+repository-code: 'https://github.com/epigen/enrichment_analysis'
+url: 'https://epigen.github.io/enrichment_analysis/'
+abstract: >-
+  Given human (hg19 or hg38) or mouse (mm9 or mm10) based
+  genomic region sets (i.e., region sets) and/or (ranked)
+  gene sets of interest and respective background
+  region/gene sets, the enrichment of terms within the
+  configured databases is determined using LOLA, GREAT,
+  GSEApy (over-representation analysis (ORA) & preranked
+  GSEA), pycisTarget, RcisTarget, before aggregation and
+  visualization.
+keywords:
+  - Bioinformatics
+  - Workflow
+  - Enrichment Analysis
+  - Epigenetics
+  - Visualization
+  - Snakemake
+license: MIT

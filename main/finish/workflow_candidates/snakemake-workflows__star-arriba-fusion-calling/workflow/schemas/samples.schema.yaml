@@ -1,0 +1,38 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://json-schema.org/draft/2020-12/schema"
+
+description: an entry in the sample sheet
+properties:
+  sample_name:
+    type: string
+    description: sample name/identifier (alphanumeric string, that may additionally contain '_' and '-')
+    pattern: "^[a-zA-Z_0-9-]+$"
+  alias:
+    type: string
+    description: sample name within the VCF/BCF files generated for a group (e.g. tumor, normal, etc.) (alphanumeric string, that may additionally contain '_' and '-')
+    pattern: "^[a-zA-Z_0-9-]+$"
+  group:
+    type: string
+    description: group of samples called jointly (alphanumeric string, that may additionally contain '_' and '-')
+    pattern: "^[a-zA-Z_0-9-]+$"
+  platform:
+    type: string
+    enum:
+      - "CAPILLARY"
+      - "LS454"
+      - "ILLUMINA"
+      - "SOLID"
+      - "HELICOS"
+      - "IONTORRENT"
+      - "ONT"
+      - "PACBIO"
+    description: used sequencing platform
+  sv_file:
+    type: string
+    description: (optional) file with known structural variants, for example from whole genome sequencing. See https://github.com/suhrig/arriba/wiki/04-Input-files#structural-variant-calls-from-wgs
+
+required:
+  - sample_name
+  - group
+  - alias
+  - platform

@@ -1,0 +1,14 @@
+name: renzo-wf-signac-atacseq
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - r-base=4.3
+  - r-seurat
+  - r-signac
+  - r-ggplot2
+  - bioconductor-genomicranges
+  - bioconductor-iranges
+  - bioconductor-rsamtools
+  - bioconductor-rtracklayer

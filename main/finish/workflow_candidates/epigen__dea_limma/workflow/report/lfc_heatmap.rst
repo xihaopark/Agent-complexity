@@ -1,0 +1,1 @@
+Hierarchically clustered heatmap visualizing the effect sizes as log2 fold changes of {{snakemake.wildcards["feature_list"]}} features of analysis {{snakemake.wildcards["analysis"]}}.

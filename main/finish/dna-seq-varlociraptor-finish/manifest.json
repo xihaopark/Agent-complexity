@@ -1,0 +1,270 @@
+{
+  "id": "dna-seq-varlociraptor-finish",
+  "name": "DNA-seq Varlociraptor Finish Workflow",
+  "engine": "snakemake",
+  "entry_point": "run_workflow.py",
+  "description": "Step-split Snakemake workflow for validating DNA-seq inputs, preparing references and reads, mapping, candidate calling, evidence building, final calling, annotation filtering, and delivery reporting.",
+  "version": "1.0",
+  "aliases": [
+    "varlociraptor",
+    "dna-seq-varlociraptor",
+    "variant-calling"
+  ],
+  "tags": [
+    "finish",
+    "dna-seq",
+    "varlociraptor",
+    "variant-calling"
+  ],
+  "know_how": "know-how.md",
+  "know_how_files": [
+    "know-how.md"
+  ],
+  "discovery": {
+    "kind": "finish_workflow",
+    "family": "dna_seq",
+    "aliases": [
+      "varlociraptor",
+      "dna-seq-varlociraptor",
+      "variant-calling"
+    ],
+    "retained_steps": [
+      "validate_config",
+      "inspect_inputs",
+      "prepare_references",
+      "prepare_reads",
+      "mapping",
+      "candidate_calling",
+      "evidence_build",
+      "calling",
+      "annotation_filtering",
+      "delivery_report"
+    ],
+    "supports_partial_run": true,
+    "runner": "python3 run_workflow.py --cores 8",
+    "standard_step_skills": true
+  },
+  "input_hints": [
+    "config_basic/config.yaml",
+    "config_basic/samples.tsv",
+    "resources/*",
+    "ngs-test-data/*"
+  ],
+  "output_hints": [
+    "results/alignment/*",
+    "results/candidates/*",
+    "results/final/*",
+    "results/annotated/*",
+    "results/reports/*"
+  ],
+  "steps": [
+    {
+      "id": "validate_config",
+      "name": "Validate workflow configuration",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/validate_config.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/validate_config.done"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "inspect_inputs",
+      "name": "Inspect tumor normal inputs",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/inspect_inputs.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/inspect_inputs.done"
+      ],
+      "depends_on": [
+        "validate_config"
+      ]
+    },
+    {
+      "id": "prepare_references",
+      "name": "Prepare reference bundle",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/prepare_references.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/prepare_references.done"
+      ],
+      "depends_on": [
+        "inspect_inputs"
+      ]
+    },
+    {
+      "id": "prepare_reads",
+      "name": "Prepare FASTQ or BAM inputs",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/prepare_reads.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/prepare_reads.done"
+      ],
+      "depends_on": [
+        "prepare_references"
+      ]
+    },
+    {
+      "id": "mapping",
+      "name": "Map reads to the reference genome",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/mapping.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/mapping.done"
+      ],
+      "depends_on": [
+        "prepare_reads"
+      ]
+    },
+    {
+      "id": "candidate_calling",
+      "name": "Generate candidate variants",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/candidate_calling.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/candidate_calling.done"
+      ],
+      "depends_on": [
+        "mapping"
+      ]
+    },
+    {
+      "id": "evidence_build",
+      "name": "Build evidence tracks for final calling",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/evidence_build.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/evidence_build.done"
+      ],
+      "depends_on": [
+        "candidate_calling"
+      ]
+    },
+    {
+      "id": "calling",
+      "name": "Run final varlociraptor calling",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/calling.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/calling.done"
+      ],
+      "depends_on": [
+        "evidence_build"
+      ]
+    },
+    {
+      "id": "annotation_filtering",
+      "name": "Annotate and filter final calls",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/annotation_filtering.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/annotation_filtering.done"
+      ],
+      "depends_on": [
+        "calling"
+      ]
+    },
+    {
+      "id": "delivery_report",
+      "name": "Assemble final delivery reports",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/delivery_report.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/delivery_report.done"
+      ],
+      "depends_on": [
+        "annotation_filtering"
+      ]
+    }
+  ]
+}

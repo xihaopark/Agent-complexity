@@ -1,0 +1,119 @@
+workflow_id: rna-seq-kallisto-sleuth
+source_cores: 8
+steps:
+  validate_config:
+    summary: validate_config
+    requires:
+      - config_basic/source_config.yaml
+      - config_basic/samples.tsv
+      - config_basic/units.tsv
+    command: ""
+  normalize_inputs:
+    summary: normalize_inputs
+    requires:
+      - config_basic/source_config.yaml
+      - config_basic/samples.tsv
+      - config_basic/units.tsv
+    command: ""
+  prepare_references:
+    summary: prepare_references
+    requires:
+      - config_basic/source_config.yaml
+    artifact_cache:
+      paths:
+        - resources/transcriptome.cdna.fasta
+        - resources/genome.gtf
+        - resources/transcripts_annotation.results.rds
+        - resources/transcripts_annotation.results.tsv
+        - resources/transcripts_annotation.main_transcript_strand_length.tsv
+    snakemake:
+      snakefile: workflow/Snakefile
+      configfile: config_basic/source_config.yaml
+      use_conda: true
+      cores: "{source_cores}"
+      scheduler: greedy
+      retries: 2
+      targets:
+        - resources/transcriptome.cdna.fasta
+        - resources/genome.gtf
+        - resources/transcripts_annotation.results.rds
+        - resources/transcripts_annotation.results.tsv
+        - resources/transcripts_annotation.main_transcript_strand_length.tsv
+  prepare_reads:
+    summary: prepare_reads
+    requires:
+      - config_basic/source_config.yaml
+    snakemake:
+      snakefile: workflow/Snakefile
+      configfile: config_basic/source_config.yaml
+      use_conda: true
+      cores: "{source_cores}"
+      scheduler: greedy
+      targets:
+        - results/stats/max-read-length.json
+  quantify:
+    summary: quantify
+    requires:
+      - config_basic/source_config.yaml
+    snakemake:
+      snakefile: workflow/Snakefile
+      configfile: config_basic/source_config.yaml
+      use_conda: true
+      cores: "{source_cores}"
+      scheduler: greedy
+      targets:
+        - results/kallisto_cdna/transcripts.cdna.idx
+      targets_from_table:
+        - table: config_basic/units.tsv
+          pattern: results/kallisto_cdna/{sample}-{unit}
+  init_sleuth:
+    summary: init_sleuth
+    requires:
+      - config_basic/source_config.yaml
+    snakemake:
+      snakefile: workflow/Snakefile
+      configfile: config_basic/source_config.yaml
+      use_conda: true
+      cores: 1
+      scheduler: greedy
+      targets:
+        - results/sleuth/all.samples.tsv
+        - results/sleuth/model_X.samples.tsv
+        - results/sleuth/all.rds
+        - results/sleuth/all.designmatrix.rds
+        - results/sleuth/model_X.rds
+        - results/sleuth/model_X.designmatrix.rds
+  differential_expression:
+    summary: differential_expression
+    requires:
+      - config_basic/source_config.yaml
+    snakemake:
+      snakefile: workflow/Snakefile
+      configfile: config_basic/source_config.yaml
+      use_conda: true
+      cores: 1
+      scheduler: greedy
+      targets:
+        - results/tables/diffexp/model_X.transcripts.diffexp.tsv
+        - results/tables/diffexp/model_X.genes-aggregated.diffexp.tsv
+        - results/tables/diffexp/model_X.genes-representative.diffexp.tsv
+        - results/plots/volcano/model_X.volcano-plots.pdf
+        - results/plots/ma/model_X.ma-plots.pdf
+        - results/plots/qq/model_X.qq-plots.pdf
+  optional_modules:
+    summary: optional_modules
+    requires:
+      - config_basic/source_config.yaml
+    command: ""
+  delivery_report:
+    summary: delivery_report
+    requires:
+      - config_basic/source_config.yaml
+    snakemake:
+      snakefile: workflow/Snakefile
+      configfile: config_basic/source_config.yaml
+      use_conda: true
+      cores: 1
+      scheduler: greedy
+      targets:
+        - results/tables/diffexp/model_X.genes-representative.diffexp_postprocessed.tsv

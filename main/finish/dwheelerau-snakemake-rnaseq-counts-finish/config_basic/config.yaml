@@ -1,0 +1,160 @@
+workflow_id: dwheelerau-snakemake-rnaseq-counts-finish
+source_cores: 8
+steps:
+  project_setup:
+    summary: project_setup
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+      root_target: all
+      until:
+      - project_setup
+  make_index:
+    summary: make_index
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+      root_target: all
+      until:
+      - make_index
+    depends_on:
+    - project_setup
+  qc_trim:
+    summary: qc_trim
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+      root_target: all
+      until:
+      - qc_trim
+    depends_on:
+    - make_index
+  aln:
+    summary: aln
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+      root_target: all
+      until:
+      - aln
+    depends_on:
+    - qc_trim
+  sam_to_bam:
+    summary: sam_to_bam
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+      root_target: all
+      until:
+      - sam_to_bam
+    depends_on:
+    - aln
+  do_counts:
+    summary: do_counts
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+      root_target: all
+      until:
+      - do_counts
+    depends_on:
+    - sam_to_bam
+  log_count_result:
+    summary: log_count_result
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+      root_target: all
+      until:
+      - log_count_result
+    depends_on:
+    - do_counts
+  make_latex_tables:
+    summary: make_latex_tables
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+      root_target: all
+      until:
+      - make_latex_tables
+    depends_on:
+    - log_count_result
+  clean:
+    summary: clean
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+      root_target: all
+      until:
+      - clean
+    depends_on:
+    - make_latex_tables
+  all:
+    summary: all
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/dwheelerau__snakemake-rnaseq-counts/config.yaml
+      targets:
+      - all
+    depends_on:
+    - clean

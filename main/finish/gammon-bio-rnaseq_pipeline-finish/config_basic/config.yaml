@@ -1,0 +1,31 @@
+workflow_id: gammon-bio-rnaseq_pipeline-finish
+source_cores: 8
+source_root: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/gammon-bio__rnaseq_pipeline
+sample_table: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/gammon-bio__rnaseq_pipeline/examples/sample_table.csv
+project_name: gammon_pipeline
+command_conda_env: renzo-wf-gammon-rnaseq
+steps:
+  get_refs:
+    summary: Fetch reference files
+    command: bash -lc 'cd {source_root} && bash scripts/get_refs.sh --species human
+      --build GRCh38'
+  rename_fastqs:
+    summary: Normalize FASTQ file naming
+    depends_on:
+    - get_refs
+    command: bash -lc 'cd {source_root} && bash scripts/rename_fastqs.sh'
+  salmon_pipeline:
+    summary: Run salmon pipeline end to end
+    depends_on:
+    - rename_fastqs
+    command: bash -lc 'cd {source_root} && THREADS={source_cores} bash salmon_pipeline.sh
+      all'
+  run_deseq2:
+    summary: Run DESeq2 downstream analysis
+    depends_on:
+    - salmon_pipeline
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/gammon-bio__rnaseq_pipeline/examples/sample_table.csv
+    command: bash -lc 'cd {source_root} && Rscript scripts/run_deseq2.R --quant_dir
+      out/salmon --gtf data/references/gtf/Homo_sapiens.GRCh38.110.gtf --sample_table
+      {sample_table} --group_col condition --project_name {project_name}'

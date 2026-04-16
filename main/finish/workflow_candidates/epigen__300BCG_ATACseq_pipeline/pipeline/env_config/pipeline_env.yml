@@ -1,0 +1,22 @@
+name: bcg_pipeline
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=2.7.18
+  - docutils=0.16
+  - pandas=0.24.2
+  - numpy=1.16.6
+  - scipy=1.2.1
+  - matplotlib=2.2.5
+  - pysam=0.16.0.1
+  - pybedtools=0.8.1
+  - pyBigWig=0.3.17  
+  - deeptools=3.3.0
+  - macs2=2.1.4
+  - pypiper=0.6
+  - pip
+  - pip:
+    - pyyaml==5.3.1
+    - peppy==0.19.1
+    - "-e git://github.com/pepkit/looper.git@v0.9.1#egg=looper"

@@ -1,0 +1,37 @@
+INPUT:
+  FASTA:  "test/data/genome.fa"
+
+
+SAMPLESHEET: "test/samplesheet.csv"
+OUTPUT_DIR: "results/"
+
+MACAU:
+  BINARY: "" # path to macau binary
+  RUNS:
+    default:
+      RELATEDNESS_MATRIX: "test/macau/data/relatedness.txt"
+      RELATEDNESS_SAMPLES_LIST: "test/macau/by_model/default/samples_list.txt"
+      PREDICTOR_VARS:
+        - collection_longitude_dec
+      COVARIATES: 
+        - age
+      SAMPLING_ITERATIONS: 1000
+    parentals:
+      RELATEDNESS_MATRIX:"test/macau/data/relatedness.txt"
+      RELATEDNESS_SAMPLES_LIST: "test/macau/by_model/default/samples_list.txt"
+      PREDICTOR_VARS:
+        - hybrid_index
+      COVARIATES: 
+        - age
+        - collection_longitude_dec
+      SAMPLING_ITERATIONS: 1000
+
+DSS_COMPARISONS:
+  - "default"
+
+
+CHROMOSOMES:
+  - "chr28"
+
+# define tool label, used to produce methylation calls
+TOOL_LABEL: "bismark"

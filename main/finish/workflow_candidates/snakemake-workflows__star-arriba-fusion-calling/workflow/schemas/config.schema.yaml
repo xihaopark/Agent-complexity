@@ -1,0 +1,58 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+description: main configuration schema for the workflow
+properties:
+  samples:
+    type: string
+    description: path to sample-sheet TSV file
+  units:
+    type: string
+    description: path to unit-sheet TSV file
+
+  params:
+    type: object
+    properties:
+      arriba:
+        type: object
+        properties:
+          custom_blacklist:
+            type: string
+            description: custom blacklist of known false positive fusions
+          custom_known_fusions:
+            type: string
+            description: custom list of known / common fusions
+          extra:
+            type: string
+        required:
+          - custom_blacklist
+          - custom_known_fusions
+          - extra
+      star:
+        type: object
+        properties:
+          index:
+            type: object
+            properties:
+              extra:
+                type: string
+              sjdbOverhang:
+                type: integer
+            required:
+              - extra
+              - sjdbOverhang
+          align:
+            type: object
+            properties:
+              extra:
+                type: string
+            required:
+              - extra
+        required:
+          - index
+          - align
+    required:
+      - arriba
+      - star
+required:
+  - samples
+  - units
+  - params

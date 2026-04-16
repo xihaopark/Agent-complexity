@@ -1,0 +1,40 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+description: main configuration schema for the workflow
+properties:
+  sample_sheet:
+    type: string
+    description: path to sample-sheet TSV file
+
+  aliases:
+    type: object
+    properties:
+      tumor:
+        type: string
+        description: Alias used for a tumor sample in the sample sheet (see `alias` column).
+      normal:
+        type: string
+        description: (optional) Alias used for a normal sample in the sample sheet (see `alias` column). If a normal alias is provided, the workflow will run in tumor-normal mode. Alternatively, provide a baseline alias.
+      baseline:
+        type: string
+        description: (optional) Alias used for a baseline samples in the sample sheet (see `alias` column). If a baseline alias is provided, the workflow will run in tumor-only mode. Alternatively, provide a normal alias.
+    required:
+      - tumor
+
+  ref:
+    type: object
+    properties:
+      species:
+        type: string
+      release:
+        type: integer
+      build:
+        type: string
+    required:
+      - species
+      - release
+      - build
+
+required:
+  - sample_sheet
+  - aliases
+  - ref

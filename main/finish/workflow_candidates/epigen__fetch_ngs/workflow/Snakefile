@@ -1,0 +1,56 @@
+
+# libraries
+import yaml
+import pandas as pd
+import os
+from snakemake.utils import min_version
+
+##### module name #####
+module_name = "fetch_ngs"
+
+##### set minimum snakemake version #####
+min_version("8.20.1")
+
+##### setup report #####
+report: os.path.join("report", "workflow.rst")
+    
+# list of names of the used environment specifications in workflow/envs/{env_name}.yaml
+envs = ["iseq","picard"]
+
+##### load config #####
+configfile: os.path.join("config","config.yaml")
+
+##### set global variables
+result_path = os.path.join(config["result_path"], module_name)
+output_fmt = config.get("output_format", "fastq").strip().lower()
+
+# list of accession strings
+accession_ids = list(config["accession_ids"])
+
+# global wildcard constrain to make ruleorder direcive obsolete
+wildcard_constraints:
+    accession="[A-Z]{3,5}[0-9]+"
+
+# ruleorder: fastq_to_bam>fetch_file>iseq_download
+
+
+##### target rules #####
+rule all:
+    input:
+        aggregated_metadata = os.path.join(result_path,"metadata.csv"),
+        metadata_files = expand(os.path.join(result_path, "{accession}", "{accession}.metadata.csv"), accession=accession_ids),
+        success_logs = expand(os.path.join(result_path, "{accession}", "success.log"), accession=accession_ids) if config["metadata_only"]==0 else [],
+        # config
+        envs = expand(os.path.join(result_path,'envs','{env}.yaml'),env=envs),
+        configs = os.path.join(result_path,'configs','{}_config.yaml'.format(config["project_name"])),
+    resources:
+        mem_mb=config.get("mem", "4000"),
+    threads: 1
+    log:
+        os.path.join("logs","rules","all.log")
+
+
+##### load rules #####
+include: os.path.join("rules", "export.smk")
+include: os.path.join("rules", "fetch.smk")
+include: os.path.join("rules", "metadata.smk")

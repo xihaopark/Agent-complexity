@@ -1,0 +1,14 @@
+workflow_id: mohammedemamkhattabunipd-atacseq-finish
+source_cores: 8
+command_conda_env: renzo-wf-signac-atacseq
+steps:
+  primary_atacseq:
+    summary: Run main ATACseq analysis script
+    command: bash -lc 'cd /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/mohammedemamkhattabunipd__ATACseq
+      && Rscript ATACseq.R'
+  downstream_atacseq:
+    summary: Run downstream ATACseq analysis script
+    depends_on:
+    - primary_atacseq
+    command: bash -lc 'cd /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/mohammedemamkhattabunipd__ATACseq
+      && Rscript ATACseq_downstream.R'

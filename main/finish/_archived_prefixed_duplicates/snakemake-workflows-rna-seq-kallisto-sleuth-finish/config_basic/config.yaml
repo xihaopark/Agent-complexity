@@ -1,0 +1,1184 @@
+workflow_id: rna-seq-kallisto-sleuth-finish
+source_cores: 8
+steps:
+  fastp_se:
+    summary: fastp_se
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - fastp_se
+  fastp_pe:
+    summary: fastp_pe
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - fastp_pe
+    depends_on:
+    - fastp_se
+  max_read_length:
+    summary: max_read_length
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - max_read_length
+    depends_on:
+    - fastp_pe
+  get_aligned_pos:
+    summary: get_aligned_pos
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_aligned_pos
+    depends_on:
+    - max_read_length
+  get_selected_transcripts_aligned_read_bins:
+    summary: get_selected_transcripts_aligned_read_bins
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_selected_transcripts_aligned_read_bins
+    depends_on:
+    - get_aligned_pos
+  get_selected_transcripts_sample_QC_histogram:
+    summary: get_selected_transcripts_sample_QC_histogram
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_selected_transcripts_sample_QC_histogram
+    depends_on:
+    - get_selected_transcripts_aligned_read_bins
+  get_sample_QC_histogram:
+    summary: get_sample_QC_histogram
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_sample_QC_histogram
+    depends_on:
+    - get_selected_transcripts_sample_QC_histogram
+  get_transcriptome:
+    summary: get_transcriptome
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_transcriptome
+    depends_on:
+    - get_sample_QC_histogram
+  get_annotation:
+    summary: get_annotation
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_annotation
+    depends_on:
+    - get_transcriptome
+  get_transcript_info:
+    summary: get_transcript_info
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_transcript_info
+    depends_on:
+    - get_annotation
+  get_pfam:
+    summary: get_pfam
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_pfam
+    depends_on:
+    - get_transcript_info
+  convert_pfam:
+    summary: convert_pfam
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - convert_pfam
+    depends_on:
+    - get_pfam
+  calculate_cpat_hexamers:
+    summary: calculate_cpat_hexamers
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - calculate_cpat_hexamers
+    depends_on:
+    - convert_pfam
+  calculate_cpat_logit_model:
+    summary: calculate_cpat_logit_model
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - calculate_cpat_logit_model
+    depends_on:
+    - calculate_cpat_hexamers
+  get_spia_db:
+    summary: get_spia_db
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_spia_db
+    depends_on:
+    - calculate_cpat_logit_model
+  cds_polyA_T_removal:
+    summary: cds_polyA_T_removal
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - cds_polyA_T_removal
+    depends_on:
+    - get_spia_db
+  get_main_transcripts_fasta:
+    summary: get_main_transcripts_fasta
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_main_transcripts_fasta
+    depends_on:
+    - cds_polyA_T_removal
+  kallisto_long_index:
+    summary: kallisto_long_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - kallisto_long_index
+    depends_on:
+    - get_main_transcripts_fasta
+  kallisto_long_bus:
+    summary: kallisto_long_bus
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - kallisto_long_bus
+    depends_on:
+    - kallisto_long_index
+  bustools_sort:
+    summary: bustools_sort
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - bustools_sort
+    depends_on:
+    - kallisto_long_bus
+  bustools_count:
+    summary: bustools_count
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - bustools_count
+    depends_on:
+    - bustools_sort
+  kallisto_long_quant_tcc:
+    summary: kallisto_long_quant_tcc
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - kallisto_long_quant_tcc
+    depends_on:
+    - bustools_count
+  kallisto_index:
+    summary: kallisto_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - kallisto_index
+    depends_on:
+    - kallisto_long_quant_tcc
+  kallisto_quant:
+    summary: kallisto_quant
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - kallisto_quant
+    depends_on:
+    - kallisto_index
+  bwa_index:
+    summary: bwa_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - bwa_index
+    depends_on:
+    - kallisto_quant
+  bwa_mem:
+    summary: bwa_mem
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - bwa_mem
+    depends_on:
+    - bwa_index
+  get_only_main_transcript_reads_closest_to_3_prime:
+    summary: get_only_main_transcript_reads_closest_to_3_prime
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_only_main_transcript_reads_closest_to_3_prime
+    depends_on:
+    - bwa_mem
+  get_main_transcript_fastq:
+    summary: get_main_transcript_fastq
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_main_transcript_fastq
+    depends_on:
+    - get_only_main_transcript_reads_closest_to_3_prime
+  kallisto_3prime_index:
+    summary: kallisto_3prime_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - kallisto_3prime_index
+    depends_on:
+    - get_main_transcript_fastq
+  kallisto_3prime_quant:
+    summary: kallisto_3prime_quant
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - kallisto_3prime_quant
+    depends_on:
+    - kallisto_3prime_index
+  kallisto_samtools_sort:
+    summary: kallisto_samtools_sort
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - kallisto_samtools_sort
+    depends_on:
+    - kallisto_3prime_quant
+  kallisto_samtools_index:
+    summary: kallisto_samtools_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - kallisto_samtools_index
+    depends_on:
+    - kallisto_samtools_sort
+  compose_sample_sheet:
+    summary: compose_sample_sheet
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - compose_sample_sheet
+    depends_on:
+    - kallisto_samtools_index
+  sleuth_init:
+    summary: sleuth_init
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - sleuth_init
+    depends_on:
+    - compose_sample_sheet
+  sleuth_diffexp:
+    summary: sleuth_diffexp
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - sleuth_diffexp
+    depends_on:
+    - sleuth_init
+  ihw_fdr_control:
+    summary: ihw_fdr_control
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - ihw_fdr_control
+    depends_on:
+    - sleuth_diffexp
+  plot_bootstrap:
+    summary: plot_bootstrap
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - plot_bootstrap
+    depends_on:
+    - ihw_fdr_control
+  prepare_pca:
+    summary: prepare_pca
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - prepare_pca
+    depends_on:
+    - plot_bootstrap
+  plot_pca:
+    summary: plot_pca
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - plot_pca
+    depends_on:
+    - prepare_pca
+  plot_diffexp_pval_hist:
+    summary: plot_diffexp_pval_hist
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - plot_diffexp_pval_hist
+    depends_on:
+    - plot_pca
+  logcount_matrix:
+    summary: logcount_matrix
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - logcount_matrix
+    depends_on:
+    - plot_diffexp_pval_hist
+  tpm_matrix:
+    summary: tpm_matrix
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - tpm_matrix
+    depends_on:
+    - logcount_matrix
+  plot_diffexp_heatmap:
+    summary: plot_diffexp_heatmap
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - plot_diffexp_heatmap
+    depends_on:
+    - tpm_matrix
+  plot_group_density:
+    summary: plot_group_density
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - plot_group_density
+    depends_on:
+    - plot_diffexp_heatmap
+  plot_scatter:
+    summary: plot_scatter
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - plot_scatter
+    depends_on:
+    - plot_group_density
+  plot_fragment_length_dist:
+    summary: plot_fragment_length_dist
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - plot_fragment_length_dist
+    depends_on:
+    - plot_scatter
+  plot_vars:
+    summary: plot_vars
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - plot_vars
+    depends_on:
+    - plot_fragment_length_dist
+  vega_volcano_plot:
+    summary: vega_volcano_plot
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - vega_volcano_plot
+    depends_on:
+    - plot_vars
+  init_isoform_switch:
+    summary: init_isoform_switch
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - init_isoform_switch
+    depends_on:
+    - vega_volcano_plot
+  calculate_protein_domains:
+    summary: calculate_protein_domains
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - calculate_protein_domains
+    depends_on:
+    - init_isoform_switch
+  calculate_coding_potential:
+    summary: calculate_coding_potential
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - calculate_coding_potential
+    depends_on:
+    - calculate_protein_domains
+  annotate_isoform_switch:
+    summary: annotate_isoform_switch
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - annotate_isoform_switch
+    depends_on:
+    - calculate_coding_potential
+  spia:
+    summary: spia
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - spia
+    depends_on:
+    - annotate_isoform_switch
+  fgsea:
+    summary: fgsea
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - fgsea
+    depends_on:
+    - spia
+  fgsea_plot_gene_sets:
+    summary: fgsea_plot_gene_sets
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - fgsea_plot_gene_sets
+    depends_on:
+    - fgsea
+  ens_gene_to_go:
+    summary: ens_gene_to_go
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - ens_gene_to_go
+    depends_on:
+    - fgsea_plot_gene_sets
+  download_go_obo:
+    summary: download_go_obo
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - download_go_obo
+    depends_on:
+    - ens_gene_to_go
+  goatools_go_enrichment:
+    summary: goatools_go_enrichment
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - goatools_go_enrichment
+    depends_on:
+    - download_go_obo
+  postprocess_go_enrichment:
+    summary: postprocess_go_enrichment
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - postprocess_go_enrichment
+    depends_on:
+    - goatools_go_enrichment
+  postprocess_diffexp:
+    summary: postprocess_diffexp
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - postprocess_diffexp
+    depends_on:
+    - postprocess_go_enrichment
+  postprocess_tpm_matrix:
+    summary: postprocess_tpm_matrix
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - postprocess_tpm_matrix
+    depends_on:
+    - postprocess_diffexp
+  plot_enrichment_scatter:
+    summary: plot_enrichment_scatter
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - plot_enrichment_scatter
+    depends_on:
+    - postprocess_tpm_matrix
+  plot_pathway_scatter:
+    summary: plot_pathway_scatter
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - plot_pathway_scatter
+    depends_on:
+    - plot_enrichment_scatter
+  spia_datavzrd:
+    summary: spia_datavzrd
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - spia_datavzrd
+    depends_on:
+    - plot_pathway_scatter
+  diffexp_datavzrd:
+    summary: diffexp_datavzrd
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - diffexp_datavzrd
+    depends_on:
+    - spia_datavzrd
+  go_enrichment_datavzrd:
+    summary: go_enrichment_datavzrd
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - go_enrichment_datavzrd
+    depends_on:
+    - diffexp_datavzrd
+  meta_compare_datavzrd:
+    summary: meta_compare_datavzrd
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - meta_compare_datavzrd
+    depends_on:
+    - go_enrichment_datavzrd
+  inputs_datavzrd:
+    summary: inputs_datavzrd
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - inputs_datavzrd
+    depends_on:
+    - meta_compare_datavzrd
+  bam_paired_to_fastq:
+    summary: bam_paired_to_fastq
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - bam_paired_to_fastq
+    depends_on:
+    - inputs_datavzrd
+  bam_single_to_fastq:
+    summary: bam_single_to_fastq
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - bam_single_to_fastq
+    depends_on:
+    - bam_paired_to_fastq
+  meta_compare_diffexp:
+    summary: meta_compare_diffexp
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - meta_compare_diffexp
+    depends_on:
+    - bam_single_to_fastq
+  meta_compare_enrichment:
+    summary: meta_compare_enrichment
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - meta_compare_enrichment
+    depends_on:
+    - meta_compare_diffexp
+  meta_compare_pathways:
+    summary: meta_compare_pathways
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      root_target: all
+      until:
+      - meta_compare_pathways
+    depends_on:
+    - meta_compare_enrichment
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__rna-seq-kallisto-sleuth/.test/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - meta_compare_pathways

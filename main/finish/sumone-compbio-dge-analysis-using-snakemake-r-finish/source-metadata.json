@@ -1,0 +1,12 @@
+{
+  "source_repo_dir": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R",
+  "source_snakefile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R/Snakefile",
+  "source_configfile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R/config.yaml",
+  "step_count": 4,
+  "steps": [
+    "deseq2",
+    "volcano",
+    "gsea",
+    "all"
+  ]
+}

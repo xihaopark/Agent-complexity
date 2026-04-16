@@ -1,0 +1,20 @@
+workflow_id: saidmlonji-rnaseq_pipeline-finish
+source_cores: 8
+command_conda_env: renzo-wf-saidmlonji-rnaseq
+steps:
+  alignment_qc:
+    summary: Run primary RNAseq analysis script
+    command: bash -lc 'cd /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/saidmlonji__rnaseq_pipeline
+      && Rscript RNAseq_analysis.R'
+  gene_counting:
+    summary: Run gene counting script
+    depends_on:
+    - alignment_qc
+    command: bash -lc 'cd /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/saidmlonji__rnaseq_pipeline
+      && Rscript gene_counting.R'
+  deseq2_analysis:
+    summary: Run DESeq2 downstream analysis
+    depends_on:
+    - gene_counting
+    command: bash -lc 'cd /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/saidmlonji__rnaseq_pipeline
+      && Rscript deseq2_analysis.R'

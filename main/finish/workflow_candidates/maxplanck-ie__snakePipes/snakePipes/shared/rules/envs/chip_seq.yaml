@@ -1,0 +1,10 @@
+name: snakepipes_chip-seq_2.0
+channels:
+ - conda-forge
+ - bioconda
+dependencies:
+ - macs2 = 2.2.7.1
+ - genrich = 0.6.1
+ - bioconductor-csaw = 1.28.0
+ - bioconductor-rtracklayer
+ - r-histonehmm = 1.8

@@ -1,0 +1,109 @@
+{
+  "id": "gersteinlab-astro-finish",
+  "name": "gersteinlab astro finish",
+  "engine": "snakemake",
+  "entry_point": "run_workflow.py",
+  "description": "Manual finish workflow for ASTRO split by its native bitwise step control.",
+  "version": "0.1",
+  "aliases": [
+    "gersteinlab-astro"
+  ],
+  "tags": [
+    "finish",
+    "manual",
+    "candidate",
+    "r-workflow"
+  ],
+  "url": "https://github.com/gersteinlab/ASTRO",
+  "know_how": "workflow/agent-steps.md",
+  "know_how_files": [
+    "workflow/agent-steps.md"
+  ],
+  "discovery": {
+    "kind": "finish_workflow",
+    "family": "candidate",
+    "aliases": [
+      "gersteinlab-astro"
+    ],
+    "retained_steps": [
+      "demultiplexing",
+      "genome_mapping",
+      "feature_counting"
+    ],
+    "supports_partial_run": true,
+    "runner": "python3 run_workflow.py --cores 8",
+    "standard_step_skills": false,
+    "generated_by": "tools/manual_finishify_specials.py",
+    "split_mode": "manual-special",
+    "source_repo": "gersteinlab__ASTRO"
+  },
+  "input_hints": [
+    "config_basic/source_config.json"
+  ],
+  "output_hints": [
+    "results/finish/*.done"
+  ],
+  "steps": [
+    {
+      "id": "demultiplexing",
+      "name": "Demultiplexing",
+      "targets": [
+        "demultiplexing"
+      ],
+      "params": {
+        "snakefile": "steps/demultiplexing.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/demultiplexing.done"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "genome_mapping",
+      "name": "Genome Mapping",
+      "targets": [
+        "genome_mapping"
+      ],
+      "params": {
+        "snakefile": "steps/genome_mapping.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/genome_mapping.done"
+      ],
+      "depends_on": [
+        "demultiplexing"
+      ]
+    },
+    {
+      "id": "feature_counting",
+      "name": "Feature Counting",
+      "targets": [
+        "feature_counting"
+      ],
+      "params": {
+        "snakefile": "steps/feature_counting.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/feature_counting.done"
+      ],
+      "depends_on": [
+        "genome_mapping"
+      ]
+    }
+  ]
+}

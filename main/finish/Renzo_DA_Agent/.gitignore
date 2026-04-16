@@ -1,0 +1,90 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Node
+node_modules/
+dist/
+build/
+*.log
+npm-debug.log*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Data – runtime / user data
+data/uploads/*
+data/artifacts/*
+data/cache/*
+data/datasets/*/files/
+data/experiments/
+data/workflows/
+data/experiment_*.json
+data/experiment_*.txt
+data/workflow_imports/
+!data/uploads/.gitkeep
+!data/artifacts/.gitkeep
+!data/cache/.gitkeep
+# Keep dataset metadata.json so dataset definitions are tracked
+!data/datasets/*/metadata.json
+
+# Workflow pool – large cloned repos; only keep manifests & metadata
+workflow_pool/.staging/
+workflow_pool/2054/
+workflow_pool/2078/
+workflow_pool/proteinfamilies/
+workflow_pool/submissions-pilot5-datasetjson/
+# SDTM-Adam text description is small, keep it
+# But ignore large binaries anywhere in workflow_pool
+workflow_pool/**/*.xpt
+workflow_pool/**/*.rds
+workflow_pool/**/*.nbc
+workflow_pool/**/*.nbi
+workflow_pool/**/*.db
+workflow_pool/**/*.pdf
+
+# Large binary formats
+*.xpt
+*.rds
+*.xls
+*.nbc
+*.nbi
+
+# Nested renzo directory (legacy artifact)
+renzo/
+
+# Debug scripts
+debug_*.py
+
+# Stray GitHub workflows from cloned repos
+workflow_pool/.github/
+
+# Docker
+.dockerignore
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Lock files (optional, remove if you want to track)
+frontend/package-lock.json
+workflow_pool/renzo_import_j66ysa11/
+workflow_pool/renzo_import_xciymkq9/
+
+# Local daemon runtime files
+frontend/.run/
+backend/.run/

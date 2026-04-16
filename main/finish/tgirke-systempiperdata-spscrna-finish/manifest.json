@@ -1,0 +1,439 @@
+{
+  "id": "tgirke-systempiperdata-spscrna-finish",
+  "name": "tgirke systempiperdata spscrna finish",
+  "engine": "snakemake",
+  "entry_point": "run_workflow.py",
+  "description": "Manual finish workflow for systemPipeRdata scRNA-seq template split by Rmd step_name declarations.",
+  "version": "0.1",
+  "aliases": [
+    "tgirke-systempiperdata-spscrna"
+  ],
+  "tags": [
+    "finish",
+    "manual",
+    "candidate",
+    "r-workflow"
+  ],
+  "url": "https://github.com/tgirke/systemPipeRdata",
+  "know_how": "workflow/agent-steps.md",
+  "know_how_files": [
+    "workflow/agent-steps.md"
+  ],
+  "discovery": {
+    "kind": "finish_workflow",
+    "family": "candidate",
+    "aliases": [
+      "tgirke-systempiperdata-spscrna"
+    ],
+    "retained_steps": [
+      "load_packages",
+      "load_data",
+      "count_plot",
+      "create_seurat",
+      "qc_seurat",
+      "filter_cells",
+      "normalize",
+      "find_var_genes",
+      "scaling",
+      "pca",
+      "pca_plots",
+      "choose_pcs",
+      "find_clusters",
+      "plot_cluster",
+      "find_markers",
+      "plot_markers",
+      "label_cell_type",
+      "wf_session"
+    ],
+    "supports_partial_run": true,
+    "runner": "python3 run_workflow.py --cores 8",
+    "standard_step_skills": false,
+    "generated_by": "tools/manual_finishify_specials.py",
+    "split_mode": "manual-special",
+    "source_repo": "tgirke__systemPipeRdata"
+  },
+  "input_hints": [
+    "../workflow_candidates/tgirke__systemPipeRdata/inst/extdata/workflows/SPscrna/SPscrna.Rmd"
+  ],
+  "output_hints": [
+    "results/finish/*.done"
+  ],
+  "steps": [
+    {
+      "id": "load_packages",
+      "name": "load packages",
+      "targets": [
+        "load_packages"
+      ],
+      "params": {
+        "snakefile": "steps/load_packages.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/load_packages.done"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "load_data",
+      "name": "load data",
+      "targets": [
+        "load_data"
+      ],
+      "params": {
+        "snakefile": "steps/load_data.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/load_data.done"
+      ],
+      "depends_on": [
+        "load_packages"
+      ]
+    },
+    {
+      "id": "count_plot",
+      "name": "count plot",
+      "targets": [
+        "count_plot"
+      ],
+      "params": {
+        "snakefile": "steps/count_plot.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/count_plot.done"
+      ],
+      "depends_on": [
+        "load_data"
+      ]
+    },
+    {
+      "id": "create_seurat",
+      "name": "create seurat",
+      "targets": [
+        "create_seurat"
+      ],
+      "params": {
+        "snakefile": "steps/create_seurat.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/create_seurat.done"
+      ],
+      "depends_on": [
+        "count_plot"
+      ]
+    },
+    {
+      "id": "qc_seurat",
+      "name": "qc seurat",
+      "targets": [
+        "qc_seurat"
+      ],
+      "params": {
+        "snakefile": "steps/qc_seurat.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/qc_seurat.done"
+      ],
+      "depends_on": [
+        "create_seurat"
+      ]
+    },
+    {
+      "id": "filter_cells",
+      "name": "filter cells",
+      "targets": [
+        "filter_cells"
+      ],
+      "params": {
+        "snakefile": "steps/filter_cells.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/filter_cells.done"
+      ],
+      "depends_on": [
+        "qc_seurat"
+      ]
+    },
+    {
+      "id": "normalize",
+      "name": "normalize",
+      "targets": [
+        "normalize"
+      ],
+      "params": {
+        "snakefile": "steps/normalize.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/normalize.done"
+      ],
+      "depends_on": [
+        "filter_cells"
+      ]
+    },
+    {
+      "id": "find_var_genes",
+      "name": "find var genes",
+      "targets": [
+        "find_var_genes"
+      ],
+      "params": {
+        "snakefile": "steps/find_var_genes.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/find_var_genes.done"
+      ],
+      "depends_on": [
+        "normalize"
+      ]
+    },
+    {
+      "id": "scaling",
+      "name": "scaling",
+      "targets": [
+        "scaling"
+      ],
+      "params": {
+        "snakefile": "steps/scaling.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/scaling.done"
+      ],
+      "depends_on": [
+        "find_var_genes"
+      ]
+    },
+    {
+      "id": "pca",
+      "name": "pca",
+      "targets": [
+        "pca"
+      ],
+      "params": {
+        "snakefile": "steps/pca.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/pca.done"
+      ],
+      "depends_on": [
+        "scaling"
+      ]
+    },
+    {
+      "id": "pca_plots",
+      "name": "pca plots",
+      "targets": [
+        "pca_plots"
+      ],
+      "params": {
+        "snakefile": "steps/pca_plots.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/pca_plots.done"
+      ],
+      "depends_on": [
+        "pca"
+      ]
+    },
+    {
+      "id": "choose_pcs",
+      "name": "choose pcs",
+      "targets": [
+        "choose_pcs"
+      ],
+      "params": {
+        "snakefile": "steps/choose_pcs.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/choose_pcs.done"
+      ],
+      "depends_on": [
+        "pca_plots"
+      ]
+    },
+    {
+      "id": "find_clusters",
+      "name": "find clusters",
+      "targets": [
+        "find_clusters"
+      ],
+      "params": {
+        "snakefile": "steps/find_clusters.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/find_clusters.done"
+      ],
+      "depends_on": [
+        "choose_pcs"
+      ]
+    },
+    {
+      "id": "plot_cluster",
+      "name": "plot cluster",
+      "targets": [
+        "plot_cluster"
+      ],
+      "params": {
+        "snakefile": "steps/plot_cluster.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/plot_cluster.done"
+      ],
+      "depends_on": [
+        "find_clusters"
+      ]
+    },
+    {
+      "id": "find_markers",
+      "name": "find markers",
+      "targets": [
+        "find_markers"
+      ],
+      "params": {
+        "snakefile": "steps/find_markers.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/find_markers.done"
+      ],
+      "depends_on": [
+        "plot_cluster"
+      ]
+    },
+    {
+      "id": "plot_markers",
+      "name": "plot markers",
+      "targets": [
+        "plot_markers"
+      ],
+      "params": {
+        "snakefile": "steps/plot_markers.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/plot_markers.done"
+      ],
+      "depends_on": [
+        "find_markers"
+      ]
+    },
+    {
+      "id": "label_cell_type",
+      "name": "label cell type",
+      "targets": [
+        "label_cell_type"
+      ],
+      "params": {
+        "snakefile": "steps/label_cell_type.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/label_cell_type.done"
+      ],
+      "depends_on": [
+        "plot_markers"
+      ]
+    },
+    {
+      "id": "wf_session",
+      "name": "wf session",
+      "targets": [
+        "wf_session"
+      ],
+      "params": {
+        "snakefile": "steps/wf_session.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/wf_session.done"
+      ],
+      "depends_on": [
+        "label_cell_type"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+# envs/picard.yaml
+name: picard
+channels:
+  - bioconda
+  - conda-forge
+  - nodefaults
+dependencies:
+  - picard=2.20.4
+  - python=3.13.2
+  - pandas=2.2.3

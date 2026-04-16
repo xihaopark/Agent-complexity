@@ -1,0 +1,15 @@
+.test/results/**
+.test/resources/**
+.test/logs/**
+results/**
+resources/**
+logs/**
+.snakemake
+.snakemake/**
+.test/results/*
+workflow/notebooks/.ipynb_checkpoints/**
+**/.Rhistory
+**/*.Rproj
+**/.Rproj.user/**
+**/.RData
+**/Rplots.pdf

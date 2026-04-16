@@ -1,0 +1,336 @@
+workflow_id: dna-seq-short-read-circle-map-finish
+source_cores: 8
+steps:
+  bam_index:
+    summary: bam_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - bam_index
+  get_genome:
+    summary: get_genome
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_genome
+    depends_on:
+    - bam_index
+  bwa_index:
+    summary: bwa_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - bwa_index
+    depends_on:
+    - get_genome
+  genome_faidx:
+    summary: genome_faidx
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - genome_faidx
+    depends_on:
+    - bwa_index
+  genome_dict:
+    summary: genome_dict
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - genome_dict
+    depends_on:
+    - genome_faidx
+  get_known_variants:
+    summary: get_known_variants
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_known_variants
+    depends_on:
+    - genome_dict
+  remove_iupac_codes:
+    summary: remove_iupac_codes
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - remove_iupac_codes
+    depends_on:
+    - get_known_variants
+  tabix_known_variants:
+    summary: tabix_known_variants
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - tabix_known_variants
+    depends_on:
+    - remove_iupac_codes
+  cutadapt_pe:
+    summary: cutadapt_pe
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - cutadapt_pe
+    depends_on:
+    - tabix_known_variants
+  bwa_mem:
+    summary: bwa_mem
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - bwa_mem
+    depends_on:
+    - cutadapt_pe
+  merge_unit_bams_per_sample:
+    summary: merge_unit_bams_per_sample
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - merge_unit_bams_per_sample
+    depends_on:
+    - bwa_mem
+  recalibrate_base_qualities:
+    summary: recalibrate_base_qualities
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - recalibrate_base_qualities
+    depends_on:
+    - merge_unit_bams_per_sample
+  apply_bqsr:
+    summary: apply_bqsr
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - apply_bqsr
+    depends_on:
+    - recalibrate_base_qualities
+  samtools_queryname_sort:
+    summary: samtools_queryname_sort
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - samtools_queryname_sort
+    depends_on:
+    - apply_bqsr
+  circle_map_extract_reads:
+    summary: circle_map_extract_reads
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - circle_map_extract_reads
+    depends_on:
+    - samtools_queryname_sort
+  samtools_sort_candidates:
+    summary: samtools_sort_candidates
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - samtools_sort_candidates
+    depends_on:
+    - circle_map_extract_reads
+  circle_map_realign:
+    summary: circle_map_realign
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - circle_map_realign
+    depends_on:
+    - samtools_sort_candidates
+  clean_circle_map_realign_output:
+    summary: clean_circle_map_realign_output
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - clean_circle_map_realign_output
+    depends_on:
+    - circle_map_realign
+  render_datavzrd_config:
+    summary: render_datavzrd_config
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - render_datavzrd_config
+    depends_on:
+    - clean_circle_map_realign_output
+  datavzrd:
+    summary: datavzrd
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      root_target: all
+      until:
+      - datavzrd
+    depends_on:
+    - render_datavzrd_config
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - datavzrd

@@ -1,0 +1,16 @@
+{
+  "source_repo_dir": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__star-arriba-fusion-calling",
+  "source_snakefile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__star-arriba-fusion-calling/workflow/Snakefile",
+  "source_configfile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__star-arriba-fusion-calling/.test/config/config.yaml",
+  "step_count": 8,
+  "steps": [
+    "get_genome_fasta",
+    "get_genome_gtf",
+    "star_index",
+    "star_align",
+    "arriba",
+    "index_fusion_bams",
+    "draw_fusions",
+    "all"
+  ]
+}

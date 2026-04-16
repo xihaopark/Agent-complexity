@@ -1,0 +1,29 @@
+name: rna-seq-star-deseq2
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  # 工作流引擎
+  - snakemake >=8.8.0
+  # 比对工具
+  - star =2.7.11b
+  # 质量修剪
+  - fastp =0.24.0
+  # BAM/FASTA 处理
+  - samtools =1.21
+  # QC 工具
+  - rseqc =5.0.4
+  - multiqc =1.27
+  # Python 依赖
+  - pandas =2.2.3
+  - gffutils =0.13
+  # R/Bioconductor 依赖
+  - bioconductor-deseq2 =1.46.0
+  - bioconductor-biomart =2.62.0
+  - bioconductor-biocparallel =1.40.0
+  - r-stringr =1.5.1
+  - r-ashr =2.2_63
+  - r-tidyverse =2.0.0
+  - r-dbplyr =2.5.0
+  - r-cli =3.6.3

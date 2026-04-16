@@ -1,0 +1,224 @@
+workflow_id: cellranger-multi-finish
+source_cores: 8
+steps:
+  follow_pedantic_cell_ranger_naming_scheme:
+    summary: follow_pedantic_cell_ranger_naming_scheme
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cellranger-multi/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cellranger-multi
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+      root_target: all
+      until:
+      - follow_pedantic_cell_ranger_naming_scheme
+  create_cellranger_multi_config_csv:
+    summary: create_cellranger_multi_config_csv
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cellranger-multi/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cellranger-multi
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+      root_target: all
+      until:
+      - create_cellranger_multi_config_csv
+    depends_on:
+    - follow_pedantic_cell_ranger_naming_scheme
+  cellranger_multi_run:
+    summary: cellranger_multi_run
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cellranger-multi/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cellranger-multi
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+      root_target: all
+      until:
+      - cellranger_multi_run
+    depends_on:
+    - create_cellranger_multi_config_csv
+  cellranger_multi_files_summaries:
+    summary: cellranger_multi_files_summaries
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cellranger-multi/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cellranger-multi
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+      root_target: all
+      until:
+      - cellranger_multi_files_summaries
+    depends_on:
+    - cellranger_multi_run
+  cellranger_multi_files_multiplexing_global:
+    summary: cellranger_multi_files_multiplexing_global
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cellranger-multi/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cellranger-multi
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+      root_target: all
+      until:
+      - cellranger_multi_files_multiplexing_global
+    depends_on:
+    - cellranger_multi_files_summaries
+  cellranger_multi_files_multiplexing_per_sample:
+    summary: cellranger_multi_files_multiplexing_per_sample
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cellranger-multi/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cellranger-multi
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+      root_target: all
+      until:
+      - cellranger_multi_files_multiplexing_per_sample
+    depends_on:
+    - cellranger_multi_files_multiplexing_global
+  cellranger_multi_files_multiplexing_antibody_global:
+    summary: cellranger_multi_files_multiplexing_antibody_global
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cellranger-multi/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cellranger-multi
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+      root_target: all
+      until:
+      - cellranger_multi_files_multiplexing_antibody_global
+    depends_on:
+    - cellranger_multi_files_multiplexing_per_sample
+  cellranger_multi_files_multiplexing_crispr_global:
+    summary: cellranger_multi_files_multiplexing_crispr_global
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cellranger-multi/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cellranger-multi
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+      root_target: all
+      until:
+      - cellranger_multi_files_multiplexing_crispr_global
+    depends_on:
+    - cellranger_multi_files_multiplexing_antibody_global
+  cellranger_multi_files_gene_expression_global:
+    summary: cellranger_multi_files_gene_expression_global
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cellranger-multi/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cellranger-multi
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+      root_target: all
+      until:
+      - cellranger_multi_files_gene_expression_global
+    depends_on:
+    - cellranger_multi_files_multiplexing_crispr_global
+  cellranger_multi_files_gene_expression_per_sample:
+    summary: cellranger_multi_files_gene_expression_per_sample
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cellranger-multi/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cellranger-multi
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+      root_target: all
+      until:
+      - cellranger_multi_files_gene_expression_per_sample
+    depends_on:
+    - cellranger_multi_files_gene_expression_global
+  cellranger_multi_files_vdj_reference:
+    summary: cellranger_multi_files_vdj_reference
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cellranger-multi/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cellranger-multi
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+      root_target: all
+      until:
+      - cellranger_multi_files_vdj_reference
+    depends_on:
+    - cellranger_multi_files_gene_expression_per_sample
+  cellranger_multi_files_vdj_global:
+    summary: cellranger_multi_files_vdj_global
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cellranger-multi/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cellranger-multi
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+      root_target: all
+      until:
+      - cellranger_multi_files_vdj_global
+    depends_on:
+    - cellranger_multi_files_vdj_reference
+  cellranger_multi_files_vdj_per_sample:
+    summary: cellranger_multi_files_vdj_per_sample
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cellranger-multi/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cellranger-multi
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+      root_target: all
+      until:
+      - cellranger_multi_files_vdj_per_sample
+    depends_on:
+    - cellranger_multi_files_vdj_global
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cellranger-multi/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cellranger-multi
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - cellranger_multi_files_vdj_per_sample

@@ -1,0 +1,112 @@
+workflow_id: epigen-mixscape_seurat-finish
+source_cores: 8
+steps:
+  mixscape:
+    summary: mixscape
+    requires:
+    - ../workflow_candidates/epigen__mixscape_seurat/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__mixscape_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__mixscape_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__mixscape_seurat/config/config.yaml
+      root_target: all
+      until:
+      - mixscape
+  lda:
+    summary: lda
+    requires:
+    - ../workflow_candidates/epigen__mixscape_seurat/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__mixscape_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__mixscape_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__mixscape_seurat/config/config.yaml
+      root_target: all
+      until:
+      - lda
+    depends_on:
+    - mixscape
+  visualize:
+    summary: visualize
+    requires:
+    - ../workflow_candidates/epigen__mixscape_seurat/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__mixscape_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__mixscape_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__mixscape_seurat/config/config.yaml
+      root_target: all
+      until:
+      - visualize
+    depends_on:
+    - lda
+  env_export:
+    summary: env_export
+    requires:
+    - ../workflow_candidates/epigen__mixscape_seurat/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__mixscape_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__mixscape_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__mixscape_seurat/config/config.yaml
+      root_target: all
+      until:
+      - env_export
+    depends_on:
+    - visualize
+  config_export:
+    summary: config_export
+    requires:
+    - ../workflow_candidates/epigen__mixscape_seurat/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__mixscape_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__mixscape_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__mixscape_seurat/config/config.yaml
+      root_target: all
+      until:
+      - config_export
+    depends_on:
+    - env_export
+  annot_export:
+    summary: annot_export
+    requires:
+    - ../workflow_candidates/epigen__mixscape_seurat/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__mixscape_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__mixscape_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__mixscape_seurat/config/config.yaml
+      root_target: all
+      until:
+      - annot_export
+    depends_on:
+    - config_export
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/epigen__mixscape_seurat/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__mixscape_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__mixscape_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__mixscape_seurat/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - annot_export

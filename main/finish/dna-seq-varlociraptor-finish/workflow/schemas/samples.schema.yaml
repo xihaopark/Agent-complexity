@@ -1,0 +1,68 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://json-schema.org/draft/2020-12/schema"
+
+description: an entry in the sample sheet
+properties:
+  sample_name:
+    type: string
+    description: sample name/identifier (alphanumeric string, that may additionally contain '_' and '-')
+    pattern: "^[a-zA-Z_0-9-]+$"
+  alias:
+    type: string
+    description: sample name within the VCF/BCF files generated for a group (e.g. tumor, normal, etc.) (alphanumeric string, that may additionally contain '_' and '-')
+    pattern: "^[a-zA-Z_0-9-]+$"
+  group:
+    type: string
+    description: group of samples called jointly (alphanumeric string, that may additionally contain '_' and '-')
+    pattern: "^[a-zA-Z_0-9-]+$"
+  platform:
+    type: string
+    enum:
+      - "CAPILLARY"
+      - "LS454"
+      - "ILLUMINA"
+      - "SOLID"
+      - "HELICOS"
+      - "IONTORRENT"
+      - "ONT"
+      - "PACBIO"
+    description: used sequencing platform
+  purity:
+    type: number
+    minimum: 0.0
+    maximum: 1.0
+    description: Purity to use for tumor/normal groups.
+  datatype:
+    type: string
+    enum:
+      - dna
+      - rna
+  calling:
+    type: string
+    enum:
+      - variants
+      - fusions
+      - fusions,variants
+      - variants,fusions
+    description: datatype of sample
+  primer_panel:
+    type: string
+    description: ID of primer panel
+  umi_read:
+    type: string
+    pattern: "^(fq[1,2]|both)$"
+    description: fq1 or fq2 for read containing umis
+  umi_len:
+    type: number
+    description: length of UMI
+
+required:
+  - sample_name
+  - alias
+  - group
+  - platform
+  - datatype
+  - calling
+
+dependentRequired:
+  umi_read: ["umi_len"]

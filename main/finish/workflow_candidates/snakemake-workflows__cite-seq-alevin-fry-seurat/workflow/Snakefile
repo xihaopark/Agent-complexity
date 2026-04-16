@@ -1,0 +1,13 @@
+configfile: "config/config.yaml"
+
+
+include: "rules/common.smk"
+include: "rules/utils.smk"
+include: "rules/ref.smk"
+include: "rules/read_mapping.smk"
+include: "rules/analysis.smk"
+
+
+rule all:
+    input:
+        get_targets(),

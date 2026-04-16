@@ -1,0 +1,156 @@
+{
+  "id": "snakemake-workflow-template-finish",
+  "name": "Snakemake Workflow Template Finish Workflow",
+  "engine": "snakemake",
+  "entry_point": "run_workflow.py",
+  "description": "Minimal step-split Snakemake template workflow for validating config, preparing references, simulating reads, running FastQC, and aggregating the final MultiQC report.",
+  "version": "1.0",
+  "aliases": [
+    "template",
+    "snakemake-template",
+    "workflow-template"
+  ],
+  "tags": [
+    "finish",
+    "template",
+    "snakemake",
+    "qc"
+  ],
+  "know_how": "know-how.md",
+  "know_how_files": [
+    "know-how.md"
+  ],
+  "discovery": {
+    "kind": "finish_workflow",
+    "family": "template",
+    "aliases": [
+      "template",
+      "snakemake-template",
+      "workflow-template"
+    ],
+    "retained_steps": [
+      "validate_config",
+      "prepare_reference",
+      "simulate_reads",
+      "fastqc",
+      "multiqc_report"
+    ],
+    "supports_partial_run": true,
+    "runner": "python3 run_workflow.py --cores 8",
+    "standard_step_skills": true
+  },
+  "input_hints": [
+    "config_basic/config.yaml",
+    "resources/*"
+  ],
+  "output_hints": [
+    "results/simulated_reads/*",
+    "results/fastqc/*",
+    "results/multiqc/multiqc_report.html"
+  ],
+  "steps": [
+    {
+      "id": "validate_config",
+      "name": "Validate workflow configuration",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/validate_config.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/validate_config.done"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "prepare_reference",
+      "name": "Prepare reference assets",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/prepare_reference.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/prepare_reference.done"
+      ],
+      "depends_on": [
+        "validate_config"
+      ]
+    },
+    {
+      "id": "simulate_reads",
+      "name": "Simulate example reads",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/simulate_reads.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/simulate_reads.done"
+      ],
+      "depends_on": [
+        "prepare_reference"
+      ]
+    },
+    {
+      "id": "fastqc",
+      "name": "Run FastQC on simulated reads",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/fastqc.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/fastqc.done"
+      ],
+      "depends_on": [
+        "simulate_reads"
+      ]
+    },
+    {
+      "id": "multiqc_report",
+      "name": "Aggregate FastQC outputs with MultiQC",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/multiqc_report.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/multiqc_report.done"
+      ],
+      "depends_on": [
+        "fastqc"
+      ]
+    }
+  ]
+}

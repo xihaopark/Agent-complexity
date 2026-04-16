@@ -1,0 +1,17 @@
+name: bcg_notebooks
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - pandas
+  - numpy
+  - xlrd
+  - openpyxl
+  - ipykernel
+  - pybedtools
+  - uropa
+  - scikit-learn
+  - scipy
+  - seaborn
+  - wiggletools
+  - jupyterlab

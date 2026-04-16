@@ -1,0 +1,219 @@
+{
+  "id": "lwang-genomics-ngs_pipeline_sn-chip_seq-finish",
+  "name": "lwang genomics ngs_pipeline_sn chip_seq finish",
+  "engine": "snakemake",
+  "entry_point": "run_workflow.py",
+  "description": "Manual finish workflow for chip_seq from lwang-genomics NGS_pipeline_sn.",
+  "version": "0.1",
+  "aliases": [
+    "lwang-genomics-ngs_pipeline_sn-chip_seq"
+  ],
+  "tags": [
+    "finish",
+    "manual",
+    "candidate",
+    "r-workflow"
+  ],
+  "url": "https://github.com/lwang-genomics/NGS_pipeline_sn",
+  "know_how": "workflow/agent-steps.md",
+  "know_how_files": [
+    "workflow/agent-steps.md"
+  ],
+  "discovery": {
+    "kind": "finish_workflow",
+    "family": "candidate",
+    "aliases": [
+      "lwang-genomics-ngs_pipeline_sn-chip_seq"
+    ],
+    "retained_steps": [
+      "fastqc_raw",
+      "trim",
+      "align",
+      "filter_sort_index",
+      "bam_coverage",
+      "call_peaks",
+      "multiqc",
+      "all"
+    ],
+    "supports_partial_run": true,
+    "runner": "python3 run_workflow.py --cores 8",
+    "standard_step_skills": false,
+    "generated_by": "tools/manual_finishify_specials.py",
+    "split_mode": "manual-special",
+    "source_repo": "lwang-genomics__NGS_pipeline_sn"
+  },
+  "input_hints": [
+    "../workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml"
+  ],
+  "output_hints": [
+    "results/finish/*.done"
+  ],
+  "steps": [
+    {
+      "id": "fastqc_raw",
+      "name": "fastqc raw",
+      "targets": [
+        "fastqc_raw"
+      ],
+      "params": {
+        "snakefile": "steps/fastqc_raw.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/fastqc_raw.done"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "trim",
+      "name": "trim",
+      "targets": [
+        "trim"
+      ],
+      "params": {
+        "snakefile": "steps/trim.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/trim.done"
+      ],
+      "depends_on": [
+        "fastqc_raw"
+      ]
+    },
+    {
+      "id": "align",
+      "name": "align",
+      "targets": [
+        "align"
+      ],
+      "params": {
+        "snakefile": "steps/align.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/align.done"
+      ],
+      "depends_on": [
+        "trim"
+      ]
+    },
+    {
+      "id": "filter_sort_index",
+      "name": "filter sort index",
+      "targets": [
+        "filter_sort_index"
+      ],
+      "params": {
+        "snakefile": "steps/filter_sort_index.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/filter_sort_index.done"
+      ],
+      "depends_on": [
+        "align"
+      ]
+    },
+    {
+      "id": "bam_coverage",
+      "name": "bam coverage",
+      "targets": [
+        "bam_coverage"
+      ],
+      "params": {
+        "snakefile": "steps/bam_coverage.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/bam_coverage.done"
+      ],
+      "depends_on": [
+        "filter_sort_index"
+      ]
+    },
+    {
+      "id": "call_peaks",
+      "name": "call peaks",
+      "targets": [
+        "call_peaks"
+      ],
+      "params": {
+        "snakefile": "steps/call_peaks.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/call_peaks.done"
+      ],
+      "depends_on": [
+        "bam_coverage"
+      ]
+    },
+    {
+      "id": "multiqc",
+      "name": "multiqc",
+      "targets": [
+        "multiqc"
+      ],
+      "params": {
+        "snakefile": "steps/multiqc.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/multiqc.done"
+      ],
+      "depends_on": [
+        "call_peaks"
+      ]
+    },
+    {
+      "id": "all",
+      "name": "all",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/all.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/all.done"
+      ],
+      "depends_on": [
+        "multiqc"
+      ]
+    }
+  ]
+}

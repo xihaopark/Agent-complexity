@@ -1,0 +1,10 @@
+.snakemake/
+output/
+logs/**
+results/wheatear**
+results/methylkit**
+results/bismark**
+results/workflow-testing**
+test/**
+scratch/*
+.Rproj.user

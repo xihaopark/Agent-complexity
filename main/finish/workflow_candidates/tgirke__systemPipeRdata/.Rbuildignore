@@ -1,0 +1,9 @@
+^_pkgdown\.yml$
+^\.github
+^docs
+vignettes/*_cache
+^\.Rhistory
+^.*\.Rproj$
+^\.Rproj\.user$
+^test/*
+^changelog$

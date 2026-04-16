@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "workflow_id": "rna-seq-kallisto-sleuth",
+  "step_id": "step-1-parse-config",
+  "manifest_type": "analysis_manifest",
+  "status": "completed",
+  "summary": {
+    "objective": "Normalize config and determine execution mode",
+    "execution_scope": "run",
+    "fanout_key": "none",
+    "next_step": "step-2-normalize-inputs",
+    "notes": [
+      "Workflow mode resolved before quantification",
+      "Optional modules recorded without mutating config"
+    ]
+  },
+  "run_context": {
+    "config_files": ["config/config.yaml"],
+    "sample_sheet": "config/samples.tsv",
+    "units_sheet": "config/units.tsv",
+    "active_directory": ".test",
+    "mode": "test"
+  },
+  "subjects": [
+    {
+      "id": "short_read",
+      "type": "run",
+      "status": "resolved",
+      "metadata": {
+        "models": ["model_X"],
+        "go_enabled": true,
+        "diffsplice_enabled": false
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "analysis_manifest",
+      "kind": "manifest",
+      "path": "manifests/analysis_manifest.json",
+      "status": "verified",
+      "owner": "run"
+    }
+  ],
+  "validations": [
+    {
+      "name": "workflow_mode_resolved",
+      "passed": true,
+      "details": "Exactly one execution mode was selected"
+    }
+  ],
+  "errors": []
+}

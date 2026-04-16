@@ -1,0 +1,416 @@
+workflow_id: epigen-atacseq_pipeline-finish
+source_cores: 8
+steps:
+  env_export:
+    summary: env_export
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - env_export
+  config_export:
+    summary: config_export
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - config_export
+    depends_on:
+    - env_export
+  annot_export:
+    summary: annot_export
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - annot_export
+    depends_on:
+    - config_export
+  install_homer:
+    summary: install_homer
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - install_homer
+    depends_on:
+    - annot_export
+  align:
+    summary: align
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - align
+    depends_on:
+    - install_homer
+  tss_coverage:
+    summary: tss_coverage
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - tss_coverage
+    depends_on:
+    - align
+  peak_calling:
+    summary: peak_calling
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - peak_calling
+    depends_on:
+    - tss_coverage
+  aggregate_stats:
+    summary: aggregate_stats
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - aggregate_stats
+    depends_on:
+    - peak_calling
+  symlink_stats:
+    summary: symlink_stats
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - symlink_stats
+    depends_on:
+    - aggregate_stats
+  multiqc:
+    summary: multiqc
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - multiqc
+    depends_on:
+    - symlink_stats
+  plot_sample_annotation:
+    summary: plot_sample_annotation
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - plot_sample_annotation
+    depends_on:
+    - multiqc
+  sample_annotation:
+    summary: sample_annotation
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - sample_annotation
+    depends_on:
+    - plot_sample_annotation
+  get_promoter_regions:
+    summary: get_promoter_regions
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - get_promoter_regions
+    depends_on:
+    - sample_annotation
+  get_consensus_regions:
+    summary: get_consensus_regions
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - get_consensus_regions
+    depends_on:
+    - get_promoter_regions
+  quantify_support_sample:
+    summary: quantify_support_sample
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - quantify_support_sample
+    depends_on:
+    - get_consensus_regions
+  quantify_counts_sample:
+    summary: quantify_counts_sample
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - quantify_counts_sample
+    depends_on:
+    - quantify_support_sample
+  quantify_aggregate:
+    summary: quantify_aggregate
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - quantify_aggregate
+    depends_on:
+    - quantify_counts_sample
+  homer_aggregate:
+    summary: homer_aggregate
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - homer_aggregate
+    depends_on:
+    - quantify_aggregate
+  map_consensus_tss:
+    summary: map_consensus_tss
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - map_consensus_tss
+    depends_on:
+    - homer_aggregate
+  uropa_prepare:
+    summary: uropa_prepare
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - uropa_prepare
+    depends_on:
+    - map_consensus_tss
+  uropa_gencode:
+    summary: uropa_gencode
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - uropa_gencode
+    depends_on:
+    - uropa_prepare
+  uropa_reg:
+    summary: uropa_reg
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - uropa_reg
+    depends_on:
+    - uropa_gencode
+  homer_region_annotation:
+    summary: homer_region_annotation
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - homer_region_annotation
+    depends_on:
+    - uropa_reg
+  bedtools_annotation:
+    summary: bedtools_annotation
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - bedtools_annotation
+    depends_on:
+    - homer_region_annotation
+  region_annotation_aggregate:
+    summary: region_annotation_aggregate
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      root_target: all
+      until:
+      - region_annotation_aggregate
+    depends_on:
+    - bedtools_annotation
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__atacseq_pipeline/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__atacseq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__atacseq_pipeline/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - region_annotation_aggregate

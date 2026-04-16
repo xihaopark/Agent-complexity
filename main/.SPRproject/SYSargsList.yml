@@ -1,0 +1,58 @@
+stepsWF:
+  load_SPR: |
+    codeLine: library(systemPipeR)
+    codeChunkStart: []
+    stepName: load_SPR
+    dependency:
+      load_SPR: .na
+    status:
+      status.summary: Pending
+      status.completed:
+        Step: load_SPR
+        status.summary: Pending
+      status.time: {}
+    files:
+      rmdPath: []
+    runInfo:
+      runOption:
+        load_SPR:
+          directory: no
+          run_step: mandatory
+          run_session: management
+          run_remote_resources: ~
+statusWF:
+  load_SPR: |
+    load_SPR:
+      status.summary: Pending
+      status.completed:
+        Step: load_SPR
+        status.summary: Pending
+      status.time: {}
+targetsWF:
+  load_SPR: |
+    {}
+outfiles:
+  load_SPR: |
+    {}
+SE:
+  load_SPR: |
+    load_SPR: ~
+dependency:
+  load_SPR: |
+    load_SPR: .na
+targets_connection:
+  load_SPR: |
+    load_SPR: ~
+projectInfo: |
+  project: /lab_workspace/projects/Agent-complexity/main
+  data: data
+  param: param
+  results: results
+  logsDir: .SPRproject
+  sysargslist: .SPRproject/SYSargsList.yml
+runInfo: |
+  load_SPR:
+    directory: no
+    run_step: mandatory
+    run_session: management
+    run_remote_resources: ~

@@ -1,0 +1,15 @@
+name: parasail
+channels:
+  - defaults
+  - bioconda
+  - conda-forge
+dependencies:
+  - bzip2
+  - levenshtein=0.25.1
+  - numpy=1.26.4
+  - pandas=2.2.2
+  - parasail-python=1.3.4 
+  - pigz=2.8
+  - pysam=0.22.1
+  - samtools=1.20
+  - vsearch

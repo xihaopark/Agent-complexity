@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "workflow_id": "rna-seq-star-deseq2",
+  "step_id": "step-1-parse-config",
+  "manifest_type": "analysis_manifest",
+  "status": "completed",
+  "summary": {
+    "objective": "Load workflow configuration and normalize run-level metadata",
+    "execution_scope": "run",
+    "fanout_key": "none",
+    "next_step": "step-2-resolve-reads",
+    "notes": [
+      "Contrasts and sample-unit mapping resolved",
+      "DESeq2 design inputs validated before any compute"
+    ]
+  },
+  "run_context": {
+    "config_files": ["config/config.yaml"],
+    "sample_sheet": "config/samples.tsv",
+    "units_sheet": "config/units.tsv",
+    "active_directory": ".test",
+    "mode": "test"
+  },
+  "subjects": [
+    {
+      "id": "conditionA_vs_conditionB",
+      "type": "run",
+      "status": "resolved",
+      "metadata": {
+        "variables_of_interest": ["condition"],
+        "batch_effects": ["batch"]
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "analysis_manifest",
+      "kind": "manifest",
+      "path": "manifests/analysis_manifest.json",
+      "status": "verified",
+      "owner": "run"
+    }
+  ],
+  "validations": [
+    {
+      "name": "sample_and_unit_metadata_consistent",
+      "passed": true,
+      "details": "All units resolve to known samples"
+    },
+    {
+      "name": "contrasts_resolved",
+      "passed": true,
+      "details": "All contrasts reference known metadata columns"
+    }
+  ],
+  "errors": []
+}

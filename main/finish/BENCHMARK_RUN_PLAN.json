@@ -1,0 +1,317 @@
+{
+  "summary": {
+    "max_total": 50,
+    "max_per_family": 20,
+    "include_large": true,
+    "selected_count": 30,
+    "family_counts": {
+      "rna": 11,
+      "epigenomics": 8,
+      "single-cell": 1,
+      "variant": 6,
+      "other": 4
+    }
+  },
+  "selected_workflows": [
+    {
+      "workflow_id": "akinyi-onyango-rna_seq_pipeline-finish",
+      "canonical_workflow_id": "akinyi-onyango-rna_seq_pipeline-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/akinyi-onyango-rna_seq_pipeline-finish",
+      "status": "passed",
+      "step_count": 8,
+      "family": "rna",
+      "tier": "small",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "chandanbfx-scrna-seq-seurat-workflow-finish",
+      "canonical_workflow_id": "chandanbfx-scrna-seq-seurat-workflow-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/chandanbfx-scrna-seq-seurat-workflow-finish",
+      "status": "passed",
+      "step_count": 10,
+      "family": "rna",
+      "tier": "small",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "chipseq-finish",
+      "canonical_workflow_id": "chipseq-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/chipseq-finish",
+      "status": "passed",
+      "step_count": 70,
+      "family": "epigenomics",
+      "tier": "large",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "cite-seq-alevin-fry-seurat-finish",
+      "canonical_workflow_id": "cite-seq-alevin-fry-seurat-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/cite-seq-alevin-fry-seurat-finish",
+      "status": "passed",
+      "step_count": 18,
+      "family": "single-cell",
+      "tier": "medium",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "cyrcular-calling-finish",
+      "canonical_workflow_id": "cyrcular-calling-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/cyrcular-calling-finish",
+      "status": "passed",
+      "step_count": 34,
+      "family": "variant",
+      "tier": "large",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "dna-seq-benchmark-finish",
+      "canonical_workflow_id": "dna-seq-benchmark-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/dna-seq-benchmark-finish",
+      "status": "passed",
+      "step_count": 68,
+      "family": "variant",
+      "tier": "large",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "dna-seq-short-read-circle-map-finish",
+      "canonical_workflow_id": "dna-seq-short-read-circle-map-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/dna-seq-short-read-circle-map-finish",
+      "status": "passed",
+      "step_count": 21,
+      "family": "variant",
+      "tier": "medium",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "dwheelerau-snakemake-rnaseq-counts-finish",
+      "canonical_workflow_id": "dwheelerau-snakemake-rnaseq-counts-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/dwheelerau-snakemake-rnaseq-counts-finish",
+      "status": "passed",
+      "step_count": 10,
+      "family": "rna",
+      "tier": "small",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "epigen-enrichment_analysis-finish",
+      "canonical_workflow_id": "epigen-enrichment_analysis-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/epigen-enrichment_analysis-finish",
+      "status": "passed",
+      "step_count": 16,
+      "family": "epigenomics",
+      "tier": "medium",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "epigen-scrnaseq_processing_seurat-finish",
+      "canonical_workflow_id": "epigen-scrnaseq_processing_seurat-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/epigen-scrnaseq_processing_seurat-finish",
+      "status": "passed",
+      "step_count": 15,
+      "family": "rna",
+      "tier": "small",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "epigen-spilterlize_integrate-finish",
+      "canonical_workflow_id": "epigen-spilterlize_integrate-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/epigen-spilterlize_integrate-finish",
+      "status": "passed",
+      "step_count": 14,
+      "family": "epigenomics",
+      "tier": "small",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "epigen-unsupervised_analysis-finish",
+      "canonical_workflow_id": "epigen-unsupervised_analysis-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/epigen-unsupervised_analysis-finish",
+      "status": "passed",
+      "step_count": 27,
+      "family": "epigenomics",
+      "tier": "medium",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "gammon-bio-rnaseq_pipeline-finish",
+      "canonical_workflow_id": "gammon-bio-rnaseq_pipeline-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/gammon-bio-rnaseq_pipeline-finish",
+      "status": "passed",
+      "step_count": 4,
+      "family": "rna",
+      "tier": "small",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "gersteinlab-astro-finish",
+      "canonical_workflow_id": "gersteinlab-astro-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/gersteinlab-astro-finish",
+      "status": "passed",
+      "step_count": 3,
+      "family": "other",
+      "tier": "small",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "jfnavarro-st_pipeline-finish",
+      "canonical_workflow_id": "jfnavarro-st_pipeline-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/jfnavarro-st_pipeline-finish",
+      "status": "passed",
+      "step_count": 2,
+      "family": "variant",
+      "tier": "small",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "lwang-genomics-ngs_pipeline_sn-atac_seq-finish",
+      "canonical_workflow_id": "lwang-genomics-ngs_pipeline_sn-atac_seq-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/lwang-genomics-ngs_pipeline_sn-atac_seq-finish",
+      "status": "passed",
+      "step_count": 10,
+      "family": "epigenomics",
+      "tier": "small",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "lwang-genomics-ngs_pipeline_sn-chip_seq-finish",
+      "canonical_workflow_id": "lwang-genomics-ngs_pipeline_sn-chip_seq-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/lwang-genomics-ngs_pipeline_sn-chip_seq-finish",
+      "status": "passed",
+      "step_count": 8,
+      "family": "epigenomics",
+      "tier": "small",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+      "canonical_workflow_id": "lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+      "status": "passed",
+      "step_count": 9,
+      "family": "rna",
+      "tier": "small",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "microsatellite-instability-detection-with-msisensor-pro-finish",
+      "canonical_workflow_id": "microsatellite-instability-detection-with-msisensor-pro-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/microsatellite-instability-detection-with-msisensor-pro-finish",
+      "status": "passed",
+      "step_count": 10,
+      "family": "variant",
+      "tier": "small",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "mohammedemamkhattabunipd-atacseq-finish",
+      "canonical_workflow_id": "mohammedemamkhattabunipd-atacseq-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/mohammedemamkhattabunipd-atacseq-finish",
+      "status": "passed",
+      "step_count": 2,
+      "family": "epigenomics",
+      "tier": "small",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "riyadua-cervical-cancer-snakemake-workflow-finish",
+      "canonical_workflow_id": "riyadua-cervical-cancer-snakemake-workflow-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/riyadua-cervical-cancer-snakemake-workflow-finish",
+      "status": "passed",
+      "step_count": 3,
+      "family": "other",
+      "tier": "small",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "rna-seq-kallisto-sleuth-finish",
+      "canonical_workflow_id": "rna-seq-kallisto-sleuth-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/rna-seq-kallisto-sleuth-finish",
+      "status": "passed",
+      "step_count": 9,
+      "family": "rna",
+      "tier": "small",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "saidmlonji-rnaseq_pipeline-finish",
+      "canonical_workflow_id": "saidmlonji-rnaseq_pipeline-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/saidmlonji-rnaseq_pipeline-finish",
+      "status": "passed",
+      "step_count": 3,
+      "family": "rna",
+      "tier": "small",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "single-cell-rna-seq-finish",
+      "canonical_workflow_id": "single-cell-rna-seq-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/single-cell-rna-seq-finish",
+      "status": "passed",
+      "step_count": 22,
+      "family": "rna",
+      "tier": "medium",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "sumone-compbio-dge-analysis-using-snakemake-r-finish",
+      "canonical_workflow_id": "sumone-compbio-dge-analysis-using-snakemake-r-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/sumone-compbio-dge-analysis-using-snakemake-r-finish",
+      "status": "passed",
+      "step_count": 4,
+      "family": "other",
+      "tier": "small",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "tgirke-systempiperdata-chipseq-finish",
+      "canonical_workflow_id": "tgirke-systempiperdata-chipseq-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/tgirke-systempiperdata-chipseq-finish",
+      "status": "passed",
+      "step_count": 21,
+      "family": "epigenomics",
+      "tier": "medium",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "tgirke-systempiperdata-riboseq-finish",
+      "canonical_workflow_id": "tgirke-systempiperdata-riboseq-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/tgirke-systempiperdata-riboseq-finish",
+      "status": "passed",
+      "step_count": 32,
+      "family": "other",
+      "tier": "large",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "tgirke-systempiperdata-rnaseq-finish",
+      "canonical_workflow_id": "tgirke-systempiperdata-rnaseq-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/tgirke-systempiperdata-rnaseq-finish",
+      "status": "passed",
+      "step_count": 21,
+      "family": "rna",
+      "tier": "medium",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "tgirke-systempiperdata-spscrna-finish",
+      "canonical_workflow_id": "tgirke-systempiperdata-spscrna-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/tgirke-systempiperdata-spscrna-finish",
+      "status": "passed",
+      "step_count": 18,
+      "family": "rna",
+      "tier": "medium",
+      "conversion_type": "auto"
+    },
+    {
+      "workflow_id": "tgirke-systempiperdata-varseq-finish",
+      "canonical_workflow_id": "tgirke-systempiperdata-varseq-finish",
+      "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/tgirke-systempiperdata-varseq-finish",
+      "status": "passed",
+      "step_count": 35,
+      "family": "variant",
+      "tier": "large",
+      "conversion_type": "auto"
+    }
+  ]
+}

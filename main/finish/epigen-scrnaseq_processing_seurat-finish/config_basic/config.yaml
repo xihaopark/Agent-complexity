@@ -1,0 +1,240 @@
+workflow_id: epigen-scrnaseq_processing_seurat-finish
+source_cores: 8
+steps:
+  prepare:
+    summary: prepare
+    requires:
+    - ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__scrnaseq_processing_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+      root_target: all
+      until:
+      - prepare
+  merge:
+    summary: merge
+    requires:
+    - ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__scrnaseq_processing_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+      root_target: all
+      until:
+      - merge
+    depends_on:
+    - prepare
+  split:
+    summary: split
+    requires:
+    - ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__scrnaseq_processing_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+      root_target: all
+      until:
+      - split
+    depends_on:
+    - merge
+  filter_cells:
+    summary: filter_cells
+    requires:
+    - ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__scrnaseq_processing_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+      root_target: all
+      until:
+      - filter_cells
+    depends_on:
+    - split
+  pseudobulk:
+    summary: pseudobulk
+    requires:
+    - ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__scrnaseq_processing_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+      root_target: all
+      until:
+      - pseudobulk
+    depends_on:
+    - filter_cells
+  save_counts:
+    summary: save_counts
+    requires:
+    - ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__scrnaseq_processing_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+      root_target: all
+      until:
+      - save_counts
+    depends_on:
+    - pseudobulk
+  normalize:
+    summary: normalize
+    requires:
+    - ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__scrnaseq_processing_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+      root_target: all
+      until:
+      - normalize
+    depends_on:
+    - save_counts
+  correct:
+    summary: correct
+    requires:
+    - ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__scrnaseq_processing_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+      root_target: all
+      until:
+      - correct
+    depends_on:
+    - normalize
+  metadata_plots:
+    summary: metadata_plots
+    requires:
+    - ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__scrnaseq_processing_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+      root_target: all
+      until:
+      - metadata_plots
+    depends_on:
+    - correct
+  seurat_plots:
+    summary: seurat_plots
+    requires:
+    - ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__scrnaseq_processing_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+      root_target: all
+      until:
+      - seurat_plots
+    depends_on:
+    - metadata_plots
+  env_export:
+    summary: env_export
+    requires:
+    - ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__scrnaseq_processing_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+      root_target: all
+      until:
+      - env_export
+    depends_on:
+    - seurat_plots
+  config_export:
+    summary: config_export
+    requires:
+    - ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__scrnaseq_processing_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+      root_target: all
+      until:
+      - config_export
+    depends_on:
+    - env_export
+  annot_export:
+    summary: annot_export
+    requires:
+    - ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__scrnaseq_processing_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+      root_target: all
+      until:
+      - annot_export
+    depends_on:
+    - config_export
+  gene_list_export:
+    summary: gene_list_export
+    requires:
+    - ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__scrnaseq_processing_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+      root_target: all
+      until:
+      - gene_list_export
+    depends_on:
+    - annot_export
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__scrnaseq_processing_seurat
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__scrnaseq_processing_seurat/test/config/Lee2020NatGenet/Lee2020NatGenet_scrnaseq_processing_seurat_config.yaml
+      targets:
+      - all
+    depends_on:
+    - gene_list_export

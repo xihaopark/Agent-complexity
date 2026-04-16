@@ -1,0 +1,169 @@
+INPUT:
+  FASTA: "test/data/genome.fa"
+  REPEATMASK_GTF: "test/data/repeats.gtf"
+  EXCLUSION_VARIANTS_BED: "test/data/exclusion_variants.bed"
+  REPEATS_RDS: "test/data/repeats.rds"  # Reapeats as RDS file
+  
+OUTPUT_DIR: "results/"
+
+# settings for methylkit
+
+METHYLKIT:
+  LOW_COV_THRESHOLD: 1
+  HIGH_COV_THRESHOLD_PERC: 99.5
+  UNITE_MIN_PER_GROUP: 1
+  EXCLUDE_SAMPLES:
+    - "" # list of samples to exclude
+
+
+# path to metadata sheets
+METADATA:
+  SAMPLES: "test/data/sample_metadata.tsv"
+  SPECIES: "test/data/species_metadata.tsv"
+SCHEMAS:
+  SPECIES_COLORS: "test/data/species.tsv"
+
+
+# define target files
+# each object is a directory level
+# placeholders are replaced by the actual values using expand()
+target_files:
+  destrand_calls:
+    methylation_calls:
+      - "methylation_coverage_destranded/{sample}.cpg.gz"
+      - "methylation_coverage_destranded/{sample}.bismark.cov.gz"
+  methylkit:
+    load_data:
+      - "raw.rds"
+      - "plots/{sample}.pdf"
+    filt_norm:
+      - "filtered_normalized.rds"
+      - "filtered_normalized.tsv"
+      - "filt_plots/{sample}.pdf"
+      - "norm_plots/{sample}.pdf"
+    split:
+      - "db/{sample}.txt.bgz"
+      - "db/{sample}.txt.bgz.tbi"
+    unite:
+      by_min_samples:
+        "{min_samples}":
+          - "by-chromosome/united.{chr}.rds"
+          - "by-chromosome/united_stats.{chr}.tsv"
+          - "by-chromosome/df_united.{chr}.rds"
+          - "by-genome/df_mku.rds"
+          - "by-genome/statistics.tsv"
+    excl_SNVs:
+      by_min_samples:
+        "{min_samples}":
+          #- "by-chromosome/united.{chr}.rds"
+          - "by-chromosome/united_stats.{chr}.tsv"
+          - "by-chromosome/df_united.{chr}.rds"
+  analysis:
+    "{min_samples}":
+      - "clustering/hierarchical_clustering.pdf"
+      - "pca/pca.{chr}.pdf"
+      #- "reports/data_structure.html"
+  macau:
+    by_model:
+      - "{run_label}/samples.txt"
+      - "{run_label}/relatedness.txt"
+      - "{run_label}/{chr}.read_counts"
+      - "{run_label}/{chr}.total_counts"
+      - "{run_label}/predictors"
+      - "{run_label}/predictor_columns"
+      - "{run_label}/covariates"
+      - "{run_label}/covariate_columns"
+      - "{run_label}/macau.{chr}.assoc.txt"
+      - "{run_label}/macau.{chr}.log.txt"
+  DSS:
+    by_comparison:
+      - "{dss_comparison_label}/samples.tsv"
+      - "{dss_comparison_label}/dss_dmls.{chr}.tsv"
+      - "{dss_comparison_label}/dss_dmrs.{chr}.tsv"
+      - "{dss_comparison_label}/plots/dmrs.{chr}.pdf"
+  report:
+    datavzrd-report:
+      - "methylkit_unite_{min_samples}_genome_stats"
+      - "methylkit_filt_norm_stats"
+
+# list of chromosomes to operate o
+CHROMOSOMES: 
+- "chr1"
+- "chr10"
+- "chr11"
+- "chr12"
+- "chr13"
+- "chr14"
+- "chr15"
+- "chr17"
+- "chr18"
+- "chr19"
+- "chr1A"
+- "chr2"
+- "chr20"
+- "chr21"
+- "chr22"
+- "chr23"
+- "chr24"
+- "chr25"
+- "chr26"
+- "chr27"
+- "chr28"
+- "chr3"
+- "chr4"
+- "chr4A"
+- "chr5"
+- "chr6"
+- "chr7"
+- "chr8"
+- "chr9"
+- "chrLGE22"
+- "chrZ"
+
+# define resources for SLURM
+RESOURCES:
+  mini_job:
+    runtime: 120
+    mem_mb_per_cpu: 4000
+    tasks: 1
+    cpus_per_task: 1
+  small_job:
+    runtime: 120
+    mem_mb_per_cpu: 8000
+    tasks: 1
+    cpus_per_task: 1
+  medium_small_job:
+    runtime: 120
+    mem_mb_per_cpu: 16000
+    tasks: 1
+    cpus_per_task: 1
+  medium_job:
+    runtime: 120
+    mem_mb_per_cpu: 32000
+    tasks: 1
+    cpus_per_task: 1
+  big_job:
+    runtime: 120
+    mem_mb_per_cpu: 64000
+    tasks: 1
+    cpus_per_task: 1
+  mk_unite_96samples:
+    runtime: 240
+    mem_mb_per_cpu: 24000
+    tasks: 4
+    cpus_per_task: 1
+  bigger_job:
+    runtime: 120
+    mem_mb_per_cpu: 96000
+    tasks: 1
+    cpus_per_task: 1
+  huge_job:
+    runtime: 120
+    mem_mb_per_cpu: 128000
+    tasks: 1
+    cpus_per_task: 1 
+  massive_job:
+    runtime: 120
+    mem_mb_per_cpu: 144000
+    tasks: 1
+    cpus_per_task: 1 

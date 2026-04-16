@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "workflow_id": "dna-seq-varlociraptor",
+  "step_id": "step-1-parse-config",
+  "manifest_type": "analysis_manifest",
+  "status": "completed",
+  "summary": {
+    "objective": "Build run-level execution context before compute begins",
+    "execution_scope": "run",
+    "fanout_key": "none",
+    "next_step": "step-2-resolve-inputs",
+    "notes": [
+      "Calling modes resolved for all groups",
+      "Optional modules recorded without changing config values"
+    ]
+  },
+  "run_context": {
+    "config_files": [
+      "config/config.yaml"
+    ],
+    "sample_sheet": "config/samples.tsv",
+    "units_sheet": "config/units.tsv",
+    "scenario_file": "config/scenario.yaml",
+    "active_directory": ".test",
+    "mode": "test"
+  },
+  "subjects": [
+    {
+      "id": "tumor_normal",
+      "type": "group",
+      "status": "resolved",
+      "metadata": {
+        "calling_type": "germline_tumor_normal",
+        "fusion_enabled": false,
+        "mutational_signatures_enabled": true
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "analysis_manifest",
+      "kind": "manifest",
+      "path": "manifests/analysis_manifest.json",
+      "status": "verified",
+      "owner": "run"
+    }
+  ],
+  "validations": [
+    {
+      "name": "config_files_exist",
+      "passed": true,
+      "details": "Config, samples, units, and scenario files were resolved"
+    },
+    {
+      "name": "group_and_calling_modes_consistent",
+      "passed": true,
+      "details": "All configured groups map to legal calling modes"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,30 @@
+{
+  "source_repo_dir": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__single-cell-rna-seq",
+  "source_snakefile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile",
+  "source_configfile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml",
+  "step_count": 22,
+  "steps": [
+    "all_qc",
+    "load_counts",
+    "qc",
+    "explained_variance",
+    "gene_vs_gene",
+    "gene_tsne",
+    "filter_cells",
+    "cell_cycle",
+    "cell_cycle_scores",
+    "normalize",
+    "batch_effect_removal",
+    "hvg",
+    "correlation",
+    "hvg_pca",
+    "hvg_tsne",
+    "cellassign",
+    "plot_cellassign",
+    "celltype_tsne",
+    "plot_celltype_expressions",
+    "edger",
+    "plot_expression",
+    "all"
+  ]
+}

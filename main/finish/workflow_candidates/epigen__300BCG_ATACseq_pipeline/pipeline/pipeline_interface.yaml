@@ -1,0 +1,35 @@
+protocol_mapping:
+    ATAC-SEQ: atacseq
+    ATACSEQ: atacseq
+    ATAC: atacseq
+
+pipelines:
+    atacseq:
+        name: ATAC-seq
+        sample_subtypes: 
+            ATAC-seq: ATACseqSample
+            ATAC: ATACseqSample
+        path: atac/atacseq.py
+        arguments:
+            "--sample-yaml": yaml_file
+            "-S": sample_name
+            "-G": genome
+        looper_args: True
+        required_input_files: [data_path]
+        ngs_input_files: [data_path]
+        resources:
+            default:
+                file_size: "0"
+                cores: 4 
+                mem: 16000
+                time: "2-00:00:00"
+            medium:
+                file_size: "1"
+                cores: 8
+                mem: 32000
+                time: "2-00:00:00"
+            high:
+                file_size: "2"
+                cores: 12
+                mem: 64000
+                time: "4-00:00:00"

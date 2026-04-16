@@ -1,0 +1,4 @@
+sample_name	unit_name	fq1	fq2
+PD12A	u1	path/to/PD12A_R1.fq	path/to/PD12A_R2.fq
+PD13B	u1	path/to/PD13B_R1.fq	path/to/PD13B_R2.fq
+PD09A	u1	path/to/PD09A_R1.fq	path/to/PD09A_R2.fq

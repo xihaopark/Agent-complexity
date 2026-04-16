@@ -1,0 +1,5 @@
+channels:
+  - conda-forge
+dependencies:
+  - graphviz =7.1
+  - imagemagick =7.1

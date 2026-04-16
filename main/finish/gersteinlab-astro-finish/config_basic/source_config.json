@@ -1,0 +1,13 @@
+{
+  "R1": "",
+  "R2": "",
+  "barcode_file": "",
+  "outputfolder": "",
+  "starref": "",
+  "gtffile": "",
+  "PrimerStructure": "",
+  "StructureUMI": "",
+  "StructureBarcode": "",
+  "threadnum": 8,
+  "steps": 7
+}

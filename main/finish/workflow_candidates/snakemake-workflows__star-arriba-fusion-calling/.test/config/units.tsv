@@ -1,0 +1,2 @@
+sample_name	unit_name	fq1	fq2
+sample_1	u1	results/test_fq/sample_1.R1.fq.gz	results/test_fq/sample_1.R2.fq.gz

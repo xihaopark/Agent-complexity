@@ -335,7 +335,6 @@ volumes:
 - **分位数归一化**：在同批对比系统集合内用分位数把 xᵢ 映射到 [0,1]；适合“横向评测”。  
 - **对数/逻辑归一化*
 ... [truncated]"
-"File:workers/__init__.py","__init__.py","workers/__init__.py",""
 "File:tests/test_static_py_analyzer.py","test_static_py_analyzer.py","tests/test_static_py_analyzer.py","from __future__ import annotations
 
 from pathlib import Path
@@ -423,6 +422,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 "
+"File:workers/__init__.py","__init__.py","workers/__init__.py",""
 "File:services/__init__.py","__init__.py","services/__init__.py",""
 "File:scripts/start-local.ps1","start-local.ps1","scripts/start-local.ps1","Copy-Item -Path "".env.example"" -Destination "".env"" -ErrorAction SilentlyContinue
 docker compose up --build
@@ -593,8 +593,6 @@ def to_artifact_ref(path: Path, artifact_type: str) -> ArtifactRef:
         size=path.stat().st_size if path.exists() and path.is_file() else None,
     )
 "
-"File:storage/init/001-init.sql","001-init.sql","storage/init/001-init.sql","CREATE EXTENSION IF NOT EXISTS ""uuid-ossp"";
-"
 "File:agentic_complexity_analyzer.egg-info/top_level.txt","top_level.txt","agentic_complexity_analyzer.egg-info/top_level.txt","analyzers
 apps
 common
@@ -715,6 +713,8 @@ api-server = apps.api.main:run
 worker-runner = workers.sandbox_runner.main:run_worker
 "
 "File:agentic_complexity_analyzer.egg-info/dependency_links.txt","dependency_links.txt","agentic_complexity_analyzer.egg-info/dependency_links.txt","
+"
+"File:storage/init/001-init.sql","001-init.sql","storage/init/001-init.sql","CREATE EXTENSION IF NOT EXISTS ""uuid-ossp"";
 "
 "File:workers/sandbox_runner/__init__.py","__init__.py","workers/sandbox_runner/__init__.py",""
 "File:workers/sandbox_runner/tasks.py","tasks.py","workers/sandbox_runner/tasks.py","from __future__ import annotations
@@ -1849,85 +1849,6 @@ service:
       processors: [batch]
       exporters: [debug, file/logs]
 "
-"File:apps/web/tsconfig.json","tsconfig.json","apps/web/tsconfig.json","{
-  ""compilerOptions"": {
-    ""target"": ""ES2022"",
-    ""lib"": [
-      ""DOM"",
-      ""DOM.Iterable"",
-      ""ES2022""
-    ],
-    ""allowJs"": false,
-    ""skipLibCheck"": true,
-    ""strict"": true,
-    ""noEmit"": true,
-    ""esModuleInterop"": true,
-    ""module"": ""ESNext"",
-    ""moduleResolution"": ""Bundler"",
-    ""resolveJsonModule"": true,
-    ""isolatedModules"": true,
-    ""jsx"": ""preserve"",
-    ""incremental"": true,
-    ""plugins"": [
-      {
-        ""name"": ""next""
-      }
-    ]
-  },
-  ""include"": [
-    ""next-env.d.ts"",
-    ""**/*.ts"",
-    ""**/*.tsx"",
-    "".next/types/**/*.ts""
-  ],
-  ""exclude"": [
-    ""node_modules""
-  ]
-}
-"
-"File:apps/web/package.json","package.json","apps/web/package.json","{
-  ""name"": ""agentic-complexity-web"",
-  ""version"": ""0.1.0"",
-  ""private"": true,
-  ""scripts"": {
-    ""dev"": ""next dev -p 3000"",
-    ""build"": ""next build"",
-    ""start"": ""next start -p 3000"",
-    ""lint"": ""next lint""
-  },
-  ""dependencies"": {
-    ""next"": ""14.2.14"",
-    ""react"": ""18.3.1"",
-    ""react-dom"": ""18.3.1""
-  },
-  ""devDependencies"": {
-    ""@types/node"": ""22.14.0"",
-    ""@types/react"": ""18.3.12"",
-    ""@types/react-dom"": ""18.3.1"",
-    ""typescript"": ""5.8.2""
-  }
-}
-"
-"File:apps/web/next.config.js","next.config.js","apps/web/next.config.js","/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: ""standalone""
-};
-
-module.exports = nextConfig;
-"
-"File:apps/web/Dockerfile","Dockerfile","apps/web/Dockerfile","FROM node:20-alpine
-
-WORKDIR /app/apps/web
-
-COPY apps/web/package*.json ./
-RUN npm install
-
-COPY apps/web ./
-RUN npm run build
-
-EXPOSE 3000
-CMD [""npm"", ""run"", ""start""]
-"
 "File:apps/api/__init__.py","__init__.py","apps/api/__init__.py",""
 "File:apps/api/main.py","main.py","apps/api/main.py","from __future__ import annotations
 
@@ -2124,134 +2045,84 @@ RUN pip install --no-cache-dir -U pip setuptools wheel && pip install --no-cache
 EXPOSE 8000
 CMD [""python"", ""-m"", ""apps.api.main""]
 "
-"File:analyzers/static_ts/__init__.py","__init__.py","analyzers/static_ts/__init__.py",""
-"File:analyzers/static_ts/analyzer.py","analyzer.py","analyzers/static_ts/analyzer.py","from __future__ import annotations
-
-import re
-from pathlib import Path
-
-import networkx as nx
-
-from analyzers.utils import to_artifact_ref, write_json
-from common.events import ArtifactRef, MetricRecord
-
-
-EXCLUDE_PARTS = {"".git"", ""node_modules"", "".next"", ""dist"", ""build""}
-IMPORT_RE = re.compile(r""""""^\s*import\s+.*?\s+from\s+['""]([^'""]+)['""]"""""", re.MULTILINE)
-
-
-def _discover_ts_files(repo_path: Path) -> list[Path]:
-    files: list[Path] = []
-    for ext in (""*.ts"", ""*.tsx""):
-        for path in repo_path.rglob(ext):
-            if any(part in EXCLUDE_PARTS for part in path.parts):
-                continue
-            files.append(path)
-    return files
-
-
-def _is_test_file(path: Path) -> bool:
-    return path.name.endswith("".test.ts"") or path.name.endswith("".spec.ts"")
-
-
-def analyze_typescript_repo(repo_path: Path, artifact_dir: Path) -> tuple[list[MetricRecord], list[ArtifactRef]]:
-    ts_files = _discover_ts_files(repo_path)
-    if not ts_files:
-        return [], []
-
-    dep_graph = nx.DiGraph()
-    observability_hits = 0
-    test_files = [p for p in ts_files if _is_test_file(p)]
-    effective_modules = [p for p in ts_files if not _is_test_file(p)]
-
-    for file in ts_files:
-        module_name = str(file.relative_to(repo_path))
-        dep_graph.add_node(module_name)
-        content = file.read_text(encoding=""utf-8"", errors=""ignore"")
-        for match in IMPORT_RE.findall(content):
-            dep_graph.add_edge(module_name, match)
-        if ""opentelemetry"" in content or ""console."" in content or ""trace"" in content:
-            observability_hits += 1
-
-    dep_nodes = dep_graph.number_of_nodes()
-    dep_edges = dep_graph.number_of_edges()
-    scc = list(nx.strongly_connected_components(dep_graph))
-    scc_count = len([comp for comp in scc if len(comp) > 1])
-    largest_scc_ratio = (max((len(comp) for comp in scc), default=0) / dep_nodes) if dep_nodes else 0.0
-
-    modularity = 0.0
-    if dep_edges > 0 and dep_nodes > 1:
-        undirected = dep_graph.to_undirected()
-        communities = list(nx.algorithms.community.greedy_modularity_communities(undirected))
-        if communities:
-            modularity = float(nx.algorithms.community.modularity(undirected, communities))
-
-    test_ratio = (len(test_files) / len(ts_files)) if ts_files else 0.0
-    obs_ratio = (observability_hits / len(ts_files)) if ts_files else 0.0
-
-    evidence_path = artifact_dir / ""static_ts_summary.json""
-    dep_path = artifact_dir / ""dependency_graph_ts.json""
-    write_json(
-        evidence_path,
-        {
-            ""ts_files"": len(ts_files),
-            ""effective_modules"": len(effective_modules),
-            ""test_files"": len(test_files),
-            ""scc_count"": scc_count,
-            ""largest_scc_ratio"": largest_scc_ratio,
-        },
-    )
-    write_json(dep_path, {""nodes"": list(dep_graph.nodes()), ""edges"": [[s, t] for s, t in dep_graph.edges()]})
-
-    metrics: list[MetricRecord] = [
-        MetricRecord(
-            metric_code=""A1"",
-            scope=""system"",
-            raw_value=float(len(effective_modules)),
-            value_json={""language"": ""typescript""},
-            evidence_ref=str(evidence_path),
-        ),
-        MetricRecord(
-            metric_code=""A3"",
-            scope=""system"",
-            raw_value=float(dep_edges),
-            value_json={""language"": ""typescript"", ""nodes"": dep_nodes},
-            evidence_ref=str(dep_path),
-        ),
-        MetricRecord(
-            metric_code=""A4"",
-            scope=""system"",
-            raw_value=float(scc_count),
-            value_json={""language"": ""typescript"", ""largest_scc_ratio"": largest_scc_ratio},
-            evidence_ref=str(dep_path),
-        ),
-        MetricRecord(
-            metric_code=""A7"",
-            scope=""system"",
-            raw_value=float(modularity),
-            value_json={""language"": ""typescript""},
-            evidence_ref=str(dep_path),
-        ),
-        MetricRecord(
-            metric_code=""F1"",
-            scope=""system"",
-            raw_value=float(test_ratio),
-            value_json={""language"": ""typescript"", ""test_files"": len(test_files)},
-            evidence_ref=str(evidence_path),
-        ),
-        MetricRecord(
-            metric_code=""F2"",
-            scope=""system"",
-            raw_value=float(obs_ratio),
-            value_json={""language"": ""typescript"", ""files_with_observability"": observability_hits},
-            evidence_ref=str(evidence_path),
-        ),
+"File:apps/web/tsconfig.json","tsconfig.json","apps/web/tsconfig.json","{
+  ""compilerOptions"": {
+    ""target"": ""ES2022"",
+    ""lib"": [
+      ""DOM"",
+      ""DOM.Iterable"",
+      ""ES2022""
+    ],
+    ""allowJs"": false,
+    ""skipLibCheck"": true,
+    ""strict"": true,
+    ""noEmit"": true,
+    ""esModuleInterop"": true,
+    ""module"": ""ESNext"",
+    ""moduleResolution"": ""Bundler"",
+    ""resolveJsonModule"": true,
+    ""isolatedModules"": true,
+    ""jsx"": ""preserve"",
+    ""incremental"": true,
+    ""plugins"": [
+      {
+        ""name"": ""next""
+      }
     ]
-    artifacts = [
-        to_artifact_ref(evidence_path, ""static_ts_summary""),
-        to_artifact_ref(dep_path, ""dependency_graph_ts""),
-    ]
-    return metrics, artifacts
+  },
+  ""include"": [
+    ""next-env.d.ts"",
+    ""**/*.ts"",
+    ""**/*.tsx"",
+    "".next/types/**/*.ts""
+  ],
+  ""exclude"": [
+    ""node_modules""
+  ]
+}
+"
+"File:apps/web/package.json","package.json","apps/web/package.json","{
+  ""name"": ""agentic-complexity-web"",
+  ""version"": ""0.1.0"",
+  ""private"": true,
+  ""scripts"": {
+    ""dev"": ""next dev -p 3000"",
+    ""build"": ""next build"",
+    ""start"": ""next start -p 3000"",
+    ""lint"": ""next lint""
+  },
+  ""dependencies"": {
+    ""next"": ""14.2.14"",
+    ""react"": ""18.3.1"",
+    ""react-dom"": ""18.3.1""
+  },
+  ""devDependencies"": {
+    ""@types/node"": ""22.14.0"",
+    ""@types/react"": ""18.3.12"",
+    ""@types/react-dom"": ""18.3.1"",
+    ""typescript"": ""5.8.2""
+  }
+}
+"
+"File:apps/web/next.config.js","next.config.js","apps/web/next.config.js","/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: ""standalone""
+};
+
+module.exports = nextConfig;
+"
+"File:apps/web/Dockerfile","Dockerfile","apps/web/Dockerfile","FROM node:20-alpine
+
+WORKDIR /app/apps/web
+
+COPY apps/web/package*.json ./
+RUN npm install
+
+COPY apps/web ./
+RUN npm run build
+
+EXPOSE 3000
+CMD [""npm"", ""run"", ""start""]
 "
 "File:analyzers/reporting/__init__.py","__init__.py","analyzers/reporting/__init__.py",""
 "File:analyzers/reporting/generator.py","generator.py","analyzers/reporting/generator.py","from __future__ import annotations
@@ -2429,6 +2300,135 @@ def generate_report(
         to_artifact_ref(html_path, ""report_html""),
         to_artifact_ref(metrics_json_path, ""metrics_json""),
         to_artifact_ref(metrics_parquet_path, ""metrics_parquet""),
+    ]
+    return metrics, artifacts
+"
+"File:analyzers/static_ts/__init__.py","__init__.py","analyzers/static_ts/__init__.py",""
+"File:analyzers/static_ts/analyzer.py","analyzer.py","analyzers/static_ts/analyzer.py","from __future__ import annotations
+
+import re
+from pathlib import Path
+
+import networkx as nx
+
+from analyzers.utils import to_artifact_ref, write_json
+from common.events import ArtifactRef, MetricRecord
+
+
+EXCLUDE_PARTS = {"".git"", ""node_modules"", "".next"", ""dist"", ""build""}
+IMPORT_RE = re.compile(r""""""^\s*import\s+.*?\s+from\s+['""]([^'""]+)['""]"""""", re.MULTILINE)
+
+
+def _discover_ts_files(repo_path: Path) -> list[Path]:
+    files: list[Path] = []
+    for ext in (""*.ts"", ""*.tsx""):
+        for path in repo_path.rglob(ext):
+            if any(part in EXCLUDE_PARTS for part in path.parts):
+                continue
+            files.append(path)
+    return files
+
+
+def _is_test_file(path: Path) -> bool:
+    return path.name.endswith("".test.ts"") or path.name.endswith("".spec.ts"")
+
+
+def analyze_typescript_repo(repo_path: Path, artifact_dir: Path) -> tuple[list[MetricRecord], list[ArtifactRef]]:
+    ts_files = _discover_ts_files(repo_path)
+    if not ts_files:
+        return [], []
+
+    dep_graph = nx.DiGraph()
+    observability_hits = 0
+    test_files = [p for p in ts_files if _is_test_file(p)]
+    effective_modules = [p for p in ts_files if not _is_test_file(p)]
+
+    for file in ts_files:
+        module_name = str(file.relative_to(repo_path))
+        dep_graph.add_node(module_name)
+        content = file.read_text(encoding=""utf-8"", errors=""ignore"")
+        for match in IMPORT_RE.findall(content):
+            dep_graph.add_edge(module_name, match)
+        if ""opentelemetry"" in content or ""console."" in content or ""trace"" in content:
+            observability_hits += 1
+
+    dep_nodes = dep_graph.number_of_nodes()
+    dep_edges = dep_graph.number_of_edges()
+    scc = list(nx.strongly_connected_components(dep_graph))
+    scc_count = len([comp for comp in scc if len(comp) > 1])
+    largest_scc_ratio = (max((len(comp) for comp in scc), default=0) / dep_nodes) if dep_nodes else 0.0
+
+    modularity = 0.0
+    if dep_edges > 0 and dep_nodes > 1:
+        undirected = dep_graph.to_undirected()
+        communities = list(nx.algorithms.community.greedy_modularity_communities(undirected))
+        if communities:
+            modularity = float(nx.algorithms.community.modularity(undirected, communities))
+
+    test_ratio = (len(test_files) / len(ts_files)) if ts_files else 0.0
+    obs_ratio = (observability_hits / len(ts_files)) if ts_files else 0.0
+
+    evidence_path = artifact_dir / ""static_ts_summary.json""
+    dep_path = artifact_dir / ""dependency_graph_ts.json""
+    write_json(
+        evidence_path,
+        {
+            ""ts_files"": len(ts_files),
+            ""effective_modules"": len(effective_modules),
+            ""test_files"": len(test_files),
+            ""scc_count"": scc_count,
+            ""largest_scc_ratio"": largest_scc_ratio,
+        },
+    )
+    write_json(dep_path, {""nodes"": list(dep_graph.nodes()), ""edges"": [[s, t] for s, t in dep_graph.edges()]})
+
+    metrics: list[MetricRecord] = [
+        MetricRecord(
+            metric_code=""A1"",
+            scope=""system"",
+            raw_value=float(len(effective_modules)),
+            value_json={""language"": ""typescript""},
+            evidence_ref=str(evidence_path),
+        ),
+        MetricRecord(
+            metric_code=""A3"",
+            scope=""system"",
+            raw_value=float(dep_edges),
+            value_json={""language"": ""typescript"", ""nodes"": dep_nodes},
+            evidence_ref=str(dep_path),
+        ),
+        MetricRecord(
+            metric_code=""A4"",
+            scope=""system"",
+            raw_value=float(scc_count),
+            value_json={""language"": ""typescript"", ""largest_scc_ratio"": largest_scc_ratio},
+            evidence_ref=str(dep_path),
+        ),
+        MetricRecord(
+            metric_code=""A7"",
+            scope=""system"",
+            raw_value=float(modularity),
+            value_json={""language"": ""typescript""},
+            evidence_ref=str(dep_path),
+        ),
+        MetricRecord(
+            metric_code=""F1"",
+            scope=""system"",
+            raw_value=float(test_ratio),
+            value_json={""language"": ""typescript"", ""test_files"": len(test_files)},
+            evidence_ref=str(evidence_path),
+        ),
+        MetricRecord(
+            metric_code=""F2"",
+            scope=""system"",
+            raw_value=float(obs_ratio),
+            value_json={""language"": ""typescript"", ""files_with_observability"": observability_hits},
+            evidence_ref=str(evidence_path),
+        ),
+    ]
+    artifacts = [
+        to_artifact_ref(evidence_path, ""static_ts_summary""),
+        to_artifact_ref(dep_path, ""dependency_graph_ts""),
     ]
     return metrics, artifacts
 "
@@ -2708,22 +2708,6 @@ def analyze_python_repo(repo_path: Path, artifact_dir: Path) -> tuple[list[Metri
             observability_hits += 1
     observability_ratio = (observability_hits / len(py_files)) if
 ... [truncated]"
-"File:data/artifacts/otel/traces.jsonl","traces.jsonl","data/artifacts/otel/traces.jsonl",""
-"File:data/artifacts/otel/metrics.jsonl","metrics.jsonl","data/artifacts/otel/metrics.jsonl",""
-"File:data/artifacts/otel/logs.jsonl","logs.jsonl","data/artifacts/otel/logs.jsonl",""
-"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/resolved_run_spec.json","resolved_run_spec.json","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/resolved_run_spec.json","{
-  ""setup_commands"": [],
-  ""entry_command"": ""python -m sglang.launch_server --model-path RyanLi0802/Biomni-R0-Preview --port 30000 --host 0.0.0.0 --mem-fraction-static 0.8 --tp 2 --trust-remote-code --json-model-override-args '{\""rope_scaling\"":{\""rope_type\"":\""yarn\"",\""factor\"":1.0,\""original_max_position_embeddings\"":32768}, \""max_position_embeddings\"": 131072}'"",
-  ""task_inputs"": [],
-  ""env_allowlist"": [],
-  ""repeats"": 10,
-  ""timeout_sec"": 1800
-}"
-"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/instrumentation_summary.json","instrumentation_summary.json","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/instrumentation_summary.json","{
-  ""files_total"": 77,
-  ""files_touched"": 29,
-  ""coverage_of_observability"": 0.37662337662337664
-}"
 "File:analyzers/dynamic_runtime/__init__.py","__init__.py","analyzers/dynamic_runtime/__init__.py",""
 "File:analyzers/dynamic_runtime/runtime_hooks.py","runtime_hooks.py","analyzers/dynamic_runtime/runtime_hooks.py","from __future__ import annotations
 
@@ -3334,6 +3318,77 @@ def analyze_dynamic_runs(
 
     return metrics, artifacts, observability_coverage
 "
+"File:data/artifacts/otel/traces.jsonl","traces.jsonl","data/artifacts/otel/traces.jsonl",""
+"File:data/artifacts/otel/metrics.jsonl","metrics.jsonl","data/artifacts/otel/metrics.jsonl",""
+"File:data/artifacts/otel/logs.jsonl","logs.jsonl","data/artifacts/otel/logs.jsonl",""
+"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/resolved_run_spec.json","resolved_run_spec.json","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/resolved_run_spec.json","{
+  ""setup_commands"": [],
+  ""entry_command"": ""python -m sglang.launch_server --model-path RyanLi0802/Biomni-R0-Preview --port 30000 --host 0.0.0.0 --mem-fraction-static 0.8 --tp 2 --trust-remote-code --json-model-override-args '{\""rope_scaling\"":{\""rope_type\"":\""yarn\"",\""factor\"":1.0,\""original_max_position_embeddings\"":32768}, \""max_position_embeddings\"": 131072}'"",
+  ""task_inputs"": [],
+  ""env_allowlist"": [],
+  ""repeats"": 10,
+  ""timeout_sec"": 1800
+}"
+"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/instrumentation_summary.json","instrumentation_summary.json","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/instrumentation_summary.json","{
+  ""files_total"": 77,
+  ""files_touched"": 29,
+  ""coverage_of_observability"": 0.37662337662337664
+}"
+"File:apps/web/lib/api.ts","api.ts","apps/web/lib/api.ts","const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || ""http://localhost:8000"";
+
+export interface AnalysisCreatePayload {
+  repo_url: string;
+  git_ref: string;
+  run_profile: string;
+  repeats?: number;
+  timeout_sec?: number;
+  auth_token?: string;
+  run_spec?: {
+    setup_commands: string[];
+    entry_command?: string;
+    task_inputs: Record<string, unknown>[];
+    env_allowlist: string[];
+    repeats?: number;
+    timeout_sec?: number;
+  };
+}
+
+export async function createAnalysis(payload: AnalysisCreatePayload) {
+  const res = await fetch(`${API_BASE}/api/v1/analyses`, {
+    method: ""POST"",
+    headers: { ""Content-Type"": ""application/json"" },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) {
+    throw new Error(`Create failed: ${await res.text()}`);
+  }
+  return await res.json();
+}
+
+export async function getAnalysis(id: string) {
+  const res = await fetch(`${API_BASE}/api/v1/analyses/${id}`, { cache: ""no-store"" });
+  if (!res.ok) {
+    throw new Error(`Status fetch failed: ${await res.text()}`);
+  }
+  return await res.json();
+}
+
+export async function getReport(id: string) {
+  const res = await fetch(`${API_BASE}/api/v1/analyses/${id}/report`, { cache: ""no-store"" });
+  if (!res.ok) {
+    throw new Error(`Report fetch failed: ${await res.text()}`);
+  }
+  return await res.json();
+}
+
+export async function getMetrics(id: string) {
+  const res = await fetch(`${API_BASE}/api/v1/analyses/${id}/metrics`, { cache: ""no-store"" });
+  if (!res.ok) {
+    throw new Error(`Metrics fetch failed: ${await res.text()}`);
+  }
+  return await res.json();
+}
+"
 "File:apps/web/app/page.tsx","page.tsx","apps/web/app/page.tsx","""use client"";
 
 import { FormEvent, useState } from ""react"";
@@ -3539,61 +3594,6 @@ button {
   .grid {
     grid-template-columns: 1fr 1fr;
   }
-}
-"
-"File:apps/web/lib/api.ts","api.ts","apps/web/lib/api.ts","const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || ""http://localhost:8000"";
-
-export interface AnalysisCreatePayload {
-  repo_url: string;
-  git_ref: string;
-  run_profile: string;
-  repeats?: number;
-  timeout_sec?: number;
-  auth_token?: string;
-  run_spec?: {
-    setup_commands: string[];
-    entry_command?: string;
-    task_inputs: Record<string, unknown>[];
-    env_allowlist: string[];
-    repeats?: number;
-    timeout_sec?: number;
-  };
-}
-
-export async function createAnalysis(payload: AnalysisCreatePayload) {
-  const res = await fetch(`${API_BASE}/api/v1/analyses`, {
-    method: ""POST"",
-    headers: { ""Content-Type"": ""application/json"" },
-    body: JSON.stringify(payload)
-  });
-  if (!res.ok) {
-    throw new Error(`Create failed: ${await res.text()}`);
-  }
-  return await res.json();
-}
-
-export async function getAnalysis(id: string) {
-  const res = await fetch(`${API_BASE}/api/v1/analyses/${id}`, { cache: ""no-store"" });
-  if (!res.ok) {
-    throw new Error(`Status fetch failed: ${await res.text()}`);
-  }
-  return await res.json();
-}
-
-export async function getReport(id: string) {
-  const res = await fetch(`${API_BASE}/api/v1/analyses/${id}/report`, { cache: ""no-store"" });
-  if (!res.ok) {
-    throw new Error(`Report fetch failed: ${await res.text()}`);
-  }
-  return await res.json();
-}
-
-export async function getMetrics(id: string) {
-  const res = await fetch(`${API_BASE}/api/v1/analyses/${id}/metrics`, { cache: ""no-store"" });
-  if (!res.ok) {
-    throw new Error(`Metrics fetch failed: ${await res.text()}`);
-  }
-  return await res.json();
 }
 "
 "File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/report/report.md","report.md","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/report/report.md","# Agentic Complexity Report
@@ -5702,6 +5702,102 @@ def _flush_summary() -> None:
 
 _patch_asyncio()
 atexit.register(_flush_summary)
+"
+"File:apps/web/app/analysis/[id]/page.tsx","page.tsx","apps/web/app/analysis/[id]/page.tsx","""use client"";
+
+import { useEffect, useMemo, useState } from ""react"";
+import { getAnalysis, getMetrics, getReport } from ""../../../lib/api"";
+
+const REFRESH_MS = 5000;
+
+export default function AnalysisDetailPage({ params }: { params: { id: string } }) {
+  const id = params.id;
+  const [statusData, setStatusData] = useState<any>(null);
+  const [report, setReport] = useState<any>(null);
+  const [metrics, setMetrics] = useState<any[]>([]);
+  const [error, setError] = useState("""");
+
+  useEffect(() => {
+    let mounted = true;
+    async function fetchAll() {
+      try {
+        const [statusRes, reportRes, metricRes] = await Promise.all([
+          getAnalysis(id),
+          getReport(id),
+          getMetrics(id)
+        ]);
+        if (!mounted) return;
+        setStatusData(statusRes);
+        setReport(reportRes);
+        setMetrics(metricRes);
+      } catch (err: any) {
+        if (!mounted) return;
+        setError(err.message || ""load failed"");
+      }
+    }
+    fetchAll();
+    const timer = setInterval(fetchAll, REFRESH_MS);
+    return () => {
+      mounted = false;
+      clearInterval(timer);
+    };
+  }, [id]);
+
+  const grouped = useMemo(() => {
+    const map: Record<string, any[]> = {};
+    for (const item of metrics) {
+      const key = item.scope || ""unknown"";
+      if (!map[key]) map[key] = [];
+      map[key].push(item);
+    }
+    return map;
+  }, [metrics]);
+
+  return (
+    <main>
+      <h1>Analysis #{id}</h1>
+      {error ? <p style={{ color: ""#b40000"" }}>{error}</p> : null}
+      <section className=""card"">
+        <h3>Status</h3>
+        <pre>{JSON.stringify(statusData, null, 2)}</pre>
+      </section>
+      <section className=""card"" style={{ marginTop: 16 }}>
+        <h3>Report</h3>
+        <pre>{JSON.stringify(report, null, 2)}</pre>
+      </section>
+      <section className=""card"" style={{ marginTop: 16 }}>
+        <h3>Metrics</h3>
+        {Object.entries(grouped).map(([scope, rows]) => (
+          <div key={scope} style={{ marginBottom: 12 }}>
+            <h4>{scope}</h4>
+            <table style={{ width: ""100%"", borderCollapse: ""collapse"" }}>
+              <thead>
+                <tr>
+                  <th align=""left"">Code</th>
+                  <th align=""left"">Value</th>
+                  <th align=""left"">CI</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rows.slice(0, 120).map((row, idx) => (
+                  <tr key={`${scope}-${idx}`}>
+                    <td>{row.metric_code}</td>
+                    <td>{row.raw_value ?? ""-""}</td>
+                    <td>
+                      {row.ci_low !== null && row.ci_high !== null
+                        ? `[${row.ci_low}, ${row.ci_high}]`
+                        : ""-""}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ))}
+      </section>
+    </main>
+  );
+}
 "
 "File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/biomni_101.ipynb","biomni_101.ipynb","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/biomni_101.ipynb","{
  ""cells"": [
@@ -8744,102 +8840,6 @@ class BiomniConfig:
 
 # Global default config instance (optional, for convenience)
 default_config = BiomniConfig()
-"
-"File:apps/web/app/analysis/[id]/page.tsx","page.tsx","apps/web/app/analysis/[id]/page.tsx","""use client"";
-
-import { useEffect, useMemo, useState } from ""react"";
-import { getAnalysis, getMetrics, getReport } from ""../../../lib/api"";
-
-const REFRESH_MS = 5000;
-
-export default function AnalysisDetailPage({ params }: { params: { id: string } }) {
-  const id = params.id;
-  const [statusData, setStatusData] = useState<any>(null);
-  const [report, setReport] = useState<any>(null);
-  const [metrics, setMetrics] = useState<any[]>([]);
-  const [error, setError] = useState("""");
-
-  useEffect(() => {
-    let mounted = true;
-    async function fetchAll() {
-      try {
-        const [statusRes, reportRes, metricRes] = await Promise.all([
-          getAnalysis(id),
-          getReport(id),
-          getMetrics(id)
-        ]);
-        if (!mounted) return;
-        setStatusData(statusRes);
-        setReport(reportRes);
-        setMetrics(metricRes);
-      } catch (err: any) {
-        if (!mounted) return;
-        setError(err.message || ""load failed"");
-      }
-    }
-    fetchAll();
-    const timer = setInterval(fetchAll, REFRESH_MS);
-    return () => {
-      mounted = false;
-      clearInterval(timer);
-    };
-  }, [id]);
-
-  const grouped = useMemo(() => {
-    const map: Record<string, any[]> = {};
-    for (const item of metrics) {
-      const key = item.scope || ""unknown"";
-      if (!map[key]) map[key] = [];
-      map[key].push(item);
-    }
-    return map;
-  }, [metrics]);
-
-  return (
-    <main>
-      <h1>Analysis #{id}</h1>
-      {error ? <p style={{ color: ""#b40000"" }}>{error}</p> : null}
-      <section className=""card"">
-        <h3>Status</h3>
-        <pre>{JSON.stringify(statusData, null, 2)}</pre>
-      </section>
-      <section className=""card"" style={{ marginTop: 16 }}>
-        <h3>Report</h3>
-        <pre>{JSON.stringify(report, null, 2)}</pre>
-      </section>
-      <section className=""card"" style={{ marginTop: 16 }}>
-        <h3>Metrics</h3>
-        {Object.entries(grouped).map(([scope, rows]) => (
-          <div key={scope} style={{ marginBottom: 12 }}>
-            <h4>{scope}</h4>
-            <table style={{ width: ""100%"", borderCollapse: ""collapse"" }}>
-              <thead>
-                <tr>
-                  <th align=""left"">Code</th>
-                  <th align=""left"">Value</th>
-                  <th align=""left"">CI</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rows.slice(0, 120).map((row, idx) => (
-                  <tr key={`${scope}-${idx}`}>
-                    <td>{row.metric_code}</td>
-                    <td>{row.raw_value ?? ""-""}</td>
-                    <td>
-                      {row.ci_low !== null && row.ci_high !== null
-                        ? `[${row.ci_low}, ${row.ci_high}]`
-                        : ""-""}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ))}
-      </section>
-    </main>
-  );
-}
 "
 "File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/pylabrobot.ipynb","pylabrobot.ipynb","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/pylabrobot.ipynb","{
  ""cells"": [
@@ -15237,6 +15237,289 @@ def analyze_rna_secondary_structure_features(dot_bracket_structure, sequence=Non
     total_paired_bases = len(pairs) * 2
     total_unpaired_bases = len(dot_bracket_s
 ... [truncated]"
+"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/__init__.py","__init__.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/__init__.py",""
+"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/lab_bench.py","lab_bench.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/lab_bench.py","import numpy as np
+import pandas as pd
+
+from biomni.task.base_task import base_task
+
+np.random.seed(42)
+
+
+def shuffle(x):
+    np.random.shuffle(x)
+    return x
+
+
+class lab_bench(base_task):
+    def __init__(self, path=""./data"", dataset=""DbQA""):
+        if dataset not in [""DbQA"", ""SeqQA""]:
+            raise ValueError(""dataset must be one of 'DbQA', 'SeqQA'"")
+
+        self.dataset = dataset  # Store dataset type
+        df = pd.read_parquet(path + ""/"" + dataset + ""/train-00000-of-00001_test.parquet"")
+
+        self.prompt = """"""The following is a multiple choice question about biology.
+Please answer by responding with the letter of the correct answer.
+
+Question: {question}
+Options:
+{options}
+
+You MUST include the letter of the correct answer within the following tags:
+[ANSWER] and [/ANSWER]. For example, '[ANSWER]<answer>[/ANSWER]',
+where <answer> is the correct letter. Always answer in exactly this format
+of a single letter between the two tags, even if you are unsure.
+We require this because we use automatic parsing.
+            """"""
+
+        np.random.seed(42)
+        df[""options""] = df.apply(
+            lambda x: shuffle(
+                x.distractors.tolist() + [x.ideal] + [""Insufficient information to answer the question.""]
+            ),
+            axis=1,
+        )
+        df[""options_letters""] = df.options.apply(
+            lambda x: ""\n"".join([chr(ord(""A"") + i) + ""."" + item for i, item in enumerate(x)])
+        )
+        df[""letter_answer""] = df.apply(
+            lambda x: chr(ord(""A"") + np.where(np.array(x.options) == x.ideal)[0][0]),
+            axis=1,
+        )
+        df[""letter_refrain""] = df.apply(
+            lambda x: chr(
+                ord(""A"") + np.where(np.array(x.options) == ""Insufficient information to answer the question."")[0][0]
+            ),
+            axis=1,
+        )
+
+        self.query = df.question.values
+        self.options = df.options_letters.values
+        self.answer = df.letter_answer.values
+        self.refrain_label = df.letter_refrain.values
+
+        # Store protocol information if available
+        self.protocol = df.protocol.values if ""protocol"" in df.columns else None
+
+    def get_example(self, index=None):
+        if index is None:
+            index = np.random.randint(len(self.query))
+
+        if self.dataset == ""ProtocolQA"" and self.protocol is not None:
+            return {
+                ""prompt"": self.prompt.format(
+                    protocol=self.protocol[index],
+                    question=self.query[index],
+                    options=self.options[index],
+                ),
+                ""answer"": self.answer[index],
+            }
+        else:
+            return {
+                ""prompt"": self.prompt.format(question=self.query[index], options=self.options[index]),
+                ""answer"": self.answer[index],
+            }
+
+    def get_iterator(self):
+        for i in range(len(self.query)):
+            yield self.get_example(i)
+
+    def evaluate(self, response):
+        ## expected a list/array of symbols
+        from sklearn.metrics import accuracy_score
+
+        ground_truth = self.answer
+        response = np.array(response)
+
+        return {
+            ""accuracy"": accuracy_score(ground_truth, response),
+            ""coverage"": np.mean(response != self.refrain_label),
+            ""refrain_ratio"": np.mean(response == self.refrain_label),
+            ""precision"": accuracy_score(
+                ground_truth[np.where(response != self.refrain_label)],
+                response[np.where(response != self.refrain_label)],
+            ),
+        }
+
+    def output_class(self):
+        from pydantic import BaseModel, Field
+
+        class MultipleChoiceOutput(BaseModel):
+            """"""Multiple choice output.""""""
+
+            choice: str | None = Field(
+                description=""Multiple choice answer. For example, if there is <answer>A</answer> in the prompt, the output should be 'A'.""
+            )
+
+        return MultipleChoiceOutput
+"
+"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/hle.py","hle.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/hle.py","import numpy as np
+import pandas as pd
+
+from biomni.task.base_task import base_task
+
+np.random.seed(42)
+
+
+def shuffle(x):
+    np.random.shuffle(x)
+    return x
+
+
+class humanity_last_exam(base_task):
+    def __init__(self, path=""./data"", category=""Biology/Medicine"", answer_type=""multipleChoice""):
+        if category not in [
+            ""Other"",
+            ""Humanities/Social Science"",
+            ""Math"",
+            ""Physics"",
+            ""Computer Science/AI"",
+            ""Biology/Medicine"",
+            ""Chemistry"",
+            ""Engineering"",
+        ]:
+            raise ValueError(
+                ""category must be one of ['Other', 'Humanities/Social Science', 'Math', 'Physics', 'Computer Science/AI', 'Biology/Medicine', 'Chemistry', 'Engineering']""
+            )
+        if answer_type not in [""exactMatch"", ""multipleChoice""]:
+            raise ValueError(""answer_type must be one of ['exactMatch' or 'multipleChoice']"")
+
+        self.dataset = category  # Store dataset type
+        self.answer_type = answer_type
+        df = pd.read_parquet(path + ""/hle/test_sampled_biology_medicine.parquet"")
+
+        # Extract answer choices from question text
+        def extract_options(question):
+            # Find the ""Answer Choices:"" section
+            if ""Answer Choices:"" not in question:
+                return []
+            choices = question.split(""Answer Choices:"")[1].strip()
+
+            # Split on A., B., C. etc and clean up
+            options = []
+            letters = [
+                ""A."",
+                ""B."",
+                ""C."",
+                ""D."",
+                ""E."",
+                ""F."",
+                ""G."",
+                ""H."",
+                ""I."",
+                ""J."",
+                ""K."",
+                ""L."",
+                ""M."",
+                ""N."",
+                ""O."",
+                ""P."",
+                ""Q."",
+                ""R."",
+                ""S."",
+                ""T."",
+                ""U."",
+                ""V."",
+                ""W."",
+                ""X."",
+                ""Y."",
+                ""Z."",
+            ]
+            for i, letter in enumerate(letters):
+                if letter in choices:
+                    # Define the next letter if available
+                    next_letter = letters[i + 1] if i + 1 < len(letters) else None
+
+                    # Split between current letter and next letter
+                    parts = choices.split(letter)[1]
+                    if next_letter and next_letter in parts:
+                        option = parts.split(next_letter)[0].strip()
+                    else:
+                        option = parts.strip()
+
+                    options.append(option)
+            return options
+
+        def extract_question(question):
+            return question.split(""Answer Choices:"")[0].strip()
+
+        # Extract options and answers only for multiple choice questions and category is the same as the dataset
+        df = df[df[""category""] == self.dataset]
+        df = df[df[""answer_type""] == ""multipleChoice""]
+        df[""question_text""] = df.question
+        df[""letter_answer""] = df[""answer""].apply(lambda x: x[0])
+
+        self.query = df.question_text.values
+        # self.options = df.options_letters.values
+        self.answer = df.letter_answer.values
+
+        self.prompt = """"""Question: {question}""""""
+
+    def get_example(self, index=None):
+        if index is None:
+            index = np.random.randint(len(self.query))
+
+        return {
+            ""prompt"": self.prompt.format(
+                question=self.query[index],
+                # options = self.options[index]
+            ),
+            ""answer"": self.answer[index],
+        }
+
+    def get_iterator(self):
+        for i in range(len(self.query)):
+            yield self.get_example(i)
+
+    def evaluate(self, response):
+        ## expected a list/array of symbols
+        from sklearn.metrics import accuracy_score
+
+        ground_truth = self.answer
+        response = np.array(response)
+
+        return {
+            ""accuracy"": accuracy_score(ground_truth, response),
+            ""coverage"": np.mean(response != self.refrain_label),
+            ""refrain_ratio"": np.mean(response == self.refrain_label),
+            ""precision"": accuracy_score(
+                ground_truth[np.where(response != self.refrain_label)],
+                response[np.where(response != self.refrain_label)],
+            ),
+        }
+
+    def output_class(self):
+        from pydantic import BaseModel, Field
+
+        class MultipleChoiceOutput(BaseModel):
+            """"""Multiple choice output.""""""
+
+            choice: str | None = Field(
+                description=""Multiple choice answer. For example, if there is <answer>A</answer> in the prompt, the output should be 'A'.""
+            )
+
+        return MultipleChoiceOutput
+"
+"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/base_task.py","base_task.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/base_task.py","class base_task:
+    def __init__(self):
+        pass
+
+    def get_example(self):
+        pass
+
+    def get_iterator(self):
+        pass
+
+    def evaluate(self):
+        pass
+
+    def output_class(self):
+        pass
+
+    def get_prompt_from_input(self, input):
+        return self.get_example(input)[""prompt""]
+"
 "File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/__init__.py","__init__.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/__init__.py","""""""Know-How library for Biomni agent.
 
 This module provides functionality to load and manage know-how documents
@@ -16033,495 +16316,6 @@ class KnowHowLoader:
         Args:
             doc_id: Document id
 ... [truncated]"
-"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/__init__.py","__init__.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/__init__.py",""
-"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/lab_bench.py","lab_bench.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/lab_bench.py","import numpy as np
-import pandas as pd
-
-from biomni.task.base_task import base_task
-
-np.random.seed(42)
-
-
-def shuffle(x):
-    np.random.shuffle(x)
-    return x
-
-
-class lab_bench(base_task):
-    def __init__(self, path=""./data"", dataset=""DbQA""):
-        if dataset not in [""DbQA"", ""SeqQA""]:
-            raise ValueError(""dataset must be one of 'DbQA', 'SeqQA'"")
-
-        self.dataset = dataset  # Store dataset type
-        df = pd.read_parquet(path + ""/"" + dataset + ""/train-00000-of-00001_test.parquet"")
-
-        self.prompt = """"""The following is a multiple choice question about biology.
-Please answer by responding with the letter of the correct answer.
-
-Question: {question}
-Options:
-{options}
-
-You MUST include the letter of the correct answer within the following tags:
-[ANSWER] and [/ANSWER]. For example, '[ANSWER]<answer>[/ANSWER]',
-where <answer> is the correct letter. Always answer in exactly this format
-of a single letter between the two tags, even if you are unsure.
-We require this because we use automatic parsing.
-            """"""
-
-        np.random.seed(42)
-        df[""options""] = df.apply(
-            lambda x: shuffle(
-                x.distractors.tolist() + [x.ideal] + [""Insufficient information to answer the question.""]
-            ),
-            axis=1,
-        )
-        df[""options_letters""] = df.options.apply(
-            lambda x: ""\n"".join([chr(ord(""A"") + i) + ""."" + item for i, item in enumerate(x)])
-        )
-        df[""letter_answer""] = df.apply(
-            lambda x: chr(ord(""A"") + np.where(np.array(x.options) == x.ideal)[0][0]),
-            axis=1,
-        )
-        df[""letter_refrain""] = df.apply(
-            lambda x: chr(
-                ord(""A"") + np.where(np.array(x.options) == ""Insufficient information to answer the question."")[0][0]
-            ),
-            axis=1,
-        )
-
-        self.query = df.question.values
-        self.options = df.options_letters.values
-        self.answer = df.letter_answer.values
-        self.refrain_label = df.letter_refrain.values
-
-        # Store protocol information if available
-        self.protocol = df.protocol.values if ""protocol"" in df.columns else None
-
-    def get_example(self, index=None):
-        if index is None:
-            index = np.random.randint(len(self.query))
-
-        if self.dataset == ""ProtocolQA"" and self.protocol is not None:
-            return {
-                ""prompt"": self.prompt.format(
-                    protocol=self.protocol[index],
-                    question=self.query[index],
-                    options=self.options[index],
-                ),
-                ""answer"": self.answer[index],
-            }
-        else:
-            return {
-                ""prompt"": self.prompt.format(question=self.query[index], options=self.options[index]),
-                ""answer"": self.answer[index],
-            }
-
-    def get_iterator(self):
-        for i in range(len(self.query)):
-            yield self.get_example(i)
-
-    def evaluate(self, response):
-        ## expected a list/array of symbols
-        from sklearn.metrics import accuracy_score
-
-        ground_truth = self.answer
-        response = np.array(response)
-
-        return {
-            ""accuracy"": accuracy_score(ground_truth, response),
-            ""coverage"": np.mean(response != self.refrain_label),
-            ""refrain_ratio"": np.mean(response == self.refrain_label),
-            ""precision"": accuracy_score(
-                ground_truth[np.where(response != self.refrain_label)],
-                response[np.where(response != self.refrain_label)],
-            ),
-        }
-
-    def output_class(self):
-        from pydantic import BaseModel, Field
-
-        class MultipleChoiceOutput(BaseModel):
-            """"""Multiple choice output.""""""
-
-            choice: str | None = Field(
-                description=""Multiple choice answer. For example, if there is <answer>A</answer> in the prompt, the output should be 'A'.""
-            )
-
-        return MultipleChoiceOutput
-"
-"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/hle.py","hle.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/hle.py","import numpy as np
-import pandas as pd
-
-from biomni.task.base_task import base_task
-
-np.random.seed(42)
-
-
-def shuffle(x):
-    np.random.shuffle(x)
-    return x
-
-
-class humanity_last_exam(base_task):
-    def __init__(self, path=""./data"", category=""Biology/Medicine"", answer_type=""multipleChoice""):
-        if category not in [
-            ""Other"",
-            ""Humanities/Social Science"",
-            ""Math"",
-            ""Physics"",
-            ""Computer Science/AI"",
-            ""Biology/Medicine"",
-            ""Chemistry"",
-            ""Engineering"",
-        ]:
-            raise ValueError(
-                ""category must be one of ['Other', 'Humanities/Social Science', 'Math', 'Physics', 'Computer Science/AI', 'Biology/Medicine', 'Chemistry', 'Engineering']""
-            )
-        if answer_type not in [""exactMatch"", ""multipleChoice""]:
-            raise ValueError(""answer_type must be one of ['exactMatch' or 'multipleChoice']"")
-
-        self.dataset = category  # Store dataset type
-        self.answer_type = answer_type
-        df = pd.read_parquet(path + ""/hle/test_sampled_biology_medicine.parquet"")
-
-        # Extract answer choices from question text
-        def extract_options(question):
-            # Find the ""Answer Choices:"" section
-            if ""Answer Choices:"" not in question:
-                return []
-            choices = question.split(""Answer Choices:"")[1].strip()
-
-            # Split on A., B., C. etc and clean up
-            options = []
-            letters = [
-                ""A."",
-                ""B."",
-                ""C."",
-                ""D."",
-                ""E."",
-                ""F."",
-                ""G."",
-                ""H."",
-                ""I."",
-                ""J."",
-                ""K."",
-                ""L."",
-                ""M."",
-                ""N."",
-                ""O."",
-                ""P."",
-                ""Q."",
-                ""R."",
-                ""S."",
-                ""T."",
-                ""U."",
-                ""V."",
-                ""W."",
-                ""X."",
-                ""Y."",
-                ""Z."",
-            ]
-            for i, letter in enumerate(letters):
-                if letter in choices:
-                    # Define the next letter if available
-                    next_letter = letters[i + 1] if i + 1 < len(letters) else None
-
-                    # Split between current letter and next letter
-                    parts = choices.split(letter)[1]
-                    if next_letter and next_letter in parts:
-                        option = parts.split(next_letter)[0].strip()
-                    else:
-                        option = parts.strip()
-
-                    options.append(option)
-            return options
-
-        def extract_question(question):
-            return question.split(""Answer Choices:"")[0].strip()
-
-        # Extract options and answers only for multiple choice questions and category is the same as the dataset
-        df = df[df[""category""] == self.dataset]
-        df = df[df[""answer_type""] == ""multipleChoice""]
-        df[""question_text""] = df.question
-        df[""letter_answer""] = df[""answer""].apply(lambda x: x[0])
-
-        self.query = df.question_text.values
-        # self.options = df.options_letters.values
-        self.answer = df.letter_answer.values
-
-        self.prompt = """"""Question: {question}""""""
-
-    def get_example(self, index=None):
-        if index is None:
-            index = np.random.randint(len(self.query))
-
-        return {
-            ""prompt"": self.prompt.format(
-                question=self.query[index],
-                # options = self.options[index]
-            ),
-            ""answer"": self.answer[index],
-        }
-
-    def get_iterator(self):
-        for i in range(len(self.query)):
-            yield self.get_example(i)
-
-    def evaluate(self, response):
-        ## expected a list/array of symbols
-        from sklearn.metrics import accuracy_score
-
-        ground_truth = self.answer
-        response = np.array(response)
-
-        return {
-            ""accuracy"": accuracy_score(ground_truth, response),
-            ""coverage"": np.mean(response != self.refrain_label),
-            ""refrain_ratio"": np.mean(response == self.refrain_label),
-            ""precision"": accuracy_score(
-                ground_truth[np.where(response != self.refrain_label)],
-                response[np.where(response != self.refrain_label)],
-            ),
-        }
-
-    def output_class(self):
-        from pydantic import BaseModel, Field
-
-        class MultipleChoiceOutput(BaseModel):
-            """"""Multiple choice output.""""""
-
-            choice: str | None = Field(
-                description=""Multiple choice answer. For example, if there is <answer>A</answer> in the prompt, the output should be 'A'.""
-            )
-
-        return MultipleChoiceOutput
-"
-"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/base_task.py","base_task.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/base_task.py","class base_task:
-    def __init__(self):
-        pass
-
-    def get_example(self):
-        pass
-
-    def get_iterator(self):
-        pass
-
-    def evaluate(self):
-        pass
-
-    def output_class(self):
-        pass
-
-    def get_prompt_from_input(self, input):
-        return self.get_example(input)[""prompt""]
-"
-"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/__init__.py","__init__.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/__init__.py",""
-"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py","retriever.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py","from agentic_runtime_hooks import ac_track_call
-import contextlib
-import re
-
-from langchain_core.messages import HumanMessage
-from langchain_openai import ChatOpenAI
-
-
-class ToolRetriever:
-    """"""Retrieve tools from the tool registry.""""""
-
-    def __init__(self):
-        pass
-
-    def prompt_based_retrieval(self, query: str, resources: dict, llm=None) -> dict:
-        """"""Use a prompt-based approach to retrieve the most relevant resources for a query.
-
-        Args:
-            query: The user's query
-            resources: A dictionary with keys 'tools', 'data_lake', 'libraries', and 'know_how',
-                      each containing a list of available resources
-            llm: Optional LLM instance to use for retrieval (if None, will create a new one)
-
-        Returns:
-            A dictionary with the same keys, but containing only the most relevant resources
-
-        """"""
-        # Build prompt sections for available resources
-        prompt_sections = []
-        prompt_sections.append(f""""""
-You are an expert biomedical research assistant. Your task is to select the relevant resources to help answer a user's query.
-
-USER QUERY: {query}
-
-Below are the available resources. For each category, select items that are directly or indirectly relevant to answering the query.
-Be generous in your selection - include resources that might be useful for the task, even if they're not explicitly mentioned in the query.
-It's better to include slightly more resources than to miss potentially useful ones.
-
-AVAILABLE TOOLS:
-{self._format_resources_for_prompt(resources.get(""tools"", []))}
-
-AVAILABLE DATA LAKE ITEMS:
-{self._format_resources_for_prompt(resources.get(""data_lake"", []))}
-
-AVAILABLE SOFTWARE LIBRARIES:
-{self._format_resources_for_prompt(resources.get(""libraries"", []))}"""""")
-
-        # Add know-how section if available
-        if ""know_how"" in resources and resources[""know_how""]:
-            prompt_sections.append(f""""""
-AVAILABLE KNOW-HOW DOCUMENTS (Best Practices & Protocols):
-{self._format_resources_for_prompt(resources.get(""know_how"", []))}"""""")
-
-        # Build response format based on available categories
-        response_format = """"""
-For each category, respond with ONLY the indices of the relevant items in the following format:
-TOOLS: [list of indices]
-DATA_LAKE: [list of indices]
-LIBRARIES: [list of indices]""""""
-
-        if ""know_how"" in resources and resources[""know_how""]:
-            response_format += ""\nKNOW_HOW: [list of indices]""
-
-        response_format += """"""
-
-For example:
-TOOLS: [0, 3, 5, 7, 9]
-DATA_LAKE: [1, 2, 4]
-LIBRARIES: [0, 2, 4, 5, 8]""""""
-
-        if ""know_how"" in resources and resources[""know_how""]:
-            response_format += ""\nKNOW_HOW: [0, 1]""
-
-        response_format += """"""
-
-If a category has no relevant items, use an empty list, e.g., DATA_LAKE: []
-
-IMPORTANT GUIDELINES:
-1. Be generous but not excessive - aim to include all potentially relevant resources
-2. ALWAYS prioritize database tools for general queries - include as many database tools as possible
-3. Include all literature search tools
-4. For wet lab sequence type of queries, ALWAYS include molecular biology tools
-5. For data lake items, include datasets that could provide useful information
-6. For libraries, include those that provide functions needed for analysis
-7. For know-how documents, include those that provide relevant protocols, best practices, or troubleshooting guidance
-8. Don't exclude resources just because they're not explicitly mentioned in the query
-9. When in doubt about a database tool or molecular biology tool, include it rather than exclude it
-""""""
-
-        prompt = ""\n"".join(prompt_sections) + response_format
-
-        # Use the provided LLM or create a new one
-        if llm is None:
-            llm = ac_track_call('llm_call', 'ChatOpenAI', ChatOpenAI, model=""gpt-4o"")
-
-        # Invoke the LLM
-        if hasattr(llm, ""invoke""):
-            # For LangChain-style LLMs
-            response = ac_track_call('tool_call', 'llm.invoke', llm.invoke, [ac_track_call('message_call', 'HumanMessage', HumanMessage, content=prompt)])
-            response_content = response.content
-        else:
-            # For other LLM interfaces
-            response_content = str(llm(prompt))
-
-        # Parse the response to extract the selected indices
-        selected_indices = self._parse_llm_response(response_content)
-
-        # Get the selected resources
-        selected_resources = {
-            ""tools"": [
-                resources[""tools""][i] for i in selected_indices.get(""tools"", []) if i < len(resources.get(""tools"", []))
-            ],
-            ""data_lake"": [
-                resources[""data_lake""][i]
-                for i in selected_indices.get(""data_lake"", [])
-                if i < len(resources.get(""data_lake"", []))
-            ],
-            ""libraries"": [
-                resources[""libraries""][i]
-                for i in selected_indices.get(""libraries"", [])
-                if i < len(resources.get(""libraries"", []))
-            ],
-        }
-
-        # Add know-how if present
-        if ""know_how"" in resources and resources[""know_how""]:
-            selected_resources[""know_how""] = [
-                resources[""know_how""][i]
-                for i in selected_indices.get(""know_how"", [])
-                if i < len(resources.get(""know_how"", []))
-            ]
-
-        return selected_resources
-
-    def _format_resources_for_prompt(self, resources: list) -> str:
-        """"""Format resources for inclusion in the prompt.""""""
-        formatted = []
-        for i, resource in enumerate(resources):
-            if isinstance(resource, dict):
-                # Handle dictionary format (from tool registry or data lake/libraries with descriptions)
-                name = resource.get(""name"", f""Resource {i}"")
-                description = resource.get(""description"", """")
-                formatted.append(f""{i}. {name}: {description}"")
-            elif isinstance(resource, str):
-                # Handle string format (simple strings)
-                formatted.append(f""{i}. {resource}"")
-            else:
-                # Try to extract name and description from tool objects
-                name = getattr(resource, ""name"", str(resource))
-                desc = getattr(resource, ""description"", """")
-                formatted.append(f""{i}. {name}: {desc}"")
-
-        return ""\n"".join(formatted) if formatted else ""None available""
-
-    def _parse_llm_response(self, response) -> dict:
-        """"""Parse the LLM response to extract the selected indices.
-
-        Accepts either a plain string or a Responses API-style list of content blocks.
-        """"""
-        # Normalize response to string if it's a list of content blocks (Responses API)
-        if isinstance(response, list):
-            parts = []
-            for item in response:
-                # LangChain Responses API returns list of dicts like {""type"": ""text"", ""text"": ""...""}
-                if isinstance(item, dict):
-                    if item.get(""type"") == ""text"" and ""text"" in item:
-                        parts.append(str(item.get(""text"", """")))
-                    # If it's a tool_call or other block, ignore for this simple parsing
-                elif isinstance(item, str):
-                    parts.append(item)
-            response = ""\n"".join([p for p in parts if p])
-        elif not isinstance(response, str):
-            response = str(response)
-        selected_indices = {""tools"": [], ""data_lake"": [], ""libraries"": [], ""know_how"": []}
-
-        # Extract indices for each category
-        tools_match = re.search(r""TOOLS:\s*\[(.*?)\]"", response, re.IGNORECASE)
-        if tools_match and ac_track_call('tool_call', 'tools_match.group', tools_match.group, 1).strip():
-            with contextlib.suppress(ValueError):
-                selected_indices[""tools""] = [int(idx.strip()) for idx in ac_track_call('tool_call', 'tools_match.group', tools_match.group, 1).split("","") if idx.strip()]
-
-        data_lake_match = re.search(r""DATA_LAKE:\s*\[(.*?)\]"", response, re.IGNORECASE)
-        if data_lake_match and data_lake_match.group(1).strip():
-            with contextlib.suppress(ValueError):
-                selected_indices[""data_lake""] = [
-                    int(idx.strip()) for idx in data_lake_match.group(1).split("","") if idx.strip()
-                ]
-
-        libraries_match = re.search(r""LIBRARIES:\s*\[(.*?)\]"", response, re.IGNORECASE)
-        if libraries_match and libraries_match.group(1).strip():
-            with contextlib.suppress(ValueError):
-                selected_indices[""libraries""] = [
-                    int(idx.strip()) for idx in libraries_match.group(1).split("","") if idx.strip()
-                ]
-
-        # Extract know-how indices
-        know_how_match = re.search(r""KNOW[-_]HOW:\s*\[(.*?)\]"", response, re.IGNORECASE)
-        if know_how_match and know_how_match.group(1).strip():
-            with contextlib.suppress(ValueError):
-                selected_indices[""know_how""] = [
-                    int(idx.strip()) for idx in know_how_match.group(1).split("","") if idx.strip()
-                ]
-
-        return selected_indices
-"
 "File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/biorxiv_scripts/process_all_subjects.py","process_all_subjects.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/biorxiv_scripts/process_all_subjects.py","#!/usr/bin/env python3
 """"""Script to process all bioRxiv subjects and extract computational tasks from the top 100 papers in each.""""""
 from agentic_runtime_hooks import ac_track_call
@@ -18364,418 +18158,211 @@ class A1:
                 # Try to extract from parameters if available
                 if ""parameters"" in schema and isinstance(schema[""parameters""], dict):
 ... [truncated]"
-"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/expose_biomni_server/test_mcp_server.py","test_mcp_server.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/expose_biomni_server/test_mcp_server.py","#!/usr/bin/env python3
+"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/__init__.py","__init__.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/__init__.py",""
+"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py","retriever.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py","from agentic_runtime_hooks import ac_track_call
+import contextlib
+import re
+
+from langchain_core.messages import HumanMessage
+from langchain_openai import ChatOpenAI
+
+
+class ToolRetriever:
+    """"""Retrieve tools from the tool registry.""""""
+
+    def __init__(self):
+        pass
+
+    def prompt_based_retrieval(self, query: str, resources: dict, llm=None) -> dict:
+        """"""Use a prompt-based approach to retrieve the most relevant resources for a query.
+
+        Args:
+            query: The user's query
+            resources: A dictionary with keys 'tools', 'data_lake', 'libraries', and 'know_how',
+                      each containing a list of available resources
+            llm: Optional LLM instance to use for retrieval (if None, will create a new one)
+
+        Returns:
+            A dictionary with the same keys, but containing only the most relevant resources
+
+        """"""
+        # Build prompt sections for available resources
+        prompt_sections = []
+        prompt_sections.append(f""""""
+You are an expert biomedical research assistant. Your task is to select the relevant resources to help answer a user's query.
+
+USER QUERY: {query}
+
+Below are the available resources. For each category, select items that are directly or indirectly relevant to answering the query.
+Be generous in your selection - include resources that might be useful for the task, even if they're not explicitly mentioned in the query.
+It's better to include slightly more resources than to miss potentially useful ones.
+
+AVAILABLE TOOLS:
+{self._format_resources_for_prompt(resources.get(""tools"", []))}
+
+AVAILABLE DATA LAKE ITEMS:
+{self._format_resources_for_prompt(resources.get(""data_lake"", []))}
+
+AVAILABLE SOFTWARE LIBRARIES:
+{self._format_resources_for_prompt(resources.get(""libraries"", []))}"""""")
+
+        # Add know-how section if available
+        if ""know_how"" in resources and resources[""know_how""]:
+            prompt_sections.append(f""""""
+AVAILABLE KNOW-HOW DOCUMENTS (Best Practices & Protocols):
+{self._format_resources_for_prompt(resources.get(""know_how"", []))}"""""")
+
+        # Build response format based on available categories
+        response_format = """"""
+For each category, respond with ONLY the indices of the relevant items in the following format:
+TOOLS: [list of indices]
+DATA_LAKE: [list of indices]
+LIBRARIES: [list of indices]""""""
+
+        if ""know_how"" in resources and resources[""know_how""]:
+            response_format += ""\nKNOW_HOW: [list of indices]""
+
+        response_format += """"""
+
+For example:
+TOOLS: [0, 3, 5, 7, 9]
+DATA_LAKE: [1, 2, 4]
+LIBRARIES: [0, 2, 4, 5, 8]""""""
+
+        if ""know_how"" in resources and resources[""know_how""]:
+            response_format += ""\nKNOW_HOW: [0, 1]""
+
+        response_format += """"""
+
+If a category has no relevant items, use an empty list, e.g., DATA_LAKE: []
+
+IMPORTANT GUIDELINES:
+1. Be generous but not excessive - aim to include all potentially relevant resources
+2. ALWAYS prioritize database tools for general queries - include as many database tools as possible
+3. Include all literature search tools
+4. For wet lab sequence type of queries, ALWAYS include molecular biology tools
+5. For data lake items, include datasets that could provide useful information
+6. For libraries, include those that provide functions needed for analysis
+7. For know-how documents, include those that provide relevant protocols, best practices, or troubleshooting guidance
+8. Don't exclude resources just because they're not explicitly mentioned in the query
+9. When in doubt about a database tool or molecular biology tool, include it rather than exclude it
 """"""
-Simple test script for testing a single Biomni MCP tool.
-""""""
-from agentic_runtime_hooks import ac_track_call
 
-import asyncio
-import json
-import sys
+        prompt = ""\n"".join(prompt_sections) + response_format
 
-from mcp import ClientSession
-from mcp.client.stdio import StdioServerParameters, stdio_client
+        # Use the provided LLM or create a new one
+        if llm is None:
+            llm = ac_track_call('llm_call', 'ChatOpenAI', ChatOpenAI, model=""gpt-4o"")
 
-# Configuration - Change these to test different tools
-TOOL_TO_TEST = ""query_uniprot""  # Change this to the tool you want to test
-TEST_ARGS = {""prompt"": ""Find information about human insulin protein""}
+        # Invoke the LLM
+        if hasattr(llm, ""invoke""):
+            # For LangChain-style LLMs
+            response = ac_track_call('tool_call', 'llm.invoke', llm.invoke, [ac_track_call('message_call', 'HumanMessage', HumanMessage, content=prompt)])
+            response_content = response.content
+        else:
+            # For other LLM interfaces
+            response_content = str(llm(prompt))
 
-# Alternative test configurations - uncomment the one you want to test:
+        # Parse the response to extract the selected indices
+        selected_indices = self._parse_llm_response(response_content)
 
-# TOOL_TO_TEST = ""blast_sequence""
-# TEST_ARGS = {
-#     ""sequence"": ""ATGAAACGCATTAGCACCACCATTACCACCACCATCACCATTACCACAGGTAACGGTGCGGGCTGA"",
-#     ""program"": ""blastn"",
-#     ""database"": ""nt""
-# }
+        # Get the selected resources
+        selected_resources = {
+            ""tools"": [
+                resources[""tools""][i] for i in selected_indices.get(""tools"", []) if i < len(resources.get(""tools"", []))
+            ],
+            ""data_lake"": [
+                resources[""data_lake""][i]
+                for i in selected_indices.get(""data_lake"", [])
+                if i < len(resources.get(""data_lake"", []))
+            ],
+            ""libraries"": [
+                resources[""libraries""][i]
+                for i in selected_indices.get(""libraries"", [])
+                if i < len(resources.get(""libraries"", []))
+            ],
+        }
 
-# TOOL_TO_TEST = ""region_to_ccre_screen""
-# TEST_ARGS = {
-#     ""coord_chrom"": ""chr1"",
-#     ""coord_start"": 1000000,
-#     ""coord_end"": 1001000,
-#     ""assembly"": ""hg38""
-# }
+        # Add know-how if present
+        if ""know_how"" in resources and resources[""know_how""]:
+            selected_resources[""know_how""] = [
+                resources[""know_how""][i]
+                for i in selected_indices.get(""know_how"", [])
+                if i < len(resources.get(""know_how"", []))
+            ]
 
-# TOOL_TO_TEST = ""query_emdb""
-# TEST_ARGS = {
-#     ""prompt"": ""Find cryo-EM structures of ribosomes""
-# }
+        return selected_resources
 
+    def _format_resources_for_prompt(self, resources: list) -> str:
+        """"""Format resources for inclusion in the prompt.""""""
+        formatted = []
+        for i, resource in enumerate(resources):
+            if isinstance(resource, dict):
+                # Handle dictionary format (from tool registry or data lake/libraries with descriptions)
+                name = resource.get(""name"", f""Resource {i}"")
+                description = resource.get(""description"", """")
+                formatted.append(f""{i}. {name}: {description}"")
+            elif isinstance(resource, str):
+                # Handle string format (simple strings)
+                formatted.append(f""{i}. {resource}"")
+            else:
+                # Try to extract name and description from tool objects
+                name = getattr(resource, ""name"", str(resource))
+                desc = getattr(resource, ""description"", """")
+                formatted.append(f""{i}. {name}: {desc}"")
 
-async def test_single_tool():
-    """"""Test a single tool in the Biomni MCP server.""""""
+        return ""\n"".join(formatted) if formatted else ""None available""
 
-    # Set up the server parameters
-    # Use relative path from the current script's directory
-    import os
+    def _parse_llm_response(self, response) -> dict:
+        """"""Parse the LLM response to extract the selected indices.
 
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    server_script = os.path.join(current_dir, ""run_mcp_server.py"")
+        Accepts either a plain string or a Responses API-style list of content blocks.
+        """"""
+        # Normalize response to string if it's a list of content blocks (Responses API)
+        if isinstance(response, list):
+            parts = []
+            for item in response:
+                # LangChain Responses API returns list of dicts like {""type"": ""text"", ""text"": ""...""}
+                if isinstance(item, dict):
+                    if item.get(""type"") == ""text"" and ""text"" in item:
+                        parts.append(str(item.get(""text"", """")))
+                    # If it's a tool_call or other block, ignore for this simple parsing
+                elif isinstance(item, str):
+                    parts.append(item)
+            response = ""\n"".join([p for p in parts if p])
+        elif not isinstance(response, str):
+            response = str(response)
+        selected_indices = {""tools"": [], ""data_lake"": [], ""libraries"": [], ""know_how"": []}
 
-    # Ensure environment variables are passed to the subprocess
-    env = os.environ.copy()
-    server_params = StdioServerParameters(command=""python"", args=[server_script], env=env)
+        # Extract indices for each category
+        tools_match = re.search(r""TOOLS:\s*\[(.*?)\]"", response, re.IGNORECASE)
+        if tools_match and ac_track_call('tool_call', 'tools_match.group', tools_match.group, 1).strip():
+            with contextlib.suppress(ValueError):
+                selected_indices[""tools""] = [int(idx.strip()) for idx in ac_track_call('tool_call', 'tools_match.group', tools_match.group, 1).split("","") if idx.strip()]
 
-    try:
-        print("" Connecting to MCP server..."")
+        data_lake_match = re.search(r""DATA_LAKE:\s*\[(.*?)\]"", response, re.IGNORECASE)
+        if data_lake_match and data_lake_match.group(1).strip():
+            with contextlib.suppress(ValueError):
+                selected_indices[""data_lake""] = [
+                    int(idx.strip()) for idx in data_lake_match.group(1).split("","") if idx.strip()
+                ]
 
-        # Connect to the server
-        async with stdio_client(server_params) as (reader, writer):
-            async with ClientSession(reader, writer) as session:
-                # Initialize the session
-                await session.initialize()
-                print(""✅ Connected to MCP server"")
+        libraries_match = re.search(r""LIBRARIES:\s*\[(.*?)\]"", response, re.IGNORECASE)
+        if libraries_match and libraries_match.group(1).strip():
+            with contextlib.suppress(ValueError):
+                selected_indices[""libraries""] = [
+                    int(idx.strip()) for idx in libraries_match.group(1).split("","") if idx.strip()
+                ]
 
-                # List available tools
-                response = await ac_track_call('tool_call', 'session.list_tools', session.list_tools)
-                tools = response.tools
-                print(f""✅ Found {len(tools)} tools"")
+        # Extract know-how indices
+        know_how_match = re.search(r""KNOW[-_]HOW:\s*\[(.*?)\]"", response, re.IGNORECASE)
+        if know_how_match and know_how_match.group(1).strip():
+            with contextlib.suppress(ValueError):
+                selected_indices[""know_how""] = [
+                    int(idx.strip()) for idx in know_how_match.group(1).split("","") if idx.strip()
+                ]
 
-                # Find the specific tool
-                target_tool = None
-                for tool in tools:
-                    if tool.name == TOOL_TO_TEST:
-                        target_tool = tool
-                        break
-
-                if not target_tool:
-                    print(f""❌ Tool '{TOOL_TO_TEST}' not found!"")
-                    print(""Available tools:"")
-                    for tool in tools:
-                        print(f""  - {tool.name}"")
-                    return False
-
-                # Show tool details
-                print(f""\n Testing tool: {target_tool.name}"")
-                print(f"" Description: {target_tool.description or 'No description'}"")
-                print(f"" Input Schema: {target_tool.inputSchema}"")
-
-                # Show expected parameters
-                if isinstance(target_tool.inputSchema, dict) and ""properties"" in target_tool.inputSchema:
-                    print(""\n Expected parameters:"")
-                    required = ac_track_call('tool_call', 'target_tool.inputSchema.get', target_tool.inputSchema.get, ""required"", [])
-                    for param_name, param_info in target_tool.inputSchema[""properties""].items():
-                        param_type = param_info.get(""type"", ""unknown"")
-                        is_required = param_name in required
-                        req_str = "" (required)"" if is_required else "" (optional)""
-                        print(f""  - {param_name}: {param_type}{req_str}"")
-
-                # Test the tool
-                print(f""\n Testing with arguments: {TEST_ARGS}"")
-
-                try:
-                    result = await ac_track_call('tool_call', 'session.call_tool', session.call_tool, TOOL_TO_TEST, TEST_ARGS)
-                    print(""✅ Tool call successful!"")
-
-                    # Parse and display result
-                    result_text = result.content[0].text
-                    print(f""\n Raw result: {result_text}"")
-
-                    try:
-                        # Try to parse as JSON for better formatting
-                        result_data = json.loads(result_text)
-                        if isinstance(result_data, dict):
-                            print(""\n Parsed result:"")
-                            if ""error"" in result_data:
-                                print(f""  ⚠️ Error: {result_data['error']}"")
-                            else:
-                                print(f""   Result keys: {list(result_data.keys())}"")
-
-                                # Show detailed content
-                                for key, value in result_data.items():
-                                    if isinstance(value, str | int | float | bool):
-                                        print(f""    {key}: {value}"")
-                                    elif isinstance(value, list):
-                                        print(f""    {key}: List with {len(value)} items"")
-                                        if value and len(value) > 0:
-                                            print(f""      First item: {str(value[0])[:100]}..."")
-                                    elif isinstance(value, dict):
-                                        print(f""    {key}: Dict with keys: {list(value.keys())}"")
-                                    else:
-                                        print(f""    {key}: {type(value).__name__}"")
-                        else:
-                            print(f""\n Non-dict result: {result_data}"")
-
-                    except json.JSONDecodeError:
-                        print(""\n Non-JSON result (showing first 500 chars):"")
-                        print(result_text[:500])
-                        if len(result_text) > 500:
-                            print(""..."")
-
-                    return True
-
-                except Exception as e:
-                    print(f""❌ Tool call failed: {e}"")
-
-                    # Try to provide helpful debugging info
-                    if ""validation error"" in str(e).lower():
-                        print(""\n This looks like a parameter validation error."")
-                        print(""Check that your TEST_ARGS match the expected schema above."")
-
-                    return False
-
-    except Exception as e:
-        print(f""❌ Failed to connect to MCP server: {e}"")
-        return False
-
-
-if __name__ == ""__main__"":
-    print(f"" Testing single tool: {TOOL_TO_TEST}"")
-    print(f"" Test arguments: {TEST_ARGS}"")
-    print(""-"" * 50)
-
-    success = asyncio.run(ac_track_call('tool_call', 'test_single_tool', test_single_tool))
-
-    if success:
-        print(""\n✅ Test completed successfully!"")
-    else:
-        print(""\n❌ Test failed!"")
-        print(""\n To test a different tool:"")
-        print(""1. Edit the TOOL_TO_TEST variable at the top of this script"")
-        print(""2. Update the TEST_ARGS with appropriate parameters"")
-        print(""3. Run the script again"")
-
-    sys.exit(0 if success else 1)
-"
-"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/expose_biomni_server/run_mcp_server.py","run_mcp_server.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/expose_biomni_server/run_mcp_server.py","from biomni.agent.a1 import A1
-
-# Create the agent
-agent = A1()
-
-# Create the MCP server
-mcp = agent.create_mcp_server(tool_modules=[""biomni.tool.database""])
-
-if __name__ == ""__main__"":
-    # Run the server
-    print(""Starting Biomni MCP server..."")
-    mcp.run(transport=""stdio"")
-"
-"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/add_mcp_server/mcp_example.ipynb","mcp_example.ipynb","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/add_mcp_server/mcp_example.ipynb","{
- ""cells"": [
-  {
-   ""cell_type"": ""markdown"",
-   ""metadata"": {},
-   ""source"": [
-    ""# MCP Server Guide for Biomni\n"",
-    ""\n"",
-    ""MCP servers connect external APIs to Biomni. This guide shows how to use the built-in servers and create your own.""
-   ]
-  },
-  {
-   ""cell_type"": ""code"",
-   ""execution_count"": null,
-   ""metadata"": {},
-   ""outputs"": [
-    {
-     ""name"": ""stdout"",
-     ""output_type"": ""stream"",
-     ""text"": [
-      ""Checking and downloading missing data lake files...\n"",
-      ""Discovered 80 tools from github MCP server\n""
-     ]
-    }
-   ],
-   ""source"": [
-    ""import os\n"",
-    ""\n"",
-    ""from biomni.agent import A1\n"",
-    ""\n"",
-    ""# configure here: https://github.com/settings/personal-access-tokens\n"",
-    ""os.environ.setdefault(\""GITHUB_TOKEN\"", \""XXX\"")\n"",
-    ""\n"",
-    ""agent = A1(\""/dfs/project/bioagentos\"")\n"",
-    ""agent.add_mcp(config_path=\""./mcp_config.yaml\"")""
-   ]
-  },
-  {
-   ""cell_type"": ""code"",
-   ""execution_count"": 3,
-   ""metadata"": {},
-   ""outputs"": [
-    {
-     ""name"": ""stdout"",
-     ""output_type"": ""stream"",
-     ""text"": [
-      ""Using prompt-based retrieval with the agent's LLM\n"",
-      ""================================\u001b[1m Human Message \u001b[0m=================================\n"",
-      ""\n"",
-      ""Perform a complete end-to-end analysis on /dfs/project/bioagentos/data/singlecell/skin_10k.h5ad and push the entire analysis and report to the mcp_gene repository\n"",
-      ""==================================\u001b[1m Ai Message \u001b[0m==================================\n"",
-      ""\n"",
-      ""I'll perform a complete end-to-end single-cell RNA-seq analysis on the skin dataset and push the results to the mcp_gene repository. Let me start by creating a detailed plan.\n"",
-      ""\n"",
-      ""## Plan for Complete scRNA-seq Analysis\n"",
-      ""\n"",
-      ""1. [ ] Load and explore the dataset structure\n"",
-      ""2. [ ] Perform quality control analysis\n"",
-      ""3. [ ] Data preprocessing (filtering, normalization)\n"",
-      ""4. [ ] Dimensionality reduction and clustering\n"",
-      ""5. [ ] Cell type annotation using multiple methods\n"",
-      ""6. [ ] Differential expression analysis\n"",
-      ""7. [ ] Gene set enrichment analysis\n"",
-      ""8. [ ] Generate comprehensive visualizations\n"",
-      ""9. [ ] Create analysis report\n"",
-      ""10. [ ] Push all results to mcp_gene repository\n"",
-      ""\n"",
-      ""Let me start with the analysis:\n"",
-      ""\n"",
-      ""<execute>\n"",
-      ""import scanpy as sc\n"",
-      ""import pandas as pd\n"",
-      ""import numpy as np\n"",
-      ""import matplotlib.pyplot as plt\n"",
-      ""import seaborn as sns\n"",
-      ""from pathlib import Path\n"",
-      ""import warnings\n"",
-      ""warnings.filterwarnings('ignore')\n"",
-      ""\n"",
-      ""# Set up scanpy settings\n"",
-      ""sc.settings.verbosity = 3\n"",
-      ""sc.settings.set_figure_params(dpi=80, facecolor='white')\n"",
-      ""\n"",
-      ""print(\""Step 1: Loading and exploring the dataset\"")\n"",
-      ""print(\""=\"" * 50)\n"",
-      ""\n"",
-      ""# Load the dataset\n"",
-      ""adata_path = \""/dfs/project/bioagentos/data/singlecell/skin_10k.h5ad\""\n"",
-      ""adata = sc.read_h5ad(adata_path)\n"",
-      ""\n"",
-      ""print(f\""Dataset loaded successfully!\"")\n"",
-      ""print(f\""Shape: {adata.shape}\"")\n"",
-      ""print(f\""Number of cells: {adata.n_obs}\"")\n"",
-      ""print(f\""Number of genes: {adata.n_vars}\"")\n"",
-      ""print(\""\\nObservation (cell) metadata columns:\"")\n"",
-      ""print(adata.obs.columns.tolist())\n"",
-      ""print(\""\\nVariable (gene) metadata columns:\"")\n"",
-      ""print(adata.var.columns.tolist())\n"",
-      ""print(\""\\nFirst few cells metadata:\"")\n"",
-      ""print(adata.obs.head())\n"",
-      ""</execute>\n"",
-      ""==================================\u001b[1m Ai Message \u001b[0m==================================\n"",
-      ""\n"",
-      ""<observation>Error: module 'IPython.display' has no attribute 'set_matplotlib_formats'</observation>\n"",
-      ""==================================\u001b[1m Ai Message \u001b[0m==================================\n"",
-      ""\n"",
-      ""<execute>\n"",
-      ""import scanpy as sc\n"",
-      ""import pandas as pd\n"",
-      ""import numpy as np\n"",
-      ""import matplotlib.pyplot as plt\n"",
-      ""import seaborn as sns\n"",
-      ""from pathlib import Path\n"",
-      ""import warnings\n"",
-      ""warnings.filterwarnings('ignore')\n"",
-      ""\n"",
-      ""# Set up scanpy settings\n"",
-      ""sc.settings.verbosity = 3\n"",
-      ""\n"",
-      ""print(\""Step 1: Loading and exploring the dataset\"")\n"",
-      ""print(\""=\"" * 50)\n"",
-      ""\n"",
-      ""# Load the dataset\n"",
-      ""adata_path = \""/dfs/project/bioagentos/data/singlecell/skin_10k.h5ad\""\n"",
-      ""adata = sc.read_h5ad(adata_path)\n"",
-      ""\n"",
-      ""print(f\""Dataset loaded successfully!\"")\n"",
-      ""print(f\""Shape: {adata.shape}\"")\n"",
-      ""print(f\""Number of cells: {adata.n_obs}\"")\n"",
-      ""print(f\""Number of genes: {adata.n_vars}\"")\n"",
-      ""print(\""\\nObservation (cell) metadata columns:\"")\n"",
-      ""print(adata.obs.columns.tolist())\n"",
-      ""print(\""\\nVariable (gene) metadata columns:\"")\n"",
-      ""print(adata.var.columns.tolist())\n"",
-      ""print(\""\\nFirst few cells metadata:\"")\n"",
-      ""print(adata.obs.head())\n"",
-      ""</execute>\n"",
-      ""==================================\u001b[1m Ai Message \u001b[0m==================================\n"",
-      ""\n"",
-      ""<observation>Step 1: Loading and exploring the dataset\n"",
-      ""==================================================\n"",
-      ""Dataset loaded successfully!\n"",
-      ""Shape: (10000, 27411)\n"",
-      ""Number of cells: 10000\n"",
-      ""Number of genes: 27411\n"",
-      ""\n"",
-      ""Observation (cell) metadata columns:\n"",
-      ""['nCount_RNA', 'nFeature_RNA', 'age_group', 'cell_source', 'cell_states', 'sample', 'age.order', 'age.days.GA', 'size.CRL', 'size.NRL', 'stage', 'integration.groups', 'integrated_snn_res.0.1', 'clusters.low.res', 'clusters.high.res', 'clusters.res.2', 'clusters.res.3', 'condition', 'organism_ontology_term_id', 'tissue_ontology_term_id', 'assay_ontology_term_id', 'disease_ontology_term_id', 'cell_type_ontology_term_id', 'self_reported_ethnicity_ontology_term_id', 'development_stage_ontology_term_id', 'sex_ontology_term_id', 'donor_id', 'suspension_type', 'is_primary_data', 'tissue_type', 'cell_type', 'assay', 'disease', 'organism', 'sex', 'tissue', 'self_reported_ethnicity', 'development_stage', 'observation_joinid']\n"",
-      ""\n"",
-      ""Variable (gene) metadata columns:\n"",
-      ""['feature_is_filtered', 'feature_name', 'feature_reference', 'feature_biotype', 'feature_length']\n"",
-      ""\n"",
-      ""First few cells metadata:\n"",
-      ""                                    nCount_RNA  nFeature_RNA age_group  \\\n"",
-      ""CAAGAAAGTGCAGTAG-1-HCAHeart7702877      1113.0           781     60-65   \n"",
-      ""GCGACCAGTGACAAAT-1-HCAHeart7888927      1263.0           834     65-70   \n"",
-      ""ACACCAATCATCTATC-E2                     1801.0          1062        NA   \n"",
-      ""TCATGCCTCGTTACCC-G4                     9030.0          2887        NA   \n"",
-      ""CATCCACTCAGTTAGC-1-HCAHeart7702873      1023.0           541     60-65   \n"",
-      ""\n"",
-      ""                                   cell_source cell_states           sample  \\\n"",
-      ""CAAGAAAGTGCAGTAG-1-HCAHeart7702877  A - Nuclei         nan  HCAHeart7702877   \n"",
-      ""GCGACCAGTGACAAAT-1-HCAHeart7888927  A - Nuclei     PC3_str  HCAHeart7888927   \n"",
-      ""ACACCAATCATCTATC-E2                   F - Base      foetal               E2   \n"",
-      ""TCATGCCTCGTTACCC-G4                   F - Apex      foetal               G4   \n"",
-      ""CATCCACTCAGTTAGC-1-HCAHeart7702873  A - Nuclei   PC2_atria  HCAHeart7702873   \n"",
-      ""\n"",
-      ""                                   age.order  age.days.GA  size.CRL  size.NRL  \\\n"",
-      ""CAAGAAAGTGCAGTAG-1-HCAHeart7702877        A2          NaN       NaN       NaN   \n"",
-      ""GCGACCAGTGACAAAT-1-HCAHeart7888927        A5          NaN       NaN       NaN   \n"",
-      ""ACACCAATCATCTATC-E2                       F7         80.0      61.0      36.0   \n"",
-      ""TCATGCCTCGTTACCC-G4                       F3         64.0      25.0      14.0   \n"",
-      ""CATCCACTCAGTTAGC-1-HCAHeart7702873        A2          NaN       NaN       NaN   \n"",
-      ""\n"",
-      ""                                    ... tissue_type           cell_type  \\\n"",
-      ""CAAGAAAGTGCAGTAG-1-HCAHeart7702877  ...      tissue          fibroblast   \n"",
-      ""GCGACCAGTGACAAAT-1-HCAHeart7888927  ...      tissue            pericyte   \n"",
-      ""ACACCAATCATCTATC-E2                 ...      tissue  smooth muscle cell   \n"",
-      ""TCATGCCTCGTTACCC-G4                 ...      tissue             unknown   \n"",
-      ""CATCCACTCAGTTAGC-1-HCAHeart7702873  ...      tissue            pericyte   \n"",
-      ""\n"",
-      ""                                        assay disease      organism     sex  \\\n"",
-      ""CAAGAAAGTGCAGTAG-1-HCAHeart7702877  10x 3' v2  normal  Homo sapiens    male   \n"",
-      ""GCGACCAGTGACAAAT-1-HCAHeart7888927  10x 3' v2  normal  Homo sapiens    male   \n"",
-      ""ACACCAATCATCTATC-E2                 10x 3' v3  normal  Homo sapiens  female   \n"",
-      ""TCATGCCTCGTTACCC-G4                 10x 3' v3  normal  Homo sapiens    male   \n"",
-      ""CATCCACTCAGTTAGC-1-HCAHeart7702873  10x 3' v2  normal  Homo sapiens    male   \n"",
-      ""\n"",
-      ""                                                  tissue  \\\n"",
-      ""CAAGAAAGTGCAGTAG-1-HCAHeart7702877   left cardiac atrium   \n"",
-      ""GCGACCAGTGACAAAT-1-HCAHeart7888927         apex of heart   \n"",
-      ""ACACCAATCATCTATC-E2                  basal zone of heart   \n"",
-      ""TCATGCCTCGTTACCC-G4                        apex of heart   \n"",
-      ""CATCCACTCAGTTAGC-1-HCAHeart7702873  heart left ventricle   \n"",
-      ""\n"",
-      ""                                   self_reported_ethnicity  \\\n"",
-      ""CAAGAAAGTGCAGTAG-1-HCAHeart7702877                 unknown   \n"",
-      ""GCGACCAGTGACAAAT-1-HCAHeart7888927               
-... [truncated]"
-"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/add_mcp_server/mcp_config.yaml","mcp_config.yaml","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/add_mcp_server/mcp_config.yaml","# MCP Server Config for Biomni
-
-mcp_servers:
-  # GitHub MCP Server (Docker approach - adding all tools)
-  github:
-    command: [""docker"", ""run"", ""-i"", ""--rm"", ""-e"", ""GITHUB_PERSONAL_ACCESS_TOKEN"", ""ghcr.io/github/github-mcp-server""]
-    enabled: true
-    description: ""Official GitHub MCP server for repository and issue management""
-    env:
-      GITHUB_PERSONAL_ACCESS_TOKEN: ""${GITHUB_TOKEN}""
-
-  # Custom Local MCP Server - Only add tools necessary
-  pubmed:
-    command: [""python"", ""-m"", ""biomni.tool.example_mcp_tools.pubmed_mcp""]
-    enabled: true
-    tools:
-      - biomni_name: search_pubmed
-        description: ""Search PubMed""
-        parameters:
-          query:        {type: str, required: true,  description: ""PubMed search term""}
-          max_results:  {type: int, required: false, default: 10, description: ""Maximum number of hits""}
-      - biomni_name: get_article_abstract
-        description: ""Fetch PubMed abstract""
-        parameters:
-          pmid: {type: str, required: true, description: ""PubMed ID""}
+        return selected_indices
 "
 "File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/tool_description/systems_biology.py","systems_biology.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/tool_description/systems_biology.py","description = [
     {
@@ -23378,45 +22965,418 @@ mcp_servers:
     },
 ]
 "
-"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/example_mcp_tools/pubmed_mcp.py","pubmed_mcp.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/example_mcp_tools/pubmed_mcp.py","from agentic_runtime_hooks import ac_track_call
-import os
+"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/add_mcp_server/mcp_example.ipynb","mcp_example.ipynb","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/add_mcp_server/mcp_example.ipynb","{
+ ""cells"": [
+  {
+   ""cell_type"": ""markdown"",
+   ""metadata"": {},
+   ""source"": [
+    ""# MCP Server Guide for Biomni\n"",
+    ""\n"",
+    ""MCP servers connect external APIs to Biomni. This guide shows how to use the built-in servers and create your own.""
+   ]
+  },
+  {
+   ""cell_type"": ""code"",
+   ""execution_count"": null,
+   ""metadata"": {},
+   ""outputs"": [
+    {
+     ""name"": ""stdout"",
+     ""output_type"": ""stream"",
+     ""text"": [
+      ""Checking and downloading missing data lake files...\n"",
+      ""Discovered 80 tools from github MCP server\n""
+     ]
+    }
+   ],
+   ""source"": [
+    ""import os\n"",
+    ""\n"",
+    ""from biomni.agent import A1\n"",
+    ""\n"",
+    ""# configure here: https://github.com/settings/personal-access-tokens\n"",
+    ""os.environ.setdefault(\""GITHUB_TOKEN\"", \""XXX\"")\n"",
+    ""\n"",
+    ""agent = A1(\""/dfs/project/bioagentos\"")\n"",
+    ""agent.add_mcp(config_path=\""./mcp_config.yaml\"")""
+   ]
+  },
+  {
+   ""cell_type"": ""code"",
+   ""execution_count"": 3,
+   ""metadata"": {},
+   ""outputs"": [
+    {
+     ""name"": ""stdout"",
+     ""output_type"": ""stream"",
+     ""text"": [
+      ""Using prompt-based retrieval with the agent's LLM\n"",
+      ""================================\u001b[1m Human Message \u001b[0m=================================\n"",
+      ""\n"",
+      ""Perform a complete end-to-end analysis on /dfs/project/bioagentos/data/singlecell/skin_10k.h5ad and push the entire analysis and report to the mcp_gene repository\n"",
+      ""==================================\u001b[1m Ai Message \u001b[0m==================================\n"",
+      ""\n"",
+      ""I'll perform a complete end-to-end single-cell RNA-seq analysis on the skin dataset and push the results to the mcp_gene repository. Let me start by creating a detailed plan.\n"",
+      ""\n"",
+      ""## Plan for Complete scRNA-seq Analysis\n"",
+      ""\n"",
+      ""1. [ ] Load and explore the dataset structure\n"",
+      ""2. [ ] Perform quality control analysis\n"",
+      ""3. [ ] Data preprocessing (filtering, normalization)\n"",
+      ""4. [ ] Dimensionality reduction and clustering\n"",
+      ""5. [ ] Cell type annotation using multiple methods\n"",
+      ""6. [ ] Differential expression analysis\n"",
+      ""7. [ ] Gene set enrichment analysis\n"",
+      ""8. [ ] Generate comprehensive visualizations\n"",
+      ""9. [ ] Create analysis report\n"",
+      ""10. [ ] Push all results to mcp_gene repository\n"",
+      ""\n"",
+      ""Let me start with the analysis:\n"",
+      ""\n"",
+      ""<execute>\n"",
+      ""import scanpy as sc\n"",
+      ""import pandas as pd\n"",
+      ""import numpy as np\n"",
+      ""import matplotlib.pyplot as plt\n"",
+      ""import seaborn as sns\n"",
+      ""from pathlib import Path\n"",
+      ""import warnings\n"",
+      ""warnings.filterwarnings('ignore')\n"",
+      ""\n"",
+      ""# Set up scanpy settings\n"",
+      ""sc.settings.verbosity = 3\n"",
+      ""sc.settings.set_figure_params(dpi=80, facecolor='white')\n"",
+      ""\n"",
+      ""print(\""Step 1: Loading and exploring the dataset\"")\n"",
+      ""print(\""=\"" * 50)\n"",
+      ""\n"",
+      ""# Load the dataset\n"",
+      ""adata_path = \""/dfs/project/bioagentos/data/singlecell/skin_10k.h5ad\""\n"",
+      ""adata = sc.read_h5ad(adata_path)\n"",
+      ""\n"",
+      ""print(f\""Dataset loaded successfully!\"")\n"",
+      ""print(f\""Shape: {adata.shape}\"")\n"",
+      ""print(f\""Number of cells: {adata.n_obs}\"")\n"",
+      ""print(f\""Number of genes: {adata.n_vars}\"")\n"",
+      ""print(\""\\nObservation (cell) metadata columns:\"")\n"",
+      ""print(adata.obs.columns.tolist())\n"",
+      ""print(\""\\nVariable (gene) metadata columns:\"")\n"",
+      ""print(adata.var.columns.tolist())\n"",
+      ""print(\""\\nFirst few cells metadata:\"")\n"",
+      ""print(adata.obs.head())\n"",
+      ""</execute>\n"",
+      ""==================================\u001b[1m Ai Message \u001b[0m==================================\n"",
+      ""\n"",
+      ""<observation>Error: module 'IPython.display' has no attribute 'set_matplotlib_formats'</observation>\n"",
+      ""==================================\u001b[1m Ai Message \u001b[0m==================================\n"",
+      ""\n"",
+      ""<execute>\n"",
+      ""import scanpy as sc\n"",
+      ""import pandas as pd\n"",
+      ""import numpy as np\n"",
+      ""import matplotlib.pyplot as plt\n"",
+      ""import seaborn as sns\n"",
+      ""from pathlib import Path\n"",
+      ""import warnings\n"",
+      ""warnings.filterwarnings('ignore')\n"",
+      ""\n"",
+      ""# Set up scanpy settings\n"",
+      ""sc.settings.verbosity = 3\n"",
+      ""\n"",
+      ""print(\""Step 1: Loading and exploring the dataset\"")\n"",
+      ""print(\""=\"" * 50)\n"",
+      ""\n"",
+      ""# Load the dataset\n"",
+      ""adata_path = \""/dfs/project/bioagentos/data/singlecell/skin_10k.h5ad\""\n"",
+      ""adata = sc.read_h5ad(adata_path)\n"",
+      ""\n"",
+      ""print(f\""Dataset loaded successfully!\"")\n"",
+      ""print(f\""Shape: {adata.shape}\"")\n"",
+      ""print(f\""Number of cells: {adata.n_obs}\"")\n"",
+      ""print(f\""Number of genes: {adata.n_vars}\"")\n"",
+      ""print(\""\\nObservation (cell) metadata columns:\"")\n"",
+      ""print(adata.obs.columns.tolist())\n"",
+      ""print(\""\\nVariable (gene) metadata columns:\"")\n"",
+      ""print(adata.var.columns.tolist())\n"",
+      ""print(\""\\nFirst few cells metadata:\"")\n"",
+      ""print(adata.obs.head())\n"",
+      ""</execute>\n"",
+      ""==================================\u001b[1m Ai Message \u001b[0m==================================\n"",
+      ""\n"",
+      ""<observation>Step 1: Loading and exploring the dataset\n"",
+      ""==================================================\n"",
+      ""Dataset loaded successfully!\n"",
+      ""Shape: (10000, 27411)\n"",
+      ""Number of cells: 10000\n"",
+      ""Number of genes: 27411\n"",
+      ""\n"",
+      ""Observation (cell) metadata columns:\n"",
+      ""['nCount_RNA', 'nFeature_RNA', 'age_group', 'cell_source', 'cell_states', 'sample', 'age.order', 'age.days.GA', 'size.CRL', 'size.NRL', 'stage', 'integration.groups', 'integrated_snn_res.0.1', 'clusters.low.res', 'clusters.high.res', 'clusters.res.2', 'clusters.res.3', 'condition', 'organism_ontology_term_id', 'tissue_ontology_term_id', 'assay_ontology_term_id', 'disease_ontology_term_id', 'cell_type_ontology_term_id', 'self_reported_ethnicity_ontology_term_id', 'development_stage_ontology_term_id', 'sex_ontology_term_id', 'donor_id', 'suspension_type', 'is_primary_data', 'tissue_type', 'cell_type', 'assay', 'disease', 'organism', 'sex', 'tissue', 'self_reported_ethnicity', 'development_stage', 'observation_joinid']\n"",
+      ""\n"",
+      ""Variable (gene) metadata columns:\n"",
+      ""['feature_is_filtered', 'feature_name', 'feature_reference', 'feature_biotype', 'feature_length']\n"",
+      ""\n"",
+      ""First few cells metadata:\n"",
+      ""                                    nCount_RNA  nFeature_RNA age_group  \\\n"",
+      ""CAAGAAAGTGCAGTAG-1-HCAHeart7702877      1113.0           781     60-65   \n"",
+      ""GCGACCAGTGACAAAT-1-HCAHeart7888927      1263.0           834     65-70   \n"",
+      ""ACACCAATCATCTATC-E2                     1801.0          1062        NA   \n"",
+      ""TCATGCCTCGTTACCC-G4                     9030.0          2887        NA   \n"",
+      ""CATCCACTCAGTTAGC-1-HCAHeart7702873      1023.0           541     60-65   \n"",
+      ""\n"",
+      ""                                   cell_source cell_states           sample  \\\n"",
+      ""CAAGAAAGTGCAGTAG-1-HCAHeart7702877  A - Nuclei         nan  HCAHeart7702877   \n"",
+      ""GCGACCAGTGACAAAT-1-HCAHeart7888927  A - Nuclei     PC3_str  HCAHeart7888927   \n"",
+      ""ACACCAATCATCTATC-E2                   F - Base      foetal               E2   \n"",
+      ""TCATGCCTCGTTACCC-G4                   F - Apex      foetal               G4   \n"",
+      ""CATCCACTCAGTTAGC-1-HCAHeart7702873  A - Nuclei   PC2_atria  HCAHeart7702873   \n"",
+      ""\n"",
+      ""                                   age.order  age.days.GA  size.CRL  size.NRL  \\\n"",
+      ""CAAGAAAGTGCAGTAG-1-HCAHeart7702877        A2          NaN       NaN       NaN   \n"",
+      ""GCGACCAGTGACAAAT-1-HCAHeart7888927        A5          NaN       NaN       NaN   \n"",
+      ""ACACCAATCATCTATC-E2                       F7         80.0      61.0      36.0   \n"",
+      ""TCATGCCTCGTTACCC-G4                       F3         64.0      25.0      14.0   \n"",
+      ""CATCCACTCAGTTAGC-1-HCAHeart7702873        A2          NaN       NaN       NaN   \n"",
+      ""\n"",
+      ""                                    ... tissue_type           cell_type  \\\n"",
+      ""CAAGAAAGTGCAGTAG-1-HCAHeart7702877  ...      tissue          fibroblast   \n"",
+      ""GCGACCAGTGACAAAT-1-HCAHeart7888927  ...      tissue            pericyte   \n"",
+      ""ACACCAATCATCTATC-E2                 ...      tissue  smooth muscle cell   \n"",
+      ""TCATGCCTCGTTACCC-G4                 ...      tissue             unknown   \n"",
+      ""CATCCACTCAGTTAGC-1-HCAHeart7702873  ...      tissue            pericyte   \n"",
+      ""\n"",
+      ""                                        assay disease      organism     sex  \\\n"",
+      ""CAAGAAAGTGCAGTAG-1-HCAHeart7702877  10x 3' v2  normal  Homo sapiens    male   \n"",
+      ""GCGACCAGTGACAAAT-1-HCAHeart7888927  10x 3' v2  normal  Homo sapiens    male   \n"",
+      ""ACACCAATCATCTATC-E2                 10x 3' v3  normal  Homo sapiens  female   \n"",
+      ""TCATGCCTCGTTACCC-G4                 10x 3' v3  normal  Homo sapiens    male   \n"",
+      ""CATCCACTCAGTTAGC-1-HCAHeart7702873  10x 3' v2  normal  Homo sapiens    male   \n"",
+      ""\n"",
+      ""                                                  tissue  \\\n"",
+      ""CAAGAAAGTGCAGTAG-1-HCAHeart7702877   left cardiac atrium   \n"",
+      ""GCGACCAGTGACAAAT-1-HCAHeart7888927         apex of heart   \n"",
+      ""ACACCAATCATCTATC-E2                  basal zone of heart   \n"",
+      ""TCATGCCTCGTTACCC-G4                        apex of heart   \n"",
+      ""CATCCACTCAGTTAGC-1-HCAHeart7702873  heart left ventricle   \n"",
+      ""\n"",
+      ""                                   self_reported_ethnicity  \\\n"",
+      ""CAAGAAAGTGCAGTAG-1-HCAHeart7702877                 unknown   \n"",
+      ""GCGACCAGTGACAAAT-1-HCAHeart7888927               
+... [truncated]"
+"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/add_mcp_server/mcp_config.yaml","mcp_config.yaml","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/add_mcp_server/mcp_config.yaml","# MCP Server Config for Biomni
 
-from Bio import Entrez
-from mcp.server.fastmcp import FastMCP
-from pydantic import BaseModel
+mcp_servers:
+  # GitHub MCP Server (Docker approach - adding all tools)
+  github:
+    command: [""docker"", ""run"", ""-i"", ""--rm"", ""-e"", ""GITHUB_PERSONAL_ACCESS_TOKEN"", ""ghcr.io/github/github-mcp-server""]
+    enabled: true
+    description: ""Official GitHub MCP server for repository and issue management""
+    env:
+      GITHUB_PERSONAL_ACCESS_TOKEN: ""${GITHUB_TOKEN}""
 
-Entrez.email = os.getenv(""NCBI_EMAIL"") or ""YOUR_EMAIL""
-mcp = FastMCP(""pubmed-live"")
+  # Custom Local MCP Server - Only add tools necessary
+  pubmed:
+    command: [""python"", ""-m"", ""biomni.tool.example_mcp_tools.pubmed_mcp""]
+    enabled: true
+    tools:
+      - biomni_name: search_pubmed
+        description: ""Search PubMed""
+        parameters:
+          query:        {type: str, required: true,  description: ""PubMed search term""}
+          max_results:  {type: int, required: false, default: 10, description: ""Maximum number of hits""}
+      - biomni_name: get_article_abstract
+        description: ""Fetch PubMed abstract""
+        parameters:
+          pmid: {type: str, required: true, description: ""PubMed ID""}
+"
+"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/expose_biomni_server/test_mcp_server.py","test_mcp_server.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/expose_biomni_server/test_mcp_server.py","#!/usr/bin/env python3
+""""""
+Simple test script for testing a single Biomni MCP tool.
+""""""
+from agentic_runtime_hooks import ac_track_call
+
+import asyncio
+import json
+import sys
+
+from mcp import ClientSession
+from mcp.client.stdio import StdioServerParameters, stdio_client
+
+# Configuration - Change these to test different tools
+TOOL_TO_TEST = ""query_uniprot""  # Change this to the tool you want to test
+TEST_ARGS = {""prompt"": ""Find information about human insulin protein""}
+
+# Alternative test configurations - uncomment the one you want to test:
+
+# TOOL_TO_TEST = ""blast_sequence""
+# TEST_ARGS = {
+#     ""sequence"": ""ATGAAACGCATTAGCACCACCATTACCACCACCATCACCATTACCACAGGTAACGGTGCGGGCTGA"",
+#     ""program"": ""blastn"",
+#     ""database"": ""nt""
+# }
+
+# TOOL_TO_TEST = ""region_to_ccre_screen""
+# TEST_ARGS = {
+#     ""coord_chrom"": ""chr1"",
+#     ""coord_start"": 1000000,
+#     ""coord_end"": 1001000,
+#     ""assembly"": ""hg38""
+# }
+
+# TOOL_TO_TEST = ""query_emdb""
+# TEST_ARGS = {
+#     ""prompt"": ""Find cryo-EM structures of ribosomes""
+# }
 
 
-class Article(BaseModel):
-    pmid: str
-    title: str | None = None
-    journal: str | None = None
-    year: str | None = None
-    abstract: str | None = None
+async def test_single_tool():
+    """"""Test a single tool in the Biomni MCP server.""""""
 
+    # Set up the server parameters
+    # Use relative path from the current script's directory
+    import os
 
-@ac_track_call('tool_call', 'mcp.tool', mcp.tool)
-def search_pubmed(query: str, max_results: int = 10) -> list[Article]:
-    ids = Entrez.read(Entrez.esearch(db=""pubmed"", term=query, retmax=max_results))[""IdList""]
-    summaries = Entrez.read(Entrez.esummary(db=""pubmed"", id="","".join(ids))) if ids else []
-    articles: list[Article] = []
-    for s in summaries:
-        articles.append(
-            Article(pmid=s[""Id""], title=s[""Title""], journal=s.get(""FullJournalName"", """"), year=s.get(""PubDate"", """")[:4])
-        )
-    return articles
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    server_script = os.path.join(current_dir, ""run_mcp_server.py"")
 
+    # Ensure environment variables are passed to the subprocess
+    env = os.environ.copy()
+    server_params = StdioServerParameters(command=""python"", args=[server_script], env=env)
 
-@ac_track_call('tool_call', 'mcp.tool', mcp.tool)
-def get_article_abstract(pmid: str) -> str:
-    with Entrez.efetch(db=""pubmed"", id=pmid, rettype=""abstract"", retmode=""text"") as h:
-        return h.read()
+    try:
+        print("" Connecting to MCP server..."")
+
+        # Connect to the server
+        async with stdio_client(server_params) as (reader, writer):
+            async with ClientSession(reader, writer) as session:
+                # Initialize the session
+                await session.initialize()
+                print(""✅ Connected to MCP server"")
+
+                # List available tools
+                response = await ac_track_call('tool_call', 'session.list_tools', session.list_tools)
+                tools = response.tools
+                print(f""✅ Found {len(tools)} tools"")
+
+                # Find the specific tool
+                target_tool = None
+                for tool in tools:
+                    if tool.name == TOOL_TO_TEST:
+                        target_tool = tool
+                        break
+
+                if not target_tool:
+                    print(f""❌ Tool '{TOOL_TO_TEST}' not found!"")
+                    print(""Available tools:"")
+                    for tool in tools:
+                        print(f""  - {tool.name}"")
+                    return False
+
+                # Show tool details
+                print(f""\n Testing tool: {target_tool.name}"")
+                print(f"" Description: {target_tool.description or 'No description'}"")
+                print(f"" Input Schema: {target_tool.inputSchema}"")
+
+                # Show expected parameters
+                if isinstance(target_tool.inputSchema, dict) and ""properties"" in target_tool.inputSchema:
+                    print(""\n Expected parameters:"")
+                    required = ac_track_call('tool_call', 'target_tool.inputSchema.get', target_tool.inputSchema.get, ""required"", [])
+                    for param_name, param_info in target_tool.inputSchema[""properties""].items():
+                        param_type = param_info.get(""type"", ""unknown"")
+                        is_required = param_name in required
+                        req_str = "" (required)"" if is_required else "" (optional)""
+                        print(f""  - {param_name}: {param_type}{req_str}"")
+
+                # Test the tool
+                print(f""\n Testing with arguments: {TEST_ARGS}"")
+
+                try:
+                    result = await ac_track_call('tool_call', 'session.call_tool', session.call_tool, TOOL_TO_TEST, TEST_ARGS)
+                    print(""✅ Tool call successful!"")
+
+                    # Parse and display result
+                    result_text = result.content[0].text
+                    print(f""\n Raw result: {result_text}"")
+
+                    try:
+                        # Try to parse as JSON for better formatting
+                        result_data = json.loads(result_text)
+                        if isinstance(result_data, dict):
+                            print(""\n Parsed result:"")
+                            if ""error"" in result_data:
+                                print(f""  ⚠️ Error: {result_data['error']}"")
+                            else:
+                                print(f""   Result keys: {list(result_data.keys())}"")
+
+                                # Show detailed content
+                                for key, value in result_data.items():
+                                    if isinstance(value, str | int | float | bool):
+                                        print(f""    {key}: {value}"")
+                                    elif isinstance(value, list):
+                                        print(f""    {key}: List with {len(value)} items"")
+                                        if value and len(value) > 0:
+                                            print(f""      First item: {str(value[0])[:100]}..."")
+                                    elif isinstance(value, dict):
+                                        print(f""    {key}: Dict with keys: {list(value.keys())}"")
+                                    else:
+                                        print(f""    {key}: {type(value).__name__}"")
+                        else:
+                            print(f""\n Non-dict result: {result_data}"")
+
+                    except json.JSONDecodeError:
+                        print(""\n Non-JSON result (showing first 500 chars):"")
+                        print(result_text[:500])
+                        if len(result_text) > 500:
+                            print(""..."")
+
+                    return True
+
+                except Exception as e:
+                    print(f""❌ Tool call failed: {e}"")
+
+                    # Try to provide helpful debugging info
+                    if ""validation error"" in str(e).lower():
+                        print(""\n This looks like a parameter validation error."")
+                        print(""Check that your TEST_ARGS match the expected schema above."")
+
+                    return False
+
+    except Exception as e:
+        print(f""❌ Failed to connect to MCP server: {e}"")
+        return False
 
 
 if __name__ == ""__main__"":
-    mcp.run()
+    print(f"" Testing single tool: {TOOL_TO_TEST}"")
+    print(f"" Test arguments: {TEST_ARGS}"")
+    print(""-"" * 50)
+
+    success = asyncio.run(ac_track_call('tool_call', 'test_single_tool', test_single_tool))
+
+    if success:
+        print(""\n✅ Test completed successfully!"")
+    else:
+        print(""\n❌ Test failed!"")
+        print(""\n To test a different tool:"")
+        print(""1. Edit the TOOL_TO_TEST variable at the top of this script"")
+        print(""2. Update the TEST_ARGS with appropriate parameters"")
+        print(""3. Run the script again"")
+
+    sys.exit(0 if success else 1)
+"
+"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/expose_biomni_server/run_mcp_server.py","run_mcp_server.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/expose_biomni_server/run_mcp_server.py","from biomni.agent.a1 import A1
+
+# Create the agent
+agent = A1()
+
+# Create the MCP server
+mcp = agent.create_mcp_server(tool_modules=[""biomni.tool.database""])
+
+if __name__ == ""__main__"":
+    # Run the server
+    print(""Starting Biomni MCP server..."")
+    mcp.run(transport=""stdio"")
 "
 "File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/resource/CRISPick_download_links.txt","CRISPick_download_links.txt","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/resource/CRISPick_download_links.txt","https://portals.broadinstitute.org/gppx/public/sgrna_design/api/downloads/sgRNA_design_8030_ICSASG_v2_SpyoCas9_CRISPRa_RS3seq-Chen2013_NCBI_20230421.txt.gz
 https://portals.broadinstitute.org/gppx/public/sgrna_design/api/downloads/sgRNA_design_8030_ICSASG_v2_SpyoCas9_CRISPRa_RS3seq-Chen2013_NCBI_20230421.summary.txt
@@ -23481,6 +23441,46 @@ https://portals.broadinstitute.org/gppx/public/sgrna_design/api/downloads/sgRNA_
 https://portals.broadinstitute.org/gppx/public/sgrna_design/api/downloads/sgRNA_design_7227_BDGP6.32_SpyoCas9_CRISPRa_RS3seq-Chen2013_Ensembl_20230407.txt.gz
 https://portals.broadinstitute.org/gppx/public/sgrna_desig
 ... [truncated]"
+"File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/example_mcp_tools/pubmed_mcp.py","pubmed_mcp.py","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/example_mcp_tools/pubmed_mcp.py","from agentic_runtime_hooks import ac_track_call
+import os
+
+from Bio import Entrez
+from mcp.server.fastmcp import FastMCP
+from pydantic import BaseModel
+
+Entrez.email = os.getenv(""NCBI_EMAIL"") or ""YOUR_EMAIL""
+mcp = FastMCP(""pubmed-live"")
+
+
+class Article(BaseModel):
+    pmid: str
+    title: str | None = None
+    journal: str | None = None
+    year: str | None = None
+    abstract: str | None = None
+
+
+@ac_track_call('tool_call', 'mcp.tool', mcp.tool)
+def search_pubmed(query: str, max_results: int = 10) -> list[Article]:
+    ids = Entrez.read(Entrez.esearch(db=""pubmed"", term=query, retmax=max_results))[""IdList""]
+    summaries = Entrez.read(Entrez.esummary(db=""pubmed"", id="","".join(ids))) if ids else []
+    articles: list[Article] = []
+    for s in summaries:
+        articles.append(
+            Article(pmid=s[""Id""], title=s[""Title""], journal=s.get(""FullJournalName"", """"), year=s.get(""PubDate"", """")[:4])
+        )
+    return articles
+
+
+@ac_track_call('tool_call', 'mcp.tool', mcp.tool)
+def get_article_abstract(pmid: str) -> str:
+    with Entrez.efetch(db=""pubmed"", id=pmid, rettype=""abstract"", retmode=""text"") as h:
+        return h.read()
+
+
+if __name__ == ""__main__"":
+    mcp.run()
+"
 "File:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/protocols/thermofisher/Vybrant DyeCycle Violet Stain _ Thermo Fisher Scientific - US.txt","Vybrant DyeCycle Violet Stain _ Thermo Fisher Scientific - US.txt","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/protocols/thermofisher/Vybrant DyeCycle Violet Stain _ Thermo Fisher Scientific - US.txt","PROTOCOL: Vybrant DyeCycle Violet Stain
 SOURCE: https://www.thermofisher.com/us/en/home/references/protocols/cell-and-tissue-analysis/protocols/vybrant-dyecycle-violet-stain-protocol.html
 ================================================================================

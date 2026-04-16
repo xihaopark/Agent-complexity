@@ -1,0 +1,11 @@
+name: utar
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - bedtools
+  - bioconductor-grohmm
+  - pigz
+  - samtools
+  - r-argparse

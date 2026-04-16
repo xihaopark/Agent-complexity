@@ -1,0 +1,400 @@
+workflow_id: rna-seq-star-deseq2-finish
+source_cores: 8
+steps:
+  get_genome:
+    summary: get_genome
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - get_genome
+  get_annotation:
+    summary: get_annotation
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - get_annotation
+    depends_on:
+    - get_genome
+  genome_faidx:
+    summary: genome_faidx
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - genome_faidx
+    depends_on:
+    - get_annotation
+  bwa_index:
+    summary: bwa_index
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - bwa_index
+    depends_on:
+    - genome_faidx
+  star_index:
+    summary: star_index
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - star_index
+    depends_on:
+    - bwa_index
+  get_sra:
+    summary: get_sra
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - get_sra
+    depends_on:
+    - star_index
+  fastp_se:
+    summary: fastp_se
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - fastp_se
+    depends_on:
+    - get_sra
+  fastp_pe:
+    summary: fastp_pe
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - fastp_pe
+    depends_on:
+    - fastp_se
+  rseqc_gtf2bed:
+    summary: rseqc_gtf2bed
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - rseqc_gtf2bed
+    depends_on:
+    - fastp_pe
+  rseqc_junction_annotation:
+    summary: rseqc_junction_annotation
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - rseqc_junction_annotation
+    depends_on:
+    - rseqc_gtf2bed
+  rseqc_junction_saturation:
+    summary: rseqc_junction_saturation
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - rseqc_junction_saturation
+    depends_on:
+    - rseqc_junction_annotation
+  rseqc_stat:
+    summary: rseqc_stat
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - rseqc_stat
+    depends_on:
+    - rseqc_junction_saturation
+  rseqc_infer:
+    summary: rseqc_infer
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - rseqc_infer
+    depends_on:
+    - rseqc_stat
+  rseqc_innerdis:
+    summary: rseqc_innerdis
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - rseqc_innerdis
+    depends_on:
+    - rseqc_infer
+  rseqc_readdis:
+    summary: rseqc_readdis
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - rseqc_readdis
+    depends_on:
+    - rseqc_innerdis
+  rseqc_readdup:
+    summary: rseqc_readdup
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - rseqc_readdup
+    depends_on:
+    - rseqc_readdis
+  rseqc_readgc:
+    summary: rseqc_readgc
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - rseqc_readgc
+    depends_on:
+    - rseqc_readdup
+  multiqc:
+    summary: multiqc
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - multiqc
+    depends_on:
+    - rseqc_readgc
+  star_align:
+    summary: star_align
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - star_align
+    depends_on:
+    - multiqc
+  count_matrix:
+    summary: count_matrix
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - count_matrix
+    depends_on:
+    - star_align
+  gene_2_symbol:
+    summary: gene_2_symbol
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - gene_2_symbol
+    depends_on:
+    - count_matrix
+  deseq2_init:
+    summary: deseq2_init
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - deseq2_init
+    depends_on:
+    - gene_2_symbol
+  pca:
+    summary: pca
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - pca
+    depends_on:
+    - deseq2_init
+  deseq2:
+    summary: deseq2
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      root_target: all
+      until:
+      - deseq2
+    depends_on:
+    - pca
+  all:
+    summary: all
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/.test/config_basic/config.yaml
+      targets:
+      - all
+    depends_on:
+    - deseq2

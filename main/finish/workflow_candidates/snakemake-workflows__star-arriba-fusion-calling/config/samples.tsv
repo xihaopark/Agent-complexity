@@ -1,0 +1,4 @@
+sample_name	group	alias	platform	datatype	calling	sv_file
+PD12A	PD12	tumor	ILLUMINA	rna	fusions	
+PD13B	PD13	tumor	ILLUMINA	rna	fusions	
+PD09A	PD09	tumor	ILLUMINA	rna	fusions	

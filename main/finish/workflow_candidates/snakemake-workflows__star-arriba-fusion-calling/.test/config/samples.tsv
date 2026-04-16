@@ -1,0 +1,2 @@
+sample_name	group	alias	platform	sv_file
+sample_1	one	tumor	ILLUMINA	resources/sample_1.example_wgs_file.vcf

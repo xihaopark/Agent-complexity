@@ -1,0 +1,89 @@
+samples: config_basic/samples.tsv
+units: config_basic/units.tsv
+
+experiment:
+  3-prime-rna-seq:
+    activate: false
+    vendor: lexogen
+    plot-qc: all
+
+resources:
+  ref:
+    species: homo_sapiens
+    release: "115"
+    build: GRCh38
+    pfam: "37.1"
+    representative_transcripts: canonical
+  ontology:
+    gene_ontology: "https://release.geneontology.org/2025-07-22/ontology/go-basic.obo"
+
+pca:
+  exclude_nas: false
+  labels:
+    - condition
+
+scatter:
+  activate: false
+
+diffexp:
+  exclude:
+  models:
+    model_X:
+      full: ~condition + batch_effect
+      reduced: ~batch_effect
+      primary_variable: condition
+      base_level: untreated
+  sig-level:
+    volcano-plot: 0.05
+    ma-plot: 0.05
+    qq-plot: 0.05
+  genes_of_interest:
+    activate: false
+    gene_lists:
+      gene_list_1: "resources/gene_list.tsv"
+      gene_list_2: "resources/gene_list_2.tsv"
+
+diffsplice:
+  activate: false
+  coding_cutoff: 0.725
+  remove_noncoding_orfs: false
+  fdr: 1.0
+  min_effect_size: 0.1
+
+enrichment:
+  goatools:
+    activate: false
+    fdr_genes: 0.05
+    fdr_go_terms: 0.05
+  fgsea:
+    activate: false
+    gene_sets_file: "ngs-test-data/ref/dummy.gmt"
+    fdr_gene_set: 0.05
+    eps: 0.0001
+  spia:
+    activate: false
+    pathway_databases:
+      - panther
+
+meta_comparisons:
+  activate: false
+  comparisons:
+    treated_vs_untreated_against_other_model:
+      items:
+        treated_vs_untreated: treated_vs_untreated
+        Y: model_Y
+      label: treated_vs_untreated compared to other_model
+
+report:
+  offer_excel: false
+
+bootstrap_plots:
+  FDR: 0.5
+  top_n: 3
+  color_by: condition
+
+plot_vars:
+  sig_level: 0.1
+
+params:
+  kallisto: "-b 30"

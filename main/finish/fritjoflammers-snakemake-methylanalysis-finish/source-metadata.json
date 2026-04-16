@@ -1,0 +1,30 @@
+{
+  "source_repo_dir": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/fritjoflammers__snakemake-methylanalysis",
+  "source_snakefile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile",
+  "source_configfile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml",
+  "step_count": 22,
+  "steps": [
+    "extract_CpGs",
+    "destrand_calls",
+    "methylkit_load",
+    "methylkit_filter_normalize",
+    "datavzrd_methylkit_filt_norm",
+    "methylkit_split",
+    "methylkit_unite_per_chr_all",
+    "methylkit_remove_variant_sites",
+    "methylkit_split_mku2tibble",
+    "datavzrd_methylkit_unite",
+    "methylkit_clustering",
+    "methylkit_pca",
+    "notebook_data_structure",
+    "gemma_subset_samples",
+    "macau_prep_counts_file",
+    "extract_column_from_spreadsheet",
+    "macau_prep_variables_file",
+    "macau_prep_covariate_file",
+    "macau_run",
+    "store_config",
+    "DSS_dmrs",
+    "all"
+  ]
+}

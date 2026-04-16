@@ -1,0 +1,15 @@
+{
+  "source_repo_dir": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/epigen__fetch_ngs",
+  "source_snakefile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/epigen__fetch_ngs/workflow/Snakefile",
+  "source_configfile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/epigen__fetch_ngs/config/config.yaml",
+  "step_count": 7,
+  "steps": [
+    "env_export",
+    "config_export",
+    "iseq_download",
+    "fastq_to_bam",
+    "fetch_file",
+    "merge_metadata",
+    "all"
+  ]
+}

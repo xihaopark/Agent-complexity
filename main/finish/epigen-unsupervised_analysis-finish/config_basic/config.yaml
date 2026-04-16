@@ -1,0 +1,432 @@
+workflow_id: epigen-unsupervised_analysis-finish
+source_cores: 8
+steps:
+  aggregate_all_clustering_results:
+    summary: aggregate_all_clustering_results
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - aggregate_all_clustering_results
+  aggregate_clustering_results:
+    summary: aggregate_clustering_results
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - aggregate_clustering_results
+    depends_on:
+    - aggregate_all_clustering_results
+  aggregate_rank_internal:
+    summary: aggregate_rank_internal
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - aggregate_rank_internal
+    depends_on:
+    - aggregate_clustering_results
+  annot_export:
+    summary: annot_export
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - annot_export
+    depends_on:
+    - aggregate_rank_internal
+  clustree_analysis:
+    summary: clustree_analysis
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - clustree_analysis
+    depends_on:
+    - annot_export
+  clustree_analysis_metadata:
+    summary: clustree_analysis_metadata
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - clustree_analysis_metadata
+    depends_on:
+    - clustree_analysis
+  config_export:
+    summary: config_export
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - config_export
+    depends_on:
+    - clustree_analysis_metadata
+  densmap_embed:
+    summary: densmap_embed
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - densmap_embed
+    depends_on:
+    - config_export
+  distance_matrix:
+    summary: distance_matrix
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - distance_matrix
+    depends_on:
+    - densmap_embed
+  env_export:
+    summary: env_export
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - env_export
+    depends_on:
+    - distance_matrix
+  leiden_cluster:
+    summary: leiden_cluster
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - leiden_cluster
+    depends_on:
+    - env_export
+  pca:
+    summary: pca
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - pca
+    depends_on:
+    - leiden_cluster
+  plot_dimred_clustering:
+    summary: plot_dimred_clustering
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - plot_dimred_clustering
+    depends_on:
+    - pca
+  plot_dimred_features:
+    summary: plot_dimred_features
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - plot_dimred_features
+    depends_on:
+    - plot_dimred_clustering
+  plot_dimred_interactive:
+    summary: plot_dimred_interactive
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - plot_dimred_interactive
+    depends_on:
+    - plot_dimred_features
+  plot_dimred_metadata:
+    summary: plot_dimred_metadata
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - plot_dimred_metadata
+    depends_on:
+    - plot_dimred_interactive
+  plot_heatmap:
+    summary: plot_heatmap
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - plot_heatmap
+    depends_on:
+    - plot_dimred_metadata
+  plot_indices:
+    summary: plot_indices
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - plot_indices
+    depends_on:
+    - plot_heatmap
+  plot_pca_diagnostics:
+    summary: plot_pca_diagnostics
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - plot_pca_diagnostics
+    depends_on:
+    - plot_indices
+  plot_umap_connectivity:
+    summary: plot_umap_connectivity
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - plot_umap_connectivity
+    depends_on:
+    - plot_pca_diagnostics
+  plot_umap_diagnostics:
+    summary: plot_umap_diagnostics
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - plot_umap_diagnostics
+    depends_on:
+    - plot_umap_connectivity
+  prep_feature_plot:
+    summary: prep_feature_plot
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - prep_feature_plot
+    depends_on:
+    - plot_umap_diagnostics
+  umap_embed:
+    summary: umap_embed
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - umap_embed
+    depends_on:
+    - prep_feature_plot
+  umap_graph:
+    summary: umap_graph
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - umap_graph
+    depends_on:
+    - umap_embed
+  validation_external:
+    summary: validation_external
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - validation_external
+    depends_on:
+    - umap_graph
+  validation_internal:
+    summary: validation_internal
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      root_target: all
+      until:
+      - validation_internal
+    depends_on:
+    - validation_external
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__unsupervised_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__unsupervised_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__unsupervised_analysis/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - validation_internal

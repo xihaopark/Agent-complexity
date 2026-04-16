@@ -1,0 +1,28 @@
+name: snakepipes_RNAseq_environment_4.0
+channels:
+ - conda-forge
+ - bioconda
+dependencies:
+# - python >= 3
+ - bedtools = 2.31.1
+ - samtools = 1.22.1
+ - subread = 2.1.1
+ - hisat2 = 2.2.1
+ - star = 2.7.10b
+# - salmon = 1.10.1
+ - r-base 
+ - r-wasabi
+ - r-dplyr
+ - r-ggplot2
+ - r-pheatmap
+ - r-rmarkdown
+ - r-knitr
+ - pandoc
+ - r-dt
+ - r-rcolorbrewer
+ - bioconductor-deseq2
+ - bioconductor-tximport
+ - r-knitcitations
+ - bioconductor-apeglm
+ - tbb
+# - rmats = 4.1.0

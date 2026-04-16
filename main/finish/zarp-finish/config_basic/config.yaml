@@ -1,0 +1,65 @@
+workflow_id: zarp
+source_cores: 8
+steps:
+  validate_config:
+    summary: validate_config
+    requires:
+      - config_basic/source_config.yaml
+      - config_basic/samples.tsv
+    command: ""
+  stage_inputs:
+    summary: stage_inputs
+    requires:
+      - config_basic/source_config.yaml
+    command: ""
+  trimming:
+    summary: trimming
+    requires:
+      - config_basic/source_config.yaml
+    command: >
+      snakemake -s workflow/Snakefile --configfile config_basic/source_config.yaml --use-conda --cores {source_cores} trimming_ready
+  alignment:
+    summary: alignment
+    requires:
+      - config_basic/source_config.yaml
+    command: >
+      snakemake -s workflow/Snakefile --configfile config_basic/source_config.yaml --use-conda --cores {source_cores} alignment_ready
+  quantification:
+    summary: quantification
+    requires:
+      - config_basic/source_config.yaml
+    command: >
+      snakemake -s workflow/Snakefile --configfile config_basic/source_config.yaml --use-conda --cores {source_cores} quantification_ready
+  finish_target:
+    summary: finish_target
+    requires:
+      - config_basic/source_config.yaml
+    snakemake:
+      snakefile: workflow/Snakefile
+      configfile: config_basic/source_config.yaml
+      use_conda: true
+      cores: "{source_cores}"
+      scheduler: greedy
+      targets_from_table:
+        - table: config_basic/samples.tsv
+          pattern: results/{organism}/multiqc_summary
+        - table: config_basic/samples.tsv
+          pattern: results/{organism}/summary_salmon/quantmerge/genes_tpm.tsv
+        - table: config_basic/samples.tsv
+          pattern: results/{organism}/summary_salmon/quantmerge/genes_numreads.tsv
+        - table: config_basic/samples.tsv
+          pattern: results/{organism}/summary_salmon/quantmerge/transcripts_tpm.tsv
+        - table: config_basic/samples.tsv
+          pattern: results/{organism}/summary_salmon/quantmerge/transcripts_numreads.tsv
+        - table: config_basic/samples.tsv
+          pattern: results/{organism}/summary_kallisto/transcripts_tpm.tsv
+        - table: config_basic/samples.tsv
+          pattern: results/{organism}/summary_kallisto/genes_tpm.tsv
+        - table: config_basic/samples.tsv
+          pattern: results/{organism}/samples/{sample}/bigWig/MultimappersIncluded/{sample}_MultimappersIncluded_plus.bw
+        - table: config_basic/samples.tsv
+          pattern: results/{organism}/samples/{sample}/bigWig/MultimappersIncluded/{sample}_MultimappersIncluded_minus.bw
+        - table: config_basic/samples.tsv
+          pattern: results/{organism}/samples/{sample}/bigWig/UniqueMappers/{sample}_UniqueMappers_plus.bw
+        - table: config_basic/samples.tsv
+          pattern: results/{organism}/samples/{sample}/bigWig/UniqueMappers/{sample}_UniqueMappers_minus.bw

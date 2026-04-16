@@ -1,0 +1,22 @@
+{
+  "source_repo_dir": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__cellranger-multi",
+  "source_snakefile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__cellranger-multi/workflow/Snakefile",
+  "source_configfile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__cellranger-multi/config/config.yaml",
+  "step_count": 14,
+  "steps": [
+    "follow_pedantic_cell_ranger_naming_scheme",
+    "create_cellranger_multi_config_csv",
+    "cellranger_multi_run",
+    "cellranger_multi_files_summaries",
+    "cellranger_multi_files_multiplexing_global",
+    "cellranger_multi_files_multiplexing_per_sample",
+    "cellranger_multi_files_multiplexing_antibody_global",
+    "cellranger_multi_files_multiplexing_crispr_global",
+    "cellranger_multi_files_gene_expression_global",
+    "cellranger_multi_files_gene_expression_per_sample",
+    "cellranger_multi_files_vdj_reference",
+    "cellranger_multi_files_vdj_global",
+    "cellranger_multi_files_vdj_per_sample",
+    "all"
+  ]
+}

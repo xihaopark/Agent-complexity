@@ -1,0 +1,59 @@
+# The following section contains static files required by the pipeline
+resources:
+  adapters: /home/dbarreca/SRC/BCG_PUB/references/nextera_adapters.fa
+  genome_index:
+    hg38: /home/dbarreca/SRC/BCG_PUB/references/hg38/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta
+  chromosome_sizes:
+    hg38: /home/dbarreca/SRC/BCG_PUB/references/hg38.chrom.sizes
+  blacklisted_regions:
+    hg38: /home/dbarreca/SRC/BCG_PUB/references/hg38.blacklist.bed
+  oracle_peak_regions:
+    hg38: /home/dbarreca/SRC/BCG_PUB/references/homo_sapiens.GRCh38.Regulatory_Build.regulatory_features.20190329.parsed.bed
+  tss_regions:
+    hg38: /home/dbarreca/SRC/BCG_PUB/references/hg38_gencode_tss_unique.bed
+
+# The following section contains command-line tools used by the pipeline
+tools:
+  fastqc: fastqc
+  java: java
+  picard: /cm/shared/specific/apps/picard/2.18.27-Java-1.8/picard.jar
+  samtools: samtools
+  sambamba: sambamba
+  skewer: skewer
+  bedtools: bedtools
+  bamCoverage: bamCoverage  # from deeptools
+  macs2: macs2
+  # optional:
+  Rscript: Rscript
+  spp: /home/dbarreca/SRC/BCG_PUB/pipeline/atac/tools/run_spp_nodups.R  # You can find this here: https://raw.githubusercontent.com/crazyhottommy/phantompeakqualtools/master/run_spp.R
+
+
+# The following section parameters used to control pipeline behaviour
+parameters:
+  # which trimmer to use:
+  trimmer: "skewer"
+  # maximum allowed fragment size allowed to align
+  max_insert: 2000
+  # read quality to keep
+  read_quality: 30
+  # BigWig file:
+  # should tracks be normalized to total of reads sequenced
+  normalize_tracks: True
+  # normalization factor (this number will be multiplied at each window/bp)
+  norm_factor: 1000000
+
+# Colours for genome browser tracks
+# 10 colour gradient from red to blue
+track_colours:
+  - "155,3,5"
+  - "140,2,18"
+  - "125,2,31"
+  - "110,2,44"
+  - "96,2,57"
+  - "81,2,70"
+  - "66,2,83"
+  - "52,2,96"
+  - "37,2,109"
+  - "22,2,122"
+
+defaultposition: "chr21:28,049,584-38,023,583"

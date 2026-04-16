@@ -1,0 +1,36 @@
+{% set version = "3.4.0" %}
+
+package:
+  name: snakepipes
+  version: {{ version }}
+
+source:
+  path: ../
+
+build:
+  number: 0
+  noarch: python
+  script: pip install .
+
+requirements:
+  host:
+    - python >=3.11,<3.13
+    - pip
+    - seaborn
+    - setuptools
+  run:
+    - python >=3.11,<3.13
+    - snakemake >=8
+    - snakemake-executor-plugin-cluster-generic >=1.0.9
+    - pandas
+    - thefuzz
+    - ruamel.yaml
+
+test:
+  commands:
+    - DNAmapping --help
+
+about:
+  home: 'https://snakepipes.readthedocs.org'
+  license: MIT
+  summary: NGS processing pipelines from the MPI-IE

@@ -1,0 +1,48 @@
+workflow_id: riyadua-cervical-cancer-snakemake-workflow-finish
+source_cores: 8
+steps:
+  preprocess:
+    summary: preprocess
+    requires:
+    - ../workflow_candidates/RiyaDua__cervical-cancer-snakemake-workflow/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/RiyaDua__cervical-cancer-snakemake-workflow/Snakefile
+      directory: ../workflow_candidates/RiyaDua__cervical-cancer-snakemake-workflow
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/RiyaDua__cervical-cancer-snakemake-workflow/config.yaml
+      root_target: all
+      until:
+      - preprocess
+  differential_expression:
+    summary: differential_expression
+    requires:
+    - ../workflow_candidates/RiyaDua__cervical-cancer-snakemake-workflow/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/RiyaDua__cervical-cancer-snakemake-workflow/Snakefile
+      directory: ../workflow_candidates/RiyaDua__cervical-cancer-snakemake-workflow
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/RiyaDua__cervical-cancer-snakemake-workflow/config.yaml
+      root_target: all
+      until:
+      - differential_expression
+    depends_on:
+    - preprocess
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/RiyaDua__cervical-cancer-snakemake-workflow/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/RiyaDua__cervical-cancer-snakemake-workflow/Snakefile
+      directory: ../workflow_candidates/RiyaDua__cervical-cancer-snakemake-workflow
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/RiyaDua__cervical-cancer-snakemake-workflow/config.yaml
+      targets:
+      - all
+    depends_on:
+    - differential_expression

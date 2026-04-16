@@ -1,0 +1,33 @@
+{
+  "source_repo_dir": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2",
+  "source_snakefile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/Snakefile",
+  "source_configfile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/config/config.yaml",
+  "step_count": 25,
+  "steps": [
+    "get_genome",
+    "get_annotation",
+    "genome_faidx",
+    "bwa_index",
+    "star_index",
+    "get_sra",
+    "fastp_se",
+    "fastp_pe",
+    "rseqc_gtf2bed",
+    "rseqc_junction_annotation",
+    "rseqc_junction_saturation",
+    "rseqc_stat",
+    "rseqc_infer",
+    "rseqc_innerdis",
+    "rseqc_readdis",
+    "rseqc_readdup",
+    "rseqc_readgc",
+    "multiqc",
+    "star_align",
+    "count_matrix",
+    "gene_2_symbol",
+    "deseq2_init",
+    "pca",
+    "deseq2",
+    "all"
+  ]
+}

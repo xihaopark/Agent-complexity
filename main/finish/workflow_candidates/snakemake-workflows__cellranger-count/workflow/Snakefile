@@ -1,0 +1,52 @@
+# Main entrypoint of the workflow.
+# Please follow the best practices:
+# https://snakemake.readthedocs.io/en/stable/snakefiles/best_practices.html,
+# in particular regarding the standardized folder structure mentioned there.
+
+
+# load configuration
+# -----------------------------------------------------
+configfile: "config/config.yaml"
+
+
+# Due to licensing and the download being behind a registration, installation
+# of Cell Ranger cannot be fully automated. Please download the latest version
+# from the Cell Ranger download page:
+# https://www.10xgenomics.com/support/software/cell-ranger/downloads
+# Then, before running the workflow, set the following shell environment
+# variable with (or make this permanent by including this line in your
+# ~/.bashrc file and making sure this is loaded from your ~/.bash_profile):
+# export CELLRANGER_TARBALL="absolute_path_to_tarball"
+envvars:
+    "CELLRANGER_TARBALL",
+
+
+# load rules
+# -----------------------------------------------------
+include: "rules/common.smk"
+include: "rules/cellranger.smk"
+
+
+# optional messages, log and error handling
+# -----------------------------------------------------
+onstart:
+    print("\n--- Analysis started ---\n")
+
+
+onsuccess:
+    print("\n--- Workflow finished! ---\n")
+
+
+onerror:
+    print("\n--- An error occurred! ---\n")
+
+
+# target rules
+# -----------------------------------------------------
+rule all:
+    input:
+        expand(
+            "results/cellranger/{sample}/outs/metrics_summary.csv",
+            sample=sample_sheet["sample"].unique(),
+        ),
+    default_target: True

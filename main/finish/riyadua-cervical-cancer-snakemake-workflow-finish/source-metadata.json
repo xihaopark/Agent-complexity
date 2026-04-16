@@ -1,0 +1,11 @@
+{
+  "source_repo_dir": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/RiyaDua__cervical-cancer-snakemake-workflow",
+  "source_snakefile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/RiyaDua__cervical-cancer-snakemake-workflow/Snakefile",
+  "source_configfile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/RiyaDua__cervical-cancer-snakemake-workflow/config.yaml",
+  "step_count": 3,
+  "steps": [
+    "preprocess",
+    "differential_expression",
+    "all"
+  ]
+}

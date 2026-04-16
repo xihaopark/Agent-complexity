@@ -1,0 +1,160 @@
+workflow_id: microsatellite-instability-detection-with-msisensor-pro-finish
+source_cores: 8
+steps:
+  samtools_index:
+    summary: samtools_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+      root_target: all
+      until:
+      - samtools_index
+  download_genome:
+    summary: download_genome
+    requires:
+    - ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+      root_target: all
+      until:
+      - download_genome
+    depends_on:
+    - samtools_index
+  msisensor_pro_scan:
+    summary: msisensor_pro_scan
+    requires:
+    - ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+      root_target: all
+      until:
+      - msisensor_pro_scan
+    depends_on:
+    - download_genome
+  msisensor_pro_pro_preprocessing_baseline:
+    summary: msisensor_pro_pro_preprocessing_baseline
+    requires:
+    - ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+      root_target: all
+      until:
+      - msisensor_pro_pro_preprocessing_baseline
+    depends_on:
+    - msisensor_pro_scan
+  create_panel_of_normals_samples_list:
+    summary: create_panel_of_normals_samples_list
+    requires:
+    - ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+      root_target: all
+      until:
+      - create_panel_of_normals_samples_list
+    depends_on:
+    - msisensor_pro_pro_preprocessing_baseline
+  msisensor_pro_baseline:
+    summary: msisensor_pro_baseline
+    requires:
+    - ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+      root_target: all
+      until:
+      - msisensor_pro_baseline
+    depends_on:
+    - create_panel_of_normals_samples_list
+  msisensor_pro_pro_run:
+    summary: msisensor_pro_pro_run
+    requires:
+    - ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+      root_target: all
+      until:
+      - msisensor_pro_pro_run
+    depends_on:
+    - msisensor_pro_baseline
+  msisensor_pro_msi:
+    summary: msisensor_pro_msi
+    requires:
+    - ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+      root_target: all
+      until:
+      - msisensor_pro_msi
+    depends_on:
+    - msisensor_pro_pro_run
+  merge_msi_results:
+    summary: merge_msi_results
+    requires:
+    - ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+      root_target: all
+      until:
+      - merge_msi_results
+    depends_on:
+    - msisensor_pro_msi
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/.test/matched_normal/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - merge_msi_results

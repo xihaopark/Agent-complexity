@@ -1,0 +1,20 @@
+{
+  "source_repo_dir": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/epigen__genome_tracks",
+  "source_snakefile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/epigen__genome_tracks/workflow/Snakefile",
+  "source_configfile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/epigen__genome_tracks/config/config.yaml",
+  "step_count": 12,
+  "steps": [
+    "env_export",
+    "config_export",
+    "annot_export",
+    "gene_list_export",
+    "make_bed",
+    "split_sc_bam",
+    "merge_bams",
+    "coverage",
+    "ucsc_hub",
+    "plot_tracks",
+    "igv_report",
+    "all"
+  ]
+}

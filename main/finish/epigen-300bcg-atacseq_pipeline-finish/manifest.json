@@ -1,0 +1,261 @@
+{
+  "id": "epigen-300bcg-atacseq_pipeline-finish",
+  "name": "epigen 300bcg atacseq_pipeline finish",
+  "engine": "snakemake",
+  "entry_point": "run_workflow.py",
+  "description": "Manual finish workflow for epigen 300BCG ATAC-seq pipeline split by documented pipeline and notebook stages.",
+  "version": "0.1",
+  "aliases": [
+    "epigen-300bcg-atacseq_pipeline"
+  ],
+  "tags": [
+    "finish",
+    "manual",
+    "candidate",
+    "r-workflow"
+  ],
+  "url": "https://github.com/epigen/300BCG_ATACseq_pipeline",
+  "know_how": "workflow/agent-steps.md",
+  "know_how_files": [
+    "workflow/agent-steps.md"
+  ],
+  "discovery": {
+    "kind": "finish_workflow",
+    "family": "candidate",
+    "aliases": [
+      "epigen-300bcg-atacseq_pipeline"
+    ],
+    "retained_steps": [
+      "prepare_references",
+      "parse_regulatory_build",
+      "prepare_pipeline_input",
+      "run_pipeline",
+      "summarize_pipeline",
+      "create_annotations",
+      "qc_stats",
+      "quantification",
+      "features_analysis_a",
+      "features_analysis_b"
+    ],
+    "supports_partial_run": true,
+    "runner": "python3 run_workflow.py --cores 8",
+    "standard_step_skills": false,
+    "generated_by": "tools/manual_finishify_specials.py",
+    "split_mode": "manual-special",
+    "source_repo": "epigen__300BCG_ATACseq_pipeline"
+  },
+  "input_hints": [],
+  "output_hints": [
+    "results/finish/*.done"
+  ],
+  "steps": [
+    {
+      "id": "prepare_references",
+      "name": "Prepare References",
+      "targets": [
+        "prepare_references"
+      ],
+      "params": {
+        "snakefile": "steps/prepare_references.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/prepare_references.done"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "parse_regulatory_build",
+      "name": "Parse Regulatory Build",
+      "targets": [
+        "parse_regulatory_build"
+      ],
+      "params": {
+        "snakefile": "steps/parse_regulatory_build.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/parse_regulatory_build.done"
+      ],
+      "depends_on": [
+        "prepare_references"
+      ]
+    },
+    {
+      "id": "prepare_pipeline_input",
+      "name": "Prepare Pipeline Input",
+      "targets": [
+        "prepare_pipeline_input"
+      ],
+      "params": {
+        "snakefile": "steps/prepare_pipeline_input.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/prepare_pipeline_input.done"
+      ],
+      "depends_on": [
+        "parse_regulatory_build"
+      ]
+    },
+    {
+      "id": "run_pipeline",
+      "name": "Run Pipeline",
+      "targets": [
+        "run_pipeline"
+      ],
+      "params": {
+        "snakefile": "steps/run_pipeline.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/run_pipeline.done"
+      ],
+      "depends_on": [
+        "prepare_pipeline_input"
+      ]
+    },
+    {
+      "id": "summarize_pipeline",
+      "name": "Summarize Pipeline",
+      "targets": [
+        "summarize_pipeline"
+      ],
+      "params": {
+        "snakefile": "steps/summarize_pipeline.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/summarize_pipeline.done"
+      ],
+      "depends_on": [
+        "run_pipeline"
+      ]
+    },
+    {
+      "id": "create_annotations",
+      "name": "Create Annotations",
+      "targets": [
+        "create_annotations"
+      ],
+      "params": {
+        "snakefile": "steps/create_annotations.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/create_annotations.done"
+      ],
+      "depends_on": [
+        "summarize_pipeline"
+      ]
+    },
+    {
+      "id": "qc_stats",
+      "name": "QC Stats",
+      "targets": [
+        "qc_stats"
+      ],
+      "params": {
+        "snakefile": "steps/qc_stats.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/qc_stats.done"
+      ],
+      "depends_on": [
+        "create_annotations"
+      ]
+    },
+    {
+      "id": "quantification",
+      "name": "Quantification",
+      "targets": [
+        "quantification"
+      ],
+      "params": {
+        "snakefile": "steps/quantification.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/quantification.done"
+      ],
+      "depends_on": [
+        "qc_stats"
+      ]
+    },
+    {
+      "id": "features_analysis_a",
+      "name": "Features Analysis A",
+      "targets": [
+        "features_analysis_a"
+      ],
+      "params": {
+        "snakefile": "steps/features_analysis_a.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/features_analysis_a.done"
+      ],
+      "depends_on": [
+        "quantification"
+      ]
+    },
+    {
+      "id": "features_analysis_b",
+      "name": "Features Analysis B",
+      "targets": [
+        "features_analysis_b"
+      ],
+      "params": {
+        "snakefile": "steps/features_analysis_b.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/features_analysis_b.done"
+      ],
+      "depends_on": [
+        "features_analysis_a"
+      ]
+    }
+  ]
+}

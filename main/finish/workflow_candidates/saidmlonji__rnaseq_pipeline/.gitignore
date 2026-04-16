@@ -1,0 +1,8 @@
+# .gitignore
+*.bam
+*.sam
+*.fastq
+*.fastq.gz
+*.pdf
+.Rhistory
+.RData

@@ -1,0 +1,7 @@
+name: coreutils
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - bash=5.2
+  - coreutils=9.5

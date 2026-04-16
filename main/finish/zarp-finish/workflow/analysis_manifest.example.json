@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "workflow_id": "zarp",
+  "step_id": "step-2-parse-samples",
+  "manifest_type": "analysis_manifest",
+  "status": "completed",
+  "summary": {
+    "objective": "Build the run-level biological and technical inventory",
+    "execution_scope": "run",
+    "fanout_key": "none",
+    "next_step": "step-3-build-indexes",
+    "notes": [
+      "Samples resolved before any reference work begins",
+      "Profile remains external to the biological sample sheet"
+    ]
+  },
+  "run_context": {
+    "config_files": ["tests/input_files/config.yaml"],
+    "sample_sheet": "tests/input_files/samples.tsv",
+    "active_directory": "tests/input_files",
+    "mode": "test"
+  },
+  "subjects": [
+    {
+      "id": "sample_1",
+      "type": "sample",
+      "status": "resolved",
+      "metadata": {
+        "seqmode": "paired",
+        "organism": "human"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "analysis_manifest",
+      "kind": "manifest",
+      "path": "manifests/analysis_manifest.json",
+      "status": "verified",
+      "owner": "run"
+    }
+  ],
+  "validations": [
+    {
+      "name": "sample_sheet_parsed",
+      "passed": true,
+      "details": "Samples, seqmodes, and organism metadata were resolved"
+    }
+  ],
+  "errors": []
+}

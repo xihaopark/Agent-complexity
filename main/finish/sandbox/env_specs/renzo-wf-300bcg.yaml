@@ -1,0 +1,19 @@
+name: renzo-wf-300bcg
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=2.7
+  - pip
+  - pandas
+  - numpy
+  - matplotlib
+  - scipy
+  - scikit-learn
+  - pybedtools
+  - notebook
+  - jupyter
+  - pip:
+      - pypiper
+      - peppy

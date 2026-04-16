@@ -1,0 +1,112 @@
+workflow_id: akinyi-onyango-rna_seq_pipeline-finish
+source_cores: 8
+steps:
+  quality_control:
+    summary: quality_control
+    requires: []
+    snakemake:
+      snakefile: ../workflow_candidates/Akinyi-Onyango__rna_seq_pipeline/Snakefile
+      directory: ../workflow_candidates/Akinyi-Onyango__rna_seq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      root_target: all
+      until:
+      - quality_control
+  quality_filtering:
+    summary: quality_filtering
+    requires: []
+    snakemake:
+      snakefile: ../workflow_candidates/Akinyi-Onyango__rna_seq_pipeline/Snakefile
+      directory: ../workflow_candidates/Akinyi-Onyango__rna_seq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      root_target: all
+      until:
+      - quality_filtering
+    depends_on:
+    - quality_control
+  qc_trimmed_files:
+    summary: qc_trimmed_files
+    requires: []
+    snakemake:
+      snakefile: ../workflow_candidates/Akinyi-Onyango__rna_seq_pipeline/Snakefile
+      directory: ../workflow_candidates/Akinyi-Onyango__rna_seq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      root_target: all
+      until:
+      - qc_trimmed_files
+    depends_on:
+    - quality_filtering
+  generate_index:
+    summary: generate_index
+    requires: []
+    snakemake:
+      snakefile: ../workflow_candidates/Akinyi-Onyango__rna_seq_pipeline/Snakefile
+      directory: ../workflow_candidates/Akinyi-Onyango__rna_seq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      root_target: all
+      until:
+      - generate_index
+    depends_on:
+    - qc_trimmed_files
+  read_mapping:
+    summary: read_mapping
+    requires: []
+    snakemake:
+      snakefile: ../workflow_candidates/Akinyi-Onyango__rna_seq_pipeline/Snakefile
+      directory: ../workflow_candidates/Akinyi-Onyango__rna_seq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      root_target: all
+      until:
+      - read_mapping
+    depends_on:
+    - generate_index
+  read_counts:
+    summary: read_counts
+    requires: []
+    snakemake:
+      snakefile: ../workflow_candidates/Akinyi-Onyango__rna_seq_pipeline/Snakefile
+      directory: ../workflow_candidates/Akinyi-Onyango__rna_seq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      root_target: all
+      until:
+      - read_counts
+    depends_on:
+    - read_mapping
+  differential_expression:
+    summary: differential_expression
+    requires: []
+    snakemake:
+      snakefile: ../workflow_candidates/Akinyi-Onyango__rna_seq_pipeline/Snakefile
+      directory: ../workflow_candidates/Akinyi-Onyango__rna_seq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      root_target: all
+      until:
+      - differential_expression
+    depends_on:
+    - read_counts
+  all:
+    summary: all
+    requires: []
+    snakemake:
+      snakefile: ../workflow_candidates/Akinyi-Onyango__rna_seq_pipeline/Snakefile
+      directory: ../workflow_candidates/Akinyi-Onyango__rna_seq_pipeline
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      targets:
+      - all
+    depends_on:
+    - differential_expression

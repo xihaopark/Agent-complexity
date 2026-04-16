@@ -1,0 +1,7 @@
+name: biopython
+channels:
+- conda-forge
+dependencies:
+- biopython
+- python=3.11
+

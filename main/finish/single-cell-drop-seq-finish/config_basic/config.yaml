@@ -1,0 +1,1120 @@
+workflow_id: single-cell-drop-seq-finish
+source_cores: 8
+steps:
+  download_meta:
+    summary: download_meta
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - download_meta
+  qc:
+    summary: qc
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - qc
+    depends_on:
+    - download_meta
+  filter:
+    summary: filter
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - filter
+    depends_on:
+    - qc
+  map:
+    summary: map
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - map
+    depends_on:
+    - filter
+  extract:
+    summary: extract
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - extract
+    depends_on:
+    - map
+  split_species:
+    summary: split_species
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - split_species
+    depends_on:
+    - extract
+  extract_species:
+    summary: extract_species
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - extract_species
+    depends_on:
+    - split_species
+  merge:
+    summary: merge
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - merge
+    depends_on:
+    - extract_species
+  make_report:
+    summary: make_report
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - make_report
+    depends_on:
+    - merge
+  download_annotation:
+    summary: download_annotation
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - download_annotation
+    depends_on:
+    - make_report
+  download_genome:
+    summary: download_genome
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - download_genome
+    depends_on:
+    - download_annotation
+  rename_genome:
+    summary: rename_genome
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - rename_genome
+    depends_on:
+    - download_genome
+  merge_genomes:
+    summary: merge_genomes
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - merge_genomes
+    depends_on:
+    - rename_genome
+  merge_annotations:
+    summary: merge_annotations
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - merge_annotations
+    depends_on:
+    - merge_genomes
+  curate_annotation:
+    summary: curate_annotation
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - curate_annotation
+    depends_on:
+    - merge_annotations
+  create_dict:
+    summary: create_dict
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - create_dict
+    depends_on:
+    - curate_annotation
+  reduce_gtf:
+    summary: reduce_gtf
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - reduce_gtf
+    depends_on:
+    - create_dict
+  create_refFlat:
+    summary: create_refFlat
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - create_refFlat
+    depends_on:
+    - reduce_gtf
+  create_intervals:
+    summary: create_intervals
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - create_intervals
+    depends_on:
+    - create_refFlat
+  get_genomeChrBinNbits:
+    summary: get_genomeChrBinNbits
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - get_genomeChrBinNbits
+    depends_on:
+    - create_intervals
+  prep_star_index:
+    summary: prep_star_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - prep_star_index
+    depends_on:
+    - get_genomeChrBinNbits
+  create_star_index:
+    summary: create_star_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - create_star_index
+    depends_on:
+    - prep_star_index
+  fastqc_barcodes:
+    summary: fastqc_barcodes
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - fastqc_barcodes
+    depends_on:
+    - create_star_index
+  fastqc_reads:
+    summary: fastqc_reads
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - fastqc_reads
+    depends_on:
+    - fastqc_barcodes
+  multiqc_fastqc_barcodes:
+    summary: multiqc_fastqc_barcodes
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - multiqc_fastqc_barcodes
+    depends_on:
+    - fastqc_reads
+  multiqc_fastqc_reads:
+    summary: multiqc_fastqc_reads
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - multiqc_fastqc_reads
+    depends_on:
+    - multiqc_fastqc_barcodes
+  fasta_fastq_adapter:
+    summary: fasta_fastq_adapter
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - fasta_fastq_adapter
+    depends_on:
+    - multiqc_fastqc_reads
+  cutadapt_R1:
+    summary: cutadapt_R1
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - cutadapt_R1
+    depends_on:
+    - fasta_fastq_adapter
+  cutadapt_R2:
+    summary: cutadapt_R2
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - cutadapt_R2
+    depends_on:
+    - cutadapt_R1
+  clean_cutadapt:
+    summary: clean_cutadapt
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - clean_cutadapt
+    depends_on:
+    - cutadapt_R2
+  repair:
+    summary: repair
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - repair
+    depends_on:
+    - clean_cutadapt
+  detect_barcodes:
+    summary: detect_barcodes
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - detect_barcodes
+    depends_on:
+    - repair
+  plot_adapter_content:
+    summary: plot_adapter_content
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - plot_adapter_content
+    depends_on:
+    - detect_barcodes
+  multiqc_cutadapt_barcodes:
+    summary: multiqc_cutadapt_barcodes
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - multiqc_cutadapt_barcodes
+    depends_on:
+    - plot_adapter_content
+  multiqc_cutadapt_RNA:
+    summary: multiqc_cutadapt_RNA
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - multiqc_cutadapt_RNA
+    depends_on:
+    - multiqc_cutadapt_barcodes
+  extend_barcode_whitelist:
+    summary: extend_barcode_whitelist
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - extend_barcode_whitelist
+    depends_on:
+    - multiqc_cutadapt_RNA
+  get_top_barcodes:
+    summary: get_top_barcodes
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - get_top_barcodes
+    depends_on:
+    - extend_barcode_whitelist
+  get_cell_whitelist:
+    summary: get_cell_whitelist
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - get_cell_whitelist
+    depends_on:
+    - get_top_barcodes
+  extend_barcode_top:
+    summary: extend_barcode_top
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - extend_barcode_top
+    depends_on:
+    - get_cell_whitelist
+  repair_barcodes:
+    summary: repair_barcodes
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - repair_barcodes
+    depends_on:
+    - extend_barcode_top
+  STAR_align:
+    summary: STAR_align
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - STAR_align
+    depends_on:
+    - repair_barcodes
+  multiqc_star:
+    summary: multiqc_star
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - multiqc_star
+    depends_on:
+    - STAR_align
+  pigz_unmapped:
+    summary: pigz_unmapped
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - pigz_unmapped
+    depends_on:
+    - multiqc_star
+  MergeBamAlignment:
+    summary: MergeBamAlignment
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - MergeBamAlignment
+    depends_on:
+    - pigz_unmapped
+  TagReadWithGeneExon:
+    summary: TagReadWithGeneExon
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - TagReadWithGeneExon
+    depends_on:
+    - MergeBamAlignment
+  DetectBeadSubstitutionErrors:
+    summary: DetectBeadSubstitutionErrors
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - DetectBeadSubstitutionErrors
+    depends_on:
+    - TagReadWithGeneExon
+  bead_errors_metrics:
+    summary: bead_errors_metrics
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - bead_errors_metrics
+    depends_on:
+    - DetectBeadSubstitutionErrors
+  bam_hist:
+    summary: bam_hist
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - bam_hist
+    depends_on:
+    - bead_errors_metrics
+  plot_yield:
+    summary: plot_yield
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - plot_yield
+    depends_on:
+    - bam_hist
+  plot_knee_plot:
+    summary: plot_knee_plot
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - plot_knee_plot
+    depends_on:
+    - plot_yield
+  extract_umi_expression:
+    summary: extract_umi_expression
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - extract_umi_expression
+    depends_on:
+    - plot_knee_plot
+  extract_reads_expression:
+    summary: extract_reads_expression
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - extract_reads_expression
+    depends_on:
+    - extract_umi_expression
+  SingleCellRnaSeqMetricsCollector:
+    summary: SingleCellRnaSeqMetricsCollector
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - SingleCellRnaSeqMetricsCollector
+    depends_on:
+    - extract_reads_expression
+  plot_rna_metrics:
+    summary: plot_rna_metrics
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - plot_rna_metrics
+    depends_on:
+    - SingleCellRnaSeqMetricsCollector
+  convert_long_to_mtx:
+    summary: convert_long_to_mtx
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - convert_long_to_mtx
+    depends_on:
+    - plot_rna_metrics
+  compress_mtx:
+    summary: compress_mtx
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - compress_mtx
+    depends_on:
+    - convert_long_to_mtx
+  split_bam_species:
+    summary: split_bam_species
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - split_bam_species
+    depends_on:
+    - compress_mtx
+  extract_all_umi_expression:
+    summary: extract_all_umi_expression
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - extract_all_umi_expression
+    depends_on:
+    - split_bam_species
+  plot_barnyard:
+    summary: plot_barnyard
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - plot_barnyard
+    depends_on:
+    - extract_all_umi_expression
+  extract_umi_expression_species:
+    summary: extract_umi_expression_species
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - extract_umi_expression_species
+    depends_on:
+    - plot_barnyard
+  extract_reads_expression_species:
+    summary: extract_reads_expression_species
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - extract_reads_expression_species
+    depends_on:
+    - extract_umi_expression_species
+  convert_long_to_mtx_species:
+    summary: convert_long_to_mtx_species
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - convert_long_to_mtx_species
+    depends_on:
+    - extract_reads_expression_species
+  compress_mtx_species:
+    summary: compress_mtx_species
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - compress_mtx_species
+    depends_on:
+    - convert_long_to_mtx_species
+  SingleCellRnaSeqMetricsCollector_species:
+    summary: SingleCellRnaSeqMetricsCollector_species
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - SingleCellRnaSeqMetricsCollector_species
+    depends_on:
+    - compress_mtx_species
+  plot_rna_metrics_species:
+    summary: plot_rna_metrics_species
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - plot_rna_metrics_species
+    depends_on:
+    - SingleCellRnaSeqMetricsCollector_species
+  merge_long:
+    summary: merge_long
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - merge_long
+    depends_on:
+    - plot_rna_metrics_species
+  violine_plots:
+    summary: violine_plots
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - violine_plots
+    depends_on:
+    - merge_long
+  summary_stats:
+    summary: summary_stats
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - summary_stats
+    depends_on:
+    - violine_plots
+  create_publication_text:
+    summary: create_publication_text
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      root_target: all
+      until:
+      - create_publication_text
+    depends_on:
+    - summary_stats
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-drop-seq/.test/config.yaml
+      targets:
+      - all
+    depends_on:
+    - create_publication_text

@@ -1,0 +1,18 @@
+{
+  "source_repo_dir": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/chandanbfx__scRNA-seq-Seurat-Workflow",
+  "source_snakefile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/chandanbfx__scRNA-seq-Seurat-Workflow/Snakefile",
+  "source_configfile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/chandanbfx__scRNA-seq-Seurat-Workflow/config/config.yaml",
+  "step_count": 10,
+  "steps": [
+    "create_seurat_object",
+    "qc",
+    "normalization",
+    "batch_correction",
+    "dimreduction",
+    "clustering",
+    "marker_genes",
+    "annotation",
+    "generate_summary",
+    "all"
+  ]
+}

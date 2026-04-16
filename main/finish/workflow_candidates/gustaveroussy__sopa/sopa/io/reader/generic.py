@@ -1,0 +1,114 @@
+import logging
+from pathlib import Path
+
+import xarray as xr
+from spatialdata import SpatialData
+from spatialdata.models import Image2DModel
+
+from sopa.constants import SopaAttrs
+from sopa.io.reader.utils import _default_image_kwargs, _image_int_dtype
+
+log = logging.getLogger(__name__)
+
+
+def aicsimageio(
+    path: Path,
+    z_stack: int = 0,
+    image_models_kwargs: dict | None = None,
+    aics_kwargs: dict | None = None,
+) -> SpatialData:
+    """Read an image using [AICSImageIO](https://github.com/AllenCellModeling/aicsimageio). It supports special formats such as `ND2`, `CZI`, `LIF`, or `DV`.
+
+    !!! note "Extra dependencies"
+        To use this reader, you'll need the `aicsimageio` dependency (`pip install aicsimageio`). To read `.czi` images, you'll also need to install `aicspylibczi` (for instance `pip install aicspylibczi`).
+
+    Args:
+        path: Path to the image file
+        z_stack: (Only for 3D images) Index of the stack in the z-axis to use.
+        image_models_kwargs: Keyword arguments passed to `spatialdata.models.Image2DModel`.
+        aics_kwargs: Keyword arguments passed to `aicsimageio.AICSImage`.
+
+    Returns:
+        A `SpatialData` object with a 2D-image of shape `(C, Y, X)`
+    """
+    log.warning("The `aicsimageio` reader is deprecated. Use `sopa.io.bioio` instead.")
+    image_models_kwargs, _ = _default_image_kwargs(image_models_kwargs, None)
+    aics_kwargs = {} if aics_kwargs is None else aics_kwargs
+
+    try:
+        from aicsimageio import AICSImage
+    except ImportError:
+        raise ImportError("You need to install aicsimageio, e.g. by running `pip install aicsimageio`")
+
+    xarr: xr.DataArray = AICSImage(path, **aics_kwargs).xarray_dask_data
+
+    assert len(xarr.coords["T"]) == 1, f"Only one time dimension is supported, found {len(xarr.coords['T'])}."
+
+    if len(xarr.coords["Z"]) > 1:
+        log.info(f"3D image found, only reading {z_stack:=}")
+
+    xarr = xarr.isel(T=0, Z=z_stack).rename({"C": "c", "Y": "y", "X": "x"})
+    xarr = _image_int_dtype(xarr)
+
+    image = Image2DModel.parse(xarr, c_coords=xarr.coords["c"].values, **image_models_kwargs)
+
+    return SpatialData(images={"image": image}, attrs={SopaAttrs.CELL_SEGMENTATION: "image"})
+
+
+def bioio(
+    path: Path,
+    z_stack: int = 0,
+    timepoint: int = 0,
+    scene: str | int | None = None,
+    image_models_kwargs: dict | None = None,
+    bioio_kwargs: dict | None = None,
+) -> SpatialData:
+    """Read an image using [bioio](https://github.com/bioio-devs/bioio). It supports special formats such as `ND2`, `CZI`, `LIF`, or `DV`.
+
+    !!! note "Extra dependencies"
+        To use this reader, you'll need the `bioio` dependency (`pip install bioio`). You may need extra dependencies specific to your format, see their [documentation](https://bioio-devs.github.io/bioio/OVERVIEW.html#reader-installation).
+
+    Args:
+        path: Path to the image file
+        z_stack: (Only for 3D images) Index of the stack in the z-axis to use.
+        timepoint: (Only for images with multiple timepoints) Index of the timepoint to read.
+        scene: (Only for images with multiple scenes) Name or index of the scene to read. If `None`, the first scene will be read.
+        image_models_kwargs: Keyword arguments passed to `spatialdata.models.Image2DModel`.
+        bioio_kwargs: Keyword arguments passed to `bioio.BioImage`.
+
+    Returns:
+        A `SpatialData` object with a 2D-image of shape `(C, Y, X)`
+    """
+    image_models_kwargs, _ = _default_image_kwargs(image_models_kwargs, None)
+    bioio_kwargs = {} if bioio_kwargs is None else bioio_kwargs
+
+    try:
+        from bioio import BioImage
+    except ImportError:
+        raise ImportError("You need to install bioio, e.g. by running `pip install bioio`")
+
+    reader = BioImage(path, **bioio_kwargs)
+
+    if scene is not None:
+        reader.set_scene(scene)
+
+    if len(reader.dims["T"]) > 1:
+        log.info(f"Image contains {reader.dims['T']} timepoints. Only reading the timepoint = {timepoint}.")
+    if len(reader.dims["Z"]) > 1:
+        log.info(f"3D image found, only reading Z = {z_stack}")
+
+    data = reader.get_image_dask_data("CYX", T=timepoint, Z=z_stack)
+
+    xarr = xr.DataArray(
+        data,
+        dims=("c", "y", "x"),
+        coords={"c": reader.channel_names},
+    )
+
+    xarr = _image_int_dtype(xarr)
+
+    image = Image2DModel.parse(xarr, c_coords=xarr.coords["c"].values, **image_models_kwargs)
+
+    image_name = Path(path).name.split(".")[0]
+
+    return SpatialData(images={image_name: image}, attrs={SopaAttrs.CELL_SEGMENTATION: image_name})

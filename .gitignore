@@ -7,6 +7,7 @@ __pycache__/
 .ruff_cache/
 .coverage
 htmlcov/
+*.egg-info/
 
 # Node
 node_modules/
@@ -23,3 +24,48 @@ data/
 # IDE
 .idea/
 .vscode/
+
+# External / sidecar repos (parallel experiments, not part of this codebase)
+external/
+
+# --- main/finish: Snakemake caches & large reproducible assets (keep Snakefiles, configs, reports)
+**/.snakemake/
+
+# Curated finish copies: reference genomes / staged reads (re-fetch locally)
+main/finish/*-finish/resources/
+main/finish/*-finish/ngs-test-data/
+
+# Vendored workflow source trees under workflow_candidates
+main/finish/workflow_candidates/**/.git/
+main/finish/workflow_candidates/**/resources/
+main/finish/workflow_candidates/**/inst/extdata/
+main/finish/workflow_candidates/**/ngs-test-data/
+main/finish/workflow_candidates/**/.Rproj.user/
+main/finish/workflow_candidates/**/tests/input/
+main/finish/workflow_candidates/**/tests/config/annotations/
+main/finish/workflow_candidates/gersteinlab__ASTRO/example/
+main/finish/workflow_candidates/gersteinlab__ASTRO/Built_GTFs/
+main/finish/workflow_candidates/saidmlonji__rnaseq_pipeline/results/
+main/finish/workflow_candidates/joncahn__epigeneticbutton/workflow/bin/modkit
+
+# Sequencing / compressed test fixtures (often multi‑MB; re-download from upstream)
+**/workflow_candidates/**/tests/**/*.fastq.gz
+**/workflow_candidates/**/tests/**/*.fq.gz
+**/workflow_candidates/**/tests/**/*.fa.gz
+**/workflow_candidates/**/.test/**/*.fq.gz
+**/workflow_candidates/**/.test/**/*.fastq.gz
+main/finish/workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/scRNAseq/10x_*
+main/finish/workflow_candidates/**/*.svs
+main/finish/workflow_candidates/**/test/compressed_resources/
+main/finish/workflow_candidates/**/tests/compressed_resources/
+
+# Bundled archives in Renzo (optional tooling)
+main/finish/Renzo_DA_Agent/**/*.zip
+
+# Renzo agent: keep application code; omit local runs & peer venvs
+main/finish/Renzo_DA_Agent/data/
+main/finish/Renzo_DA_Agent/peer_envs/
+main/finish/Renzo_DA_Agent/.venv*/
+
+# Scratch
+TMP.json

@@ -1,0 +1,256 @@
+workflow_id: epigen-enrichment_analysis-finish
+source_cores: 8
+steps:
+  aggregate:
+    summary: aggregate
+    requires:
+    - ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__enrichment_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__enrichment_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+      root_target: all
+      until:
+      - aggregate
+  annot_export:
+    summary: annot_export
+    requires:
+    - ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__enrichment_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__enrichment_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+      root_target: all
+      until:
+      - annot_export
+    depends_on:
+    - aggregate
+  config_export:
+    summary: config_export
+    requires:
+    - ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__enrichment_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__enrichment_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+      root_target: all
+      until:
+      - config_export
+    depends_on:
+    - annot_export
+  env_export:
+    summary: env_export
+    requires:
+    - ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__enrichment_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__enrichment_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+      root_target: all
+      until:
+      - env_export
+    depends_on:
+    - config_export
+  gene_ORA_GSEApy:
+    summary: gene_ORA_GSEApy
+    requires:
+    - ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__enrichment_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__enrichment_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+      root_target: all
+      until:
+      - gene_ORA_GSEApy
+    depends_on:
+    - env_export
+  gene_motif_enrichment_analysis_RcisTarget:
+    summary: gene_motif_enrichment_analysis_RcisTarget
+    requires:
+    - ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__enrichment_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__enrichment_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+      root_target: all
+      until:
+      - gene_motif_enrichment_analysis_RcisTarget
+    depends_on:
+    - gene_ORA_GSEApy
+  gene_preranked_GSEApy:
+    summary: gene_preranked_GSEApy
+    requires:
+    - ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__enrichment_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__enrichment_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+      root_target: all
+      until:
+      - gene_preranked_GSEApy
+    depends_on:
+    - gene_motif_enrichment_analysis_RcisTarget
+  plot_enrichment_result:
+    summary: plot_enrichment_result
+    requires:
+    - ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__enrichment_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__enrichment_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+      root_target: all
+      until:
+      - plot_enrichment_result
+    depends_on:
+    - gene_preranked_GSEApy
+  prepare_databases:
+    summary: prepare_databases
+    requires:
+    - ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__enrichment_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__enrichment_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+      root_target: all
+      until:
+      - prepare_databases
+    depends_on:
+    - plot_enrichment_result
+  process_results_pycisTarget:
+    summary: process_results_pycisTarget
+    requires:
+    - ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__enrichment_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__enrichment_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+      root_target: all
+      until:
+      - process_results_pycisTarget
+    depends_on:
+    - prepare_databases
+  region_enrichment_analysis_GREAT:
+    summary: region_enrichment_analysis_GREAT
+    requires:
+    - ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__enrichment_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__enrichment_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+      root_target: all
+      until:
+      - region_enrichment_analysis_GREAT
+    depends_on:
+    - process_results_pycisTarget
+  region_enrichment_analysis_LOLA:
+    summary: region_enrichment_analysis_LOLA
+    requires:
+    - ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__enrichment_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__enrichment_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+      root_target: all
+      until:
+      - region_enrichment_analysis_LOLA
+    depends_on:
+    - region_enrichment_analysis_GREAT
+  region_gene_association_GREAT:
+    summary: region_gene_association_GREAT
+    requires:
+    - ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__enrichment_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__enrichment_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+      root_target: all
+      until:
+      - region_gene_association_GREAT
+    depends_on:
+    - region_enrichment_analysis_LOLA
+  region_motif_enrichment_analysis_pycisTarget:
+    summary: region_motif_enrichment_analysis_pycisTarget
+    requires:
+    - ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__enrichment_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__enrichment_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+      root_target: all
+      until:
+      - region_motif_enrichment_analysis_pycisTarget
+    depends_on:
+    - region_gene_association_GREAT
+  visualize:
+    summary: visualize
+    requires:
+    - ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__enrichment_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__enrichment_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+      root_target: all
+      until:
+      - visualize
+    depends_on:
+    - region_motif_enrichment_analysis_pycisTarget
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__enrichment_analysis/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__enrichment_analysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__enrichment_analysis/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - visualize

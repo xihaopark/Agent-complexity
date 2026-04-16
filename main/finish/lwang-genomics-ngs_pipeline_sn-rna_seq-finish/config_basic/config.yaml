@@ -1,0 +1,144 @@
+workflow_id: lwang-genomics-ngs_pipeline_sn-rna_seq-finish
+source_cores: 8
+steps:
+  fastqc_raw:
+    summary: fastqc_raw
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/rna_seq.smk
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml
+      use_conda: false
+      cores: '{source_cores}'
+      scheduler: greedy
+      root_target: all
+      until:
+      - fastqc_raw
+  trim:
+    summary: trim
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/rna_seq.smk
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml
+      use_conda: false
+      cores: '{source_cores}'
+      scheduler: greedy
+      root_target: all
+      until:
+      - trim
+    depends_on:
+    - fastqc_raw
+  align:
+    summary: align
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/rna_seq.smk
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml
+      use_conda: false
+      cores: '{source_cores}'
+      scheduler: greedy
+      root_target: all
+      until:
+      - align
+    depends_on:
+    - trim
+  filter_sort_index:
+    summary: filter_sort_index
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/rna_seq.smk
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml
+      use_conda: false
+      cores: '{source_cores}'
+      scheduler: greedy
+      root_target: all
+      until:
+      - filter_sort_index
+    depends_on:
+    - align
+  convert_bw:
+    summary: convert_bw
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/rna_seq.smk
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml
+      use_conda: false
+      cores: '{source_cores}'
+      scheduler: greedy
+      root_target: all
+      until:
+      - convert_bw
+    depends_on:
+    - filter_sort_index
+  count_gene:
+    summary: count_gene
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/rna_seq.smk
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml
+      use_conda: false
+      cores: '{source_cores}'
+      scheduler: greedy
+      root_target: all
+      until:
+      - count_gene
+    depends_on:
+    - convert_bw
+  qualimap_qc:
+    summary: qualimap_qc
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/rna_seq.smk
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml
+      use_conda: false
+      cores: '{source_cores}'
+      scheduler: greedy
+      root_target: all
+      until:
+      - qualimap_qc
+    depends_on:
+    - count_gene
+  multiqc:
+    summary: multiqc
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/rna_seq.smk
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml
+      use_conda: false
+      cores: '{source_cores}'
+      scheduler: greedy
+      root_target: all
+      until:
+      - multiqc
+    depends_on:
+    - qualimap_qc
+  all:
+    summary: all
+    requires:
+    - /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml
+    snakemake:
+      snakefile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/rna_seq.smk
+      directory: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn
+      configfile: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn/config.yaml
+      use_conda: false
+      cores: '{source_cores}'
+      scheduler: greedy
+      targets:
+      - all
+    depends_on:
+    - multiqc

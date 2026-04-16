@@ -1,0 +1,128 @@
+[
+  {
+    "workflow_id": "lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+    "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+    "step_count": 9,
+    "status": "passed",
+    "returncode": 0,
+    "stdout_tail": "        run_all\nThis was a dry-run (flag -n). The order of jobs does not reflect the order of execution.\n== fastqc_raw ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/fastqc_raw.smk --configfile config_basic/config.yaml --cores 1 -n\n== trim ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/trim.smk --configfile config_basic/config.yaml --cores 1 -n\n== align ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/align.smk --configfile config_basic/config.yaml --cores 1 -n\n== filter_sort_index ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/filter_sort_index.smk --configfile config_basic/config.yaml --cores 1 -n\n== convert_bw ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/convert_bw.smk --configfile config_basic/config.yaml --cores 1 -n\n== count_gene ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/count_gene.smk --configfile config_basic/config.yaml --cores 1 -n\n== qualimap_qc ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/qualimap_qc.smk --configfile config_basic/config.yaml --cores 1 -n\n== multiqc ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/multiqc.smk --configfile config_basic/config.yaml --cores 1 -n\n== all ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/all.smk --configfile config_basic/config.yaml --cores 1 -n",
+    "stderr_tail": ""
+  },
+  {
+    "workflow_id": "lwang-genomics-ngs_pipeline_sn-chip_seq-finish",
+    "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/lwang-genomics-ngs_pipeline_sn-chip_seq-finish",
+    "step_count": 8,
+    "status": "passed",
+    "returncode": 0,
+    "stdout_tail": "        all\n    output files have to be generated:\n        run_all\nThis was a dry-run (flag -n). The order of jobs does not reflect the order of execution.\n== fastqc_raw ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/fastqc_raw.smk --configfile config_basic/config.yaml --cores 1 -n\n== trim ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/trim.smk --configfile config_basic/config.yaml --cores 1 -n\n== align ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/align.smk --configfile config_basic/config.yaml --cores 1 -n\n== filter_sort_index ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/filter_sort_index.smk --configfile config_basic/config.yaml --cores 1 -n\n== bam_coverage ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/bam_coverage.smk --configfile config_basic/config.yaml --cores 1 -n\n== call_peaks ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/call_peaks.smk --configfile config_basic/config.yaml --cores 1 -n\n== multiqc ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/multiqc.smk --configfile config_basic/config.yaml --cores 1 -n\n== all ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/all.smk --configfile config_basic/config.yaml --cores 1 -n",
+    "stderr_tail": ""
+  },
+  {
+    "workflow_id": "lwang-genomics-ngs_pipeline_sn-atac_seq-finish",
+    "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/lwang-genomics-ngs_pipeline_sn-atac_seq-finish",
+    "step_count": 10,
+    "status": "passed",
+    "returncode": 0,
+    "stdout_tail": "== fastqc_raw ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/fastqc_raw.smk --configfile config_basic/config.yaml --cores 1 -n\n== trim ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/trim.smk --configfile config_basic/config.yaml --cores 1 -n\n== align ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/align.smk --configfile config_basic/config.yaml --cores 1 -n\n== remove_mito ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/remove_mito.smk --configfile config_basic/config.yaml --cores 1 -n\n== filter_sort_index ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/filter_sort_index.smk --configfile config_basic/config.yaml --cores 1 -n\n== bam_coverage ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/bam_coverage.smk --configfile config_basic/config.yaml --cores 1 -n\n== call_peaks ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/call_peaks.smk --configfile config_basic/config.yaml --cores 1 -n\n== atac_qc ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/atac_qc.smk --configfile config_basic/config.yaml --cores 1 -n\n== multiqc ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/multiqc.smk --configfile config_basic/config.yaml --cores 1 -n\n== all ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/all.smk --configfile config_basic/config.yaml --cores 1 -n",
+    "stderr_tail": ""
+  },
+  {
+    "workflow_id": "gersteinlab-astro-finish",
+    "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/gersteinlab-astro-finish",
+    "step_count": 3,
+    "status": "passed",
+    "returncode": 0,
+    "stdout_tail": "Job stats:\njob                     count\n--------------------  -------\nrun_feature_counting        1\nall                         1\ntotal                       2\n\nReasons:\n    (check individual jobs above for details)\n    input files updated by another job:\n        all\n    output files have to be generated:\n        run_feature_counting\nThis was a dry-run (flag -n). The order of jobs does not reflect the order of execution.\n== demultiplexing ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/demultiplexing.smk --configfile config_basic/config.yaml --cores 1 -n\n== genome_mapping ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/genome_mapping.smk --configfile config_basic/config.yaml --cores 1 -n\n== feature_counting ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/feature_counting.smk --configfile config_basic/config.yaml --cores 1 -n",
+    "stderr_tail": ""
+  },
+  {
+    "workflow_id": "jfnavarro-st_pipeline-finish",
+    "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/jfnavarro-st_pipeline-finish",
+    "step_count": 2,
+    "status": "passed",
+    "returncode": 0,
+    "stdout_tail": "    reason: Input files updated by another job: results/finish/mapping_to_dataset.done\n    resources: tmpdir=/tmp\nJob stats:\njob                       count\n----------------------  -------\nrun_mapping_to_dataset        1\nall                           1\ntotal                         2\n\nReasons:\n    (check individual jobs above for details)\n    input files updated by another job:\n        all\n    output files have to be generated:\n        run_mapping_to_dataset\nThis was a dry-run (flag -n). The order of jobs does not reflect the order of execution.\n== filtering ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/filtering.smk --configfile config_basic/config.yaml --cores 1 -n\n== mapping_to_dataset ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/mapping_to_dataset.smk --configfile config_basic/config.yaml --cores 1 -n",
+    "stderr_tail": ""
+  },
+  {
+    "workflow_id": "gammon-bio-rnaseq_pipeline-finish",
+    "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/gammon-bio-rnaseq_pipeline-finish",
+    "step_count": 4,
+    "status": "passed",
+    "returncode": 0,
+    "stdout_tail": "--------------  -------\nrun_run_deseq2        1\nall                   1\ntotal                 2\n\nReasons:\n    (check individual jobs above for details)\n    input files updated by another job:\n        all\n    output files have to be generated:\n        run_run_deseq2\nThis was a dry-run (flag -n). The order of jobs does not reflect the order of execution.\n== get_refs ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/get_refs.smk --configfile config_basic/config.yaml --cores 1 -n\n== rename_fastqs ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/rename_fastqs.smk --configfile config_basic/config.yaml --cores 1 -n\n== salmon_pipeline ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/salmon_pipeline.smk --configfile config_basic/config.yaml --cores 1 -n\n== run_deseq2 ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/run_deseq2.smk --configfile config_basic/config.yaml --cores 1 -n",
+    "stderr_tail": ""
+  },
+  {
+    "workflow_id": "mohammedemamkhattabunipd-atacseq-finish",
+    "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/mohammedemamkhattabunipd-atacseq-finish",
+    "step_count": 2,
+    "status": "passed",
+    "returncode": 0,
+    "stdout_tail": "    reason: Input files updated by another job: results/finish/downstream_atacseq.done\n    resources: tmpdir=/tmp\nJob stats:\njob                       count\n----------------------  -------\nrun_downstream_atacseq        1\nall                           1\ntotal                         2\n\nReasons:\n    (check individual jobs above for details)\n    input files updated by another job:\n        all\n    output files have to be generated:\n        run_downstream_atacseq\nThis was a dry-run (flag -n). The order of jobs does not reflect the order of execution.\n== primary_atacseq ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/primary_atacseq.smk --configfile config_basic/config.yaml --cores 1 -n\n== downstream_atacseq ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/downstream_atacseq.smk --configfile config_basic/config.yaml --cores 1 -n",
+    "stderr_tail": ""
+  },
+  {
+    "workflow_id": "saidmlonji-rnaseq_pipeline-finish",
+    "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/saidmlonji-rnaseq_pipeline-finish",
+    "step_count": 3,
+    "status": "passed",
+    "returncode": 0,
+    "stdout_tail": "Job stats:\njob                    count\n-------------------  -------\nrun_deseq2_analysis        1\nall                        1\ntotal                      2\n\nReasons:\n    (check individual jobs above for details)\n    input files updated by another job:\n        all\n    output files have to be generated:\n        run_deseq2_analysis\nThis was a dry-run (flag -n). The order of jobs does not reflect the order of execution.\n== alignment_qc ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/alignment_qc.smk --configfile config_basic/config.yaml --cores 1 -n\n== gene_counting ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/gene_counting.smk --configfile config_basic/config.yaml --cores 1 -n\n== deseq2_analysis ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/deseq2_analysis.smk --configfile config_basic/config.yaml --cores 1 -n",
+    "stderr_tail": ""
+  },
+  {
+    "workflow_id": "epigen-300bcg-atacseq_pipeline-finish",
+    "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/epigen-300bcg-atacseq_pipeline-finish",
+    "step_count": 10,
+    "status": "passed",
+    "returncode": 0,
+    "stdout_tail": "== prepare_references ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/prepare_references.smk --configfile config_basic/config.yaml --cores 1 -n\n== parse_regulatory_build ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/parse_regulatory_build.smk --configfile config_basic/config.yaml --cores 1 -n\n== prepare_pipeline_input ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/prepare_pipeline_input.smk --configfile config_basic/config.yaml --cores 1 -n\n== run_pipeline ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/run_pipeline.smk --configfile config_basic/config.yaml --cores 1 -n\n== summarize_pipeline ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/summarize_pipeline.smk --configfile config_basic/config.yaml --cores 1 -n\n== create_annotations ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/create_annotations.smk --configfile config_basic/config.yaml --cores 1 -n\n== qc_stats ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/qc_stats.smk --configfile config_basic/config.yaml --cores 1 -n\n== quantification ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/quantification.smk --configfile config_basic/config.yaml --cores 1 -n\n== features_analysis_a ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/features_analysis_a.smk --configfile config_basic/config.yaml --cores 1 -n\n== features_analysis_b ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/features_analysis_b.smk --configfile config_basic/config.yaml --cores 1 -n",
+    "stderr_tail": ""
+  },
+  {
+    "workflow_id": "tgirke-systempiperdata-rnaseq-finish",
+    "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/tgirke-systempiperdata-rnaseq-finish",
+    "step_count": 21,
+    "status": "passed",
+    "returncode": 0,
+    "stdout_tail": "== sample_tree ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/sample_tree.smk --configfile config_basic/config.yaml --cores 1 -n\n== run_edger ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/run_edger.smk --configfile config_basic/config.yaml --cores 1 -n\n== custom_annot ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/custom_annot.smk --configfile config_basic/config.yaml --cores 1 -n\n== filter_degs ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/filter_degs.smk --configfile config_basic/config.yaml --cores 1 -n\n== venn_diagram ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/venn_diagram.smk --configfile config_basic/config.yaml --cores 1 -n\n== get_go_annot ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/get_go_annot.smk --configfile config_basic/config.yaml --cores 1 -n\n== go_enrich ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/go_enrich.smk --configfile config_basic/config.yaml --cores 1 -n\n== go_plot ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/go_plot.smk --configfile config_basic/config.yaml --cores 1 -n\n== heatmap ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/heatmap.smk --configfile config_basic/config.yaml --cores 1 -n\n== sessionInfo ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/sessionInfo.smk --configfile config_basic/config.yaml --cores 1 -n",
+    "stderr_tail": ""
+  },
+  {
+    "workflow_id": "tgirke-systempiperdata-chipseq-finish",
+    "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/tgirke-systempiperdata-chipseq-finish",
+    "step_count": 21,
+    "status": "passed",
+    "returncode": 0,
+    "stdout_tail": "== consensus_peaks ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/consensus_peaks.smk --configfile config_basic/config.yaml --cores 1 -n\n== annotation_ChIPseeker ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/annotation_ChIPseeker.smk --configfile config_basic/config.yaml --cores 1 -n\n== ChIPseeker_plots ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/ChIPseeker_plots.smk --configfile config_basic/config.yaml --cores 1 -n\n== annotation_ChIPpeakAnno ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/annotation_ChIPpeakAnno.smk --configfile config_basic/config.yaml --cores 1 -n\n== count_peak_ranges ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/count_peak_ranges.smk --configfile config_basic/config.yaml --cores 1 -n\n== diff_bind_analysis ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/diff_bind_analysis.smk --configfile config_basic/config.yaml --cores 1 -n\n== go_enrich ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/go_enrich.smk --configfile config_basic/config.yaml --cores 1 -n\n== parse_peak_sequences ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/parse_peak_sequences.smk --configfile config_basic/config.yaml --cores 1 -n\n== bcrank_enrich ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/bcrank_enrich.smk --configfile config_basic/config.yaml --cores 1 -n\n== sessionInfo ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/sessionInfo.smk --configfile config_basic/config.yaml --cores 1 -n",
+    "stderr_tail": ""
+  },
+  {
+    "workflow_id": "tgirke-systempiperdata-riboseq-finish",
+    "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/tgirke-systempiperdata-riboseq-finish",
+    "step_count": 32,
+    "status": "passed",
+    "returncode": 0,
+    "stdout_tail": "== custom_annot ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/custom_annot.smk --configfile config_basic/config.yaml --cores 1 -n\n== filter_degs ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/filter_degs.smk --configfile config_basic/config.yaml --cores 1 -n\n== venn_diagram ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/venn_diagram.smk --configfile config_basic/config.yaml --cores 1 -n\n== get_go_annot ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/get_go_annot.smk --configfile config_basic/config.yaml --cores 1 -n\n== go_enrich ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/go_enrich.smk --configfile config_basic/config.yaml --cores 1 -n\n== go_plot ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/go_plot.smk --configfile config_basic/config.yaml --cores 1 -n\n== diff_loading ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/diff_loading.smk --configfile config_basic/config.yaml --cores 1 -n\n== diff_translational_eff ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/diff_translational_eff.smk --configfile config_basic/config.yaml --cores 1 -n\n== heatmap ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/heatmap.smk --configfile config_basic/config.yaml --cores 1 -n\n== sessionInfo ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/sessionInfo.smk --configfile config_basic/config.yaml --cores 1 -n",
+    "stderr_tail": ""
+  },
+  {
+    "workflow_id": "tgirke-systempiperdata-varseq-finish",
+    "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/tgirke-systempiperdata-varseq-finish",
+    "step_count": 35,
+    "status": "passed",
+    "returncode": 0,
+    "stdout_tail": "== summary_var ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/summary_var.smk --configfile config_basic/config.yaml --cores 1 -n\n== plot_var_consequence ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/plot_var_consequence.smk --configfile config_basic/config.yaml --cores 1 -n\n== plot_var_stats ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/plot_var_stats.smk --configfile config_basic/config.yaml --cores 1 -n\n== plot_var_boxplot ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/plot_var_boxplot.smk --configfile config_basic/config.yaml --cores 1 -n\n== venn_diagram ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/venn_diagram.smk --configfile config_basic/config.yaml --cores 1 -n\n== plot_variant ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/plot_variant.smk --configfile config_basic/config.yaml --cores 1 -n\n== non_syn_vars ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/non_syn_vars.smk --configfile config_basic/config.yaml --cores 1 -n\n== pathenrich ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/pathenrich.smk --configfile config_basic/config.yaml --cores 1 -n\n== drug_target ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/drug_target.smk --configfile config_basic/config.yaml --cores 1 -n\n== sessionInfo ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/sessionInfo.smk --configfile config_basic/config.yaml --cores 1 -n",
+    "stderr_tail": ""
+  },
+  {
+    "workflow_id": "tgirke-systempiperdata-spscrna-finish",
+    "workflow_dir": "/lab_workspace/projects/Agent-complexity/main/finish/tgirke-systempiperdata-spscrna-finish",
+    "step_count": 18,
+    "status": "passed",
+    "returncode": 0,
+    "stdout_tail": "== scaling ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/scaling.smk --configfile config_basic/config.yaml --cores 1 -n\n== pca ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/pca.smk --configfile config_basic/config.yaml --cores 1 -n\n== pca_plots ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/pca_plots.smk --configfile config_basic/config.yaml --cores 1 -n\n== choose_pcs ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/choose_pcs.smk --configfile config_basic/config.yaml --cores 1 -n\n== find_clusters ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/find_clusters.smk --configfile config_basic/config.yaml --cores 1 -n\n== plot_cluster ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/plot_cluster.smk --configfile config_basic/config.yaml --cores 1 -n\n== find_markers ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/find_markers.smk --configfile config_basic/config.yaml --cores 1 -n\n== plot_markers ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/plot_markers.smk --configfile config_basic/config.yaml --cores 1 -n\n== label_cell_type ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/label_cell_type.smk --configfile config_basic/config.yaml --cores 1 -n\n== wf_session ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/wf_session.smk --configfile config_basic/config.yaml --cores 1 -n",
+    "stderr_tail": ""
+  }
+]

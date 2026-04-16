@@ -1,0 +1,2 @@
+prepare_references
+snakemake -s workflow/Snakefile --configfile config_basic/source_config.yaml --use-conda --cores 1 prepare_references_ready

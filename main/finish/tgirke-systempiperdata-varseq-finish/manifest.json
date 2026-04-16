@@ -1,0 +1,813 @@
+{
+  "id": "tgirke-systempiperdata-varseq-finish",
+  "name": "tgirke systempiperdata varseq finish",
+  "engine": "snakemake",
+  "entry_point": "run_workflow.py",
+  "description": "Manual finish workflow for systemPipeRdata VAR-seq template split by Rmd step_name declarations.",
+  "version": "0.1",
+  "aliases": [
+    "tgirke-systempiperdata-varseq"
+  ],
+  "tags": [
+    "finish",
+    "manual",
+    "candidate",
+    "r-workflow"
+  ],
+  "url": "https://github.com/tgirke/systemPipeRdata",
+  "know_how": "workflow/agent-steps.md",
+  "know_how_files": [
+    "workflow/agent-steps.md"
+  ],
+  "discovery": {
+    "kind": "finish_workflow",
+    "family": "candidate",
+    "aliases": [
+      "tgirke-systempiperdata-varseq"
+    ],
+    "retained_steps": [
+      "load_SPR",
+      "fastqc",
+      "fastq_report",
+      "trimmomatic",
+      "preprocessing",
+      "bwa_index",
+      "fasta_index",
+      "faidx_index",
+      "bwa_alignment",
+      "align_stats",
+      "bam_urls",
+      "fastq2ubam",
+      "merge_bam",
+      "sort",
+      "mark_dup",
+      "fix_tag",
+      "hap_caller",
+      "import",
+      "call_variants",
+      "filter",
+      "create_vcf",
+      "filter_vcf",
+      "summary_filter",
+      "annotate_vcf",
+      "combine_var",
+      "summary_var",
+      "plot_var_consequence",
+      "plot_var_stats",
+      "plot_var_boxplot",
+      "venn_diagram",
+      "plot_variant",
+      "non_syn_vars",
+      "pathenrich",
+      "drug_target",
+      "sessionInfo"
+    ],
+    "supports_partial_run": true,
+    "runner": "python3 run_workflow.py --cores 8",
+    "standard_step_skills": false,
+    "generated_by": "tools/manual_finishify_specials.py",
+    "split_mode": "manual-special",
+    "source_repo": "tgirke__systemPipeRdata"
+  },
+  "input_hints": [
+    "../workflow_candidates/tgirke__systemPipeRdata/inst/extdata/workflows/varseq/systemPipeVARseq.Rmd"
+  ],
+  "output_hints": [
+    "results/finish/*.done"
+  ],
+  "steps": [
+    {
+      "id": "load_SPR",
+      "name": "load SPR",
+      "targets": [
+        "load_SPR"
+      ],
+      "params": {
+        "snakefile": "steps/load_SPR.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/load_SPR.done"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "fastqc",
+      "name": "fastqc",
+      "targets": [
+        "fastqc"
+      ],
+      "params": {
+        "snakefile": "steps/fastqc.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/fastqc.done"
+      ],
+      "depends_on": [
+        "load_SPR"
+      ]
+    },
+    {
+      "id": "fastq_report",
+      "name": "fastq report",
+      "targets": [
+        "fastq_report"
+      ],
+      "params": {
+        "snakefile": "steps/fastq_report.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/fastq_report.done"
+      ],
+      "depends_on": [
+        "fastqc"
+      ]
+    },
+    {
+      "id": "trimmomatic",
+      "name": "trimmomatic",
+      "targets": [
+        "trimmomatic"
+      ],
+      "params": {
+        "snakefile": "steps/trimmomatic.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/trimmomatic.done"
+      ],
+      "depends_on": [
+        "fastq_report"
+      ]
+    },
+    {
+      "id": "preprocessing",
+      "name": "preprocessing",
+      "targets": [
+        "preprocessing"
+      ],
+      "params": {
+        "snakefile": "steps/preprocessing.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/preprocessing.done"
+      ],
+      "depends_on": [
+        "trimmomatic"
+      ]
+    },
+    {
+      "id": "bwa_index",
+      "name": "bwa index",
+      "targets": [
+        "bwa_index"
+      ],
+      "params": {
+        "snakefile": "steps/bwa_index.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/bwa_index.done"
+      ],
+      "depends_on": [
+        "preprocessing"
+      ]
+    },
+    {
+      "id": "fasta_index",
+      "name": "fasta index",
+      "targets": [
+        "fasta_index"
+      ],
+      "params": {
+        "snakefile": "steps/fasta_index.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/fasta_index.done"
+      ],
+      "depends_on": [
+        "bwa_index"
+      ]
+    },
+    {
+      "id": "faidx_index",
+      "name": "faidx index",
+      "targets": [
+        "faidx_index"
+      ],
+      "params": {
+        "snakefile": "steps/faidx_index.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/faidx_index.done"
+      ],
+      "depends_on": [
+        "fasta_index"
+      ]
+    },
+    {
+      "id": "bwa_alignment",
+      "name": "bwa alignment",
+      "targets": [
+        "bwa_alignment"
+      ],
+      "params": {
+        "snakefile": "steps/bwa_alignment.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/bwa_alignment.done"
+      ],
+      "depends_on": [
+        "faidx_index"
+      ]
+    },
+    {
+      "id": "align_stats",
+      "name": "align stats",
+      "targets": [
+        "align_stats"
+      ],
+      "params": {
+        "snakefile": "steps/align_stats.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/align_stats.done"
+      ],
+      "depends_on": [
+        "bwa_alignment"
+      ]
+    },
+    {
+      "id": "bam_urls",
+      "name": "bam urls",
+      "targets": [
+        "bam_urls"
+      ],
+      "params": {
+        "snakefile": "steps/bam_urls.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/bam_urls.done"
+      ],
+      "depends_on": [
+        "align_stats"
+      ]
+    },
+    {
+      "id": "fastq2ubam",
+      "name": "fastq2ubam",
+      "targets": [
+        "fastq2ubam"
+      ],
+      "params": {
+        "snakefile": "steps/fastq2ubam.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/fastq2ubam.done"
+      ],
+      "depends_on": [
+        "bam_urls"
+      ]
+    },
+    {
+      "id": "merge_bam",
+      "name": "merge bam",
+      "targets": [
+        "merge_bam"
+      ],
+      "params": {
+        "snakefile": "steps/merge_bam.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/merge_bam.done"
+      ],
+      "depends_on": [
+        "fastq2ubam"
+      ]
+    },
+    {
+      "id": "sort",
+      "name": "sort",
+      "targets": [
+        "sort"
+      ],
+      "params": {
+        "snakefile": "steps/sort.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/sort.done"
+      ],
+      "depends_on": [
+        "merge_bam"
+      ]
+    },
+    {
+      "id": "mark_dup",
+      "name": "mark dup",
+      "targets": [
+        "mark_dup"
+      ],
+      "params": {
+        "snakefile": "steps/mark_dup.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/mark_dup.done"
+      ],
+      "depends_on": [
+        "sort"
+      ]
+    },
+    {
+      "id": "fix_tag",
+      "name": "fix tag",
+      "targets": [
+        "fix_tag"
+      ],
+      "params": {
+        "snakefile": "steps/fix_tag.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/fix_tag.done"
+      ],
+      "depends_on": [
+        "mark_dup"
+      ]
+    },
+    {
+      "id": "hap_caller",
+      "name": "hap caller",
+      "targets": [
+        "hap_caller"
+      ],
+      "params": {
+        "snakefile": "steps/hap_caller.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/hap_caller.done"
+      ],
+      "depends_on": [
+        "fix_tag"
+      ]
+    },
+    {
+      "id": "import",
+      "name": "import",
+      "targets": [
+        "import"
+      ],
+      "params": {
+        "snakefile": "steps/import.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/import.done"
+      ],
+      "depends_on": [
+        "hap_caller"
+      ]
+    },
+    {
+      "id": "call_variants",
+      "name": "call variants",
+      "targets": [
+        "call_variants"
+      ],
+      "params": {
+        "snakefile": "steps/call_variants.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/call_variants.done"
+      ],
+      "depends_on": [
+        "import"
+      ]
+    },
+    {
+      "id": "filter",
+      "name": "filter",
+      "targets": [
+        "filter"
+      ],
+      "params": {
+        "snakefile": "steps/filter.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/filter.done"
+      ],
+      "depends_on": [
+        "call_variants"
+      ]
+    },
+    {
+      "id": "create_vcf",
+      "name": "create vcf",
+      "targets": [
+        "create_vcf"
+      ],
+      "params": {
+        "snakefile": "steps/create_vcf.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/create_vcf.done"
+      ],
+      "depends_on": [
+        "filter"
+      ]
+    },
+    {
+      "id": "filter_vcf",
+      "name": "filter vcf",
+      "targets": [
+        "filter_vcf"
+      ],
+      "params": {
+        "snakefile": "steps/filter_vcf.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/filter_vcf.done"
+      ],
+      "depends_on": [
+        "create_vcf"
+      ]
+    },
+    {
+      "id": "summary_filter",
+      "name": "summary filter",
+      "targets": [
+        "summary_filter"
+      ],
+      "params": {
+        "snakefile": "steps/summary_filter.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/summary_filter.done"
+      ],
+      "depends_on": [
+        "filter_vcf"
+      ]
+    },
+    {
+      "id": "annotate_vcf",
+      "name": "annotate vcf",
+      "targets": [
+        "annotate_vcf"
+      ],
+      "params": {
+        "snakefile": "steps/annotate_vcf.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/annotate_vcf.done"
+      ],
+      "depends_on": [
+        "summary_filter"
+      ]
+    },
+    {
+      "id": "combine_var",
+      "name": "combine var",
+      "targets": [
+        "combine_var"
+      ],
+      "params": {
+        "snakefile": "steps/combine_var.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/combine_var.done"
+      ],
+      "depends_on": [
+        "annotate_vcf"
+      ]
+    },
+    {
+      "id": "summary_var",
+      "name": "summary var",
+      "targets": [
+        "summary_var"
+      ],
+      "params": {
+        "snakefile": "steps/summary_var.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/summary_var.done"
+      ],
+      "depends_on": [
+        "combine_var"
+      ]
+    },
+    {
+      "id": "plot_var_consequence",
+      "name": "plot var consequence",
+      "targets": [
+        "plot_var_consequence"
+      ],
+      "params": {
+        "snakefile": "steps/plot_var_consequence.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/plot_var_consequence.done"
+      ],
+      "depends_on": [
+        "summary_var"
+      ]
+    },
+    {
+      "id": "plot_var_stats",
+      "name": "plot var stats",
+      "targets": [
+        "plot_var_stats"
+      ],
+      "params": {
+        "snakefile": "steps/plot_var_stats.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/plot_var_stats.done"
+      ],
+      "depends_on": [
+        "plot_var_consequence"
+      ]
+    },
+    {
+      "id": "plot_var_boxplot",
+      "name": "plot var boxplot",
+      "targets": [
+        "plot_var_boxplot"
+      ],
+      "params": {
+        "snakefile": "steps/plot_var_boxplot.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/plot_var_boxplot.done"
+      ],
+      "depends_on": [
+        "plot_var_stats"
+      ]
+    },
+    {
+      "id": "venn_diagram",
+      "name": "venn diagram",
+      "targets": [
+        "venn_diagram"
+      ],
+      "params": {
+        "snakefile": "steps/venn_diagram.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/venn_diagram.done"
+      ],
+      "depends_on": [
+        "plot_var_boxplot"
+      ]
+    },
+    {
+      "id": "plot_variant",
+      "name": "plot variant",
+      "targets": [
+        "plot_variant"
+      ],
+      "params": {
+        "snakefile": "steps/plot_variant.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/plot_variant.done"
+      ],
+      "depends_on": [
+        "venn_diagram"
+      ]
+    },
+    {
+      "id": "non_syn_vars",
+      "name": "non syn vars",
+      "targets": [
+        "non_syn_vars"
+      ],
+      "params": {
+        "snakefile": "steps/non_syn_vars.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/non_syn_vars.done"
+      ],
+      "depends_on": [
+        "plot_variant"
+      ]
+    },
+    {
+      "id": "pathenrich",
+      "name": "pathenrich",
+      "targets": [
+        "pathenrich"
+      ],
+      "params": {
+        "snakefile": "steps/pathenrich.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/pathenrich.done"
+      ],
+      "depends_on": [
+        "non_syn_vars"
+      ]
+    },
+    {
+      "id": "drug_target",
+      "name": "drug target",
+      "targets": [
+        "drug_target"
+      ],
+      "params": {
+        "snakefile": "steps/drug_target.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/drug_target.done"
+      ],
+      "depends_on": [
+        "pathenrich"
+      ]
+    },
+    {
+      "id": "sessionInfo",
+      "name": "sessionInfo",
+      "targets": [
+        "sessionInfo"
+      ],
+      "params": {
+        "snakefile": "steps/sessionInfo.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/sessionInfo.done"
+      ],
+      "depends_on": [
+        "drug_target"
+      ]
+    }
+  ]
+}

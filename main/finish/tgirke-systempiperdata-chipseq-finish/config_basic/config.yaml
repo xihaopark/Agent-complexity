@@ -1,0 +1,152 @@
+workflow_id: tgirke-systempiperdata-chipseq-finish
+source_cores: 8
+workflow_name: chipseq
+workdir: '{workflow_dir}/systempiper_runtime/chipseq'
+rmd_file: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/tgirke__systemPipeRdata/inst/extdata/workflows/chipseq/systemPipeChIPseq.Rmd
+command_conda_env: renzo-wf-systempiper
+steps:
+  load_SPR:
+    summary: load_SPR
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      load_SPR'
+  fastq_report:
+    summary: fastq_report
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      fastq_report'
+    depends_on:
+    - load_SPR
+  preprocessing:
+    summary: preprocessing
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      preprocessing'
+    depends_on:
+    - fastq_report
+  custom_preprocessing_function:
+    summary: custom_preprocessing_function
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      custom_preprocessing_function'
+    depends_on:
+    - preprocessing
+  bowtie2_index:
+    summary: bowtie2_index
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      bowtie2_index'
+    depends_on:
+    - custom_preprocessing_function
+  bowtie2_alignment:
+    summary: bowtie2_alignment
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      bowtie2_alignment'
+    depends_on:
+    - bowtie2_index
+  align_stats:
+    summary: align_stats
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      align_stats'
+    depends_on:
+    - bowtie2_alignment
+  bam_IGV:
+    summary: bam_IGV
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      bam_IGV'
+    depends_on:
+    - align_stats
+  merge_bams:
+    summary: merge_bams
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      merge_bams'
+    depends_on:
+    - bam_IGV
+  call_peaks_macs_noref:
+    summary: call_peaks_macs_noref
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      call_peaks_macs_noref'
+    depends_on:
+    - merge_bams
+  call_peaks_macs_withref:
+    summary: call_peaks_macs_withref
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      call_peaks_macs_withref'
+    depends_on:
+    - call_peaks_macs_noref
+  consensus_peaks:
+    summary: consensus_peaks
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      consensus_peaks'
+    depends_on:
+    - call_peaks_macs_withref
+  annotation_ChIPseeker:
+    summary: annotation_ChIPseeker
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      annotation_ChIPseeker'
+    depends_on:
+    - consensus_peaks
+  ChIPseeker_plots:
+    summary: ChIPseeker_plots
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      ChIPseeker_plots'
+    depends_on:
+    - annotation_ChIPseeker
+  annotation_ChIPpeakAnno:
+    summary: annotation_ChIPpeakAnno
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      annotation_ChIPpeakAnno'
+    depends_on:
+    - ChIPseeker_plots
+  count_peak_ranges:
+    summary: count_peak_ranges
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      count_peak_ranges'
+    depends_on:
+    - annotation_ChIPpeakAnno
+  diff_bind_analysis:
+    summary: diff_bind_analysis
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      diff_bind_analysis'
+    depends_on:
+    - count_peak_ranges
+  go_enrich:
+    summary: go_enrich
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      go_enrich'
+    depends_on:
+    - diff_bind_analysis
+  parse_peak_sequences:
+    summary: parse_peak_sequences
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      parse_peak_sequences'
+    depends_on:
+    - go_enrich
+  bcrank_enrich:
+    summary: bcrank_enrich
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      bcrank_enrich'
+    depends_on:
+    - parse_peak_sequences
+  sessionInfo:
+    summary: sessionInfo
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      sessionInfo'
+    depends_on:
+    - bcrank_enrich

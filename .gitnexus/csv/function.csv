@@ -269,21 +269,6 @@ def download_artifact(path: str) -> FileResponse:
 def run() -> None:
     import uvicorn
 ",""
-"Function:analyzers/static_ts/analyzer.py:_discover_ts_files","_discover_ts_files","analyzers/static_ts/analyzer.py",15,15,false,"
-
-def _discover_ts_files(repo_path: Path) -> list[Path]:
-    files: list[Path] = []
-    for ext in (""*.ts"", ""*.tsx""):",""
-"Function:analyzers/static_ts/analyzer.py:_is_test_file","_is_test_file","analyzers/static_ts/analyzer.py",25,25,false,"
-
-def _is_test_file(path: Path) -> bool:
-    return path.name.endswith("".test.ts"") or path.name.endswith("".spec.ts"")
-",""
-"Function:analyzers/static_ts/analyzer.py:analyze_typescript_repo","analyze_typescript_repo","analyzers/static_ts/analyzer.py",29,29,true,"
-
-def analyze_typescript_repo(repo_path: Path, artifact_dir: Path) -> tuple[list[MetricRecord], list[ArtifactRef]]:
-    ts_files = _discover_ts_files(repo_path)
-    if not ts_files:",""
 "Function:analyzers/reporting/generator.py:_normalize","_normalize","analyzers/reporting/generator.py",56,56,false,"
 
 def _normalize(value: float) -> float:
@@ -304,6 +289,21 @@ def _markdown_table(metrics: list[MetricRecord]) -> str:
 def generate_report(
     analysis_id: str,
     job_meta: dict[str, Any],",""
+"Function:analyzers/static_ts/analyzer.py:_discover_ts_files","_discover_ts_files","analyzers/static_ts/analyzer.py",15,15,false,"
+
+def _discover_ts_files(repo_path: Path) -> list[Path]:
+    files: list[Path] = []
+    for ext in (""*.ts"", ""*.tsx""):",""
+"Function:analyzers/static_ts/analyzer.py:_is_test_file","_is_test_file","analyzers/static_ts/analyzer.py",25,25,false,"
+
+def _is_test_file(path: Path) -> bool:
+    return path.name.endswith("".test.ts"") or path.name.endswith("".spec.ts"")
+",""
+"Function:analyzers/static_ts/analyzer.py:analyze_typescript_repo","analyze_typescript_repo","analyzers/static_ts/analyzer.py",29,29,true,"
+
+def analyze_typescript_repo(repo_path: Path, artifact_dir: Path) -> tuple[list[MetricRecord], list[ArtifactRef]]:
+    ts_files = _discover_ts_files(repo_path)
+    if not ts_files:",""
 "Function:analyzers/static_py/analyzer.py:_module_name","_module_name","analyzers/static_py/analyzer.py",26,26,false,"
 
 def _module_name(root: Path, file_path: Path) -> str:
@@ -629,6 +629,16 @@ export default function HomePage() {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang=""en"">",""
+"Function:apps/web/app/analysis/[id]/page.tsx:AnalysisDetailPage","AnalysisDetailPage","apps/web/app/analysis/[id]/page.tsx",7,7,true,"const REFRESH_MS = 5000;
+
+export default function AnalysisDetailPage({ params }: { params: { id: string } }) {
+  const id = params.id;
+  const [statusData, setStatusData] = useState<any>(null);",""
+"Function:apps/web/app/analysis/[id]/page.tsx:fetchAll","fetchAll","apps/web/app/analysis/[id]/page.tsx",16,16,true,"  useEffect(() => {
+    let mounted = true;
+    async function fetchAll() {
+      try {
+        const [statusRes, reportRes, metricRes] = await Promise.all([",""
 "Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/utils.py:run_r_code","run_r_code","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/utils.py",25,25,true,"
 # Add these new functions for running R code and CLI commands
 def run_r_code(code: str) -> str:
@@ -1652,16 +1662,6 @@ def segment_and_quantify_cells_in_multiplexed_images(
 def analyze_bone_microct_morphometry(input_file_path, output_dir=""./results"", threshold_value=None):
     """"""Analyze bone microarchitecture parameters from 3D micro-CT images.
 ",""
-"Function:apps/web/app/analysis/[id]/page.tsx:AnalysisDetailPage","AnalysisDetailPage","apps/web/app/analysis/[id]/page.tsx",7,7,true,"const REFRESH_MS = 5000;
-
-export default function AnalysisDetailPage({ params }: { params: { id: string } }) {
-  const id = params.id;
-  const [statusData, setStatusData] = useState<any>(null);",""
-"Function:apps/web/app/analysis/[id]/page.tsx:fetchAll","fetchAll","apps/web/app/analysis/[id]/page.tsx",16,16,true,"  useEffect(() => {
-    let mounted = true;
-    async function fetchAll() {
-      try {
-        const [statusRes, reportRes, metricRes] = await Promise.all([",""
 "Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/molecular_biology.py:annotate_open_reading_frames","annotate_open_reading_frames","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/tool/molecular_biology.py",15,15,true,"
 
 def annotate_open_reading_frames(sequence, min_length, search_reverse=False, filter_subsets=False):
@@ -2817,66 +2817,6 @@ def analyze_itc_binding_thermodynamics(
 def analyze_protein_conservation(protein_sequences, output_dir=""./""):
     """"""Perform multiple sequence alignment and phylogenetic analysis to identify conserved protein regions.
 ",""
-"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:__init__","__init__","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",10,10,false,"    """"""Load and manage know-how documents for the agent.""""""
-
-    def __init__(self, know_how_dir: str | None = None):
-        """"""Initialize the know-how loader.
-",""
-"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:_load_documents","_load_documents","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",27,27,false,"        self._load_documents()
-
-    def _load_documents(self):
-        """"""Load all markdown documents from the know-how directory.""""""
-        pattern = os.path.join(self.know_how_dir, ""*.md"")",""
-"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:_extract_metadata","_extract_metadata","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",63,63,false,"            }
-
-    def _extract_metadata(self, content: str, filename: str) -> tuple[str, str, dict]:
-        """"""Extract title, description, and metadata from markdown content.
-",""
-"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:_strip_metadata","_strip_metadata","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",164,164,false,"        return title, description, metadata
-
-    def _strip_metadata(self, content: str) -> str:
-        """"""Strip the metadata section from document content.
-",""
-"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:get_all_documents","get_all_documents","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",225,225,true,"        return result.strip()
-
-    def get_all_documents(self) -> list[dict]:
-        """"""Get all know-how documents as a list.
-",""
-"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:get_document_by_id","get_document_by_id","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",234,234,true,"        return list(self.documents.values())
-
-    def get_document_by_id(self, doc_id: str) -> dict | None:
-        """"""Get a specific know-how document by ID.
-",""
-"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:get_document_summaries","get_document_summaries","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",246,246,true,"        return self.documents.get(doc_id)
-
-    def get_document_summaries(self) -> list[dict]:
-        """"""Get summaries of all documents (without full content).
-",""
-"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:add_custom_document","add_custom_document","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",257,257,true,"        ]
-
-    def add_custom_document(self, doc_id: str, name: str, description: str, content: str, metadata: dict | None = None):
-        """"""Add a custom know-how document programmatically.
-",""
-"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:get_document_metadata","get_document_metadata","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",280,280,true,"        }
-
-    def get_document_metadata(self, doc_id: str) -> dict | None:
-        """"""Get metadata for a specific document.
-",""
-"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:print_document_info","print_document_info","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",293,293,true,"        return doc.get(""metadata"", {}) if doc else None
-
-    def print_document_info(self, doc_id: str):
-        """"""Print formatted information about a document including metadata.
-",""
-"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:remove_document","remove_document","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",334,334,true,"        print(""="" * 70)
-
-    def remove_document(self, doc_id: str):
-        """"""Remove a know-how document.
-",""
-"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:reload","reload","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",344,344,true,"            del self.documents[doc_id]
-
-    def reload(self):
-        """"""Reload all documents from disk.""""""
-        self.documents = {}",""
 "Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/lab_bench.py:shuffle","shuffle","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/task/lab_bench.py",8,8,true,"
 
 def shuffle(x):
@@ -2976,26 +2916,66 @@ class humanity_last_exam(base_task):
     def get_prompt_from_input(self, input):
         return self.get_example(input)[""prompt""]
 ",""
-"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py:__init__","__init__","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py",11,11,false,"    """"""Retrieve tools from the tool registry.""""""
+"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:__init__","__init__","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",10,10,false,"    """"""Load and manage know-how documents for the agent.""""""
 
-    def __init__(self):
-        pass
+    def __init__(self, know_how_dir: str | None = None):
+        """"""Initialize the know-how loader.
 ",""
-"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py:prompt_based_retrieval","prompt_based_retrieval","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py",14,14,true,"        pass
+"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:_load_documents","_load_documents","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",27,27,false,"        self._load_documents()
 
-    def prompt_based_retrieval(self, query: str, resources: dict, llm=None) -> dict:
-        """"""Use a prompt-based approach to retrieve the most relevant resources for a query.
+    def _load_documents(self):
+        """"""Load all markdown documents from the know-how directory.""""""
+        pattern = os.path.join(self.know_how_dir, ""*.md"")",""
+"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:_extract_metadata","_extract_metadata","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",63,63,false,"            }
+
+    def _extract_metadata(self, content: str, filename: str) -> tuple[str, str, dict]:
+        """"""Extract title, description, and metadata from markdown content.
 ",""
-"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py:_format_resources_for_prompt","_format_resources_for_prompt","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py",134,134,false,"        return selected_resources
+"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:_strip_metadata","_strip_metadata","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",164,164,false,"        return title, description, metadata
 
-    def _format_resources_for_prompt(self, resources: list) -> str:
-        """"""Format resources for inclusion in the prompt.""""""
-        formatted = []",""
-"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py:_parse_llm_response","_parse_llm_response","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py",154,154,false,"        return ""\n"".join(formatted) if formatted else ""None available""
-
-    def _parse_llm_response(self, response) -> dict:
-        """"""Parse the LLM response to extract the selected indices.
+    def _strip_metadata(self, content: str) -> str:
+        """"""Strip the metadata section from document content.
 ",""
+"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:get_all_documents","get_all_documents","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",225,225,true,"        return result.strip()
+
+    def get_all_documents(self) -> list[dict]:
+        """"""Get all know-how documents as a list.
+",""
+"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:get_document_by_id","get_document_by_id","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",234,234,true,"        return list(self.documents.values())
+
+    def get_document_by_id(self, doc_id: str) -> dict | None:
+        """"""Get a specific know-how document by ID.
+",""
+"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:get_document_summaries","get_document_summaries","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",246,246,true,"        return self.documents.get(doc_id)
+
+    def get_document_summaries(self) -> list[dict]:
+        """"""Get summaries of all documents (without full content).
+",""
+"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:add_custom_document","add_custom_document","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",257,257,true,"        ]
+
+    def add_custom_document(self, doc_id: str, name: str, description: str, content: str, metadata: dict | None = None):
+        """"""Add a custom know-how document programmatically.
+",""
+"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:get_document_metadata","get_document_metadata","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",280,280,true,"        }
+
+    def get_document_metadata(self, doc_id: str) -> dict | None:
+        """"""Get metadata for a specific document.
+",""
+"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:print_document_info","print_document_info","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",293,293,true,"        return doc.get(""metadata"", {}) if doc else None
+
+    def print_document_info(self, doc_id: str):
+        """"""Print formatted information about a document including metadata.
+",""
+"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:remove_document","remove_document","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",334,334,true,"        print(""="" * 70)
+
+    def remove_document(self, doc_id: str):
+        """"""Remove a know-how document.
+",""
+"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py:reload","reload","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/know_how/loader.py",344,344,true,"            del self.documents[doc_id]
+
+    def reload(self):
+        """"""Reload all documents from disk.""""""
+        self.documents = {}",""
 "Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/biorxiv_scripts/process_all_subjects.py:parse_arguments","parse_arguments","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/biorxiv_scripts/process_all_subjects.py",46,46,true,"
 
 def parse_arguments():
@@ -3576,6 +3556,26 @@ class A1:
         def like(data: gr.LikeData):
             print(""User liked the response"")
             print(f""Index: {data.index}, Liked: {data.liked}"")",""
+"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py:__init__","__init__","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py",11,11,false,"    """"""Retrieve tools from the tool registry.""""""
+
+    def __init__(self):
+        pass
+",""
+"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py:prompt_based_retrieval","prompt_based_retrieval","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py",14,14,true,"        pass
+
+    def prompt_based_retrieval(self, query: str, resources: dict, llm=None) -> dict:
+        """"""Use a prompt-based approach to retrieve the most relevant resources for a query.
+",""
+"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py:_format_resources_for_prompt","_format_resources_for_prompt","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py",134,134,false,"        return selected_resources
+
+    def _format_resources_for_prompt(self, resources: list) -> str:
+        """"""Format resources for inclusion in the prompt.""""""
+        formatted = []",""
+"Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py:_parse_llm_response","_parse_llm_response","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/biomni/model/retriever.py",154,154,false,"        return ""\n"".join(formatted) if formatted else ""None available""
+
+    def _parse_llm_response(self, response) -> dict:
+        """"""Parse the LLM response to extract the selected indices.
+",""
 "Function:data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/expose_biomni_server/test_mcp_server.py:test_single_tool","test_single_tool","data/artifacts/0b98775a-0be8-4743-8728-94820ea65ec8/workspace/repo/tutorials/examples/expose_biomni_server/test_mcp_server.py",40,40,true,"
 
 async def test_single_tool():

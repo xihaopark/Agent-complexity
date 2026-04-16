@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "workflow_id": "rna-seq-star-deseq2",
+  "step_id": "step-10-deliver",
+  "manifest_type": "delivery_manifest",
+  "status": "completed",
+  "summary": {
+    "objective": "Convert technical outputs into delivery-ready result packages",
+    "execution_scope": "report_family",
+    "fanout_key": "none",
+    "notes": [
+      "Delivery includes counts, normalized counts, diffexp, and MultiQC",
+      "Optional PCA outputs are listed when enabled"
+    ]
+  },
+  "subjects": [
+    {
+      "id": "core_delivery",
+      "type": "report_family",
+      "status": "completed",
+      "metadata": {
+        "pca_enabled": true
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "multiqc_report",
+      "kind": "report",
+      "path": "results/qc/multiqc_report.html",
+      "status": "verified",
+      "owner": "core_delivery"
+    },
+    {
+      "name": "diffexp_table",
+      "kind": "table",
+      "path": "results/deseq2/diffexp.conditionA_vs_conditionB.symbol.tsv",
+      "status": "verified",
+      "owner": "core_delivery"
+    }
+  ],
+  "validations": [
+    {
+      "name": "delivery_inventory_complete",
+      "passed": true,
+      "details": "All required core delivery artifacts are present"
+    }
+  ],
+  "errors": []
+}

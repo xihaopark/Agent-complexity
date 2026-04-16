@@ -1,0 +1,17 @@
+
+  
+name: r_gsea
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - r-base=4.3
+  - bioconductor-clusterprofiler
+  - bioconductor-org.hs.eg.db    # human annotation database
+  - bioconductor-enrichplot
+  - bioconductor-DOSE
+  - r-dplyr
+  - r-tibble
+  - r-readr
+  - r-ggplot2
+  - r-stringr

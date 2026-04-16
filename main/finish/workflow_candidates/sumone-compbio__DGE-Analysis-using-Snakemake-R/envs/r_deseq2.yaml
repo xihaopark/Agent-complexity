@@ -1,0 +1,20 @@
+
+
+name: r_deseq2
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - r-base=4.3
+  - bioconductor-deseq2
+  - bioconductor-biocgenerics
+  - bioconductor-summarizedexperiment
+  - bioconductor-matrixgenerics
+  - bioconductor-genomicranges
+  - bioconductor-iranges
+  - bioconductor-genomeinfodb
+  - r-tidyverse
+  - r-readxl
+  - r-ashr
+  
+

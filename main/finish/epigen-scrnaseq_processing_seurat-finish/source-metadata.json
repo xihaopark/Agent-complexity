@@ -1,0 +1,23 @@
+{
+  "source_repo_dir": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/epigen__scrnaseq_processing_seurat",
+  "source_snakefile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/epigen__scrnaseq_processing_seurat/workflow/Snakefile",
+  "source_configfile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/epigen__scrnaseq_processing_seurat/config/config.yaml",
+  "step_count": 15,
+  "steps": [
+    "prepare",
+    "merge",
+    "split",
+    "filter_cells",
+    "pseudobulk",
+    "save_counts",
+    "normalize",
+    "correct",
+    "metadata_plots",
+    "seurat_plots",
+    "env_export",
+    "config_export",
+    "annot_export",
+    "gene_list_export",
+    "all"
+  ]
+}

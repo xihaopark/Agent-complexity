@@ -1,0 +1,78 @@
+
+$schema: "http://json-schema.org/draft-06/schema#"
+
+description: snakemake configuration file
+
+type: object
+
+# possible entries of the config file and which type they should be
+properties:
+  INPUT:
+    type: object
+    description: Input files
+    properties:
+      FASTA:
+        type: string
+        description: Path to the reference genome
+      REPEATMASK_GTF:
+        type: string
+        description: Path to the repeatmasker GTF file
+  OUTPUT_DIR:
+    type: string
+    description: Path to the output directory
+  TOOL_LABEL:
+    type: string
+    description: Tool label used to extract methylation calls (e.g. bismark or methyldackel)
+  SAMPLESHEET:
+    type: string
+    description: Path to the samplesheet
+    default: "samplesheet.csv"
+  METHYLKIT:
+    type: object
+    description: settings for methylkit
+    properties:
+      LOW_COV_THRESHOLD:
+        type: integer
+        description: Lower coverage threshold
+      HIGH_COV_THRESHOLD_PERC:
+        type: number
+        description: Higher coverage threshold percentage
+        exclusiveMinimum: 0
+        exclusiveMaximum: 100
+      UNITE_MIN_PER_GROUP:
+        type: number
+        description: Minimum percentage of samples in a group
+        exclusiveMinimum: 0
+        maximum: 1
+      EXCLUDE_SAMPLES:
+        type: array
+        description: List of samples to exclude
+        items:
+          type: string
+  METADATA:
+    type: object
+    description: path to metadata sheets
+    properties:
+      SAMPLES:
+        type: string
+        description: Path to samples metadata
+      SPECIES:
+        type: string
+        description: Path to species metadata
+      SCHEMAS:
+        type: object
+        description: Path to species colors
+        properties:
+          SPECIES_COLORS:
+            type: string
+            description: Path to species colors
+  CHROMOSOMES:
+    type: array
+    description: List of chromosomes to operate on
+    items:
+      type: string
+  RESOURCES:
+    type: object
+    description: Preset resource definitions for cluster execution
+    items:
+      type: object

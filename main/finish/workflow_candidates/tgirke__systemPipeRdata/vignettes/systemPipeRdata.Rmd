@@ -1,0 +1,422 @@
+---
+title: "_systemPipeRdata_: Workflow templates and sample data"
+author: "Author: Le Zhang, Daniela Cassol, and Thomas Girke"
+date: "Last update: `r format(Sys.time(), '%d %B, %Y')`" 
+output:
+  BiocStyle::html_document:
+    toc_float: true
+    code_folding: show
+    toc_depth: 4
+package: systemPipeRdata
+vignette: |
+  %\VignetteEncoding{UTF-8}
+  %\VignetteIndexEntry{systemPipeRdata: Workflow templates and sample data}
+  %\VignetteEngine{knitr::rmarkdown}
+fontsize: 14pt
+bibliography: bibtex.bib
+---
+
+```{css, echo=FALSE}
+pre code {
+white-space: pre !important;
+overflow-x: scroll !important;
+word-break: keep-all !important;
+word-wrap: initial !important;
+}
+```
+
+<!---
+- Compile from command-line
+Rscript -e "rmarkdown::render('systemPipeRdata.Rmd', c('BiocStyle::html_document'), clean=F); knitr::knit('systemPipeRdata.Rmd', tangle=TRUE)"
+
+-->
+
+```{r style, echo = FALSE, results = 'asis'}
+BiocStyle::markdown()
+options(width=60, max.print=1000)
+knitr::opts_chunk$set(
+    eval=as.logical(Sys.getenv("KNITR_EVAL", "TRUE")),
+    cache=as.logical(Sys.getenv("KNITR_CACHE", "TRUE")), 
+    tidy.opts=list(width.cutoff=60), tidy=TRUE)
+```
+
+```{r setup, echo=FALSE, messages=FALSE, warnings=FALSE}
+suppressPackageStartupMessages({
+    library(systemPipeRdata)
+})
+```
+
+# Introduction
+
+[`systemPipeRdata`](https://www.bioconductor.org/packages/release/data/experiment/html/systemPipeRdata.html)
+provides data analysis workflow templates compatible with the
+[`systemPipeR`](https://www.bioconductor.org/packages/release/bioc/html/systemPipeR.html)
+software package [@H_Backman2016-bt]. The latter is a Workflow Management
+System (WMS) for designing and running end-to-end analysis workflows with
+automated report generation for a wide range of data analysis applications.
+Support for running external software is provided by a command-line interface
+(CLI) that adopts the Common Workflow Language (CWL). How to use `systemPipeR`
+is explained in its main vignette
+[here](https://www.bioconductor.org/packages/devel/bioc/vignettes/systemPipeR/inst/doc/systemPipeR.html).
+The workflow templates provided by `systemPipeRdata` come equipped with sample
+data and the necessary parameter files required to run a selected workflow.
+This setup simplifies the learning process of using `systemPipeR`, facilitates
+testing of workflows, and serves as a foundation for designing new workflows.
+The standardized directory structure (Figure 1) utilized by the workflow
+templates and their sample data is outlined in the [Directory
+Structure](https://www.bioconductor.org/packages/devel/bioc/vignettes/systemPipeR/inst/doc/systemPipeR.html#3_Directory_structure)
+section of `systemPipeR's` main vignette.
+
+<center><img src="results/directory.png"></center>
+
+__Figure 1:__ Directory structure of`systemPipeR's` workflows. For details, see [here](https://www.bioconductor.org/packages/devel/bioc/vignettes/systemPipeR/inst/doc/systemPipeR.html#3_Directory_structure).
+
+
+# Getting started
+
+## Installation
+
+The `systemPipeRdata` package is available at [Bioconductor](http://www.bioconductor.org/packages/release/data/experiment/html/systemPipeRdata.html) and can be installed from within R as follows. 
+
+```{r install, eval=FALSE}
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("systemPipeRdata") 
+```
+
+## Loading package and documentation
+
+```{r load_systemPipeRdata, eval=TRUE, messages=FALSE, warnings=FALSE}
+library("systemPipeRdata") # Loads the package
+```
+
+```{r documentation_systemPipeRdata, eval=FALSE}
+library(help="systemPipeRdata") # Lists package info
+vignette("systemPipeRdata") # Opens vignette
+```
+
+# Overview of workflow templates {#wf-bioc-collection}
+An overview table of workflow templates, included in `systemPipeRdata`, can be
+returned as shown below. By clicking the URLs in the last column of the below
+workflow list, users can view the `Rmd` source file of a workflow, as well as
+the corresponding `HTML` report generated after running a workflow on the provided test
+data. A list of the default data analysis steps included in each workflow is
+given [here](#wf-template-steps). Similar and additional workflow templates are also 
+available from GitHub (see [below](#wf-github-collection) and [here](https://systempipe.org/about/project/#core-packages)), 
+which can be retrieved directly from their repositories.
+To create an empty workflow template without
+any test data included, users want to choose the `new` template, which includes
+only the required directory structure and parameter files.
+
+```{r check_availableWF, eval=FALSE}
+availableWF()
+```
+```{r check_availableWF_table, echo=FALSE, message=FALSE}
+library(magrittr)
+Name <- c("new", "rnaseq", "riboseq", "chipseq", "varseq", "SPblast", "SPcheminfo", "SPscrna") 
+Name_url <- c("new", "systemPipeRNAseq", "systemPipeRIBOseq", "systemPipeChIPseq", "systemPipeVARseq", "SPblast", "SPcheminfo", "SPscrna") 
+Description <- c("Generic Workflow Template", "RNA-Seq Workflow Template", "RIBO-Seq Workflow Template", "ChIP-Seq Workflow Template", "VAR-Seq Workflow Template", "BLAST Workflow Template", "Cheminformatics Drug Similarity Template", "Basic Single-Cell Workflow Template") 
+rmd <- paste0("https://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/", Name_url, ".Rmd")
+rmd <- paste0("<a href=", rmd, ">Rmd</a>")
+html <- paste0("https://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/", Name_url, ".html")
+html <- paste0("<a href=", html, ">HTML</a>")
+URL <- paste(rmd, html, sep=", ")
+df <- data.frame(Name=Name, Description=Description, URL=URL)
+df %>%
+    kableExtra::kable("html", escape = FALSE, col.names = c("Name", "Description", "URL")) %>%
+    kableExtra::kable_material(c("striped", "hover", "condensed")) %>%
+    kableExtra::scroll_box(width = "80%", height = "500px")
+```
+__Table 1:__ Workflow templates
+
+# Use workflow templates
+
+## Load a workflow {#load-wf}
+The chosen example below uses the `genWorkenvir` function from the
+`systemPipeRdata` package to create an RNA-Seq workflow environment (selected
+under `workflow="rnaseq"`) that is fully populated with a small test data set,
+including FASTQ files, reference genome and annotation data. The name of the
+resulting workflow directory can be specified under the `mydirname` argument.
+The default `NULL` uses the name of the chosen workflow. An error is issued if
+a directory of the same name and path exists already. After this, the user’s R
+session needs to be directed into the resulting `rnaseq` directory (here with
+`setwd`). The other workflow templates from the [above](#wf-bioc-collection) 
+table can be loaded the same way.
+
+```{r generate_workenvir, eval=FALSE}
+library(systemPipeRdata)
+genWorkenvir(workflow="rnaseq")
+setwd("rnaseq")
+```
+
+On Linux and OS X systems the same can be achieved from the command-line of a
+terminal with the following commands.
+
+```{bash generate_workenvir_from_shell, eval=FALSE}
+$ Rscript -e "systemPipeRdata::genWorkenvir(workflow='rnaseq', mydirname='rnaseq')"
+$ cd rnaseq
+```
+
+In addition to the templates distributed through `systemPipeRdata`, similar workflow
+templates can also be retrieved directly from GitHub repositories using the
+`genWorkenvir_gh` function. Details on this are provided [below](#wf-github-collection).
+
+## Run and visualize workflow {#run-wf}
+
+For running and working with `systemPipeR` workflows, users want to visit
+[systemPipeR's main
+vignette](https://www.bioconductor.org/packages/devel/bioc/vignettes/systemPipeR/inst/doc/systemPipeR.html).
+The following gives only a very brief preview on how to run workflows, and create scientific 
+and technical reports. 
+
+After a workflow environment (directory) has been created and the corresponding
+R session directed into the resulting directory (here `rnaseq`), the workflow
+can be loaded from the included R Markdown file (`Rmd`, here `systemPipeRNAseq.Rmd`).
+This template provides common data analysis steps that are typical for RNA-Seq
+workflows. Users have the options to add, remove, modify workflow steps by
+applying these changes to the `sal` workflow management container directly, or 
+updating the `Rmd` file first and then updating `sal` accordingly. 
+
+```{r project_rnaseq, eval=FALSE}
+library(systemPipeR)
+sal <- SPRproject() 
+sal <- importWF(sal, file_path = "systemPipeRNAseq.Rmd", verbose = FALSE)
+```
+
+The default analysis steps of the imported RNA-Seq workflow are listed below. Users 
+can modify the existing steps, add new ones or remove steps as needed.
+
+__Default analysis steps in RNA-Seq Workflow__
+
+1. Read preprocessing
+    + Quality filtering (trimming)
+    + FASTQ quality report
+2. Alignments: _`HISAT2`_ (or any other RNA-Seq aligner)
+3. Alignment stats 
+4. Read counting 
+5. Sample-wise correlation analysis
+6. Analysis of differentially expressed genes (DEGs)
+7. GO term enrichment analysis
+8. Gene-wise clustering
+
+
+Once the workflow has been loaded into `sal`, it can be executed from start to
+finish (or partially) with the `runWF` command. However, running the workflow
+will only be possible if all dependent CL software is installed on a user's
+system. Their names and availability on a system can be listed with
+`listCmdTools(sal, check_path=TRUE)`. 
+
+```{r run_rnaseq, eval=FALSE}
+sal <- runWF(sal)
+```
+Workflows can be visualized as topology graphs using the `plotWF` function.
+
+```{r plot_rnaseq, eval=FALSE}
+plotWF(sal)
+```
+
+```{r rnaseq-toplogy, eval=TRUE, warning= FALSE, echo=FALSE, out.width="100%", fig.align = "center", fig.cap= "Toplogy graph of RNA-Seq workflow.", warning=FALSE}
+knitr::include_graphics("results/plotwf_rnaseq.png")
+```
+
+Scientific and technical reports can be generated with the `renderReport` and 
+`renderLogs` functions, respectively. Scientific reports can also be generated 
+with the `render` function of the `rmarkdown` package. The technical reports are
+based on log information that `systemPipeR` collects during workflow runs.
+
+```{r report_rnaseq, eval=FALSE}
+# Scietific report
+sal <- renderReport(sal)
+rmarkdown::render("systemPipeRNAseq.Rmd", clean = TRUE, output_format = "BiocStyle::html_document") 
+
+# Technical (log) report
+sal <- renderLogs(sal)
+```
+
+# Additional workflow templates on GitHub {#wf-github-collection}
+
+In addition to the workflow templates distributed with the `systemPipeRdata`
+package, similar templates are available as standalone repositories
+on GitHub. These workflows include both well-established and experimental
+analysis pipelines that extend the range of supported applications.
+A curated list of available workflow repositories is maintained on the
+systemPipe project website [here](https://systempipe.org/about/project/).
+Each repository contains a complete workflow environment including parameter
+files, example input data (when available), and documentation describing the
+workflow structure and usage.
+
+Workflow environments hosted on GitHub can be initialized directly from within
+R using the `genWorkenvir_gh()` function. For example:
+
+```{r genworkenvirgh, eval=FALSE}
+genWorkenvir_gh(url = "https://github.com/systemPipeR/sprwf-rnaseq.git", mydirname = "sprwf-rnaseq")
+```
+
+This command downloads the workflow repository and creates a local workflow
+environment that can be executed or customized by the user. After
+initialization, the R session should be directed to the resulting project
+directory, and the `param` and `data` directories loaded with the 
+`getParam_gh` and `getData_gh` functions. Detailed instructions and documentation 
+for each workflow are provided within the corresponding GitHub repositories.
+
+# Useful functionalities
+
+## Create workflow templates interactively
+
+It is possible to create a new workflow environment from RStudio. This can be 
+done by selecting `File -> New File -> R Markdown -> From Template -> systemPipeR New WorkFlow`.
+This option creates a template workflow that has the expected directory structure 
+(see [here](https://www.bioconductor.org/packages/devel/bioc/vignettes/systemPipeR/inst/doc/systemPipeR.html#3_Directory_structure)). 
+
+![](results/rstudio.png)
+__Figure 2:__ Selecting workflow template within RStudio.
+
+
+## Return paths to sample data
+
+The paths to the sample data provided by the `systemPipeRdata` package can be returned with the
+the `pathList` function.
+
+```{r return_samplepaths, eval=TRUE}
+pathList()[1:2]
+```
+
+# Analysis steps in selected workflows {#wf-template-steps}
+
+The following gives an overview of the default data analysis steps used by selected workflow
+templates included in the `systemPipeRdata` package (see [Table 1](#wf-bioc-collection)). 
+
+Any of the workflows included below can be loaded by assigning their name to
+the `workflow` argument of the `genWorkenvir` function. The workflow names 
+can be looked up under the 'Name' column of [Table 1](#wf-bioc-collection).
+
+```{r generate_workenvir2, eval=FALSE}
+library(systemPipeRdata)
+genWorkenvir(workflow="...")
+```
+
+## Generic template 
+
+[ [Vignette](https://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/new.html) ] 
+
+This _Generic_  workflow (named `new`) is intended to be used as a template for
+creating new workflows from scratch where users can add steps by copying and
+pasting existing R or CL steps as needed, and populate them with their own
+code. In its current form, this mini workflow will export a test dataset to
+multiple files, compress/decompress the exported files, import them back into
+R, and then perform a simple statistical analysis and plot the results.
+
+1. R step: export tabular data to files 
+2. CL step: compress files
+3. CL step: uncompress files 
+4. R step: import files and plot summary statistics
+
+## RNA-Seq workflow
+
+[ [Vignette](https://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/systemPipeRNAseq.html) ] 
+
+1. Read preprocessing
+    + Quality filtering (trimming)
+    + FASTQ quality report
+2. Alignments: _`HISAT2`_ (or any other RNA-Seq aligner)
+3. Alignment stats 
+4. Read counting 
+5. Sample-wise correlation analysis
+6. Analysis of differentially expressed genes (DEGs)
+7. GO term enrichment analysis
+8. Gene-wise clustering
+
+## ChIP-Seq Workflow
+
+[ [Vignette](https://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/systemPipeChIPseq.html) ] 
+
+1. Read preprocessing
+    + Quality filtering (trimming)
+    + FASTQ quality report
+2. Alignments: _`Bowtie2`_ or _`rsubread`_
+3. Alignment stats 
+4. Peak calling: _`MACS2`_
+5. Peak annotation with genomic context
+6. Differential binding analysis
+7. GO term enrichment analysis
+8. Motif analysis
+
+## VAR-Seq Workflow 
+
+[ [Vignette](https://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/systemPipeVARseq.html) ] 
+
+1. Read preprocessing
+    +Quality filtering (trimming)
+    +FASTQ quality report
+2. Alignments: bwa or other
+3. Variant calling: GATK, BCFtools
+4. Variant filtering: VariantTools and VariantAnnotation
+5. Variant annotation: VariantAnnotation
+6. Combine results from many samples
+7. Summary statistics of samp
+
+## Ribo-Seq Workflow
+
+[ [Vignette](https://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/systemPipeRIBOseq.html) ] 
+
+1. Read preprocessing
+    + Adaptor trimming and quality filtering
+    + FASTQ quality report
+2. Alignments: _`HISAT2`_ (or any other RNA-Seq aligner)
+3. Alignment stats
+4. Compute read distribution across genomic features
+5. Adding custom features to workflow (e.g. uORFs)
+6. Genomic read coverage along transcripts
+7. Read counting 
+8. Sample-wise correlation analysis
+9. Analysis of differentially expressed genes (DEGs)
+10. GO term enrichment analysis
+11. Gene-wise clustering
+12. Differential ribosome binding (translational efficiency)
+
+## scRNA-Seq Workflow
+
+[ [Vignette](https://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/SPscrna.html) ] 
+
+1. Import of single cell read count data
+2. Basic stats on input data
+3. QC of cell count data
+4. Cell filtering
+5. Normalization
+6. Identify high variable genes
+7. Scaling
+9. Embedding with tSNE, UMAP, and PCA
+10. Cell clustering and marker gene classification
+11. Cell type classification
+12. Co-visualizatioin of cell types and clusters
+
+## BLAST Workflow
+
+[ [Vignette](https://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/SPblast.html) ] 
+
+1. Load query sequences
+2. Select and prepare BLASTable databases
+3. Run BLAST against different databases
+
+## Cheminformatics Workflow
+
+[ [Vignette](https://www.bioconductor.org/packages/devel/data/experiment/vignettes/systemPipeRdata/inst/doc/SPcheminfo.html) ] 
+
+1. Import small molecules stored in SDF file
+2. Visualize small molecule structures
+3. Create atom pair and finger print databases for structure similarity searching
+4. Compute all-against-all structural similarities 
+5. Hierarchical clustering and PCA of structural similarities
+6. Plot heat map
+
+# Version information
+
+```{r sessionInfo}
+sessionInfo()
+```
+
+# Funding
+
+This project was supported by funds from the National Institutes of Health (NIH) and the National Science Foundation (NSF).
+
+# References

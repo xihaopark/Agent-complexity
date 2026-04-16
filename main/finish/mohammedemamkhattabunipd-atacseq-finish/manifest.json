@@ -1,0 +1,85 @@
+{
+  "id": "mohammedemamkhattabunipd-atacseq-finish",
+  "name": "mohammedemamkhattabunipd atacseq finish",
+  "engine": "snakemake",
+  "entry_point": "run_workflow.py",
+  "description": "Manual finish workflow for Signac-based ATACseq scripts.",
+  "version": "0.1",
+  "aliases": [
+    "mohammedemamkhattabunipd-atacseq"
+  ],
+  "tags": [
+    "finish",
+    "manual",
+    "candidate",
+    "r-workflow"
+  ],
+  "url": "https://github.com/mohammedemamkhattabunipd/ATACseq",
+  "know_how": "workflow/agent-steps.md",
+  "know_how_files": [
+    "workflow/agent-steps.md"
+  ],
+  "discovery": {
+    "kind": "finish_workflow",
+    "family": "candidate",
+    "aliases": [
+      "mohammedemamkhattabunipd-atacseq"
+    ],
+    "retained_steps": [
+      "primary_atacseq",
+      "downstream_atacseq"
+    ],
+    "supports_partial_run": true,
+    "runner": "python3 run_workflow.py --cores 8",
+    "standard_step_skills": false,
+    "generated_by": "tools/manual_finishify_specials.py",
+    "split_mode": "manual-special",
+    "source_repo": "mohammedemamkhattabunipd__ATACseq"
+  },
+  "input_hints": [],
+  "output_hints": [
+    "results/finish/*.done"
+  ],
+  "steps": [
+    {
+      "id": "primary_atacseq",
+      "name": "Primary ATACseq",
+      "targets": [
+        "primary_atacseq"
+      ],
+      "params": {
+        "snakefile": "steps/primary_atacseq.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/primary_atacseq.done"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "downstream_atacseq",
+      "name": "Downstream ATACseq",
+      "targets": [
+        "downstream_atacseq"
+      ],
+      "params": {
+        "snakefile": "steps/downstream_atacseq.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/downstream_atacseq.done"
+      ],
+      "depends_on": [
+        "primary_atacseq"
+      ]
+    }
+  ]
+}

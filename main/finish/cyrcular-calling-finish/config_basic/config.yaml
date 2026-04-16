@@ -1,0 +1,544 @@
+workflow_id: cyrcular-calling-finish
+source_cores: 8
+steps:
+  get_genome:
+    summary: get_genome
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_genome
+  genome_faidx:
+    summary: genome_faidx
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - genome_faidx
+    depends_on:
+    - get_genome
+  minimap2_index:
+    summary: minimap2_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - minimap2_index
+    depends_on:
+    - genome_faidx
+  download_regulatory_annotation:
+    summary: download_regulatory_annotation
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - download_regulatory_annotation
+    depends_on:
+    - minimap2_index
+  download_repeatmasker_annotation:
+    summary: download_repeatmasker_annotation
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - download_repeatmasker_annotation
+    depends_on:
+    - download_regulatory_annotation
+  download_gene_annotation:
+    summary: download_gene_annotation
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - download_gene_annotation
+    depends_on:
+    - download_repeatmasker_annotation
+  minimap2_bam:
+    summary: minimap2_bam
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - minimap2_bam
+    depends_on:
+    - download_gene_annotation
+  merge_fastqs:
+    summary: merge_fastqs
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - merge_fastqs
+    depends_on:
+    - minimap2_bam
+  samtools_index:
+    summary: samtools_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - samtools_index
+    depends_on:
+    - merge_fastqs
+  samtools_faidx:
+    summary: samtools_faidx
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - samtools_faidx
+    depends_on:
+    - samtools_index
+  bcf_index:
+    summary: bcf_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - bcf_index
+    depends_on:
+    - samtools_faidx
+  bcftools_concat:
+    summary: bcftools_concat
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - bcftools_concat
+    depends_on:
+    - bcf_index
+  bcftools_sort:
+    summary: bcftools_sort
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - bcftools_sort
+    depends_on:
+    - bcftools_concat
+  varlociraptor_call:
+    summary: varlociraptor_call
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - varlociraptor_call
+    depends_on:
+    - bcftools_sort
+  varlociraptor_alignment_properties:
+    summary: varlociraptor_alignment_properties
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - varlociraptor_alignment_properties
+    depends_on:
+    - varlociraptor_call
+  varlociraptor_preprocess:
+    summary: varlociraptor_preprocess
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - varlociraptor_preprocess
+    depends_on:
+    - varlociraptor_alignment_properties
+  scatter_candidates:
+    summary: scatter_candidates
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - scatter_candidates
+    depends_on:
+    - varlociraptor_preprocess
+  sort_bnd_bcfs:
+    summary: sort_bnd_bcfs
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - sort_bnd_bcfs
+    depends_on:
+    - scatter_candidates
+  circle_bnds:
+    summary: circle_bnds
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - circle_bnds
+    depends_on:
+    - sort_bnd_bcfs
+  cyrcular_generate_tables:
+    summary: cyrcular_generate_tables
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - cyrcular_generate_tables
+    depends_on:
+    - circle_bnds
+  cyrcular_annotate_graph:
+    summary: cyrcular_annotate_graph
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - cyrcular_annotate_graph
+    depends_on:
+    - cyrcular_generate_tables
+  reheader_filtered_bcf:
+    summary: reheader_filtered_bcf
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - reheader_filtered_bcf
+    depends_on:
+    - cyrcular_annotate_graph
+  sort_bcf_header:
+    summary: sort_bcf_header
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - sort_bcf_header
+    depends_on:
+    - reheader_filtered_bcf
+  get_bcf_header:
+    summary: get_bcf_header
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_bcf_header
+    depends_on:
+    - sort_bcf_header
+  extract_vcf_header_lines_for_bcftools_annotate:
+    summary: extract_vcf_header_lines_for_bcftools_annotate
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - extract_vcf_header_lines_for_bcftools_annotate
+    depends_on:
+    - get_bcf_header
+  filter_overview_table:
+    summary: filter_overview_table
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - filter_overview_table
+    depends_on:
+    - extract_vcf_header_lines_for_bcftools_annotate
+  filter_varlociraptor:
+    summary: filter_varlociraptor
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - filter_varlociraptor
+    depends_on:
+    - filter_overview_table
+  circle_coverage_plot:
+    summary: circle_coverage_plot
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - circle_coverage_plot
+    depends_on:
+    - filter_varlociraptor
+  circle_graph_plots:
+    summary: circle_graph_plots
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - circle_graph_plots
+    depends_on:
+    - circle_coverage_plot
+  render_datavzrd_config:
+    summary: render_datavzrd_config
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - render_datavzrd_config
+    depends_on:
+    - circle_graph_plots
+  copy_qc_plots_for_datavzrd:
+    summary: copy_qc_plots_for_datavzrd
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - copy_qc_plots_for_datavzrd
+    depends_on:
+    - render_datavzrd_config
+  copy_graph_plots_for_datavzrd:
+    summary: copy_graph_plots_for_datavzrd
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - copy_graph_plots_for_datavzrd
+    depends_on:
+    - copy_qc_plots_for_datavzrd
+  datavzrd_circle_calls:
+    summary: datavzrd_circle_calls
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      root_target: all
+      until:
+      - datavzrd_circle_calls
+    depends_on:
+    - copy_graph_plots_for_datavzrd
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__cyrcular-calling
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__cyrcular-calling/.test/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - datavzrd_circle_calls

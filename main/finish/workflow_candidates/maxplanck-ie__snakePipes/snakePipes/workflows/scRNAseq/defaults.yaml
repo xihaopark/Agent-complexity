@@ -1,0 +1,57 @@
+################################################################################
+# This file is the default configuration of the scRNAseq workflow!
+#
+# In order to adjust some parameters, please either use the wrapper script
+# (eg. /path/to/snakemake_workflows/workflows/scRNAseq/scRNAseq-mapcount)
+# or save a copy of this file, modify necessary parameters and then provide
+# this file to the wrapper or snakmake via '--configFile' option
+# (see below how to call the snakefile directly)
+#
+# Own parameters will be loaded during snakefile executiuon as well and hence
+# can be used in new/extended snakemake rules!
+################################################################################
+## General/Snakemake parameters, only used/set by wrapper or in Snakemake cmdl, but not in Snakefile
+pipeline: scrnaseq
+outdir:
+configFile:
+clusterConfigFile:
+local: False
+maxJobs: 5
+## directory with fastq files
+indir:
+## preconfigured target genomes (mm9,mm10,dm3,...) , see /path/to/snakemake_workflows/shared/organisms/
+## Value can be also path to your own genome config file!
+genome:
+## FASTQ file extension (default: ".fastq.gz")
+ext: '.fastq.gz'
+## paired-end read name extension (default: ["_R1", "_R2"])
+reads: ["_R1","_R2"]
+##Analysis mode
+mode: STARsolo
+## Number of reads to downsample from each FASTQ file
+downsample:
+## --twopassMode Basic is not compatible with --outStd in all STAR versions
+alignerOptions: ""
+## further options
+filterGTF: "-v -P 'decay|pseudogene' "
+##mode STARsolo options
+myKit: CellSeq384
+BCwhiteList:
+STARsoloCoords: ["1","7","8","7"]
+skipVelocyto: False
+##mode Alevin options
+alevinLibraryType: "ISR"
+prepProtocol: "chromiumV3"
+expectCells: 
+#generic options
+libraryType: 1
+bwBinSize: 10
+verbose: False
+plotFormat: pdf
+dnaContam: False
+#umi_tools options:
+UMIBarcode: False
+bcPattern: NNNNCCCCCCCCC #default: 4 base umi barcode, 9 base cell barcode (eg. RELACS barcode)
+UMIDedup: False
+UMIDedupSep: "_"
+UMIDedupOpts: --paired

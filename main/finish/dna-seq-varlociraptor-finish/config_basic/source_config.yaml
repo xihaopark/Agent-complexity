@@ -1,0 +1,111 @@
+samples: config_basic/samples.tsv
+
+units: config_basic/units.tsv
+
+ref:
+  n_chromosomes: 17
+  species: saccharomyces_cerevisiae
+  release: 100
+  build: R64-1-1
+  pangenome:
+    activate: false
+    vcf: ""
+
+primers:
+  trimming:
+    primers_fa1: ""
+    primers_fa2: ""
+    library_error: 0
+    library_length: 0
+
+mutational_burden:
+  activate: true
+  events:
+    - present
+
+mutational_signatures:
+  activate: false
+  events:
+    - some_id
+
+calling:
+  delly:
+    activate: true
+  freebayes:
+    activate: true
+  scenario: config_basic/scenario.yaml
+  filter:
+    candidates: "'LOW' not in ANN['IMPACT']"
+    moderate: "'MODERATE' in ANN['IMPACT']"
+  fdr-control:
+    threshold: 0.05
+    local: true
+    events: 
+      present:
+        report: false
+        varlociraptor: 
+          - x
+          - y
+          - both
+        filter: moderate
+        desc: Variants with moderate impact
+
+annotations:
+  vcfs:
+    activate: true
+    known: resources/variation.vcf.gz
+  dgidb:
+    activate: false
+    datasources:
+      - DrugBank
+  vep:
+    candidate_calls:
+      params: --af_gnomade
+      plugins: []
+    final_calls:
+      params: --everything
+      plugins:
+        - LoFtool
+
+
+params:
+  fastp: ""
+  picard:
+    MarkDuplicates: "--VALIDATION_STRINGENCY LENIENT"
+  gatk:
+    BaseRecalibrator: ""
+    applyBQSR: ""
+  varlociraptor:
+    call: ""
+    preprocess: "--max-depth 200"
+  freebayes:
+    min_alternate_fraction: 0.05
+
+gene_coverage:
+  min_avg_coverage: 0
+
+maf:
+  activate: true
+  primary_alias: "y"
+  control_alias: "x"
+
+report:
+  activate: true
+  max_read_depth: 250
+  stratify:
+    activate: false
+    by-column: condition
+
+tables:
+  activate: true
+  output:
+    expression: "INDEX, CHROM, POS, REF, ALT[0], ANN['Consequence'], ANN['IMPACT'], ANN['SYMBOL'], ANN['Feature']"
+    genotype: true
+    coverage: true
+    event_prob: true
+  generate_excel: true
+
+custom_alignment_properties:
+  activate: false
+  column: "panel"
+  tsv: ""

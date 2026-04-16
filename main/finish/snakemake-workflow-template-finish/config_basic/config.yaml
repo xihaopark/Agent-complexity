@@ -1,0 +1,33 @@
+workflow_id: snakemake-workflow-template
+source_cores: 8
+steps:
+  validate_config:
+    summary: validate_config
+    requires:
+      - config_basic/source_config.yaml
+      - config_basic/samples.tsv
+    command: ""
+  prepare_reference:
+    summary: prepare_reference
+    requires:
+      - config_basic/source_config.yaml
+    command: >
+      snakemake -s workflow/Snakefile --configfile config_basic/source_config.yaml --use-conda --cores {source_cores} results/validate_genome/genome.fna
+  simulate_reads:
+    summary: simulate_reads
+    requires:
+      - config_basic/source_config.yaml
+    command: >
+      snakemake -s workflow/Snakefile --configfile config_basic/source_config.yaml --use-conda --cores {source_cores} all --until simulate_reads
+  fastqc:
+    summary: fastqc
+    requires:
+      - config_basic/source_config.yaml
+    command: >
+      snakemake -s workflow/Snakefile --configfile config_basic/source_config.yaml --use-conda --cores {source_cores} all --until fastqc
+  multiqc_report:
+    summary: multiqc_report
+    requires:
+      - config_basic/source_config.yaml
+    command: >
+      snakemake -s workflow/Snakefile --configfile config_basic/source_config.yaml --use-conda --cores {source_cores} all

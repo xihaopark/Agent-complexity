@@ -1,0 +1,518 @@
+---
+title: "tximport_deseq2"
+output: html_document
+date: "2025-07-17"
+params:
+  quant_dir: "out/salmon"           # directory containing per-sample Salmon dirs with quant.sf
+  gtf_file: "data/references/gtf/Mus_musculus.GRCm39.109.gtf"  # path to GTF (default now under data/references)
+  project_name: "test"              # project prefix for all output filenames
+  install_pkgs: false                # set TRUE to allow install during render (use conda env instead)
+  tximport_rds: !r NULL              # optional precomputed tximport object (.rds)
+  sample_table: "CU25_sample_info.csv"  # sample table CSV (rows = samples)
+  group_col: "trx"                  # column in sample_table used for design
+  out_dir: "out/deseq2"             # output directory for figures/tables
+  padj_thresh: 0.05                  # adjusted p-value threshold for summaries/volcano
+  lfc_thresh: 0.5                    # absolute log2FC threshold for volcano highlighting
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Preparing Data for DESeq2 with tximport and labeling Gene IDs
+```{r}
+# -----------------------------
+# 1. Load libraries (installs optional; prefer conda env)
+# -----------------------------
+if (isTRUE(params$install_pkgs)) {
+  if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager", repos = "https://cloud.r-project.org")
+  BiocManager::install(c("tximport","GenomicFeatures","txdbmaker"), ask = FALSE, update = FALSE)
+}
+
+suppressPackageStartupMessages({
+  library(tximport)
+  library(readr)
+  library(GenomicFeatures)
+  library(txdbmaker)
+  library(dplyr)
+  library(tibble)
+})
+
+# Parameters (backward-compatible defaults in YAML)
+quant_dir    <- params$quant_dir
+gtf_file     <- params$gtf_file
+out_dir      <- params$out_dir
+padj_thresh  <- params$padj_thresh
+lfc_thresh   <- params$lfc_thresh
+tximport_rds <- params$tximport_rds
+project_name <- params$project_name
+file_prefix  <- paste0(project_name, "_")
+
+dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
+
+# -----------------------------
+# 2. Define file paths 
+# -----------------------------
+# Update this to the actual path of your GTF and quant directories
+# (now parameterized via YAML params above)
+# gtf_file <- "reference/Mus_musculus.GRCm39.109.gtf"  # kept default via params
+quant_dirs <- list.dirs(quant_dir, recursive = FALSE, full.names = TRUE)
+
+# -----------------------------
+# 3. Create transcript → gene map from GTF
+# -----------------------------
+txdb <- makeTxDbFromGFF(gtf_file, format = "gtf")
+k <- keys(txdb, keytype = "TXNAME")
+tx2gene <- AnnotationDbi :: select(txdb, 
+                                   keys = k, 
+                                   columns = c("GENEID"), 
+                                   keytype = "TXNAME")
+
+# Optional: convert to clean tibble
+tx2gene <- as_tibble(tx2gene)
+
+# -----------------------------
+# 4. Read Salmon quant.sf files (or load provided tximport RDS)
+# -----------------------------
+if (!is.null(tximport_rds)) {
+  txi <- readRDS(tximport_rds)
+} else {
+  # Each folder in quant_dirs should contain a quant.sf file
+  files <- file.path(quant_dirs, "quant.sf")
+  names(files) <- basename(quant_dirs)
+
+  # Import transcript-level Salmon quantification, summarize to gene-level
+  txi <- tximport(files, 
+                  type = "salmon", 
+                  tx2gene = tx2gene,
+                  ignoreTxVersion = TRUE)
+}
+
+# -----------------------------
+# 5. Add Gene Symbols (Optional)
+# -----------------------------
+if (isTRUE(params$install_pkgs) && !requireNamespace("biomaRt", quietly = TRUE)) {
+ install.packages("biomaRt", repos = "https://cloud.r-project.org")
+}
+suppressPackageStartupMessages(library(biomaRt))
+
+# Strip version suffixes from Ensembl IDs (ENSG00000123456.5 -> ENSG00000123456)
+gene_ids_raw <- rownames(txi$counts)
+gene_ids <- sub("\\..*$", "", gene_ids_raw)
+
+# Auto-detect species from GTF filename
+dataset_name <- if (grepl("Homo_sapiens|GRCh", gtf_file, ignore.case = TRUE)) {
+  "hsapiens_gene_ensembl"
+} else if (grepl("Mus_musculus|GRCm", gtf_file, ignore.case = TRUE)) {
+  "mmusculus_gene_ensembl"
+} else {
+  warning("[Rmd] Cannot auto-detect species from GTF filename. Defaulting to human.")
+  "hsapiens_gene_ensembl"
+}
+
+message("[Rmd] Using biomaRt dataset: ", dataset_name)
+
+annot <- tryCatch({
+  message("Fetching gene annotations from Ensembl biomaRt...")
+  ensembl <- useEnsembl(biomart = "genes", dataset = dataset_name)
+  result <- getBM(
+    attributes = c("ensembl_gene_id", "external_gene_name"),
+    filters = "ensembl_gene_id",
+    values = unique(gene_ids),
+    mart = ensembl
+  )
+  # Remove duplicate Ensembl IDs (keep first occurrence)
+  result <- dplyr::distinct(result, ensembl_gene_id, .keep_all = TRUE)
+  message("Retrieved annotations for ", nrow(result), " genes")
+  result
+}, error = function(e) {
+  warning("biomaRt annotation failed: ", conditionMessage(e),
+          "\nProceeding without gene symbol annotation.")
+  data.frame(
+    ensembl_gene_id = unique(gene_ids),
+    external_gene_name = NA_character_,
+    stringsAsFactors = FALSE
+  )
+})
+
+# Force sane types
+annot <- as.data.frame(annot)
+annot$ensembl_gene_id  <- as.character(annot$ensembl_gene_id)
+annot$external_gene_name <- as.character(annot$external_gene_name)
+
+# Merge gene symbols (use stripped gene IDs for matching)
+counts_with_symbols <- as.data.frame(txi$counts)
+counts_with_symbols$ensembl_gene_id <- sub("\\..*$", "", rownames(counts_with_symbols))
+counts_with_symbols$ensembl_gene_id <- as.character(counts_with_symbols$ensembl_gene_id)
+
+counts_annotated <- dplyr::left_join(
+ counts_with_symbols,
+ annot,
+ by = "ensembl_gene_id"
+)
+
+counts_annotated <- counts_annotated %>%
+ dplyr::select(external_gene_name, dplyr::everything(), -ensembl_gene_id) %>%
+ dplyr::rename(gene_symbol = external_gene_name)
+
+# -----------------------------
+# 6. Save outputs
+# -----------------------------
+
+# Rename columns to explicit sample IDs from the sample table
+sample_table_path <- params$sample_table
+st <- read.csv(sample_table_path, row.names = 1, check.names = FALSE)
+sample_ids <- rownames(st)
+
+clean_names_from_sample_table <- function(current_names, sample_ids) {
+  escape_regex <- function(x) gsub("([][{}()+*^$|\\?.])", "\\\\\\1", x)
+  vapply(current_names, function(nm) {
+    hits <- sample_ids[sapply(sample_ids, function(s) {
+      pat <- paste0("(^|[^A-Za-z0-9])", escape_regex(s), "($|[^A-Za-z0-9])")
+      grepl(pat, nm, ignore.case = TRUE, perl = TRUE)
+    })]
+    if (length(hits) == 1) hits else nm
+  }, character(1))
+}
+
+# Apply to txi counts and annotated counts
+colnames(txi$counts) <- clean_names_from_sample_table(colnames(txi$counts), sample_ids)
+
+library(dplyr)
+
+counts_annotated <- counts_annotated %>%
+  dplyr::select(gene_symbol, dplyr::everything())
+
+count_cols <- setdiff(colnames(counts_annotated), "gene_symbol")
+new_count_cols <- clean_names_from_sample_table(count_cols, sample_ids)
+
+# Diagnostics: report columns that did not map uniquely
+diagnose_mapping <- function(current_names, sample_ids) {
+  escape_regex <- function(x) gsub("([][{}()+*^$|\\?.])", "\\\\\\1", x)
+  res <- lapply(current_names, function(nm) {
+    hits <- sample_ids[sapply(sample_ids, function(s) {
+      pat <- paste0("(^|[^A-Za-z0-9])", escape_regex(s), "($|[^A-Za-z0-9])")
+      grepl(pat, nm, ignore.case = TRUE, perl = TRUE)
+    })]
+    list(name = nm, hits = hits)
+  })
+  none <- vapply(res, function(x) length(x$hits) == 0, logical(1))
+  multi <- vapply(res, function(x) length(x$hits) > 1, logical(1))
+  if (any(none)) {
+    message("[Rmd] Sample name mapping: no unique match for: ", paste(vapply(res[none], `[[`, character(1), "name"), collapse = ", "))
+  }
+  if (any(multi)) {
+    details <- vapply(res[multi], function(x) paste0(x$name, " -> {", paste(x$hits, collapse = "/"), "}"), character(1))
+    message("[Rmd] Sample name mapping: multiple matches: ", paste(details, collapse = "; "))
+  }
+}
+
+diagnose_mapping(count_cols, sample_ids)
+colnames(counts_annotated)[match(count_cols, colnames(counts_annotated))] <- new_count_cols
+
+# Reorder to match sample table first, then any remaining
+ordered_cols <- c("gene_symbol",
+                  sample_ids[sample_ids %in% new_count_cols],
+                  setdiff(new_count_cols, sample_ids))
+counts_annotated <- counts_annotated[, ordered_cols, drop = FALSE]
+
+# Export raw counts for reference (NOT used for DESeq2 analysis)
+# These CSV files are provided for user reference only
+# DESeq2 analysis uses the tximport object directly to preserve gene-length offsets
+write.csv(counts_annotated, file = file.path(out_dir, paste0(file_prefix, "gene_counts_with_symbols.csv")), row.names = FALSE)
+write.csv(txi$counts, file = file.path(out_dir, paste0(file_prefix, "raw_gene_counts.csv")))
+
+cat("✔ Gene-level counts saved as:\n- ", file.path(out_dir, paste0(file_prefix, "gene_counts_with_symbols.csv")), "\n- ", file.path(out_dir, paste0(file_prefix, "raw_gene_counts.csv")), "\n", sep = "")
+```
+
+
+# Loading packages
+
+```{r}
+
+if (isTRUE(params$install_pkgs)) {
+  if (!requireNamespace("BiocManager", quietly = TRUE))
+      install.packages("BiocManager", repos = "https://cloud.r-project.org")
+  BiocManager::install("DESeq2", ask = FALSE, update = FALSE)
+  if (!requireNamespace("tidyverse", quietly = TRUE))
+    install.packages("tidyverse", repos = "https://cloud.r-project.org")
+}
+
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(DESeq2)
+  library(dplyr)
+})
+
+```
+
+# Prepare sample metadata for DESeq2
+
+```{r}
+# Load sample data
+colData <- read.csv(params$sample_table, row.names = 1)
+
+# Verify that sample names in txi match sample names in colData
+# The txi column names should already match the sample_ids from the renaming above
+txi_samples <- colnames(txi$counts)
+coldata_samples <- rownames(colData)
+
+# Check for mismatches
+missing_from_coldata <- setdiff(txi_samples, coldata_samples)
+missing_from_txi <- setdiff(coldata_samples, txi_samples)
+
+if (length(missing_from_coldata) > 0 || length(missing_from_txi) > 0) {
+  stop("Sample name mismatch between Salmon quantifications and sample_table!\n",
+       if (length(missing_from_coldata) > 0)
+         paste0("  In Salmon but not in sample_table: ",
+                paste(missing_from_coldata, collapse = ", "), "\n"),
+       if (length(missing_from_txi) > 0)
+         paste0("  In sample_table but not in Salmon: ",
+                paste(missing_from_txi, collapse = ", "), "\n"),
+       "Ensure sample_table rownames exactly match Salmon output folder names.")
+}
+
+# Reorder colData to match txi (important for DESeq2)
+colData <- colData[txi_samples, , drop = FALSE]
+
+# Verify alignment
+message("Samples aligned: ", paste(txi_samples, collapse = ", "))
+all(colnames(txi$counts) == rownames(colData))
+```
+
+
+# Contructing a DESeqDataSet object
+
+```{r}
+message("Creating DESeq2 dataset directly from tximport object (preserves length offsets)")
+
+design_formula <- as.formula(paste("~", params$group_col))
+dds <- DESeqDataSetFromTximport(txi,
+                                 colData = colData,
+                                 design = design_formula)
+dds
+
+# pre-filtering: removing rows with low gene counts
+# keeping rows that have at least 10 reads total
+dds <- dds[ rowSums(counts(dds)) >= 10, ]
+
+# set the factor level
+dds[[params$group_col]] <- relevel(dds[[params$group_col]], ref = "control")
+```
+
+#NOTE: if you have technical replicates collapse them
+```
+
+# Run DESeq
+
+```{r}
+dds <- DESeq(dds)
+
+res <- results(dds)
+res
+
+# baseMean = average of normalized counts
+# stat = Waldtest stats
+
+# saving DEGs to data table for further analysis and saving data_table to csv
+res_df <- as.data.frame(res)
+
+# Add gene symbols to results (merge annotation created earlier)
+# Strip version suffixes from Ensembl IDs for matching
+res_df$ensembl_gene_id <- sub("\\..*$", "", rownames(res_df))
+res_df <- dplyr::left_join(res_df, annot, by = "ensembl_gene_id")
+res_df <- res_df %>%
+  dplyr::select(ensembl_gene_id, external_gene_name, dplyr::everything())
+
+write.csv(res_df,
+          file = file.path(out_dir, paste0(file_prefix, "DESeq2_full_results.csv")),
+          row.names = FALSE)
+```
+
+# Explore results
+
+```{r}
+summary(res)
+# upregulated/downregulated genes, outliers. Default padj is .1
+
+# increasing cutoff to < params$padj_thresh
+res0.05 <- results(dds, alpha = padj_thresh)
+summary(res0.05)
+
+# contrasts
+resultsNames(dds)
+
+# MA plot
+plotMA(dds)
+```
+
+# Volcano plot
+
+```{r}
+# Make sure you have ggrepel installed
+if (isTRUE(params$install_pkgs) && !requireNamespace("ggrepel", quietly=TRUE)) {
+  install.packages("ggrepel", repos = "https://cloud.r-project.org")
+}
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(ggrepel)
+})
+
+# Clamp padj for -log10 transformation (avoid Inf from padj = 0)
+res_df$padj_plot <- ifelse(
+  is.na(res_df$padj),
+  NA_real_,
+  pmax(res_df$padj, .Machine$double.xmin)
+)
+
+# Filter out NA values for the plot
+volcano_data <- res_df %>% filter(!is.na(padj_plot))
+
+# Add column to specify up vs downregulated
+volcano_data$diffexpressed <- "NO"
+volcano_data$diffexpressed[volcano_data$log2FoldChange >  lfc_thresh &
+                            volcano_data$padj < padj_thresh] <- "Up"
+volcano_data$diffexpressed[volcano_data$log2FoldChange < -lfc_thresh &
+                            volcano_data$padj < padj_thresh] <- "Down"
+
+# Gene labels (top 30) - use gene symbols if available, otherwise Ensembl ID
+volcano_data$delabel <- NA
+top_genes <- head(volcano_data[order(volcano_data$padj), ], 30)
+for (i in seq_len(nrow(top_genes))) {
+  if (!is.na(top_genes$external_gene_name[i]) &&
+      top_genes$external_gene_name[i] != "") {
+    volcano_data$delabel[which(rownames(volcano_data) ==
+                                rownames(top_genes)[i])] <-
+      top_genes$external_gene_name[i]
+  } else {
+    volcano_data$delabel[which(rownames(volcano_data) ==
+                                rownames(top_genes)[i])] <-
+      top_genes$ensembl_gene_id[i]
+  }
+}
+
+volcano_plot <- ggplot(data = volcano_data,
+                       aes(x = log2FoldChange, y = -log10(padj_plot),
+                           col = diffexpressed, label = delabel)) +
+  geom_vline(xintercept = c(-lfc_thresh, lfc_thresh), col = "gray", linetype = "dashed")+
+  geom_hline(yintercept = -log10(padj_thresh), col = "gray", linetype = "dashed")+
+  geom_point(size =.5)+
+  scale_color_manual(values = c("#00AFBB", "grey", "red"),
+                     labels = c("Downregulated", "Not Significant", "Upregulated")) +
+  labs(color = 'Up vs Down', x = expression("log"[2]*"FC"), y = expression("-log"[10]*"padj")) +
+  ggtitle("Control vs ID8 (p53-/-)") +
+  geom_text_repel(max.overlaps = Inf)
+
+ggsave(file.path(out_dir, paste0(file_prefix, "volcano_plot.pdf")), 
+       plot = volcano_plot,
+       device = pdf,
+       width = 10,
+       height = 8)
+```
+
+# VST normalized count files and PCA plot
+
+```{r}
+vsd <- vst(dds, blind = FALSE)
+plotPCA(vsd, intgroup = params$group_col)
+
+# Add gene symbols to VST normalized counts
+vst_counts <- as.data.frame(assay(vsd))
+vst_counts$ensembl_gene_id <- rownames(vst_counts)
+vst_counts <- dplyr::left_join(vst_counts, annot, by = "ensembl_gene_id")
+vst_counts <- vst_counts %>%
+  dplyr::select(ensembl_gene_id, external_gene_name, dplyr::everything())
+
+write.csv(vst_counts,
+          file = file.path(out_dir, paste0(file_prefix, "vst_norm_counts.csv")),
+          row.names = FALSE)
+
+pca_plot <- plotPCA(vsd, intgroup = params$group_col) + stat_ellipse(linetype = 3)
+
+ggsave(file.path(out_dir, paste0(file_prefix, "PCA_plot.pdf")),
+       plot = pca_plot,
+       device = pdf,
+       width = 7,
+       height = 5)
+```
+
+# Enricher
+
+```{r}
+
+# libraries
+suppressPackageStartupMessages({
+  library(enrichR)
+  library(writexl)
+  library(openxlsx)
+})
+
+# Defining Databases
+db <- c("KEGG_2019_Mouse", "Reactome_2022", "GO_Biological_Process_2025", "GO_Cellular_Component_2025", "GO_Molecular_Function_2025", "Tabula_Muris", "Elsevier_Pathway_Collection", "Bioplanet_2019")
+
+# Subsetting DEGs to only upregulated using only top 200 genes
+goi <- res_df %>%
+  dplyr::filter(padj < padj_thresh, log2FoldChange > 1.5) %>%
+  dplyr::slice_min(order_by = padj, n = 200)
+
+# Extracting gene list as character vector (use symbols if available, otherwise Ensembl IDs)
+genes <- ifelse(!is.na(goi$external_gene_name) & goi$external_gene_name != "",
+                goi$external_gene_name,
+                goi$ensembl_gene_id)
+genes <- as.character(genes)
+
+# Enrichment
+edb<- enrichr(genes, db)
+
+
+# Creating Excel workbook
+wb <-openxlsx::createWorkbook()
+
+for (db_name in db){
+  addWorksheet(wb, sheetName = db_name)
+  writeData(wb,
+            sheet = db_name,
+            x = edb[[db_name]],
+            rowNames = FALSE)
+}
+
+# saving workbook
+saveWorkbook(wb,
+             file = file.path(out_dir, paste0(file_prefix, "Upregulated_cachexia_Enrichment_results.xlsx")),
+             overwrite = TRUE)
+
+
+# Subsetting DEGs to only downregulated using only top 200 genes
+goi <- res_df %>%
+  dplyr::filter(padj < padj_thresh, log2FoldChange < -1.5) %>%
+  dplyr::slice_min(order_by = padj, n = 200)
+
+# Extracting gene list as character vector (use symbols if available, otherwise Ensembl IDs)
+genes <- ifelse(!is.na(goi$external_gene_name) & goi$external_gene_name != "",
+                goi$external_gene_name,
+                goi$ensembl_gene_id)
+genes <- as.character(genes)
+
+# Enrichment
+edb<- enrichr(genes, db)
+
+
+# Creating Excel workbook
+wb <-openxlsx::createWorkbook()
+
+for (db_name in db){
+  addWorksheet(wb, sheetName = db_name)
+  writeData(wb,
+            sheet = db_name,
+            x = edb[[db_name]],
+            rowNames = FALSE)
+}
+
+# saving workbook
+saveWorkbook(wb,
+             file = file.path(out_dir, paste0(file_prefix, "Downregulated_cachexia_Enrichment_results.xlsx")),
+             overwrite = TRUE)
+
+```

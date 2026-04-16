@@ -1,0 +1,29 @@
+{
+  "source_repo_dir": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map",
+  "source_snakefile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/workflow/Snakefile",
+  "source_configfile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__dna-seq-short-read-circle-map/.test/config/config.yaml",
+  "step_count": 21,
+  "steps": [
+    "bam_index",
+    "get_genome",
+    "bwa_index",
+    "genome_faidx",
+    "genome_dict",
+    "get_known_variants",
+    "remove_iupac_codes",
+    "tabix_known_variants",
+    "cutadapt_pe",
+    "bwa_mem",
+    "merge_unit_bams_per_sample",
+    "recalibrate_base_qualities",
+    "apply_bqsr",
+    "samtools_queryname_sort",
+    "circle_map_extract_reads",
+    "samtools_sort_candidates",
+    "circle_map_realign",
+    "clean_circle_map_realign_output",
+    "render_datavzrd_config",
+    "datavzrd",
+    "all"
+  ]
+}

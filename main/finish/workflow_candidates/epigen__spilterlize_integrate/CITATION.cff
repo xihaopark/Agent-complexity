@@ -1,0 +1,41 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  Workflow to Split, Filter, Normalize and Integrate Sequencing Data
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Stephan
+    family-names: Reichl
+    orcid: 'https://orcid.org/0000-0001-8555-7198'
+    affiliation: CeMM Research Center for Molecular Medicine
+  - given-names: Christoph
+    family-names: Bock
+    orcid: 'https://orcid.org/0000-0001-6091-3088'
+    affiliation: CeMM Research Center for Molecular Medicine
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.8144219.
+    description: >-
+      This DOI represents all versions, and will always
+      resolve to the latest one.
+repository-code: 'https://github.com/epigen/spilterlize_integrate'
+url: 'https://epigen.github.io/spilterlize_integrate/'
+abstract: >-
+  A Snakemake workflow to split, filter, normalize, integrate
+  and select highly variable features of count matrices 
+  resulting from experiments with sequencing readout 
+  (e.g., RNA-seq, ATAC-seq, ChIP-seq,...) including 
+  diagnostic visualizations.
+keywords:
+  - Bioinformatics
+  - Workflow
+  - Processing
+  - Normalization
+  - Integration
+  - Snakemake
+license: MIT

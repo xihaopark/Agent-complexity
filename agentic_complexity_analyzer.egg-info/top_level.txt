@@ -1,5 +1,0 @@
-analyzers
-apps
-common
-services
-workers

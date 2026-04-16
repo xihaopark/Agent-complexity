@@ -1,0 +1,18 @@
+{
+  "source_repo_dir": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro",
+  "source_snakefile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/workflow/Snakefile",
+  "source_configfile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/config/config.yaml",
+  "step_count": 10,
+  "steps": [
+    "samtools_index",
+    "download_genome",
+    "msisensor_pro_scan",
+    "msisensor_pro_pro_preprocessing_baseline",
+    "create_panel_of_normals_samples_list",
+    "msisensor_pro_baseline",
+    "msisensor_pro_pro_run",
+    "msisensor_pro_msi",
+    "merge_msi_results",
+    "all"
+  ]
+}

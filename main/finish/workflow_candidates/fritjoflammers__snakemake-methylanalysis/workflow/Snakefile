@@ -1,0 +1,89 @@
+import yaml
+import pandas as pd
+from pathlib import Path
+from pprint import pp
+from snakemake.utils import validate
+
+
+configfile: "config/config.yaml"
+
+
+validate(config, "../config/config.schema.yaml")
+
+# SET GLOBAL VARIABLES
+TOOL_LABEL = config["TOOL_LABEL"]
+CHROMOSOMES = config["CHROMOSOMES"]
+OUTPUT_BASE_DIR = Path(config["OUTPUT_DIR"])
+RUN_NAME = config["RUN_NAME"]
+RESULTS_DIR = OUTPUT_BASE_DIR / RUN_NAME
+
+
+# DEFINE SAMPLES from samplesheet
+samples = pd.read_csv(config["SAMPLESHEET"]).set_index("samplename", drop=False)
+samples = samples[samples.tool == TOOL_LABEL]
+
+config["SAMPLES"] = samples.samplename.drop_duplicates().to_list()
+
+
+# SET LOCALRULES
+localrules:
+    all,
+    concat_fastq,
+    info_consensus_length,
+    bismark_pe_log_checker,
+    store_config,
+    gamma_subset_samples,
+    prepare_covariate_file,
+    prepare_variables_file,
+
+
+# SET WILDCARD CONSTRAINTS
+wildcard_constraints:
+    sample="|".join(config["SAMPLES"]),
+
+
+# ONSTART
+onstart:
+    print("##### Creating profile pipeline #####\n")
+    print("\t Creating jobs output subfolders...\noutput")
+    shell("mkdir -p jobs/")
+    print("##### Storing config #####\n")
+    print(
+        f"run cat {Path(config['OUTPUT_DIR'], 'run-config.yaml')} to see used config."
+    )
+
+
+# INCLUDES
+include: "rules/common.smk"
+include: "rules/destrand.smk"
+include: "rules/methylkit.smk"
+include: "rules/macau.smk"
+include: "rules/meta.smk"
+include: "rules/macau-parental_species.smk"
+include: "rules/macau-parental_species2.smk"
+
+
+# GENERATE FILE PATHS
+output_files = generate_file_paths(
+    config,
+    RESULTS_DIR,
+    sample=config["SAMPLES"],
+    chr=CHROMOSOMES,
+    run_label=config.get("MACAU")["RUNS"],
+    dss_comparison_label=config.get("DSS_COMPARISONS"),
+    min_samples=["all"],
+)
+
+pp(output_files)
+
+
+# ALL RULE
+rule all:
+    input:
+        output_files,
+        RESULTS_DIR / "report" / "run-config.yaml",
+
+
+if config.get("DSS_COMPARISONS"):
+
+    include: "rules/dss.smk"

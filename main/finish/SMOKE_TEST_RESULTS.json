@@ -1,0 +1,103 @@
+{
+  "mode": "dry-run",
+  "count": 5,
+  "passed": 5,
+  "failed": 0,
+  "results": [
+    {
+      "workflow_id": "gersteinlab-astro-finish",
+      "started_at": "2026-04-13T14:47:08.929316+00:00",
+      "ended_at": "2026-04-13T14:47:11.318340+00:00",
+      "duration_seconds": 2.389,
+      "returncode": 0,
+      "status": "passed",
+      "command": [
+        "/root/miniconda3/bin/python3",
+        "/lab_workspace/projects/Agent-complexity/main/finish/run_finish_workflow.py",
+        "--workflow",
+        "gersteinlab-astro-finish",
+        "--cores",
+        "1",
+        "--dry-run"
+      ],
+      "stdout_tail": "    output: results/finish/feature_counting.done\n    jobid: 1\n    reason: Missing output files: results/finish/feature_counting.done\n    resources: tmpdir=/tmp\n[Mon Apr 13 14:47:11 2026]\nrule all:\n    input: results/finish/feature_counting.done\n    jobid: 0\n    reason: Input files updated by another job: results/finish/feature_counting.done\n    resources: tmpdir=/tmp\nJob stats:\njob                     count\n--------------------  -------\nrun_feature_counting        1\nall                         1\ntotal                       2\n\nReasons:\n    (check individual jobs above for details)\n    input files updated by another job:\n        all\n    output files have to be generated:\n        run_feature_counting\nThis was a dry-run (flag -n). The order of jobs does not reflect the order of execution.\n== gersteinlab-astro-finish:demultiplexing ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/demultiplexing.smk --configfile config_basic/config.yaml --cores 1 -n\n== gersteinlab-astro-finish:genome_mapping ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/genome_mapping.smk --configfile config_basic/config.yaml --cores 1 -n\n== gersteinlab-astro-finish:feature_counting ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/feature_counting.smk --configfile config_basic/config.yaml --cores 1 -n",
+      "stderr_tail": ""
+    },
+    {
+      "workflow_id": "riyadua-cervical-cancer-snakemake-workflow-finish",
+      "started_at": "2026-04-13T14:47:11.318395+00:00",
+      "ended_at": "2026-04-13T14:47:13.225957+00:00",
+      "duration_seconds": 1.908,
+      "returncode": 0,
+      "status": "passed",
+      "command": [
+        "/root/miniconda3/bin/python3",
+        "/lab_workspace/projects/Agent-complexity/main/finish/run_finish_workflow.py",
+        "--workflow",
+        "riyadua-cervical-cancer-snakemake-workflow-finish",
+        "--cores",
+        "1",
+        "--dry-run"
+      ],
+      "stdout_tail": "    output: results/finish/all.done\n    jobid: 1\n    reason: Missing output files: results/finish/all.done\n    resources: tmpdir=/tmp\n[Mon Apr 13 14:47:13 2026]\nrule all:\n    input: results/finish/all.done\n    jobid: 0\n    reason: Input files updated by another job: results/finish/all.done\n    resources: tmpdir=/tmp\nJob stats:\njob        count\n-------  -------\nrun_all        1\nall            1\ntotal          2\n\nReasons:\n    (check individual jobs above for details)\n    input files updated by another job:\n        all\n    output files have to be generated:\n        run_all\nThis was a dry-run (flag -n). The order of jobs does not reflect the order of execution.\n== riyadua-cervical-cancer-snakemake-workflow-finish:preprocess ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/preprocess.smk --configfile config_basic/config.yaml --cores 1 -n\n== riyadua-cervical-cancer-snakemake-workflow-finish:differential_expression ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/differential_expression.smk --configfile config_basic/config.yaml --cores 1 -n\n== riyadua-cervical-cancer-snakemake-workflow-finish:all ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/all.smk --configfile config_basic/config.yaml --cores 1 -n",
+      "stderr_tail": ""
+    },
+    {
+      "workflow_id": "saidmlonji-rnaseq_pipeline-finish",
+      "started_at": "2026-04-13T14:47:13.226000+00:00",
+      "ended_at": "2026-04-13T14:47:15.161722+00:00",
+      "duration_seconds": 1.936,
+      "returncode": 0,
+      "status": "passed",
+      "command": [
+        "/root/miniconda3/bin/python3",
+        "/lab_workspace/projects/Agent-complexity/main/finish/run_finish_workflow.py",
+        "--workflow",
+        "saidmlonji-rnaseq_pipeline-finish",
+        "--cores",
+        "1",
+        "--dry-run"
+      ],
+      "stdout_tail": "    output: results/finish/deseq2_analysis.done\n    jobid: 1\n    reason: Missing output files: results/finish/deseq2_analysis.done\n    resources: tmpdir=/tmp\n[Mon Apr 13 14:47:15 2026]\nrule all:\n    input: results/finish/deseq2_analysis.done\n    jobid: 0\n    reason: Input files updated by another job: results/finish/deseq2_analysis.done\n    resources: tmpdir=/tmp\nJob stats:\njob                    count\n-------------------  -------\nrun_deseq2_analysis        1\nall                        1\ntotal                      2\n\nReasons:\n    (check individual jobs above for details)\n    input files updated by another job:\n        all\n    output files have to be generated:\n        run_deseq2_analysis\nThis was a dry-run (flag -n). The order of jobs does not reflect the order of execution.\n== saidmlonji-rnaseq_pipeline-finish:alignment_qc ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/alignment_qc.smk --configfile config_basic/config.yaml --cores 1 -n\n== saidmlonji-rnaseq_pipeline-finish:gene_counting ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/gene_counting.smk --configfile config_basic/config.yaml --cores 1 -n\n== saidmlonji-rnaseq_pipeline-finish:deseq2_analysis ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/deseq2_analysis.smk --configfile config_basic/config.yaml --cores 1 -n",
+      "stderr_tail": ""
+    },
+    {
+      "workflow_id": "gammon-bio-rnaseq_pipeline-finish",
+      "started_at": "2026-04-13T14:47:15.161780+00:00",
+      "ended_at": "2026-04-13T14:47:17.661502+00:00",
+      "duration_seconds": 2.5,
+      "returncode": 0,
+      "status": "passed",
+      "command": [
+        "/root/miniconda3/bin/python3",
+        "/lab_workspace/projects/Agent-complexity/main/finish/run_finish_workflow.py",
+        "--workflow",
+        "gammon-bio-rnaseq_pipeline-finish",
+        "--cores",
+        "1",
+        "--dry-run"
+      ],
+      "stdout_tail": "    reason: Missing output files: results/finish/run_deseq2.done\n    resources: tmpdir=/tmp\n[Mon Apr 13 14:47:17 2026]\nrule all:\n    input: results/finish/run_deseq2.done\n    jobid: 0\n    reason: Input files updated by another job: results/finish/run_deseq2.done\n    resources: tmpdir=/tmp\nJob stats:\njob               count\n--------------  -------\nrun_run_deseq2        1\nall                   1\ntotal                 2\n\nReasons:\n    (check individual jobs above for details)\n    input files updated by another job:\n        all\n    output files have to be generated:\n        run_run_deseq2\nThis was a dry-run (flag -n). The order of jobs does not reflect the order of execution.\n== gammon-bio-rnaseq_pipeline-finish:get_refs ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/get_refs.smk --configfile config_basic/config.yaml --cores 1 -n\n== gammon-bio-rnaseq_pipeline-finish:rename_fastqs ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/rename_fastqs.smk --configfile config_basic/config.yaml --cores 1 -n\n== gammon-bio-rnaseq_pipeline-finish:salmon_pipeline ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/salmon_pipeline.smk --configfile config_basic/config.yaml --cores 1 -n\n== gammon-bio-rnaseq_pipeline-finish:run_deseq2 ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/run_deseq2.smk --configfile config_basic/config.yaml --cores 1 -n",
+      "stderr_tail": ""
+    },
+    {
+      "workflow_id": "cellranger-count-finish",
+      "started_at": "2026-04-13T14:47:17.661562+00:00",
+      "ended_at": "2026-04-13T14:47:20.217278+00:00",
+      "duration_seconds": 2.556,
+      "returncode": 0,
+      "status": "passed",
+      "command": [
+        "/root/miniconda3/bin/python3",
+        "/lab_workspace/projects/Agent-complexity/main/finish/run_finish_workflow.py",
+        "--workflow",
+        "cellranger-count-finish",
+        "--cores",
+        "1",
+        "--dry-run"
+      ],
+      "stdout_tail": "    reason: Missing output files: results/finish/all.done\n    resources: tmpdir=/tmp\n[Mon Apr 13 14:47:20 2026]\nrule all:\n    input: results/finish/all.done\n    jobid: 0\n    reason: Input files updated by another job: results/finish/all.done\n    resources: tmpdir=/tmp\nJob stats:\njob        count\n-------  -------\nrun_all        1\nall            1\ntotal          2\n\nReasons:\n    (check individual jobs above for details)\n    input files updated by another job:\n        all\n    output files have to be generated:\n        run_all\nThis was a dry-run (flag -n). The order of jobs does not reflect the order of execution.\n== cellranger-count-finish:follow_pedantic_cell_ranger_naming_scheme ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/follow_pedantic_cell_ranger_naming_scheme.smk --configfile config_basic/config.yaml --cores 1 -n\n== cellranger-count-finish:create_cellranger_library_csv ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/create_cellranger_library_csv.smk --configfile config_basic/config.yaml --cores 1 -n\n== cellranger-count-finish:cellranger_count ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/cellranger_count.smk --configfile config_basic/config.yaml --cores 1 -n\n== cellranger-count-finish:all ==\n/root/miniconda3/bin/python3 -m snakemake -s steps/all.smk --configfile config_basic/config.yaml --cores 1 -n",
+      "stderr_tail": ""
+    }
+  ]
+}

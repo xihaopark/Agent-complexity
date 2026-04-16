@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-04-16T06:17:28.585388+00:00",
+  "host_env_ready": true,
+  "special_envs": [],
+  "special_env_ready_count": 0,
+  "workflow_readiness": [
+    {
+      "workflow_id": "akinyi-onyango-rna_seq_pipeline-finish",
+      "ready": true,
+      "command_envs": [],
+      "snakemake_prewarm_ready": false,
+      "snakemake_prewarm_input_gated": true,
+      "detail": "no command envs; snakemake prewarm input-gated; prewarm_input_gated: command failed (1): /root/miniconda3/bin/conda run -n snakemake python -m snakemake -s /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/Akinyi-Onyango__rna_seq_pipeline/Snakefile --directory /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/Akinyi-Onyango__rna_seq_pipeline --cores 1 --use-conda --conda-create-envs-only --scheduler greedy all\nBuilding DAG of jobs...\nMissingInputException in rule quality_filtering in file \"/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/Akinyi-Onyango__rna_seq_pipeline/Snakefile\", line 36:\nMissing input files for rule quality_filtering:\n    output: data/trimmed/sample_0_trimmed.fastq.gz\n    wildcards: sample=sample_0\n    affected files:\n        data/raw/sample_0.fastq.gz\nERROR conda.cli.main_run:execute(142): `conda run python -m snakemake -s /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/Akinyi-Onyango__rna_seq_pipeline/Snakefile --directory /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/Akinyi-Onyango__rna_seq_pipeline --cores 1 --use-conda --conda-create-envs-only --scheduler greedy all` failed. (See above for error)"
+    }
+  ],
+  "snakemake_prewarm_ready_count": 0,
+  "excluded_command_envs": []
+}

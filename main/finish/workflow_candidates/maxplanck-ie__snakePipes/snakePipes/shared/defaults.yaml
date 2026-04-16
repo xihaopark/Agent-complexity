@@ -1,0 +1,22 @@
+################################################################################
+# This file should hold values that should be present in ALL workflows
+# Note that due to limitations in yaml.dump, only very basic structures are
+# permitted here.
+################################################################################
+snakemakeOptions: ' --keep-going '
+organismsDir: 'shared/organisms'
+snakemakeProfile: 'shared/profiles/local'
+tempDir: /scratch/local
+# The following are only needed if you use the --emailAddress option
+smtpServer:
+smtpPort: 0
+onlySSL: False
+emailSender:
+smtpUsername:
+smtpPassword:
+# maximum number of threads to be used
+max_thread: 25
+#print tools versions
+toolsVersion: True
+oldConfig:
+configMode: manual

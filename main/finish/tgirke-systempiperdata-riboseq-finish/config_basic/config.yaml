@@ -1,0 +1,229 @@
+workflow_id: tgirke-systempiperdata-riboseq-finish
+source_cores: 8
+workflow_name: riboseq
+workdir: '{workflow_dir}/systempiper_runtime/riboseq'
+rmd_file: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/tgirke__systemPipeRdata/inst/extdata/workflows/riboseq/systemPipeRIBOseq.Rmd
+command_conda_env: renzo-wf-systempiper
+steps:
+  load_SPR:
+    summary: load_SPR
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      load_SPR'
+  preprocessing:
+    summary: preprocessing
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      preprocessing'
+    depends_on:
+    - load_SPR
+  fastq_report:
+    summary: fastq_report
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      fastq_report'
+    depends_on:
+    - preprocessing
+  hisat2_index:
+    summary: hisat2_index
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      hisat2_index'
+    depends_on:
+    - fastq_report
+  hisat2_mapping:
+    summary: hisat2_mapping
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      hisat2_mapping'
+    depends_on:
+    - hisat2_index
+  align_stats:
+    summary: align_stats
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      align_stats'
+    depends_on:
+    - hisat2_mapping
+  bam_IGV:
+    summary: bam_IGV
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      bam_IGV'
+    depends_on:
+    - align_stats
+  genFeatures:
+    summary: genFeatures
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      genFeatures'
+    depends_on:
+    - bam_IGV
+  featuretypeCounts:
+    summary: featuretypeCounts
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      featuretypeCounts'
+    depends_on:
+    - genFeatures
+  featuretypeCounts_length:
+    summary: featuretypeCounts_length
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      featuretypeCounts_length'
+    depends_on:
+    - featuretypeCounts
+  pred_ORF:
+    summary: pred_ORF
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      pred_ORF'
+    depends_on:
+    - featuretypeCounts_length
+  scale_ranges:
+    summary: scale_ranges
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      scale_ranges'
+    depends_on:
+    - pred_ORF
+  translate:
+    summary: translate
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      translate'
+    depends_on:
+    - scale_ranges
+  add_features:
+    summary: add_features
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      add_features'
+    depends_on:
+    - translate
+  pred_sORFs:
+    summary: pred_sORFs
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      pred_sORFs'
+    depends_on:
+    - add_features
+  binned_CDS_coverage:
+    summary: binned_CDS_coverage
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      binned_CDS_coverage'
+    depends_on:
+    - pred_sORFs
+  coverage_upstream_downstream:
+    summary: coverage_upstream_downstream
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      coverage_upstream_downstream'
+    depends_on:
+    - binned_CDS_coverage
+  coverage_combined:
+    summary: coverage_combined
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      coverage_combined'
+    depends_on:
+    - coverage_upstream_downstream
+  coverage_nuc_level:
+    summary: coverage_nuc_level
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      coverage_nuc_level'
+    depends_on:
+    - coverage_combined
+  read_counting:
+    summary: read_counting
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      read_counting'
+    depends_on:
+    - coverage_nuc_level
+  sample_tree:
+    summary: sample_tree
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      sample_tree'
+    depends_on:
+    - read_counting
+  run_edgeR:
+    summary: run_edgeR
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      run_edgeR'
+    depends_on:
+    - sample_tree
+  custom_annot:
+    summary: custom_annot
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      custom_annot'
+    depends_on:
+    - run_edgeR
+  filter_degs:
+    summary: filter_degs
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      filter_degs'
+    depends_on:
+    - custom_annot
+  venn_diagram:
+    summary: venn_diagram
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      venn_diagram'
+    depends_on:
+    - filter_degs
+  get_go_annot:
+    summary: get_go_annot
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      get_go_annot'
+    depends_on:
+    - venn_diagram
+  go_enrich:
+    summary: go_enrich
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      go_enrich'
+    depends_on:
+    - get_go_annot
+  go_plot:
+    summary: go_plot
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      go_plot'
+    depends_on:
+    - go_enrich
+  diff_loading:
+    summary: diff_loading
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      diff_loading'
+    depends_on:
+    - go_plot
+  diff_translational_eff:
+    summary: diff_translational_eff
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      diff_translational_eff'
+    depends_on:
+    - diff_loading
+  heatmap:
+    summary: heatmap
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      heatmap'
+    depends_on:
+    - diff_translational_eff
+  sessionInfo:
+    summary: sessionInfo
+    command: bash -lc 'Rscript /lab_workspace/projects/Agent-complexity/main/finish/tools/systempiper_step_runner.R
+      --workflow-name {workflow_name} --workdir {workdir} --rmd-file {rmd_file} --step
+      sessionInfo'
+    depends_on:
+    - heatmap

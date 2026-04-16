@@ -1,0 +1,29 @@
+workflow_id: jfnavarro-st_pipeline-finish
+source_cores: 8
+source_root: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/jfnavarro__st_pipeline
+fastq1: ''
+fastq2: ''
+ids: ''
+ref_map: ''
+ref_annotation: ''
+exp_name: st_pipeline_run
+output_folder: '{workflow_dir}/source_outputs'
+temp_folder: '{workflow_dir}/source_temp'
+command_conda_env: renzo-wf-st-pipeline
+steps:
+  filtering:
+    summary: ST pipeline filtering and trimming stage
+    requires: []
+    command: bash -lc 'cd {source_root} && /root/miniconda3/bin/python3 /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/jfnavarro__st_pipeline/stpipeline/scripts/st_pipeline_run.py
+      {{fastq1}} {{fastq2}} --ids {{ids}} --ref-map {{ref_map}} --ref-annotation {{ref_annotation}}
+      --expName {exp_name} --output-folder {output_folder} --temp-folder {temp_folder}
+      --disable-mapping --disable-barcode --disable-annotation --disable-umi'
+  mapping_to_dataset:
+    summary: ST pipeline mapping, barcode, annotation, and dataset stages
+    requires: []
+    depends_on:
+    - filtering
+    command: bash -lc 'cd {source_root} && /root/miniconda3/bin/python3 /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/jfnavarro__st_pipeline/stpipeline/scripts/st_pipeline_run.py
+      {{fastq1}} {{fastq2}} --ids {{ids}} --ref-map {{ref_map}} --ref-annotation {{ref_annotation}}
+      --expName {exp_name} --output-folder {output_folder} --temp-folder {temp_folder}
+      --disable-trimming'

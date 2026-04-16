@@ -1,0 +1,249 @@
+{
+  "id": "rna-seq-kallisto-sleuth-finish",
+  "name": "RNA-seq Kallisto Sleuth Finish Workflow",
+  "engine": "snakemake",
+  "entry_point": "run_workflow.py",
+  "description": "Step-split Snakemake workflow for config validation, input normalization, reference preparation, kallisto quantification, sleuth initialization, differential expression, optional modules, and delivery reporting.",
+  "version": "1.0",
+  "aliases": [
+    "kallisto",
+    "rna-seq-kallisto",
+    "sleuth"
+  ],
+  "tags": [
+    "finish",
+    "rna-seq",
+    "kallisto",
+    "sleuth"
+  ],
+  "know_how": "know-how.md",
+  "know_how_files": [
+    "know-how.md"
+  ],
+  "discovery": {
+    "kind": "finish_workflow",
+    "family": "rna_seq",
+    "aliases": [
+      "kallisto",
+      "rna-seq-kallisto",
+      "sleuth"
+    ],
+    "retained_steps": [
+      "validate_config",
+      "normalize_inputs",
+      "prepare_references",
+      "prepare_reads",
+      "quantify",
+      "init_sleuth",
+      "differential_expression",
+      "optional_modules",
+      "delivery_report"
+    ],
+    "supports_partial_run": true,
+    "runner": "python3 run_workflow.py --cores 8",
+    "standard_step_skills": true
+  },
+  "input_hints": [
+    "config_basic/config.yaml",
+    "config_basic/samples.tsv",
+    "config_basic/units.tsv",
+    "resources/*",
+    "ngs-test-data/reads/*"
+  ],
+  "output_hints": [
+    "results/normalized_inputs/*",
+    "results/kallisto/*/abundance.tsv",
+    "results/sleuth/*",
+    "results/diffexp/*",
+    "results/datavzrd/*/index.html"
+  ],
+  "steps": [
+    {
+      "id": "validate_config",
+      "name": "Validate workflow configuration",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/validate_config.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/validate_config.done"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "normalize_inputs",
+      "name": "Normalize metadata and workflow inputs",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/normalize_inputs.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/normalize_inputs.done"
+      ],
+      "depends_on": [
+        "validate_config"
+      ]
+    },
+    {
+      "id": "prepare_references",
+      "name": "Prepare kallisto references",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/prepare_references.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/prepare_references.done"
+      ],
+      "depends_on": [
+        "normalize_inputs"
+      ]
+    },
+    {
+      "id": "prepare_reads",
+      "name": "Prepare reads for quantification",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/prepare_reads.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/prepare_reads.done"
+      ],
+      "depends_on": [
+        "prepare_references"
+      ]
+    },
+    {
+      "id": "quantify",
+      "name": "Run kallisto quantification",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/quantify.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/quantify.done"
+      ],
+      "depends_on": [
+        "prepare_reads"
+      ]
+    },
+    {
+      "id": "init_sleuth",
+      "name": "Initialize sleuth model inputs",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/init_sleuth.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/init_sleuth.done"
+      ],
+      "depends_on": [
+        "quantify"
+      ]
+    },
+    {
+      "id": "differential_expression",
+      "name": "Run sleuth differential expression",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/differential_expression.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/differential_expression.done"
+      ],
+      "depends_on": [
+        "init_sleuth"
+      ]
+    },
+    {
+      "id": "optional_modules",
+      "name": "Run optional comparison modules",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/optional_modules.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/optional_modules.done"
+      ],
+      "depends_on": [
+        "differential_expression"
+      ]
+    },
+    {
+      "id": "delivery_report",
+      "name": "Assemble final delivery report",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/delivery_report.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/delivery_report.done"
+      ],
+      "depends_on": [
+        "optional_modules"
+      ]
+    }
+  ]
+}

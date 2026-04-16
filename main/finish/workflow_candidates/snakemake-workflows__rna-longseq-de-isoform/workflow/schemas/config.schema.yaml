@@ -1,0 +1,155 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+
+description: snakemake configuration file
+type: object
+
+
+properties:
+  samples:
+    type: string
+    description: "Path of sample '.csv' file"
+
+  ref:
+    type: object
+    properties:
+      genome:
+        type: string
+      annotation:
+        type: string
+      accession:
+        type: string
+      ensembl_species:
+        type: string
+      build:
+        type: string
+      release:
+        type: string
+    allOf:
+      - if:
+          properties:
+            ensembl_species:
+              type: string
+              minLength: 1
+        then:
+          required: ["build", "release"]
+
+  read_filter:
+    type: object
+    properties:
+      min_length: 
+        type: integer
+        minimum: 0
+
+  minimap2:
+    type: object
+    properties:
+      index_opts:
+        type: string
+      opts:
+        type: string
+      maximum_secondary:
+        type: integer
+        minimum: 0
+      secondary_score_ratio:
+        type: number
+        minimum: 0.0
+
+samtools:
+  type: object
+  properties:
+    samtobam_opts:
+      type: string
+    bamsort_opts:
+      type: string
+    bamindex_opts:
+      type: string
+    bamstats_opts:
+      type: string
+
+quant:
+  type: object
+  properties:
+    salmon_libtype:
+      type: string
+
+deseq2:
+  type: object
+  properties:
+    fit_type:
+      type: string
+    design_factors:
+      type: array
+      items:
+        type: string
+    batch_effect:
+      type: array
+      items:
+        type: string
+    lfc_null:
+      type: number
+    alt_hypothesis:
+      type: string
+      enum: ["greaterAbs", "lessAbs", "greater", "less"]
+    alpha:
+      type: number
+      minimum: 0.0
+      maximum: 1.0
+    threshold_plot:
+      type: integer
+    colormap:
+      type: string
+
+
+isoform_analysis:
+  type: object
+  properties:
+    FLAIR:
+      type: boolean
+    qscore:
+      type: integer
+      minimum: 1
+    exp_thresh:
+      type: integer
+      minimum: 0
+    col_opts:
+      type: string
+  required:
+    - FLAIR
+  allOf:
+    - if:
+        properties:
+          FLAIR:
+            const: true
+      then:
+        required: ["qscore","exp_thresh","col_opts"]
+
+protein_annotation:
+  type: object
+  properties:
+    lambda:
+      type: boolean
+    uniref:
+      type: string
+    num_matches:
+      type: integer
+      minimum: 1
+  required:
+    - lambda
+  allOf:
+    - if:
+        properties:
+          lambda:
+            const: true
+      then:
+        required: ["uniref","num_matches"]
+
+required:
+  - samples
+  - ref
+  - read_filter
+  - minimap2
+  - samtools
+  - quant 
+  - deseq2
+  - isoform_analysis
+  - protein_annotation

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#SBATCH --ntasks 1 
+#SBATCH --cpus-per-task ${threads} 
+#SBATCH --mem 24G  
+#SBATCH --requeue
+#SBATCH --nodes=1 
+#SBATCH --partition shortq
+#SBATCH --qos shortq
+#SBATCH --time 0-01:00:00
+#SBATCH --chdir ${workdir}
+#SBATCH --error ${job_name}.err
+#SBATCH --output ${job_name}.out
+#SBATCH --job-name ${job_name}
+
+export TMPDIR=${tempdir}
+
+
+${cmd1}
+
+${cmd2}
+
+${cmd3}

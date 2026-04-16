@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "workflow_id": "snakemake-workflow-template",
+  "step_id": "step-2-parse-config",
+  "manifest_type": "analysis_manifest",
+  "status": "completed",
+  "summary": {
+    "objective": "Validate template inputs before execution starts",
+    "execution_scope": "run",
+    "fanout_key": "none",
+    "next_step": "step-3-prepare-reference",
+    "notes": [
+      "The template stays in verification mode when .test config is selected",
+      "Simulation parameters are resolved before any reads are generated"
+    ]
+  },
+  "run_context": {
+    "config_files": [
+      ".test/config/config.yaml"
+    ],
+    "sample_sheet": ".test/config/samples.tsv",
+    "active_directory": ".test",
+    "mode": "test"
+  },
+  "subjects": [
+    {
+      "id": "a",
+      "type": "sample",
+      "status": "resolved",
+      "metadata": {
+        "condition": "tumor",
+        "replicate": 1
+      }
+    },
+    {
+      "id": "b",
+      "type": "sample",
+      "status": "resolved",
+      "metadata": {
+        "condition": "normal",
+        "replicate": 1
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "analysis_manifest",
+      "kind": "manifest",
+      "path": "manifests/analysis_manifest.json",
+      "status": "verified",
+      "owner": "run"
+    }
+  ],
+  "validations": [
+    {
+      "name": "config_schema_passed",
+      "passed": true,
+      "details": "All required template config fields are present"
+    },
+    {
+      "name": "sample_sheet_schema_passed",
+      "passed": true,
+      "details": "All required sample-sheet columns were resolved"
+    }
+  ],
+  "errors": []
+}

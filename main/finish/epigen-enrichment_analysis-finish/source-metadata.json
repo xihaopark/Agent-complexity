@@ -1,0 +1,24 @@
+{
+  "source_repo_dir": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/epigen__enrichment_analysis",
+  "source_snakefile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/epigen__enrichment_analysis/workflow/Snakefile",
+  "source_configfile": "/lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/epigen__enrichment_analysis/config/config.yaml",
+  "step_count": 16,
+  "steps": [
+    "aggregate",
+    "annot_export",
+    "config_export",
+    "env_export",
+    "gene_ORA_GSEApy",
+    "gene_motif_enrichment_analysis_RcisTarget",
+    "gene_preranked_GSEApy",
+    "plot_enrichment_result",
+    "prepare_databases",
+    "process_results_pycisTarget",
+    "region_enrichment_analysis_GREAT",
+    "region_enrichment_analysis_LOLA",
+    "region_gene_association_GREAT",
+    "region_motif_enrichment_analysis_pycisTarget",
+    "visualize",
+    "all"
+  ]
+}

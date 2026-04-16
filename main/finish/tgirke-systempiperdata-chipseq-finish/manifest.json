@@ -1,0 +1,505 @@
+{
+  "id": "tgirke-systempiperdata-chipseq-finish",
+  "name": "tgirke systempiperdata chipseq finish",
+  "engine": "snakemake",
+  "entry_point": "run_workflow.py",
+  "description": "Manual finish workflow for systemPipeRdata ChIP-seq template split by Rmd step_name declarations.",
+  "version": "0.1",
+  "aliases": [
+    "tgirke-systempiperdata-chipseq"
+  ],
+  "tags": [
+    "finish",
+    "manual",
+    "candidate",
+    "r-workflow"
+  ],
+  "url": "https://github.com/tgirke/systemPipeRdata",
+  "know_how": "workflow/agent-steps.md",
+  "know_how_files": [
+    "workflow/agent-steps.md"
+  ],
+  "discovery": {
+    "kind": "finish_workflow",
+    "family": "candidate",
+    "aliases": [
+      "tgirke-systempiperdata-chipseq"
+    ],
+    "retained_steps": [
+      "load_SPR",
+      "fastq_report",
+      "preprocessing",
+      "custom_preprocessing_function",
+      "bowtie2_index",
+      "bowtie2_alignment",
+      "align_stats",
+      "bam_IGV",
+      "merge_bams",
+      "call_peaks_macs_noref",
+      "call_peaks_macs_withref",
+      "consensus_peaks",
+      "annotation_ChIPseeker",
+      "ChIPseeker_plots",
+      "annotation_ChIPpeakAnno",
+      "count_peak_ranges",
+      "diff_bind_analysis",
+      "go_enrich",
+      "parse_peak_sequences",
+      "bcrank_enrich",
+      "sessionInfo"
+    ],
+    "supports_partial_run": true,
+    "runner": "python3 run_workflow.py --cores 8",
+    "standard_step_skills": false,
+    "generated_by": "tools/manual_finishify_specials.py",
+    "split_mode": "manual-special",
+    "source_repo": "tgirke__systemPipeRdata"
+  },
+  "input_hints": [
+    "../workflow_candidates/tgirke__systemPipeRdata/inst/extdata/workflows/chipseq/systemPipeChIPseq.Rmd"
+  ],
+  "output_hints": [
+    "results/finish/*.done"
+  ],
+  "steps": [
+    {
+      "id": "load_SPR",
+      "name": "load SPR",
+      "targets": [
+        "load_SPR"
+      ],
+      "params": {
+        "snakefile": "steps/load_SPR.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/load_SPR.done"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "fastq_report",
+      "name": "fastq report",
+      "targets": [
+        "fastq_report"
+      ],
+      "params": {
+        "snakefile": "steps/fastq_report.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/fastq_report.done"
+      ],
+      "depends_on": [
+        "load_SPR"
+      ]
+    },
+    {
+      "id": "preprocessing",
+      "name": "preprocessing",
+      "targets": [
+        "preprocessing"
+      ],
+      "params": {
+        "snakefile": "steps/preprocessing.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/preprocessing.done"
+      ],
+      "depends_on": [
+        "fastq_report"
+      ]
+    },
+    {
+      "id": "custom_preprocessing_function",
+      "name": "custom preprocessing function",
+      "targets": [
+        "custom_preprocessing_function"
+      ],
+      "params": {
+        "snakefile": "steps/custom_preprocessing_function.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/custom_preprocessing_function.done"
+      ],
+      "depends_on": [
+        "preprocessing"
+      ]
+    },
+    {
+      "id": "bowtie2_index",
+      "name": "bowtie2 index",
+      "targets": [
+        "bowtie2_index"
+      ],
+      "params": {
+        "snakefile": "steps/bowtie2_index.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/bowtie2_index.done"
+      ],
+      "depends_on": [
+        "custom_preprocessing_function"
+      ]
+    },
+    {
+      "id": "bowtie2_alignment",
+      "name": "bowtie2 alignment",
+      "targets": [
+        "bowtie2_alignment"
+      ],
+      "params": {
+        "snakefile": "steps/bowtie2_alignment.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/bowtie2_alignment.done"
+      ],
+      "depends_on": [
+        "bowtie2_index"
+      ]
+    },
+    {
+      "id": "align_stats",
+      "name": "align stats",
+      "targets": [
+        "align_stats"
+      ],
+      "params": {
+        "snakefile": "steps/align_stats.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/align_stats.done"
+      ],
+      "depends_on": [
+        "bowtie2_alignment"
+      ]
+    },
+    {
+      "id": "bam_IGV",
+      "name": "bam IGV",
+      "targets": [
+        "bam_IGV"
+      ],
+      "params": {
+        "snakefile": "steps/bam_IGV.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/bam_IGV.done"
+      ],
+      "depends_on": [
+        "align_stats"
+      ]
+    },
+    {
+      "id": "merge_bams",
+      "name": "merge bams",
+      "targets": [
+        "merge_bams"
+      ],
+      "params": {
+        "snakefile": "steps/merge_bams.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/merge_bams.done"
+      ],
+      "depends_on": [
+        "bam_IGV"
+      ]
+    },
+    {
+      "id": "call_peaks_macs_noref",
+      "name": "call peaks macs noref",
+      "targets": [
+        "call_peaks_macs_noref"
+      ],
+      "params": {
+        "snakefile": "steps/call_peaks_macs_noref.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/call_peaks_macs_noref.done"
+      ],
+      "depends_on": [
+        "merge_bams"
+      ]
+    },
+    {
+      "id": "call_peaks_macs_withref",
+      "name": "call peaks macs withref",
+      "targets": [
+        "call_peaks_macs_withref"
+      ],
+      "params": {
+        "snakefile": "steps/call_peaks_macs_withref.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/call_peaks_macs_withref.done"
+      ],
+      "depends_on": [
+        "call_peaks_macs_noref"
+      ]
+    },
+    {
+      "id": "consensus_peaks",
+      "name": "consensus peaks",
+      "targets": [
+        "consensus_peaks"
+      ],
+      "params": {
+        "snakefile": "steps/consensus_peaks.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/consensus_peaks.done"
+      ],
+      "depends_on": [
+        "call_peaks_macs_withref"
+      ]
+    },
+    {
+      "id": "annotation_ChIPseeker",
+      "name": "annotation ChIPseeker",
+      "targets": [
+        "annotation_ChIPseeker"
+      ],
+      "params": {
+        "snakefile": "steps/annotation_ChIPseeker.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/annotation_ChIPseeker.done"
+      ],
+      "depends_on": [
+        "consensus_peaks"
+      ]
+    },
+    {
+      "id": "ChIPseeker_plots",
+      "name": "ChIPseeker plots",
+      "targets": [
+        "ChIPseeker_plots"
+      ],
+      "params": {
+        "snakefile": "steps/ChIPseeker_plots.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/ChIPseeker_plots.done"
+      ],
+      "depends_on": [
+        "annotation_ChIPseeker"
+      ]
+    },
+    {
+      "id": "annotation_ChIPpeakAnno",
+      "name": "annotation ChIPpeakAnno",
+      "targets": [
+        "annotation_ChIPpeakAnno"
+      ],
+      "params": {
+        "snakefile": "steps/annotation_ChIPpeakAnno.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/annotation_ChIPpeakAnno.done"
+      ],
+      "depends_on": [
+        "ChIPseeker_plots"
+      ]
+    },
+    {
+      "id": "count_peak_ranges",
+      "name": "count peak ranges",
+      "targets": [
+        "count_peak_ranges"
+      ],
+      "params": {
+        "snakefile": "steps/count_peak_ranges.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/count_peak_ranges.done"
+      ],
+      "depends_on": [
+        "annotation_ChIPpeakAnno"
+      ]
+    },
+    {
+      "id": "diff_bind_analysis",
+      "name": "diff bind analysis",
+      "targets": [
+        "diff_bind_analysis"
+      ],
+      "params": {
+        "snakefile": "steps/diff_bind_analysis.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/diff_bind_analysis.done"
+      ],
+      "depends_on": [
+        "count_peak_ranges"
+      ]
+    },
+    {
+      "id": "go_enrich",
+      "name": "go enrich",
+      "targets": [
+        "go_enrich"
+      ],
+      "params": {
+        "snakefile": "steps/go_enrich.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/go_enrich.done"
+      ],
+      "depends_on": [
+        "diff_bind_analysis"
+      ]
+    },
+    {
+      "id": "parse_peak_sequences",
+      "name": "parse peak sequences",
+      "targets": [
+        "parse_peak_sequences"
+      ],
+      "params": {
+        "snakefile": "steps/parse_peak_sequences.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/parse_peak_sequences.done"
+      ],
+      "depends_on": [
+        "go_enrich"
+      ]
+    },
+    {
+      "id": "bcrank_enrich",
+      "name": "bcrank enrich",
+      "targets": [
+        "bcrank_enrich"
+      ],
+      "params": {
+        "snakefile": "steps/bcrank_enrich.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/bcrank_enrich.done"
+      ],
+      "depends_on": [
+        "parse_peak_sequences"
+      ]
+    },
+    {
+      "id": "sessionInfo",
+      "name": "sessionInfo",
+      "targets": [
+        "sessionInfo"
+      ],
+      "params": {
+        "snakefile": "steps/sessionInfo.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/sessionInfo.done"
+      ],
+      "depends_on": [
+        "bcrank_enrich"
+      ]
+    }
+  ]
+}

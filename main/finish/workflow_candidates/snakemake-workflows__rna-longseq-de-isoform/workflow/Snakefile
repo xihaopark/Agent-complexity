@@ -1,0 +1,43 @@
+import os
+from os import path
+from collections import OrderedDict
+import sys
+
+from snakemake.utils import min_version
+
+min_version("8.10.7")
+
+
+configfile: "config/config.yml"
+
+
+report: "report/workflow.rst"
+
+
+include: "rules/commons.smk"
+include: "rules/qc.smk"
+include: "rules/ref.smk"
+include: "rules/datamod.smk"
+include: "rules/alignment.smk"
+include: "rules/alignmod.smk"
+include: "rules/quantification.smk"
+include: "rules/diffexp.smk"
+include: "rules/isoform_analysis.smk"
+include: "rules/proteinanno.smk"
+
+
+onstart:
+    print("\n--- Analysis started ---\n")
+
+
+onsuccess:
+    print("\n--- Workflow finished! ---\n")
+
+
+onerror:
+    print("\n--- An error occurred! ---\n")
+
+
+rule all:
+    input:
+        rule_all_input(),

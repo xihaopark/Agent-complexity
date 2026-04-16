@@ -1,0 +1,352 @@
+workflow_id: fritjoflammers-snakemake-methylanalysis-finish
+source_cores: 8
+steps:
+  extract_CpGs:
+    summary: extract_CpGs
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - extract_CpGs
+  destrand_calls:
+    summary: destrand_calls
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - destrand_calls
+    depends_on:
+    - extract_CpGs
+  methylkit_load:
+    summary: methylkit_load
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - methylkit_load
+    depends_on:
+    - destrand_calls
+  methylkit_filter_normalize:
+    summary: methylkit_filter_normalize
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - methylkit_filter_normalize
+    depends_on:
+    - methylkit_load
+  datavzrd_methylkit_filt_norm:
+    summary: datavzrd_methylkit_filt_norm
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - datavzrd_methylkit_filt_norm
+    depends_on:
+    - methylkit_filter_normalize
+  methylkit_split:
+    summary: methylkit_split
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - methylkit_split
+    depends_on:
+    - datavzrd_methylkit_filt_norm
+  methylkit_unite_per_chr_all:
+    summary: methylkit_unite_per_chr_all
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - methylkit_unite_per_chr_all
+    depends_on:
+    - methylkit_split
+  methylkit_remove_variant_sites:
+    summary: methylkit_remove_variant_sites
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - methylkit_remove_variant_sites
+    depends_on:
+    - methylkit_unite_per_chr_all
+  methylkit_split_mku2tibble:
+    summary: methylkit_split_mku2tibble
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - methylkit_split_mku2tibble
+    depends_on:
+    - methylkit_remove_variant_sites
+  datavzrd_methylkit_unite:
+    summary: datavzrd_methylkit_unite
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - datavzrd_methylkit_unite
+    depends_on:
+    - methylkit_split_mku2tibble
+  methylkit_clustering:
+    summary: methylkit_clustering
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - methylkit_clustering
+    depends_on:
+    - datavzrd_methylkit_unite
+  methylkit_pca:
+    summary: methylkit_pca
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - methylkit_pca
+    depends_on:
+    - methylkit_clustering
+  notebook_data_structure:
+    summary: notebook_data_structure
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - notebook_data_structure
+    depends_on:
+    - methylkit_pca
+  gemma_subset_samples:
+    summary: gemma_subset_samples
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - gemma_subset_samples
+    depends_on:
+    - notebook_data_structure
+  macau_prep_counts_file:
+    summary: macau_prep_counts_file
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - macau_prep_counts_file
+    depends_on:
+    - gemma_subset_samples
+  extract_column_from_spreadsheet:
+    summary: extract_column_from_spreadsheet
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - extract_column_from_spreadsheet
+    depends_on:
+    - macau_prep_counts_file
+  macau_prep_variables_file:
+    summary: macau_prep_variables_file
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - macau_prep_variables_file
+    depends_on:
+    - extract_column_from_spreadsheet
+  macau_prep_covariate_file:
+    summary: macau_prep_covariate_file
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - macau_prep_covariate_file
+    depends_on:
+    - macau_prep_variables_file
+  macau_run:
+    summary: macau_run
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - macau_run
+    depends_on:
+    - macau_prep_covariate_file
+  store_config:
+    summary: store_config
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - store_config
+    depends_on:
+    - macau_run
+  DSS_dmrs:
+    summary: DSS_dmrs
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      root_target: all
+      until:
+      - DSS_dmrs
+    depends_on:
+    - store_config
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/Snakefile
+      directory: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/fritjoflammers__snakemake-methylanalysis/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - DSS_dmrs

@@ -1,0 +1,10 @@
+raw_reads/
+raw_reads
+.snakemake/
+bams/
+clean_reads/
+ref/
+counts/
+logs/
+tables/
+nohup*

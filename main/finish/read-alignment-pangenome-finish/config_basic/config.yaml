@@ -1,0 +1,608 @@
+workflow_id: read-alignment-pangenome-finish
+source_cores: 8
+steps:
+  bam_index:
+    summary: bam_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - bam_index
+  tabix_known_variants:
+    summary: tabix_known_variants
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - tabix_known_variants
+    depends_on:
+    - bam_index
+  get_genome:
+    summary: get_genome
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - get_genome
+    depends_on:
+    - tabix_known_variants
+  genome_faidx:
+    summary: genome_faidx
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - genome_faidx
+    depends_on:
+    - get_genome
+  genome_dict:
+    summary: genome_dict
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - genome_dict
+    depends_on:
+    - genome_faidx
+  get_known_variants:
+    summary: get_known_variants
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - get_known_variants
+    depends_on:
+    - genome_dict
+  remove_iupac_codes:
+    summary: remove_iupac_codes
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - remove_iupac_codes
+    depends_on:
+    - get_known_variants
+  bwa_index:
+    summary: bwa_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - bwa_index
+    depends_on:
+    - remove_iupac_codes
+  get_pangenome:
+    summary: get_pangenome
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - get_pangenome
+    depends_on:
+    - bwa_index
+  get_sra:
+    summary: get_sra
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - get_sra
+    depends_on:
+    - get_pangenome
+  fastp_pipe:
+    summary: fastp_pipe
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - fastp_pipe
+    depends_on:
+    - get_sra
+  fastp_se:
+    summary: fastp_se
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - fastp_se
+    depends_on:
+    - fastp_pipe
+  fastp_pe:
+    summary: fastp_pe
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - fastp_pe
+    depends_on:
+    - fastp_se
+  merge_trimmed_fastqs:
+    summary: merge_trimmed_fastqs
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - merge_trimmed_fastqs
+    depends_on:
+    - fastp_pe
+  map_reads_bwa:
+    summary: map_reads_bwa
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - map_reads_bwa
+    depends_on:
+    - merge_trimmed_fastqs
+  count_sample_kmers:
+    summary: count_sample_kmers
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - count_sample_kmers
+    depends_on:
+    - map_reads_bwa
+  create_reference_paths:
+    summary: create_reference_paths
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - create_reference_paths
+    depends_on:
+    - count_sample_kmers
+  map_reads_vg:
+    summary: map_reads_vg
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - map_reads_vg
+    depends_on:
+    - create_reference_paths
+  reheader_mapped_reads:
+    summary: reheader_mapped_reads
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - reheader_mapped_reads
+    depends_on:
+    - map_reads_vg
+  fix_mate:
+    summary: fix_mate
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - fix_mate
+    depends_on:
+    - reheader_mapped_reads
+  add_read_group:
+    summary: add_read_group
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - add_read_group
+    depends_on:
+    - fix_mate
+  sort_alignments:
+    summary: sort_alignments
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - sort_alignments
+    depends_on:
+    - add_read_group
+  annotate_umis:
+    summary: annotate_umis
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - annotate_umis
+    depends_on:
+    - sort_alignments
+  mark_duplicates:
+    summary: mark_duplicates
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - mark_duplicates
+    depends_on:
+    - annotate_umis
+  calc_consensus_reads:
+    summary: calc_consensus_reads
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - calc_consensus_reads
+    depends_on:
+    - mark_duplicates
+  map_consensus_reads:
+    summary: map_consensus_reads
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - map_consensus_reads
+    depends_on:
+    - calc_consensus_reads
+  merge_consensus_reads:
+    summary: merge_consensus_reads
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - merge_consensus_reads
+    depends_on:
+    - map_consensus_reads
+  sort_consensus_reads:
+    summary: sort_consensus_reads
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - sort_consensus_reads
+    depends_on:
+    - merge_consensus_reads
+  recalibrate_base_qualities:
+    summary: recalibrate_base_qualities
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - recalibrate_base_qualities
+    depends_on:
+    - sort_consensus_reads
+  apply_bqsr:
+    summary: apply_bqsr
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - apply_bqsr
+    depends_on:
+    - recalibrate_base_qualities
+  assign_primers:
+    summary: assign_primers
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - assign_primers
+    depends_on:
+    - apply_bqsr
+  filter_primerless_reads:
+    summary: filter_primerless_reads
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - filter_primerless_reads
+    depends_on:
+    - assign_primers
+  trim_primers:
+    summary: trim_primers
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - trim_primers
+    depends_on:
+    - filter_primerless_reads
+  map_primers:
+    summary: map_primers
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - map_primers
+    depends_on:
+    - trim_primers
+  filter_unmapped_primers:
+    summary: filter_unmapped_primers
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - filter_unmapped_primers
+    depends_on:
+    - map_primers
+  primer_to_bed:
+    summary: primer_to_bed
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - primer_to_bed
+    depends_on:
+    - filter_unmapped_primers
+  build_primer_regions:
+    summary: build_primer_regions
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      root_target: all
+      until:
+      - build_primer_regions
+    depends_on:
+    - primer_to_bed
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__read-alignment-pangenome/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - build_primer_regions

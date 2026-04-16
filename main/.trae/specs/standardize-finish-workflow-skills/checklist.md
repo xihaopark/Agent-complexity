@@ -1,0 +1,9 @@
+- [ ] 已覆盖 `finish/` 下全部目标 workflow，并形成 step 盘点清单
+- [ ] 已为每个 workflow 的每个 step 给出“可沿用 / 需调整”的审核结论
+- [ ] 已定义统一的 step skill 标准，包括命名、说明、输入输出、依赖和调用约束
+- [ ] 已建立 workflow、step、skill 三者之间的映射关系
+- [ ] 已定义并执行一次 direct workflow run 的记录方案
+- [ ] 已定义并执行一次仅基于 workflow 输入输出与 skill 集的 agent orchestrated run
+- [ ] 已保存 direct run 与 agent run 的输出、日志、状态和失败信息
+- [ ] 已保存 agent 的可观察决策轨迹与实际 skill 调用序列
+- [ ] 已形成 direct run 与 agent orchestrated run 的统一对比结果

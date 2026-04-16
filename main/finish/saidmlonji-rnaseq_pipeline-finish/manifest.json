@@ -1,0 +1,107 @@
+{
+  "id": "saidmlonji-rnaseq_pipeline-finish",
+  "name": "saidmlonji rnaseq_pipeline finish",
+  "engine": "snakemake",
+  "entry_point": "run_workflow.py",
+  "description": "Manual finish workflow for saidmlonji RNA-seq pipeline split across its documented R scripts.",
+  "version": "0.1",
+  "aliases": [
+    "saidmlonji-rnaseq_pipeline"
+  ],
+  "tags": [
+    "finish",
+    "manual",
+    "candidate",
+    "r-workflow"
+  ],
+  "url": "https://github.com/saidmlonji/rnaseq_pipeline",
+  "know_how": "workflow/agent-steps.md",
+  "know_how_files": [
+    "workflow/agent-steps.md"
+  ],
+  "discovery": {
+    "kind": "finish_workflow",
+    "family": "candidate",
+    "aliases": [
+      "saidmlonji-rnaseq_pipeline"
+    ],
+    "retained_steps": [
+      "alignment_qc",
+      "gene_counting",
+      "deseq2_analysis"
+    ],
+    "supports_partial_run": true,
+    "runner": "python3 run_workflow.py --cores 8",
+    "standard_step_skills": false,
+    "generated_by": "tools/manual_finishify_specials.py",
+    "split_mode": "manual-special",
+    "source_repo": "saidmlonji__rnaseq_pipeline"
+  },
+  "input_hints": [],
+  "output_hints": [
+    "results/finish/*.done"
+  ],
+  "steps": [
+    {
+      "id": "alignment_qc",
+      "name": "Alignment QC",
+      "targets": [
+        "alignment_qc"
+      ],
+      "params": {
+        "snakefile": "steps/alignment_qc.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/alignment_qc.done"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "gene_counting",
+      "name": "Gene Counting",
+      "targets": [
+        "gene_counting"
+      ],
+      "params": {
+        "snakefile": "steps/gene_counting.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/gene_counting.done"
+      ],
+      "depends_on": [
+        "alignment_qc"
+      ]
+    },
+    {
+      "id": "deseq2_analysis",
+      "name": "DESeq2 Analysis",
+      "targets": [
+        "deseq2_analysis"
+      ],
+      "params": {
+        "snakefile": "steps/deseq2_analysis.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/deseq2_analysis.done"
+      ],
+      "depends_on": [
+        "gene_counting"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+samples: config/samples.tsv
+
+units: config/units.tsv
+
+ref:
+  # Number of chromosomes to consider for calling.
+  # The first n entries of the FASTA will be considered.
+  n_chromosomes: 25
+  # Ensembl species name
+  species: homo_sapiens
+  # Ensembl release
+  release: 115
+  # Genome build
+  build: GRCh38
+  pangenome:
+    # if active, reads will be aligned to given pangenome instead of to the linear reference genome
+    # Important: this is only supported for homo_sapiens so far
+    activate: true
+    # Pangenome source and version: Only 'hprc' and v1.1 are supported for now.
+    # see https://github.com/human-pangenomics/hpp_pangenome_resources/?tab=readme-ov-file#minigraph-cactus for details
+    source: hprc
+    version: v1.1
+    # Optional: override pangenome download base URL (defaults to upstream S3 root if not set)
+    # base_url: "https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus"
+
+# Trimming will be applied if global primer sequences are
+# provided or primer panels are set in samplesheet
+primers:
+  trimming:
+    # path to fasta files containing primer sequences
+    primers_fa1: ""
+    primers_fa2: ""
+    # optional primer file allowing to define primers per sample
+    # overwrites primers_fa1 and primers_fa2
+    # the tsv file requires three fields: panel, fa1 and fa2 (optional)
+    tsv: "config/primers.tsv"
+    # Mean insert size between the outer primer ends.
+    # If 0 or not set the bowtie default value of 250 will be used
+    library_length: 0
+
+# If calc_consensus_reads is activated duplicates will be merged
+remove_duplicates:
+  activate: true
+
+# Experimental: calculate consensus reads from PCR duplicates.
+# if 'remove_duplicates' is deactivate only overlapping pairs will be merged
+calc_consensus_reads:
+  activate: false
+
+params:
+  fastp: ""
+  picard:
+    MarkDuplicates: "--VALIDATION_STRINGENCY LENIENT"
+  gatk:
+    BaseRecalibrator: ""
+    applyBQSR: ""
+  get_sra:
+    extra: ""

@@ -1,0 +1,17 @@
+project_name: bcg
+project_description: bcg
+username: dbarreca
+email: dbarreca@cemm.oeaw.ac.at
+metadata:
+  output_dir: ../data/pipeline_out
+  results_subdir: results
+  submission_subdir: jobs
+  pipeline_interfaces: ./pipeline_interface.yaml
+  sample_annotation: ../data/pipeline_out/pipeline_annotation.csv
+  sample_subannotation: ../data/pipeline_out/pipeline_subannotation.csv
+
+data_sources:
+  bcg_sample: ../data/raw/{run}_{flowcell}_{lane}#{demux_sample}.bam
+
+genomes:
+  human: hg38

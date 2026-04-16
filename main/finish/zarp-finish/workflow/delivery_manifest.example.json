@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "workflow_id": "zarp",
+  "step_id": "step-9-deliver",
+  "manifest_type": "delivery_manifest",
+  "status": "completed",
+  "summary": {
+    "objective": "Collect workflow outputs into the final delivery inventory",
+    "execution_scope": "report_family",
+    "fanout_key": "sample",
+    "notes": [
+      "Finish target defines the mandatory output set",
+      "Delivery combines alignment, quantification, QC, and report artifacts"
+    ]
+  },
+  "subjects": [
+    {
+      "id": "finish",
+      "type": "report_family",
+      "status": "completed",
+      "metadata": {
+        "multiqc_enabled": true
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "multiqc_report",
+      "kind": "report",
+      "path": "output/multiqc_report.html",
+      "status": "verified",
+      "owner": "finish"
+    },
+    {
+      "name": "bigwig",
+      "kind": "result",
+      "path": "output/sample_1/sample_1.bigWig",
+      "status": "verified",
+      "owner": "finish"
+    }
+  ],
+  "validations": [
+    {
+      "name": "finish_target_complete",
+      "passed": true,
+      "details": "All required finish artifacts are present"
+    }
+  ],
+  "errors": []
+}

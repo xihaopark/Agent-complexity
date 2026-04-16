@@ -1,0 +1,46 @@
+from snakemake.utils import min_version
+
+min_version("9.1.0")
+
+
+# load configuration
+# -----------------------------------------------------
+configfile: "config/config.yaml"
+
+
+inputflags:
+    access.sequential,
+
+
+# Allow users to fix the underlying OS via singularity.
+container: "docker://continuumio/miniconda3"
+
+
+# load rules
+# -----------------------------------------------------
+include: "rules/common.smk"
+include: "rules/utils.smk"
+include: "rules/ref.smk"
+include: "rules/trimming.smk"
+include: "rules/mapping.smk"
+include: "rules/primers.smk"
+
+
+# optional messages, log and error handling
+# -----------------------------------------------------
+onstart:
+    print("\n--- Analysis started ---\n")
+
+
+onsuccess:
+    print("\n--- Workflow finished! ---\n")
+
+
+onerror:
+    print("\n--- An error occurred! ---\n")
+
+
+rule all:
+    input:
+        expand("results/recal/{sample}.bam", sample=list(samples.index)),
+    default_target: True

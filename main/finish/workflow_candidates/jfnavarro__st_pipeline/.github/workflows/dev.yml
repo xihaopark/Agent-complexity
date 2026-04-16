@@ -1,0 +1,65 @@
+name: CI
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events
+  push:
+    branches:
+    - '*'
+  pull_request:
+    branches:
+    - '*'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# contains 3 jobs: test, publish_dev_build and notification
+jobs:
+  test:
+    # The type of runner that the job will run on
+    strategy:
+      matrix:
+        python-versions: ['3.10', '3.11', '3.12']
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-versions }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install poetry
+
+    - name: Install samtools
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y samtools
+
+    - name: Install STAR (Precompiled Binary)
+      run: |
+        STAR_VERSION="2.7.11a"
+        wget -q https://github.com/alexdobin/STAR/releases/download/${STAR_VERSION}/STAR_${STAR_VERSION}.zip
+        unzip STAR_${STAR_VERSION}.zip
+        sudo mv STAR_${STAR_VERSION}/Linux_x86_64_static/STAR /usr/local/bin/
+
+    - name: Verify STAR and samtools installation
+      run: |
+        STAR --version
+        samtools --version
+
+    - name: Install project dependencies
+      run: |
+        poetry install -E dev
+
+    - name: test
+      run: |
+        poetry run pytest
+
+    - name: linting and type checking
+      run: |
+        poetry run ruff check .

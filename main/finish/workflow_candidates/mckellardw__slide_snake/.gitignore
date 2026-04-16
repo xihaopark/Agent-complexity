@@ -1,0 +1,43 @@
+# Snakemake garbage
+.snakemake/*
+
+# Slurm garbage
+.slurm*
+
+# VScode garbage
+.vscode/*
+
+# Big data files
+# **.fastq
+# **.fq
+# **.fastq.gz
+# **.fq.gz
+# **.bw
+# **.bam
+# **.fa
+# **.fa.gz
+
+# Misc.
+.~lock.*
+
+# R/jupyter session files
+.RData
+.Rhistory
+
+# unwanted script files
+notebooks/__pycache__/**
+rules/*/not_used/*
+
+scripts/*/not_used/*
+scripts/py/__pycache__/**
+scripts/**.so
+
+# slide_snake
+figures/**
+sandbox/**
+out/**
+out*/**
+tmp*/**
+temp*/**
+
+snake*.log

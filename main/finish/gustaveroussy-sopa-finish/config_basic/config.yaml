@@ -1,0 +1,320 @@
+workflow_id: gustaveroussy-sopa-finish
+source_cores: 8
+steps:
+  to_spatialdata:
+    summary: to_spatialdata
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - to_spatialdata
+  tissue_segmentation:
+    summary: tissue_segmentation
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - tissue_segmentation
+    depends_on:
+    - to_spatialdata
+  patchify_image:
+    summary: patchify_image
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - patchify_image
+    depends_on:
+    - tissue_segmentation
+  patchify_transcripts:
+    summary: patchify_transcripts
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - patchify_transcripts
+    depends_on:
+    - patchify_image
+  aggregate:
+    summary: aggregate
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - aggregate
+    depends_on:
+    - patchify_transcripts
+  annotate:
+    summary: annotate
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - annotate
+    depends_on:
+    - aggregate
+  scanpy_preprocess:
+    summary: scanpy_preprocess
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - scanpy_preprocess
+    depends_on:
+    - annotate
+  explorer_raw:
+    summary: explorer_raw
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - explorer_raw
+    depends_on:
+    - scanpy_preprocess
+  explorer:
+    summary: explorer
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - explorer
+    depends_on:
+    - explorer_raw
+  report:
+    summary: report
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - report
+    depends_on:
+    - explorer
+  patch_segmentation_cellpose:
+    summary: patch_segmentation_cellpose
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - patch_segmentation_cellpose
+    depends_on:
+    - report
+  resolve_cellpose:
+    summary: resolve_cellpose
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - resolve_cellpose
+    depends_on:
+    - patch_segmentation_cellpose
+  patch_segmentation_comseg:
+    summary: patch_segmentation_comseg
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - patch_segmentation_comseg
+    depends_on:
+    - resolve_cellpose
+  resolve_comseg:
+    summary: resolve_comseg
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - resolve_comseg
+    depends_on:
+    - patch_segmentation_comseg
+  patch_segmentation_baysor:
+    summary: patch_segmentation_baysor
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - patch_segmentation_baysor
+    depends_on:
+    - resolve_comseg
+  resolve_baysor:
+    summary: resolve_baysor
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - resolve_baysor
+    depends_on:
+    - patch_segmentation_baysor
+  patch_segmentation_proseg:
+    summary: patch_segmentation_proseg
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - patch_segmentation_proseg
+    depends_on:
+    - resolve_baysor
+  patch_segmentation_stardist:
+    summary: patch_segmentation_stardist
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - patch_segmentation_stardist
+    depends_on:
+    - patch_segmentation_proseg
+  resolve_stardist:
+    summary: resolve_stardist
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      root_target: all
+      until:
+      - resolve_stardist
+    depends_on:
+    - patch_segmentation_stardist
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/gustaveroussy__sopa/workflow/Snakefile
+      directory: ../workflow_candidates/gustaveroussy__sopa
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/gustaveroussy__sopa/.github/actions/setup-python-env/action.yaml
+      targets:
+      - all
+    depends_on:
+    - resolve_stardist

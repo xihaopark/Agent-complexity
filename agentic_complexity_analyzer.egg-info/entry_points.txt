@@ -1,3 +1,0 @@
-[console_scripts]
-api-server = apps.api.main:run
-worker-runner = workers.sandbox_runner.main:run_worker

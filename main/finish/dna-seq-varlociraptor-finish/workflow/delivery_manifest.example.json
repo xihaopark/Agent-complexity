@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "workflow_id": "dna-seq-varlociraptor",
+  "step_id": "step-10-build-deliverables",
+  "manifest_type": "delivery_manifest",
+  "status": "completed",
+  "summary": {
+    "objective": "Generate enabled user-facing outputs from final calls",
+    "execution_scope": "report_family",
+    "fanout_key": "report_family",
+    "notes": [
+      "Reports built only after final calls were verified",
+      "Optional report families recorded explicitly"
+    ]
+  },
+  "subjects": [
+    {
+      "id": "tables",
+      "type": "report_family",
+      "status": "completed",
+      "metadata": {
+        "enabled": true
+      }
+    },
+    {
+      "id": "mutational_signatures",
+      "type": "report_family",
+      "status": "completed",
+      "metadata": {
+        "enabled": true
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "final_calls_bcf",
+      "kind": "variants",
+      "path": "results/final/tumor_normal.bcf",
+      "status": "verified",
+      "owner": "tumor_normal"
+    },
+    {
+      "name": "datavzrd_report",
+      "kind": "report",
+      "path": "results/reports/datavzrd/index.html",
+      "status": "verified",
+      "owner": "tables"
+    },
+    {
+      "name": "maf_table",
+      "kind": "table",
+      "path": "results/maf/tumor_normal.maf.tsv",
+      "status": "verified",
+      "owner": "tables"
+    }
+  ],
+  "validations": [
+    {
+      "name": "required_report_families_present",
+      "passed": true,
+      "details": "All enabled report families are listed in the delivery manifest"
+    },
+    {
+      "name": "delivery_artifacts_exist",
+      "passed": true,
+      "details": "Final BCF, reports, and tables were verified on disk"
+    }
+  ],
+  "errors": []
+}

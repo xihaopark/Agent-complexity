@@ -1,0 +1,458 @@
+# ASTRO
+The usage instructions for the ASTRO Python package are as follows. Our code has also been made available on Zenodo (https://zenodo.org/records/17913760; doi: 10.5281/zenodo.17913760).
+
+This method has been published in Bioinformatics (https://doi.org/10.1093/bioinformatics/btaf688).
+
+# 1. Functional Overview
+Demultiplexing: Adapter trimming, UMI, and Barcode splitting.  
+Genome Mapping: Uses STAR to align reads to the genome and optionally removes duplicate reads using either samtools markdup or a custom deduplication module.  
+Feature Counting: Calculates gene expression from alignment results based on GTF annotation files and outputs an expression matrix.  
+Feature Filtering: Filters out low-quality or abnormal genes/barcodes based on user-defined thresholds.  
+
+# 2. Installation Guide
+
+**External dependencies**: ASTRO requires the following external tools to function - STAR, bedtools, samtools, and cutadapt. If you have Python 3.6+ installed locally, follow these steps to set it up.
+You can install from source repository or compressed package:
+
+## 2.1 Clone the repository:
+```bash
+git clone git@github.com:gersteinlab/ASTRO.git
+```
+
+## 2.2 Enter the directory named "python":
+```bash
+cd python
+```
+
+## 2.3 Install dependencies and build/install:
+```bash
+pip install .
+```
+
+## 2.4 Check if the installation was successful:
+If you see the help documentation, the installation is complete:
+```bash
+ASTRO --help
+```
+
+## Alternative: Docker Installation
+
+The Docker image is hosted on Docker Hub and can be downloaded using the following command:
+
+```bash
+docker pull yc774/astro:v1.0
+```
+
+## Alternative: Apptainer/Singularity
+You can also run ASTRO using Apptainer (formerly Singularity). Download the pre-built `.sif` container directly from Zenodo (`https://doi.org/10.5281/zenodo.17329668`) or Gerstein lab website (`http://archive2.gersteinlab.org/proj/ASTRO/`).
+
+# 3.Parameter Description
+The ASTRO script accepts parameters via the command line or a JSON file. The main parameters are listed below. Certain parameters are only required for specific steps. If these steps are executed (--steps control) but their parameters are missing, the program will perform a runtime check and exit with an error.
+<table>
+  <thead>
+    <tr>
+      <th>Parameter Name</th>
+      <th>Required</th>
+      <th>Relevant Steps</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>barcode_read (R1)</td>
+      <td>Yes</td>
+      <td>Step 1</td>
+      <td>None</td>
+      <td>FASTQ file containing spatial barcode and UMI information</td>
+    </tr>
+    <tr>
+      <td>transcript_read (R2)</td>
+      <td>Yes</td>
+      <td>Step 1</td>
+      <td>None</td>
+      <td>FASTQ file containing main RNA sequences</td>
+    </tr>
+    <tr>
+      <td>barcode_file</td>
+      <td>Yes</td>
+      <td>Step 1</td>
+      <td>None</td>
+      <td>Text file with barcode information; must have at least three columns: barcode, tX, tY</td>
+    </tr>
+    <tr>
+      <td>outputfolder</td>
+      <td>Yes</td>
+      <td>All Steps</td>
+      <td>-</td>
+      <td>Output directory for results</td>
+    </tr>
+    <tr>
+      <td>starref</td>
+      <td>Yes</td>
+      <td>Step 2</td>
+      <td>-</td>
+      <td>STAR genome index directory</td>
+    </tr>
+    <tr>
+      <td>gtffile</td>
+      <td>Yes</td>
+      <td>Steps 2,3</td>
+      <td>None</td>
+      <td>Path to the GTF file</td>
+    </tr>
+    <tr>
+      <td>PrimerStructure</td>
+      <td>Yes</td>
+      <td>Step 1</td>
+      <td>-</td>
+      <td>Primer structure for transcript_read (R2), e.g. <code>AAGCAGTGGTATCAACGCAGAGTGAATGGG_b_A&#123;10&#125;N&#123;150&#125;</code></td>
+    </tr>
+    <tr>
+      <td>StructureUMI</td>
+      <td>Yes</td>
+      <td>Step 1</td>
+      <td>-</td>
+      <td>UMI structure definition, e.g. <code>CAAGCGTTGGCTTCTCGCATCT_10</code></td>
+    </tr>
+    <tr>
+      <td>StructureBarcode</td>
+      <td>Yes</td>
+      <td>Step 1</td>
+      <td>-</td>
+      <td> When manually_set_barcode_details is false, you must specify the positions of all spatial barcodes in order and join them with colon ":" in the option. You can describe each position in two ways:<br>
+      1. Barcode before/after a linker: 8_ATCCACGTGCTT or AACCAAGATCG_8 means the barcode is 8 bp before or after the linker, respectively. 
+      2. Barcode between two linkers: GAGGCCAAGATCG_8_GTGGCCGATGTTTCGC means the barcode is 8 bp long and lies between the two linkers. (Here, 8bp is the expected barcode length.).<br>
+      When manually_set_barcode_details is true, you still specify the positions for ASTRO to search spatial barcodes in order and join them with colon ":".<br>
+      Then, 1. Barcode before/after a linker (search window), 20_ATCCACGTGCTT or AACCAAGATCG_20 indicates ASTRO will search within a 20-bp window before or after the linker, respectively. (The value 20 is not the expected barcode length.) 
+       2. Barcode between two linkers (no explicit length): TTGAGAGGCCAAGATC...GTGGCCGATGTTTC omits the length; ASTRO will search for the barcode between the two linkers.
+      </td>
+    </tr>
+    <tr>
+      <td>threadnum</td>
+      <td>No</td>
+      <td></td>
+      <td>16</td>
+      <td>Number of threads for parallel tasks like cutadapt, STAR, samtools, etc.</td>
+    </tr>
+    <tr>
+      <td>options</td>
+      <td>No</td>
+      <td></td>
+      <td>""</td>
+      <td>
+        Enables extra modes, including:<br>
+        H: Hard mode<br>
+        M: Use samtools markup for deduplication
+      </td>
+    </tr>
+    <tr>
+      <td>steps</td>
+      <td>No</td>
+      <td></td>
+      <td>7</td>
+      <td>
+        Specifies steps to execute; uses bitwise integers:<br>
+        1: Step 1, Demultiplexing<br>
+        2: Step 2, Genome Mapping (Interm. files req: combine.fq)<br>
+        4: Step 3, Feature Counting and Filtering (Interm. files req: STAR/tempfiltered.bam)<br>
+        For example, 7 = 1+2+4
+      </td>
+    </tr>
+    <tr>
+      <td>STARparamfile4genome</td>
+      <td>No</td>
+      <td></td>
+      <td>NA</td>
+      <td>File containing extra STAR parameters; specify the file path for custom STAR parameters</td>
+    </tr>
+    <tr>
+      <td>qualityfilter</td>
+      <td>No</td>
+      <td></td>
+      <td>"25:0.75"</td>
+      <td>Quality filter threshold; default "25:0.75" means filtering if AS &le; 25 and &le; 0.75 of gene length. Set to 0:0 or NA to disable</td>
+    </tr>
+    <tr>
+      <td>addlowqreads</td>
+      <td>No</td>
+      <td></td>
+      <td>False</td>
+      <td>Whether to remove genes/barcodes with abnormal row/column variance. Set to False to skip</td>
+    </tr>
+    <tr>
+      <td>filterlogratio</td>
+      <td>No</td>
+      <td></td>
+      <td>2</td>
+      <td>Filters based on log2 variance differences; default is log2 &gt; 2 (4x difference) for removal</td>
+    </tr>
+    <tr>
+      <td>workflow</td>
+      <td>No</td>
+      <td></td>
+      <td>new</td>
+      <td>
+      Specifies which pipeline to execute. If set to
+      <code>"old"</code>, the older workflow will run.
+      If not specified or left as default, it will run the latest
+      workflow.
+      </td>
+    </tr>
+    <tr>
+      <td>barcodemode</td>
+      <td>No</td>
+      <td>Step 1</td>
+      <td>"spatial"</td>
+      <td>
+      When set to "singlecell", enables single-cell mode. If kept as "spatial", the pipeline runs in the conventional spatial mode.
+      </td>
+    </tr>
+    <tr>
+      <td>barcode_threshold</td>
+      <td>No</td>
+      <td>Step 1</td>
+      <td>100</td>
+      <td>
+      In single-cell mode, when extracting barcodes automatically, any barcode whose occurrence is below this threshold will be discarded.
+      </td>
+    </tr>
+    <tr>
+      <td>barcodelength</td>
+      <td>No</td>
+      <td>Step 1</td>
+      <td>0</td>
+      <td>
+      In single-cell mode, if greater than 0, only barcodes of length barcodelength will be retained. If set to 0, no length filtering is applied.
+      </td>
+    </tr>
+    <tr>
+      <td>barcodeposition</td>
+      <td>No</td>
+      <td>Step 1</td>
+      <td>"NA"</td>
+      <td>
+        Specifies the position for extracting barcodes from R2 barcode reads (index_fq after singleCutadapt processing). Two formats:<br/>
+        1) <code>&lt;start&gt;_&lt;len&gt;b</code>: Extract from the 5' end, where start is the starting position (1-based) and len is the length.<br/>
+        &nbsp;&nbsp;&nbsp;Example: <code>5_24b</code> extracts 24 bp starting from position 5 (positions 5-28).<br/>
+        2) <code>b&lt;len&gt;</code>: Extract the last len bases from the 3' end.<br/>
+        &nbsp;&nbsp;&nbsp;Example: <code>b16</code> extracts the last 16 bp.<br/>
+        Note: The <code>b&lt;len1&gt;_&lt;len2&gt;</code> format has limitations and is only valid when len2 &lt; len1. It extracts len2 bases from the len1-th position from the 3' end to the (len1-len2)-th position from the end.<br/>
+        When set to <code>"NA"</code>, if <code>manually_set_barcode_details=false</code> (default), the program will automatically infer this parameter based on <code>StructureBarcode</code> (via the <code>auto_set_barcodes()</code> function).
+      </td>
+    </tr>
+    <tr>
+      <td>barcode_file</td>
+      <td>No (for single-cell mode)<br/>Yes (for spatial mode)</td>
+      <td>Step 1</td>
+      <td>None or "notavailable"</td>
+      <td>
+      In spatial mode, this parameter must be provided by the user and must include barcode coordinate information. In single-cell mode, if a ready-made file is not available, set this to "notavailable", so ASTRO can generate a three-column barcode file automatically.
+      </td>
+    </tr>
+    <tr>
+      <td>manually_set_barcode_details</td>
+      <td>No</td>
+      <td>Step 1</td>
+      <td>False</td>
+      <td>
+      If false, ASTRO will automatically set the barcode structures, and only needs neccssary input for the barcode information. If true, ASTRO needs details of how to extract barcodes. See details in StructureBarcode.
+      </td>
+    </tr>
+    <tr>
+      <td>genes2check</td>
+      <td>No</td>
+      <td>Step 3</td>
+      <td>False</td>
+      <td>
+      If provided (a text file listing suspect genes, e.g. piRNAs/miRNAs), ASTRO runs an advanced check before feature counting. Genes failing this check are removed from the GTF annotation, effectively excluding them from the final expression matrix.
+      </td>
+    </tr>
+    <tr>
+      <td>not_organize_result</td>
+      <td>No</td>
+      <td>Step 3</td>
+      <td>False</td>
+      <td>
+      ASTRO automatically delete temp files and compress intermediate files, this option will disable this step and preserve intermediate and temp files without organization. 
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+## 3.1 Parameter Priority  
+ASTRO can receive parameters from the command line or a JSON file. JSON parameters can be specified as positional arguments (json_file_path1) or via --json_file_path. Priority is as follows:
+
+#### 1st: Command Line Parameters
+Overrides JSON values if explicitly provided.
+
+**Example:**
+```bash
+ASTRO --R1 R1.fq --R2 R2.fq \
+--barcode_file spatial_barcodes.txt \
+--gtffile hsa.no_piRNA.gtf --starref StarIndex/ \
+--PrimerStructure AAGCAGTGGTATCAACGCAGAGTGAATGGG_b_A{10}N{150} \
+--StructureUMI CAAGCGTTGGCTTCTCGCATCT_10 \
+--StructureBarcode 20_ATCCACGTGCTTGAGAGGCCAGAGCATTCG:ATCCACGTGCTTGAGAGGCCAGAGCATTCG...GTGGCCGATGTTTCGCATCGGCGTACGACT \
+--threadnum 16 \
+--steps 7 \
+--outputfolder output/
+```
+
+To enable hard mode (H) and samtools markdup deduplication (M), add:
+```bash
+--options HM
+```
+
+#### 2nd: JSON File
+- **--json_file_path**: If specified, the program reads this file first.
+  ```bash
+  ASTRO --json_file_path myparams.json
+  ```
+- **json_file_path1**: If --json_file_path is not provided, the program reads the positional JSON file.
+  ```bash
+  ASTRO parameter.json
+  ```
+
+#### 3rd: Default Values
+Used if neither command-line parameters nor JSON specify the value.
+
+## 3.2 Key Modes Explanation  
+### 3.2.1 hard mode (H)  
+If options include H, it means that when a single read aligns to multiple genes, it will no longer only take the first gene but will record all aligned genes as a multi-gene form, separated by a hyphen.  
+### 3.2.2 M decides which way is used for remove depulicate reads.
+If options include M, samtools markdup will be used to mark and remove duplicate reads.  If M is not included, the built-in ASTRO deduplication logic will be used: This logic relies on UMIs and barcodes to determine duplicates and uses alignment score for filtering.
+
+
+# 4.A Simple Example
+
+## 4.1 Assume the following files are prepared:  
+- **example.barcodeRead.fastq.gz, example.transRead.fastq.gz**: Input sequencing reads
+- **spatial_barcodes.txt**: Records coordinates and barcode sequences.  
+- **mouseIndex/**: a STAR genome indexes for mouse genome.
+- **mmu.mod.gtf**: Gene annotation file
+
+## 4.2 Create the following JSON file (example/test.json):  
+{\
+    "barcode_read": "example.barcodeRead.fastq.gz", \
+    "transcript_read": "example.transRead.fastq.gz", \
+    "barcode_file": "spatial_barcodes.txt", \
+    "PrimerStructure": "AAGCAGTGGTATCAACGCAGAGTGAATGGG_b_A{10}N{150}",\
+    "StructureUMI": "CAAGCGTTGGCTTCTCGCATCT_10", \
+    "StructureBarcode": "20_ATCCACGTGCTTGAGAGGCCAGAGCATTCG:ATCCACGTGCTTGAGAGGCCAGAGCATTCG...GTGGCCGATGTTTCGCATCGGCGTACGACT",\
+    "threadnum": 1, \
+    "steps": 7, \
+    "outputfolder": "output/", \
+    "gtffile": "mmu.mod.gtf", \
+    "starref": "mouseIndex/", \
+    "options": "H", \
+    "barcodeposition": "b16",\
+    "barcodelengthrange": "15_40" \
+}
+```
+
+## 4.3 Run the command:
+```bash
+ASTRO test.json
+```
+
+# 5. Single-Cell Mode
+
+In the conventional spatial transcriptomics (spatial) mode, ASTRO requires a `barcode_file` that contains at least three columns (barcode sequence, X coordinate, and Y coordinate).
+
+However, in single-cell mode (`barcodemode="singlecell"`), if the user does not provide an existing barcode file (or sets it to `"notavailable"`), ASTRO will, during **Step 1 (Demultiplexing)**, automatically enumerate all possible barcodes from R2 (which typically contains cell barcode information) based on **`structurebarcode`**, and then filter them according to **`barcode_threshold`** (the minimum count of occurrences required for each barcode) and **`barcodelength`** (if greater than 0, only barcodes of that specific length are retained). It then generates an “auto-generated” three-column barcode file (in the form of `barcode, i, i`) for subsequent steps.
+
+In the feature counting output, ASTRO will replace the temporary column names (`ixi`) with the actual single-cell barcodes, allowing these barcodes to be used directly as column names in the expression matrix. This mode is particularly suitable for single-cell sequencing scenarios where the precise barcodes are not known in advance, or when they need to be automatically extracted and filtered from raw sequence data.
+
+If a barcode file is provided in single-cell mode, ASTRO will treat that file as a “whitelist”—after automatically enumerating barcodes, it retains only those that are both present in the whitelist and meet the threshold/length requirements. A three-column barcode file is then generated for the downstream workflow.
+
+In single-cell mode, Step 4 (Feature Filtering) by default only creates the basic expression matrix and does not perform further row/column variance filtering. If needed, you can run that manually afterward or configure the relevant parameters.
+
+# 6. Some further explantation
+## 6.1 Symbol meanings in StructureBarcode / StructureUMI
+
+A colon (:) means concatenating multiple segments. 
+
+“20_CGTTGGCTTCT”Means that, on the 3' end, we recognize the fixed adapter CGTTGGCTTCT.Then we take the 20 nucleotides to the left of that fixed sequence.In other words, find CGTTGGCTTCT at the read’s 3' end and extract the preceding 20 bases.
+
+“CGTTGGCTTCT_20”Means that, on the 5' end, we recognize the fixed adapter CGTTGGCTTCT.Then we take the 20 nucleotides to the right of that fixed sequence.In other words, find CGTTGGCTTCT at the read’s 5' end and keep the next 20 bases.
+
+“TTCTCGCATCT...ATCCACGTGCTTGA”Means we take what lies between two stable (known) sequences.Here, the left boundary is TTCTCGCATCT and the right boundary is ATCCACGTGCTTGA, so we extract whatever is in between them.
+
+## 6.2 Two ways to write (or “point to”) barcode/UMI locations in R2
+
+#### Method A: Use explicit numeric positions
+
+When you already know the barcode is strictly located at positions (23–30, 61–68, 99–106) and the UMI is at (137–146), you can specify:
+
+"StructureBarcode": "22_8:60_8:98_8"
+
+"StructureUMI": "136_10"
+
+For 22_8, it means: skip the first 22 bases, then keep the next 8 bases (covering R2 positions 23–30).
+For 60_8, it means: skip the first 60 bases, then keep the next 8 (positions 61–68).
+For 98_8, it means skip the first 98 bases, keep the next 8 (positions 99–106).
+
+Similarly, 136_10 means skip 136 bases, then keep the next 10 (positions 137–146) for the UMI.
+
+Caution: If the read does not strictly match these exact positions (for instance, if some reads have shorter length or shifted inserts), then using hard-coded positions can cause errors or incorrect trimming.
+
+#### Method B: Rely on stable flanking sequences
+
+In many protocols, the positions can shift a bit, but each barcode or UMI region is still bounded by stable/fixed adapter sequences. In that scenario, you can specify the left and right flanking adapters that sandwich the barcode or UMI.
+
+For example, assume we know the read has the following layout of R2 (showing only some parts for illustration):
+
+```
+XX AGCGTTGGCTTCTCGCATCT BBBBBBBB ATCCACGTGCTTGAGCGCGCTGCATACTTG BBBBBBBB CCCATGATCGTCCGAAGGCCAGAGCATTCG BBBBBBBB GTGGCCGATGTTTCGCATCGGCGTACGACT UUUUUUUUUU XXXXX
+```
+
+Where:
+- **X** stands for arbitrary nucleotides (non-barcode)
+- **B** is the actual barcode
+- **U** stands for the UMI region
+- The **bold segments** are stable, known sequences that mark the boundaries before and after each barcode/UMI
+
+By observation:
+- The segment at positions 23–30 is bounded by AGCGTTGGCTTCTCGCATCT (left) and ATCCACGTGCTTGAGCGCGCTGCATACTTG (right). The 8 bp sandwiched between these two adapters is the barcode.
+- Similarly, for positions 61–68, the stable adapters around that 8 bp region are ATCCACGTGCTTGAGCGCGCTGCATACTTG (left) and CCCATGATCGTCCGAAGGCCAGAGCATTCG (right).
+- For positions 99–106, the bounding adapters are CCCATGATCGTCCGAAGGCCAGAGCATTCG and GTGGCCGATGTTTCGCATCGGCGTACGACT.
+
+Hence, you can write:
+```
+"StructureBarcode": "AGCGTTGGCTTCTCGCATCT...ATCCACGTGCTTGAGCGCGCTGCATACTTG : ATCCACGTGCTTGAGCGCGCTGCATACTTG...CCCATGATCGTCCGAAGGCCAGAGCATTCG : CCCATGATCGTCCGAAGGCCAGAGCATTCG...GTGGCCGATGTTTCGCATCGGCGTACGACT"
+```
+
+(where each colon `:` indicates concatenating those three sub-barcodes in order).
+
+If the UMI is at positions 137–146, and it always follows the stable prefix GTGGCCGATGTTTCGCATCGGCGTACGACT, then you can define:
+
+```
+"StructureUMI": "GTGGCCGATGTTTCGCATCGGCGTACGACT_10"
+```
+
+meaning we look for that fixed adapter on the 5' end, and once found, we keep the next 10 bases as the UMI.
+
+This approach gives flexibility in cases where the read length or positions vary slightly, as long as the bounding sequences remain identifiable.
+
+## 6.3 pre-generated GTF annotation files
+
+ASTRO requires specialized GTF files for its operation. As the construction of these files can be complex, we have pre-generated GTF files for the human (GRCh38) and mouse (mm39) genomes to facilitate efficient analysis. The pre-built files are provided in the Built_GTFs/ directory.
+
+
+# 7. Genes2Check Advanced Filtering
+
+If your experiment includes some suspicious genes (for example, piRNA or miRNA), you can list their gene IDs or gene names in a text file (e.g., genes2check.txt) and specify this file in the ASTRO parameters using --genes2check genes2check.txt (or by adding "genes2check": "genes2check.txt" in the JSON). When running Step 4 (Feature Counting), ASTRO will call its built-in advanced detection logic (getvalidedgtf_parallel) to determine whether to discard these suspicious genes based on their over-enrichment in corresponding control regions. If anomalous enrichment is detected, those entries will be removed before formal counting, thereby reducing false positives and yielding a more accurate gene expression matrix.
+
+This feature relies on the BAM file (STAR/tempfiltered.bam) and its index (which will be created automatically if absent) generated in the previous step. It then checks each gene interval in a multithreaded manner. The detection algorithm uses statistical tests (such as Poisson tests), and if it concludes that a gene interval is significantly higher than the background, it deems the interval likely to be junk or a spurious mapping. You can customize the list of genes in genes2check.txt according to your needs (e.g., including lncRNA, miRNA, or piRNA).
+
+**Note**: The gene names (or IDs) in genes2check.txt should match the entries in the ninth column of your GTF file. 
+
+# 8. legecy bash version
+For previous users who want to continue using the bash version of ASTRO, we have put the old bash version in *bash* folder. However, the legcay bash version is deprecated and we strongly suggest to move to the python version.
+
+# 9. ASTRO across different technologies
+Although ASTRO was designed for spatial whole-transcriptome profiling of FFPE samples, it is a flexible pipeline that can be applied across multiple platforms and technologies. We have tried ASTRO on several datasets to demonstrate this compatibility. Scripts summarizing the usage of ASTRO on these datasets are provided in the compatibility/ folder.
+

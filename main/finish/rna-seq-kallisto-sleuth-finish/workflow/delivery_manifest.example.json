@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "workflow_id": "rna-seq-kallisto-sleuth",
+  "step_id": "step-9-build-delivery",
+  "manifest_type": "delivery_manifest",
+  "status": "completed",
+  "summary": {
+    "objective": "Assemble final reports and delivery inventory",
+    "execution_scope": "report_family",
+    "fanout_key": "module",
+    "notes": [
+      "Final delivery merges core diffexp and optional module outputs",
+      "Meta-comparison outputs are included only when enabled"
+    ]
+  },
+  "subjects": [
+    {
+      "id": "core_reports",
+      "type": "report_family",
+      "status": "completed",
+      "metadata": {
+        "meta_comparisons_enabled": false
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "datavzrd_report",
+      "kind": "report",
+      "path": "results/datavzrd/diffexp-model_X/index.html",
+      "status": "verified",
+      "owner": "core_reports"
+    },
+    {
+      "name": "diffexp_table",
+      "kind": "table",
+      "path": "results/diffexp/model_X/gene.tsv",
+      "status": "verified",
+      "owner": "core_reports"
+    }
+  ],
+  "validations": [
+    {
+      "name": "delivery_inventory_complete",
+      "passed": true,
+      "details": "Required reports, tables, and plots are present"
+    }
+  ],
+  "errors": []
+}

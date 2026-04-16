@@ -1,0 +1,741 @@
+[
+  {
+    "workflow_id": "akinyi-onyango-rna_seq_pipeline-finish",
+    "step_count": 8,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 0,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": []
+  },
+  {
+    "workflow_id": "riyadua-cervical-cancer-snakemake-workflow-finish",
+    "step_count": 3,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 0,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": []
+  },
+  {
+    "workflow_id": "chandanbfx-scrna-seq-seurat-workflow-finish",
+    "step_count": 10,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 1,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "dwheelerau-snakemake-rnaseq-counts-finish",
+    "step_count": 10,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 1,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "epigen-atacseq_pipeline-finish",
+    "step_count": 26,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 8,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "epigen-dea_limma-finish",
+    "step_count": 12,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 5,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "epigen-dea_seurat-finish",
+    "step_count": 10,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 5,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "epigen-enrichment_analysis-finish",
+    "step_count": 16,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 6,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "epigen-fetch_ngs-finish",
+    "step_count": 7,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 2,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "epigen-genome_tracks-finish",
+    "step_count": 12,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 4,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "epigen-mixscape_seurat-finish",
+    "step_count": 7,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 3,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "epigen-rnaseq_pipeline-finish",
+    "step_count": 26,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 8,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "epigen-scrnaseq_processing_seurat-finish",
+    "step_count": 15,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 3,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "epigen-spilterlize_integrate-finish",
+    "step_count": 14,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 6,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "epigen-unsupervised_analysis-finish",
+    "step_count": 27,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 8,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+    "step_count": 22,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 5,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "gustaveroussy-sopa-finish",
+    "step_count": 20,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 0,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": []
+  },
+  {
+    "workflow_id": "joncahn-epigeneticbutton-finish",
+    "step_count": 126,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 8,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "maxplanck-ie-snakepipes-finish",
+    "step_count": 39,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 28,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "mckellardw-slide_snake-finish",
+    "step_count": 146,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 31,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "semenko-serpent-methylation-pipeline-finish",
+    "step_count": 24,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 1,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "cellranger-count-finish",
+    "step_count": 4,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 3,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "cellranger-multi-finish",
+    "step_count": 14,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 3,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "chipseq-finish",
+    "step_count": 70,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 10,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "cite-seq-alevin-fry-seurat-finish",
+    "step_count": 18,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 4,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "cyrcular-calling-finish",
+    "step_count": 34,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 11,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "dna-seq-benchmark-finish",
+    "step_count": 68,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 7,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "dna-seq-neoantigen-prediction-finish",
+    "step_count": 79,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 12,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "dna-seq-short-read-circle-map-finish",
+    "step_count": 21,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 4,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "microsatellite-instability-detection-with-msisensor-pro-finish",
+    "step_count": 10,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 3,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "read-alignment-pangenome-finish",
+    "step_count": 38,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 11,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "rna-longseq-de-isoform-finish",
+    "step_count": 43,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 14,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "rna-seq-kallisto-sleuth-finish",
+    "step_count": 74,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 22,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "rna-seq-star-deseq2-finish",
+    "step_count": 25,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 5,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "single-cell-drop-seq-finish",
+    "step_count": 70,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 13,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "single-cell-rna-seq-finish",
+    "step_count": 22,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 4,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "star-arriba-fusion-calling-finish",
+    "step_count": 8,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 3,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "sumone-compbio-dge-analysis-using-snakemake-r-finish",
+    "step_count": 4,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 3,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": [
+      "source workflow ships rule-level conda env YAMLs"
+    ]
+  },
+  {
+    "workflow_id": "lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+    "step_count": 9,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 0,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": []
+  },
+  {
+    "workflow_id": "lwang-genomics-ngs_pipeline_sn-chip_seq-finish",
+    "step_count": 8,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 0,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": []
+  },
+  {
+    "workflow_id": "lwang-genomics-ngs_pipeline_sn-atac_seq-finish",
+    "step_count": 10,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 0,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [],
+    "needs_python2_isolation": false,
+    "notes": []
+  },
+  {
+    "workflow_id": "gersteinlab-astro-finish",
+    "step_count": 3,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 0,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [
+      "renzo-wf-astro"
+    ],
+    "needs_python2_isolation": false,
+    "notes": [
+      "manual/special workflow uses dedicated command conda env isolation"
+    ]
+  },
+  {
+    "workflow_id": "jfnavarro-st_pipeline-finish",
+    "step_count": 2,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 0,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [
+      "renzo-wf-st-pipeline"
+    ],
+    "needs_python2_isolation": false,
+    "notes": [
+      "manual/special workflow uses dedicated command conda env isolation"
+    ]
+  },
+  {
+    "workflow_id": "gammon-bio-rnaseq_pipeline-finish",
+    "step_count": 4,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 0,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [
+      "renzo-wf-gammon-rnaseq"
+    ],
+    "needs_python2_isolation": false,
+    "notes": [
+      "manual/special workflow uses dedicated command conda env isolation"
+    ]
+  },
+  {
+    "workflow_id": "mohammedemamkhattabunipd-atacseq-finish",
+    "step_count": 2,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 0,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [
+      "renzo-wf-signac-atacseq"
+    ],
+    "needs_python2_isolation": false,
+    "notes": [
+      "manual/special workflow uses dedicated command conda env isolation"
+    ]
+  },
+  {
+    "workflow_id": "saidmlonji-rnaseq_pipeline-finish",
+    "step_count": 3,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 0,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [
+      "renzo-wf-saidmlonji-rnaseq"
+    ],
+    "needs_python2_isolation": false,
+    "notes": [
+      "manual/special workflow uses dedicated command conda env isolation"
+    ]
+  },
+  {
+    "workflow_id": "epigen-300bcg-atacseq_pipeline-finish",
+    "step_count": 10,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 0,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [
+      "renzo-wf-300bcg"
+    ],
+    "needs_python2_isolation": true,
+    "notes": [
+      "manual/special workflow uses dedicated command conda env isolation",
+      "requires Python 2 isolation due to legacy pypiper/StringIO stack"
+    ]
+  },
+  {
+    "workflow_id": "tgirke-systempiperdata-rnaseq-finish",
+    "step_count": 21,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 0,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [
+      "renzo-wf-systempiper"
+    ],
+    "needs_python2_isolation": false,
+    "notes": [
+      "manual/special workflow uses dedicated command conda env isolation"
+    ]
+  },
+  {
+    "workflow_id": "tgirke-systempiperdata-chipseq-finish",
+    "step_count": 21,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 0,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [
+      "renzo-wf-systempiper"
+    ],
+    "needs_python2_isolation": false,
+    "notes": [
+      "manual/special workflow uses dedicated command conda env isolation"
+    ]
+  },
+  {
+    "workflow_id": "tgirke-systempiperdata-riboseq-finish",
+    "step_count": 32,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 0,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [
+      "renzo-wf-systempiper"
+    ],
+    "needs_python2_isolation": false,
+    "notes": [
+      "manual/special workflow uses dedicated command conda env isolation"
+    ]
+  },
+  {
+    "workflow_id": "tgirke-systempiperdata-varseq-finish",
+    "step_count": 35,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 0,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [
+      "renzo-wf-systempiper"
+    ],
+    "needs_python2_isolation": false,
+    "notes": [
+      "manual/special workflow uses dedicated command conda env isolation"
+    ]
+  },
+  {
+    "workflow_id": "tgirke-systempiperdata-spscrna-finish",
+    "step_count": 18,
+    "uses_nested_snakemake": true,
+    "source_env_yaml_count": 0,
+    "shared_conda_envs": [
+      "snakemake"
+    ],
+    "command_conda_envs": [
+      "renzo-wf-systempiper"
+    ],
+    "needs_python2_isolation": false,
+    "notes": [
+      "manual/special workflow uses dedicated command conda env isolation"
+    ]
+  }
+]

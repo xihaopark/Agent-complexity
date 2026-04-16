@@ -1,0 +1,1088 @@
+workflow_id: dna-seq-benchmark-finish
+source_cores: 8
+steps:
+  eval:
+    summary: eval
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - eval
+  norm_vcf:
+    summary: norm_vcf
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - norm_vcf
+    depends_on:
+    - eval
+  index_vcf:
+    summary: index_vcf
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - index_vcf
+    depends_on:
+    - norm_vcf
+  index_bcf:
+    summary: index_bcf
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - index_bcf
+    depends_on:
+    - index_vcf
+  sort_vcf:
+    summary: sort_vcf
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - sort_vcf
+    depends_on:
+    - index_bcf
+  get_reads:
+    summary: get_reads
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_reads
+    depends_on:
+    - sort_vcf
+  get_archive:
+    summary: get_archive
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_archive
+    depends_on:
+    - get_reads
+  get_truth:
+    summary: get_truth
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_truth
+    depends_on:
+    - get_archive
+  rename_truth_contigs:
+    summary: rename_truth_contigs
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - rename_truth_contigs
+    depends_on:
+    - get_truth
+  merge_truthsets:
+    summary: merge_truthsets
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - merge_truthsets
+    depends_on:
+    - rename_truth_contigs
+  normalize_truth:
+    summary: normalize_truth
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - normalize_truth
+    depends_on:
+    - merge_truthsets
+  get_confidence_bed:
+    summary: get_confidence_bed
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_confidence_bed
+    depends_on:
+    - normalize_truth
+  get_liftover_track:
+    summary: get_liftover_track
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_liftover_track
+    depends_on:
+    - get_confidence_bed
+  get_target_bed:
+    summary: get_target_bed
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_target_bed
+    depends_on:
+    - get_liftover_track
+  postprocess_target_bed:
+    summary: postprocess_target_bed
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - postprocess_target_bed
+    depends_on:
+    - get_target_bed
+  get_reference:
+    summary: get_reference
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_reference
+    depends_on:
+    - postprocess_target_bed
+  get_liftover_chain:
+    summary: get_liftover_chain
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_liftover_chain
+    depends_on:
+    - get_reference
+  samtools_faidx:
+    summary: samtools_faidx
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - samtools_faidx
+    depends_on:
+    - get_liftover_chain
+  bwa_index:
+    summary: bwa_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - bwa_index
+    depends_on:
+    - samtools_faidx
+  bwa_mem:
+    summary: bwa_mem
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - bwa_mem
+    depends_on:
+    - bwa_index
+  mark_duplicates:
+    summary: mark_duplicates
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - mark_duplicates
+    depends_on:
+    - bwa_mem
+  samtools_index:
+    summary: samtools_index
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - samtools_index
+    depends_on:
+    - mark_duplicates
+  mosdepth:
+    summary: mosdepth
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - mosdepth
+    depends_on:
+    - samtools_index
+  stratify_regions:
+    summary: stratify_regions
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - stratify_regions
+    depends_on:
+    - mosdepth
+  get_reference_dict:
+    summary: get_reference_dict
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_reference_dict
+    depends_on:
+    - stratify_regions
+  merge_callsets:
+    summary: merge_callsets
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - merge_callsets
+    depends_on:
+    - get_reference_dict
+  liftover_callset:
+    summary: liftover_callset
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - liftover_callset
+    depends_on:
+    - merge_callsets
+  rename_contigs:
+    summary: rename_contigs
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - rename_contigs
+    depends_on:
+    - liftover_callset
+  add_format_field:
+    summary: add_format_field
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - add_format_field
+    depends_on:
+    - rename_contigs
+  remove_non_pass:
+    summary: remove_non_pass
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - remove_non_pass
+    depends_on:
+    - add_format_field
+  intersect_calls_with_target_regions:
+    summary: intersect_calls_with_target_regions
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - intersect_calls_with_target_regions
+    depends_on:
+    - remove_non_pass
+  restrict_to_reference_contigs:
+    summary: restrict_to_reference_contigs
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - restrict_to_reference_contigs
+    depends_on:
+    - intersect_calls_with_target_regions
+  normalize_calls:
+    summary: normalize_calls
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - normalize_calls
+    depends_on:
+    - restrict_to_reference_contigs
+  stratify_truth:
+    summary: stratify_truth
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - stratify_truth
+    depends_on:
+    - normalize_calls
+  stratify_results:
+    summary: stratify_results
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - stratify_results
+    depends_on:
+    - stratify_truth
+  index_stratified_truth:
+    summary: index_stratified_truth
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - index_stratified_truth
+    depends_on:
+    - stratify_results
+  stat_truth:
+    summary: stat_truth
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - stat_truth
+    depends_on:
+    - index_stratified_truth
+  generate_sdf:
+    summary: generate_sdf
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - generate_sdf
+    depends_on:
+    - stat_truth
+  benchmark_variants_germline:
+    summary: benchmark_variants_germline
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - benchmark_variants_germline
+    depends_on:
+    - generate_sdf
+  benchmark_variants_somatic:
+    summary: benchmark_variants_somatic
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - benchmark_variants_somatic
+    depends_on:
+    - benchmark_variants_germline
+  extract_fp_fn:
+    summary: extract_fp_fn
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - extract_fp_fn
+    depends_on:
+    - benchmark_variants_somatic
+  extract_fp_fn_tp:
+    summary: extract_fp_fn_tp
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - extract_fp_fn_tp
+    depends_on:
+    - extract_fp_fn
+  reformat_fp_fn_tp_tables:
+    summary: reformat_fp_fn_tp_tables
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - reformat_fp_fn_tp_tables
+    depends_on:
+    - extract_fp_fn_tp
+  calc_precision_recall:
+    summary: calc_precision_recall
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - calc_precision_recall
+    depends_on:
+    - reformat_fp_fn_tp_tables
+  collect_stratifications:
+    summary: collect_stratifications
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - collect_stratifications
+    depends_on:
+    - calc_precision_recall
+  collect_precision_recall:
+    summary: collect_precision_recall
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - collect_precision_recall
+    depends_on:
+    - collect_stratifications
+  report_precision_recall:
+    summary: report_precision_recall
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - report_precision_recall
+    depends_on:
+    - collect_precision_recall
+  collect_fp_fn:
+    summary: collect_fp_fn
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - collect_fp_fn
+    depends_on:
+    - report_precision_recall
+  collect_stratifications_fp_fn:
+    summary: collect_stratifications_fp_fn
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - collect_stratifications_fp_fn
+    depends_on:
+    - collect_fp_fn
+  collect_fp_fn_benchmark:
+    summary: collect_fp_fn_benchmark
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - collect_fp_fn_benchmark
+    depends_on:
+    - collect_stratifications_fp_fn
+  filter_shared_fn:
+    summary: filter_shared_fn
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - filter_shared_fn
+    depends_on:
+    - collect_fp_fn_benchmark
+  filter_unique:
+    summary: filter_unique
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - filter_unique
+    depends_on:
+    - filter_shared_fn
+  write_shared_fn_vcf:
+    summary: write_shared_fn_vcf
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - write_shared_fn_vcf
+    depends_on:
+    - filter_unique
+  write_unique_fn_vcf:
+    summary: write_unique_fn_vcf
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - write_unique_fn_vcf
+    depends_on:
+    - write_shared_fn_vcf
+  write_unique_fp_vcf:
+    summary: write_unique_fp_vcf
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - write_unique_fp_vcf
+    depends_on:
+    - write_unique_fn_vcf
+  report_fp_fn:
+    summary: report_fp_fn
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - report_fp_fn
+    depends_on:
+    - write_unique_fp_vcf
+  report_fp_fn_callset:
+    summary: report_fp_fn_callset
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - report_fp_fn_callset
+    depends_on:
+    - report_fp_fn
+  get_downsampled_vep_cache:
+    summary: get_downsampled_vep_cache
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_downsampled_vep_cache
+    depends_on:
+    - report_fp_fn_callset
+  get_vep_cache:
+    summary: get_vep_cache
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_vep_cache
+    depends_on:
+    - get_downsampled_vep_cache
+  get_vep_plugins:
+    summary: get_vep_plugins
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - get_vep_plugins
+    depends_on:
+    - get_vep_cache
+  download_revel:
+    summary: download_revel
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - download_revel
+    depends_on:
+    - get_vep_plugins
+  process_revel_scores:
+    summary: process_revel_scores
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - process_revel_scores
+    depends_on:
+    - download_revel
+  tabix_revel_scores:
+    summary: tabix_revel_scores
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - tabix_revel_scores
+    depends_on:
+    - process_revel_scores
+  annotate_shared_fn:
+    summary: annotate_shared_fn
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - annotate_shared_fn
+    depends_on:
+    - tabix_revel_scores
+  annotate_unique_fp_fn:
+    summary: annotate_unique_fp_fn
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - annotate_unique_fp_fn
+    depends_on:
+    - annotate_shared_fn
+  vembrane_table_shared_fn:
+    summary: vembrane_table_shared_fn
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - vembrane_table_shared_fn
+    depends_on:
+    - annotate_unique_fp_fn
+  vembrane_table_unique_fp_fn:
+    summary: vembrane_table_unique_fp_fn
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      root_target: all
+      until:
+      - vembrane_table_unique_fp_fn
+    depends_on:
+    - vembrane_table_shared_fn
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/workflow/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__dna-seq-benchmark/.test/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - vembrane_table_unique_fp_fn

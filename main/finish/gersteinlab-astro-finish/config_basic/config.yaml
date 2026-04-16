@@ -1,0 +1,28 @@
+workflow_id: gersteinlab-astro-finish
+source_cores: 8
+source_root: /lab_workspace/projects/Agent-complexity/main/finish/workflow_candidates/gersteinlab__ASTRO
+astro_config: '{workflow_dir}/config_basic/source_config.json'
+command_conda_env: renzo-wf-astro
+steps:
+  demultiplexing:
+    summary: ASTRO step 1
+    requires:
+    - config_basic/source_config.json
+    command: bash -lc 'cd {source_root} && PYTHONPATH={source_root}/python /root/miniconda3/bin/python3
+      -m ASTRO.ASTRO_run --json_file_path {astro_config} --steps 1'
+  genome_mapping:
+    summary: ASTRO step 2
+    requires:
+    - config_basic/source_config.json
+    depends_on:
+    - demultiplexing
+    command: bash -lc 'cd {source_root} && PYTHONPATH={source_root}/python /root/miniconda3/bin/python3
+      -m ASTRO.ASTRO_run --json_file_path {astro_config} --steps 2'
+  feature_counting:
+    summary: ASTRO step 3
+    requires:
+    - config_basic/source_config.json
+    depends_on:
+    - genome_mapping
+    command: bash -lc 'cd {source_root} && PYTHONPATH={source_root}/python /root/miniconda3/bin/python3
+      -m ASTRO.ASTRO_run --json_file_path {astro_config} --steps 4'

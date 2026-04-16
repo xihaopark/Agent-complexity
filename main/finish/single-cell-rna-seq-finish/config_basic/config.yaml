@@ -1,0 +1,352 @@
+workflow_id: single-cell-rna-seq-finish
+source_cores: 8
+steps:
+  all_qc:
+    summary: all_qc
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - all_qc
+  load_counts:
+    summary: load_counts
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - load_counts
+    depends_on:
+    - all_qc
+  qc:
+    summary: qc
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - qc
+    depends_on:
+    - load_counts
+  explained_variance:
+    summary: explained_variance
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - explained_variance
+    depends_on:
+    - qc
+  gene_vs_gene:
+    summary: gene_vs_gene
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - gene_vs_gene
+    depends_on:
+    - explained_variance
+  gene_tsne:
+    summary: gene_tsne
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - gene_tsne
+    depends_on:
+    - gene_vs_gene
+  filter_cells:
+    summary: filter_cells
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - filter_cells
+    depends_on:
+    - gene_tsne
+  cell_cycle:
+    summary: cell_cycle
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - cell_cycle
+    depends_on:
+    - filter_cells
+  cell_cycle_scores:
+    summary: cell_cycle_scores
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - cell_cycle_scores
+    depends_on:
+    - cell_cycle
+  normalize:
+    summary: normalize
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - normalize
+    depends_on:
+    - cell_cycle_scores
+  batch_effect_removal:
+    summary: batch_effect_removal
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - batch_effect_removal
+    depends_on:
+    - normalize
+  hvg:
+    summary: hvg
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - hvg
+    depends_on:
+    - batch_effect_removal
+  correlation:
+    summary: correlation
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - correlation
+    depends_on:
+    - hvg
+  hvg_pca:
+    summary: hvg_pca
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - hvg_pca
+    depends_on:
+    - correlation
+  hvg_tsne:
+    summary: hvg_tsne
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - hvg_tsne
+    depends_on:
+    - hvg_pca
+  cellassign:
+    summary: cellassign
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - cellassign
+    depends_on:
+    - hvg_tsne
+  plot_cellassign:
+    summary: plot_cellassign
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - plot_cellassign
+    depends_on:
+    - cellassign
+  celltype_tsne:
+    summary: celltype_tsne
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - celltype_tsne
+    depends_on:
+    - plot_cellassign
+  plot_celltype_expressions:
+    summary: plot_celltype_expressions
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - plot_celltype_expressions
+    depends_on:
+    - celltype_tsne
+  edger:
+    summary: edger
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - edger
+    depends_on:
+    - plot_celltype_expressions
+  plot_expression:
+    summary: plot_expression
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      root_target: all
+      until:
+      - plot_expression
+    depends_on:
+    - edger
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/Snakefile
+      directory: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/snakemake-workflows__single-cell-rna-seq/config.yaml
+      targets:
+      - all
+    depends_on:
+    - plot_expression

@@ -1,0 +1,6 @@
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - r-inspectdf=0.0.12
+  - r-data.table=1.14.10

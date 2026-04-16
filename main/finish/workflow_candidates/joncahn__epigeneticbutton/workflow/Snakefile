@@ -1,0 +1,280 @@
+import pandas as pd
+import numpy as np
+import os
+import fnmatch
+import sys
+import re
+from snakemake.utils import min_version
+from itertools import combinations
+from collections import defaultdict
+import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
+import colorsys
+import time
+import atexit
+import traceback
+from scripts.samplefile_validation import check_table
+
+min_version("9.0")
+
+_start = time.time()
+
+# Intro message
+def print_to_tty_or_stdout(msg, color=None):
+    colors = {
+        "green": "\033[92m",
+        "red": "\033[91m",
+        "reset": "\033[0m"
+    }
+    color_code = colors.get(color, "")
+    reset_code = colors["reset"] if color else ""
+    try:
+        with open("/dev/tty", "w") as tty:
+            print(f"{color_code}{msg}{reset_code}", file=tty)
+    except OSError:
+        print(msg)
+        
+def print_banner():
+    banner_lines = [
+        "You just pushed the epigenetic button!",
+        "It is going to be..."
+    ]
+    
+    try:
+        with open("data/banner.txt") as f:
+            banner_lines.extend(f.read().splitlines())
+    except FileNotFoundError:
+        pass
+
+    for line in banner_lines:
+        print_to_tty_or_stdout(line, color="green")
+
+try:
+    with open("/dev/tty", "w") as tty:
+        print_banner()
+except OSError:
+    pass
+
+# Configuration
+configfile: "config/config.yaml"
+analysis = config['full_analysis']
+
+# Function to create a unique name for each sample based on the sample columns, and later based on wildcards
+def sample_name_str(d, string):
+    if string == 'sample':
+        return f"{d['data_type']}__{d['line']}__{d['tissue']}__{d['sample_type']}__{d['replicate']}__{d['ref_genome']}"
+    elif string == 'analysis':
+        return f"{d['data_type']}__{d['line']}__{d['tissue']}__{d['sample_type']}__{d['ref_genome']}"
+
+# Function to extract extra information from data_type (either the name of the TF, or the ChIP Input grouping if it exists)
+def extract_extra_info(d):
+    parts=d['data_type'].split("_", 1)
+    if len(parts) == 2 and parts[0] in ["ChIP", "TF"]:
+        return parts[1]
+    else:
+        return "N/A"   
+
+# Define the folder in which the snakemake pipeline has been cloned
+REPO_FOLDER = os.path.abspath(config["repo_folder"])
+if not os.path.isdir(REPO_FOLDER):
+    raise FileNotFoundError(f"Repository folder not found: {REPO_FOLDER}\nUpdate the config file!")
+
+# Define the conda environment to build
+CONDA_ENV = os.path.join(REPO_FOLDER,"workflow","envs","epibutton.yaml")
+
+# Define label for the analysis
+analysis_name = config["analysis_name"]
+
+# Function to split the sample_name to recover its components
+def parse_sample_name(sample_name):
+    data_type, line, tissue, sample_type, rep, ref_genome = sample_name.split("__")
+    parsed = {
+        "data_type": data_type,
+        "line": line,
+        "tissue": tissue,
+        "sample_type": sample_type,
+        "replicate": rep,
+        "ref_genome": ref_genome
+    }    
+    
+    # To extract ChIP Input group from data_type
+    if data_type.startswith("ChIP_"):
+        chip_parts = data_type.split("_", 1)
+        if len(chip_parts) == 2:
+            parsed["group_label"] = chip_parts[1]   # e.g., "A"
+    # To extract TF name from data_type
+    if data_type.startswith("TF_"):
+        tf_parts = data_type.split("_", 1)
+        if len(tf_parts) == 2:
+            parsed["tf_name"] = tf_parts[1]   # e.g., "TB1"
+
+    return parsed
+
+# Function to access extra information form the samplefile using the name
+def get_sample_info_from_name(sname, samples, field):
+    match = samples.loc[samples["sample_name"] == sname]
+    if match.empty:
+        return None
+    else:
+        return match[field].iloc[0]
+
+# Function to extract all samples of each env based on sample name
+def get_sample_names_by_env(env, samples):
+    sample_names = samples.loc[samples['env'] == env, "sample_name"].tolist()
+    return sample_names
+
+# Define patterns and envs
+env_patterns = [
+    ("ChIP*", "ChIP"),
+    ("RNAseq", "RNA"),
+    ("RAMPAGE", "RNA"),
+    ("sRNA", "sRNA"),
+    ("mC", "mC"),
+    ("TF_*", "TF"),
+    ("ATAC", "ATAC"),
+]
+
+# Define sample metadata and avoid header if present
+colnames = ["data_type", "line", "tissue", "sample_type", "replicate", "seq_id", "fastq_path", "paired", "ref_genome"]
+with open(config["sample_file"]) as f:
+    first_line = f.readline().strip().split("\t")
+if first_line == colnames:
+    samples = pd.read_csv(config["sample_file"], sep="\t", header=0, names=colnames)
+else:
+    samples = pd.read_csv(config["sample_file"], sep="\t", header=None, names=colnames)
+
+samples = samples.sort_values(by=["ref_genome","data_type","line","tissue","sample_type","replicate"]).reset_index(drop=True)
+
+check_table(samples)
+
+# Create an "env" column based on the string patterns in data_type
+conditions = [samples["data_type"].str.match(fnmatch.translate(pat)) for pat, _ in env_patterns]
+choices = [env for _, env in env_patterns]
+samples["env"] = np.select(conditions, choices, default="unknown")
+        
+# Check for unknown envs and exit if any
+unknowns = samples.loc[samples["env"] == "unknown", "data_type"].unique()
+if len(unknowns) > 0:
+    unknown_list = "\n".join(f"  - {dt}" for dt in unknowns)
+    raise ValueError(f"Type of data unknown for the following data types:\n"
+                     f"{unknown_list}\n\n"
+                     "Please check your sample file or update the env_patterns.")
+
+# Add a sample_name column to the sample file
+samples["sample_name"] = samples.apply(lambda row: sample_name_str(row, 'sample'), axis=1)
+
+# Add an extra_info column to the sample file
+samples["extra_info"] = samples.apply(extract_extra_info, axis=1)
+
+# Define reference genomes, data types and environments
+REF_GENOMES = set(samples["ref_genome"].unique())
+DATA_TYPES = set(samples["data_type"].unique())
+UNIQUE_ENVS = samples["env"].unique().tolist()
+
+# To assign all replicates to each sample
+analysis_to_replicates = (
+    samples
+    .groupby(["data_type", "line", "tissue", "sample_type", "ref_genome"])["replicate"]
+    .apply(list)
+    .to_dict()
+)
+
+# Load the sample metadata and perform all operations in a single chain
+analysis_samples = (
+    samples
+    .query("sample_type != 'Input'") # filter Input samples
+    [["env", "data_type", "line", "tissue", "sample_type", "ref_genome", "paired", "extra_info"]]
+    .drop_duplicates()
+)
+pathtoanalysisfile = os.path.join(REPO_FOLDER,"config",f"analysis_samplefile_{analysis_name}.tsv")
+analysis_samples.to_csv(pathtoanalysisfile, sep="\t", index=False)
+    
+# Add a sample_name column to the analysis_sample file
+analysis_samples["sample_name"] = analysis_samples.apply(lambda row: sample_name_str(row, 'analysis'), axis=1)
+
+# Logic for intermediate target
+def all_map_only_input(wildcards):
+    map_files = []
+    chkpt_files = []
+    
+    map_files += expand("results/combined/plots/mapping_stats_{analysis_name}_{env}.pdf", analysis_name = analysis_name, env=[env for env in UNIQUE_ENVS if env in ["RNA", "mC"]])
+    if not config["aligned_bams"]:
+        map_files += expand("results/combined/plots/mapping_stats_{analysis_name}_{env}.pdf", analysis_name = analysis_name, env=[env for env in UNIQUE_ENVS if env in ["ChIP", "TF", "ATAC"]])
+    map_files += expand("results/combined/plots/srna_sizes_stats_{analysis_name}_{env}.pdf", analysis_name = analysis_name, env=[env for env in UNIQUE_ENVS if env in ["sRNA"]])
+    
+    for _, row in samples.iterrows():
+        sname = row['sample_name']
+        env = row['env']
+        chkpt_files.append(f"results/{env}/chkpts/map_{env}__{sname}.done")
+    
+    return map_files + chkpt_files
+        
+# Include all rule files
+include: "rules/environment_setup.smk"
+include: "rules/sample_download.smk"
+include: "rules/ChIPseq.smk"
+include: "rules/ATACseq.smk"
+include: "rules/RNAseq.smk"
+include: "rules/mC.smk"
+include: "rules/smallRNA.smk"
+include: "rules/combined_analysis.smk"
+
+# Rule all to specify final target
+rule all:
+    input:
+	    expand(f"results/combined/chkpts/final_analysis__{analysis_name}.done", analysis_name = analysis_name)
+    localrule: True
+
+### Intermediate target rules
+# Rule to specify final target if only mapping is required
+
+rule map_only:
+    input: all_map_only_input
+    localrule: True
+
+# Rule to specify final target if only chip coverage is wanted
+rule coverage_chip:
+    input: 
+        [
+            f"results/ChIP/tracks/coverage__{sample_name}.bw"
+            for sample_name in get_sample_names_by_env("ChIP", samples)
+        ]
+    localrule: True
+
+# Rule to perform combined analysis
+rule combined_analysis:
+    input:
+        expand("results/combined/chkpts/combined_analysis__{analysis_name}__{ref_genome}.done", analysis_name = analysis_name, ref_genome=REF_GENOMES),
+        expand("results/ChIP/chkpts/ChIP_analysis__{analysis_name}__{ref_genome}.done", analysis_name = analysis_name, ref_genome=REF_GENOMES if "ChIP" in UNIQUE_ENVS else []),
+        expand("results/TF/chkpts/TF_analysis__{analysis_name}__{ref_genome}.done", analysis_name = analysis_name, ref_genome=REF_GENOMES if "TF" in UNIQUE_ENVS else []),
+        expand("results/RNA/chkpts/RNA_analysis__{analysis_name}__{ref_genome}.done", analysis_name = analysis_name, ref_genome=REF_GENOMES if "RNA" in UNIQUE_ENVS else []),
+        expand("results/mC/chkpts/mC_analysis__{analysis_name}__{ref_genome}.done", analysis_name = analysis_name, ref_genome=REF_GENOMES if "mC" in UNIQUE_ENVS else []),
+        expand("results/sRNA/chkpts/sRNA_analysis__{analysis_name}__{ref_genome}.done", analysis_name = analysis_name, ref_genome=REF_GENOMES if "sRNA" in UNIQUE_ENVS else []),
+        expand("results/ATAC/chkpts/ATAC_analysis__{analysis_name}__{ref_genome}.done", analysis_name = analysis_name, ref_genome=REF_GENOMES if "ATAC" in UNIQUE_ENVS else [])
+    output:
+        chkpt = f"results/combined/chkpts/final_analysis__{analysis_name}.done"
+    localrule: True
+    shell:
+        """
+        touch {output.chkpt}
+        """ 
+
+# Exit message
+onsuccess:
+    elapsed = time.time() - _start
+    h, m = divmod(elapsed / 3600, 1)
+    m = int(m * 60)
+    print_to_tty_or_stdout(
+        f"EPICC SUCCESS! Pipeline completed successfully in {int(h)}h {m}m.", 
+        color="green"
+    )
+
+onerror:
+    elapsed = time.time() - _start
+    h, m = divmod(elapsed / 3600, 1)
+    m = int(m * 60)
+    print_to_tty_or_stdout(
+        f"EPICC FAIL! Pipeline failed after {int(h)}h {m}m. Check logs!", 
+        color="red"
+    )
+

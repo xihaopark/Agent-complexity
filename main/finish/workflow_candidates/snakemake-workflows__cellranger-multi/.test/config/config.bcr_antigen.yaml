@@ -1,0 +1,28 @@
+# Test case setup inspired by:
+# https://www.10xgenomics.com/support/software/cell-ranger/latest/analysis/running-pipelines/cr-5p-antigen#bcr
+
+pool_sheet: "config/pools.bcr_antigen.tsv"
+
+multi_config_csv_sections:
+  gene-expression:
+    reference: "resources/refdata/"
+    create-bam: "true"
+    expect-cells: ""
+
+  vdj:
+    reference: "resources/refdata/"
+    inner-enrichment-primers: ""
+
+  multiplexing:
+    activate: false
+
+  feature:
+    # Feature reference file downloaded from:
+    # https://www.10xgenomics.com/support/software/cell-ranger/latest/analysis/running-pipelines/cr-5p-antigen#feature-ref-bcr-example
+    reference: "config/feature_ref.bcr_antigen.csv"
+    r1-length: ""
+    r2-length: ""
+
+  antigen-specificity:
+    control_ids:
+      - neg_control01

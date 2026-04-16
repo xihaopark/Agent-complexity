@@ -1,0 +1,64 @@
+workflow_id: sumone-compbio-dge-analysis-using-snakemake-r-finish
+source_cores: 8
+steps:
+  deseq2:
+    summary: deseq2
+    requires:
+    - ../workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R/Snakefile
+      directory: ../workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R/config.yaml
+      root_target: all
+      until:
+      - deseq2
+  volcano:
+    summary: volcano
+    requires:
+    - ../workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R/Snakefile
+      directory: ../workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R/config.yaml
+      root_target: all
+      until:
+      - volcano
+    depends_on:
+    - deseq2
+  gsea:
+    summary: gsea
+    requires:
+    - ../workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R/Snakefile
+      directory: ../workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R/config.yaml
+      root_target: all
+      until:
+      - gsea
+    depends_on:
+    - volcano
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R/Snakefile
+      directory: ../workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/sumone-compbio__DGE-Analysis-using-Snakemake-R/config.yaml
+      targets:
+      - all
+    depends_on:
+    - gsea

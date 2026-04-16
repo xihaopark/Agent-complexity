@@ -1,0 +1,192 @@
+workflow_id: epigen-dea_limma-finish
+source_cores: 8
+steps:
+  dea:
+    summary: dea
+    requires:
+    - ../workflow_candidates/epigen__dea_limma/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__dea_limma/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__dea_limma
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__dea_limma/config/config.yaml
+      root_target: all
+      until:
+      - dea
+  one_vs_all_contrasts:
+    summary: one_vs_all_contrasts
+    requires:
+    - ../workflow_candidates/epigen__dea_limma/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__dea_limma/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__dea_limma
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__dea_limma/config/config.yaml
+      root_target: all
+      until:
+      - one_vs_all_contrasts
+    depends_on:
+    - dea
+  aggregate:
+    summary: aggregate
+    requires:
+    - ../workflow_candidates/epigen__dea_limma/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__dea_limma/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__dea_limma
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__dea_limma/config/config.yaml
+      root_target: all
+      until:
+      - aggregate
+    depends_on:
+    - one_vs_all_contrasts
+  ova_stats_plot:
+    summary: ova_stats_plot
+    requires:
+    - ../workflow_candidates/epigen__dea_limma/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__dea_limma/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__dea_limma
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__dea_limma/config/config.yaml
+      root_target: all
+      until:
+      - ova_stats_plot
+    depends_on:
+    - aggregate
+  fetch_file:
+    summary: fetch_file
+    requires:
+    - ../workflow_candidates/epigen__dea_limma/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__dea_limma/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__dea_limma
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__dea_limma/config/config.yaml
+      root_target: all
+      until:
+      - fetch_file
+    depends_on:
+    - ova_stats_plot
+  volcanos:
+    summary: volcanos
+    requires:
+    - ../workflow_candidates/epigen__dea_limma/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__dea_limma/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__dea_limma
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__dea_limma/config/config.yaml
+      root_target: all
+      until:
+      - volcanos
+    depends_on:
+    - fetch_file
+  lfc_heatmap:
+    summary: lfc_heatmap
+    requires:
+    - ../workflow_candidates/epigen__dea_limma/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__dea_limma/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__dea_limma
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__dea_limma/config/config.yaml
+      root_target: all
+      until:
+      - lfc_heatmap
+    depends_on:
+    - volcanos
+  env_export:
+    summary: env_export
+    requires:
+    - ../workflow_candidates/epigen__dea_limma/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__dea_limma/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__dea_limma
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__dea_limma/config/config.yaml
+      root_target: all
+      until:
+      - env_export
+    depends_on:
+    - lfc_heatmap
+  config_export:
+    summary: config_export
+    requires:
+    - ../workflow_candidates/epigen__dea_limma/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__dea_limma/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__dea_limma
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__dea_limma/config/config.yaml
+      root_target: all
+      until:
+      - config_export
+    depends_on:
+    - env_export
+  annot_export:
+    summary: annot_export
+    requires:
+    - ../workflow_candidates/epigen__dea_limma/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__dea_limma/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__dea_limma
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__dea_limma/config/config.yaml
+      root_target: all
+      until:
+      - annot_export
+    depends_on:
+    - config_export
+  feature_list_export:
+    summary: feature_list_export
+    requires:
+    - ../workflow_candidates/epigen__dea_limma/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__dea_limma/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__dea_limma
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__dea_limma/config/config.yaml
+      root_target: all
+      until:
+      - feature_list_export
+    depends_on:
+    - annot_export
+  all:
+    summary: all
+    requires:
+    - ../workflow_candidates/epigen__dea_limma/config/config.yaml
+    snakemake:
+      snakefile: ../workflow_candidates/epigen__dea_limma/workflow/Snakefile
+      directory: ../workflow_candidates/epigen__dea_limma
+      use_conda: true
+      cores: '{source_cores}'
+      scheduler: greedy
+      configfile: ../workflow_candidates/epigen__dea_limma/config/config.yaml
+      targets:
+      - all
+    depends_on:
+    - feature_list_export

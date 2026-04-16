@@ -1,0 +1,16 @@
+name: 
+channels:
+- bioconda
+- conda-forge
+dependencies:
+- bioconductor-dss
+- bioconductor-bsseq
+- r-corrr
+- r-ggdendro
+- r-tidyverse
+- r-here
+- r-ggpubr
+- r-ggrepel
+- r-glue
+- r-forcats
+- r-stringi

@@ -1,0 +1,32 @@
+# Outputs and references
+out/
+logs/
+salmon_index/
+
+# Data (raw FASTQs and downloaded references)
+data/fastq/*
+data/references/*
+!data/fastq/.gitkeep
+!data/references/.gitkeep
+
+# R/RStudio artifacts
+.Rproj.user/
+.Rhistory
+.RData
+.DS_Store
+
+# Rendered R Markdown outputs
+*.html
+!examples/*.html
+
+# Project-specific sample info files (keep examples only)
+*_sample_info.csv
+!examples/*_sample_info.csv
+
+# Conda environments
+env/
+.conda/
+conda_envs/
+.mamba/
+environment.lock.yml
+environment-r.lock.yml

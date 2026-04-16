@@ -1,0 +1,14 @@
+## Imports
+import(methods)
+
+## Importing functions
+importFrom("BiocGenerics", "unlist", "basename", "width", "end", "start")
+importFrom("Biostrings", "getSeq", "DNAStringSet", "writeXStringSet")
+importFrom("jsonlite", "fromJSON")
+importFrom("remotes", "install_github")
+importFrom("utils", "download.file", "install.packages", "relist")
+## Functions
+export(
+    "pathList", "genWorkenvir", "availableWF", "getSubsetReads",
+    "genWorkenvir_gh", "getParam_gh", "getData_gh"
+)

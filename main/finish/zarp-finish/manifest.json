@@ -1,0 +1,182 @@
+{
+  "id": "zarp-finish",
+  "name": "Zarp Finish Workflow",
+  "engine": "snakemake",
+  "entry_point": "run_workflow.py",
+  "description": "Step-split Snakemake workflow for validating config, staging inputs, trimming, alignment, quantification, and assembling the final finish target outputs.",
+  "version": "1.0",
+  "aliases": [
+    "zarp",
+    "rna-zarp",
+    "zarp-rnaseq"
+  ],
+  "tags": [
+    "finish",
+    "rna-seq",
+    "zarp",
+    "quantification"
+  ],
+  "know_how": "know-how.md",
+  "know_how_files": [
+    "know-how.md"
+  ],
+  "discovery": {
+    "kind": "finish_workflow",
+    "family": "rna_seq",
+    "aliases": [
+      "zarp",
+      "rna-zarp",
+      "zarp-rnaseq"
+    ],
+    "retained_steps": [
+      "validate_config",
+      "stage_inputs",
+      "trimming",
+      "alignment",
+      "quantification",
+      "finish_target"
+    ],
+    "supports_partial_run": true,
+    "runner": "python3 run_workflow.py --cores 8",
+    "standard_step_skills": true
+  },
+  "input_hints": [
+    "config_basic/config.yaml",
+    "resources/*",
+    "ngs-test-data/*"
+  ],
+  "output_hints": [
+    "output/staged_inputs/*",
+    "output/trimmed/*",
+    "output/alignment/*",
+    "output/quantification/*",
+    "output/multiqc_report.html",
+    "output/*/*.bigWig"
+  ],
+  "steps": [
+    {
+      "id": "validate_config",
+      "name": "Validate workflow configuration",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/validate_config.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/validate_config.done"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "stage_inputs",
+      "name": "Stage input reads and metadata",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/stage_inputs.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/stage_inputs.done"
+      ],
+      "depends_on": [
+        "validate_config"
+      ]
+    },
+    {
+      "id": "trimming",
+      "name": "Trim staged reads",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/trimming.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/trimming.done"
+      ],
+      "depends_on": [
+        "stage_inputs"
+      ]
+    },
+    {
+      "id": "alignment",
+      "name": "Align reads to the transcriptome or genome",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/alignment.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/alignment.done"
+      ],
+      "depends_on": [
+        "trimming"
+      ]
+    },
+    {
+      "id": "quantification",
+      "name": "Quantify aligned reads",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/quantification.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/quantification.done"
+      ],
+      "depends_on": [
+        "alignment"
+      ]
+    },
+    {
+      "id": "finish_target",
+      "name": "Assemble final finish outputs",
+      "targets": [
+        "all"
+      ],
+      "params": {
+        "snakefile": "steps/finish_target.smk",
+        "configfile": "config_basic/config.yaml",
+        "cores": 1,
+        "run_directory": ".",
+        "use_conda": false,
+        "shared_conda_env": "snakemake"
+      },
+      "outputs": [
+        "results/finish/finish_target.done"
+      ],
+      "depends_on": [
+        "quantification"
+      ]
+    }
+  ]
+}

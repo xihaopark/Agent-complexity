@@ -1,0 +1,12 @@
+[
+  "Rscript",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_homer_annot/reference/script.R",
+  "--homer_files",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/chipseq_plot_homer_annot/input/sampleA_annot.txt,/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/chipseq_plot_homer_annot/input/sampleB_annot.txt,/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/chipseq_plot_homer_annot/input/sampleC_annot.txt",
+  "--sample_ids",
+  "sampleA,sampleB,sampleC",
+  "--outdir",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_homer_annot/reference_output/_homer_annot.pdf",
+  "--outprefix",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_homer_annot/reference_output/homer_annot_summary.tsv"
+]

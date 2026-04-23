@@ -1,0 +1,14 @@
+{
+  "workflow_id": "epigen-scrnaseq_processing_seurat-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/epigen-scrnaseq_processing_seurat-finish/manifest.json",
+  "step_ids": [
+    "prepare",
+    "merge",
+    "split",
+    "filter_cells"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.981478+00:00"
+}

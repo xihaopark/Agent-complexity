@@ -1,0 +1,20 @@
+{
+  "task_id": "methylkit_to_tibble",
+  "kind": "real",
+  "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+  "family": "methylation",
+  "stage": "late",
+  "difficulty": 3,
+  "paper_covered": true,
+  "wrapper_kind": "snakemake",
+  "description": "Convert a methylBase object to a long tibble + mean mCpG per (sample, chr).",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/scripts/methylkit2tibble.R",
+  "ground_truth_dir": "tasks/real_ground_truth/methylkit_to_tibble",
+  "success_glob": "output/mean_mcpg.tsv",
+  "reference_output_files": [
+    "mean_mcpg.tsv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

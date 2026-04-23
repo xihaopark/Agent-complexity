@@ -1,0 +1,26 @@
+{
+  "task_id": "dea_limma",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/dea_limma",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/019_dea_limma/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+  "registry_index": 19,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "arm": "pipeline",
+    "injected": true,
+    "manifest_version": 3,
+    "skill_sha256": "0479b9f6934d37998d47891d573a29010b9c1f40d7b5112bd404689cfb4e03f0",
+    "skill_char_len": 3421,
+    "skill_md_path": "experiments/skills_pipeline/epigen-dea_limma-finish/SKILL.md",
+    "lookup_field": "by_workflow_id",
+    "lookup_key": "epigen-dea_limma-finish",
+    "source_workflow_id": "epigen-dea_limma-finish"
+  }
+}

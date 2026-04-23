@@ -1,0 +1,16 @@
+sample	sequence_element	counts
+sampleA	exon	704
+sampleB	exon	300
+sampleC	exon	742
+sampleA	Intergenic	164
+sampleB	Intergenic	278
+sampleC	Intergenic	808
+sampleA	intron	75
+sampleB	intron	192
+sampleC	intron	608
+sampleA	promoter-TSS	809
+sampleB	promoter-TSS	804
+sampleC	promoter-TSS	139
+sampleA	TTS	331
+sampleB	TTS	154
+sampleC	TTS	654

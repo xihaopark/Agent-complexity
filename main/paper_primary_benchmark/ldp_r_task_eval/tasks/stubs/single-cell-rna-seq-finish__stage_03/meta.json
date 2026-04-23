@@ -1,0 +1,19 @@
+{
+  "workflow_id": "single-cell-rna-seq-finish",
+  "pipeline_task_id": "stage_03",
+  "order": 3,
+  "manifest_path": "finish/single-cell-rna-seq-finish/manifest.json",
+  "step_ids": [
+    "cell_cycle_scores",
+    "normalize",
+    "batch_effect_removal",
+    "hvg"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.014362+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_04",
+  "prepared_at": "2026-04-16T12:46:05.810286+00:00",
+  "micro_task": "sum_of_values_txt"
+}

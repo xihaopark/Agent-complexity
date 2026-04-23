@@ -1,0 +1,6257 @@
+{
+  "sweep_ts": "20260416T194356Z",
+  "arms": [
+    "none",
+    "paper",
+    "pipeline",
+    "llm_plan"
+  ],
+  "per_run": [
+    {
+      "arm": "none",
+      "task_id": "akinyi_deseq2",
+      "workflow_id": "",
+      "registry_index": 0,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 14,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 3
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\n\n# Load the data\ncounts <- read.table('input/featureCounts_output.txt', header=TRUE, sep='\\t')\n\n# Filter out rows starting with 'ERCC-'\ncounts <- counts[!grepl('^ERCC-', counts$Geneid), ]\n\n# Prepare the count matrix\ncount_data <- as.matrix(counts[, 7:12])\nrownames(count_data) <- counts$Geneid\n\n# Define the condition\ncondition <- factor(c(rep('A', 3), rep('B', 3)))\n\n# Create DESeqDa",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "star_deseq2_init",
+      "workflow_id": "",
+      "registry_index": 1,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 12,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 3
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\n\n# Read the counts and samples data\ncounts <- read.table('input/counts.tsv', header=TRUE, sep='\\t', row.names=1)\nsamples <- read.table('input/samples.tsv', header=TRUE, sep='\\t')\n\n# Filter out rows with total count <= 1\ncounts <- counts[rowSums(counts) > 1, ]\n\n# Create DESeqDataSet\ndds <- DESeqDataSetFromMatrix(countData = counts,\n                              colData = samples,\n  ",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 0.993,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "star_deseq2_contrast",
+      "workflow_id": "",
+      "registry_index": 2,
+      "total_steps": 4,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 8,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\nlibrary(ashr)\n\n# Load the DESeq2 object\ndds <- readRDS('input/dds.rds')\n\n# Compute results for the contrast\nres <- results(dds, contrast=c('condition', 'treated', 'untreated'))\n\n# Apply lfcShrink with type='ashr'\nres_shrunk <- lfcShrink(dds, contrast=c('condition', 'treated', 'untreated'), res=res, type='ashr')\n\n# Sort by padj\nres_sorted <- res_shrunk[order(res_shrunk$padj), ]\n\n# P",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "methylkit_load",
+      "workflow_id": "",
+      "registry_index": 3,
+      "total_steps": 15,
+      "n_rscript": 13,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 0,
+      "n_write_plan": 1,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 4,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(methylKit)\n\n# Define file paths\nfile_paths <- c('input/sampleA.bismark.cov', 'input/sampleB.bismark.cov', 'input/sampleC.bismark.cov')\n\n# Read the bismark coverage files\nmethyl_data <- methRead(file_paths, pipeline='bismarkCoverage', mincov=4, treatment=c(0, 0, 0), assembly='mock_v1')\n\n# Save the methylRawList object\nsaveRDS(methyl_data, 'output/mk_raw.rds')",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_rscript_errors": 12,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 12,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "fail",
+      "overall_score": 0.075,
+      "failure_mode": "infinite_loop_debug"
+    },
+    {
+      "arm": "none",
+      "task_id": "methylkit_unite",
+      "workflow_id": "",
+      "registry_index": 4,
+      "total_steps": 15,
+      "n_rscript": 13,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 0,
+      "n_write_plan": 1,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 13,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(methylKit)\n\n# Read the bismark coverage files\nfile.list <- list('input/sampleA.bismark.cov', 'input/sampleB.bismark.cov', 'input/sampleC.bismark.cov', 'input/sampleD.bismark.cov')\ntreatment <- c(0, 0, 1, 1)\nmk_raw <- methRead(file.list, pipeline='bismarkCoverage', mincov=4, treatment=treatment, assembly='mock_v1')\n\n# Unite the methylation data\nmk_united <- unite(mk_raw, min.per.group=1, de",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_rscript_errors": 12,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 12,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "fail",
+      "overall_score": 0.075,
+      "failure_mode": "infinite_loop_debug"
+    },
+    {
+      "arm": "none",
+      "task_id": "methylkit_to_tibble",
+      "workflow_id": "",
+      "registry_index": 5,
+      "total_steps": 15,
+      "n_rscript": 5,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 0,
+      "n_write_plan": 5,
+      "n_check_progress": 5,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 19,
+        "pipe_magrittr": 6,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(methylKit)\nlibrary(tibble)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(readr)\n\n# Load the methylKit united object\nmk_united <- readRDS('input/mk_united.rds')\n\n# Convert to tibble\nmk_tibble <- as_tibble(mk_united)\n\n# Pivot longer on coverage* and numCs* columns\nmk_long <- mk_tibble %>% \n  pivot_longer(cols = starts_with('coverage'), names_to = 'metric', values_to = 'value') %>% \n  pivot_longer(co",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_rscript_errors": 5,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 5,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "fail",
+      "overall_score": 0.15,
+      "failure_mode": "rscript_crashed"
+    },
+    {
+      "arm": "none",
+      "task_id": "longseq_deseq2_init",
+      "workflow_id": "",
+      "registry_index": 6,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 9,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 3
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\n\n# Read the counts and sample information\ndf_counts <- read.table('input/all_counts.tsv', header=TRUE, sep='\\t', row.names=1)\ndf_samples <- read.table('input/samples.tsv', header=TRUE, sep='\\t')\n\n# Create DESeqDataSet\ndds <- DESeqDataSetFromMatrix(countData = df_counts, colData = df_samples, design = ~condition)\n\n# Filter rows where total count <= 10\ndds <- dds[rowSums(counts(dds))",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "longseq_deseq2_contrast",
+      "workflow_id": "",
+      "registry_index": 7,
+      "total_steps": 4,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 8,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\nlibrary(ashr)\n\n# Load DESeq2 object\ndds <- readRDS('input/dds.rds')\n\n# Perform differential expression analysis\nres <- results(dds, contrast=c('condition','ko','wt'), alpha=0.05)\n\n# Apply log fold change shrinkage\nresLFC <- lfcShrink(dds, coef=2, type='ashr')\n\n# Sort by adjusted p-value\nresLFC <- resLFC[order(resLFC$padj), ]\n\n# Create data frame with required columns\ndf <- data.fra",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "partial_pass",
+      "overall_score": 0.8833,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "snakepipes_merge_fc",
+      "workflow_id": "",
+      "registry_index": 8,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 15,
+        "pipe_magrittr": 7,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 5
+      },
+      "first_rscript_code_snippet": "# Load necessary library\nlibrary(dplyr)\n\n# Read the input files\nsampleA <- read.table('input/sampleA.counts.txt', header=TRUE, sep='\\t')\nsampleB <- read.table('input/sampleB.counts.txt', header=TRUE, sep='\\t')\nsampleC <- read.table('input/sampleC.counts.txt', header=TRUE, sep='\\t')\nsampleD <- read.table('input/sampleD.counts.txt', header=TRUE, sep='\\t')\n\n# Select only the Geneid and the count colu",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "partial_fail",
+      "overall_score": 0.475,
+      "failure_mode": "wrong_values"
+    },
+    {
+      "arm": "none",
+      "task_id": "snakepipes_merge_ct",
+      "workflow_id": "",
+      "registry_index": 9,
+      "total_steps": 7,
+      "n_rscript": 3,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 11,
+        "pipe_magrittr": 4,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 5
+      },
+      "first_rscript_code_snippet": "# Load necessary library\nlibrary(dplyr)\n\n# Read the data from each file\nwt_a <- read.table('input/WT_A.quant.sf', header=TRUE, sep='\\t')\nwt_b <- read.table('input/WT_B.quant.sf', header=TRUE, sep='\\t')\nko_a <- read.table('input/KO_A.quant.sf', header=TRUE, sep='\\t')\nko_b <- read.table('input/KO_B.quant.sf', header=TRUE, sep='\\t')\n\n# Extract the TPM column and rename it\nwt_a <- wt_a %>% select(Name",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        1,
+        1,
+        0
+      ],
+      "n_rscript_errors": 2,
+      "error_recovery_gaps": [
+        2,
+        1
+      ],
+      "mean_recovery_gap": 1.5,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 0.993,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "riya_limma",
+      "workflow_id": "",
+      "registry_index": 10,
+      "total_steps": 5,
+      "n_rscript": 2,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 10,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(limma)\nexprs <- read.csv('input/exprs.csv', row.names=1)\nmeta <- read.csv('input/meta.csv')\ndesign <- model.matrix(~0 + meta$group)\ncolnames(design) <- levels(meta$group)\nfit <- lmFit(exprs, design)\ncontrast.matrix <- makeContrasts(cancer - normal, levels=design)\nfit2 <- contrasts.fit(fit, contrast.matrix)\nfit2 <- eBayes(fit2)\ntopTable(fit2, adjust='fdr', number=250)",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        1
+      ],
+      "mean_recovery_gap": 1,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 0.993,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "chipseq_plot_macs_qc",
+      "workflow_id": "",
+      "registry_index": 11,
+      "total_steps": 7,
+      "n_rscript": 2,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 2,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 40,
+        "pipe_magrittr": 14,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 4
+      },
+      "first_rscript_code_snippet": "# Load necessary library\nlibrary(dplyr)\n\n# Define a function to compute summary statistics\ncompute_summary <- function(data, sample_name) {\n  data %>%\n    summarise(\n      Min = min(value),\n      `1st Qu` = quantile(value, 0.25),\n      Median = median(value),\n      Mean = mean(value),\n      `3rd Qu` = quantile(value, 0.75),\n      Max = max(value),\n      num_peaks = n()\n    ) %>%\n    mutate(sample ",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        2
+      ],
+      "mean_recovery_gap": 2,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "partial_pass",
+      "overall_score": 0.6733,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "chipseq_plot_homer_annot",
+      "workflow_id": "",
+      "registry_index": 12,
+      "total_steps": 6,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 18,
+        "pipe_magrittr": 6,
+        "pipe_native": 0,
+        "data_table": 1,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "# Load necessary library\nlibrary(dplyr)\n\n# Read the input files\nsampleA <- read.delim('input/sampleA_annot.txt', header = TRUE, sep = '\\t')\nsampleB <- read.delim('input/sampleB_annot.txt', header = TRUE, sep = '\\t')\nsampleC <- read.delim('input/sampleC_annot.txt', header = TRUE, sep = '\\t')\n\n# Function to aggregate feature counts\naggregate_features <- function(data, sample_name) {\n  data %>%\n    m",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 3,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "partial_fail",
+      "overall_score": 0.475,
+      "failure_mode": "wrong_values"
+    },
+    {
+      "arm": "none",
+      "task_id": "snakepipes_scrna_merge_coutt",
+      "workflow_id": "",
+      "registry_index": 13,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 21,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 4
+      },
+      "first_rscript_code_snippet": "# Load necessary libraries\nlibrary(dplyr)\n\n# Read the input files\nlibA <- read.table('input/coutt/plate01_libA.corrected.txt', header = TRUE, sep = '\\t')\nlibB <- read.table('input/coutt/plate01_libB.corrected.txt', header = TRUE, sep = '\\t')\n\n# Merge the tables by GENEID using an outer join\nmerged <- full_join(libA, libB, by = 'GENEID')\n\n# Prefix each cell column with the library name and replace ",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "partial_pass",
+      "overall_score": 0.734,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "snakepipes_scrna_qc",
+      "workflow_id": "",
+      "registry_index": 14,
+      "total_steps": 6,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 1,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 8,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 1,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(data.table)\n\n# Read the libsum data\nlibsum_A <- fread('input/cellsum/plate01_libA.libsum', header=FALSE)\nlibsum_B <- fread('input/cellsum/plate01_libB.libsum', header=FALSE)\n\n# Combine the data\nlibsum_data <- rbind(libsum_A, libsum_B)\n\n# Dcast for reads\nlibstats_reads <- dcast(libsum_data, V1 ~ V2, value.var='V3')\n\n# Write the reads output\nfwrite(libstats_reads, 'output/scqc.libstats_reads",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 3,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "spilterlize_filter_features",
+      "workflow_id": "",
+      "registry_index": 15,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 11,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 3,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(edgeR)\nlibrary(data.table)\n\n# Read the counts and annotation data\ncounts <- fread('input/counts.csv', data.table=FALSE)\nannotation <- fread('input/annotation.csv', data.table=FALSE)\n\n# Set row names\nrownames(counts) <- counts[, 1]\ncounts <- counts[, -1]\nrownames(annotation) <- annotation[, 1]\nannotation <- annotation[, -1]\n\n# Filter features using edgeR\nkeep <- filterByExpr(counts, group=a",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "spilterlize_norm_voom",
+      "workflow_id": "",
+      "registry_index": 16,
+      "total_steps": 6,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 1,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 1,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "source('process_data.R')",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 3,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "spilterlize_limma_rbe",
+      "workflow_id": "",
+      "registry_index": 17,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 9,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 3,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(limma)\nlibrary(data.table)\n\n# Read the data\nnormalized_data <- fread('input/normalized.csv', data.table=FALSE)\nannotation_data <- fread('input/annotation.csv', data.table=FALSE)\n\n# Convert to appropriate formats\ndata_matrix <- as.matrix(normalized_data[,-1])\nrownames(data_matrix) <- normalized_data[,1]\n\n# Create the design matrix\ndesign <- model.matrix(~ group, data=annotation_data)\n\n# Rem",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "spilterlize_norm_edger",
+      "workflow_id": "",
+      "registry_index": 18,
+      "total_steps": 7,
+      "n_rscript": 2,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 1,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 9,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 2,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(edgeR)\nlibrary(data.table)\n\n# Read the input data\ncounts <- fread('input/filtered_counts.csv', data.table=FALSE)\nrownames(counts) <- counts[, 1]\ncounts <- counts[, -1]\n\n# Create DGEList object\ndge <- DGEList(counts=counts)\n\n# Normalize using TMM\ndge <- calcNormFactors(dge, method='TMM')\n\n# Calculate log-CPM\nlog_cpm <- cpm(dge, log=TRUE, prior.count=3)\n\n# Save the result\nfwrite(as.data.fram",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        2
+      ],
+      "mean_recovery_gap": 2,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "dea_limma",
+      "workflow_id": "",
+      "registry_index": 19,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 16,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "# Load necessary libraries\nlibrary(limma)\nlibrary(edgeR)\n\n# Read the data\ncounts <- read.delim('input/counts.tsv', row.names=1)\nmetadata <- read.delim('input/metadata.tsv')\n\n# Create DGEList object\ndge <- DGEList(counts=counts)\n\n# TMM normalization\ndge <- calcNormFactors(dge)\n\n# Create design matrix\ndesign <- model.matrix(~treatment, data=metadata)\n\n# Voom transformation\nv <- voom(dge, design)\n\n# ",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "partial_fail",
+      "overall_score": 0.5625,
+      "failure_mode": "partial_output_mismatch"
+    },
+    {
+      "arm": "none",
+      "task_id": "msisensor_merge",
+      "workflow_id": "",
+      "registry_index": 20,
+      "total_steps": 7,
+      "n_rscript": 2,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 1,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 12,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(readr)\n\n# Read the data from each file\ncaseA_data <- read_tsv('results/msi/caseA/msi_out.txt', col_types = cols())\ncaseB_data <- read_tsv('results/msi/caseB/msi_out.txt', col_types = cols())\ncaseC_data <- read_tsv('results/msi/caseC/msi_out.txt', col_types = cols())\n\n# Add group column\ncaseA_data$group <- 'caseA'\ncaseB_data$group <- 'caseB'\ncaseC_data$group <- 'caseC'\n\n# Rename columns\ncol",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        1
+      ],
+      "mean_recovery_gap": 1,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 3,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 0.993,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "methylkit_filt_norm",
+      "workflow_id": "",
+      "registry_index": 21,
+      "total_steps": 15,
+      "n_rscript": 13,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 0,
+      "n_write_plan": 2,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 17,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 2
+      },
+      "first_rscript_code_snippet": "library(methylKit)\n\n# Step 2: Read the methylRawList object\nmk_raw <- readRDS('input/mk_raw.rds')\n\n# Step 3: Apply filterByCoverage\nmk_filt <- filterByCoverage(mk_raw, lo.count=3, hi.perc=99.9)\n\n# Step 4: Normalize coverage\nmk_norm <- normalizeCoverage(mk_filt, method='median')\n\n# Step 5: Save the normalized object\nsaveRDS(mk_norm, 'output/mk_filt_norm.rds')\n\n# Step 6: Calculate per-sample statist",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_rscript_errors": 12,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 12,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "fail",
+      "overall_score": 0.15,
+      "failure_mode": "infinite_loop_debug"
+    },
+    {
+      "arm": "none",
+      "task_id": "methylkit2tibble_split",
+      "workflow_id": "",
+      "registry_index": 22,
+      "total_steps": 15,
+      "n_rscript": 7,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 0,
+      "n_write_plan": 3,
+      "n_check_progress": 5,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 16,
+        "pipe_magrittr": 5,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(tibble)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(readr)\n\n# Read RDS files\nrds_list <- list.files(path = 'input', pattern = '*.rds', full.names = TRUE)\ntibble_list <- lapply(rds_list, readRDS)\n\n# Concatenate tibbles\ncombined_tibble <- bind_rows(tibble_list)\n\n# Pivot wider on 'metric'\nwider_tibble <- combined_tibble %>%\n  pivot_wider(names_from = metric, values_from = value)\n\n# Compute mCpG and",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "n_rscript_errors": 4,
+      "error_recovery_gaps": [
+        2,
+        2,
+        4,
+        2
+      ],
+      "mean_recovery_gap": 2.5,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "partial_pass",
+      "overall_score": 0.6917,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "methylkit_remove_snvs",
+      "workflow_id": "",
+      "registry_index": 23,
+      "total_steps": 5,
+      "n_rscript": 2,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 8,
+        "pipe_magrittr": 1,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(dplyr)\nlibrary(readr)\nlibrary(methylKit)\n\n# Read the input RDS file\ndf_united <- readRDS('input/df_united.rds')\n\n# Read the exclusion BED file\nexclusion_bed <- read_tsv('input/exclusion.bed', col_names = c('seqnames', 'start', 'end', 'ref', 'alt', 'score'))\n\n# Convert start to 1-based\ndf_exclusion <- exclusion_bed %>% mutate(start = start + 1)\n\n# Perform anti-join\ndf_united_excl <- anti_jo",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0,
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "phantompeak_correlation",
+      "workflow_id": "",
+      "registry_index": 24,
+      "total_steps": 5,
+      "n_rscript": 0,
+      "n_read_file": 1,
+      "n_write_file": 1,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 0,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": null,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 0.993,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "nearest_gene",
+      "workflow_id": "",
+      "registry_index": 25,
+      "total_steps": 12,
+      "n_rscript": 3,
+      "n_read_file": 2,
+      "n_write_file": 0,
+      "n_shell": 1,
+      "n_list_workdir": 1,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 3,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 15,
+        "pipe_magrittr": 3,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 4
+      },
+      "first_rscript_code_snippet": "# Load necessary libraries\nlibrary(dplyr)\n\n# Read the input files\npeaks_with_nearest <- read.table('input/peaks_with_nearest.bed', header = FALSE, sep = '\\t')\nt2g <- read.table('input/t2g.tsv', header = FALSE, sep = '\\t')\ngene_symbol <- read.table('input/gene_symbol.tsv', header = FALSE, sep = '\\t')\n\n# Rename columns for clarity\ncolnames(peaks_with_nearest) <- c('Chromosome', 'Start', 'End', 'Widt",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        1,
+        1,
+        0
+      ],
+      "n_rscript_errors": 2,
+      "error_recovery_gaps": [
+        2,
+        1
+      ],
+      "mean_recovery_gap": 1.5,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 7,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "partial_fail",
+      "overall_score": 0.475,
+      "failure_mode": "wrong_values"
+    },
+    {
+      "arm": "none",
+      "task_id": "chipseq_plot_frip_score",
+      "workflow_id": "",
+      "registry_index": 26,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "read_text_file",
+      "first_rscript_code_style": {
+        "loc": 8,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 4
+      },
+      "first_rscript_code_snippet": "library(tidyverse)\n\n# Read the FRiP score data\nsampleA <- read.table('input/sampleA_control.frip.txt', header=FALSE, stringsAsFactors=FALSE)\nsampleB <- read.table('input/sampleB_control.frip.txt', header=FALSE, stringsAsFactors=FALSE)\nsampleC <- read.table('input/sampleC_control.frip.txt', header=FALSE, stringsAsFactors=FALSE)\nsampleD <- read.table('input/sampleD_control.frip.txt', header=FALSE, s",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "chipseq_plot_peaks_count_macs2",
+      "workflow_id": "",
+      "registry_index": 27,
+      "total_steps": 4,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 6,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 3
+      },
+      "first_rscript_code_snippet": "# Read the peak-count files\nfile_paths <- list.files('input', full.names = TRUE)\npeak_counts <- do.call(rbind, lapply(file_paths, function(file) {\n  read.table(file, header = FALSE, stringsAsFactors = FALSE)\n}))\n\n# Set column names\ncolnames(peak_counts) <- c('sample_control', 'count')\n\n# Write to output file\nwrite.table(peak_counts, 'output/peaks_count.tsv', sep = '\\t', row.names = FALSE, col.name",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "chipseq_plot_annotatepeaks_summary_homer",
+      "workflow_id": "",
+      "registry_index": 28,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 5,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(tidyr)\nlibrary(readr)\n\n# Read the input file\nhomer_summary <- read_tsv('input/homer_summary.tsv')\n\n# Pivot the data to long format\ngathered_data <- gather(homer_summary, key = 'sequence_element', value = 'counts', exon, Intergenic, intron, `promoter-TSS`, TTS)\n\n# Write the output to a file\nwrite_tsv(gathered_data, 'output/homer_long.tsv')",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "epibtn_rpkm",
+      "workflow_id": "",
+      "registry_index": 29,
+      "total_steps": 11,
+      "n_rscript": 6,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 1,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 18,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "# Load necessary libraries\nlibrary(dplyr)\n\n# Read the input files\ngenecount <- read.delim('input/genecount.tsv', sep='\\t')\ntargets <- read.delim('input/targets.tsv', sep='\\t')\nref_genes <- read.delim('input/ref_genes.bed', sep='\\t', header=FALSE)\n\n# Assign column names to ref_genes\ncolnames(ref_genes) <- c('Chr', 'Start', 'Stop', 'Name', 'Value', 'Strand')\n\n# Filter out rows where GID matches ^N_\n",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "n_rscript_errors": 5,
+      "error_recovery_gaps": [
+        6,
+        5,
+        4,
+        3,
+        2
+      ],
+      "mean_recovery_gap": 4,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "partial_fail",
+      "overall_score": 0.475,
+      "failure_mode": "infinite_loop_debug"
+    },
+    {
+      "arm": "none",
+      "task_id": "snakepipes_scrna_report",
+      "workflow_id": "",
+      "registry_index": 30,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "read_text_file",
+      "first_rscript_code_style": {
+        "loc": 8,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 4
+      },
+      "first_rscript_code_snippet": "# Read the CSV files\nlibA <- read.table('input/libA.metrics.csv', header=FALSE, sep=',', as.is=TRUE)\nlibB <- read.table('input/libB.metrics.csv', header=FALSE, sep=',', as.is=TRUE)\nlibC <- read.table('input/libC.metrics.csv', header=FALSE, sep=',', as.is=TRUE)\n\n# Rename columns\ncolnames(libA) <- c('Metric', 'libA')\ncolnames(libB) <- c('Metric', 'libB')\ncolnames(libC) <- c('Metric', 'libC')\n\n# Merg",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "none",
+      "task_id": "clean_histoneHMM",
+      "workflow_id": "",
+      "registry_index": 31,
+      "total_steps": 4,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 10,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(rtracklayer)\n\nprocess_gff <- function(input_file, output_prefix) {\n  # Import the GFF file\n  gff_data <- import.gff(input_file)\n  \n  # Filter features with avg_posterior >= 0.5\n  filtered_data <- gff_data[as.numeric(gff_data$avg_posterior) >= 0.5]\n  \n  # Export to GFF3\n  export.gff3(filtered_data, paste0('output/', output_prefix, '_avgp0.5.gff'))\n  \n  # Set score and export to BED\n  filter",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "paper",
+      "task_id": "akinyi_deseq2",
+      "workflow_id": "akinyi-onyango-rna_seq_pipeline-finish",
+      "registry_index": 0,
+      "total_steps": 6,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 1,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 1,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "source('workspace/filter_and_deseq2.R')",
+      "n_skill_unique_tokens": 91,
+      "n_skill_token_hits": 1,
+      "n_distinct_skill_tokens_hit": 1,
+      "top_skill_tokens_hit": [
+        [
+          "necessary",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 3,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "paper",
+      "task_id": "star_deseq2_init",
+      "workflow_id": "rna-seq-star-deseq2-finish",
+      "registry_index": 1,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 10,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\n\n# Read the count matrix and sample information\ndf_counts <- read.delim('input/counts.tsv', header=TRUE, row.names=1)\ndf_samples <- read.delim('input/samples.tsv', header=TRUE)\n\n# Filter out rows with total count <= 1\ndf_counts <- df_counts[rowSums(df_counts) > 1, ]\n\n# Create DESeqDataSet\ndds <- DESeqDataSetFromMatrix(countData = df_counts, colData = df_samples, design = ~ conditio",
+      "n_skill_unique_tokens": 104,
+      "n_skill_token_hits": 3,
+      "n_distinct_skill_tokens_hit": 3,
+      "top_skill_tokens_hit": [
+        [
+          "colData",
+          1
+        ],
+        [
+          "DESeqDataSetFromMatrix",
+          1
+        ],
+        [
+          "countData",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "paper",
+      "task_id": "star_deseq2_contrast",
+      "workflow_id": "rna-seq-star-deseq2-finish",
+      "registry_index": 2,
+      "total_steps": 4,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 8,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\n# Load the DESeq2 object\ndds <- readRDS('input/dds.rds')\n# Compute results for the contrast 'condition treated vs untreated'\nres <- results(dds, contrast=c('condition', 'treated', 'untreated'))\n# Apply lfcShrink with type='ashr'\nlibrary(ashr)\nresLFC <- lfcShrink(dds, coef=2, type='ashr')\n# Sort by padj\nresLFC <- resLFC[order(resLFC$padj),]\n# Prepare the data frame for output\noutput",
+      "n_skill_unique_tokens": 97,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "paper",
+      "task_id": "methylkit_load",
+      "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "registry_index": 3,
+      "total_steps": 15,
+      "n_rscript": 12,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 0,
+      "n_write_plan": 2,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 8,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(methylKit)\n\n# Define file paths\nfile_paths <- c('input/sampleA.bismark.cov', 'input/sampleB.bismark.cov', 'input/sampleC.bismark.cov')\n\n# Read the methylation data\nmethyl_data <- methRead(file_paths,\n                        pipeline='bismarkCoverage',\n                        mincov=4,\n                        treatment=c(0, 0, 0),\n                        assembly='mock_v1')\n\n# Save the meth",
+      "n_skill_unique_tokens": 85,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_rscript_errors": 11,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 11,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "fail",
+      "overall_score": 0.075,
+      "failure_mode": "infinite_loop_debug"
+    },
+    {
+      "arm": "paper",
+      "task_id": "methylkit_unite",
+      "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "registry_index": 4,
+      "total_steps": 15,
+      "n_rscript": 7,
+      "n_read_file": 6,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 1,
+      "n_submit_done": 0,
+      "n_write_plan": 1,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 17,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(methylKit)\n\n# Define file paths\nfile.list <- list('input/sampleA.bismark.cov', 'input/sampleB.bismark.cov', 'input/sampleC.bismark.cov', 'input/sampleD.bismark.cov')\n\n# Read the methylation data\nmk_raw <- methRead(file.list,\n                   pipeline='bismarkCoverage',\n                   assembly='mock_v1',\n                   treatment=c(0, 0, 1, 1),\n                   mincov=4)\n\n# Unite",
+      "n_skill_unique_tokens": 85,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_rscript_errors": 6,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 6,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "fail",
+      "overall_score": 0.075,
+      "failure_mode": "infinite_loop_debug"
+    },
+    {
+      "arm": "paper",
+      "task_id": "methylkit_to_tibble",
+      "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "registry_index": 5,
+      "total_steps": 15,
+      "n_rscript": 7,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 2,
+      "n_check_progress": 5,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 12,
+        "pipe_magrittr": 1,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(methylKit)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(readr)\n\n# Load the methylKit united object\nmk_united <- readRDS('input/mk_united.rds')\n\n# Convert to a data frame\nmk_df <- as.data.frame(mk_united)\n\n# Pivot longer on coverage and numCs columns\nmk_long <- mk_df %>%\n  pivot_longer(cols = starts_with('coverage') | starts_with('numCs'),\n               names_to = c('metric', 'sample'),\n         ",
+      "n_skill_unique_tokens": 85,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "n_rscript_errors": 4,
+      "error_recovery_gaps": [
+        3,
+        4,
+        2,
+        2
+      ],
+      "mean_recovery_gap": 2.75,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "partial_fail",
+      "overall_score": 0.475,
+      "failure_mode": "infinite_loop_debug"
+    },
+    {
+      "arm": "paper",
+      "task_id": "longseq_deseq2_init",
+      "workflow_id": "",
+      "registry_index": 6,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 11,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 3
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\n\n# Read the input data\ncounts <- read.table('input/all_counts.tsv', header=TRUE, sep='\\t', row.names=1)\nsamples <- read.table('input/samples.tsv', header=TRUE, sep='\\t')\n\n# Create DESeqDataSet\ndds <- DESeqDataSetFromMatrix(countData = counts, colData = samples, design = ~condition)\n\n# Filter out rows with total count <= 10\ndds <- dds[rowSums(counts(dds)) > 10, ]\n\n# Run DESeq\ndds <-",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 0.993,
+      "failure_mode": ""
+    },
+    {
+      "arm": "paper",
+      "task_id": "longseq_deseq2_contrast",
+      "workflow_id": "",
+      "registry_index": 7,
+      "total_steps": 4,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 8,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\nlibrary(ashr)\n\n# Load the DESeq2 object\ndds <- readRDS('input/dds.rds')\n\n# Compute results with contrast\nres <- results(dds, contrast=c('condition','ko','wt'), alpha=0.05)\n\n# Apply lfcShrink\nres <- lfcShrink(dds, coef=2, type='ashr')\n\n# Sort by padj\nres <- res[order(res$padj),]\n\n# Prepare data frame\nres_df <- data.frame(gene=rownames(res), res)\n\n# Write to TSV\nwrite.table(res_df, f",
+      "n_skill_unique_tokens": 0,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "partial_pass",
+      "overall_score": 0.8833,
+      "failure_mode": ""
+    },
+    {
+      "arm": "paper",
+      "task_id": "snakepipes_merge_fc",
+      "workflow_id": "maxplanck-ie-snakepipes-finish",
+      "registry_index": 8,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 16,
+        "pipe_magrittr": 8,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 5
+      },
+      "first_rscript_code_snippet": "library(dplyr)\n\n# Read the data\nsampleA <- read.table('input/sampleA.counts.txt', header=TRUE, sep='\\t')\nsampleB <- read.table('input/sampleB.counts.txt', header=TRUE, sep='\\t')\nsampleC <- read.table('input/sampleC.counts.txt', header=TRUE, sep='\\t')\nsampleD <- read.table('input/sampleD.counts.txt', header=TRUE, sep='\\t')\n\n# Select relevant columns\nsampleA <- sampleA %>% select(Geneid, sampleA.bam",
+      "n_skill_unique_tokens": 96,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 0.993,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "akinyi_deseq2",
+      "workflow_id": "akinyi-onyango-rna_seq_pipeline-finish",
+      "registry_index": 0,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 1,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 18,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 3
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\n\n# Read the count matrix\ncountdata <- read.table('input/featureCounts_output.txt', header=TRUE, stringsAsFactors=FALSE)\n\n# Extract gene names and count data\ncountdata <- countdata[!grepl('^ERCC-', countdata$Geneid), ]\ngenenames <- countdata$Geneid\ncountdata <- countdata[, 7:ncol(countdata)]\ncolnames(countdata) <- c(paste('sample_', 0:5, sep=''))\ncountdata <- as.matrix(countdata)\nro",
+      "n_skill_unique_tokens": 104,
+      "n_skill_token_hits": 15,
+      "n_distinct_skill_tokens_hit": 15,
+      "top_skill_tokens_hit": [
+        [
+          "colnames",
+          1
+        ],
+        [
+          "coldata",
+          1
+        ],
+        [
+          "res_up",
+          1
+        ],
+        [
+          "res_down",
+          1
+        ],
+        [
+          "colData",
+          1
+        ],
+        [
+          "DESeqDataSetFromMatrix",
+          1
+        ],
+        [
+          "countData",
+          1
+        ],
+        [
+          "sample_",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "star_deseq2_init",
+      "workflow_id": "rna-seq-star-deseq2-finish",
+      "registry_index": 1,
+      "total_steps": 6,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 2,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 11,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 3
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\n\n# Read the count matrix and sample information\ndf_counts <- read.table('input/counts.tsv', header = TRUE, row.names = 1, check.names = FALSE)\ndf_samples <- read.table('input/samples.tsv', header = TRUE, row.names = 1, check.names = FALSE)\n\n# Filter out rows with total count <= 1\ndf_counts <- df_counts[rowSums(df_counts) > 1, ]\n\n# Create DESeqDataSet\ndds <- DESeqDataSetFromMatrix(c",
+      "n_skill_unique_tokens": 137,
+      "n_skill_token_hits": 6,
+      "n_distinct_skill_tokens_hit": 6,
+      "top_skill_tokens_hit": [
+        [
+          "rownames",
+          1
+        ],
+        [
+          "colData",
+          1
+        ],
+        [
+          "DESeqDataSetFromMatrix",
+          1
+        ],
+        [
+          "check",
+          1
+        ],
+        [
+          "countData",
+          1
+        ],
+        [
+          "frame",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "star_deseq2_contrast",
+      "workflow_id": "rna-seq-star-deseq2-finish",
+      "registry_index": 2,
+      "total_steps": 4,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 9,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\n\n# Load the DESeq2 object\ndds <- readRDS('input/dds.rds')\n\n# Define the contrast\ncontrast <- c('condition', 'treated', 'untreated')\n\n# Compute results for the contrast\nres <- results(dds, contrast=contrast)\n\n# Apply lfcShrink with type='ashr'\nres <- lfcShrink(dds, contrast=contrast, res=res, type='ashr')\n\n# Sort by padj\nres <- res[order(res$padj), ]\n\n# Write the results to a file\ng",
+      "n_skill_unique_tokens": 123,
+      "n_skill_token_hits": 1,
+      "n_distinct_skill_tokens_hit": 1,
+      "top_skill_tokens_hit": [
+        [
+          "readRDS",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "methylkit_load",
+      "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "registry_index": 3,
+      "total_steps": 15,
+      "n_rscript": 13,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 0,
+      "n_write_plan": 1,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 4,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(methylKit)\nfiles <- list('input/sampleA.bismark.cov', 'input/sampleB.bismark.cov', 'input/sampleC.bismark.cov')\nmk_raw <- methRead(files, pipeline='bismarkCoverage', mincov=4, treatment=c(0, 0, 0), assembly='mock_v1')\nsaveRDS(mk_raw, 'output/mk_raw.rds')",
+      "n_skill_unique_tokens": 168,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "n_rscript_errors": 9,
+      "error_recovery_gaps": [
+        5,
+        3,
+        2,
+        1,
+        3,
+        2,
+        1,
+        2,
+        1
+      ],
+      "mean_recovery_gap": 2.2222222222222223,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "fail",
+      "overall_score": 0.15,
+      "failure_mode": "infinite_loop_debug"
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "methylkit_unite",
+      "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "registry_index": 4,
+      "total_steps": 15,
+      "n_rscript": 14,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 0,
+      "n_write_plan": 1,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 32,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(methylKit)\n\n# Load the methylation data\nfile.list <- list(\n  'input/sampleA.bismark.cov',\n  'input/sampleB.bismark.cov',\n  'input/sampleC.bismark.cov',\n  'input/sampleD.bismark.cov'\n)\n\nmk_raw <- methRead(\n  file.list,\n  sample.id = c('sampleA', 'sampleB', 'sampleC', 'sampleD'),\n  assembly = 'mock_v1',\n  pipeline = 'bismarkCoverage',\n  treatment = c(0, 0, 1, 1),\n  mincov = 4\n)\n\n# Unite the ",
+      "n_skill_unique_tokens": 167,
+      "n_skill_token_hits": 14,
+      "n_distinct_skill_tokens_hit": 1,
+      "top_skill_tokens_hit": [
+        [
+          "length",
+          14
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_rscript_errors": 13,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 13,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "fail",
+      "overall_score": 0.075,
+      "failure_mode": "infinite_loop_debug"
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "methylkit_to_tibble",
+      "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "registry_index": 5,
+      "total_steps": 15,
+      "n_rscript": 14,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 0,
+      "n_write_plan": 1,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 11,
+        "pipe_magrittr": 2,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(methylKit)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(readr)\nlibrary(tibble)\n\n# Load the methylKit united object\nmk_united <- readRDS('input/mk_united.rds')\n\n# Convert to tibble\nmku_tibble <- as_tibble(mk_united)\n\n# Pivot longer\nmku_long <- mku_tibble %>%\n  pivot_longer(cols = starts_with('coverage'), names_to = 'metric', values_to = 'value') %>%\n  pivot_longer(cols = starts_with('numCs'), name",
+      "n_skill_unique_tokens": 168,
+      "n_skill_token_hits": 56,
+      "n_distinct_skill_tokens_hit": 6,
+      "top_skill_tokens_hit": [
+        [
+          "Load",
+          14
+        ],
+        [
+          "dplyr",
+          13
+        ],
+        [
+          "tidyr",
+          13
+        ],
+        [
+          "mutate",
+          11
+        ],
+        [
+          "as_tibble",
+          3
+        ],
+        [
+          "methylBaseDB",
+          2
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_rscript_errors": 12,
+      "error_recovery_gaps": [
+        2,
+        1
+      ],
+      "mean_recovery_gap": 1.5,
+      "n_unrecovered_errors": 10,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "fail",
+      "overall_score": 0.225,
+      "failure_mode": "infinite_loop_debug"
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "longseq_deseq2_init",
+      "workflow_id": "snakemake-workflows-rna-longseq-de-isoform",
+      "registry_index": 6,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 9,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 3
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\n\n# Read the counts and samples data\ncounts_data <- read.table('input/all_counts.tsv', header = TRUE, row.names = 'Reference', check.names = FALSE)\nsamples_data <- read.table('input/samples.tsv', header = TRUE, row.names = 'sample', check.names = FALSE)\n\n# Create DESeqDataSet\ndds <- DESeqDataSetFromMatrix(countData = counts_data, colData = samples_data, design = ~condition)\n\n# Filte",
+      "n_skill_unique_tokens": 161,
+      "n_skill_token_hits": 7,
+      "n_distinct_skill_tokens_hit": 7,
+      "top_skill_tokens_hit": [
+        [
+          "rownames",
+          1
+        ],
+        [
+          "colData",
+          1
+        ],
+        [
+          "DESeqDataSetFromMatrix",
+          1
+        ],
+        [
+          "counts_data",
+          1
+        ],
+        [
+          "check",
+          1
+        ],
+        [
+          "countData",
+          1
+        ],
+        [
+          "frame",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "longseq_deseq2_contrast",
+      "workflow_id": "snakemake-workflows-rna-longseq-de-isoform",
+      "registry_index": 7,
+      "total_steps": 4,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 7,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\n# Load the DESeq2 object\ndds <- readRDS('input/dds.rds')\n\n# Perform differential expression analysis\nres <- results(dds, contrast=c('condition','ko','wt'), alpha=0.05)\n\n# Apply log fold change shrinkage\nres <- lfcShrink(dds, contrast=c('condition','ko','wt'), res=res, type='ashr')\n\n# Sort results by adjusted p-value\nres_sorted <- res[order(res$padj), ]\n\n# Prepare the data frame wit",
+      "n_skill_unique_tokens": 149,
+      "n_skill_token_hits": 5,
+      "n_distinct_skill_tokens_hit": 5,
+      "top_skill_tokens_hit": [
+        [
+          "fold",
+          1
+        ],
+        [
+          "differential",
+          1
+        ],
+        [
+          "expression",
+          1
+        ],
+        [
+          "change",
+          1
+        ],
+        [
+          "readRDS",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "snakepipes_merge_fc",
+      "workflow_id": "maxplanck-ie-snakepipes-finish",
+      "registry_index": 8,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 15,
+        "pipe_magrittr": 7,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 5
+      },
+      "first_rscript_code_snippet": "# Load necessary library\nlibrary(dplyr)\n\n# Read the input files\nsampleA <- read.table('input/sampleA.counts.txt', header=TRUE, sep='\\t')\nsampleB <- read.table('input/sampleB.counts.txt', header=TRUE, sep='\\t')\nsampleC <- read.table('input/sampleC.counts.txt', header=TRUE, sep='\\t')\nsampleD <- read.table('input/sampleD.counts.txt', header=TRUE, sep='\\t')\n\n# Select relevant columns\nsampleA <- sample",
+      "n_skill_unique_tokens": 149,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "partial_fail",
+      "overall_score": 0.475,
+      "failure_mode": "wrong_values"
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "snakepipes_merge_ct",
+      "workflow_id": "maxplanck-ie-snakepipes-finish",
+      "registry_index": 9,
+      "total_steps": 6,
+      "n_rscript": 2,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 14,
+        "pipe_magrittr": 11,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "# Load necessary library\nlibrary(dplyr)\n\n# Read the input files\nwt_a <- read.delim('input/WT_A.quant.sf', sep='\\t')\nwt_b <- read.delim('input/WT_B.quant.sf', sep='\\t')\nko_a <- read.delim('input/KO_A.quant.sf', sep='\\t')\nko_b <- read.delim('input/KO_B.quant.sf', sep='\\t')\n\n# Extract TPM columns and rename them\nwt_a_tpm <- wt_a %>% select(Name, TPM) %>% rename(WT_A = TPM)\nwt_b_tpm <- wt_b %>% select",
+      "n_skill_unique_tokens": 150,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        1
+      ],
+      "mean_recovery_gap": 1,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "partial_fail",
+      "overall_score": 0.475,
+      "failure_mode": "wrong_values"
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "riya_limma",
+      "workflow_id": "RiyaDua-cervical-cancer-snakemake-workflow",
+      "registry_index": 10,
+      "total_steps": 6,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 1,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 1,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "source('differential_expression.R')",
+      "n_skill_unique_tokens": 130,
+      "n_skill_token_hits": 10,
+      "n_distinct_skill_tokens_hit": 10,
+      "top_skill_tokens_hit": [
+        [
+          "differentially",
+          1
+        ],
+        [
+          "colnames",
+          1
+        ],
+        [
+          "expressed",
+          1
+        ],
+        [
+          "model",
+          1
+        ],
+        [
+          "levels",
+          1
+        ],
+        [
+          "expression",
+          1
+        ],
+        [
+          "fit2",
+          1
+        ],
+        [
+          "metadata",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 3,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "chipseq_plot_macs_qc",
+      "workflow_id": "snakemake-workflows-chipseq-finish",
+      "registry_index": 11,
+      "total_steps": 5,
+      "n_rscript": 2,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 22,
+        "pipe_magrittr": 4,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(dplyr)\n\n# Read the data\nsampleA <- read.delim('input/sampleA_peaks.narrowPeak', header=FALSE)\nsampleB <- read.delim('input/sampleB_peaks.narrowPeak', header=FALSE)\nsampleC <- read.delim('input/sampleC_peaks.narrowPeak', header=FALSE)\n\n# Extract relevant columns\nextract_summary <- function(data, sample_name) {\n  data <- data %>% mutate(length = V3 - V2)\n  summary_stats <- data %>% summarise",
+      "n_skill_unique_tokens": 170,
+      "n_skill_token_hits": 2,
+      "n_distinct_skill_tokens_hit": 1,
+      "top_skill_tokens_hit": [
+        [
+          "delim",
+          2
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        1
+      ],
+      "mean_recovery_gap": 1,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "partial_fail",
+      "overall_score": 0.475,
+      "failure_mode": "wrong_values"
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "chipseq_plot_homer_annot",
+      "workflow_id": "snakemake-workflows-chipseq-finish",
+      "registry_index": 12,
+      "total_steps": 6,
+      "n_rscript": 2,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 15,
+        "pipe_magrittr": 3,
+        "pipe_native": 0,
+        "data_table": 1,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(dplyr)\n\n# Read the data\nsampleA_data <- read.delim('input/sampleA_annot.txt', header=TRUE, sep='\\t')\nsampleB_data <- read.delim('input/sampleB_annot.txt', header=TRUE, sep='\\t')\nsampleC_data <- read.delim('input/sampleC_annot.txt', header=TRUE, sep='\\t')\n\n# Function to aggregate feature counts\naggregate_features <- function(data, sample_name) {\n  data %>%\n    mutate(Feature = sub(' .*', ''",
+      "n_skill_unique_tokens": 169,
+      "n_skill_token_hits": 2,
+      "n_distinct_skill_tokens_hit": 1,
+      "top_skill_tokens_hit": [
+        [
+          "delim",
+          2
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        1
+      ],
+      "mean_recovery_gap": 1,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "partial_fail",
+      "overall_score": 0.475,
+      "failure_mode": "wrong_values"
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "snakepipes_scrna_merge_coutt",
+      "workflow_id": "maxplanck-ie-snakepipes-finish",
+      "registry_index": 13,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 15,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 4
+      },
+      "first_rscript_code_snippet": "# Load necessary libraries\nlibrary(dplyr)\n\n# Read the input files\nlibA <- read.table('input/coutt/plate01_libA.corrected.txt', header=TRUE, sep='\\t')\nlibB <- read.table('input/coutt/plate01_libB.corrected.txt', header=TRUE, sep='\\t')\n\n# Merge the tables by GENEID using an outer join\nmerged <- full_join(libA, libB, by='GENEID')\n\n# Prefix each cell column with the library name and replace the leadin",
+      "n_skill_unique_tokens": 150,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "partial_pass",
+      "overall_score": 0.734,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "snakepipes_scrna_qc",
+      "workflow_id": "maxplanck-ie-snakepipes-finish",
+      "registry_index": 14,
+      "total_steps": 6,
+      "n_rscript": 1,
+      "n_read_file": 2,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 8,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 1,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(data.table)\n\n# Read the libsum files\nlibsum_A <- fread('input/cellsum/plate01_libA.libsum', header=FALSE)\nlibsum_B <- fread('input/cellsum/plate01_libB.libsum', header=FALSE)\n\n# Combine the data\nlibsum_data <- rbind(libsum_A, libsum_B)\n\n# Cast the data for reads\nlibstats_reads <- dcast(libsum_data, V1 ~ V2, value.var='V3')\n\n# Cast the data for pct\nlibstats_pct <- dcast(libsum_data, V1 ~ V2",
+      "n_skill_unique_tokens": 150,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 3,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "spilterlize_filter_features",
+      "workflow_id": "epigen-spilterlize_integrate-finish",
+      "registry_index": 15,
+      "total_steps": 7,
+      "n_rscript": 2,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 2,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 8,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 1,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(edgeR)\nlibrary(data.table)\n\n# Read counts and annotation data\ncounts <- fread('input/counts.csv', header=TRUE, row.names=1)\nannotation <- fread('input/annotation.csv', header=TRUE, row.names=1)\n\n# Prepare DGEList object\ndge <- DGEList(counts=counts)\n\n# Filter features using filterByExpr\nkeep <- filterByExpr(dge, group=annotation$group)\nfiltered_counts <- counts[keep, ]\n\n# Write filtered co",
+      "n_skill_unique_tokens": 167,
+      "n_skill_token_hits": 2,
+      "n_distinct_skill_tokens_hit": 1,
+      "top_skill_tokens_hit": [
+        [
+          "fread",
+          2
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        2
+      ],
+      "mean_recovery_gap": 2,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "partial_pass",
+      "overall_score": 0.9,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "spilterlize_norm_voom",
+      "workflow_id": "epigen-spilterlize_integrate-finish",
+      "registry_index": 16,
+      "total_steps": 6,
+      "n_rscript": 2,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 2,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 9,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 1,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(edgeR)\nlibrary(limma)\nlibrary(data.table)\n\n# Read the input count data\ndata <- fread('input/filtered_counts.csv', header=TRUE, row.names=1)\n\n# Create DGEList object\ndge <- DGEList(counts=data)\n\n# Normalize using TMM method\ndge <- calcNormFactors(dge, method='TMM')\n\n# Apply voom normalization\nvoom_results <- voom(dge, normalize.method='none', span=0.5, plot=TRUE)\n\n# Extract normalized expre",
+      "n_skill_unique_tokens": 172,
+      "n_skill_token_hits": 10,
+      "n_distinct_skill_tokens_hit": 5,
+      "top_skill_tokens_hit": [
+        [
+          "fread",
+          2
+        ],
+        [
+          "expression",
+          2
+        ],
+        [
+          "normalization",
+          2
+        ],
+        [
+          "frame",
+          2
+        ],
+        [
+          "normalized",
+          2
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        2
+      ],
+      "mean_recovery_gap": 2,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "partial_pass",
+      "overall_score": 0.9,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "spilterlize_limma_rbe",
+      "workflow_id": "epigen-spilterlize_integrate-finish",
+      "registry_index": 17,
+      "total_steps": 6,
+      "n_rscript": 2,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 2,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 8,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 2,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(limma)\nlibrary(data.table)\n\n# Read the data\nnormalized_data <- fread('input/normalized.csv', header=TRUE, row.names=1)\nannotation_data <- fread('input/annotation.csv', header=TRUE)\n\n# Convert to matrix\ndata_matrix <- as.matrix(normalized_data)\n\n# Prepare the design matrix\ndesign <- model.matrix(~ group, data=annotation_data)\n\n# Remove batch effects\ncorrected_data <- removeBatchEffect(data_",
+      "n_skill_unique_tokens": 169,
+      "n_skill_token_hits": 4,
+      "n_distinct_skill_tokens_hit": 2,
+      "top_skill_tokens_hit": [
+        [
+          "fread",
+          2
+        ],
+        [
+          "effects",
+          2
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        2
+      ],
+      "mean_recovery_gap": 2,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "pass",
+      "overall_score": 0.993,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "spilterlize_norm_edger",
+      "workflow_id": "epigen-spilterlize_integrate-finish",
+      "registry_index": 18,
+      "total_steps": 7,
+      "n_rscript": 3,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 1,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "read_text_file",
+      "first_rscript_code_style": {
+        "loc": 7,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 1,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(edgeR)\nlibrary(data.table)\n\n# Read the count data\ndata <- fread('input/filtered_counts.csv', header=TRUE, row.names=1)\n\n# Create DGEList object\ndge <- DGEList(counts=data)\n\n# Normalize using TMM method\ndge <- calcNormFactors(dge, method='TMM')\n\n# Calculate log-CPM\nlog_cpm <- cpm(dge, log=TRUE, prior.count=3)\n\n# Write the log-CPM matrix to a CSV file\nfwrite(as.data.frame(log_cpm), 'output/a",
+      "n_skill_unique_tokens": 174,
+      "n_skill_token_hits": 6,
+      "n_distinct_skill_tokens_hit": 2,
+      "top_skill_tokens_hit": [
+        [
+          "fread",
+          3
+        ],
+        [
+          "frame",
+          3
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        1,
+        0
+      ],
+      "n_rscript_errors": 2,
+      "error_recovery_gaps": [
+        4,
+        2
+      ],
+      "mean_recovery_gap": 3,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "dea_limma",
+      "workflow_id": "epigen-dea_limma-finish",
+      "registry_index": 19,
+      "total_steps": 7,
+      "n_rscript": 2,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 2,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 17,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 1,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(limma)\nlibrary(edgeR)\nlibrary(statmod)\nlibrary(data.table)\n\n# Load data\ndata <- data.frame(fread('input/counts.tsv', header=TRUE), row.names=1)\nmetadata <- data.frame(fread('input/metadata.tsv', header=TRUE, na.strings=c('NA', '')), row.names=1)\n\n# Prepare DEA\ndesign <- model.matrix(~treatment, metadata)\ndge <- DGEList(data, samples=metadata, genes=rownames(data))\ndge <- calcNormFactors(dg",
+      "n_skill_unique_tokens": 156,
+      "n_skill_token_hits": 38,
+      "n_distinct_skill_tokens_hit": 19,
+      "top_skill_tokens_hit": [
+        [
+          "rownames",
+          2
+        ],
+        [
+          "topTable",
+          2
+        ],
+        [
+          "statmod",
+          2
+        ],
+        [
+          "calcNormFactors",
+          2
+        ],
+        [
+          "sort",
+          2
+        ],
+        [
+          "nrow",
+          2
+        ],
+        [
+          "strings",
+          2
+        ],
+        [
+          "edgeR",
+          2
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        2
+      ],
+      "mean_recovery_gap": 2,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "partial_pass",
+      "overall_score": 0.734,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "msisensor_merge",
+      "workflow_id": "snakemake-workflows-msisensor-pro-finish",
+      "registry_index": 20,
+      "total_steps": 6,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 1,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 14,
+        "pipe_magrittr": 4,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(tidyverse)\n\n# Read the data from each file and add a group column\ncaseA_data <- read_tsv('results/msi/caseA/msi_out.txt') %>%\n  mutate(group = 'caseA')\ncaseB_data <- read_tsv('results/msi/caseB/msi_out.txt') %>%\n  mutate(group = 'caseB')\ncaseC_data <- read_tsv('results/msi/caseC/msi_out.txt') %>%\n  mutate(group = 'caseC')\n\n# Combine the data\ncombined_data <- bind_rows(caseA_data, caseB_dat",
+      "n_skill_unique_tokens": 100,
+      "n_skill_token_hits": 4,
+      "n_distinct_skill_tokens_hit": 4,
+      "top_skill_tokens_hit": [
+        [
+          "combined",
+          1
+        ],
+        [
+          "read_tsv",
+          1
+        ],
+        [
+          "mutate",
+          1
+        ],
+        [
+          "tidyverse",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 3,
+      "first_skill_hit_timestep": 3,
+      "verdict_v2": "pass",
+      "overall_score": 0.993,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "methylkit_filt_norm",
+      "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "registry_index": 21,
+      "total_steps": 15,
+      "n_rscript": 14,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 0,
+      "n_write_plan": 1,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 5,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(methylKit)\nmk_raw <- readRDS('input/mk_raw.rds')\nmk_filt <- filterByCoverage(mk_raw, lo.count=3, hi.perc=99.9)\nmk_norm <- normalizeCoverage(mk_filt, method='median')\nsaveRDS(mk_norm, 'output/mk_filt_norm.rds')",
+      "n_skill_unique_tokens": 171,
+      "n_skill_token_hits": 53,
+      "n_distinct_skill_tokens_hit": 5,
+      "top_skill_tokens_hit": [
+        [
+          "return",
+          13
+        ],
+        [
+          "coverage",
+          13
+        ],
+        [
+          "length",
+          13
+        ],
+        [
+          "percMethylation",
+          13
+        ],
+        [
+          "Calculate",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_rscript_errors": 12,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 12,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "fail",
+      "overall_score": 0.225,
+      "failure_mode": "infinite_loop_debug"
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "methylkit2tibble_split",
+      "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "registry_index": 22,
+      "total_steps": 11,
+      "n_rscript": 7,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 1,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 5,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "# Load necessary libraries\nlibrary(tidyverse)\n\n# Load RDS files\ngrp1_mku <- readRDS('input/grp1_mku.rds')\ngrp2_mku <- readRDS('input/grp2_mku.rds')\n\n# Concatenate the tibbles\ncombined_mku <- bind_rows(grp1_mku, grp2_mku)\n\n# Save the combined tibble\nsaveRDS(combined_mku, 'output/df_mku_split.rds')",
+      "n_skill_unique_tokens": 167,
+      "n_skill_token_hits": 19,
+      "n_distinct_skill_tokens_hit": 8,
+      "top_skill_tokens_hit": [
+        [
+          "Load",
+          7
+        ],
+        [
+          "Check",
+          2
+        ],
+        [
+          "methylKit",
+          2
+        ],
+        [
+          "as_tibble",
+          2
+        ],
+        [
+          "methylBase",
+          2
+        ],
+        [
+          "mutate",
+          2
+        ],
+        [
+          "select",
+          1
+        ],
+        [
+          "str_remove",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "n_rscript_errors": 3,
+      "error_recovery_gaps": [
+        1,
+        1,
+        1
+      ],
+      "mean_recovery_gap": 1,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "partial_pass",
+      "overall_score": 0.65,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "methylkit_remove_snvs",
+      "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "registry_index": 23,
+      "total_steps": 6,
+      "n_rscript": 2,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 10,
+        "pipe_magrittr": 1,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 2
+      },
+      "first_rscript_code_snippet": "library(dplyr)\n\n# Read exclusion.bed data\nexclusion_bed <- read.table(text = \"chr2\\t5139\\t5140\\tG\\tC\\t0.37\\nchr2\\t6299\\t6300\\tA\\tA\\t0.16\\nchr1\\t1299\\t1300\\tG\\tT\\t0.66\\nchr2\\t5019\\t5020\\tT\\tG\\t0.22\\nchr1\\t4019\\t4020\\tT\\tA\\t0.28\\nchr2\\t5859\\t5860\\tG\\tA\\t0.22\\nchr1\\t539\\t540\\tC\\tG\\t0.95\\nchr1\\t3099\\t3100\\tG\\tG\\t0.12\\nchr2\\t4899\\t4900\\tC\\tC\\t0.38\\nchr1\\t5619\\t5620\\tG\\tA\\t0.40\\nchr1\\t4939\\t4940\\tA\\tT\\t",
+      "n_skill_unique_tokens": 168,
+      "n_skill_token_hits": 6,
+      "n_distinct_skill_tokens_hit": 3,
+      "top_skill_tokens_hit": [
+        [
+          "mutate",
+          2
+        ],
+        [
+          "dplyr",
+          2
+        ],
+        [
+          "Calculate",
+          2
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        1
+      ],
+      "mean_recovery_gap": 1,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "phantompeak_correlation",
+      "workflow_id": "snakemake-workflows-chipseq-finish",
+      "registry_index": 24,
+      "total_steps": 5,
+      "n_rscript": 0,
+      "n_read_file": 2,
+      "n_write_file": 1,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 0,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "",
+      "n_skill_unique_tokens": 169,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": null,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "nearest_gene",
+      "workflow_id": "maxplanck-ie-snakepipes-finish",
+      "registry_index": 25,
+      "total_steps": 6,
+      "n_rscript": 2,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 13,
+        "pipe_magrittr": 3,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "# Load necessary libraries\nlibrary(dplyr)\n\n# Read input files\npeaks_with_nearest <- read.delim('input/peaks_with_nearest.bed', header = FALSE)\nt2g <- read.delim('input/t2g.tsv', header = FALSE)\ngene_symbol <- read.delim('input/gene_symbol.tsv', header = FALSE)\n\n# Rename columns for clarity\ncolnames(peaks_with_nearest) <- c('Chromosome', 'Start', 'End', 'Width', 'Strand', 'Score', 'nWindows', 'logF",
+      "n_skill_unique_tokens": 148,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        1
+      ],
+      "mean_recovery_gap": 1,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "partial_fail",
+      "overall_score": 0.475,
+      "failure_mode": "wrong_values"
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "chipseq_plot_frip_score",
+      "workflow_id": "snakemake-workflows-chipseq-finish",
+      "registry_index": 26,
+      "total_steps": 6,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 1,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 8,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 4
+      },
+      "first_rscript_code_snippet": "library(tidyverse)\n\n# Read the FRiP data from each file\nsampleA <- read.table(text = 'sampleA_control\\t0.252645', header = FALSE, stringsAsFactors = FALSE)\nsampleB <- read.table(text = 'sampleB_control\\t0.058754', header = FALSE, stringsAsFactors = FALSE)\nsampleC <- read.table(text = 'sampleC_control\\t0.155006', header = FALSE, stringsAsFactors = FALSE)\nsampleD <- read.table(text = 'sampleD_contro",
+      "n_skill_unique_tokens": 172,
+      "n_skill_token_hits": 1,
+      "n_distinct_skill_tokens_hit": 1,
+      "top_skill_tokens_hit": [
+        [
+          "colnames",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 3,
+      "first_skill_hit_timestep": 3,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "chipseq_plot_peaks_count_macs2",
+      "workflow_id": "snakemake-workflows-chipseq-finish",
+      "registry_index": 27,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 7,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 5
+      },
+      "first_rscript_code_snippet": "# Read the peak count data from each file\nsampleA <- read.table(text='sampleA_control\\t3819', header=FALSE, stringsAsFactors=FALSE)\nsampleB <- read.table(text='sampleB_control\\t1256', header=FALSE, stringsAsFactors=FALSE)\nsampleC <- read.table(text='sampleC_control\\t1602', header=FALSE, stringsAsFactors=FALSE)\nsampleD <- read.table(text='sampleD_control\\t3937', header=FALSE, stringsAsFactors=FALSE",
+      "n_skill_unique_tokens": 170,
+      "n_skill_token_hits": 1,
+      "n_distinct_skill_tokens_hit": 1,
+      "top_skill_tokens_hit": [
+        [
+          "colnames",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "chipseq_plot_annotatepeaks_summary_homer",
+      "workflow_id": "snakemake-workflows-chipseq-finish",
+      "registry_index": 28,
+      "total_steps": 6,
+      "n_rscript": 1,
+      "n_read_file": 2,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 1,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 5,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(tidyr)\nlibrary(readr)\n\n# Read the input file\nhomer_summary <- read_tsv('input/homer_summary.tsv')\n\n# Pivot the data to long format\ngathered_data <- gather(homer_summary, key = 'sequence_element', value = 'counts', exon, Intergenic, intron, `promoter-TSS`, TTS)\n\n# Write the output file\nwrite_tsv(gathered_data, 'output/homer_long.tsv')",
+      "n_skill_unique_tokens": 173,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "epibtn_rpkm",
+      "workflow_id": "joncahn-epigeneticbutton-finish",
+      "registry_index": 29,
+      "total_steps": 7,
+      "n_rscript": 3,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 1,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 15,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "# Load necessary libraries\nlibrary(dplyr)\n\n# Read the input data\ncounts <- read.delim('input/genecount.tsv', sep='\\t', header=TRUE)\ntargets <- read.delim('input/targets.tsv', sep='\\t', header=TRUE)\nref_genes <- read.delim('input/ref_genes.bed', sep='\\t', header=FALSE, col.names=c('Chr', 'Start', 'Stop', 'Name', 'Value', 'Strand'))\n\n# Filter out rows where GID matches ^N_\ncounts <- counts[!grepl('^",
+      "n_skill_unique_tokens": 185,
+      "n_skill_token_hits": 12,
+      "n_distinct_skill_tokens_hit": 4,
+      "top_skill_tokens_hit": [
+        [
+          "character",
+          3
+        ],
+        [
+          "dplyr",
+          3
+        ],
+        [
+          "numeric",
+          3
+        ],
+        [
+          "delim",
+          3
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        1,
+        0
+      ],
+      "n_rscript_errors": 2,
+      "error_recovery_gaps": [
+        3,
+        2
+      ],
+      "mean_recovery_gap": 2.5,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "partial_fail",
+      "overall_score": 0.475,
+      "failure_mode": "wrong_values"
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "snakepipes_scrna_report",
+      "workflow_id": "maxplanck-ie-snakepipes-finish",
+      "registry_index": 30,
+      "total_steps": 4,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 8,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 4
+      },
+      "first_rscript_code_snippet": "libA <- read.table('input/libA.metrics.csv', header=FALSE, sep=',', as.is=TRUE)\ncolnames(libA) <- c('Metric', 'libA')\nlibB <- read.table('input/libB.metrics.csv', header=FALSE, sep=',', as.is=TRUE)\ncolnames(libB) <- c('Metric', 'libB')\nlibC <- read.table('input/libC.metrics.csv', header=FALSE, sep=',', as.is=TRUE)\ncolnames(libC) <- c('Metric', 'libC')\nmerged <- Reduce(function(x, y) merge(x, y, al",
+      "n_skill_unique_tokens": 150,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "clean_histoneHMM",
+      "workflow_id": "maxplanck-ie-snakepipes-finish",
+      "registry_index": 31,
+      "total_steps": 4,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 10,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(rtracklayer)\n\n# Define a function to process each sample\nprocess_sample <- function(input_gff, output_prefix) {\n  # Import the GFF file\n  gff_data <- import.gff(input_gff)\n  \n  # Filter features with avg_posterior >= 0.5\n  filtered_data <- gff_data[as.numeric(gff_data$avg_posterior) >= 0.5]\n  \n  # Export to GFF3\n  export.gff3(filtered_data, paste0('output/', output_prefix, '_avgp0.5.gff'))",
+      "n_skill_unique_tokens": 149,
+      "n_skill_token_hits": 0,
+      "n_distinct_skill_tokens_hit": 0,
+      "top_skill_tokens_hit": [],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": null,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "akinyi_deseq2",
+      "workflow_id": "",
+      "registry_index": 0,
+      "total_steps": 4,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 13,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 3
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\n\n# Load the data\ncounts <- read.table('input/featureCounts_output.txt', header=TRUE, row.names=1)\ncounts <- counts[!grepl('^ERCC-', rownames(counts)), ]\n\n# Prepare the DESeq2 dataset\ncondition <- factor(c(rep('A', 3), rep('B', 3)))\ncolData <- data.frame(condition=condition)\ndds <- DESeqDataSetFromMatrix(countData=counts[, 6:11], colData=colData, design=~condition)\n\n# Run DESeq2\ndds",
+      "n_skill_unique_tokens": 67,
+      "n_skill_token_hits": 12,
+      "n_distinct_skill_tokens_hit": 12,
+      "top_skill_tokens_hit": [
+        [
+          "downregulated",
+          1
+        ],
+        [
+          "grepl",
+          1
+        ],
+        [
+          "Prepare",
+          1
+        ],
+        [
+          "upregulated",
+          1
+        ],
+        [
+          "colData",
+          1
+        ],
+        [
+          "DESeqDataSetFromMatrix",
+          1
+        ],
+        [
+          "dataset",
+          1
+        ],
+        [
+          "countData",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "star_deseq2_init",
+      "workflow_id": "",
+      "registry_index": 1,
+      "total_steps": 3,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 10,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 3
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\ncounts <- read.table('input/counts.tsv', header=TRUE, row.names=1)\nsamples <- read.table('input/samples.tsv', header=TRUE)\ncounts <- counts[rowSums(counts) > 1, ]\ndds <- DESeqDataSetFromMatrix(countData = counts, colData = samples, design = ~condition)\ndds$condition <- relevel(dds$condition, ref = 'untreated')\ndds <- DESeq(dds)\nsaveRDS(dds, 'output/dds.rds')\nnormalized_counts <- co",
+      "n_skill_unique_tokens": 51,
+      "n_skill_token_hits": 7,
+      "n_distinct_skill_tokens_hit": 7,
+      "top_skill_tokens_hit": [
+        [
+          "relevel",
+          1
+        ],
+        [
+          "colData",
+          1
+        ],
+        [
+          "DESeqDataSetFromMatrix",
+          1
+        ],
+        [
+          "countData",
+          1
+        ],
+        [
+          "frame",
+          1
+        ],
+        [
+          "normalized",
+          1
+        ],
+        [
+          "rowSums",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "star_deseq2_contrast",
+      "workflow_id": "",
+      "registry_index": 2,
+      "total_steps": 4,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 7,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\ndds <- readRDS('input/dds.rds')\nres <- results(dds, contrast=c('condition', 'treated', 'untreated'))\nresLFC <- lfcShrink(dds, contrast=c('condition', 'treated', 'untreated'), res=res, type='ashr')\nresLFC <- resLFC[order(resLFC$padj), ]\nres_df <- data.frame(gene=rownames(resLFC), resLFC)\nwrite.table(res_df, file='output/contrast_results.tsv', sep='\\t', row.names=FALSE, quote=FALSE)",
+      "n_skill_unique_tokens": 56,
+      "n_skill_token_hits": 4,
+      "n_distinct_skill_tokens_hit": 4,
+      "top_skill_tokens_hit": [
+        [
+          "quote",
+          1
+        ],
+        [
+          "res_df",
+          1
+        ],
+        [
+          "resLFC",
+          1
+        ],
+        [
+          "readRDS",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "methylkit_load",
+      "workflow_id": "",
+      "registry_index": 3,
+      "total_steps": 15,
+      "n_rscript": 7,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 0,
+      "n_write_plan": 1,
+      "n_check_progress": 7,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 10,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(methylKit)\n\n# Define file paths\nfile_paths <- c('input/sampleA.bismark.cov', \n                'input/sampleB.bismark.cov', \n                'input/sampleC.bismark.cov')\n\n# Load methylation data\nmethyl_data <- methRead(file_paths,\n                        pipeline = 'bismarkCoverage',\n                        mincov = 4,\n                        treatment = c(0, 0, 0),\n                        ",
+      "n_skill_unique_tokens": 50,
+      "n_skill_token_hits": 28,
+      "n_distinct_skill_tokens_hit": 4,
+      "top_skill_tokens_hit": [
+        [
+          "Save",
+          7
+        ],
+        [
+          "Define",
+          7
+        ],
+        [
+          "methyl_data",
+          7
+        ],
+        [
+          "file_paths",
+          7
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_rscript_errors": 7,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 7,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "fail",
+      "overall_score": 0.075,
+      "failure_mode": "rscript_crashed"
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "methylkit_unite",
+      "workflow_id": "",
+      "registry_index": 4,
+      "total_steps": 15,
+      "n_rscript": 14,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 0,
+      "n_write_plan": 1,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 19,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(methylKit)\n\n# Define file list and treatment vector\nfile.list <- list(\"input/sampleA.bismark.cov\", \"input/sampleB.bismark.cov\",\n                  \"input/sampleC.bismark.cov\", \"input/sampleD.bismark.cov\")\ntreatment <- c(0, 0, 1, 1)\n\n# Load data using methRead\nmk_raw <- methRead(file.list, \n                   pipeline = \"bismarkCoverage\", \n                   mincov = 4, \n                   t",
+      "n_skill_unique_tokens": 62,
+      "n_skill_token_hits": 98,
+      "n_distinct_skill_tokens_hit": 7,
+      "top_skill_tokens_hit": [
+        [
+          "Create",
+          14
+        ],
+        [
+          "nrow",
+          14
+        ],
+        [
+          "Save",
+          14
+        ],
+        [
+          "statistics",
+          14
+        ],
+        [
+          "length",
+          14
+        ],
+        [
+          "frame",
+          14
+        ],
+        [
+          "Unite",
+          14
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_rscript_errors": 13,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 13,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "fail",
+      "overall_score": 0.075,
+      "failure_mode": "infinite_loop_debug"
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "methylkit_to_tibble",
+      "workflow_id": "",
+      "registry_index": 5,
+      "total_steps": 8,
+      "n_rscript": 5,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 18,
+        "pipe_magrittr": 6,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(methylKit)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(readr)\n\n# Load the methylKit object\nmethylBase <- readRDS(\"input/mk_united.rds\")\n\n# Convert to a data frame and pivot longer\ndf_long <- methylBase %>%\n  as.data.frame() %>%\n  pivot_longer(cols = starts_with(\"coverage\") | starts_with(\"numCs\"),\n               names_to = \"metric\",\n               values_to = \"value\")\n\n# Save the long format tibb",
+      "n_skill_unique_tokens": 77,
+      "n_skill_token_hits": 140,
+      "n_distinct_skill_tokens_hit": 28,
+      "top_skill_tokens_hit": [
+        [
+          "cols",
+          5
+        ],
+        [
+          "chromosome",
+          5
+        ],
+        [
+          "format",
+          5
+        ],
+        [
+          "names_from",
+          5
+        ],
+        [
+          "saveRDS",
+          5
+        ],
+        [
+          "mutate",
+          5
+        ],
+        [
+          "methylBase",
+          5
+        ],
+        [
+          "df_long",
+          5
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "n_rscript_errors": 4,
+      "error_recovery_gaps": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "mean_recovery_gap": 2.5,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "partial_fail",
+      "overall_score": 0.475,
+      "failure_mode": "infinite_loop_debug"
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "longseq_deseq2_init",
+      "workflow_id": "",
+      "registry_index": 6,
+      "total_steps": 3,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 9,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 3
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\ncounts <- read.table('input/all_counts.tsv', header=TRUE, row.names=1)\nsamples <- read.table('input/samples.tsv', header=TRUE)\ndds <- DESeqDataSetFromMatrix(countData = counts, colData = samples, design = ~condition)\ndds <- dds[rowSums(counts(dds)) > 10, ]\ndds <- DESeq(dds)\nsaveRDS(dds, file='output/dds.rds')\nnormalized_counts <- counts(dds, normalized=TRUE)\nwrite.table(as.data.fra",
+      "n_skill_unique_tokens": 61,
+      "n_skill_token_hits": 6,
+      "n_distinct_skill_tokens_hit": 6,
+      "top_skill_tokens_hit": [
+        [
+          "colData",
+          1
+        ],
+        [
+          "DESeqDataSetFromMatrix",
+          1
+        ],
+        [
+          "countData",
+          1
+        ],
+        [
+          "frame",
+          1
+        ],
+        [
+          "normalized",
+          1
+        ],
+        [
+          "rowSums",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "partial_pass",
+      "overall_score": 0.72,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "longseq_deseq2_contrast",
+      "workflow_id": "",
+      "registry_index": 7,
+      "total_steps": 4,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 7,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(DESeq2)\n\n# Load the DESeq2 object\ndds <- readRDS('input/dds.rds')\n\n# Perform differential expression analysis\nres <- results(dds, contrast=c('condition', 'ko', 'wt'), alpha=0.05)\n\n# Apply log fold change shrinkage\nresLFC <- lfcShrink(dds, contrast=c('condition', 'ko', 'wt'), res=res, type='ashr')\n\n# Sort results by adjusted p-value\nresLFC <- resLFC[order(resLFC$padj), ]\n\n# Prepare the resu",
+      "n_skill_unique_tokens": 52,
+      "n_skill_token_hits": 16,
+      "n_distinct_skill_tokens_hit": 16,
+      "top_skill_tokens_hit": [
+        [
+          "fold",
+          1
+        ],
+        [
+          "Apply",
+          1
+        ],
+        [
+          "Sort",
+          1
+        ],
+        [
+          "Prepare",
+          1
+        ],
+        [
+          "adjusted",
+          1
+        ],
+        [
+          "differential",
+          1
+        ],
+        [
+          "expression",
+          1
+        ],
+        [
+          "readRDS",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "snakepipes_merge_fc",
+      "workflow_id": "",
+      "registry_index": 8,
+      "total_steps": 15,
+      "n_rscript": 14,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 1,
+      "n_submit_done": 0,
+      "n_write_plan": 0,
+      "n_check_progress": 0,
+      "planning_used": false,
+      "first_action": "list_workdir",
+      "first_rscript_code_style": {
+        "loc": 10,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 3
+      },
+      "first_rscript_code_snippet": "library(dplyr)\n\n# Define file paths\ninput_files <- list.files(path = 'input', pattern = '*.counts.txt', full.names = TRUE)\n\n# Read and merge files\nmerged_counts <- Reduce(function(x, y) {\n  x <- read.table(x, header = TRUE, sep = '\\t')\n  y <- read.table(y, header = TRUE, sep = '\\t')\n  merge(x, y, by = 'Geneid', all = TRUE)\n}, input_files)\n\n# Set row names and remove unnecessary columns\nrownames(me",
+      "n_skill_unique_tokens": 57,
+      "n_skill_token_hits": 182,
+      "n_distinct_skill_tokens_hit": 13,
+      "top_skill_tokens_hit": [
+        [
+          "Reduce",
+          14
+        ],
+        [
+          "input_files",
+          14
+        ],
+        [
+          "full",
+          14
+        ],
+        [
+          "Read",
+          14
+        ],
+        [
+          "unnecessary",
+          14
+        ],
+        [
+          "dplyr",
+          14
+        ],
+        [
+          "merge",
+          14
+        ],
+        [
+          "Define",
+          14
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_rscript_errors": 13,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 13,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "fail",
+      "overall_score": 0.075,
+      "failure_mode": "infinite_loop_debug"
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "snakepipes_merge_ct",
+      "workflow_id": "",
+      "registry_index": 9,
+      "total_steps": 15,
+      "n_rscript": 11,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 1,
+      "n_submit_done": 0,
+      "n_write_plan": 3,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 14,
+        "pipe_magrittr": 2,
+        "pipe_native": 0,
+        "data_table": 1,
+        "base_r": 3
+      },
+      "first_rscript_code_snippet": "# Load necessary library\ndependency_installed <- requireNamespace(\"dplyr\", quietly = TRUE)\nif (!dependency_installed) {\n  install.packages(\"dplyr\", repos = \"http://cran.us.r-project.org\")\n}\nlibrary(dplyr)\n\n# Define file paths\nfiles <- list.files(path = \"input\", pattern = \"*.quant.sf\", full.names = TRUE)\n\n# Function to read and extract TPM column\nread_tpm <- function(file) {\n  sample_name <- strspl",
+      "n_skill_unique_tokens": 66,
+      "n_skill_token_hits": 242,
+      "n_distinct_skill_tokens_hit": 22,
+      "top_skill_tokens_hit": [
+        [
+          "rename",
+          11
+        ],
+        [
+          "merged_data",
+          11
+        ],
+        [
+          "pattern",
+          11
+        ],
+        [
+          "return",
+          11
+        ],
+        [
+          "extract",
+          11
+        ],
+        [
+          "select",
+          11
+        ],
+        [
+          "strsplit",
+          11
+        ],
+        [
+          "Function",
+          11
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_rscript_errors": 10,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 10,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "fail",
+      "overall_score": 0.075,
+      "failure_mode": "infinite_loop_debug"
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "riya_limma",
+      "workflow_id": "",
+      "registry_index": 10,
+      "total_steps": 7,
+      "n_rscript": 4,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 1,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(limma)",
+      "n_skill_unique_tokens": 67,
+      "n_skill_token_hits": 21,
+      "n_distinct_skill_tokens_hit": 7,
+      "top_skill_tokens_hit": [
+        [
+          "colnames",
+          3
+        ],
+        [
+          "model",
+          3
+        ],
+        [
+          "levels",
+          3
+        ],
+        [
+          "fit2",
+          3
+        ],
+        [
+          "contrasts",
+          3
+        ],
+        [
+          "topTableResults",
+          3
+        ],
+        [
+          "contrast",
+          3
+        ]
+      ],
+      "rscript_exit_codes": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "n_rscript_errors": 2,
+      "error_recovery_gaps": [
+        2,
+        1
+      ],
+      "mean_recovery_gap": 1.5,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "chipseq_plot_macs_qc",
+      "workflow_id": "",
+      "registry_index": 11,
+      "total_steps": 4,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 41,
+        "pipe_magrittr": 2,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 2
+      },
+      "first_rscript_code_snippet": "library(dplyr)\n\ncompute_summary <- function(file_path, sample_name) {\n  data <- read.table(file_path, header = FALSE, sep = \"\\t\")\n  colnames(data) <- c(\"chr\", \"start\", \"end\", \"name\", \"score\", \"strand\", \"fold\", \"pvalue\", \"qvalue\", \"peak\")\n  data$length <- data$end - data$start\n  summary_stats <- data %>%\n    summarise(\n      num_peaks = n(),\n      fold_min = min(fold),\n      fold_1st_qu = quantile(",
+      "n_skill_unique_tokens": 100,
+      "n_skill_token_hits": 46,
+      "n_distinct_skill_tokens_hit": 46,
+      "top_skill_tokens_hit": [
+        [
+          "score",
+          1
+        ],
+        [
+          "fold_1st_qu",
+          1
+        ],
+        [
+          "summary_stats",
+          1
+        ],
+        [
+          "fold_median",
+          1
+        ],
+        [
+          "qvalue_mean",
+          1
+        ],
+        [
+          "median",
+          1
+        ],
+        [
+          "length_max",
+          1
+        ],
+        [
+          "fold_max",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "partial_fail",
+      "overall_score": 0.475,
+      "failure_mode": "wrong_values"
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "chipseq_plot_homer_annot",
+      "workflow_id": "",
+      "registry_index": 12,
+      "total_steps": 8,
+      "n_rscript": 4,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 2,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "# Load necessary libraries\nif (!requireNamespace('dplyr', quietly = TRUE)) install.packages('dplyr')\nif (!requireNamespace('tidyr', quietly = TRUE)) install.packages('tidyr')",
+      "n_skill_unique_tokens": 71,
+      "n_skill_token_hits": 70,
+      "n_distinct_skill_tokens_hit": 27,
+      "top_skill_tokens_hit": [
+        [
+          "rbind",
+          3
+        ],
+        [
+          "Process",
+          3
+        ],
+        [
+          "sapply",
+          3
+        ],
+        [
+          "mutate",
+          3
+        ],
+        [
+          "Feature",
+          3
+        ],
+        [
+          "input_files",
+          3
+        ],
+        [
+          "return",
+          3
+        ],
+        [
+          "combined_results",
+          3
+        ]
+      ],
+      "rscript_exit_codes": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "n_rscript_errors": 2,
+      "error_recovery_gaps": [
+        3,
+        1
+      ],
+      "mean_recovery_gap": 2,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "partial_fail",
+      "overall_score": 0.475,
+      "failure_mode": "wrong_values"
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "snakepipes_scrna_merge_coutt",
+      "workflow_id": "",
+      "registry_index": 13,
+      "total_steps": 5,
+      "n_rscript": 1,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 16,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 4
+      },
+      "first_rscript_code_snippet": "library(dplyr)\n\n# Read input files\nlibA <- read.table(\"input/coutt/plate01_libA.corrected.txt\", header = TRUE, sep = \"\\t\")\nlibB <- read.table(\"input/coutt/plate01_libB.corrected.txt\", header = TRUE, sep = \"\\t\")\n\n# Rename columns by prefixing with library name and replacing leading 'X'\ncolnames(libA)[-1] <- paste0(\"libA_\", sub(\"^X\", \"_\", colnames(libA)[-1]))\ncolnames(libB)[-1] <- paste0(\"libB_\", su",
+      "n_skill_unique_tokens": 69,
+      "n_skill_token_hits": 16,
+      "n_distinct_skill_tokens_hit": 16,
+      "top_skill_tokens_hit": [
+        [
+          "Create",
+          1
+        ],
+        [
+          "libA",
+          1
+        ],
+        [
+          "paste0",
+          1
+        ],
+        [
+          "libB_",
+          1
+        ],
+        [
+          "colnames",
+          1
+        ],
+        [
+          "Read",
+          1
+        ],
+        [
+          "dplyr",
+          1
+        ],
+        [
+          "plate01",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "partial_pass",
+      "overall_score": 0.734,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "snakepipes_scrna_qc",
+      "workflow_id": "",
+      "registry_index": 14,
+      "total_steps": 4,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 11,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 4
+      },
+      "first_rscript_code_snippet": "library(reshape2)\n\n# List all .libsum files\nlibsum_files <- list.files(path = 'input/cellsum/', pattern = '*.libsum', full.names = TRUE)\n\n# Function to process each .libsum file\nprocess_libsum <- function(file) {\n  data <- read.table(file, header = FALSE, sep = '\\t')\n  colnames(data) <- c('sample', 'metric', 'V3', 'V4')\n  \n  # Create scqc.libstats_reads.tsv\n  reads_data <- dcast(data, sample ~ met",
+      "n_skill_unique_tokens": 60,
+      "n_skill_token_hits": 16,
+      "n_distinct_skill_tokens_hit": 16,
+      "top_skill_tokens_hit": [
+        [
+          "Apply",
+          1
+        ],
+        [
+          "process_libsum",
+          1
+        ],
+        [
+          "Create",
+          1
+        ],
+        [
+          "reads_data",
+          1
+        ],
+        [
+          "colnames",
+          1
+        ],
+        [
+          "full",
+          1
+        ],
+        [
+          "pct_data",
+          1
+        ],
+        [
+          "reshape2",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "partial_pass",
+      "overall_score": 0.65,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "spilterlize_filter_features",
+      "workflow_id": "",
+      "registry_index": 15,
+      "total_steps": 3,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 10,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 3,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(edgeR)\nlibrary(data.table)\ncounts <- fread('input/counts.csv', data.table=FALSE)\nannot <- fread('input/annotation.csv', data.table=FALSE)\nrownames(counts) <- counts[, 1]\ncounts <- counts[, -1]\ngroup <- annot$group\nkeep <- filterByExpr(counts, group=group)\nfiltered_counts <- counts[keep, ]\nfwrite(filtered_counts, 'output/filtered_counts.csv', row.names=TRUE)",
+      "n_skill_unique_tokens": 47,
+      "n_skill_token_hits": 3,
+      "n_distinct_skill_tokens_hit": 3,
+      "top_skill_tokens_hit": [
+        [
+          "rownames",
+          1
+        ],
+        [
+          "keep",
+          1
+        ],
+        [
+          "fread",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "spilterlize_norm_voom",
+      "workflow_id": "",
+      "registry_index": 16,
+      "total_steps": 6,
+      "n_rscript": 2,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 2,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 8,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 1,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(edgeR)\nlibrary(limma)\nlibrary(data.table)\ncounts <- fread('input/filtered_counts.csv', row.names = 1)\ndge <- DGEList(counts = counts)\ndge <- calcNormFactors(dge, method = 'TMM')\nvoom_results <- voom(dge, normalize.method = 'none', span = 0.5, plot = TRUE)\nfwrite(voom_results$E, file = 'output/normalized_counts.csv', row.names = TRUE)",
+      "n_skill_unique_tokens": 66,
+      "n_skill_token_hits": 2,
+      "n_distinct_skill_tokens_hit": 1,
+      "top_skill_tokens_hit": [
+        [
+          "fread",
+          2
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        2
+      ],
+      "mean_recovery_gap": 2,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "partial_pass",
+      "overall_score": 0.9,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "spilterlize_limma_rbe",
+      "workflow_id": "",
+      "registry_index": 17,
+      "total_steps": 8,
+      "n_rscript": 2,
+      "n_read_file": 2,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 2,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 8,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 3,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(limma)\nlibrary(data.table)\ndata <- fread('input/normalized.csv', data.table=FALSE)\nannot <- fread('input/annotation.csv', data.table=FALSE)\ndata_matrix <- as.matrix(data)\ndesign <- model.matrix(~group, data=annot)\ncorrected_data <- removeBatchEffect(data_matrix, batch=annot$batch, design=design)\nfwrite(as.data.frame(corrected_data), 'output/integrated_data.csv', row.names=TRUE)",
+      "n_skill_unique_tokens": 61,
+      "n_skill_token_hits": 8,
+      "n_distinct_skill_tokens_hit": 4,
+      "top_skill_tokens_hit": [
+        [
+          "fread",
+          2
+        ],
+        [
+          "data_matrix",
+          2
+        ],
+        [
+          "frame",
+          2
+        ],
+        [
+          "corrected_data",
+          2
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        4
+      ],
+      "mean_recovery_gap": 4,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "spilterlize_norm_edger",
+      "workflow_id": "",
+      "registry_index": 18,
+      "total_steps": 12,
+      "n_rscript": 3,
+      "n_read_file": 1,
+      "n_write_file": 2,
+      "n_shell": 1,
+      "n_list_workdir": 1,
+      "n_submit_done": 1,
+      "n_write_plan": 2,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 1,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "source('run_analysis.R')",
+      "n_skill_unique_tokens": 66,
+      "n_skill_token_hits": 18,
+      "n_distinct_skill_tokens_hit": 9,
+      "top_skill_tokens_hit": [
+        [
+          "Apply",
+          2
+        ],
+        [
+          "Create",
+          2
+        ],
+        [
+          "fread",
+          2
+        ],
+        [
+          "log_cpm",
+          2
+        ],
+        [
+          "normalization",
+          2
+        ],
+        [
+          "Write",
+          2
+        ],
+        [
+          "Calculate",
+          2
+        ],
+        [
+          "Load",
+          2
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        1,
+        0
+      ],
+      "n_rscript_errors": 2,
+      "error_recovery_gaps": [
+        5,
+        2
+      ],
+      "mean_recovery_gap": 3.5,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 4,
+      "first_skill_hit_timestep": 3,
+      "verdict_v2": "partial_pass",
+      "overall_score": 0.9,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "dea_limma",
+      "workflow_id": "",
+      "registry_index": 19,
+      "total_steps": 7,
+      "n_rscript": 2,
+      "n_read_file": 2,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 13,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(limma); library(edgeR);\ncounts <- read.delim('input/counts.tsv', row.names=1);\nmetadata <- read.delim('input/metadata.tsv');\ndge <- DGEList(counts=counts);\ndge <- calcNormFactors(dge, method='TMM');\ndesign <- model.matrix(~treatment, data=metadata);\nv <- voom(dge, design);\nfit <- lmFit(v, design);\nfit <- eBayes(fit);\nresults <- topTable(fit, coef='treatmentTR', number=Inf);\nwrite.csv(resul",
+      "n_skill_unique_tokens": 81,
+      "n_skill_token_hits": 15,
+      "n_distinct_skill_tokens_hit": 8,
+      "top_skill_tokens_hit": [
+        [
+          "DGEList",
+          2
+        ],
+        [
+          "delim",
+          2
+        ],
+        [
+          "model",
+          2
+        ],
+        [
+          "topTable",
+          2
+        ],
+        [
+          "edgeR",
+          2
+        ],
+        [
+          "calcNormFactors",
+          2
+        ],
+        [
+          "coef",
+          2
+        ],
+        [
+          "treatmentTR",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        3
+      ],
+      "mean_recovery_gap": 3,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "partial_fail",
+      "overall_score": 0.5625,
+      "failure_mode": "partial_output_mismatch"
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "msisensor_merge",
+      "workflow_id": "",
+      "registry_index": 20,
+      "total_steps": 4,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 14,
+        "pipe_magrittr": 2,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(dplyr)\nlibrary(readr)\nlibrary(purrr)\n\n# Define the file path pattern\nfile_paths <- list.files(path = \"results/msi\", pattern = \"msi_out.txt\", recursive = TRUE, full.names = TRUE)\n\n# Function to read and process each file\nprocess_file <- function(file_path) {\n  sample_id <- strsplit(file_path, \"/\")[[1]][3]\n  read_tsv(file_path) %>%\n    mutate(group = sample_id) %>%\n    rename(n_all_sites = T",
+      "n_skill_unique_tokens": 63,
+      "n_skill_token_hits": 20,
+      "n_distinct_skill_tokens_hit": 20,
+      "top_skill_tokens_hit": [
+        [
+          "merged_data",
+          1
+        ],
+        [
+          "pattern",
+          1
+        ],
+        [
+          "recursive",
+          1
+        ],
+        [
+          "mutate",
+          1
+        ],
+        [
+          "combined",
+          1
+        ],
+        [
+          "file_path",
+          1
+        ],
+        [
+          "strsplit",
+          1
+        ],
+        [
+          "Function",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "pass",
+      "overall_score": 0.993,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "methylkit_filt_norm",
+      "workflow_id": "",
+      "registry_index": 21,
+      "total_steps": 9,
+      "n_rscript": 5,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 7,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(methylKit)\n\n# Load the methylRawList object\nmk_raw <- readRDS(\"input/mk_raw.rds\")\n\n# Filter by coverage\nmk_filt <- filterByCoverage(mk_raw, lo.count = 3, hi.perc = 99.9)\n\n# Normalize coverage\nmk_norm <- normalizeCoverage(mk_filt, method = \"median\")\n\n# Save the normalized object\nsaveRDS(mk_norm, \"output/mk_filt_norm.rds\")\n\n# Generate per-sample statistics\nstats <- getMethylationStats(mk_nor",
+      "n_skill_unique_tokens": 64,
+      "n_skill_token_hits": 57,
+      "n_distinct_skill_tokens_hit": 13,
+      "top_skill_tokens_hit": [
+        [
+          "mk_norm",
+          5
+        ],
+        [
+          "Save",
+          5
+        ],
+        [
+          "Filter",
+          5
+        ],
+        [
+          "coverage",
+          5
+        ],
+        [
+          "statistics",
+          5
+        ],
+        [
+          "mk_filt",
+          5
+        ],
+        [
+          "readRDS",
+          5
+        ],
+        [
+          "Load",
+          5
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "n_rscript_errors": 4,
+      "error_recovery_gaps": [
+        5,
+        3,
+        2,
+        1
+      ],
+      "mean_recovery_gap": 2.75,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "pass",
+      "overall_score": 0.993,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "methylkit2tibble_split",
+      "workflow_id": "",
+      "registry_index": 22,
+      "total_steps": 15,
+      "n_rscript": 7,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 1,
+      "n_submit_done": 0,
+      "n_write_plan": 1,
+      "n_check_progress": 6,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 14,
+        "pipe_magrittr": 5,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(dplyr)\nlibrary(tidyr)\nlibrary(readr)\n\n# Load and concatenate RDS files\ntibbles <- lapply(c('input/grp1_mku.rds', 'input/grp2_mku.rds'), readRDS)\ndf_mku_split <- bind_rows(tibbles)\n\n# Save concatenated tibble\nsaveRDS(df_mku_split, 'output/df_mku_split.rds')\n\n# Pivot wider and calculate mCpG\ndf_wide <- df_mku_split %>%\n  pivot_wider(names_from = metric, values_from = value) %>%\n  filter(cove",
+      "n_skill_unique_tokens": 78,
+      "n_skill_token_hits": 83,
+      "n_distinct_skill_tokens_hit": 26,
+      "top_skill_tokens_hit": [
+        [
+          "readRDS",
+          7
+        ],
+        [
+          "concatenated",
+          5
+        ],
+        [
+          "mutate",
+          4
+        ],
+        [
+          "summarise",
+          4
+        ],
+        [
+          "tidyr",
+          4
+        ],
+        [
+          "mean_mCpG",
+          4
+        ],
+        [
+          "dplyr",
+          4
+        ],
+        [
+          "calculate",
+          4
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "n_rscript_errors": 4,
+      "error_recovery_gaps": [
+        2,
+        2
+      ],
+      "mean_recovery_gap": 2,
+      "n_unrecovered_errors": 2,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "fail",
+      "overall_score": 0.225,
+      "failure_mode": "infinite_loop_debug"
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "methylkit_remove_snvs",
+      "workflow_id": "",
+      "registry_index": 23,
+      "total_steps": 11,
+      "n_rscript": 5,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 2,
+      "n_check_progress": 3,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 9,
+        "pipe_magrittr": 2,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(dplyr)\nlibrary(readr)\nlibrary(methylKit)\n\n# Load the methylKit tibble\ndf_united <- readRDS('input/df_united.rds')\n\n# Load the exclusion BED file\nexclusion_bed <- read_tsv('input/exclusion.bed', col_names = c('seqnames', 'start', 'end', 'ref', 'alt', 'score'))\n\n# Adjust start position to 1-based\nexclusion_bed <- exclusion_bed %>% mutate(start = start + 1)\n\n# Perform anti-join to exclude SNV",
+      "n_skill_unique_tokens": 73,
+      "n_skill_token_hits": 59,
+      "n_distinct_skill_tokens_hit": 24,
+      "top_skill_tokens_hit": [
+        [
+          "dplyr",
+          5
+        ],
+        [
+          "readRDS",
+          5
+        ],
+        [
+          "Load",
+          5
+        ],
+        [
+          "readr",
+          4
+        ],
+        [
+          "exclusion_bed",
+          2
+        ],
+        [
+          "mutate",
+          2
+        ],
+        [
+          "exclude",
+          2
+        ],
+        [
+          "Save",
+          2
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "n_rscript_errors": 2,
+      "error_recovery_gaps": [
+        2,
+        2
+      ],
+      "mean_recovery_gap": 2,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "phantompeak_correlation",
+      "workflow_id": "",
+      "registry_index": 24,
+      "total_steps": 9,
+      "n_rscript": 6,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 1,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "load('input/run_spp.RData')",
+      "n_skill_unique_tokens": 36,
+      "n_skill_token_hits": 9,
+      "n_distinct_skill_tokens_hit": 3,
+      "top_skill_tokens_hit": [
+        [
+          "load",
+          3
+        ],
+        [
+          "writeLines",
+          3
+        ],
+        [
+          "crosscorr_df",
+          3
+        ]
+      ],
+      "rscript_exit_codes": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "n_rscript_errors": 2,
+      "error_recovery_gaps": [
+        1,
+        1
+      ],
+      "mean_recovery_gap": 1,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "nearest_gene",
+      "workflow_id": "",
+      "registry_index": 25,
+      "total_steps": 15,
+      "n_rscript": 12,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 0,
+      "n_write_plan": 2,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 17,
+        "pipe_magrittr": 6,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 4
+      },
+      "first_rscript_code_snippet": "library(dplyr)\n\n# Read input files\npeaks <- read.table(\"input/peaks_with_nearest.bed\", header = FALSE, sep = \"\\t\")\nt2g <- read.table(\"input/t2g.tsv\", header = FALSE, sep = \"\\t\")\ngene_symbol <- read.table(\"input/gene_symbol.tsv\", header = FALSE, sep = \"\\t\")\n\n# Join peaks with t2g to get GeneID\nannotated <- peaks %>%\n  left_join(t2g, by = c(\"V22\" = \"V1\")) %>%\n  rename(GeneID = V2.y)\n\n# Join with gen",
+      "n_skill_unique_tokens": 66,
+      "n_skill_token_hits": 132,
+      "n_distinct_skill_tokens_hit": 11,
+      "top_skill_tokens_hit": [
+        [
+          "rename",
+          12
+        ],
+        [
+          "Join",
+          12
+        ],
+        [
+          "Read",
+          12
+        ],
+        [
+          "dplyr",
+          12
+        ],
+        [
+          "Write",
+          12
+        ],
+        [
+          "required",
+          12
+        ],
+        [
+          "select",
+          12
+        ],
+        [
+          "quote",
+          12
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_rscript_errors": 11,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 11,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "fail",
+      "overall_score": 0.075,
+      "failure_mode": "infinite_loop_debug"
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "chipseq_plot_frip_score",
+      "workflow_id": "",
+      "registry_index": 26,
+      "total_steps": 3,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 0,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 8,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 4
+      },
+      "first_rscript_code_snippet": "library(tidyverse)\n\n# Read each FRiP file\nsampleA <- read.table(\"input/sampleA_control.frip.txt\", header=FALSE, stringsAsFactors=FALSE)\nsampleB <- read.table(\"input/sampleB_control.frip.txt\", header=FALSE, stringsAsFactors=FALSE)\nsampleC <- read.table(\"input/sampleC_control.frip.txt\", header=FALSE, stringsAsFactors=FALSE)\nsampleD <- read.table(\"input/sampleD_control.frip.txt\", header=FALSE, string",
+      "n_skill_unique_tokens": 53,
+      "n_skill_token_hits": 10,
+      "n_distinct_skill_tokens_hit": 10,
+      "top_skill_tokens_hit": [
+        [
+          "colnames",
+          1
+        ],
+        [
+          "Combine",
+          1
+        ],
+        [
+          "Read",
+          1
+        ],
+        [
+          "Write",
+          1
+        ],
+        [
+          "sampleA",
+          1
+        ],
+        [
+          "Assign",
+          1
+        ],
+        [
+          "bind_rows",
+          1
+        ],
+        [
+          "sampleB",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "chipseq_plot_peaks_count_macs2",
+      "workflow_id": "",
+      "registry_index": 27,
+      "total_steps": 4,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 7,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 5
+      },
+      "first_rscript_code_snippet": "sampleA <- read.table('input/sampleA_control.peaks_count.txt', header=FALSE, stringsAsFactors=FALSE)\nsampleB <- read.table('input/sampleB_control.peaks_count.txt', header=FALSE, stringsAsFactors=FALSE)\nsampleC <- read.table('input/sampleC_control.peaks_count.txt', header=FALSE, stringsAsFactors=FALSE)\nsampleD <- read.table('input/sampleD_control.peaks_count.txt', header=FALSE, stringsAsFactors=FAL",
+      "n_skill_unique_tokens": 53,
+      "n_skill_token_hits": 7,
+      "n_distinct_skill_tokens_hit": 7,
+      "top_skill_tokens_hit": [
+        [
+          "colnames",
+          1
+        ],
+        [
+          "all_samples",
+          1
+        ],
+        [
+          "sampleA",
+          1
+        ],
+        [
+          "sampleB",
+          1
+        ],
+        [
+          "quote",
+          1
+        ],
+        [
+          "sampleD",
+          1
+        ],
+        [
+          "sampleC",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "chipseq_plot_annotatepeaks_summary_homer",
+      "workflow_id": "",
+      "registry_index": 28,
+      "total_steps": 7,
+      "n_rscript": 2,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 2,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 5,
+        "pipe_magrittr": 1,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(tidyr)\nlibrary(readr)\nhomer_summary <- read_tsv('input/homer_summary.tsv')\nhomer_long <- homer_summary %>% gather(key = 'sequence_element', value = 'counts', exon, Intergenic, intron, promoter-TSS, TTS)\nwrite_tsv(homer_long, 'output/homer_long.tsv')",
+      "n_skill_unique_tokens": 46,
+      "n_skill_token_hits": 2,
+      "n_distinct_skill_tokens_hit": 1,
+      "top_skill_tokens_hit": [
+        [
+          "read_tsv",
+          2
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        3
+      ],
+      "mean_recovery_gap": 3,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "epibtn_rpkm",
+      "workflow_id": "",
+      "registry_index": 29,
+      "total_steps": 7,
+      "n_rscript": 2,
+      "n_read_file": 1,
+      "n_write_file": 0,
+      "n_shell": 1,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 21,
+        "pipe_magrittr": 11,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "library(dplyr)\nlibrary(tidyr)\n\n# Read input files\ngenecount <- read.delim('input/genecount.tsv', sep='\\t', header=TRUE)\ntargets <- read.delim('input/targets.tsv', sep='\\t', header=TRUE)\nref_genes <- read.delim('input/ref_genes.bed', sep='\\t', header=FALSE)\n\n# Filter out rows with GID starting with 'N_'\ngenecount <- genecount %>% filter(!grepl('^N_', GID))\n\n# Reshape genecount to gather replicate c",
+      "n_skill_unique_tokens": 79,
+      "n_skill_token_hits": 42,
+      "n_distinct_skill_tokens_hit": 21,
+      "top_skill_tokens_hit": [
+        [
+          "grepl",
+          2
+        ],
+        [
+          "Filter",
+          2
+        ],
+        [
+          "inner_join",
+          2
+        ],
+        [
+          "avg_counts",
+          2
+        ],
+        [
+          "Length",
+          2
+        ],
+        [
+          "Parse",
+          2
+        ],
+        [
+          "mutate",
+          2
+        ],
+        [
+          "Calculate",
+          2
+        ]
+      ],
+      "rscript_exit_codes": [
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        2
+      ],
+      "mean_recovery_gap": 2,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 2,
+      "first_skill_hit_timestep": 2,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "snakepipes_scrna_report",
+      "workflow_id": "",
+      "registry_index": 30,
+      "total_steps": 6,
+      "n_rscript": 3,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 2,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 1
+      },
+      "first_rscript_code_snippet": "libA <- read.table('input/libA.metrics.csv', header=FALSE, sep=',', as.is=TRUE)\ncolnames(libA) <- c('Metric', 'libA')",
+      "n_skill_unique_tokens": 58,
+      "n_skill_token_hits": 4,
+      "n_distinct_skill_tokens_hit": 2,
+      "top_skill_tokens_hit": [
+        [
+          "colnames",
+          2
+        ],
+        [
+          "merged_data",
+          2
+        ]
+      ],
+      "rscript_exit_codes": [
+        0,
+        1,
+        0
+      ],
+      "n_rscript_errors": 1,
+      "error_recovery_gaps": [
+        1
+      ],
+      "mean_recovery_gap": 1,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "clean_histoneHMM",
+      "workflow_id": "",
+      "registry_index": 31,
+      "total_steps": 4,
+      "n_rscript": 1,
+      "n_read_file": 0,
+      "n_write_file": 0,
+      "n_shell": 0,
+      "n_list_workdir": 0,
+      "n_submit_done": 1,
+      "n_write_plan": 1,
+      "n_check_progress": 1,
+      "planning_used": true,
+      "first_action": "write_plan",
+      "first_rscript_code_style": {
+        "loc": 14,
+        "pipe_magrittr": 0,
+        "pipe_native": 0,
+        "data_table": 0,
+        "base_r": 0
+      },
+      "first_rscript_code_snippet": "library(rtracklayer)\n\nprocess_sample <- function(input_file, output_gff, output_bed) {\n  # Import GFF file\n  gff_data <- import.gff(input_file)\n  \n  # Filter based on avg_posterior\n  filtered_data <- gff_data[gff_data$avg_posterior >= 0.5, ]\n  \n  # Export to GFF3\n  export.gff3(filtered_data, output_gff)\n  \n  # Set score and export to BED\n  filtered_data$score <- as.numeric(filtered_data$avg_poster",
+      "n_skill_unique_tokens": 49,
+      "n_skill_token_hits": 11,
+      "n_distinct_skill_tokens_hit": 11,
+      "top_skill_tokens_hit": [
+        [
+          "gff_data",
+          1
+        ],
+        [
+          "output_bed",
+          1
+        ],
+        [
+          "Export",
+          1
+        ],
+        [
+          "Filter",
+          1
+        ],
+        [
+          "input_file",
+          1
+        ],
+        [
+          "output_gff",
+          1
+        ],
+        [
+          "filtered_data",
+          1
+        ],
+        [
+          "process_sample",
+          1
+        ]
+      ],
+      "rscript_exit_codes": [
+        0
+      ],
+      "n_rscript_errors": 0,
+      "error_recovery_gaps": [],
+      "mean_recovery_gap": null,
+      "n_unrecovered_errors": 0,
+      "first_rscript_timestep": 1,
+      "first_skill_hit_timestep": 1,
+      "verdict_v2": "pass",
+      "overall_score": 1.0,
+      "failure_mode": ""
+    }
+  ],
+  "missing_runs": [
+    {
+      "arm": "paper",
+      "task_id": "snakepipes_merge_ct",
+      "registry_index": 9
+    },
+    {
+      "arm": "paper",
+      "task_id": "riya_limma",
+      "registry_index": 10
+    },
+    {
+      "arm": "paper",
+      "task_id": "chipseq_plot_macs_qc",
+      "registry_index": 11
+    },
+    {
+      "arm": "paper",
+      "task_id": "chipseq_plot_homer_annot",
+      "registry_index": 12
+    },
+    {
+      "arm": "paper",
+      "task_id": "snakepipes_scrna_merge_coutt",
+      "registry_index": 13
+    },
+    {
+      "arm": "paper",
+      "task_id": "snakepipes_scrna_qc",
+      "registry_index": 14
+    },
+    {
+      "arm": "paper",
+      "task_id": "spilterlize_filter_features",
+      "registry_index": 15
+    },
+    {
+      "arm": "paper",
+      "task_id": "spilterlize_norm_voom",
+      "registry_index": 16
+    },
+    {
+      "arm": "paper",
+      "task_id": "spilterlize_limma_rbe",
+      "registry_index": 17
+    },
+    {
+      "arm": "paper",
+      "task_id": "spilterlize_norm_edger",
+      "registry_index": 18
+    },
+    {
+      "arm": "paper",
+      "task_id": "dea_limma",
+      "registry_index": 19
+    },
+    {
+      "arm": "paper",
+      "task_id": "msisensor_merge",
+      "registry_index": 20
+    },
+    {
+      "arm": "paper",
+      "task_id": "methylkit_filt_norm",
+      "registry_index": 21
+    },
+    {
+      "arm": "paper",
+      "task_id": "methylkit2tibble_split",
+      "registry_index": 22
+    },
+    {
+      "arm": "paper",
+      "task_id": "methylkit_remove_snvs",
+      "registry_index": 23
+    },
+    {
+      "arm": "paper",
+      "task_id": "phantompeak_correlation",
+      "registry_index": 24
+    },
+    {
+      "arm": "paper",
+      "task_id": "nearest_gene",
+      "registry_index": 25
+    },
+    {
+      "arm": "paper",
+      "task_id": "chipseq_plot_frip_score",
+      "registry_index": 26
+    },
+    {
+      "arm": "paper",
+      "task_id": "chipseq_plot_peaks_count_macs2",
+      "registry_index": 27
+    },
+    {
+      "arm": "paper",
+      "task_id": "chipseq_plot_annotatepeaks_summary_homer",
+      "registry_index": 28
+    },
+    {
+      "arm": "paper",
+      "task_id": "epibtn_rpkm",
+      "registry_index": 29
+    },
+    {
+      "arm": "paper",
+      "task_id": "snakepipes_scrna_report",
+      "registry_index": 30
+    },
+    {
+      "arm": "paper",
+      "task_id": "clean_histoneHMM",
+      "registry_index": 31
+    }
+  ],
+  "arm_aggregates": {
+    "none": {
+      "n": 32,
+      "mean_n_read_file": 0.75,
+      "median_n_read_file": 1.0,
+      "mean_n_rscript_errors": 1.812,
+      "median_n_rscript_errors": 0.0,
+      "mean_n_submit_done": 0.844,
+      "median_n_submit_done": 1.0,
+      "mean_n_write_plan": 1.25,
+      "median_n_write_plan": 1.0,
+      "mean_n_shell": 0.094,
+      "median_n_shell": 0.0,
+      "mean_total_steps": 7.188,
+      "median_total_steps": 5.0,
+      "mean_n_list_workdir": 0.094,
+      "median_n_list_workdir": 0.0,
+      "mean_n_write_file": 0.062,
+      "median_n_write_file": 0.0,
+      "mean_n_rscript": 2.844,
+      "median_n_rscript": 1.0,
+      "mean_n_distinct_skill_tokens_hit": 0,
+      "median_n_distinct_skill_tokens_hit": 0.0,
+      "mean_n_check_progress": 1.219,
+      "median_n_check_progress": 1.0,
+      "mean_n_skill_token_hits": 0,
+      "median_n_skill_token_hits": 0.0,
+      "first_action_dist": [
+        [
+          "write_plan",
+          30
+        ],
+        [
+          "read_text_file",
+          2
+        ]
+      ],
+      "planning_used_frac": 1.0,
+      "runs_with_skill_token_hit_frac": 0.0,
+      "code_loc_mean": 12.226,
+      "code_pipe_magrittr_mean": 1.484,
+      "code_pipe_native_mean": 0,
+      "code_data_table_mean": 0.323,
+      "code_base_r_mean": 1.613,
+      "mean_recovery_gap_across_runs": 1.938,
+      "failure_mode_dist": [
+        [
+          "infinite_loop_debug",
+          4
+        ],
+        [
+          "wrong_values",
+          3
+        ],
+        [
+          "rscript_crashed",
+          1
+        ],
+        [
+          "partial_output_mismatch",
+          1
+        ]
+      ]
+    },
+    "paper": {
+      "n": 9,
+      "mean_n_read_file": 1.222,
+      "median_n_read_file": 1,
+      "mean_n_rscript_errors": 2.333,
+      "median_n_rscript_errors": 0,
+      "mean_n_submit_done": 0.778,
+      "median_n_submit_done": 1,
+      "mean_n_write_plan": 1.222,
+      "median_n_write_plan": 1,
+      "mean_n_shell": 0,
+      "median_n_shell": 0,
+      "mean_total_steps": 8.222,
+      "median_total_steps": 5,
+      "mean_n_list_workdir": 0.111,
+      "median_n_list_workdir": 0,
+      "mean_n_write_file": 0.111,
+      "median_n_write_file": 0,
+      "mean_n_rscript": 3.556,
+      "median_n_rscript": 1,
+      "mean_n_distinct_skill_tokens_hit": 0.444,
+      "median_n_distinct_skill_tokens_hit": 0,
+      "mean_n_check_progress": 1.222,
+      "median_n_check_progress": 1,
+      "mean_n_skill_token_hits": 0.444,
+      "median_n_skill_token_hits": 0,
+      "first_action_dist": [
+        [
+          "write_plan",
+          9
+        ]
+      ],
+      "planning_used_frac": 1.0,
+      "runs_with_skill_token_hit_frac": 0.222,
+      "code_loc_mean": 10.111,
+      "code_pipe_magrittr_mean": 1,
+      "code_pipe_native_mean": 0,
+      "code_data_table_mean": 0,
+      "code_base_r_mean": 1.333,
+      "mean_recovery_gap_across_runs": 2.75,
+      "failure_mode_dist": [
+        [
+          "infinite_loop_debug",
+          3
+        ]
+      ]
+    },
+    "pipeline": {
+      "n": 32,
+      "mean_n_read_file": 0.844,
+      "median_n_read_file": 1.0,
+      "mean_n_rscript_errors": 1.938,
+      "median_n_rscript_errors": 0.5,
+      "mean_n_submit_done": 0.875,
+      "median_n_submit_done": 1.0,
+      "mean_n_write_plan": 1.125,
+      "median_n_write_plan": 1.0,
+      "mean_n_shell": 0.062,
+      "median_n_shell": 0.0,
+      "mean_total_steps": 6.938,
+      "median_total_steps": 6.0,
+      "mean_n_list_workdir": 0.156,
+      "median_n_list_workdir": 0.0,
+      "mean_n_write_file": 0.062,
+      "median_n_write_file": 0.0,
+      "mean_n_rscript": 3.156,
+      "median_n_rscript": 1.5,
+      "mean_n_distinct_skill_tokens_hit": 3.375,
+      "median_n_distinct_skill_tokens_hit": 1.0,
+      "mean_n_check_progress": 0.656,
+      "median_n_check_progress": 1.0,
+      "mean_n_skill_token_hits": 8.562,
+      "median_n_skill_token_hits": 3.0,
+      "first_action_dist": [
+        [
+          "write_plan",
+          31
+        ],
+        [
+          "read_text_file",
+          1
+        ]
+      ],
+      "planning_used_frac": 1.0,
+      "runs_with_skill_token_hit_frac": 0.688,
+      "code_loc_mean": 10.968,
+      "code_pipe_magrittr_mean": 1.129,
+      "code_pipe_native_mean": 0,
+      "code_data_table_mean": 0.258,
+      "code_base_r_mean": 1.323,
+      "mean_recovery_gap_across_runs": 1.659,
+      "failure_mode_dist": [
+        [
+          "wrong_values",
+          6
+        ],
+        [
+          "infinite_loop_debug",
+          4
+        ]
+      ]
+    },
+    "llm_plan": {
+      "n": 32,
+      "mean_n_read_file": 0.344,
+      "median_n_read_file": 0.0,
+      "mean_n_rscript_errors": 2.562,
+      "median_n_rscript_errors": 1.0,
+      "mean_n_submit_done": 0.812,
+      "median_n_submit_done": 1.0,
+      "mean_n_write_plan": 1.219,
+      "median_n_write_plan": 1.0,
+      "mean_n_shell": 0.062,
+      "median_n_shell": 0.0,
+      "mean_total_steps": 7.625,
+      "median_total_steps": 7.0,
+      "mean_n_list_workdir": 0.125,
+      "median_n_list_workdir": 0.0,
+      "mean_n_write_file": 0.062,
+      "median_n_write_file": 0.0,
+      "mean_n_rscript": 3.844,
+      "median_n_rscript": 2.0,
+      "mean_n_distinct_skill_tokens_hit": 12.656,
+      "median_n_distinct_skill_tokens_hit": 10.5,
+      "mean_n_check_progress": 1.156,
+      "median_n_check_progress": 1.0,
+      "mean_n_skill_token_hits": 43.312,
+      "median_n_skill_token_hits": 16.0,
+      "first_action_dist": [
+        [
+          "write_plan",
+          31
+        ],
+        [
+          "list_workdir",
+          1
+        ]
+      ],
+      "planning_used_frac": 0.969,
+      "runs_with_skill_token_hit_frac": 1.0,
+      "code_loc_mean": 10.844,
+      "code_pipe_magrittr_mean": 1.156,
+      "code_pipe_native_mean": 0,
+      "code_data_table_mean": 0.25,
+      "code_base_r_mean": 1.406,
+      "mean_recovery_gap_across_runs": 2.304,
+      "failure_mode_dist": [
+        [
+          "infinite_loop_debug",
+          6
+        ],
+        [
+          "wrong_values",
+          2
+        ],
+        [
+          "rscript_crashed",
+          1
+        ],
+        [
+          "partial_output_mismatch",
+          1
+        ]
+      ]
+    }
+  }
+}

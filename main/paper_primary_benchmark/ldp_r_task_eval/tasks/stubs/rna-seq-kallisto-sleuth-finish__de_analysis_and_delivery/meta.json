@@ -1,0 +1,18 @@
+{
+  "workflow_id": "rna-seq-kallisto-sleuth-finish",
+  "pipeline_task_id": "de_analysis_and_delivery",
+  "order": 4,
+  "manifest_path": "finish/rna-seq-kallisto-sleuth-finish/manifest.json",
+  "step_ids": [
+    "differential_expression",
+    "optional_modules",
+    "delivery_report"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.010145+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_04",
+  "prepared_at": "2026-04-16T12:46:05.808303+00:00",
+  "micro_task": "sum_of_values_txt"
+}

@@ -1,0 +1,14 @@
+{
+  "workflow_id": "star-arriba-fusion-calling-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/star-arriba-fusion-calling-finish/manifest.json",
+  "step_ids": [
+    "get_genome_fasta",
+    "get_genome_gtf",
+    "star_index",
+    "star_align"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.017230+00:00"
+}

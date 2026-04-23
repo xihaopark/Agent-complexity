@@ -1,0 +1,309 @@
+{
+  "generated_by": "F3 / PAPER_SKILL_ADVOCACY",
+  "sweep_ts": "20260416T194356Z",
+  "scope": "9-task paper-arm overlap (first 9 registry tasks that completed in the paper arm before OpenRouter 402)",
+  "arms": [
+    "none",
+    "paper",
+    "pipeline",
+    "llm_plan"
+  ],
+  "n_overlap_tasks": 9,
+  "family_means": {
+    "rna (n=6)": {
+      "paper": 0.977,
+      "none": 0.89,
+      "pipeline": 0.912,
+      "llm_plan": 0.798
+    },
+    "methylation (n=3)": {
+      "paper": 0.208,
+      "none": 0.097,
+      "pipeline": 0.15,
+      "llm_plan": 0.208
+    },
+    "overall (n=9)": {
+      "paper": 0.722,
+      "none": 0.628,
+      "pipeline": 0.658,
+      "llm_plan": 0.602
+    }
+  },
+  "v1_to_v2_upgrades_on_overlap": {
+    "paper": 3,
+    "none": 2,
+    "pipeline": 0,
+    "llm_plan": 1
+  },
+  "paper_verdict_counts_on_overlap": {
+    "pass": 5,
+    "partial_pass": 1,
+    "partial_fail": 1,
+    "fail": 2,
+    "error": 0
+  },
+  "headline_task_win": "snakepipes_merge_fc",
+  "per_task": [
+    {
+      "task_id": "akinyi_deseq2",
+      "family": "rna",
+      "difficulty": 2,
+      "workflow_id": "akinyi-onyango-rna_seq_pipeline-finish",
+      "paper_source": {
+        "doi": "10.1186/s13059-016-0881-8",
+        "tool": "RNA-seq best practices",
+        "skill_md_path": "experiments/skills/10.1186_s13059-016-0881-8/SKILL.md",
+        "lookup_field": "by_task_id"
+      },
+      "scores": {
+        "none": 1.0,
+        "paper": 1.0,
+        "pipeline": 1.0,
+        "llm_plan": 1.0
+      },
+      "verdicts": {
+        "none": "pass",
+        "paper": "pass",
+        "pipeline": "pass",
+        "llm_plan": "pass"
+      },
+      "paper_minus_next_best_other": 0.0,
+      "paper_verdict_rank_minus_next_best_other": 0,
+      "is_paper_win_strict_verdict": false,
+      "is_paper_win_score_ge_0p05": false,
+      "is_paper_tied_top": true
+    },
+    {
+      "task_id": "star_deseq2_init",
+      "family": "rna",
+      "difficulty": 2,
+      "workflow_id": "rna-seq-star-deseq2-finish",
+      "paper_source": {
+        "doi": "10.1186/s13059-014-0550-8",
+        "tool": "DESeq2",
+        "skill_md_path": "experiments/skills/10.1186_s13059-014-0550-8/SKILL.md",
+        "lookup_field": "by_task_id"
+      },
+      "scores": {
+        "none": 0.993,
+        "paper": 1.0,
+        "pipeline": 1.0,
+        "llm_plan": 1.0
+      },
+      "verdicts": {
+        "none": "pass",
+        "paper": "pass",
+        "pipeline": "pass",
+        "llm_plan": "pass"
+      },
+      "paper_minus_next_best_other": 0.0,
+      "paper_verdict_rank_minus_next_best_other": 0,
+      "is_paper_win_strict_verdict": false,
+      "is_paper_win_score_ge_0p05": false,
+      "is_paper_tied_top": true
+    },
+    {
+      "task_id": "star_deseq2_contrast",
+      "family": "rna",
+      "difficulty": 3,
+      "workflow_id": "rna-seq-star-deseq2-finish",
+      "paper_source": {
+        "doi": "10.1186/s13059-014-0550-8",
+        "tool": "DESeq2",
+        "skill_md_path": "experiments/skills/10.1186_s13059-014-0550-8/SKILL.md",
+        "lookup_field": "by_task_id"
+      },
+      "scores": {
+        "none": 1.0,
+        "paper": 1.0,
+        "pipeline": 1.0,
+        "llm_plan": 1.0
+      },
+      "verdicts": {
+        "none": "pass",
+        "paper": "pass",
+        "pipeline": "pass",
+        "llm_plan": "pass"
+      },
+      "paper_minus_next_best_other": 0.0,
+      "paper_verdict_rank_minus_next_best_other": 0,
+      "is_paper_win_strict_verdict": false,
+      "is_paper_win_score_ge_0p05": false,
+      "is_paper_tied_top": true
+    },
+    {
+      "task_id": "methylkit_load",
+      "family": "methylation",
+      "difficulty": 1,
+      "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "paper_source": {
+        "doi": "10.1186/s12859-016-0950-8",
+        "tool": "MethPat",
+        "skill_md_path": "experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+        "lookup_field": "by_task_id"
+      },
+      "scores": {
+        "none": 0.075,
+        "paper": 0.075,
+        "pipeline": 0.15,
+        "llm_plan": 0.075
+      },
+      "verdicts": {
+        "none": "fail",
+        "paper": "fail",
+        "pipeline": "fail",
+        "llm_plan": "fail"
+      },
+      "paper_minus_next_best_other": -0.075,
+      "paper_verdict_rank_minus_next_best_other": 0,
+      "is_paper_win_strict_verdict": false,
+      "is_paper_win_score_ge_0p05": false,
+      "is_paper_tied_top": true
+    },
+    {
+      "task_id": "methylkit_unite",
+      "family": "methylation",
+      "difficulty": 2,
+      "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "paper_source": {
+        "doi": "10.1186/s12859-016-0950-8",
+        "tool": "MethPat",
+        "skill_md_path": "experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+        "lookup_field": "by_task_id"
+      },
+      "scores": {
+        "none": 0.075,
+        "paper": 0.075,
+        "pipeline": 0.075,
+        "llm_plan": 0.075
+      },
+      "verdicts": {
+        "none": "fail",
+        "paper": "fail",
+        "pipeline": "fail",
+        "llm_plan": "fail"
+      },
+      "paper_minus_next_best_other": 0.0,
+      "paper_verdict_rank_minus_next_best_other": 0,
+      "is_paper_win_strict_verdict": false,
+      "is_paper_win_score_ge_0p05": false,
+      "is_paper_tied_top": true
+    },
+    {
+      "task_id": "methylkit_to_tibble",
+      "family": "methylation",
+      "difficulty": 3,
+      "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "paper_source": {
+        "doi": "10.1186/s12859-016-0950-8",
+        "tool": "MethPat",
+        "skill_md_path": "experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+        "lookup_field": "by_task_id"
+      },
+      "scores": {
+        "none": 0.15,
+        "paper": 0.475,
+        "pipeline": 0.225,
+        "llm_plan": 0.475
+      },
+      "verdicts": {
+        "none": "fail",
+        "paper": "partial_fail",
+        "pipeline": "fail",
+        "llm_plan": "partial_fail"
+      },
+      "paper_minus_next_best_other": 0.0,
+      "paper_verdict_rank_minus_next_best_other": 0,
+      "is_paper_win_strict_verdict": false,
+      "is_paper_win_score_ge_0p05": false,
+      "is_paper_tied_top": true
+    },
+    {
+      "task_id": "longseq_deseq2_init",
+      "family": "rna",
+      "difficulty": 2,
+      "workflow_id": "snakemake-workflows-rna-longseq-de-isoform",
+      "paper_source": {
+        "doi": null,
+        "tool": null,
+        "skill_md_path": null,
+        "lookup_field": null
+      },
+      "scores": {
+        "none": 1.0,
+        "paper": 0.993,
+        "pipeline": 1.0,
+        "llm_plan": 0.72
+      },
+      "verdicts": {
+        "none": "pass",
+        "paper": "pass",
+        "pipeline": "pass",
+        "llm_plan": "partial_pass"
+      },
+      "paper_minus_next_best_other": -0.007,
+      "paper_verdict_rank_minus_next_best_other": 0,
+      "is_paper_win_strict_verdict": false,
+      "is_paper_win_score_ge_0p05": false,
+      "is_paper_tied_top": true
+    },
+    {
+      "task_id": "longseq_deseq2_contrast",
+      "family": "rna",
+      "difficulty": 3,
+      "workflow_id": "snakemake-workflows-rna-longseq-de-isoform",
+      "paper_source": {
+        "doi": null,
+        "tool": null,
+        "skill_md_path": null,
+        "lookup_field": null
+      },
+      "scores": {
+        "none": 0.883,
+        "paper": 0.883,
+        "pipeline": 1.0,
+        "llm_plan": 1.0
+      },
+      "verdicts": {
+        "none": "partial_pass",
+        "paper": "partial_pass",
+        "pipeline": "pass",
+        "llm_plan": "pass"
+      },
+      "paper_minus_next_best_other": -0.117,
+      "paper_verdict_rank_minus_next_best_other": -1,
+      "is_paper_win_strict_verdict": false,
+      "is_paper_win_score_ge_0p05": false,
+      "is_paper_tied_top": false
+    },
+    {
+      "task_id": "snakepipes_merge_fc",
+      "family": "rna",
+      "difficulty": 1,
+      "workflow_id": "maxplanck-ie-snakepipes-finish",
+      "paper_source": {
+        "doi": "10.1093/bioinformatics/btz436",
+        "tool": "snakePipes",
+        "skill_md_path": "experiments/skills/10.1093_bioinformatics_btz436/SKILL.md",
+        "lookup_field": "by_task_id"
+      },
+      "scores": {
+        "none": 0.475,
+        "paper": 0.993,
+        "pipeline": 0.475,
+        "llm_plan": 0.075
+      },
+      "verdicts": {
+        "none": "partial_fail",
+        "paper": "pass",
+        "pipeline": "partial_fail",
+        "llm_plan": "fail"
+      },
+      "paper_minus_next_best_other": 0.518,
+      "paper_verdict_rank_minus_next_best_other": 2,
+      "is_paper_win_strict_verdict": true,
+      "is_paper_win_score_ge_0p05": true,
+      "is_paper_tied_top": false
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "task_id": "chipseq_plot_frip_score",
+  "task_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/chipseq_plot_frip_score",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills_llm_plan/chipseq_plot_frip_score",
+  "model": "openrouter/openai/gpt-4o",
+  "model_resolved": "openai/gpt-4o",
+  "temperature": 0.1,
+  "prompt_tokens": 1027,
+  "completion_tokens": 440,
+  "total_tokens": 1467,
+  "runtime_seconds": 5.04,
+  "inputs_listed": [
+    "sampleA_control.frip.txt",
+    "sampleB_control.frip.txt",
+    "sampleC_control.frip.txt",
+    "sampleD_control.frip.txt"
+  ],
+  "inputs_previewed": [
+    "sampleA_control.frip.txt",
+    "sampleB_control.frip.txt",
+    "sampleC_control.frip.txt",
+    "sampleD_control.frip.txt"
+  ],
+  "generated_at": "2026-04-16T19:34:55Z"
+}

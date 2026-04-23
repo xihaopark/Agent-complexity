@@ -1,0 +1,480 @@
+{
+  "version": 5,
+  "kind": "real",
+  "description": "V3 real R-task registry: 32 data-only tasks derived from live workflow_candidates R scripts. Ground truth produced by running each real source R script against seeded synthetic inputs. snakemake@-style scripts are wrapped with a minimal S4 SnakemakeMock adapter; incidental image-producing calls are redirected to tempfiles or patched out on a per-script copy. V3 relaxes paper-coverage gating: any pipeline-skill-able workflow is eligible.",
+  "generated_by": "ldp_r_task_eval/tools/build_real_r_tasks.py",
+  "curation_rules": {
+    "paper_covered": "V3 relaxed: tasks no longer require manifest membership; paper_covered is recorded per-task but not gating.",
+    "data_only": "eval_files contain no images (no .pdf/.png/.svg/.jpg); scripts that produce incidental images have those calls stripped or redirected to tempfiles on a patched copy of the source.",
+    "wrapper_kinds": [
+      "commandArgs",
+      "snakemake"
+    ]
+  },
+  "tasks": [
+    {
+      "id": "snakepipes_merge_ct",
+      "work_dir": "ldp_r_task_eval/tasks/real/snakepipes_merge_ct",
+      "success_artifact_glob": "output/merged_tpm.tsv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish",
+      "family": "rna",
+      "stage": "early",
+      "difficulty": 1,
+      "paper_covered": false,
+      "wrapper_kind": "commandArgs",
+      "r_script_src": "main/finish/workflow_candidates/maxplanck-ie__snakePipes/snakePipes/shared/rscripts/merge_count_tables.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "merged_tpm.tsv"
+        ]
+      }
+    },
+    {
+      "id": "riya_limma",
+      "work_dir": "ldp_r_task_eval/tasks/real/riya_limma",
+      "success_artifact_glob": "output/deg_results.csv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "RiyaDua-cervical-cancer-snakemake-workflow",
+      "family": "rna",
+      "stage": "late",
+      "difficulty": 2,
+      "paper_covered": false,
+      "wrapper_kind": "commandArgs",
+      "r_script_src": "main/finish/workflow_candidates/RiyaDua__cervical-cancer-snakemake-workflow/scripts/differential_expression.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "deg_results.csv"
+        ]
+      }
+    },
+    {
+      "id": "chipseq_plot_macs_qc",
+      "work_dir": "ldp_r_task_eval/tasks/real/chipseq_plot_macs_qc",
+      "success_artifact_glob": "output/macs_qc_summary.tsv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "snakemake-workflows-chipseq-finish",
+      "family": "chipseq",
+      "stage": "late",
+      "difficulty": 2,
+      "paper_covered": false,
+      "wrapper_kind": "commandArgs",
+      "r_script_src": "main/finish/workflow_candidates/snakemake-workflows__chipseq/workflow/scripts/plot_macs_qc.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "macs_qc_summary.tsv"
+        ]
+      }
+    },
+    {
+      "id": "chipseq_plot_homer_annot",
+      "work_dir": "ldp_r_task_eval/tasks/real/chipseq_plot_homer_annot",
+      "success_artifact_glob": "output/homer_annot_summary.tsv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "snakemake-workflows-chipseq-finish",
+      "family": "chipseq",
+      "stage": "late",
+      "difficulty": 2,
+      "paper_covered": false,
+      "wrapper_kind": "commandArgs",
+      "r_script_src": "main/finish/workflow_candidates/snakemake-workflows__chipseq/workflow/scripts/plot_homer_annotatepeaks.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "homer_annot_summary.tsv"
+        ]
+      }
+    },
+    {
+      "id": "snakepipes_scrna_merge_coutt",
+      "work_dir": "ldp_r_task_eval/tasks/real/snakepipes_scrna_merge_coutt",
+      "success_artifact_glob": "output/merged_coutt.tsv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish",
+      "family": "scrna",
+      "stage": "mid",
+      "difficulty": 2,
+      "paper_covered": false,
+      "wrapper_kind": "commandArgs",
+      "r_script_src": "main/finish/workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/scRNAseq/scRNAseq_merge_coutt_files2.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "merged_coutt.tsv",
+          "merged_coutt.cell_names.tsv"
+        ]
+      }
+    },
+    {
+      "id": "snakepipes_scrna_qc",
+      "work_dir": "ldp_r_task_eval/tasks/real/snakepipes_scrna_qc",
+      "success_artifact_glob": "output/scqc.libstats_reads.tsv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish",
+      "family": "scrna",
+      "stage": "mid",
+      "difficulty": 2,
+      "paper_covered": false,
+      "wrapper_kind": "commandArgs",
+      "r_script_src": "main/finish/workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/scRNAseq/scRNAseq_QC_metrics2.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "scqc.libstats_reads.tsv",
+          "scqc.libstats_pct.tsv"
+        ]
+      }
+    },
+    {
+      "id": "spilterlize_filter_features",
+      "work_dir": "ldp_r_task_eval/tasks/real/spilterlize_filter_features",
+      "success_artifact_glob": "output/filtered_counts.csv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "epigen-spilterlize_integrate-finish",
+      "family": "rna",
+      "stage": "early",
+      "difficulty": 2,
+      "paper_covered": false,
+      "wrapper_kind": "snakemake",
+      "r_script_src": "main/finish/workflow_candidates/epigen__spilterlize_integrate/workflow/scripts/filter_features.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "filtered_counts.csv"
+        ]
+      }
+    },
+    {
+      "id": "spilterlize_norm_voom",
+      "work_dir": "ldp_r_task_eval/tasks/real/spilterlize_norm_voom",
+      "success_artifact_glob": "output/normalized_counts.csv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "epigen-spilterlize_integrate-finish",
+      "family": "rna",
+      "stage": "mid",
+      "difficulty": 2,
+      "paper_covered": false,
+      "wrapper_kind": "snakemake",
+      "r_script_src": "main/finish/workflow_candidates/epigen__spilterlize_integrate/workflow/scripts/norm_voom.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "normalized_counts.csv"
+        ]
+      }
+    },
+    {
+      "id": "spilterlize_limma_rbe",
+      "work_dir": "ldp_r_task_eval/tasks/real/spilterlize_limma_rbe",
+      "success_artifact_glob": "output/integrated_data.csv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "epigen-spilterlize_integrate-finish",
+      "family": "rna",
+      "stage": "late",
+      "difficulty": 3,
+      "paper_covered": false,
+      "wrapper_kind": "snakemake",
+      "r_script_src": "main/finish/workflow_candidates/epigen__spilterlize_integrate/workflow/scripts/limma_removeBatchEffect.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "integrated_data.csv"
+        ]
+      }
+    },
+    {
+      "id": "spilterlize_norm_edger",
+      "work_dir": "ldp_r_task_eval/tasks/real/spilterlize_norm_edger",
+      "success_artifact_glob": "output/all/normTMM.csv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "epigen-spilterlize_integrate-finish",
+      "family": "rna",
+      "stage": "mid",
+      "difficulty": 2,
+      "paper_covered": false,
+      "wrapper_kind": "snakemake",
+      "r_script_src": "main/finish/workflow_candidates/epigen__spilterlize_integrate/workflow/scripts/norm_edgeR.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "all/normTMM.csv"
+        ]
+      }
+    },
+    {
+      "id": "dea_limma",
+      "work_dir": "ldp_r_task_eval/tasks/real/dea_limma",
+      "success_artifact_glob": "output/dea_results.csv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "epigen-dea_limma-finish",
+      "family": "rna",
+      "stage": "late",
+      "difficulty": 3,
+      "paper_covered": false,
+      "wrapper_kind": "snakemake",
+      "r_script_src": "main/finish/workflow_candidates/epigen__dea_limma/workflow/scripts/limma.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "dea_results.csv",
+          "model_matrix.csv"
+        ]
+      }
+    },
+    {
+      "id": "msisensor_merge",
+      "work_dir": "ldp_r_task_eval/tasks/real/msisensor_merge",
+      "success_artifact_glob": "output/merged_msi.tsv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "snakemake-workflows-msisensor-pro-finish",
+      "family": "variant",
+      "stage": "late",
+      "difficulty": 2,
+      "paper_covered": false,
+      "wrapper_kind": "snakemake",
+      "r_script_src": "main/finish/workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/workflow/scripts/merge_msi_results.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "merged_msi.tsv"
+        ]
+      }
+    },
+    {
+      "id": "methylkit_filt_norm",
+      "work_dir": "ldp_r_task_eval/tasks/real/methylkit_filt_norm",
+      "success_artifact_glob": "output/filt_norm_stats.tsv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "family": "methylation",
+      "stage": "mid",
+      "difficulty": 2,
+      "paper_covered": true,
+      "wrapper_kind": "snakemake",
+      "r_script_src": "main/finish/workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/scripts/methylkit_filt_norm.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "filt_norm_stats.tsv"
+        ]
+      }
+    },
+    {
+      "id": "methylkit2tibble_split",
+      "work_dir": "ldp_r_task_eval/tasks/real/methylkit2tibble_split",
+      "success_artifact_glob": "output/mean_mcpg_split.tsv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "family": "methylation",
+      "stage": "late",
+      "difficulty": 3,
+      "paper_covered": true,
+      "wrapper_kind": "snakemake",
+      "r_script_src": "main/finish/workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/scripts/methylkit2tibble_split.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "mean_mcpg_split.tsv"
+        ]
+      }
+    },
+    {
+      "id": "methylkit_remove_snvs",
+      "work_dir": "ldp_r_task_eval/tasks/real/methylkit_remove_snvs",
+      "success_artifact_glob": "output/snv_stats.tsv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "family": "methylation",
+      "stage": "late",
+      "difficulty": 3,
+      "paper_covered": true,
+      "wrapper_kind": "snakemake",
+      "r_script_src": "main/finish/workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/scripts/methylkit_remove_snvs.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "snv_stats.tsv"
+        ]
+      }
+    },
+    {
+      "id": "phantompeak_correlation",
+      "work_dir": "ldp_r_task_eval/tasks/real/phantompeak_correlation",
+      "success_artifact_glob": "output/crosscorr.csv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "snakemake-workflows-chipseq-finish",
+      "family": "chipseq",
+      "stage": "late",
+      "difficulty": 1,
+      "paper_covered": false,
+      "wrapper_kind": "snakemake",
+      "r_script_src": "main/finish/workflow_candidates/snakemake-workflows__chipseq/workflow/scripts/phantompeak_correlation.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "crosscorr.csv"
+        ]
+      }
+    },
+    {
+      "id": "nearest_gene",
+      "work_dir": "ldp_r_task_eval/tasks/real/nearest_gene",
+      "success_artifact_glob": "output/annotated.bed",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish",
+      "family": "chipseq",
+      "stage": "late",
+      "difficulty": 2,
+      "paper_covered": false,
+      "wrapper_kind": "snakemake",
+      "r_script_src": "main/finish/workflow_candidates/maxplanck-ie__snakePipes/snakePipes/shared/rscripts/nearestGene.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "annotated.bed"
+        ]
+      }
+    },
+    {
+      "id": "chipseq_plot_frip_score",
+      "work_dir": "ldp_r_task_eval/tasks/real/chipseq_plot_frip_score",
+      "success_artifact_glob": "output/frip_scores.tsv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "snakemake-workflows-chipseq-finish",
+      "family": "chipseq",
+      "stage": "late",
+      "difficulty": 1,
+      "paper_covered": false,
+      "wrapper_kind": "snakemake",
+      "r_script_src": "main/finish/workflow_candidates/snakemake-workflows__chipseq/workflow/scripts/plot_frip_score.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "frip_scores.tsv"
+        ]
+      }
+    },
+    {
+      "id": "chipseq_plot_peaks_count_macs2",
+      "work_dir": "ldp_r_task_eval/tasks/real/chipseq_plot_peaks_count_macs2",
+      "success_artifact_glob": "output/peaks_count.tsv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "snakemake-workflows-chipseq-finish",
+      "family": "chipseq",
+      "stage": "late",
+      "difficulty": 1,
+      "paper_covered": false,
+      "wrapper_kind": "snakemake",
+      "r_script_src": "main/finish/workflow_candidates/snakemake-workflows__chipseq/workflow/scripts/plot_peaks_count_macs2.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "peaks_count.tsv"
+        ]
+      }
+    },
+    {
+      "id": "chipseq_plot_annotatepeaks_summary_homer",
+      "work_dir": "ldp_r_task_eval/tasks/real/chipseq_plot_annotatepeaks_summary_homer",
+      "success_artifact_glob": "output/homer_long.tsv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "snakemake-workflows-chipseq-finish",
+      "family": "chipseq",
+      "stage": "late",
+      "difficulty": 1,
+      "paper_covered": false,
+      "wrapper_kind": "snakemake",
+      "r_script_src": "main/finish/workflow_candidates/snakemake-workflows__chipseq/workflow/scripts/plot_annotatepeaks_summary_homer.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "homer_long.tsv"
+        ]
+      }
+    },
+    {
+      "id": "epibtn_rpkm",
+      "work_dir": "ldp_r_task_eval/tasks/real/epibtn_rpkm",
+      "success_artifact_glob": "output/results/RNA/DEG/genes_rpkm__runX__mockref.txt",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "joncahn-epigeneticbutton-finish",
+      "family": "rna",
+      "stage": "late",
+      "difficulty": 2,
+      "paper_covered": false,
+      "wrapper_kind": "commandArgs",
+      "r_script_src": "main/finish/workflow_candidates/joncahn__epigeneticbutton/workflow/scripts/R_gene_expression_rpkm.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "results/RNA/DEG/genes_rpkm__runX__mockref.txt"
+        ]
+      }
+    },
+    {
+      "id": "snakepipes_scrna_report",
+      "work_dir": "ldp_r_task_eval/tasks/real/snakepipes_scrna_report",
+      "success_artifact_glob": "output/scrna_report.tsv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish",
+      "family": "scrna",
+      "stage": "late",
+      "difficulty": 1,
+      "paper_covered": false,
+      "wrapper_kind": "snakemake",
+      "r_script_src": "main/finish/workflow_candidates/maxplanck-ie__snakePipes/snakePipes/shared/rscripts/scRNAseq_report.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "scrna_report.tsv"
+        ]
+      }
+    },
+    {
+      "id": "clean_histoneHMM",
+      "work_dir": "ldp_r_task_eval/tasks/real/clean_histoneHMM",
+      "success_artifact_glob": "output/sampleA_avgp0.5.bed",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish",
+      "family": "chipseq",
+      "stage": "late",
+      "difficulty": 2,
+      "paper_covered": false,
+      "wrapper_kind": "snakemake",
+      "r_script_src": "main/finish/workflow_candidates/maxplanck-ie__snakePipes/snakePipes/shared/rscripts/clean_histoneHMM_result.R",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "sampleA_avgp0.5.bed",
+          "sampleB_avgp0.5.bed"
+        ]
+      }
+    }
+  ]
+}

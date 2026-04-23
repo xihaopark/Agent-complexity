@@ -1,0 +1,21 @@
+{
+  "task_id": "phantompeak_correlation",
+  "task_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/phantompeak_correlation",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills_llm_plan/phantompeak_correlation",
+  "model": "openrouter/openai/gpt-4o",
+  "model_resolved": "openai/gpt-4o",
+  "temperature": 0.1,
+  "prompt_tokens": 866,
+  "completion_tokens": 371,
+  "total_tokens": 1237,
+  "runtime_seconds": 4.53,
+  "inputs_listed": [
+    "_build_rdata.R",
+    "header.csv",
+    "run_spp.RData"
+  ],
+  "inputs_previewed": [
+    "header.csv"
+  ],
+  "generated_at": "2026-04-16T19:34:42Z"
+}

@@ -1,0 +1,20 @@
+{
+  "task_id": "nearest_gene",
+  "kind": "real",
+  "workflow_id": "maxplanck-ie-snakepipes-finish",
+  "family": "chipseq",
+  "stage": "late",
+  "difficulty": 2,
+  "paper_covered": false,
+  "wrapper_kind": "snakemake",
+  "description": "Annotate CSAW differential-region bedtools-closest output with t2g + gene symbols.",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/maxplanck-ie__snakePipes/snakePipes/shared/rscripts/nearestGene.R",
+  "ground_truth_dir": "tasks/real_ground_truth/nearest_gene",
+  "success_glob": "output/annotated.bed",
+  "reference_output_files": [
+    "annotated.bed"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

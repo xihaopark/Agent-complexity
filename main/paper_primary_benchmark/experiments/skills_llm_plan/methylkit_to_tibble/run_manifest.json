@@ -1,0 +1,31 @@
+{
+  "task_id": "methylkit_to_tibble",
+  "task_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/methylkit_to_tibble",
+  "out_dir": "main/paper_primary_benchmark/experiments/skills_llm_plan/methylkit_to_tibble",
+  "model": "openrouter/openai/gpt-4o",
+  "model_resolved": "openai/gpt-4o",
+  "temperature": 0.1,
+  "prompt_tokens": 1188,
+  "completion_tokens": 588,
+  "total_tokens": 1776,
+  "runtime_seconds": 6.18,
+  "inputs_listed": [
+    "mk_db/methylBase_unite.txt.bgz",
+    "mk_db/methylBase_unite.txt.bgz.tbi",
+    "mk_db/sampleA.txt.bgz",
+    "mk_db/sampleA.txt.bgz.tbi",
+    "mk_db/sampleB.txt.bgz",
+    "mk_db/sampleB.txt.bgz.tbi",
+    "mk_db/sampleC.txt.bgz",
+    "mk_db/sampleC.txt.bgz.tbi",
+    "mk_db/sampleD.txt.bgz",
+    "mk_db/sampleD.txt.bgz.tbi",
+    "mk_united.rds",
+    "sampleA.bismark.cov",
+    "sampleB.bismark.cov",
+    "sampleC.bismark.cov",
+    "sampleD.bismark.cov"
+  ],
+  "inputs_previewed": [],
+  "generated_at": "2026-04-16T17:22:37Z"
+}

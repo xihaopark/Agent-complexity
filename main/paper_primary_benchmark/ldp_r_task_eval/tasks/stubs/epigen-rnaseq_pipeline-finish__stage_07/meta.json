@@ -1,0 +1,13 @@
+{
+  "workflow_id": "epigen-rnaseq_pipeline-finish",
+  "pipeline_task_id": "stage_07",
+  "order": 7,
+  "manifest_path": "finish/epigen-rnaseq_pipeline-finish/manifest.json",
+  "step_ids": [
+    "annotate_genes",
+    "sample_annotation",
+    "all"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.980871+00:00"
+}

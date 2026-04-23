@@ -1,0 +1,16 @@
+{
+  "task_id": "epigenbutton_mapping_stats",
+  "kind": "real",
+  "workflow_id": "joncahn-epigeneticbutton",
+  "family": "chipseq",
+  "description": "Stacked mapping-stats barplot PDF across ChIP-seq libraries.",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/joncahn__epigeneticbutton/workflow/scripts/R_mapping_stats.R",
+  "ground_truth_dir": "tasks/real_ground_truth/epigenbutton_mapping_stats",
+  "success_glob": "output/mapping_stats.pdf",
+  "reference_output_files": [
+    "mapping_stats.pdf"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

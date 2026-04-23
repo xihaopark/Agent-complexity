@@ -1,0 +1,25 @@
+{
+  "task_id": "akinyi_deseq2",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/akinyi_deseq2",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_pav_with_skill_202604161610/000_akinyi_deseq2/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_pav_with_skill_202604161610",
+  "registry_index": 0,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "injected": true,
+    "source_doi": "10.1186/s13059-016-0881-8",
+    "source_tool": "RNA-seq pipeline",
+    "skill_md_path": "experiments/skills/10.1186_s13059-016-0881-8/SKILL.md",
+    "pipeline_workflow_id": "akinyi-onyango-rna_seq_pipeline-finish",
+    "skill_sha256": "482a34902260b65139534da51f43a74c04931d3d36e0b78a1497f21931f3bd75",
+    "skill_char_len": 1701,
+    "manifest_version": 1
+  }
+}

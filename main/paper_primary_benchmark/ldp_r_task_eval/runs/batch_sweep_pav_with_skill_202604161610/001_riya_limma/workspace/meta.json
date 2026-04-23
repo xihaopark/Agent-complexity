@@ -1,0 +1,17 @@
+{
+  "task_id": "riya_limma",
+  "kind": "real",
+  "workflow_id": "RiyaDua-cervical-cancer-snakemake-workflow",
+  "family": "rna",
+  "description": "limma differential expression on cervical-cancer expression matrix.",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/RiyaDua__cervical-cancer-snakemake-workflow/scripts/differential_expression.R",
+  "ground_truth_dir": "tasks/real_ground_truth/riya_limma",
+  "success_glob": "output/deg_results.csv",
+  "reference_output_files": [
+    "deg_results.csv",
+    "volcano.png"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

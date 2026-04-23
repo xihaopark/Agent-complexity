@@ -1,0 +1,14 @@
+{
+  "workflow_id": "lwang-genomics-ngs_pipeline_sn-chip_seq-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/lwang-genomics-ngs_pipeline_sn-chip_seq-finish/manifest.json",
+  "step_ids": [
+    "fastqc_raw",
+    "trim",
+    "align",
+    "filter_sort_index"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.993858+00:00"
+}

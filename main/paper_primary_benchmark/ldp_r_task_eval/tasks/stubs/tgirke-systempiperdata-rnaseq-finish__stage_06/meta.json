@@ -1,0 +1,13 @@
+{
+  "workflow_id": "tgirke-systempiperdata-rnaseq-finish",
+  "pipeline_task_id": "stage_06",
+  "order": 6,
+  "manifest_path": "finish/tgirke-systempiperdata-rnaseq-finish/manifest.json",
+  "step_ids": [
+    "go_plot",
+    "heatmap",
+    "sessionInfo"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.030731+00:00"
+}

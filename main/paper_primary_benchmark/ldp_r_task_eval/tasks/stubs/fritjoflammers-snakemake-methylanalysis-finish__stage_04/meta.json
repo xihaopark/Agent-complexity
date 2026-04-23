@@ -1,0 +1,14 @@
+{
+  "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+  "pipeline_task_id": "stage_04",
+  "order": 4,
+  "manifest_path": "finish/fritjoflammers-snakemake-methylanalysis-finish/manifest.json",
+  "step_ids": [
+    "notebook_data_structure",
+    "gemma_subset_samples",
+    "macau_prep_counts_file",
+    "extract_column_from_spreadsheet"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.987549+00:00"
+}

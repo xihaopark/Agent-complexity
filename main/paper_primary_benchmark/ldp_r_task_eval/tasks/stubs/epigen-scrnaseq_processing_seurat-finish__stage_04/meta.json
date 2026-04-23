@@ -1,0 +1,13 @@
+{
+  "workflow_id": "epigen-scrnaseq_processing_seurat-finish",
+  "pipeline_task_id": "stage_04",
+  "order": 4,
+  "manifest_path": "finish/epigen-scrnaseq_processing_seurat-finish/manifest.json",
+  "step_ids": [
+    "annot_export",
+    "gene_list_export",
+    "all"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.983011+00:00"
+}

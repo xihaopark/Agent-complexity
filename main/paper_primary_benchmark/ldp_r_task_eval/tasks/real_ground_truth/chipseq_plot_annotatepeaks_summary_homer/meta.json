@@ -1,0 +1,20 @@
+{
+  "task_id": "chipseq_plot_annotatepeaks_summary_homer",
+  "kind": "real",
+  "workflow_id": "snakemake-workflows-chipseq-finish",
+  "family": "chipseq",
+  "stage": "late",
+  "difficulty": 1,
+  "paper_covered": false,
+  "wrapper_kind": "snakemake",
+  "description": "HOMER annotatePeaks summary long-format tibble (plots redirected).",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/snakemake-workflows__chipseq/workflow/scripts/plot_annotatepeaks_summary_homer.R",
+  "ground_truth_dir": "tasks/real_ground_truth/chipseq_plot_annotatepeaks_summary_homer",
+  "success_glob": "output/homer_long.tsv",
+  "reference_output_files": [
+    "homer_long.tsv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

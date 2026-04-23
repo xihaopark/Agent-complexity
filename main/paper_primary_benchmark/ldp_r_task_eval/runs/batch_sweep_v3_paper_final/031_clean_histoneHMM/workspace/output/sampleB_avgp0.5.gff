@@ -1,0 +1,38 @@
+##gff-version 3
+##source-version rtracklayer 1.68.0
+##date 2026-04-17
+chr1	histoneHMM	broadPeak	1000	3672	0.9185	.	.	ID=peak0;avg_posterior=0.9185
+chr1	histoneHMM	broadPeak	16000	17986	0.8787	.	.	ID=peak3;avg_posterior=0.8787
+chr1	histoneHMM	broadPeak	26000	27486	0.878	.	.	ID=peak5;avg_posterior=0.8780
+chr1	histoneHMM	broadPeak	36000	38490	0.816	.	.	ID=peak7;avg_posterior=0.8160
+chr1	histoneHMM	broadPeak	41000	43681	0.7658	.	.	ID=peak8;avg_posterior=0.7658
+chr1	histoneHMM	broadPeak	46000	47025	0.6598	.	.	ID=peak9;avg_posterior=0.6598
+chr1	histoneHMM	broadPeak	56000	58661	0.8724	.	.	ID=peak11;avg_posterior=0.8724
+chr1	histoneHMM	broadPeak	61000	63233	0.9644	.	.	ID=peak12;avg_posterior=0.9644
+chr1	histoneHMM	broadPeak	66000	68708	0.7553	.	.	ID=peak13;avg_posterior=0.7553
+chr1	histoneHMM	broadPeak	71000	72323	0.7129	.	.	ID=peak14;avg_posterior=0.7129
+chr1	histoneHMM	broadPeak	76000	78134	0.9951	.	.	ID=peak15;avg_posterior=0.9951
+chr1	histoneHMM	broadPeak	116000	116628	0.8596	.	.	ID=peak23;avg_posterior=0.8596
+chr1	histoneHMM	broadPeak	121000	121790	0.5142	.	.	ID=peak24;avg_posterior=0.5142
+chr1	histoneHMM	broadPeak	126000	127640	0.669	.	.	ID=peak25;avg_posterior=0.6690
+chr1	histoneHMM	broadPeak	131000	132377	0.5392	.	.	ID=peak26;avg_posterior=0.5392
+chr1	histoneHMM	broadPeak	136000	138838	0.5762	.	.	ID=peak27;avg_posterior=0.5762
+chr1	histoneHMM	broadPeak	141000	142495	0.7846	.	.	ID=peak28;avg_posterior=0.7846
+chr1	histoneHMM	broadPeak	151000	151897	0.659	.	.	ID=peak30;avg_posterior=0.6590
+chr1	histoneHMM	broadPeak	161000	163412	0.8638	.	.	ID=peak32;avg_posterior=0.8638
+chr1	histoneHMM	broadPeak	166000	166721	0.6734	.	.	ID=peak33;avg_posterior=0.6734
+chr1	histoneHMM	broadPeak	176000	177889	0.8006	.	.	ID=peak35;avg_posterior=0.8006
+chr1	histoneHMM	broadPeak	186000	187279	0.5363	.	.	ID=peak37;avg_posterior=0.5363
+chr1	histoneHMM	broadPeak	211000	213714	0.836	.	.	ID=peak42;avg_posterior=0.8360
+chr1	histoneHMM	broadPeak	216000	216882	0.9264	.	.	ID=peak43;avg_posterior=0.9264
+chr1	histoneHMM	broadPeak	231000	233142	0.9024	.	.	ID=peak46;avg_posterior=0.9024
+chr1	histoneHMM	broadPeak	251000	253776	0.6619	.	.	ID=peak50;avg_posterior=0.6619
+chr1	histoneHMM	broadPeak	266000	266739	0.5792	.	.	ID=peak53;avg_posterior=0.5792
+chr1	histoneHMM	broadPeak	301000	301778	0.6752	.	.	ID=peak60;avg_posterior=0.6752
+chr1	histoneHMM	broadPeak	326000	328890	0.5652	.	.	ID=peak65;avg_posterior=0.5652
+chr1	histoneHMM	broadPeak	331000	332795	0.9347	.	.	ID=peak66;avg_posterior=0.9347
+chr1	histoneHMM	broadPeak	336000	337336	0.6697	.	.	ID=peak67;avg_posterior=0.6697
+chr1	histoneHMM	broadPeak	361000	363806	0.9961	.	.	ID=peak72;avg_posterior=0.9961
+chr1	histoneHMM	broadPeak	366000	366800	0.5376	.	.	ID=peak73;avg_posterior=0.5376
+chr1	histoneHMM	broadPeak	376000	377929	0.8809	.	.	ID=peak75;avg_posterior=0.8809
+chr1	histoneHMM	broadPeak	391000	393725	0.7035	.	.	ID=peak78;avg_posterior=0.7035

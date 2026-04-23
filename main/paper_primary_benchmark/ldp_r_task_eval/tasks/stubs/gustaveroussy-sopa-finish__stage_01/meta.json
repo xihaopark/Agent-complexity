@@ -1,0 +1,19 @@
+{
+  "workflow_id": "gustaveroussy-sopa-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/gustaveroussy-sopa-finish/manifest.json",
+  "step_ids": [
+    "to_spatialdata",
+    "tissue_segmentation",
+    "patchify_image",
+    "patchify_transcripts"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.989088+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_03",
+  "prepared_at": "2026-04-16T12:46:05.800169+00:00",
+  "micro_task": "sum_of_values_txt"
+}

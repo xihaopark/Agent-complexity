@@ -1,0 +1,238 @@
+{
+  "workflow_id": "cite-seq-alevin-fry-seurat-finish",
+  "workflow_dir": "main/finish/workflow_candidates/snakemake-workflows__cite-seq-alevin-fry-seurat",
+  "out_dir": "main/paper_primary_benchmark/experiments/skills_pipeline/cite-seq-alevin-fry-seurat-finish",
+  "status": "ok",
+  "generated_at": "2026-04-16T16:56:38Z",
+  "model": "openrouter/openai/gpt-4o",
+  "resolved_model": "openai/gpt-4o",
+  "max_per_file": 8000,
+  "max_total": 80000,
+  "prompt_tokens": 6188,
+  "completion_tokens": 1050,
+  "total_tokens": 7238,
+  "runtime_seconds": 6.98,
+  "llm_seconds": 6.97,
+  "chars_used": 19722,
+  "truncated": false,
+  "files_considered": [
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "bytes": 225,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/analysis.smk",
+      "kind": "snakefile",
+      "bytes": 2317,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/common.smk",
+      "kind": "snakefile",
+      "bytes": 1038,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/read_mapping.smk",
+      "kind": "snakefile",
+      "bytes": 1825,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/ref.smk",
+      "kind": "snakefile",
+      "bytes": 1905,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/utils.smk",
+      "kind": "snakefile",
+      "bytes": 222,
+      "priority": 0
+    },
+    {
+      "path": "workflow/scripts/build-splici-transcriptome.r",
+      "kind": "r",
+      "bytes": 1384,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/filter-and-normalize-demux.r",
+      "kind": "r",
+      "bytes": 842,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/filter-negatives.r",
+      "kind": "r",
+      "bytes": 382,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/filter-to-singlets.r",
+      "kind": "r",
+      "bytes": 497,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/plot-counts-hto-filtered.r",
+      "kind": "r",
+      "bytes": 483,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/plot-hto-counts.r",
+      "kind": "r",
+      "bytes": 372,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/plot-umap-singlets-doublets.r",
+      "kind": "r",
+      "bytes": 837,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/seurat.r",
+      "kind": "r",
+      "bytes": 3170,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/get-geneid2name.py",
+      "kind": "python",
+      "bytes": 380,
+      "priority": 2
+    },
+    {
+      "path": ".tests/config/config.yaml",
+      "kind": "yaml",
+      "bytes": 1394,
+      "priority": 3
+    },
+    {
+      "path": "config/config.yaml",
+      "kind": "yaml",
+      "bytes": 1394,
+      "priority": 3
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "bytes": 223,
+      "priority": 4
+    }
+  ],
+  "files_included": [
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "chars_used": 225,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/analysis.smk",
+      "kind": "snakefile",
+      "chars_used": 2317,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/common.smk",
+      "kind": "snakefile",
+      "chars_used": 1038,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/read_mapping.smk",
+      "kind": "snakefile",
+      "chars_used": 1825,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/ref.smk",
+      "kind": "snakefile",
+      "chars_used": 1905,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/utils.smk",
+      "kind": "snakefile",
+      "chars_used": 222,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/build-splici-transcriptome.r",
+      "kind": "r",
+      "chars_used": 1384,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/filter-and-normalize-demux.r",
+      "kind": "r",
+      "chars_used": 842,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/filter-negatives.r",
+      "kind": "r",
+      "chars_used": 382,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/filter-to-singlets.r",
+      "kind": "r",
+      "chars_used": 497,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/plot-counts-hto-filtered.r",
+      "kind": "r",
+      "chars_used": 483,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/plot-hto-counts.r",
+      "kind": "r",
+      "chars_used": 372,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/plot-umap-singlets-doublets.r",
+      "kind": "r",
+      "chars_used": 837,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/seurat.r",
+      "kind": "r",
+      "chars_used": 3170,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/get-geneid2name.py",
+      "kind": "python",
+      "chars_used": 380,
+      "partial": false
+    },
+    {
+      "path": ".tests/config/config.yaml",
+      "kind": "yaml",
+      "chars_used": 1394,
+      "partial": false
+    },
+    {
+      "path": "config/config.yaml",
+      "kind": "yaml",
+      "chars_used": 1394,
+      "partial": false
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "chars_used": 223,
+      "partial": false
+    }
+  ]
+}

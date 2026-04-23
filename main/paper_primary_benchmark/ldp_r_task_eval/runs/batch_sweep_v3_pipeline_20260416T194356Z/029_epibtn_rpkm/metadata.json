@@ -1,0 +1,26 @@
+{
+  "task_id": "epibtn_rpkm",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/epibtn_rpkm",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/029_epibtn_rpkm/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+  "registry_index": 29,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "arm": "pipeline",
+    "injected": true,
+    "manifest_version": 3,
+    "skill_sha256": "ed45355a5ea5f94d6e568c7725ed4dc7d8ab6542f7ec583e8d9c1ae5380583a4",
+    "skill_char_len": 4000,
+    "skill_md_path": "experiments/skills_pipeline/joncahn-epigeneticbutton-finish/SKILL.md",
+    "lookup_field": "by_workflow_id",
+    "lookup_key": "joncahn-epigeneticbutton-finish",
+    "source_workflow_id": "joncahn-epigeneticbutton-finish"
+  }
+}

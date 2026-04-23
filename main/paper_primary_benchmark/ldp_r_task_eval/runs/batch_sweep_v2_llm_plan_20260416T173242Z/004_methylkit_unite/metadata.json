@@ -1,0 +1,27 @@
+{
+  "task_id": "methylkit_unite",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/methylkit_unite",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v2_llm_plan_20260416T173242Z/004_methylkit_unite/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_v2_llm_plan_20260416T173242Z",
+  "registry_index": 4,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "arm": "llm_plan",
+    "injected": true,
+    "manifest_version": 1,
+    "skill_sha256": "dc8aedc7c717eab728e0fa5ce1f2ed3a332371441d13509c742d529311dfbeb4",
+    "skill_char_len": 2708,
+    "skill_md_path": "experiments/skills_llm_plan/methylkit_unite/SKILL.md",
+    "lookup_field": "by_task_id",
+    "lookup_key": "methylkit_unite",
+    "source_task_id": "methylkit_unite",
+    "source_model": "openrouter/openai/gpt-4o"
+  }
+}

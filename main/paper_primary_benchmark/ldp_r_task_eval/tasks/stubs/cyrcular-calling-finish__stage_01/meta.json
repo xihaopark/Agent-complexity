@@ -1,0 +1,15 @@
+{
+  "workflow_id": "cyrcular-calling-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/cyrcular-calling-finish/manifest.json",
+  "step_ids": [
+    "get_genome",
+    "genome_faidx",
+    "minimap2_index",
+    "download_regulatory_annotation",
+    "download_repeatmasker_annotation"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.957247+00:00"
+}

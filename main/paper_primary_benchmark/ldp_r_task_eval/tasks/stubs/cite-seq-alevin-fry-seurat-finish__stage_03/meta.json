@@ -1,0 +1,14 @@
+{
+  "workflow_id": "cite-seq-alevin-fry-seurat-finish",
+  "pipeline_task_id": "stage_03",
+  "order": 3,
+  "manifest_path": "finish/cite-seq-alevin-fry-seurat-finish/manifest.json",
+  "step_ids": [
+    "alevin_fry_preprocess",
+    "alevin_fry_quant",
+    "seurat",
+    "plot_initial_hto_counts"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.956025+00:00"
+}

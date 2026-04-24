@@ -1,0 +1,388 @@
+{
+  "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+  "batch_root": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z",
+  "n_tasks": 32,
+  "n_pass": 3,
+  "n_partial": 4,
+  "n_fail": 2,
+  "pass_rate": 9.375,
+  "results": [
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/000_akinyi_deseq2",
+      "task_id": "akinyi_deseq2",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "smoke": false,
+      "n_expected": 2,
+      "n_exists": 2,
+      "n_byte_identical": 2,
+      "n_table_full_match": 0,
+      "verdict": "pass",
+      "files": {
+        "deseq2_up.txt": {
+          "exists": true,
+          "byte_size_agent": 2481,
+          "byte_size_gt": 2481,
+          "sha256_agent": "78680c80c12234eb997072df2af4cc3f5c55def64305970c9287a0c3238bd0cf",
+          "sha256_gt": "78680c80c12234eb997072df2af4cc3f5c55def64305970c9287a0c3238bd0cf",
+          "byte_identical": true
+        },
+        "deseq2_down.txt": {
+          "exists": true,
+          "byte_size_agent": 1524,
+          "byte_size_gt": 1524,
+          "sha256_agent": "03a8e9d4f39ef17df8bfef769905e3f3ef6b34a76e31c3bcf1c1d746206a7013",
+          "sha256_gt": "03a8e9d4f39ef17df8bfef769905e3f3ef6b34a76e31c3bcf1c1d746206a7013",
+          "byte_identical": true
+        }
+      }
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/001_star_deseq2_init",
+      "task_id": "star_deseq2_init",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "smoke": false,
+      "n_expected": 1,
+      "n_exists": 1,
+      "n_byte_identical": 0,
+      "n_table_full_match": 1,
+      "verdict": "pass",
+      "files": {
+        "normalized_counts.tsv": {
+          "exists": true,
+          "byte_size_agent": 64217,
+          "byte_size_gt": 58217,
+          "sha256_agent": "eba90a7df2339b7afcd62044dc251d29819dd52a2e5ac591a983eb09da4512f4",
+          "sha256_gt": "6ebf2a9c05565490238ca8c4c106b332e46ef46bb1313933b0a775477f7fe476",
+          "byte_identical": false,
+          "table": {
+            "same_shape": true,
+            "rows": 501,
+            "cells_total": 3507,
+            "cells_numeric": 3000,
+            "cells_numeric_match": 3000,
+            "cells_numeric_pct": 100.0,
+            "cells_string_total": 507,
+            "cells_string_match": 507,
+            "cells_string_pct": 100.0
+          }
+        }
+      }
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/002_star_deseq2_contrast",
+      "task_id": "star_deseq2_contrast",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "smoke": false,
+      "n_expected": 1,
+      "n_exists": 1,
+      "n_byte_identical": 1,
+      "n_table_full_match": 1,
+      "verdict": "pass",
+      "files": {
+        "contrast_results.tsv": {
+          "exists": true,
+          "byte_size_agent": 53764,
+          "byte_size_gt": 53764,
+          "sha256_agent": "a190bec571f3c576a56a5413ef7099ea7462e264e377d167c1f1233e195b51b6",
+          "sha256_gt": "a190bec571f3c576a56a5413ef7099ea7462e264e377d167c1f1233e195b51b6",
+          "byte_identical": true,
+          "table": {
+            "same_shape": true,
+            "rows": 501,
+            "cells_total": 3006,
+            "cells_numeric": 2500,
+            "cells_numeric_match": 2500,
+            "cells_numeric_pct": 100.0,
+            "cells_string_total": 506,
+            "cells_string_match": 506,
+            "cells_string_pct": 100.0
+          }
+        }
+      }
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/003_methylkit_load",
+      "task_id": "methylkit_load",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "smoke": false,
+      "n_expected": 1,
+      "n_exists": 0,
+      "n_byte_identical": 0,
+      "n_table_full_match": 0,
+      "verdict": "fail",
+      "files": {
+        "mk_raw.rds": {
+          "exists": false,
+          "reason": "missing_in_agent_output"
+        }
+      }
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/004_methylkit_unite",
+      "task_id": "methylkit_unite",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "smoke": false,
+      "n_expected": 1,
+      "n_exists": 0,
+      "n_byte_identical": 0,
+      "n_table_full_match": 0,
+      "verdict": "fail",
+      "files": {
+        "unite_stats.tsv": {
+          "exists": false,
+          "reason": "missing_in_agent_output"
+        }
+      }
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/005_methylkit_to_tibble",
+      "task_id": "methylkit_to_tibble",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "smoke": false,
+      "n_expected": 1,
+      "n_exists": 1,
+      "n_byte_identical": 0,
+      "n_table_full_match": 0,
+      "verdict": "partial",
+      "files": {
+        "mean_mcpg.tsv": {
+          "exists": true,
+          "byte_size_agent": 102,
+          "byte_size_gt": 406,
+          "sha256_agent": "4e6498204442e3ebef704e4278144eb4bc29ef3e3cbffe66fd6e8e164c25d13c",
+          "sha256_gt": "4bb613e27fcc820c1733988b25ac25d937e832c6bf5555b97c6d12cfe41aaa0c",
+          "byte_identical": false,
+          "table": {
+            "same_shape": false,
+            "agent_rows": 4,
+            "gt_rows": 13
+          }
+        }
+      }
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/006_longseq_deseq2_init",
+      "task_id": "longseq_deseq2_init",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "smoke": false,
+      "n_expected": 1,
+      "n_exists": 1,
+      "n_byte_identical": 0,
+      "n_table_full_match": 0,
+      "verdict": "partial",
+      "files": {
+        "normalized_counts.tsv": {
+          "exists": true,
+          "byte_size_agent": 56240,
+          "byte_size_gt": 56240,
+          "sha256_agent": "5f716e6cc94f92a91566d5190cf7efd3e577b127372970f8ed61373ac46bee6a",
+          "sha256_gt": "51561539c90ba74c624077af69e2e071ff6bf763fdc166bc703c50cceebe832d",
+          "byte_identical": false,
+          "table": {
+            "same_shape": true,
+            "rows": 501,
+            "cells_total": 3507,
+            "cells_numeric": 2500,
+            "cells_numeric_match": 17,
+            "cells_numeric_pct": 0.6799999999999999,
+            "cells_string_total": 1007,
+            "cells_string_match": 0,
+            "cells_string_pct": 0.0
+          }
+        }
+      }
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/007_longseq_deseq2_contrast",
+      "task_id": "longseq_deseq2_contrast",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "smoke": false,
+      "n_expected": 1,
+      "n_exists": 1,
+      "n_byte_identical": 0,
+      "n_table_full_match": 0,
+      "verdict": "partial",
+      "files": {
+        "contrast_results.tsv": {
+          "exists": true,
+          "byte_size_agent": 50476,
+          "byte_size_gt": 50518,
+          "sha256_agent": "27e1a0b955518a6258d8af115d6f8187815dbf31e98d67282712e06d505ba30d",
+          "sha256_gt": "22125fbdbae35b9e2eabdd0cb7d276d6d2ae82ed3955b971b1b9d2a6502849bd",
+          "byte_identical": false,
+          "table": {
+            "same_shape": true,
+            "rows": 501,
+            "cells_total": 3006,
+            "cells_numeric": 2500,
+            "cells_numeric_match": 2000,
+            "cells_numeric_pct": 80.0,
+            "cells_string_total": 506,
+            "cells_string_match": 506,
+            "cells_string_pct": 100.0
+          }
+        }
+      }
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/008_snakepipes_merge_fc",
+      "task_id": "snakepipes_merge_fc",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "smoke": false,
+      "n_expected": 1,
+      "n_exists": 1,
+      "n_byte_identical": 0,
+      "n_table_full_match": 0,
+      "verdict": "partial",
+      "files": {
+        "merged_counts.tsv": {
+          "exists": true,
+          "byte_size_agent": 11569,
+          "byte_size_gt": 11553,
+          "sha256_agent": "1d950e48d980f7563a6ac02580c403c8c08488b4713e063b2059510c23eb745a",
+          "sha256_gt": "2517d942aef766e2aca99259049ea09d9cfb50ae3e0aced42cd2a1640f7efd34",
+          "byte_identical": false,
+          "table": {
+            "same_shape": true,
+            "rows": 401,
+            "cells_total": 2005,
+            "cells_numeric": 1600,
+            "cells_numeric_match": 1600,
+            "cells_numeric_pct": 100.0,
+            "cells_string_total": 405,
+            "cells_string_match": 401,
+            "cells_string_pct": 99.01234567901234
+          }
+        }
+      }
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/009_snakepipes_merge_ct",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/010_riya_limma",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/011_chipseq_plot_macs_qc",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/012_chipseq_plot_homer_annot",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/013_snakepipes_scrna_merge_coutt",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/014_snakepipes_scrna_qc",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/015_spilterlize_filter_features",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/016_spilterlize_norm_voom",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/017_spilterlize_limma_rbe",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/018_spilterlize_norm_edger",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/019_dea_limma",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/020_msisensor_merge",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/021_methylkit_filt_norm",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/022_methylkit2tibble_split",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/023_methylkit_remove_snvs",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/024_phantompeak_correlation",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/025_nearest_gene",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/026_chipseq_plot_frip_score",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/027_chipseq_plot_peaks_count_macs2",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/028_chipseq_plot_annotatepeaks_summary_homer",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/029_epibtn_rpkm",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/030_snakepipes_scrna_report",
+      "error": "no_metadata"
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/031_clean_histoneHMM",
+      "error": "no_metadata"
+    }
+  ]
+}

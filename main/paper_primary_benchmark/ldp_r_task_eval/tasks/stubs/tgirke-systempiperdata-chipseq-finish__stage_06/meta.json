@@ -1,0 +1,18 @@
+{
+  "workflow_id": "tgirke-systempiperdata-chipseq-finish",
+  "pipeline_task_id": "stage_06",
+  "order": 6,
+  "manifest_path": "finish/tgirke-systempiperdata-chipseq-finish/manifest.json",
+  "step_ids": [
+    "parse_peak_sequences",
+    "bcrank_enrich",
+    "sessionInfo"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.021121+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_05",
+  "prepared_at": "2026-04-16T12:46:05.811639+00:00",
+  "micro_task": "sum_of_values_txt"
+}

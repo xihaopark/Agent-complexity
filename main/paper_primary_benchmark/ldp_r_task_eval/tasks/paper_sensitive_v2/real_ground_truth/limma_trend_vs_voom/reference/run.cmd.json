@@ -1,0 +1,5 @@
+{
+  "command": "Rscript script.R",
+  "working_dir": "workspace",
+  "description": "Compare limma-trend vs standard voom"
+}

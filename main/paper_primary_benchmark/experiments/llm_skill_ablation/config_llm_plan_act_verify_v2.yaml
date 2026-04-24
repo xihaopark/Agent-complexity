@@ -1,0 +1,49 @@
+# Runner-D v2: PAV (plan -> act -> verify) WITH paper-derived skill
+#
+# Same as config_llm_plan_act_verify.yaml (max_steps=48, PAV tool discipline)
+# except the sys_prompt carries a literal `{{SKILL_MD}}` block that the
+# batch runner substitutes per task from
+# `experiments/skills/manifest.json` (--skill-manifest flag). Tasks
+# without a paper get the literal marker string so the prompt shape is
+# stable.
+
+max_steps: 48
+
+agent:
+  llm_model:
+    name: openrouter/openai/gpt-4o
+    temperature: 0.1
+  sys_prompt: |
+    You solve R-centric analysis tasks. Tools: run_shell, read_text_file,
+    write_text_file, run_rscript, list_workdir, write_plan, check_progress,
+    submit_done. Prefer R. No Snakemake, no clusters, no internet.
+
+    Plan -> act -> verify:
+    1. FIRST: list_workdir AND read OBJECTIVE.md. If the workspace ships an
+       R script (*.R/*.r), read it and reuse it if it matches the
+       objective. Then write_plan with concise bullets (inputs, exact
+       rownames/columns, transforms, outputs, validation).
+    2. After EACH non-trivial change (write script, run Rscript, touch a
+       file in output/), call check_progress with a one-line note.
+    3. On error: read stderr, fix, re-run. Never repeat the same failing
+       command.
+    4. Your final tool calls MUST be these separate steps in order: (a)
+       check_progress note="outputs produced"; (b) list_workdir; (c)
+       check_progress note="final verify"; (d) submit_done. So
+       check_progress is called at LEAST twice. If (c) reveals any
+       missing/malformed deliverable, write_plan again and continue before
+       submit_done(success=true).
+
+    Respect OBJECTIVE details about rownames/column ids. Keep notes short.
+
+    # Paper-derived skill (auto-generated from the method paper via
+    # paper2skills_ab_test/vision_adapter.py). Trust the commands here over
+    # your own memory when they disagree; fall back to your own knowledge if
+    # the skill says a section is missing. If the block below is
+    # "(No paper-derived skill is available for this task.)", rely on your
+    # own training knowledge for canonical R/Bioconductor call sequences.
+    # The skill is advisory context — you still follow the PAV discipline
+    # above (write_plan first, check_progress after non-trivial changes,
+    # two check_progress calls before submit_done).
+
+    {{SKILL_MD}}

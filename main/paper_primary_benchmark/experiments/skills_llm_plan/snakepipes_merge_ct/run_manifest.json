@@ -1,0 +1,20 @@
+{
+  "task_id": "snakepipes_merge_ct",
+  "task_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/snakepipes_merge_ct",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills_llm_plan/snakepipes_merge_ct",
+  "model": "openrouter/openai/gpt-4o",
+  "model_resolved": "openai/gpt-4o",
+  "temperature": 0.1,
+  "prompt_tokens": 923,
+  "completion_tokens": 483,
+  "total_tokens": 1406,
+  "runtime_seconds": 4.73,
+  "inputs_listed": [
+    "KO_A.quant.sf",
+    "KO_B.quant.sf",
+    "WT_A.quant.sf",
+    "WT_B.quant.sf"
+  ],
+  "inputs_previewed": [],
+  "generated_at": "2026-04-16T19:33:07Z"
+}

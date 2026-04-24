@@ -1,0 +1,20 @@
+{
+  "workflow_id": "tgirke-systempiperdata-varseq-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/tgirke-systempiperdata-varseq-finish/manifest.json",
+  "step_ids": [
+    "load_SPR",
+    "fastqc",
+    "fastq_report",
+    "trimmomatic",
+    "preprocessing"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.034765+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_05",
+  "prepared_at": "2026-04-16T12:46:05.816796+00:00",
+  "micro_task": "sum_of_values_txt"
+}

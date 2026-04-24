@@ -1,0 +1,19 @@
+{
+  "task_id": "akinyi_deseq2",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/akinyi_deseq2",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v2_none_20260416T173242Z/000_akinyi_deseq2/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_v2_none_20260416T173242Z",
+  "registry_index": 0,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "arm": "none",
+    "injected": false
+  }
+}

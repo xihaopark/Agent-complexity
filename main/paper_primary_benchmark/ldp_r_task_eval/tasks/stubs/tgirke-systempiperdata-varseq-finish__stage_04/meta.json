@@ -1,0 +1,14 @@
+{
+  "workflow_id": "tgirke-systempiperdata-varseq-finish",
+  "pipeline_task_id": "stage_04",
+  "order": 4,
+  "manifest_path": "finish/tgirke-systempiperdata-varseq-finish/manifest.json",
+  "step_ids": [
+    "fix_tag",
+    "hap_caller",
+    "import",
+    "call_variants"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.036872+00:00"
+}

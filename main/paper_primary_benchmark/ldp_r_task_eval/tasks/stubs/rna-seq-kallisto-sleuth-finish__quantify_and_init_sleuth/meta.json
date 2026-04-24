@@ -1,0 +1,17 @@
+{
+  "workflow_id": "rna-seq-kallisto-sleuth-finish",
+  "pipeline_task_id": "quantify_and_init_sleuth",
+  "order": 3,
+  "manifest_path": "finish/rna-seq-kallisto-sleuth-finish/manifest.json",
+  "step_ids": [
+    "quantify",
+    "init_sleuth"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.009525+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_04",
+  "prepared_at": "2026-04-16T12:46:05.808988+00:00",
+  "micro_task": "sum_of_values_txt"
+}

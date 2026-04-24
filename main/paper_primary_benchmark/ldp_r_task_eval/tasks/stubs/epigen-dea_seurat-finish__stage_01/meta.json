@@ -1,0 +1,19 @@
+{
+  "workflow_id": "epigen-dea_seurat-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/epigen-dea_seurat-finish/manifest.json",
+  "step_ids": [
+    "dea",
+    "aggregate",
+    "feature_lists",
+    "volcanos"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.971194+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_02",
+  "prepared_at": "2026-04-16T12:46:05.789602+00:00",
+  "micro_task": "sum_of_values_txt"
+}

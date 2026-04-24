@@ -1,0 +1,29 @@
+{
+  "task_id": "methylkit_remove_snvs",
+  "task_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/methylkit_remove_snvs",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills_llm_plan/methylkit_remove_snvs",
+  "model": "openrouter/openai/gpt-4o",
+  "model_resolved": "openai/gpt-4o",
+  "temperature": 0.1,
+  "prompt_tokens": 1119,
+  "completion_tokens": 558,
+  "total_tokens": 1677,
+  "runtime_seconds": 8.58,
+  "inputs_listed": [
+    "a1.bismark.cov",
+    "a2.bismark.cov",
+    "a3.bismark.cov",
+    "df_united.rds",
+    "exclusion.bed",
+    "mk_db/a1.txt.bgz",
+    "mk_db/a1.txt.bgz.tbi",
+    "mk_db/a2.txt.bgz",
+    "mk_db/a2.txt.bgz.tbi",
+    "mk_db/a3.txt.bgz",
+    "mk_db/a3.txt.bgz.tbi",
+    "mk_db/methylBase_unite.txt.bgz",
+    "mk_db/methylBase_unite.txt.bgz.tbi"
+  ],
+  "inputs_previewed": [],
+  "generated_at": "2026-04-16T19:34:38Z"
+}

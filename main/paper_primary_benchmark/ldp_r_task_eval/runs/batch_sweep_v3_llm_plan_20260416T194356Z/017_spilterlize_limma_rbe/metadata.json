@@ -1,0 +1,27 @@
+{
+  "task_id": "spilterlize_limma_rbe",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/spilterlize_limma_rbe",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_llm_plan_20260416T194356Z/017_spilterlize_limma_rbe/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_v3_llm_plan_20260416T194356Z",
+  "registry_index": 17,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "arm": "llm_plan",
+    "injected": true,
+    "manifest_version": 3,
+    "skill_sha256": "8a921a28c2699d8b25e360dcc8e349f5a8ff2d2ccc675ccae14f54222c5202fa",
+    "skill_char_len": 1874,
+    "skill_md_path": "experiments/skills_llm_plan/spilterlize_limma_rbe/SKILL.md",
+    "lookup_field": "by_task_id",
+    "lookup_key": "spilterlize_limma_rbe",
+    "source_task_id": "spilterlize_limma_rbe",
+    "source_model": "openrouter/openai/gpt-4o"
+  }
+}

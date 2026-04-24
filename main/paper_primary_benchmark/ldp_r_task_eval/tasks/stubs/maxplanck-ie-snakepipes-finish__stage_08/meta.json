@@ -1,0 +1,14 @@
+{
+  "workflow_id": "maxplanck-ie-snakepipes-finish",
+  "pipeline_task_id": "stage_08",
+  "order": 8,
+  "manifest_path": "finish/maxplanck-ie-snakepipes-finish/manifest.json",
+  "step_ids": [
+    "filter_gtf",
+    "gtf_to_files",
+    "annotation_bed2fasta",
+    "all"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.000446+00:00"
+}

@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "kind": "real_smoke",
+  "description": "Single-task smoke-test registry used to validate the plan->act->verify agent loop against akinyi_deseq2. Mirrors the entry in registry.real.json; do not use for batch evaluation.",
+  "generated_by": "subagent C for plan-act-verify smoke test",
+  "tasks": [
+    {
+      "id": "akinyi_deseq2",
+      "work_dir": "ldp_r_task_eval/tasks/real/akinyi_deseq2",
+      "success_artifact_glob": "output/deseq2_up.txt",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "akinyi-onyango-rna_seq_pipeline-finish",
+      "family": "rna",
+      "r_script_src": "main/finish/workflow_candidates/Akinyi-Onyango__rna_seq_pipeline/scripts/deseq_analysis.r",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": ["deseq2_up.txt", "deseq2_down.txt"]
+      }
+    }
+  ]
+}

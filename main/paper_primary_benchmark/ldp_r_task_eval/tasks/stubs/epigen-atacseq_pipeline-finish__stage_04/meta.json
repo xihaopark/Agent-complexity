@@ -1,0 +1,14 @@
+{
+  "workflow_id": "epigen-atacseq_pipeline-finish",
+  "pipeline_task_id": "stage_04",
+  "order": 4,
+  "manifest_path": "finish/epigen-atacseq_pipeline-finish/manifest.json",
+  "step_ids": [
+    "get_promoter_regions",
+    "get_consensus_regions",
+    "quantify_support_sample",
+    "quantify_counts_sample"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.967346+00:00"
+}

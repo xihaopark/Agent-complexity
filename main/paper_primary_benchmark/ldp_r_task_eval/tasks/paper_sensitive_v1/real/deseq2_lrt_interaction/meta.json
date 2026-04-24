@@ -1,0 +1,16 @@
+{
+  "task_id": "deseq2_lrt_interaction",
+  "kind": "paper_sensitive",
+  "blueprint_version": "v1",
+  "workflow_id": "rna-seq-star-deseq2-finish",
+  "family": "rna",
+  "stage": "late",
+  "difficulty": 4,
+  "paper_covered": true,
+  "primary_method_paper_doi": "10.1186/s13059-014-0550-8",
+  "primary_tool": "DESeq2",
+  "description": "Interaction RNA-seq design; use LRT (nested models) for treatment:time.",
+  "status": "scaffold",
+  "success_glob": "output/interaction_de.csv",
+  "reference_output_files": ["interaction_de.csv"]
+}

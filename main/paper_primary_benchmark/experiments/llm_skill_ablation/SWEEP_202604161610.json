@@ -1,0 +1,851 @@
+{
+  "ts": "202604161610",
+  "arms": {
+    "vanilla_no_skill": {
+      "batch_run_id": "sweep_vanilla_no_skill_202604161610",
+      "n_tasks": 12,
+      "n_pass": 2,
+      "n_partial": 9,
+      "n_fail": 1,
+      "pass_rate": 16.666666666666664,
+      "per_task": {
+        "akinyi_deseq2": {
+          "verdict": "pass",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 2,
+          "n_table_full_match": 0,
+          "family": "rna",
+          "difficulty": "medium",
+          "steps": 6
+        },
+        "riya_limma": {
+          "verdict": "partial",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 1,
+          "n_table_full_match": 1,
+          "family": "rna",
+          "difficulty": "medium",
+          "steps": 9
+        },
+        "snakepipes_merge_fc": {
+          "verdict": "pass",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 1,
+          "n_table_full_match": 1,
+          "family": "rna",
+          "difficulty": "easy",
+          "steps": 5
+        },
+        "snakepipes_merge_ct": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "rna",
+          "difficulty": "easy",
+          "steps": 5
+        },
+        "chipseq_plot_peak_intersect": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 5
+        },
+        "chipseq_plot_macs_qc": {
+          "verdict": "partial",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 6
+        },
+        "chipseq_plot_homer_annot": {
+          "verdict": "fail",
+          "n_expected": 2,
+          "n_exists": 0,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 32
+        },
+        "snakepipes_scrna_merge_coutt": {
+          "verdict": "partial",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "scrna",
+          "difficulty": "medium",
+          "steps": 6
+        },
+        "snakepipes_scrna_qc": {
+          "verdict": "partial",
+          "n_expected": 6,
+          "n_exists": 2,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "scrna",
+          "difficulty": "hard",
+          "steps": 9
+        },
+        "epigenbutton_mapping_stats": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 9
+        },
+        "epigenbutton_peak_stats": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 5
+        },
+        "smartseqtotal_violin": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "scrna",
+          "difficulty": "easy",
+          "steps": 6
+        }
+      }
+    },
+    "vanilla_with_skill": {
+      "batch_run_id": "sweep_vanilla_with_skill_202604161610",
+      "n_tasks": 12,
+      "n_pass": 1,
+      "n_partial": 11,
+      "n_fail": 0,
+      "pass_rate": 8.333333333333332,
+      "per_task": {
+        "akinyi_deseq2": {
+          "verdict": "pass",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 2,
+          "n_table_full_match": 0,
+          "family": "rna",
+          "difficulty": "medium",
+          "steps": 5
+        },
+        "riya_limma": {
+          "verdict": "partial",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 1,
+          "n_table_full_match": 1,
+          "family": "rna",
+          "difficulty": "medium",
+          "steps": 8
+        },
+        "snakepipes_merge_fc": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "rna",
+          "difficulty": "easy",
+          "steps": 5
+        },
+        "snakepipes_merge_ct": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "rna",
+          "difficulty": "easy",
+          "steps": 5
+        },
+        "chipseq_plot_peak_intersect": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 5
+        },
+        "chipseq_plot_macs_qc": {
+          "verdict": "partial",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 5
+        },
+        "chipseq_plot_homer_annot": {
+          "verdict": "partial",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 5
+        },
+        "snakepipes_scrna_merge_coutt": {
+          "verdict": "partial",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "scrna",
+          "difficulty": "medium",
+          "steps": 6
+        },
+        "snakepipes_scrna_qc": {
+          "verdict": "partial",
+          "n_expected": 6,
+          "n_exists": 3,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "scrna",
+          "difficulty": "hard",
+          "steps": 11
+        },
+        "epigenbutton_mapping_stats": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 5
+        },
+        "epigenbutton_peak_stats": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 5
+        },
+        "smartseqtotal_violin": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "scrna",
+          "difficulty": "easy",
+          "steps": 5
+        }
+      }
+    },
+    "pav_no_skill": {
+      "batch_run_id": "sweep_pav_no_skill_202604161610",
+      "n_tasks": 12,
+      "n_pass": 2,
+      "n_partial": 10,
+      "n_fail": 0,
+      "pass_rate": 16.666666666666664,
+      "per_task": {
+        "akinyi_deseq2": {
+          "verdict": "pass",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 2,
+          "n_table_full_match": 0,
+          "family": "rna",
+          "difficulty": "medium",
+          "steps": 8
+        },
+        "riya_limma": {
+          "verdict": "partial",
+          "n_expected": 2,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 1,
+          "family": "rna",
+          "difficulty": "medium",
+          "steps": 10
+        },
+        "snakepipes_merge_fc": {
+          "verdict": "pass",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 1,
+          "n_table_full_match": 1,
+          "family": "rna",
+          "difficulty": "easy",
+          "steps": 7
+        },
+        "snakepipes_merge_ct": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "rna",
+          "difficulty": "easy",
+          "steps": 6
+        },
+        "chipseq_plot_peak_intersect": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 8
+        },
+        "chipseq_plot_macs_qc": {
+          "verdict": "partial",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 6
+        },
+        "chipseq_plot_homer_annot": {
+          "verdict": "partial",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 7
+        },
+        "snakepipes_scrna_merge_coutt": {
+          "verdict": "partial",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "scrna",
+          "difficulty": "medium",
+          "steps": 9
+        },
+        "snakepipes_scrna_qc": {
+          "verdict": "partial",
+          "n_expected": 6,
+          "n_exists": 5,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "scrna",
+          "difficulty": "hard",
+          "steps": 14
+        },
+        "epigenbutton_mapping_stats": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 10
+        },
+        "epigenbutton_peak_stats": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 8
+        },
+        "smartseqtotal_violin": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "scrna",
+          "difficulty": "easy",
+          "steps": 7
+        }
+      }
+    },
+    "pav_with_skill": {
+      "batch_run_id": "sweep_pav_with_skill_202604161610",
+      "n_tasks": 12,
+      "n_pass": 1,
+      "n_partial": 11,
+      "n_fail": 0,
+      "pass_rate": 8.333333333333332,
+      "per_task": {
+        "akinyi_deseq2": {
+          "verdict": "pass",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 2,
+          "n_table_full_match": 0,
+          "family": "rna",
+          "difficulty": "medium",
+          "steps": 8
+        },
+        "riya_limma": {
+          "verdict": "partial",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 0,
+          "n_table_full_match": 1,
+          "family": "rna",
+          "difficulty": "medium",
+          "steps": 6
+        },
+        "snakepipes_merge_fc": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "rna",
+          "difficulty": "easy",
+          "steps": 7
+        },
+        "snakepipes_merge_ct": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "rna",
+          "difficulty": "easy",
+          "steps": 7
+        },
+        "chipseq_plot_peak_intersect": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 7
+        },
+        "chipseq_plot_macs_qc": {
+          "verdict": "partial",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 16
+        },
+        "chipseq_plot_homer_annot": {
+          "verdict": "partial",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 7
+        },
+        "snakepipes_scrna_merge_coutt": {
+          "verdict": "partial",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "scrna",
+          "difficulty": "medium",
+          "steps": 6
+        },
+        "snakepipes_scrna_qc": {
+          "verdict": "partial",
+          "n_expected": 6,
+          "n_exists": 3,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "scrna",
+          "difficulty": "hard",
+          "steps": 19
+        },
+        "epigenbutton_mapping_stats": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 8
+        },
+        "epigenbutton_peak_stats": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "chipseq",
+          "difficulty": "medium",
+          "steps": 9
+        },
+        "smartseqtotal_violin": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "scrna",
+          "difficulty": "easy",
+          "steps": 8
+        }
+      }
+    }
+  },
+  "matrix": [
+    {
+      "task_id": "akinyi_deseq2",
+      "family": "rna",
+      "difficulty": "medium",
+      "vanilla_no_skill": "pass",
+      "vanilla_with_skill": "pass",
+      "pav_no_skill": "pass",
+      "pav_with_skill": "pass"
+    },
+    {
+      "task_id": "riya_limma",
+      "family": "rna",
+      "difficulty": "medium",
+      "vanilla_no_skill": "partial",
+      "vanilla_with_skill": "partial",
+      "pav_no_skill": "partial",
+      "pav_with_skill": "partial"
+    },
+    {
+      "task_id": "snakepipes_merge_fc",
+      "family": "rna",
+      "difficulty": "easy",
+      "vanilla_no_skill": "pass",
+      "vanilla_with_skill": "partial",
+      "pav_no_skill": "pass",
+      "pav_with_skill": "partial"
+    },
+    {
+      "task_id": "snakepipes_merge_ct",
+      "family": "rna",
+      "difficulty": "easy",
+      "vanilla_no_skill": "partial",
+      "vanilla_with_skill": "partial",
+      "pav_no_skill": "partial",
+      "pav_with_skill": "partial"
+    },
+    {
+      "task_id": "chipseq_plot_peak_intersect",
+      "family": "chipseq",
+      "difficulty": "medium",
+      "vanilla_no_skill": "partial",
+      "vanilla_with_skill": "partial",
+      "pav_no_skill": "partial",
+      "pav_with_skill": "partial"
+    },
+    {
+      "task_id": "chipseq_plot_macs_qc",
+      "family": "chipseq",
+      "difficulty": "medium",
+      "vanilla_no_skill": "partial",
+      "vanilla_with_skill": "partial",
+      "pav_no_skill": "partial",
+      "pav_with_skill": "partial"
+    },
+    {
+      "task_id": "chipseq_plot_homer_annot",
+      "family": "chipseq",
+      "difficulty": "medium",
+      "vanilla_no_skill": "fail",
+      "vanilla_with_skill": "partial",
+      "pav_no_skill": "partial",
+      "pav_with_skill": "partial"
+    },
+    {
+      "task_id": "snakepipes_scrna_merge_coutt",
+      "family": "scrna",
+      "difficulty": "medium",
+      "vanilla_no_skill": "partial",
+      "vanilla_with_skill": "partial",
+      "pav_no_skill": "partial",
+      "pav_with_skill": "partial"
+    },
+    {
+      "task_id": "snakepipes_scrna_qc",
+      "family": "scrna",
+      "difficulty": "hard",
+      "vanilla_no_skill": "partial",
+      "vanilla_with_skill": "partial",
+      "pav_no_skill": "partial",
+      "pav_with_skill": "partial"
+    },
+    {
+      "task_id": "epigenbutton_mapping_stats",
+      "family": "chipseq",
+      "difficulty": "medium",
+      "vanilla_no_skill": "partial",
+      "vanilla_with_skill": "partial",
+      "pav_no_skill": "partial",
+      "pav_with_skill": "partial"
+    },
+    {
+      "task_id": "epigenbutton_peak_stats",
+      "family": "chipseq",
+      "difficulty": "medium",
+      "vanilla_no_skill": "partial",
+      "vanilla_with_skill": "partial",
+      "pav_no_skill": "partial",
+      "pav_with_skill": "partial"
+    },
+    {
+      "task_id": "smartseqtotal_violin",
+      "family": "scrna",
+      "difficulty": "easy",
+      "vanilla_no_skill": "partial",
+      "vanilla_with_skill": "partial",
+      "pav_no_skill": "partial",
+      "pav_with_skill": "partial"
+    }
+  ],
+  "stratified": {
+    "by_family": {
+      "vanilla_no_skill": {
+        "rna": {
+          "pass": 2,
+          "partial": 2,
+          "fail": 0,
+          "error": 0,
+          "n": 4
+        },
+        "chipseq": {
+          "pass": 0,
+          "partial": 4,
+          "fail": 1,
+          "error": 0,
+          "n": 5
+        },
+        "scrna": {
+          "pass": 0,
+          "partial": 3,
+          "fail": 0,
+          "error": 0,
+          "n": 3
+        }
+      },
+      "vanilla_with_skill": {
+        "rna": {
+          "pass": 1,
+          "partial": 3,
+          "fail": 0,
+          "error": 0,
+          "n": 4
+        },
+        "chipseq": {
+          "pass": 0,
+          "partial": 5,
+          "fail": 0,
+          "error": 0,
+          "n": 5
+        },
+        "scrna": {
+          "pass": 0,
+          "partial": 3,
+          "fail": 0,
+          "error": 0,
+          "n": 3
+        }
+      },
+      "pav_no_skill": {
+        "rna": {
+          "pass": 2,
+          "partial": 2,
+          "fail": 0,
+          "error": 0,
+          "n": 4
+        },
+        "chipseq": {
+          "pass": 0,
+          "partial": 5,
+          "fail": 0,
+          "error": 0,
+          "n": 5
+        },
+        "scrna": {
+          "pass": 0,
+          "partial": 3,
+          "fail": 0,
+          "error": 0,
+          "n": 3
+        }
+      },
+      "pav_with_skill": {
+        "rna": {
+          "pass": 1,
+          "partial": 3,
+          "fail": 0,
+          "error": 0,
+          "n": 4
+        },
+        "chipseq": {
+          "pass": 0,
+          "partial": 5,
+          "fail": 0,
+          "error": 0,
+          "n": 5
+        },
+        "scrna": {
+          "pass": 0,
+          "partial": 3,
+          "fail": 0,
+          "error": 0,
+          "n": 3
+        }
+      }
+    },
+    "by_difficulty": {
+      "vanilla_no_skill": {
+        "medium": {
+          "pass": 1,
+          "partial": 6,
+          "fail": 1,
+          "error": 0,
+          "n": 8
+        },
+        "easy": {
+          "pass": 1,
+          "partial": 2,
+          "fail": 0,
+          "error": 0,
+          "n": 3
+        },
+        "hard": {
+          "pass": 0,
+          "partial": 1,
+          "fail": 0,
+          "error": 0,
+          "n": 1
+        }
+      },
+      "vanilla_with_skill": {
+        "medium": {
+          "pass": 1,
+          "partial": 7,
+          "fail": 0,
+          "error": 0,
+          "n": 8
+        },
+        "easy": {
+          "pass": 0,
+          "partial": 3,
+          "fail": 0,
+          "error": 0,
+          "n": 3
+        },
+        "hard": {
+          "pass": 0,
+          "partial": 1,
+          "fail": 0,
+          "error": 0,
+          "n": 1
+        }
+      },
+      "pav_no_skill": {
+        "medium": {
+          "pass": 1,
+          "partial": 7,
+          "fail": 0,
+          "error": 0,
+          "n": 8
+        },
+        "easy": {
+          "pass": 1,
+          "partial": 2,
+          "fail": 0,
+          "error": 0,
+          "n": 3
+        },
+        "hard": {
+          "pass": 0,
+          "partial": 1,
+          "fail": 0,
+          "error": 0,
+          "n": 1
+        }
+      },
+      "pav_with_skill": {
+        "medium": {
+          "pass": 1,
+          "partial": 7,
+          "fail": 0,
+          "error": 0,
+          "n": 8
+        },
+        "easy": {
+          "pass": 0,
+          "partial": 3,
+          "fail": 0,
+          "error": 0,
+          "n": 3
+        },
+        "hard": {
+          "pass": 0,
+          "partial": 1,
+          "fail": 0,
+          "error": 0,
+          "n": 1
+        }
+      }
+    }
+  },
+  "cost_est": {
+    "vanilla_no_skill": {
+      "steps_total": 103,
+      "est_tokens_in": 257500,
+      "est_tokens_out": 25750,
+      "est_usd": 0.9013
+    },
+    "vanilla_with_skill": {
+      "steps_total": 70,
+      "est_tokens_in": 189000,
+      "est_tokens_out": 17500,
+      "est_usd": 0.6475
+    },
+    "pav_no_skill": {
+      "steps_total": 100,
+      "est_tokens_in": 320000,
+      "est_tokens_out": 30000,
+      "est_usd": 1.1
+    },
+    "pav_with_skill": {
+      "steps_total": 108,
+      "est_tokens_in": 367200,
+      "est_tokens_out": 32400,
+      "est_usd": 1.242
+    }
+  }
+}

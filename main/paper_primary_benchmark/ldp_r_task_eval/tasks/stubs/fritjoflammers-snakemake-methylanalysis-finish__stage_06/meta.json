@@ -1,0 +1,18 @@
+{
+  "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+  "pipeline_task_id": "stage_06",
+  "order": 6,
+  "manifest_path": "finish/fritjoflammers-snakemake-methylanalysis-finish/manifest.json",
+  "step_ids": [
+    "store_config",
+    "DSS_dmrs",
+    "all"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.988446+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_03",
+  "prepared_at": "2026-04-16T12:46:05.799557+00:00",
+  "micro_task": "sum_of_values_txt"
+}

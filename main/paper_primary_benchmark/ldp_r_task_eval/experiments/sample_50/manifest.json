@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "created_at": "2026-04-16T12:46:05.818120+00:00",
+  "description": "50 pipeline-stage tasks with proportional family sampling; micro numeric eval",
+  "seed": 42,
+  "family_quota": {
+    "other": 13,
+    "single-cell": 9,
+    "variant": 6,
+    "epigenomics": 15,
+    "spatial": 2,
+    "rna": 5
+  },
+  "batches": [
+    {
+      "agent_batch": "agent_01",
+      "task_ids": [
+        "akinyi-onyango-rna_seq_pipeline-finish__stage_01",
+        "cellranger-multi-finish__stage_01",
+        "cite-seq-alevin-fry-seurat-finish__stage_01",
+        "cite-seq-alevin-fry-seurat-finish__stage_02",
+        "cyrcular-calling-finish__stage_07",
+        "dna-seq-short-read-circle-map-finish__stage_06",
+        "epigen-atacseq_pipeline-finish__stage_01",
+        "epigen-atacseq_pipeline-finish__stage_02",
+        "epigen-atacseq_pipeline-finish__stage_07",
+        "epigen-dea_limma-finish__stage_01"
+      ]
+    },
+    {
+      "agent_batch": "agent_02",
+      "task_ids": [
+        "epigen-dea_limma-finish__stage_02",
+        "epigen-dea_limma-finish__stage_03",
+        "epigen-dea_seurat-finish__stage_01",
+        "epigen-dea_seurat-finish__stage_03",
+        "epigen-fetch_ngs-finish__env_and_config_export",
+        "epigen-rnaseq_pipeline-finish__stage_02",
+        "epigen-rnaseq_pipeline-finish__stage_04",
+        "epigen-rnaseq_pipeline-finish__stage_05",
+        "epigen-scrnaseq_processing_seurat-finish__stage_03",
+        "epigen-spilterlize_integrate-finish__stage_02"
+      ]
+    },
+    {
+      "agent_batch": "agent_03",
+      "task_ids": [
+        "fritjoflammers-snakemake-methylanalysis-finish__stage_02",
+        "fritjoflammers-snakemake-methylanalysis-finish__stage_03",
+        "fritjoflammers-snakemake-methylanalysis-finish__stage_06",
+        "gustaveroussy-sopa-finish__stage_01",
+        "gustaveroussy-sopa-finish__stage_03",
+        "lwang-genomics-ngs_pipeline_sn-rna_seq-finish__stage_01",
+        "lwang-genomics-ngs_pipeline_sn-rna_seq-finish__stage_03",
+        "maxplanck-ie-snakepipes-finish__stage_01",
+        "maxplanck-ie-snakepipes-finish__stage_02",
+        "maxplanck-ie-snakepipes-finish__stage_03"
+      ]
+    },
+    {
+      "agent_batch": "agent_04",
+      "task_ids": [
+        "maxplanck-ie-snakepipes-finish__stage_04",
+        "microsatellite-instability-detection-with-msisensor-pro-finish__stage_02",
+        "microsatellite-instability-detection-with-msisensor-pro-finish__stage_03",
+        "read-alignment-pangenome-finish__stage_05",
+        "read-alignment-pangenome-finish__stage_07",
+        "rna-seq-kallisto-sleuth-finish__de_analysis_and_delivery",
+        "rna-seq-kallisto-sleuth-finish__quantify_and_init_sleuth",
+        "single-cell-rna-seq-finish__stage_02",
+        "single-cell-rna-seq-finish__stage_03",
+        "single-cell-rna-seq-finish__stage_06"
+      ]
+    },
+    {
+      "agent_batch": "agent_05",
+      "task_ids": [
+        "tgirke-systempiperdata-chipseq-finish__stage_06",
+        "tgirke-systempiperdata-riboseq-finish__stage_02",
+        "tgirke-systempiperdata-riboseq-finish__stage_03",
+        "tgirke-systempiperdata-riboseq-finish__stage_04",
+        "tgirke-systempiperdata-rnaseq-finish__stage_02",
+        "tgirke-systempiperdata-rnaseq-finish__stage_03",
+        "tgirke-systempiperdata-rnaseq-finish__stage_05",
+        "tgirke-systempiperdata-varseq-finish__stage_01",
+        "tgirke-systempiperdata-varseq-finish__stage_05",
+        "tgirke-systempiperdata-varseq-finish__stage_08"
+      ]
+    }
+  ]
+}

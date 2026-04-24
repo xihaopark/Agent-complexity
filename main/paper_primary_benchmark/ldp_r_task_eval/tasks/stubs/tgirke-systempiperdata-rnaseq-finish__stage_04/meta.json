@@ -1,0 +1,13 @@
+{
+  "workflow_id": "tgirke-systempiperdata-rnaseq-finish",
+  "pipeline_task_id": "stage_04",
+  "order": 4,
+  "manifest_path": "finish/tgirke-systempiperdata-rnaseq-finish/manifest.json",
+  "step_ids": [
+    "run_edger",
+    "custom_annot",
+    "filter_degs"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.029964+00:00"
+}

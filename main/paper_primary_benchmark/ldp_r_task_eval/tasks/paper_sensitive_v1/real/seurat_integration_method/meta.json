@@ -1,0 +1,16 @@
+{
+  "task_id": "seurat_integration_method",
+  "kind": "paper_sensitive",
+  "blueprint_version": "v1",
+  "workflow_id": "epigen-scrnaseq_processing_seurat-finish",
+  "family": "single-cell",
+  "stage": "late",
+  "difficulty": 4,
+  "paper_covered": true,
+  "primary_method_paper_doi": "10.1101/2020.10.12.335331",
+  "primary_tool": "Seurat",
+  "description": "Integration with RPCA-style anchors; export metrics TSV.",
+  "status": "scaffold",
+  "success_glob": "output/integration_metrics.tsv",
+  "reference_output_files": ["integration_metrics.tsv"]
+}

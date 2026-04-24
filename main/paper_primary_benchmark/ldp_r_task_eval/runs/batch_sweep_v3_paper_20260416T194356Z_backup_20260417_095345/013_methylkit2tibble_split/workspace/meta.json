@@ -1,0 +1,20 @@
+{
+  "task_id": "methylkit2tibble_split",
+  "kind": "real",
+  "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+  "family": "methylation",
+  "stage": "late",
+  "difficulty": 3,
+  "paper_covered": true,
+  "wrapper_kind": "snakemake",
+  "description": "Concatenate multiple per-group mku2tibble RDS into a unified tibble + mean-mCpG TSV.",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/scripts/methylkit2tibble_split.R",
+  "ground_truth_dir": "tasks/real_ground_truth/methylkit2tibble_split",
+  "success_glob": "output/mean_mcpg_split.tsv",
+  "reference_output_files": [
+    "mean_mcpg_split.tsv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

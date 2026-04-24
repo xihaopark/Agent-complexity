@@ -1,0 +1,14 @@
+{
+  "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/fritjoflammers-snakemake-methylanalysis-finish/manifest.json",
+  "step_ids": [
+    "extract_CpGs",
+    "destrand_calls",
+    "methylkit_load",
+    "methylkit_filter_normalize"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.985973+00:00"
+}

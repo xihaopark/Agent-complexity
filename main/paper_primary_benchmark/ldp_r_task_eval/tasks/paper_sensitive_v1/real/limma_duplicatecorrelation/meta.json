@@ -1,0 +1,16 @@
+{
+  "task_id": "limma_duplicatecorrelation",
+  "kind": "paper_sensitive",
+  "blueprint_version": "v1",
+  "workflow_id": "epigen-dea_limma-finish",
+  "family": "rna",
+  "stage": "late",
+  "difficulty": 4,
+  "paper_covered": true,
+  "primary_method_paper_doi": "10.1093/nar/gkv007",
+  "primary_tool": "limma",
+  "description": "Paired design; duplicateCorrelation + lmFit with block.",
+  "status": "scaffold",
+  "success_glob": "output/paired_de.csv",
+  "reference_output_files": ["paired_de.csv"]
+}

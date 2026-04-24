@@ -1,0 +1,15 @@
+{
+  "workflow_id": "read-alignment-pangenome-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/read-alignment-pangenome-finish/manifest.json",
+  "step_ids": [
+    "bam_index",
+    "tabix_known_variants",
+    "get_genome",
+    "genome_faidx",
+    "genome_dict"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.002882+00:00"
+}

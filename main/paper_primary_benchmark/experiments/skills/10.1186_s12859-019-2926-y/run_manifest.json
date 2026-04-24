@@ -1,0 +1,15 @@
+{
+  "pdf": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/literature/pdfs/10.1186_s12859-019-2926-y.pdf",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills/10.1186_s12859-019-2926-y",
+  "pages_processed": 8,
+  "dpi": 130,
+  "model": "openai/gpt-4o",
+  "render_seconds": 0.49,
+  "llm_seconds": 12.82,
+  "total_seconds": 13.32,
+  "usage": {
+    "prompt_tokens": 6411,
+    "completion_tokens": 441,
+    "total_tokens": 6852
+  }
+}

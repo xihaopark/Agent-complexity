@@ -1,0 +1,14 @@
+{
+  "workflow_id": "tgirke-systempiperdata-riboseq-finish",
+  "pipeline_task_id": "stage_06",
+  "order": 6,
+  "manifest_path": "finish/tgirke-systempiperdata-riboseq-finish/manifest.json",
+  "step_ids": [
+    "sample_tree",
+    "run_edgeR",
+    "custom_annot",
+    "filter_degs"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.024891+00:00"
+}

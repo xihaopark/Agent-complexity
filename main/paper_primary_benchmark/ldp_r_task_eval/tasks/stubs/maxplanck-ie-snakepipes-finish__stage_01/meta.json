@@ -1,0 +1,20 @@
+{
+  "workflow_id": "maxplanck-ie-snakepipes-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/maxplanck-ie-snakepipes-finish/manifest.json",
+  "step_ids": [
+    "link_bam",
+    "samtools_index_external",
+    "link_bam_bai_external",
+    "sambamba_flagstat",
+    "bamCoverage"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.997230+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_03",
+  "prepared_at": "2026-04-16T12:46:05.802356+00:00",
+  "micro_task": "sum_of_values_txt"
+}

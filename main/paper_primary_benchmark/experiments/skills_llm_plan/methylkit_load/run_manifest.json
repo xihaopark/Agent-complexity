@@ -1,0 +1,19 @@
+{
+  "task_id": "methylkit_load",
+  "task_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/methylkit_load",
+  "out_dir": "main/paper_primary_benchmark/experiments/skills_llm_plan/methylkit_load",
+  "model": "openrouter/openai/gpt-4o",
+  "model_resolved": "openai/gpt-4o",
+  "temperature": 0.1,
+  "prompt_tokens": 974,
+  "completion_tokens": 478,
+  "total_tokens": 1452,
+  "runtime_seconds": 5.05,
+  "inputs_listed": [
+    "sampleA.bismark.cov",
+    "sampleB.bismark.cov",
+    "sampleC.bismark.cov"
+  ],
+  "inputs_previewed": [],
+  "generated_at": "2026-04-16T17:22:22Z"
+}

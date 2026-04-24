@@ -1,0 +1,6 @@
+# Isolated venv for ldp R-task eval (Python >= 3.12 recommended).
+# Install: pip install -r main/paper_primary_benchmark/ldp_r_task_eval/requirements.txt
+fhaviary>=0.18.0
+ldp>=0.26.0
+pydantic>=2.0
+PyYAML>=6.0

@@ -1,0 +1,15 @@
+{
+  "pdf": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/literature/pdfs/10.1093_nar_gkaa1052.pdf",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills/10.1093_nar_gkaa1052",
+  "pages_processed": 8,
+  "dpi": 130,
+  "model": "openai/gpt-4o",
+  "render_seconds": 0.42,
+  "llm_seconds": 11.8,
+  "total_seconds": 12.23,
+  "usage": {
+    "prompt_tokens": 6408,
+    "completion_tokens": 396,
+    "total_tokens": 6804
+  }
+}

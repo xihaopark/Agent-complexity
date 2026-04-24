@@ -1,0 +1,226 @@
+{
+  "workflow_id": "snakemake-workflows-msisensor-pro-finish",
+  "workflow_dir": "/Users/park/code/Paper2Skills-main/main/finish/workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills_pipeline/snakemake-workflows-msisensor-pro-finish",
+  "status": "ok",
+  "generated_at": "2026-04-16T19:32:30Z",
+  "model": "openrouter/openai/gpt-4o",
+  "resolved_model": "openai/gpt-4o",
+  "max_per_file": 8000,
+  "max_total": 80000,
+  "prompt_tokens": 7080,
+  "completion_tokens": 612,
+  "total_tokens": 7692,
+  "runtime_seconds": 5.66,
+  "llm_seconds": 5.65,
+  "chars_used": 26838,
+  "truncated": false,
+  "files_considered": [
+    {
+      "path": ".test/matched_normal/Snakefile",
+      "kind": "snakefile",
+      "bytes": 1411,
+      "priority": 0
+    },
+    {
+      "path": ".test/panel_of_normals/Snakefile",
+      "kind": "snakefile",
+      "bytes": 2015,
+      "priority": 0
+    },
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "bytes": 1035,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/common.smk",
+      "kind": "snakefile",
+      "bytes": 4060,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/msisensor_pro_matched_normal.smk",
+      "kind": "snakefile",
+      "bytes": 1728,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/msisensor_pro_panel_of_normals.smk",
+      "kind": "snakefile",
+      "bytes": 4298,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/reference.smk",
+      "kind": "snakefile",
+      "bytes": 877,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/results.smk",
+      "kind": "snakefile",
+      "bytes": 828,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/utils.smk",
+      "kind": "snakefile",
+      "bytes": 311,
+      "priority": 0
+    },
+    {
+      "path": "workflow/scripts/merge_msi_results.R",
+      "kind": "r",
+      "bytes": 558,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/create_panel_of_normals_samples_list.py",
+      "kind": "python",
+      "bytes": 333,
+      "priority": 2
+    },
+    {
+      "path": ".test/matched_normal/config/config.yaml",
+      "kind": "yaml",
+      "bytes": 175,
+      "priority": 3
+    },
+    {
+      "path": ".test/panel_of_normals/config/config.yaml",
+      "kind": "yaml",
+      "bytes": 175,
+      "priority": 3
+    },
+    {
+      "path": "config/config.yaml",
+      "kind": "yaml",
+      "bytes": 175,
+      "priority": 3
+    },
+    {
+      "path": "workflow/schemas/config.schema.yaml",
+      "kind": "yaml",
+      "bytes": 1175,
+      "priority": 3
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "bytes": 3964,
+      "priority": 4
+    },
+    {
+      "path": "config/README.md",
+      "kind": "readme",
+      "bytes": 2928,
+      "priority": 4
+    }
+  ],
+  "files_included": [
+    {
+      "path": ".test/matched_normal/Snakefile",
+      "kind": "snakefile",
+      "chars_used": 1411,
+      "partial": false
+    },
+    {
+      "path": ".test/panel_of_normals/Snakefile",
+      "kind": "snakefile",
+      "chars_used": 2015,
+      "partial": false
+    },
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "chars_used": 1035,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/common.smk",
+      "kind": "snakefile",
+      "chars_used": 4060,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/msisensor_pro_matched_normal.smk",
+      "kind": "snakefile",
+      "chars_used": 1728,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/msisensor_pro_panel_of_normals.smk",
+      "kind": "snakefile",
+      "chars_used": 4298,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/reference.smk",
+      "kind": "snakefile",
+      "chars_used": 877,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/results.smk",
+      "kind": "snakefile",
+      "chars_used": 828,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/utils.smk",
+      "kind": "snakefile",
+      "chars_used": 311,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/merge_msi_results.R",
+      "kind": "r",
+      "chars_used": 558,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/create_panel_of_normals_samples_list.py",
+      "kind": "python",
+      "chars_used": 333,
+      "partial": false
+    },
+    {
+      "path": ".test/matched_normal/config/config.yaml",
+      "kind": "yaml",
+      "chars_used": 175,
+      "partial": false
+    },
+    {
+      "path": ".test/panel_of_normals/config/config.yaml",
+      "kind": "yaml",
+      "chars_used": 175,
+      "partial": false
+    },
+    {
+      "path": "config/config.yaml",
+      "kind": "yaml",
+      "chars_used": 175,
+      "partial": false
+    },
+    {
+      "path": "workflow/schemas/config.schema.yaml",
+      "kind": "yaml",
+      "chars_used": 1175,
+      "partial": false
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "chars_used": 3955,
+      "partial": false
+    },
+    {
+      "path": "config/README.md",
+      "kind": "readme",
+      "chars_used": 2928,
+      "partial": false
+    }
+  ]
+}

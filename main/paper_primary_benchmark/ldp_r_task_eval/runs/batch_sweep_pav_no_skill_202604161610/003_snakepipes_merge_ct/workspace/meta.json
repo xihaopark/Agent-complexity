@@ -1,0 +1,16 @@
+{
+  "task_id": "snakepipes_merge_ct",
+  "kind": "real",
+  "workflow_id": "maxplanck-ie-snakepipes-finish",
+  "family": "rna",
+  "description": "Merge Salmon per-sample `quant.sf` TPM columns into one table.",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/maxplanck-ie__snakePipes/snakePipes/shared/rscripts/merge_count_tables.R",
+  "ground_truth_dir": "tasks/real_ground_truth/snakepipes_merge_ct",
+  "success_glob": "output/merged_tpm.tsv",
+  "reference_output_files": [
+    "merged_tpm.tsv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

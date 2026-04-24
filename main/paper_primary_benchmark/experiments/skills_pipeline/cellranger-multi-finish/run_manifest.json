@@ -1,0 +1,178 @@
+{
+  "workflow_id": "cellranger-multi-finish",
+  "workflow_dir": "main/finish/workflow_candidates/snakemake-workflows__cellranger-multi",
+  "out_dir": "main/paper_primary_benchmark/experiments/skills_pipeline/cellranger-multi-finish",
+  "status": "ok",
+  "generated_at": "2026-04-16T16:56:07Z",
+  "model": "openrouter/openai/gpt-4o",
+  "resolved_model": "openai/gpt-4o",
+  "max_per_file": 8000,
+  "max_total": 80000,
+  "prompt_tokens": 12021,
+  "completion_tokens": 778,
+  "total_tokens": 12799,
+  "runtime_seconds": 9.13,
+  "llm_seconds": 9.13,
+  "chars_used": 47000,
+  "truncated": false,
+  "files_considered": [
+    {
+      "path": ".test/Snakefile",
+      "kind": "snakefile",
+      "bytes": 1214,
+      "priority": 0
+    },
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "bytes": 1460,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/cellranger.smk",
+      "kind": "snakefile",
+      "bytes": 15670,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/common.smk",
+      "kind": "snakefile",
+      "bytes": 12855,
+      "priority": 0
+    },
+    {
+      "path": "workflow/scripts/create_cellranger_multi_config_csv.R",
+      "kind": "r",
+      "bytes": 6273,
+      "priority": 1
+    },
+    {
+      "path": ".test/config/config.bcr_antigen.yaml",
+      "kind": "yaml",
+      "bytes": 771,
+      "priority": 3
+    },
+    {
+      "path": ".test/config/config.gex_vdj_antibody.yaml",
+      "kind": "yaml",
+      "bytes": 957,
+      "priority": 3
+    },
+    {
+      "path": ".test/config/config.no_lane.yaml",
+      "kind": "yaml",
+      "bytes": 182,
+      "priority": 3
+    },
+    {
+      "path": ".test/config/config.tcr_multiplex.yaml",
+      "kind": "yaml",
+      "bytes": 760,
+      "priority": 3
+    },
+    {
+      "path": "config/config.yaml",
+      "kind": "yaml",
+      "bytes": 6460,
+      "priority": 3
+    },
+    {
+      "path": "workflow/schemas/config.schema.yaml",
+      "kind": "yaml",
+      "bytes": 1296,
+      "priority": 3
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "bytes": 2936,
+      "priority": 4
+    },
+    {
+      "path": "config/README.md",
+      "kind": "readme",
+      "bytes": 8668,
+      "priority": 4
+    }
+  ],
+  "files_included": [
+    {
+      "path": ".test/Snakefile",
+      "kind": "snakefile",
+      "chars_used": 1214,
+      "partial": false
+    },
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "chars_used": 1460,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/cellranger.smk",
+      "kind": "snakefile",
+      "chars_used": 8042,
+      "partial": true
+    },
+    {
+      "path": "workflow/rules/common.smk",
+      "kind": "snakefile",
+      "chars_used": 8042,
+      "partial": true
+    },
+    {
+      "path": "workflow/scripts/create_cellranger_multi_config_csv.R",
+      "kind": "r",
+      "chars_used": 6273,
+      "partial": false
+    },
+    {
+      "path": ".test/config/config.bcr_antigen.yaml",
+      "kind": "yaml",
+      "chars_used": 771,
+      "partial": false
+    },
+    {
+      "path": ".test/config/config.gex_vdj_antibody.yaml",
+      "kind": "yaml",
+      "chars_used": 957,
+      "partial": false
+    },
+    {
+      "path": ".test/config/config.no_lane.yaml",
+      "kind": "yaml",
+      "chars_used": 182,
+      "partial": false
+    },
+    {
+      "path": ".test/config/config.tcr_multiplex.yaml",
+      "kind": "yaml",
+      "chars_used": 760,
+      "partial": false
+    },
+    {
+      "path": "config/config.yaml",
+      "kind": "yaml",
+      "chars_used": 6460,
+      "partial": false
+    },
+    {
+      "path": "workflow/schemas/config.schema.yaml",
+      "kind": "yaml",
+      "chars_used": 1296,
+      "partial": false
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "chars_used": 2929,
+      "partial": false
+    },
+    {
+      "path": "config/README.md",
+      "kind": "readme",
+      "chars_used": 8041,
+      "partial": true
+    }
+  ]
+}

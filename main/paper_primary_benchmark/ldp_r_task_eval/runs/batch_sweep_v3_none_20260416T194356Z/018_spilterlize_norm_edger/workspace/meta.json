@@ -1,0 +1,20 @@
+{
+  "task_id": "spilterlize_norm_edger",
+  "kind": "real",
+  "workflow_id": "epigen-spilterlize_integrate-finish",
+  "family": "rna",
+  "stage": "mid",
+  "difficulty": 2,
+  "paper_covered": false,
+  "wrapper_kind": "snakemake",
+  "description": "edgeR TMM + logCPM normalisation writing `normTMM.csv` under params$result_path/split.",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/epigen__spilterlize_integrate/workflow/scripts/norm_edgeR.R",
+  "ground_truth_dir": "tasks/real_ground_truth/spilterlize_norm_edger",
+  "success_glob": "output/all/normTMM.csv",
+  "reference_output_files": [
+    "all/normTMM.csv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

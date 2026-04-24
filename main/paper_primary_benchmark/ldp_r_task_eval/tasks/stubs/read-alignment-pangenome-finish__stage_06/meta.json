@@ -1,0 +1,15 @@
+{
+  "workflow_id": "read-alignment-pangenome-finish",
+  "pipeline_task_id": "stage_06",
+  "order": 6,
+  "manifest_path": "finish/read-alignment-pangenome-finish/manifest.json",
+  "step_ids": [
+    "map_consensus_reads",
+    "merge_consensus_reads",
+    "sort_consensus_reads",
+    "recalibrate_base_qualities",
+    "apply_bqsr"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.005627+00:00"
+}

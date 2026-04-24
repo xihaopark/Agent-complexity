@@ -1,0 +1,14 @@
+{
+  "workflow_id": "epigen-rnaseq_pipeline-finish",
+  "pipeline_task_id": "stage_03",
+  "order": 3,
+  "manifest_path": "finish/epigen-rnaseq_pipeline-finish/manifest.json",
+  "step_ids": [
+    "rseqc_gtf2bed",
+    "rseqc_junction_annotation",
+    "rseqc_junction_saturation",
+    "rseqc_stat"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.977309+00:00"
+}

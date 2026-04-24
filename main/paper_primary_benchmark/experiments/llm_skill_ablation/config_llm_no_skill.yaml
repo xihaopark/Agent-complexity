@@ -1,0 +1,14 @@
+# Runner-B: LLM without skill (裸跑)
+# 最短 sys_prompt，不提及 DOI 或方法论文
+
+max_steps: 32
+
+agent:
+  llm_model:
+    name: openrouter/openai/gpt-4o
+    temperature: 0.1
+  sys_prompt: |
+    You solve R-centric analysis tasks in a sandbox workspace. Use only the provided tools:
+    run_shell, read_text_file, write_text_file, run_rscript, list_workdir, submit_done.
+    Prefer R for numeric/statistical work. Do not assume Snakemake or external clusters.
+    When the objective is satisfied, call submit_done(success=true).

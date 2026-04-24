@@ -1,0 +1,24 @@
+{
+  "task_id": "limma_trend_vs_voom",
+  "version": "1.0",
+  "family": "rna",
+  "difficulty": 3,
+  "description": "Compare limma-trend vs standard voom for large dataset",
+  "estimated_steps": 7,
+  "key_methods": ["limma-trend", "voom", "mean-variance modeling"],
+  "paper_doi": "10.1093/nar/gkv007",
+  "expected_artifacts": [
+    "output/limma_trend_results.csv",
+    "output/voom_results.csv",
+    "output/method_comparison.txt"
+  ],
+  "evaluation_criteria": {
+    "step_1_data_reading": "Load counts and coldata correctly",
+    "step_2_dgelist": "Create DGEList with calcNormFactors",
+    "step_3_limma_trend": "Apply limma-trend (cpm + trend=TRUE)",
+    "step_4_voom": "Apply standard voom",
+    "step_5_fit_both": "Fit both models with lmFit",
+    "step_6_compare": "Compare methods (correlation)",
+    "step_7_output": "Write all output files"
+  }
+}

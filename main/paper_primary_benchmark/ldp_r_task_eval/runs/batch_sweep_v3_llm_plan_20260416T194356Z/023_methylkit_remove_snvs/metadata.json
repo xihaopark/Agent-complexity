@@ -1,0 +1,27 @@
+{
+  "task_id": "methylkit_remove_snvs",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/methylkit_remove_snvs",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_llm_plan_20260416T194356Z/023_methylkit_remove_snvs/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_v3_llm_plan_20260416T194356Z",
+  "registry_index": 23,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "arm": "llm_plan",
+    "injected": true,
+    "manifest_version": 3,
+    "skill_sha256": "fdbb1940101385a70b3c641465fc4ebeac270e28c08653d08d0275971c3fb0ce",
+    "skill_char_len": 2097,
+    "skill_md_path": "experiments/skills_llm_plan/methylkit_remove_snvs/SKILL.md",
+    "lookup_field": "by_task_id",
+    "lookup_key": "methylkit_remove_snvs",
+    "source_task_id": "methylkit_remove_snvs",
+    "source_model": "openrouter/openai/gpt-4o"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "task_id": "snakepipes_scrna_merge_coutt",
+  "task_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/snakepipes_scrna_merge_coutt",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills_llm_plan/snakepipes_scrna_merge_coutt",
+  "model": "openrouter/openai/gpt-4o",
+  "model_resolved": "openai/gpt-4o",
+  "temperature": 0.1,
+  "prompt_tokens": 3434,
+  "completion_tokens": 723,
+  "total_tokens": 4157,
+  "runtime_seconds": 8.32,
+  "inputs_listed": [
+    "coutt/plate01_libA.corrected.txt",
+    "coutt/plate01_libB.corrected.txt"
+  ],
+  "inputs_previewed": [
+    "coutt/plate01_libA.corrected.txt",
+    "coutt/plate01_libB.corrected.txt"
+  ],
+  "generated_at": "2026-04-16T19:33:39Z"
+}

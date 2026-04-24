@@ -1,0 +1,14 @@
+{
+  "workflow_id": "epigen-300bcg-atacseq_pipeline-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/epigen-300bcg-atacseq_pipeline-finish/manifest.json",
+  "step_ids": [
+    "prepare_references",
+    "parse_regulatory_build",
+    "prepare_pipeline_input",
+    "run_pipeline"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.964946+00:00"
+}

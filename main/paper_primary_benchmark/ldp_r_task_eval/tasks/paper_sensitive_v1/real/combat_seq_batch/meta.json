@@ -1,0 +1,16 @@
+{
+  "task_id": "combat_seq_batch",
+  "kind": "paper_sensitive",
+  "blueprint_version": "v1",
+  "workflow_id": "epigen-dea_limma-finish",
+  "family": "rna",
+  "stage": "late",
+  "difficulty": 4,
+  "paper_covered": true,
+  "primary_method_paper_doi": "TBD_sva_Combat_seq",
+  "primary_tool": "sva::ComBat_seq",
+  "description": "ComBat-seq batch correction for RNA-seq counts; then DE.",
+  "status": "scaffold",
+  "success_glob": "output/de_results.csv",
+  "reference_output_files": ["adjusted_counts.tsv", "de_results.csv"]
+}

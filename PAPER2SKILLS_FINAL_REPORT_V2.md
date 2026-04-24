@@ -1127,6 +1127,103 @@ normed <- normalizeCoverage(filtered, method = "median")
 
 ---
 
+## Methyl 系列：四臂同败 / 全面低分任务讨论
+
+下面几个任务在实验记录里出现 **四臂 pass rate 几乎一样且都很低**（约 8% 或 Binary 上全体不通过），或 **全体无法达到完全通过**。它们说明：**并不是 paper skill「没用」**，而是 **任务形态、环境约束、与 paper 的匹配方式** 共同导致「谁来做都难」或「失败原因与论文知识无关」。
+
+### 总览表
+
+| 任务 | 连续评估 (四臂) | Binary | 共同特征 |
+|------|----------------|--------|----------|
+| **methylkit_load** | 四臂约 **8% 齐平** | 全体 ❌ | 仅依赖 methylKit 机械步骤 + 输出 rds |
+| **methylkit_unite** | 四臂约 **8% 齐平** | 全体 ❌ | load 的延伸 + 额外 TSV 指标 |
+| **methylkit_to_tibble** | 四臂多偏低；LLM 略高 (≈70%) | 全体 ❌ | 依赖前序 united 对象 + 长表/宽表管线 |
+| **methylkit2tibble_split** | 有分化（如 Pipe 略高） | 常全体 ❌ | 任务描述含 **工作流占位符** |
+
+---
+
+### 1) methylkit_load：四臂同分、全员「不会做」的典型
+
+**任务要求（摘要）**：用 `methylKit::methRead(..., pipeline='bismarkCoverage', mincov=4)` 读入三个 bismark coverage 文件，指定 `treatment=c(0,0,0)`、assembly `mock_v1`，把 `methylRawList` 存成 `output/mk_raw.rds`（**相对路径**、不写图）。
+
+**为何四臂都挂、且分数字很像？**
+
+1. **失败类型以「环境/执行」为主，不以「统计思想」为主**  
+   若运行环境未正确安装/加载 `methylKit`，或 agent 生成了**不可执行**的片段（包名写错、路径用错），则四个 arm 会**同等地**倒在「第一步能跑通」上，分数会挤在同一低位。
+
+2. **Paper skill 里通常是 MethPat / 生物学解释**，而不是「methRead 的 12 个参数与 Snakemake 约定」  
+   这类任务要的是 **API 手册级细节**（`pipeline='bismarkCoverage'`、`mincov`、`treatment` 与 mock assembly），与「论文里讲了什么生物学发现」**弱相关**。因此 **Paper arm 没有额外信息优势**，和 None 一样会卡在**同一道工程门槛**上。
+
+3. **可复现/评分约束**  
+   若评分检查序列化对象结构、或路径可移植性，agent 常见错误（绝路径、多写了 plot、没 `saveRDS`）会导致 **全 arm 同罚**，表现为「大家都 8%」这种**平线**。
+
+**可解读性**：  
+- 这是 **强说明「paper 不是万能」** 的样本：在 **纯管线封装、包 API** 题上，需要的是 **技能形态更接近 pipeline 文档/官方 vignette**，而不是论文章节摘要。  
+- 同时也说明：若未来要测 paper 的增益，Methyl 类应优先设计 **「论文有明确方法学分歧」** 的步骤（如 filt/norm 阈值、差甲基区域统计），而不是仅 **load 文件** 这类步骤。
+
+---
+
+### 2) methylkit_unite：在 load 上再叠一层，失败仍「全体一致」
+
+**任务要求（摘要）**：在 load 用 `treatment=c(0,0,1,1)` 读入四样本后，对 `unite(mk_raw, min.per.group=1, destrand=FALSE)` 的结果保存 `mk_united.rds`，并写出**单行** `unite_stats.tsv`（列：`n_samples, n_sites, min_per_group, destrand, use_db, db_path`）。
+
+**为何还是全员一起挂？**
+
+1. **前序与输出格式双重约束**  
+   若 load 没做对，unite 无从谈起；若 unite 对但 `unite_stats.tsv` 列名/行数/分隔符与评测不一致，**仍会判失败**。四臂在「抄 pipeline」与「自己写」两种策略下，都可能落在**同一类格式错误**里。
+
+2. **Paper 仍不解决「制表题」**  
+   MethPat 类 paper 不会规定 `unite_stats.tsv` 的列集合；这是 **工作流/基准合约** 的内容。四臂在「统计洞见」上**拉不开差距**。
+
+3. **与 methylkit_filt_norm 的对比**  
+   filt_norm 有 **可迁移的论文型参数**（`lo.count`、`hi.perc` 等），所以 Paper/LLM 能**显著高于 baseline**。load/unite 没有这种「 paper 可携带的超参数故事」，就更容易出现**全线低位**。
+
+---
+
+### 3) methylkit_to_tibble：长表/宽表管线长，Binary 上四臂都难过关
+
+**任务要求（摘要）**：读入 `input/mk_united.rds`（**已是 united 对象**），`pivot_longer` 再 `pivot_wide` 算 `mCpG`，再按 `(sample, chr)` 写 `mean_mcpg.tsv`。
+
+**为何常呈现「全 arm 在 Binary 上失败」？**
+
+1. **多步数据整形 + 列名契约**  
+   任务涉及 tidyverse 长宽变换与聚合；任一步列名与 gold 不完全一致，就会导致 **步骤分大量丢失**，Binary 下更容易「一刀全不通过」。
+
+2. **LLM arm 在「连续分」上可能略好**（历史上约 70% vs 他臂 ~23%）  
+   说明 **逐步规划** 对「长管线索引」有帮助，但仍不足以稳定满足 **全步骤严格对齐**，所以 Binary 仍可能全 ❌。这不是 paper 故事，是 **实现复杂度** 问题。
+
+3. **与 paper 的匹配**  
+   Paper skill 若仍指向 MethPat 的生物学叙事，**对 tibble 列名约定帮助有限**；本任务要的是 **R/tidy 工程能力**，与论文摘要**弱对齐**。
+
+---
+
+### 4) methylkit2tibble_split：工作流占位符 + 错配，属于另一类「全灭」
+
+**任务描述**里出现 `snakemake@input$rds_list` 这类 **Snakemake 注入路径**，在 **独立 agent 工作区** 中往往**不存在**对应实际文件列表。
+
+**后果**：
+
+- Agent 需要自行推断「当前目录下应有哪些 rds」或改写为本地路径，极易 **偏离参考实现**；  
+- Paper arm 若携带的是 **MethPat/可视化** 等内容，会诱导 **复杂分析**，与「合并若干 rds 再算 mean mCpG」的 **简单机械目标** 不一致（即经典的 **mismatch**）。  
+- 因此会出现 **四臂都差** 或 **个别 arm 偶然略好**，但**不稳定**；这类任务更适合作 **「错配/干扰」** 与 **「agent 自主判断是否采用 paper」** 的用例，而不适合作 **「证明 paper 平均增益」** 的主指标。
+
+**与 nearest_gene、snakepipes_merge_* 同类**：论文讲的是 **工作流框架**，题面要的是 **单行 R 或简单 merge**。
+
+---
+
+### 5) 小结：如何从这类任务里「读出正确结论」
+
+| 读法 | 含义 |
+|------|------|
+| **四臂同低分** | 多半优先怀疑 **环境/API/交付物契约**，而不是 paper 内容错误 |
+| **Paper 没赢** | 不表示「提取 paper 没价值」，而常表示 **题目与 paper 的颗粒度不对齐**（要 API 却给了文章摘要） |
+| **与 filt_norm 对照** | 同样 Methyl 家族，**有论文可迁移参数** 时 Paper/LLM 能**拉开**；**纯工程步骤** 时四臂**一起**栽 |
+| **对实验设计的启示** | 要展示 paper2skills 的优势，应多设计 **方法/参数/统计检验** 可对照的任务；**纯包调用** 更适合用 pipeline 文档技能或基线+单元测试修任务 |
+
+**一句话**：Methyl 里这些「大家全都错」的题，是 **基线与论文技能共同的负面对照组**——它们提醒我们：**成功指标要区分「论文知识优势」和「R 包工程题」**；否则会把 **任务/合约问题** 误读成 **paper 无效**。
+
+---
+
 ## Case Studies 总结
 
 ### Paper Skill 有效场景
@@ -1159,3 +1256,5 @@ normed <- normalizeCoverage(filtered, method = "median")
 | **Paper vs Baseline** | +14% in difficult tasks |
 
 **结论**: 在困难任务中，Paper skill的专业知识优势明显。Tier A任务设计得当，Paper实现了100%完全通过，其他arms几乎无法完成。
+
+**补充**: Methyl 中 **load / unite / to_tibble / split** 等「四臂同败或齐低分」任务见上文专节；宜与 **methylkit_filt_norm** 等「论文参数可迁移」案例对照阅读，避免把 **工程/合约/错配** 问题误读为 paper 提取无效。

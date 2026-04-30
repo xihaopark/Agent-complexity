@@ -6,6 +6,11 @@
 - [`workflow_literature_map.json`](workflow_literature_map.json) 为每条 workflow 列出 **代表性方法论文**（工具原作者论文或标准引用），用于复现实验背景、写 Related Work、或给 agent 当 **skill 上下文**。
 - **版权**：请只下载与使用您有权使用的 PDF；开放获取链接依赖 [Unpaywall](https://unpaywall.org/) API。
 
+## CPL-Article（Nextflow 论文 + 工具名 BRAT 语料，补充）
+
+- 目录说明与放置 zip、清点脚本：[`cpl_corpus/README.md`](cpl_corpus/README.md)。  
+- 与主映射表互补：**方法论文 DOI**（`workflow_literature_map.json`）vs **工作流叙述文中的工具实体标注**（CPL-Article）。默认 **不提交** zip/解压树（`.gitignore`），由成员本地 curl 或拷贝 Zenodo 文件。
+
 ## Paper → Skill（Crossref / PDF 文本）
 
 ```bash

@@ -1,0 +1,14 @@
+{
+  "workflow_id": "dna-seq-short-read-circle-map-finish",
+  "pipeline_task_id": "stage_03",
+  "order": 3,
+  "manifest_path": "finish/dna-seq-short-read-circle-map-finish/manifest.json",
+  "step_ids": [
+    "cutadapt_pe",
+    "bwa_mem",
+    "merge_unit_bams_per_sample",
+    "recalibrate_base_qualities"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.962924+00:00"
+}

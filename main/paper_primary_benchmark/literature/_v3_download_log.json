@@ -1,0 +1,985 @@
+[
+  {
+    "doi": "10.1038/nbt.3519",
+    "doi_safe": "10.1038_nbt.3519",
+    "already_present": false,
+    "attempts": [],
+    "final": {
+      "ok": false,
+      "reason": "no OA PDF URL in Unpaywall"
+    },
+    "is_oa": false,
+    "title": "Near-optimal probabilistic RNA-seq quantification"
+  },
+  {
+    "doi": "10.1093/nar/gkv007",
+    "doi_safe": "10.1093_nar_gkv007",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://academic.oup.com/nar/article-pdf/43/7/e47/7207289/gkv007.pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://academic.oup.com/nar/article-pdf/43/7/e47/7207289/gkv007.pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://figshare.com/articles/journal_contribution/Limma_powers_differential_expression_analyses_for_RNA-sequencing_and_microarray_studies/14036813",
+        "ok": false,
+        "reason": "too small (0)"
+      }
+    ],
+    "final": {
+      "ok": false,
+      "reason": "all OA URLs failed"
+    },
+    "is_oa": true,
+    "title": "limma powers differential expression analyses for RNA-sequencing and microarray studies"
+  },
+  {
+    "doi": "10.1093/bioinformatics/btz436",
+    "doi_safe": "10.1093_bioinformatics_btz436",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://academic.oup.com/bioinformatics/article-pdf/35/22/4757/30706717/btz436.pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://academic.oup.com/bioinformatics/article-pdf/35/22/4757/30706717/btz436.pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      }
+    ],
+    "final": {
+      "ok": false,
+      "reason": "all OA URLs failed"
+    },
+    "is_oa": true,
+    "title": "snakePipes: facilitating flexible, scalable and integrative epigenomic analysis"
+  },
+  {
+    "doi": "10.1093/bioinformatics/bts635",
+    "doi_safe": "10.1093_bioinformatics_bts635",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://academic.oup.com/bioinformatics/article-pdf/29/1/15/17101697/bts635.pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://academic.oup.com/bioinformatics/article-pdf/29/1/15/17101697/bts635.pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      }
+    ],
+    "final": {
+      "ok": false,
+      "reason": "all OA URLs failed"
+    },
+    "is_oa": true,
+    "title": "STAR: ultrafast universal RNA-seq aligner"
+  },
+  {
+    "doi": "10.1038/nmeth.2688",
+    "doi_safe": "10.1038_nmeth.2688",
+    "already_present": false,
+    "attempts": [],
+    "final": {
+      "ok": false,
+      "reason": "no OA PDF URL in Unpaywall"
+    },
+    "is_oa": true,
+    "title": "Transposition of native chromatin for fast and sensitive epigenomic profiling of open chromatin, DNA-binding proteins an"
+  },
+  {
+    "doi": "10.1186/gb-2012-13-8-r51",
+    "doi_safe": "10.1186_gb-2012-13-8-r51",
+    "already_present": false,
+    "attempts": [],
+    "final": {
+      "ok": false,
+      "reason": "unpaywall HTTP 404"
+    }
+  },
+  {
+    "doi": "10.1016/j.cell.2021.04.048",
+    "doi_safe": "10.1016_j.cell.2021.04.048",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "http://www.cell.com/article/S0092867421005833/pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "http://www.cell.com/article/S0092867421005833/pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      }
+    ],
+    "final": {
+      "ok": false,
+      "reason": "all OA URLs failed"
+    },
+    "is_oa": true,
+    "title": "Integrated analysis of multimodal single-cell data"
+  },
+  {
+    "doi": "10.1186/s12859-016-0938-4",
+    "doi_safe": "10.1186_s12859-016-0938-4",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://bmcbioinformatics.biomedcentral.com/track/pdf/10.1186/s12859-016-0938-4",
+        "ok": true,
+        "size": 1795700,
+        "host_type": "publisher"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 1795700,
+      "host_type": "publisher"
+    },
+    "is_oa": true,
+    "title": "Seqinspector: position-based navigation through the ChIP-seq data landscape to identify gene expression regulators"
+  },
+  {
+    "doi": "10.1038/s41467-024-48981-z",
+    "doi_safe": "10.1038_s41467-024-48981-z",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://www.nature.com/articles/s41467-024-48981-z.pdf",
+        "ok": true,
+        "size": 13315661,
+        "host_type": "publisher"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 13315661,
+      "host_type": "publisher"
+    },
+    "is_oa": true,
+    "title": "Sopa: a technology-invariant pipeline for analyses of image-based spatial omics"
+  },
+  {
+    "doi": "10.1038/nmeth.4324",
+    "doi_safe": "10.1038_nmeth.4324",
+    "already_present": false,
+    "attempts": [],
+    "final": {
+      "ok": false,
+      "reason": "no OA PDF URL in Unpaywall"
+    },
+    "is_oa": true,
+    "title": "Differential analysis of RNA-seq incorporating quantification uncertainty"
+  },
+  {
+    "doi": "10.1186/s13059-020-01993-6",
+    "doi_safe": "10.1186_s13059-020-01993-6",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://genomebiology.biomedcentral.com/track/pdf/10.1186/s13059-020-01993-6",
+        "ok": true,
+        "size": 2546104,
+        "host_type": "publisher"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 2546104,
+      "host_type": "publisher"
+    },
+    "is_oa": true,
+    "title": "Varlociraptor: enhancing sensitivity and controlling false discovery rate in somatic indel discovery"
+  },
+  {
+    "doi": "10.1186/gb-2008-9-9-r137",
+    "doi_safe": "10.1186_gb-2008-9-9-r137",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://genomebiology.biomedcentral.com/counter/pdf/10.1186/gb-2008-9-9-r137",
+        "ok": true,
+        "size": 405340,
+        "host_type": "publisher"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 405340,
+      "host_type": "publisher"
+    },
+    "is_oa": true,
+    "title": "Model-based Analysis of ChIP-Seq (MACS)"
+  },
+  {
+    "doi": "10.1089/omi.2011.0118",
+    "doi_safe": "10.1089_omi.2011.0118",
+    "already_present": false,
+    "attempts": [],
+    "final": {
+      "ok": false,
+      "reason": "no OA PDF URL in Unpaywall"
+    },
+    "is_oa": false,
+    "title": "clusterProfiler: an R Package for Comparing Biological Themes Among Gene Clusters"
+  },
+  {
+    "doi": "10.1093/nar/gkaa1052",
+    "doi_safe": "10.1093_nar_gkaa1052",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://academic.oup.com/nar/article-pdf/49/1/e4/35596857/gkaa1052.pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://academic.oup.com/nar/article-pdf/49/1/e4/35596857/gkaa1052.pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      }
+    ],
+    "final": {
+      "ok": false,
+      "reason": "all OA URLs failed"
+    },
+    "is_oa": true,
+    "title": "Asymmetron: a toolkit for the identification of strand asymmetry patterns in biological sequences"
+  },
+  {
+    "doi": "10.1038/nrg.2017.76",
+    "doi_safe": "10.1038_nrg.2017.76",
+    "already_present": false,
+    "attempts": [],
+    "final": {
+      "ok": false,
+      "reason": "no OA PDF URL in Unpaywall"
+    },
+    "is_oa": false,
+    "title": "Probing a piRNA paradox"
+  },
+  {
+    "doi": "10.1038/nbt.3519",
+    "doi_safe": "10.1038_nbt.3519",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://europepmc.org/article/MED/27043002?pdf=render",
+        "ok": true,
+        "size": 28157,
+        "host_type": "europepmc"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 28157,
+      "host_type": "europepmc"
+    },
+    "is_oa": false,
+    "title": "Near-optimal probabilistic RNA-seq quantification"
+  },
+  {
+    "doi": "10.1093/nar/gkv007",
+    "doi_safe": "10.1093_nar_gkv007",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://academic.oup.com/nar/article-pdf/43/7/e47/7207289/gkv007.pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://figshare.com/articles/journal_contribution/Limma_powers_differential_expression_analyses_for_RNA-sequencing_and_microarray_studies/14036813",
+        "ok": false,
+        "reason": "too small (0)"
+      },
+      {
+        "url": "http://hdl.handle.net/11343/263365",
+        "ok": true,
+        "size": 32934,
+        "host_type": "repository"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 32934,
+      "host_type": "repository"
+    },
+    "is_oa": true,
+    "title": "limma powers differential expression analyses for RNA-sequencing and microarray studies"
+  },
+  {
+    "doi": "10.1093/bioinformatics/btz436",
+    "doi_safe": "10.1093_bioinformatics_btz436",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://academic.oup.com/bioinformatics/article-pdf/35/22/4757/30706717/btz436.pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://europepmc.org/backend/ptpmcrender.fcgi?accid=PMC6853707&blobtype=pdf",
+        "ok": false,
+        "reason": "Remote end closed connection without response"
+      },
+      {
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6853707/pdf/",
+        "ok": true,
+        "size": 1817,
+        "host_type": "pmc"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 1817,
+      "host_type": "pmc"
+    },
+    "is_oa": true,
+    "title": "snakePipes: facilitating flexible, scalable and integrative epigenomic analysis"
+  },
+  {
+    "doi": "10.1093/bioinformatics/bts635",
+    "doi_safe": "10.1093_bioinformatics_bts635",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://academic.oup.com/bioinformatics/article-pdf/29/1/15/17101697/bts635.pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://europepmc.org/backend/ptpmcrender.fcgi?accid=PMC3530905&blobtype=pdf",
+        "ok": false,
+        "reason": "Remote end closed connection without response"
+      },
+      {
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3530905/pdf/",
+        "ok": true,
+        "size": 1817,
+        "host_type": "pmc"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 1817,
+      "host_type": "pmc"
+    },
+    "is_oa": true,
+    "title": "STAR: ultrafast universal RNA-seq aligner"
+  },
+  {
+    "doi": "10.1038/nmeth.2688",
+    "doi_safe": "10.1038_nmeth.2688",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://europepmc.org/backend/ptpmcrender.fcgi?accid=PMC3959825&blobtype=pdf",
+        "ok": false,
+        "reason": "Remote end closed connection without response"
+      },
+      {
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3959825/pdf/",
+        "ok": true,
+        "size": 1817,
+        "host_type": "pmc"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 1817,
+      "host_type": "pmc"
+    },
+    "is_oa": true,
+    "title": "Transposition of native chromatin for fast and sensitive epigenomic profiling of open chromatin, DNA-binding proteins an"
+  },
+  {
+    "doi": "10.1016/j.cell.2021.04.048",
+    "doi_safe": "10.1016_j.cell.2021.04.048",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "http://www.cell.com/article/S0092867421005833/pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://europepmc.org/backend/ptpmcrender.fcgi?accid=PMC8238499&blobtype=pdf",
+        "ok": false,
+        "reason": "Remote end closed connection without response"
+      },
+      {
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8238499/pdf/",
+        "ok": false,
+        "reason": "HTTP 404"
+      }
+    ],
+    "final": {
+      "ok": false,
+      "reason": "all OA URLs failed"
+    },
+    "is_oa": true,
+    "title": "Integrated analysis of multimodal single-cell data"
+  },
+  {
+    "doi": "10.1038/nmeth.4324",
+    "doi_safe": "10.1038_nmeth.4324",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://europepmc.org/article/MED/28581496?pdf=render",
+        "ok": true,
+        "size": 28157,
+        "host_type": "europepmc"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 28157,
+      "host_type": "europepmc"
+    },
+    "is_oa": true,
+    "title": "Differential analysis of RNA-seq incorporating quantification uncertainty"
+  },
+  {
+    "doi": "10.1089/omi.2011.0118",
+    "doi_safe": "10.1089_omi.2011.0118",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://europepmc.org/backend/ptpmcrender.fcgi?accid=PMC3339379&blobtype=pdf",
+        "ok": false,
+        "reason": "Remote end closed connection without response"
+      },
+      {
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3339379/pdf/",
+        "ok": true,
+        "size": 1816,
+        "host_type": "pmc"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 1816,
+      "host_type": "pmc"
+    },
+    "is_oa": false,
+    "title": "clusterProfiler: an R Package for Comparing Biological Themes Among Gene Clusters"
+  },
+  {
+    "doi": "10.1093/nar/gkaa1052",
+    "doi_safe": "10.1093_nar_gkaa1052",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://academic.oup.com/nar/article-pdf/49/1/e4/35596857/gkaa1052.pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://europepmc.org/backend/ptpmcrender.fcgi?accid=PMC7797064&blobtype=pdf",
+        "ok": false,
+        "reason": "Remote end closed connection without response"
+      },
+      {
+        "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7797064/pdf/",
+        "ok": true,
+        "size": 1816,
+        "host_type": "pmc"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 1816,
+      "host_type": "pmc"
+    },
+    "is_oa": true,
+    "title": "Asymmetron: a toolkit for the identification of strand asymmetry patterns in biological sequences"
+  },
+  {
+    "doi": "10.1038/nrg.2017.76",
+    "doi_safe": "10.1038_nrg.2017.76",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://europepmc.org/article/MED/28890535?pdf=render",
+        "ok": true,
+        "size": 28157,
+        "host_type": "europepmc"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 28157,
+      "host_type": "europepmc"
+    },
+    "is_oa": false,
+    "title": "Probing a piRNA paradox"
+  },
+  {
+    "doi": "10.1038/nbt.3519",
+    "doi_safe": "10.1038_nbt.3519",
+    "already_present": false,
+    "attempts": [],
+    "final": {
+      "ok": false,
+      "reason": "no OA PDF URL in Unpaywall or Europe PMC"
+    },
+    "is_oa": false,
+    "title": "Near-optimal probabilistic RNA-seq quantification"
+  },
+  {
+    "doi": "10.1093/nar/gkv007",
+    "doi_safe": "10.1093_nar_gkv007",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://academic.oup.com/nar/article-pdf/43/7/e47/7207289/gkv007.pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://figshare.com/articles/journal_contribution/Limma_powers_differential_expression_analyses_for_RNA-sequencing_and_microarray_studies/14036813",
+        "ok": false,
+        "reason": "not-a-pdf (2009)"
+      },
+      {
+        "url": "http://hdl.handle.net/11343/263365",
+        "ok": false,
+        "reason": "not-a-pdf (32934)"
+      },
+      {
+        "url": "https://europepmc.org/articles/PMC4402510?pdf=render",
+        "ok": true,
+        "size": 1080129,
+        "host_type": "europepmc-ftul"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 1080129,
+      "host_type": "europepmc-ftul"
+    },
+    "is_oa": true,
+    "title": "limma powers differential expression analyses for RNA-sequencing and microarray studies"
+  },
+  {
+    "doi": "10.1093/bioinformatics/btz436",
+    "doi_safe": "10.1093_bioinformatics_btz436",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://academic.oup.com/bioinformatics/article-pdf/35/22/4757/30706717/btz436.pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://europepmc.org/articles/PMC6853707?pdf=render",
+        "ok": true,
+        "size": 219563,
+        "host_type": "europepmc-ftul"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 219563,
+      "host_type": "europepmc-ftul"
+    },
+    "is_oa": true,
+    "title": "snakePipes: facilitating flexible, scalable and integrative epigenomic analysis"
+  },
+  {
+    "doi": "10.1093/bioinformatics/bts635",
+    "doi_safe": "10.1093_bioinformatics_bts635",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://academic.oup.com/bioinformatics/article-pdf/29/1/15/17101697/bts635.pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://europepmc.org/articles/PMC3530905?pdf=render",
+        "ok": true,
+        "size": 381715,
+        "host_type": "europepmc-ftul"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 381715,
+      "host_type": "europepmc-ftul"
+    },
+    "is_oa": true,
+    "title": "STAR: ultrafast universal RNA-seq aligner"
+  },
+  {
+    "doi": "10.1038/nmeth.2688",
+    "doi_safe": "10.1038_nmeth.2688",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://europepmc.org/articles/PMC3959825?pdf=render",
+        "ok": false,
+        "reason": "HTTP 500"
+      }
+    ],
+    "final": {
+      "ok": false,
+      "reason": "all OA URLs failed"
+    },
+    "is_oa": true,
+    "title": "Transposition of native chromatin for fast and sensitive epigenomic profiling of open chromatin, DNA-binding proteins an"
+  },
+  {
+    "doi": "10.1016/j.cell.2021.04.048",
+    "doi_safe": "10.1016_j.cell.2021.04.048",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "http://www.cell.com/article/S0092867421005833/pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://www.cell.com/article/S0092867421005833/pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://europepmc.org/articles/PMC8238499?pdf=render",
+        "ok": false,
+        "reason": "HTTP 404"
+      }
+    ],
+    "final": {
+      "ok": false,
+      "reason": "all OA URLs failed"
+    },
+    "is_oa": true,
+    "title": "Integrated analysis of multimodal single-cell data"
+  },
+  {
+    "doi": "10.1038/nmeth.4324",
+    "doi_safe": "10.1038_nmeth.4324",
+    "already_present": false,
+    "attempts": [],
+    "final": {
+      "ok": false,
+      "reason": "no OA PDF URL in Unpaywall or Europe PMC"
+    },
+    "is_oa": true,
+    "title": "Differential analysis of RNA-seq incorporating quantification uncertainty"
+  },
+  {
+    "doi": "10.1089/omi.2011.0118",
+    "doi_safe": "10.1089_omi.2011.0118",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://europepmc.org/articles/PMC3339379?pdf=render",
+        "ok": true,
+        "size": 709994,
+        "host_type": "europepmc-ftul"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 709994,
+      "host_type": "europepmc-ftul"
+    },
+    "is_oa": false,
+    "title": "clusterProfiler: an R Package for Comparing Biological Themes Among Gene Clusters"
+  },
+  {
+    "doi": "10.1093/nar/gkaa1052",
+    "doi_safe": "10.1093_nar_gkaa1052",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://academic.oup.com/nar/article-pdf/49/1/e4/35596857/gkaa1052.pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://europepmc.org/articles/PMC7797064?pdf=render",
+        "ok": true,
+        "size": 1978801,
+        "host_type": "europepmc-ftul"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 1978801,
+      "host_type": "europepmc-ftul"
+    },
+    "is_oa": true,
+    "title": "Asymmetron: a toolkit for the identification of strand asymmetry patterns in biological sequences"
+  },
+  {
+    "doi": "10.1038/nrg.2017.76",
+    "doi_safe": "10.1038_nrg.2017.76",
+    "already_present": false,
+    "attempts": [],
+    "final": {
+      "ok": false,
+      "reason": "no OA PDF URL in Unpaywall or Europe PMC"
+    },
+    "is_oa": false,
+    "title": "Probing a piRNA paradox"
+  },
+  {
+    "doi": "10.1186/s12859-019-2926-y",
+    "doi_safe": "10.1186_s12859-019-2926-y",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://bmcbioinformatics.biomedcentral.com/track/pdf/10.1186/s12859-019-2926-y",
+        "ok": true,
+        "size": 34066507,
+        "host_type": "publisher"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 34066507,
+      "host_type": "publisher"
+    },
+    "is_oa": true,
+    "title": "AutoCryoPicker: an unsupervised learning approach for fully automated single particle picking in Cryo-EM images"
+  },
+  {
+    "doi": "10.1093/bioinformatics/btt236",
+    "doi_safe": "10.1093_bioinformatics_btt236",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://academic.oup.com/bioinformatics/article-pdf/29/13/i154/18536046/btt236.pdf",
+        "ok": false,
+        "reason": "HTTP 403"
+      },
+      {
+        "url": "https://europepmc.org/articles/PMC3694667?pdf=render",
+        "ok": true,
+        "size": 1155871,
+        "host_type": "europepmc-ftul"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 1155871,
+      "host_type": "europepmc-ftul"
+    },
+    "is_oa": true,
+    "title": "Simple topological properties predict functional misannotations in a metabolic network"
+  },
+  {
+    "doi": "10.12688/f1000research.29032.2",
+    "doi_safe": "10.12688_f1000research.29032.2",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://f1000research.com/articles/10-33/v2/pdf",
+        "ok": true,
+        "size": 1782553,
+        "host_type": "publisher"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 1782553,
+      "host_type": "publisher"
+    },
+    "is_oa": true,
+    "title": "Sustainable data analysis with Snakemake"
+  },
+  {
+    "doi": "10.1186/s13059-016-1378-0",
+    "doi_safe": "10.1186_s13059-016-1378-0",
+    "already_present": false,
+    "attempts": [],
+    "final": {
+      "ok": false,
+      "reason": "unpaywall HTTP 404"
+    }
+  },
+  {
+    "doi": "10.1038/nbt.3519",
+    "doi_safe": "10.1038_nbt.3519",
+    "already_present": false,
+    "attempts": [],
+    "final": {
+      "ok": false,
+      "reason": "no OA PDF URL in Unpaywall or Europe PMC"
+    },
+    "is_oa": false,
+    "title": "Near-optimal probabilistic RNA-seq quantification"
+  },
+  {
+    "doi": "10.1038/nmeth.4324",
+    "doi_safe": "10.1038_nmeth.4324",
+    "already_present": false,
+    "attempts": [],
+    "final": {
+      "ok": false,
+      "reason": "no OA PDF URL in Unpaywall or Europe PMC"
+    },
+    "is_oa": true,
+    "title": "Differential analysis of RNA-seq incorporating quantification uncertainty"
+  },
+  {
+    "doi": "10.1038/nmeth.2688",
+    "doi_safe": "10.1038_nmeth.2688",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://europepmc.org/articles/PMC3959825?pdf=render",
+        "ok": false,
+        "reason": "HTTP 500"
+      }
+    ],
+    "final": {
+      "ok": false,
+      "reason": "all OA URLs failed"
+    },
+    "is_oa": true,
+    "title": "Transposition of native chromatin for fast and sensitive epigenomic profiling of open chromatin, DNA-binding proteins an"
+  },
+  {
+    "doi": "10.1101/035170",
+    "doi_safe": "10.1101_035170",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://www.biorxiv.org/content/biorxiv/early/2016/04/05/035170.full.pdf",
+        "ok": true,
+        "size": 352751,
+        "host_type": "repository"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 352751,
+      "host_type": "repository"
+    },
+    "is_oa": true,
+    "title": "A reference panel of 64,976 haplotypes for genotype imputation"
+  },
+  {
+    "doi": "10.1101/058164",
+    "doi_safe": "10.1101_058164",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://www.biorxiv.org/content/biorxiv/early/2016/06/10/058164.full.pdf",
+        "ok": true,
+        "size": 4020899,
+        "host_type": "repository"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 4020899,
+      "host_type": "repository"
+    },
+    "is_oa": true,
+    "title": "Differential analysis of RNA-Seq incorporating quantification uncertainty"
+  },
+  {
+    "doi": "10.1101/gr.257246.119",
+    "doi_safe": "10.1101_gr.257246.119",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://genome.cshlp.org/content/31/3/448.full.pdf",
+        "ok": true,
+        "size": 4707854,
+        "host_type": "publisher"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 4707854,
+      "host_type": "publisher"
+    },
+    "is_oa": true,
+    "title": "Accurate and efficient detection of gene fusions from RNA sequencing data"
+  },
+  {
+    "doi": "10.1101/2020.10.12.335331",
+    "doi_safe": "10.1101_2020.10.12.335331",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://www.biorxiv.org/content/biorxiv/early/2020/10/12/2020.10.12.335331.full.pdf",
+        "ok": true,
+        "size": 12184056,
+        "host_type": "repository"
+      }
+    ],
+    "final": {
+      "ok": true,
+      "size": 12184056,
+      "host_type": "repository"
+    },
+    "is_oa": true,
+    "title": "Integrated analysis of multimodal single-cell data"
+  },
+  {
+    "doi": "10.1038/nbt.3192",
+    "doi_safe": "10.1038_nbt.3192",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://www.nature.com/articles/nbt.3192.pdf",
+        "ok": false,
+        "reason": "not-a-pdf (348112)"
+      },
+      {
+        "url": "https://europepmc.org/articles/PMC4430369?pdf=render",
+        "ok": false,
+        "reason": "HTTP 500"
+      }
+    ],
+    "final": {
+      "ok": false,
+      "reason": "all OA URLs failed"
+    },
+    "is_oa": true,
+    "title": "Spatial reconstruction of single-cell gene expression data"
+  },
+  {
+    "doi": "10.1038/nbt.4096",
+    "doi_safe": "10.1038_nbt.4096",
+    "already_present": false,
+    "attempts": [
+      {
+        "url": "https://europepmc.org/articles/pmc6700744?pdf=render",
+        "ok": false,
+        "reason": "HTTP 500"
+      },
+      {
+        "url": "https://europepmc.org/articles/PMC6700744?pdf=render",
+        "ok": false,
+        "reason": "HTTP 500"
+      }
+    ],
+    "final": {
+      "ok": false,
+      "reason": "all OA URLs failed"
+    },
+    "is_oa": true,
+    "title": "Integrating single-cell transcriptomic data across different conditions, technologies, and species"
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "workflow_id": "epigen-atacseq_pipeline-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/epigen-atacseq_pipeline-finish/manifest.json",
+  "step_ids": [
+    "env_export",
+    "config_export",
+    "annot_export",
+    "install_homer"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.966180+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_01",
+  "prepared_at": "2026-04-16T12:46:05.784888+00:00",
+  "micro_task": "sum_of_values_txt"
+}

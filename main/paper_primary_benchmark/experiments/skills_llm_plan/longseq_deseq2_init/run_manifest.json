@@ -1,0 +1,20 @@
+{
+  "task_id": "longseq_deseq2_init",
+  "task_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/longseq_deseq2_init",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills_llm_plan/longseq_deseq2_init",
+  "model": "openrouter/openai/gpt-4o",
+  "model_resolved": "openai/gpt-4o",
+  "temperature": 0.1,
+  "prompt_tokens": 944,
+  "completion_tokens": 474,
+  "total_tokens": 1418,
+  "runtime_seconds": 5.45,
+  "inputs_listed": [
+    "all_counts.tsv",
+    "samples.tsv"
+  ],
+  "inputs_previewed": [
+    "samples.tsv"
+  ],
+  "generated_at": "2026-04-16T19:32:53Z"
+}

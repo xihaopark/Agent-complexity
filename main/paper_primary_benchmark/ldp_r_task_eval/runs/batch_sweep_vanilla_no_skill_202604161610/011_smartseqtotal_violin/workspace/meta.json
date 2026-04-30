@@ -1,0 +1,16 @@
+{
+  "task_id": "smartseqtotal_violin",
+  "kind": "real",
+  "workflow_id": "gersteinlab-ASTRO",
+  "family": "scrna",
+  "description": "Violin comparison of clustering metrics between ASTRO and SmartSeq total.",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/gersteinlab__ASTRO/compatibility/SmartSeqTotal/scripts/plot_violin_step3.R",
+  "ground_truth_dir": "tasks/real_ground_truth/smartseqtotal_violin",
+  "success_glob": "output/violin_scores.png",
+  "reference_output_files": [
+    "violin_scores.png"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

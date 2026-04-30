@@ -1,0 +1,8 @@
+{
+  "command": "Rscript",
+  "args": ["reference/script.R"],
+  "working_dir": "tasks/paper_sensitive_v1/real/deseq2_apeglm_small_n/workspace",
+  "env": {
+    "R_LIBS_USER": "~/.Rlibs"
+  }
+}

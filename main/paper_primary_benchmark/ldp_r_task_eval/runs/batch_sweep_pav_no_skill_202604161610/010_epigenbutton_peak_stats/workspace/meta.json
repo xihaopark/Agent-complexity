@@ -1,0 +1,16 @@
+{
+  "task_id": "epigenbutton_peak_stats",
+  "kind": "real",
+  "workflow_id": "joncahn-epigeneticbutton",
+  "family": "chipseq",
+  "description": "Peak-count-per-sample barplot PDF across replicate layers.",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/joncahn__epigeneticbutton/workflow/scripts/R_peak_stats.R",
+  "ground_truth_dir": "tasks/real_ground_truth/epigenbutton_peak_stats",
+  "success_glob": "output/peak_stats.pdf",
+  "reference_output_files": [
+    "peak_stats.pdf"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

@@ -1,0 +1,13 @@
+{
+  "workflow_id": "tgirke-systempiperdata-spscrna-finish",
+  "pipeline_task_id": "stage_04",
+  "order": 4,
+  "manifest_path": "finish/tgirke-systempiperdata-spscrna-finish/manifest.json",
+  "step_ids": [
+    "find_clusters",
+    "plot_cluster",
+    "find_markers"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.032542+00:00"
+}

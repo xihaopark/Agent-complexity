@@ -1,0 +1,19 @@
+{
+  "workflow_id": "epigen-rnaseq_pipeline-finish",
+  "pipeline_task_id": "stage_02",
+  "order": 2,
+  "manifest_path": "finish/epigen-rnaseq_pipeline-finish/manifest.json",
+  "step_ids": [
+    "get_annotation",
+    "genome_faidx",
+    "bwa_index",
+    "star_index"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.976838+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_02",
+  "prepared_at": "2026-04-16T12:46:05.793308+00:00",
+  "micro_task": "sum_of_values_txt"
+}

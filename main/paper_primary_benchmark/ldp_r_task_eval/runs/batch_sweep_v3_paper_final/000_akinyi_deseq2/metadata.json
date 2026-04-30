@@ -1,0 +1,29 @@
+{
+  "task_id": "akinyi_deseq2",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/akinyi_deseq2",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_final/000_akinyi_deseq2/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_v3_paper_final",
+  "registry_index": 0,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1,
+      "max_tokens": 2048
+    }
+  },
+  "skill": {
+    "arm": "paper",
+    "injected": true,
+    "manifest_version": 3,
+    "skill_sha256": "67a57f2556ecfd4cbeb34f29ec4c5211dc4b6451d81e0161f819cc697db128fc",
+    "skill_char_len": 1700,
+    "skill_md_path": "experiments/skills/10.1186_s13059-016-0881-8/SKILL.md",
+    "lookup_field": "by_task_id",
+    "lookup_key": "akinyi_deseq2",
+    "source_doi": "10.1186/s13059-016-0881-8",
+    "source_tool": "RNA-seq best practices",
+    "source_workflow_id": "akinyi-onyango-rna_seq_pipeline-finish"
+  }
+}

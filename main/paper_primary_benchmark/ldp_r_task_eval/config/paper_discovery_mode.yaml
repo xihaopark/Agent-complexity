@@ -1,0 +1,59 @@
+# Config for Paper Arm - Discovery Mode (Agent retrieves skills on-demand)
+#
+# This configuration enables agent-autonomous skill discovery.
+# Instead of pre-binding skills, agent can call discovery tools to find
+# relevant skills based on the analysis scenario.
+#
+# Comparison with binding mode:
+#   Binding Mode: {{SKILL_MD}} pre-filled with specific paper
+#   Discovery Mode: Agent calls discover_skills_*() tools when needed
+
+max_steps: 15
+
+agent:
+  llm_model:
+    name: openrouter/openai/gpt-4o
+    temperature: 0.1
+    max_tokens: 2048
+  
+  # Discovery-mode system prompt
+  sys_prompt: |
+    You solve R-centric analysis tasks in a sandbox workspace.
+    
+    Available tools:
+    - run_shell, read_text_file, write_text_file, run_rscript, list_workdir, submit_done
+    - DISCOVERY TOOLS (call when you need guidance):
+      • discover_skills_by_scenario(scenario) - Get skills for a scenario like "rna_de_analysis"
+      • discover_skills_by_criteria(analysis_type, data_type, experimental_design) - Find by features
+      • get_skill_details(tool_name) - Read full details of a specific tool
+      • find_alternative_tools(tool_name) - Find alternatives if current approach fails
+      • list_available_scenarios() - See all available scenarios
+    
+    WORKFLOW:
+    1. Analyze the task: What analysis type? What data? What design?
+    2. IF uncertain: Call discover_skills_by_scenario() or discover_skills_by_criteria()
+    3. Review recommended skills with get_skill_details()
+    4. Choose appropriate tool based on use_when/not_when guidance
+    5. Implement solution
+    6. Call submit_done(success=true) when complete
+    
+    PRINCIPLES:
+    - Don't assume you know the best tool - discover when uncertain
+    - Check use_when/not_before before choosing
+    - Consider alternatives if recommended approach seems problematic
+    - Skills are suggestions, not mandates - use your judgment
+
+# Discovery mode flag (used by runner to configure environment)
+discovery_mode: true
+
+# Discovery tool configuration
+discovery:
+  # Whether to include discovery tools in environment
+  enable_discovery_tools: true
+  
+  # Auto-discovery on task start (optional, can be disabled)
+  # If true, agent gets initial discovery result at reset
+  auto_discover_on_reset: false
+  
+  # Max discovery calls per episode (prevent spam)
+  max_discovery_calls: 5

@@ -1,0 +1,12 @@
+[
+  "Rscript",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_macs_qc/reference/script.R",
+  "--peak_files",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/chipseq_plot_macs_qc/input/sampleA_peaks.narrowPeak,/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/chipseq_plot_macs_qc/input/sampleB_peaks.narrowPeak,/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/chipseq_plot_macs_qc/input/sampleC_peaks.narrowPeak",
+  "--sample_ids",
+  "sampleA,sampleB,sampleC",
+  "--outdir",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_macs_qc/reference_output/_macs_qc.pdf",
+  "--outprefix",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_macs_qc/reference_output/macs_qc_summary.tsv"
+]

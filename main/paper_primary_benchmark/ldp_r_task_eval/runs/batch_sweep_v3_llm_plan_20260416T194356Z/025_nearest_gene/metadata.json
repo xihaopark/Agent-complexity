@@ -1,0 +1,27 @@
+{
+  "task_id": "nearest_gene",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/nearest_gene",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_llm_plan_20260416T194356Z/025_nearest_gene/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_v3_llm_plan_20260416T194356Z",
+  "registry_index": 25,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "arm": "llm_plan",
+    "injected": true,
+    "manifest_version": 3,
+    "skill_sha256": "cad7e32470a45d3774020fa2d4772a122e5c83ef8d15bb67a2f613f8eaaf9c01",
+    "skill_char_len": 2483,
+    "skill_md_path": "experiments/skills_llm_plan/nearest_gene/SKILL.md",
+    "lookup_field": "by_task_id",
+    "lookup_key": "nearest_gene",
+    "source_task_id": "nearest_gene",
+    "source_model": "openrouter/openai/gpt-4o"
+  }
+}

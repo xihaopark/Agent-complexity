@@ -1,0 +1,13 @@
+{
+  "workflow_id": "cite-seq-alevin-fry-seurat-finish",
+  "pipeline_task_id": "stage_04",
+  "order": 4,
+  "manifest_path": "finish/cite-seq-alevin-fry-seurat-finish/manifest.json",
+  "step_ids": [
+    "filter_normalize_demux",
+    "plot_counts_hto_filtered",
+    "filter_negatives"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.956361+00:00"
+}

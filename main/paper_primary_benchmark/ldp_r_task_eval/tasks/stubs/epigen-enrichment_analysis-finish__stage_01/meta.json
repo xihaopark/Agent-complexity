@@ -1,0 +1,14 @@
+{
+  "workflow_id": "epigen-enrichment_analysis-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/epigen-enrichment_analysis-finish/manifest.json",
+  "step_ids": [
+    "aggregate",
+    "annot_export",
+    "config_export",
+    "env_export"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.972571+00:00"
+}

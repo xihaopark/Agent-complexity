@@ -1,0 +1,18 @@
+{
+  "workflow_id": "epigen-atacseq_pipeline-finish",
+  "pipeline_task_id": "stage_07",
+  "order": 7,
+  "manifest_path": "finish/epigen-atacseq_pipeline-finish/manifest.json",
+  "step_ids": [
+    "bedtools_annotation",
+    "region_annotation_aggregate",
+    "all"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.968956+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_01",
+  "prepared_at": "2026-04-16T12:46:05.786842+00:00",
+  "micro_task": "sum_of_values_txt"
+}

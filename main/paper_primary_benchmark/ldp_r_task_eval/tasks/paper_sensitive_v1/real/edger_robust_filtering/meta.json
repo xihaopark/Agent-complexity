@@ -1,0 +1,16 @@
+{
+  "task_id": "edger_robust_filtering",
+  "kind": "paper_sensitive",
+  "blueprint_version": "v1",
+  "workflow_id": "epigen-rnaseq_pipeline-finish",
+  "family": "rna",
+  "stage": "late",
+  "difficulty": 3,
+  "paper_covered": true,
+  "primary_method_paper_doi": "TBD_edgeR",
+  "primary_tool": "edgeR",
+  "description": "glmQLFit with robust=TRUE; QLF test.",
+  "status": "scaffold",
+  "success_glob": "output/de_robust.tsv",
+  "reference_output_files": ["de_robust.tsv"]
+}

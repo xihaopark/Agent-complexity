@@ -1,0 +1,13 @@
+{
+  "workflow_id": "epigen-spilterlize_integrate-finish",
+  "pipeline_task_id": "stage_03",
+  "order": 3,
+  "manifest_path": "finish/epigen-spilterlize_integrate-finish/manifest.json",
+  "step_ids": [
+    "plot_diagnostics",
+    "plot_heatmap",
+    "env_export"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.984727+00:00"
+}

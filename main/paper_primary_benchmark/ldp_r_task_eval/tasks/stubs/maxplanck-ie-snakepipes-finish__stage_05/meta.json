@@ -1,0 +1,15 @@
+{
+  "workflow_id": "maxplanck-ie-snakepipes-finish",
+  "pipeline_task_id": "stage_05",
+  "order": 5,
+  "manifest_path": "finish/maxplanck-ie-snakepipes-finish/manifest.json",
+  "step_ids": [
+    "HMMRATAC_peaks",
+    "namesort_bams",
+    "Genrich_peaks",
+    "plotFingerprint",
+    "plotFingerprint_allelic"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.998933+00:00"
+}

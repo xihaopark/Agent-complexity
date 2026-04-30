@@ -1,0 +1,135 @@
+PeakID	Chr	Start	End	Strand	Peak Score	Focus Ratio/Region Size	Annotation	Detailed Annotation	Distance to TSS	Nearest PromoterID	Entrez ID	Nearest Unigene	Nearest Refseq	Nearest Ensembl	Gene Name	Gene Alias	Gene Description	Gene Type
+sampleB_0	chr1	1000	1500	+	35	0.5	exon (NM_000180)	exon (NM_000180)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_1	chr1	1050	1550	+	78	0.5	TTS (NM_000255)	TTS (NM_000255)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_2	chr1	1100	1600	+	496	0.5	5' UTR (NM_000475)	5' UTR (NM_000475)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_3	chr1	1150	1650	+	435	0.5	5' UTR (NM_000912)	5' UTR (NM_000912)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_4	chr1	1200	1700	+	240	0.5	TTS (NM_000456)	TTS (NM_000456)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_5	chr1	1250	1750	+	402	0.5	intron (NM_000769)	intron (NM_000769)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_6	chr1	1300	1800	+	235	0.5	5' UTR (NM_000533)	5' UTR (NM_000533)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_7	chr1	1350	1850	+	173	0.5	promoter-TSS (NM_000730)	promoter-TSS (NM_000730)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_8	chr1	1400	1900	+	365	0.5	TTS (NM_000082)	TTS (NM_000082)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_9	chr1	1450	1950	+	179	0.5	exon (NM_000723)	exon (NM_000723)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_10	chr1	1500	2000	+	209	0.5	TTS (NM_000477)	TTS (NM_000477)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_11	chr1	1550	2050	+	254	0.5	5' UTR (NM_000598)	5' UTR (NM_000598)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_12	chr1	1600	2100	+	446	0.5	promoter-TSS (NM_000965)	promoter-TSS (NM_000965)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_13	chr1	1650	2150	+	122	0.5	5' UTR (NM_000429)	5' UTR (NM_000429)	46289	NM_0007999	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_14	chr1	1700	2200	+	352	0.5	intron (NM_000446)	intron (NM_000446)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_15	chr1	1750	2250	+	480	0.5	3' UTR (NM_000817)	3' UTR (NM_000817)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_16	chr1	1800	2300	+	339	0.5	exon (NM_000637)	exon (NM_000637)	1645	NM_0001375	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_17	chr1	1850	2350	+	204	0.5	intergenic (NM_000138)	intergenic (NM_000138)	-26181	NM_0004262	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_18	chr1	1900	2400	+	152	0.5	intron (NM_000216)	intron (NM_000216)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_19	chr1	1950	2450	+	19	0.5	5' UTR (NM_000974)	5' UTR (NM_000974)	-16935	NM_0007705	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_20	chr1	2000	2500	+	409	0.5	3' UTR (NM_000552)	3' UTR (NM_000552)	-4130	NM_0001124	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_21	chr1	2050	2550	+	328	0.5	3' UTR (NM_000041)	3' UTR (NM_000041)	-17589	NM_0000333	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_22	chr1	2100	2600	+	495	0.5	exon (NM_000244)	exon (NM_000244)	37747	NM_0009240	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_23	chr1	2150	2650	+	320	0.5	exon (NM_000476)	exon (NM_000476)	-1649	NM_0009926	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_24	chr1	2200	2700	+	65	0.5	3' UTR (NM_000735)	3' UTR (NM_000735)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_25	chr1	2250	2750	+	213	0.5	TTS (NM_000026)	TTS (NM_000026)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_26	chr1	2300	2800	+	366	0.5	3' UTR (NM_000203)	3' UTR (NM_000203)	40520	NM_0001669	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_27	chr1	2350	2850	+	410	0.5	5' UTR (NM_000308)	5' UTR (NM_000308)	28697	NM_0009272	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_28	chr1	2400	2900	+	45	0.5	promoter-TSS (NM_000355)	promoter-TSS (NM_000355)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_29	chr1	2450	2950	+	64	0.5	TTS (NM_000663)	TTS (NM_000663)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_30	chr1	2500	3000	+	100	0.5	intergenic (NM_000983)	intergenic (NM_000983)	10258	NM_0007135	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_31	chr1	2550	3050	+	248	0.5	3' UTR (NM_000534)	3' UTR (NM_000534)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_32	chr1	2600	3100	+	446	0.5	intergenic (NM_000845)	intergenic (NM_000845)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_33	chr1	2650	3150	+	134	0.5	exon (NM_000850)	exon (NM_000850)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_34	chr1	2700	3200	+	182	0.5	5' UTR (NM_000475)	5' UTR (NM_000475)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_35	chr1	2750	3250	+	118	0.5	promoter-TSS (NM_000506)	promoter-TSS (NM_000506)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_36	chr1	2800	3300	+	294	0.5	intron (NM_000816)	intron (NM_000816)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_37	chr1	2850	3350	+	260	0.5	promoter-TSS (NM_000529)	promoter-TSS (NM_000529)	-38779	NM_0006658	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_38	chr1	2900	3400	+	239	0.5	TTS (NM_000776)	TTS (NM_000776)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_39	chr1	2950	3450	+	364	0.5	5' UTR (NM_000017)	5' UTR (NM_000017)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_40	chr1	3000	3500	+	293	0.5	exon (NM_000313)	exon (NM_000313)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_41	chr1	3050	3550	+	190	0.5	TTS (NM_000352)	TTS (NM_000352)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_42	chr1	3100	3600	+	379	0.5	3' UTR (NM_000464)	3' UTR (NM_000464)	-17049	NM_0001976	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_43	chr1	3150	3650	+	120	0.5	exon (NM_000323)	exon (NM_000323)	20236	NM_0003138	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_44	chr1	3200	3700	+	61	0.5	3' UTR (NM_000495)	3' UTR (NM_000495)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_45	chr1	3250	3750	+	17	0.5	5' UTR (NM_000198)	5' UTR (NM_000198)	-2699	NM_0004952	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_46	chr1	3300	3800	+	159	0.5	3' UTR (NM_000546)	3' UTR (NM_000546)	-44035	NM_0009066	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_47	chr1	3350	3850	+	62	0.5	3' UTR (NM_000966)	3' UTR (NM_000966)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_48	chr1	3400	3900	+	235	0.5	5' UTR (NM_000012)	5' UTR (NM_000012)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_49	chr1	3450	3950	+	68	0.5	intron (NM_000188)	intron (NM_000188)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_50	chr1	3500	4000	+	86	0.5	5' UTR (NM_000066)	5' UTR (NM_000066)	-40290	NM_0002485	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_51	chr1	3550	4050	+	295	0.5	5' UTR (NM_000576)	5' UTR (NM_000576)	-38836	NM_0001940	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_52	chr1	3600	4100	+	204	0.5	5' UTR (NM_000426)	5' UTR (NM_000426)	31057	NM_0008561	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_53	chr1	3650	4150	+	166	0.5	intergenic (NM_000930)	intergenic (NM_000930)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_54	chr1	3700	4200	+	330	0.5	TTS (NM_000635)	TTS (NM_000635)	47004	NM_0003404	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_55	chr1	3750	4250	+	292	0.5	exon (NM_000270)	exon (NM_000270)	-29415	NM_0002847	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_56	chr1	3800	4300	+	240	0.5	promoter-TSS (NM_000160)	promoter-TSS (NM_000160)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_57	chr1	3850	4350	+	371	0.5	3' UTR (NM_000608)	3' UTR (NM_000608)	-45722	NM_0004720	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_58	chr1	3900	4400	+	413	0.5	intron (NM_000719)	intron (NM_000719)	-40671	NM_0004334	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_59	chr1	3950	4450	+	68	0.5	5' UTR (NM_000640)	5' UTR (NM_000640)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_60	chr1	4000	4500	+	40	0.5	TTS (NM_000230)	TTS (NM_000230)	-15184	NM_0001169	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_61	chr1	4050	4550	+	234	0.5	exon (NM_000811)	exon (NM_000811)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_62	chr1	4100	4600	+	492	0.5	promoter-TSS (NM_000479)	promoter-TSS (NM_000479)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_63	chr1	4150	4650	+	30	0.5	intron (NM_000512)	intron (NM_000512)	7377	NM_0009798	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_64	chr1	4200	4700	+	127	0.5	intergenic (NM_000752)	intergenic (NM_000752)	-17184	NM_0001496	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_65	chr1	4250	4750	+	305	0.5	3' UTR (NM_000856)	3' UTR (NM_000856)	26955	NM_0004415	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_66	chr1	4300	4800	+	479	0.5	promoter-TSS (NM_000781)	promoter-TSS (NM_000781)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_67	chr1	4350	4850	+	56	0.5	intron (NM_000185)	intron (NM_000185)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_68	chr1	4400	4900	+	178	0.5	intergenic (NM_000356)	intergenic (NM_000356)	-7919	NM_0002634	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_69	chr1	4450	4950	+	426	0.5	intergenic (NM_000710)	intergenic (NM_000710)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_70	chr1	4500	5000	+	55	0.5	5' UTR (NM_000563)	5' UTR (NM_000563)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_71	chr1	4550	5050	+	246	0.5	intron (NM_000258)	intron (NM_000258)	2976	NM_0008889	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_72	chr1	4600	5100	+	330	0.5	intergenic (NM_000055)	intergenic (NM_000055)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_73	chr1	4650	5150	+	234	0.5	intergenic (NM_000778)	intergenic (NM_000778)	-14997	NM_0004719	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_74	chr1	4700	5200	+	169	0.5	3' UTR (NM_000496)	3' UTR (NM_000496)	32578	NM_0002594	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_75	chr1	4750	5250	+	246	0.5	TTS (NM_000014)	TTS (NM_000014)	-37783	NM_0001858	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_76	chr1	4800	5300	+	270	0.5	promoter-TSS (NM_000663)	promoter-TSS (NM_000663)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_77	chr1	4850	5350	+	134	0.5	3' UTR (NM_000279)	3' UTR (NM_000279)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_78	chr1	4900	5400	+	151	0.5	intergenic (NM_000564)	intergenic (NM_000564)	-25017	NM_0001143	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_79	chr1	4950	5450	+	430	0.5	5' UTR (NM_000808)	5' UTR (NM_000808)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_80	chr1	5000	5500	+	453	0.5	promoter-TSS (NM_000289)	promoter-TSS (NM_000289)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_81	chr1	5050	5550	+	292	0.5	exon (NM_000457)	exon (NM_000457)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_82	chr1	5100	5600	+	302	0.5	5' UTR (NM_000556)	5' UTR (NM_000556)	-7824	NM_0003912	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_83	chr1	5150	5650	+	391	0.5	intergenic (NM_000239)	intergenic (NM_000239)	3841	NM_0005213	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_84	chr1	5200	5700	+	349	0.5	intergenic (NM_000722)	intergenic (NM_000722)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_85	chr1	5250	5750	+	28	0.5	5' UTR (NM_000840)	5' UTR (NM_000840)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_86	chr1	5300	5800	+	61	0.5	exon (NM_000514)	exon (NM_000514)	-6485	NM_0007213	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_87	chr1	5350	5850	+	455	0.5	TTS (NM_000932)	TTS (NM_000932)	44692	NM_0006717	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_88	chr1	5400	5900	+	183	0.5	3' UTR (NM_000993)	3' UTR (NM_000993)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_89	chr1	5450	5950	+	446	0.5	TTS (NM_000709)	TTS (NM_000709)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_90	chr1	5500	6000	+	456	0.5	3' UTR (NM_000879)	3' UTR (NM_000879)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_91	chr1	5550	6050	+	126	0.5	TTS (NM_000036)	TTS (NM_000036)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_92	chr1	5600	6100	+	95	0.5	3' UTR (NM_000092)	3' UTR (NM_000092)	-37097	NM_0007269	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_93	chr1	5650	6150	+	417	0.5	3' UTR (NM_000306)	3' UTR (NM_000306)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_94	chr1	5700	6200	+	281	0.5	promoter-TSS (NM_000300)	promoter-TSS (NM_000300)	6450	NM_0004000	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_95	chr1	5750	6250	+	50	0.5	intergenic (NM_000579)	intergenic (NM_000579)	-26400	NM_0002868	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_96	chr1	5800	6300	+	477	0.5	TTS (NM_000891)	TTS (NM_000891)	39539	NM_0008153	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_97	chr1	5850	6350	+	245	0.5	TTS (NM_000146)	TTS (NM_000146)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_98	chr1	5900	6400	+	421	0.5	intron (NM_000682)	intron (NM_000682)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_99	chr1	5950	6450	+	236	0.5	intergenic (NM_000922)	intergenic (NM_000922)	21643	NM_0001210	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_100	chr1	6000	6500	+	243	0.5	intron (NM_000601)	intron (NM_000601)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_101	chr1	6050	6550	+	64	0.5	5' UTR (NM_000309)	5' UTR (NM_000309)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_102	chr1	6100	6600	+	368	0.5	exon (NM_000390)	exon (NM_000390)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_103	chr1	6150	6650	+	150	0.5	intron (NM_000022)	intron (NM_000022)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_104	chr1	6200	6700	+	391	0.5	promoter-TSS (NM_000579)	promoter-TSS (NM_000579)	47605	NM_0009935	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_105	chr1	6250	6750	+	420	0.5	intergenic (NM_000852)	intergenic (NM_000852)	-12488	NM_0009946	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_106	chr1	6300	6800	+	357	0.5	intron (NM_000224)	intron (NM_000224)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_107	chr1	6350	6850	+	472	0.5	5' UTR (NM_000738)	5' UTR (NM_000738)	39241	NM_0001591	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_108	chr1	6400	6900	+	413	0.5	3' UTR (NM_000661)	3' UTR (NM_000661)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_109	chr1	6450	6950	+	475	0.5	intergenic (NM_000034)	intergenic (NM_000034)	45991	NM_0001476	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_110	chr1	6500	7000	+	412	0.5	intron (NM_000334)	intron (NM_000334)	-26979	NM_0002165	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_111	chr1	6550	7050	+	435	0.5	TTS (NM_000897)	TTS (NM_000897)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_112	chr1	6600	7100	+	392	0.5	exon (NM_000263)	exon (NM_000263)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_113	chr1	6650	7150	+	396	0.5	5' UTR (NM_000346)	5' UTR (NM_000346)	11385	NM_0002306	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_114	chr1	6700	7200	+	443	0.5	exon (NM_000880)	exon (NM_000880)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_115	chr1	6750	7250	+	284	0.5	5' UTR (NM_000570)	5' UTR (NM_000570)	1717	NM_0004332	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_116	chr1	6800	7300	+	309	0.5	promoter-TSS (NM_000465)	promoter-TSS (NM_000465)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_117	chr1	6850	7350	+	251	0.5	intergenic (NM_000842)	intergenic (NM_000842)	-1311	NM_0003830	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_118	chr1	6900	7400	+	478	0.5	promoter-TSS (NM_000634)	promoter-TSS (NM_000634)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_119	chr1	6950	7450	+	475	0.5	TTS (NM_000226)	TTS (NM_000226)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_120	chr1	7000	7500	+	494	0.5	3' UTR (NM_000309)	3' UTR (NM_000309)	-34708	NM_0000742	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_121	chr1	7050	7550	+	464	0.5	promoter-TSS (NM_000311)	promoter-TSS (NM_000311)	-34780	NM_0003846	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_122	chr1	7100	7600	+	310	0.5	TTS (NM_000138)	TTS (NM_000138)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_123	chr1	7150	7650	+	325	0.5	3' UTR (NM_000744)	3' UTR (NM_000744)	4379	NM_0008017	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_124	chr1	7200	7700	+	121	0.5	intergenic (NM_000961)	intergenic (NM_000961)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_125	chr1	7250	7750	+	288	0.5	intergenic (NM_000455)	intergenic (NM_000455)	-2463	NM_0006018	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_126	chr1	7300	7800	+	495	0.5	3' UTR (NM_000367)	3' UTR (NM_000367)	-13840	NM_0002001	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_127	chr1	7350	7850	+	20	0.5	5' UTR (NM_000843)	5' UTR (NM_000843)	36870	NM_0009783	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_128	chr1	7400	7900	+	434	0.5	promoter-TSS (NM_000805)	promoter-TSS (NM_000805)	-33495	NM_0001124	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_129	chr1	7450	7950	+	406	0.5	5' UTR (NM_000567)	5' UTR (NM_000567)	-21695	NM_0005383	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_130	chr1	7500	8000	+	449	0.5	exon (NM_000807)	exon (NM_000807)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_131	chr1	7550	8050	+	77	0.5	exon (NM_000133)	exon (NM_000133)	-27129	NM_0000422	NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_132	chr1	7600	8100	+	18	0.5	promoter-TSS (NM_000366)	promoter-TSS (NM_000366)			NA	NA	NA	NA	GENE_X			protein-coding
+sampleB_133	chr1	7650	8150	+	279	0.5	exon (NM_000271)	exon (NM_000271)			NA	NA	NA	NA	GENE_X			protein-coding

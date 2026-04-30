@@ -1,0 +1,14 @@
+{
+  "workflow_id": "cyrcular-calling-finish",
+  "pipeline_task_id": "stage_06",
+  "order": 6,
+  "manifest_path": "finish/cyrcular-calling-finish/manifest.json",
+  "step_ids": [
+    "sort_bcf_header",
+    "get_bcf_header",
+    "extract_vcf_header_lines_for_bcftools_annotate",
+    "filter_overview_table"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.959969+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "workflow_id": "cellranger-multi-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/cellranger-multi-finish/manifest.json",
+  "step_ids": [
+    "follow_pedantic_cell_ranger_naming_scheme",
+    "create_cellranger_multi_config_csv",
+    "cellranger_multi_run",
+    "cellranger_multi_files_summaries"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.953756+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_01",
+  "prepared_at": "2026-04-16T12:46:05.780163+00:00",
+  "micro_task": "sum_of_values_txt"
+}

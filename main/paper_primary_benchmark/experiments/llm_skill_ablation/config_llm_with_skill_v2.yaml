@@ -1,0 +1,32 @@
+# Runner-C v2: LLM with paper-derived skill (vision-adapter, per-task injection)
+#
+# System prompt contains a literal `{{SKILL_MD}}` placeholder. When this config
+# is used with `batch_runner.py --skill-manifest experiments/skills/manifest.json`,
+# the runner replaces the placeholder per task with the SKILL.md content for
+# that task's workflow_id (or a no-skill marker if no paper exists).
+#
+# Model / temperature / max_steps match config_llm_with_skill.yaml to keep v1
+# vs v2 comparable. Only the sys_prompt has changed.
+
+max_steps: 32
+
+agent:
+  llm_model:
+    name: openrouter/openai/gpt-4o
+    temperature: 0.1
+  sys_prompt: |
+    You solve R-centric analysis tasks in a sandbox workspace. Use only the
+    provided tools: run_shell, read_text_file, write_text_file, run_rscript,
+    list_workdir, submit_done. Prefer R for numeric/statistical work. Do not
+    assume Snakemake or external clusters.
+
+    # Paper-derived skill (auto-generated from the method paper via
+    # paper2skills_ab_test/vision_adapter.py). Trust the commands here over
+    # your own memory when they disagree; fall back to your own knowledge if
+    # the skill says a section is missing. If the block below is
+    # "(No paper-derived skill is available for this task.)", rely on your
+    # own training knowledge for canonical R/Bioconductor call sequences.
+
+    {{SKILL_MD}}
+
+    When the objective is satisfied, call submit_done(success=true).

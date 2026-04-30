@@ -1,0 +1,132 @@
+{
+  "version": 2,
+  "kind": "paper_sensitive",
+  "description": "Paper-sensitive R-tasks for 4-arm ablation study. 5 tasks verified ready. Paths relative to ldp_r_task_eval/.",
+  "generated_at": "2026-04-23",
+  "updated_at": "2026-04-23",
+  "verified_tasks": [
+    "deseq2_apeglm_small_n",
+    "deseq2_lrt_interaction", 
+    "deseq2_shrinkage_comparison",
+    "limma_voom_weights",
+    "limma_duplicatecorrelation"
+  ],
+  "paper_arm_results": {
+    "average_score": 1.0,
+    "success_rate": "5/5",
+    "verified_at": "2026-04-23"
+  },
+  "tasks": [
+    {
+      "id": "deseq2_apeglm_small_n",
+      "work_dir": "tasks/paper_sensitive_v1/real/deseq2_apeglm_small_n",
+      "status": "ready",
+      "verified": true,
+      "family": "rna",
+      "primary_doi": "10.1186/s13059-014-0550-8",
+      "success_artifact_glob": "output/de_results.csv",
+      "paper_arm_score": 1.0,
+      "key_method": "apeglm shrinkage for small samples"
+    },
+    {
+      "id": "deseq2_lrt_interaction",
+      "work_dir": "tasks/paper_sensitive_v1/real/deseq2_lrt_interaction",
+      "status": "ready",
+      "verified": true,
+      "family": "rna",
+      "primary_doi": "10.1186/s13059-014-0550-8",
+      "success_artifact_glob": "output/interaction_de.csv",
+      "paper_arm_score": 1.0,
+      "key_method": "LRT for interaction testing"
+    },
+    {
+      "id": "limma_voom_weights",
+      "work_dir": "tasks/paper_sensitive_v1/real/limma_voom_weights",
+      "status": "ready",
+      "verified": true,
+      "family": "rna",
+      "primary_doi": "10.1093/nar/gkv007",
+      "success_artifact_glob": "output/de_results_weighted.csv",
+      "paper_arm_score": 1.0,
+      "key_method": "voomWithQualityWeights"
+    },
+    {
+      "id": "macs2_broad_histone",
+      "work_dir": "tasks/paper_sensitive_v1/real/macs2_broad_histone",
+      "status": "scaffold",
+      "family": "epigenomics",
+      "primary_doi": "10.1186/gb-2008-9-9-r137",
+      "success_artifact_glob": "output/broad_peaks.bed"
+    },
+    {
+      "id": "combat_seq_batch",
+      "work_dir": "tasks/paper_sensitive_v1/real/combat_seq_batch",
+      "status": "scaffold",
+      "family": "rna",
+      "primary_doi": "TBD_sva",
+      "success_artifact_glob": "output/de_results.csv"
+    },
+    {
+      "id": "seurat_sctransform_scaling",
+      "work_dir": "tasks/paper_sensitive_v1/real/seurat_sctransform_scaling",
+      "status": "scaffold",
+      "family": "single-cell",
+      "primary_doi": "10.1101/2020.10.12.335331",
+      "success_artifact_glob": "output/hvg_top.tsv"
+    },
+    {
+      "id": "clusterprofiler_gsea_vs_ora",
+      "work_dir": "tasks/paper_sensitive_v1/real/clusterprofiler_gsea_vs_ora",
+      "status": "scaffold",
+      "family": "other",
+      "primary_doi": "10.1089/omi.2011.0118",
+      "success_artifact_glob": "output/gsea_results.tsv"
+    },
+    {
+      "id": "edger_robust_filtering",
+      "work_dir": "tasks/paper_sensitive_v1/real/edger_robust_filtering",
+      "status": "scaffold",
+      "family": "rna",
+      "primary_doi": "TBD_edgeR",
+      "success_artifact_glob": "output/de_robust.tsv"
+    },
+    {
+      "id": "methylkit_diffmeth_params",
+      "work_dir": "tasks/paper_sensitive_v1/real/methylkit_diffmeth_params",
+      "status": "scaffold",
+      "family": "methylation",
+      "primary_doi": "TBD_methylKit",
+      "success_artifact_glob": "output/diff_meth.tsv"
+    },
+    {
+      "id": "limma_duplicatecorrelation",
+      "work_dir": "tasks/paper_sensitive_v1/real/limma_duplicatecorrelation",
+      "status": "ready",
+      "verified": true,
+      "family": "rna",
+      "primary_doi": "10.1093/nar/gkv007",
+      "success_artifact_glob": "output/paired_de.csv",
+      "paper_arm_score": 1.0,
+      "key_method": "duplicateCorrelation for paired design"
+    },
+    {
+      "id": "seurat_integration_method",
+      "work_dir": "tasks/paper_sensitive_v1/real/seurat_integration_method",
+      "status": "scaffold",
+      "family": "single-cell",
+      "primary_doi": "10.1101/2020.10.12.335331",
+      "success_artifact_glob": "output/integration_metrics.tsv"
+    },
+    {
+      "id": "deseq2_shrinkage_comparison",
+      "work_dir": "tasks/paper_sensitive_v1/real/deseq2_shrinkage_comparison",
+      "status": "ready",
+      "verified": true,
+      "family": "rna",
+      "primary_doi": "10.1186/s13059-014-0550-8",
+      "success_artifact_glob": "output/shrunk_de.csv",
+      "paper_arm_score": 1.0,
+      "key_method": "apeglm vs ashr vs normal comparison"
+    }
+  ]
+}

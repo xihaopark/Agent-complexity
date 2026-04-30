@@ -1,0 +1,27 @@
+{
+  "task_id": "snakepipes_merge_fc",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/snakepipes_merge_fc",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_llm_plan_20260416T194356Z/008_snakepipes_merge_fc/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_v3_llm_plan_20260416T194356Z",
+  "registry_index": 8,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "arm": "llm_plan",
+    "injected": true,
+    "manifest_version": 3,
+    "skill_sha256": "2fcb76d2c6e15e79e8e34320849572be9ac86d277ad18f409f4f600fd753cf56",
+    "skill_char_len": 1986,
+    "skill_md_path": "experiments/skills_llm_plan/snakepipes_merge_fc/SKILL.md",
+    "lookup_field": "by_task_id",
+    "lookup_key": "snakepipes_merge_fc",
+    "source_task_id": "snakepipes_merge_fc",
+    "source_model": "openrouter/openai/gpt-4o"
+  }
+}

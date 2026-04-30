@@ -1,0 +1,26 @@
+{
+  "task_id": "spilterlize_limma_rbe",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/spilterlize_limma_rbe",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/017_spilterlize_limma_rbe/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+  "registry_index": 17,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "arm": "pipeline",
+    "injected": true,
+    "manifest_version": 3,
+    "skill_sha256": "89bb0a4e9dc35cfccdcf12447bd3e423d7a9f6c7948ba55a7a286aa7eeb86a57",
+    "skill_char_len": 4000,
+    "skill_md_path": "experiments/skills_pipeline/epigen-spilterlize_integrate-finish/SKILL.md",
+    "lookup_field": "by_workflow_id",
+    "lookup_key": "epigen-spilterlize_integrate-finish",
+    "source_workflow_id": "epigen-spilterlize_integrate-finish"
+  }
+}

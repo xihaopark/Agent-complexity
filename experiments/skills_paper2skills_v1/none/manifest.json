@@ -1,0 +1,6 @@
+{
+  "arm": "none",
+  "description": "No skill injection - baseline",
+  "skills": {},
+  "sys_prompt_addition": "Use your best knowledge to complete this task. Follow standard practices but adapt to the specific requirements."
+}

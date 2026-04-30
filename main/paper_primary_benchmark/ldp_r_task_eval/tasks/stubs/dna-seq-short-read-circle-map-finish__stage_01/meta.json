@@ -1,0 +1,14 @@
+{
+  "workflow_id": "dna-seq-short-read-circle-map-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/dna-seq-short-read-circle-map-finish/manifest.json",
+  "step_ids": [
+    "bam_index",
+    "get_genome",
+    "bwa_index",
+    "genome_faidx"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.961767+00:00"
+}

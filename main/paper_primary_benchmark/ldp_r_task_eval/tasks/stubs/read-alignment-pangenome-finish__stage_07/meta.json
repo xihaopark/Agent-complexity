@@ -1,0 +1,19 @@
+{
+  "workflow_id": "read-alignment-pangenome-finish",
+  "pipeline_task_id": "stage_07",
+  "order": 7,
+  "manifest_path": "finish/read-alignment-pangenome-finish/manifest.json",
+  "step_ids": [
+    "assign_primers",
+    "filter_primerless_reads",
+    "trim_primers",
+    "map_primers"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.006110+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_04",
+  "prepared_at": "2026-04-16T12:46:05.807303+00:00",
+  "micro_task": "sum_of_values_txt"
+}

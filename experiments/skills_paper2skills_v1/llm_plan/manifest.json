@@ -1,0 +1,12 @@
+{
+  "arm": "llm_plan",
+  "description": "LLM-generated execution plan as skill",
+  "skills": {
+    "deseq2_apeglm_small_n": "llm_plan/deseq2_apeglm_small_n/SKILL.md",
+    "deseq2_lrt_interaction": "llm_plan/deseq2_lrt_interaction/SKILL.md",
+    "deseq2_shrinkage_comparison": "llm_plan/deseq2_shrinkage_comparison/SKILL.md",
+    "limma_voom_weights": "llm_plan/limma_voom_weights/SKILL.md",
+    "limma_duplicatecorrelation": "llm_plan/limma_duplicatecorrelation/SKILL.md"
+  },
+  "sys_prompt_addition": "A step-by-step execution plan has been generated for this task. Follow the plan's guidance but adapt as needed based on actual data inspection."
+}

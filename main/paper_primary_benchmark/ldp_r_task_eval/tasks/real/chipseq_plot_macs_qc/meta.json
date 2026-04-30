@@ -1,0 +1,20 @@
+{
+  "task_id": "chipseq_plot_macs_qc",
+  "kind": "real",
+  "workflow_id": "snakemake-workflows-chipseq-finish",
+  "family": "chipseq",
+  "stage": "late",
+  "difficulty": 2,
+  "paper_covered": false,
+  "wrapper_kind": "commandArgs",
+  "description": "MACS2 peak QC summary statistics (plots redirected to tempfile).",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/snakemake-workflows__chipseq/workflow/scripts/plot_macs_qc.R",
+  "ground_truth_dir": "tasks/real_ground_truth/chipseq_plot_macs_qc",
+  "success_glob": "output/macs_qc_summary.tsv",
+  "reference_output_files": [
+    "macs_qc_summary.tsv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

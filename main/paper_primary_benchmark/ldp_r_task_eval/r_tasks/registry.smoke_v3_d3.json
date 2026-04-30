@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "kind": "smoke_v3_d3",
+  "description": "2-task smoke registry for D3 validation.",
+  "tasks": [
+    {
+      "id": "methylkit_load",
+      "work_dir": "ldp_r_task_eval/tasks/real/methylkit_load",
+      "success_artifact_glob": "output/mk_raw.rds",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "family": "methylation",
+      "stage": "early",
+      "difficulty": 1,
+      "paper_covered": true
+    },
+    {
+      "id": "spilterlize_filter_features",
+      "work_dir": "ldp_r_task_eval/tasks/real/spilterlize_filter_features",
+      "success_artifact_glob": "output/filtered_counts.csv",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "epigen-spilterlize_integrate-finish",
+      "family": "rna",
+      "stage": "early",
+      "difficulty": 2,
+      "paper_covered": false
+    }
+  ]
+}

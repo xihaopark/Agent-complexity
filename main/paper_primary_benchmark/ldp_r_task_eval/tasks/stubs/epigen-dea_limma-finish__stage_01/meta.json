@@ -1,0 +1,19 @@
+{
+  "workflow_id": "epigen-dea_limma-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/epigen-dea_limma-finish/manifest.json",
+  "step_ids": [
+    "dea",
+    "one_vs_all_contrasts",
+    "aggregate",
+    "ova_stats_plot"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.969542+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_01",
+  "prepared_at": "2026-04-16T12:46:05.787677+00:00",
+  "micro_task": "sum_of_values_txt"
+}

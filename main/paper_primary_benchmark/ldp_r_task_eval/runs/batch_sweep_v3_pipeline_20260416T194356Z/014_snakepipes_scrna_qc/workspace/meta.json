@@ -1,0 +1,21 @@
+{
+  "task_id": "snakepipes_scrna_qc",
+  "kind": "real",
+  "workflow_id": "maxplanck-ie-snakepipes-finish",
+  "family": "scrna",
+  "stage": "mid",
+  "difficulty": 2,
+  "paper_covered": false,
+  "wrapper_kind": "commandArgs",
+  "description": "snakePipes scRNA libstats TSVs (plots skipped by omitting plot_format arg).",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/scRNAseq/scRNAseq_QC_metrics2.R",
+  "ground_truth_dir": "tasks/real_ground_truth/snakepipes_scrna_qc",
+  "success_glob": "output/scqc.libstats_reads.tsv",
+  "reference_output_files": [
+    "scqc.libstats_reads.tsv",
+    "scqc.libstats_pct.tsv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

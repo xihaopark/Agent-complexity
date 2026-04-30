@@ -1,0 +1,14 @@
+{
+  "workflow_id": "tgirke-systempiperdata-riboseq-finish",
+  "pipeline_task_id": "stage_05",
+  "order": 5,
+  "manifest_path": "finish/tgirke-systempiperdata-riboseq-finish/manifest.json",
+  "step_ids": [
+    "coverage_upstream_downstream",
+    "coverage_combined",
+    "coverage_nuc_level",
+    "read_counting"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.024004+00:00"
+}

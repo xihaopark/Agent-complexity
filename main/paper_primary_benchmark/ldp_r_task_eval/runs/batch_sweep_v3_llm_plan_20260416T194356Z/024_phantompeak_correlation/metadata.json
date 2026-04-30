@@ -1,0 +1,27 @@
+{
+  "task_id": "phantompeak_correlation",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/phantompeak_correlation",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_llm_plan_20260416T194356Z/024_phantompeak_correlation/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_v3_llm_plan_20260416T194356Z",
+  "registry_index": 24,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "arm": "llm_plan",
+    "injected": true,
+    "manifest_version": 3,
+    "skill_sha256": "fb99c3d8ba3550bf5c3e579c427d1c5e6bfa1f7886749aceac5fd33831b2a592",
+    "skill_char_len": 1593,
+    "skill_md_path": "experiments/skills_llm_plan/phantompeak_correlation/SKILL.md",
+    "lookup_field": "by_task_id",
+    "lookup_key": "phantompeak_correlation",
+    "source_task_id": "phantompeak_correlation",
+    "source_model": "openrouter/openai/gpt-4o"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "workflow_id": "akinyi-onyango-rna_seq_pipeline-finish",
+  "workflow_dir": "main/finish/workflow_candidates/Akinyi-Onyango__rna_seq_pipeline",
+  "out_dir": "main/paper_primary_benchmark/experiments/skills_pipeline/akinyi-onyango-rna_seq_pipeline-finish",
+  "status": "ok",
+  "generated_at": "2026-04-16T16:55:17Z",
+  "model": "openrouter/openai/gpt-4o",
+  "resolved_model": "openai/gpt-4o",
+  "max_per_file": 8000,
+  "max_total": 80000,
+  "prompt_tokens": 2104,
+  "completion_tokens": 771,
+  "total_tokens": 2875,
+  "runtime_seconds": 7.44,
+  "llm_seconds": 7.44,
+  "chars_used": 6408,
+  "truncated": false,
+  "files_considered": [
+    {
+      "path": "Snakefile",
+      "kind": "snakefile",
+      "bytes": 2796,
+      "priority": 0
+    },
+    {
+      "path": "scripts/deseq_analysis.r",
+      "kind": "r",
+      "bytes": 1148,
+      "priority": 1
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "bytes": 2394,
+      "priority": 4
+    }
+  ],
+  "files_included": [
+    {
+      "path": "Snakefile",
+      "kind": "snakefile",
+      "chars_used": 2796,
+      "partial": false
+    },
+    {
+      "path": "scripts/deseq_analysis.r",
+      "kind": "r",
+      "chars_used": 1148,
+      "partial": false
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "chars_used": 2374,
+      "partial": false
+    }
+  ]
+}

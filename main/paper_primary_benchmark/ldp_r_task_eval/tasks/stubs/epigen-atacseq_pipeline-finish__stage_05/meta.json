@@ -1,0 +1,14 @@
+{
+  "workflow_id": "epigen-atacseq_pipeline-finish",
+  "pipeline_task_id": "stage_05",
+  "order": 5,
+  "manifest_path": "finish/epigen-atacseq_pipeline-finish/manifest.json",
+  "step_ids": [
+    "quantify_aggregate",
+    "homer_aggregate",
+    "map_consensus_tss",
+    "uropa_prepare"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.968110+00:00"
+}

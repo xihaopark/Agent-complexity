@@ -1,0 +1,6 @@
+[submodule "external/sharefair/copalink"]
+	path = external/sharefair/copalink
+	url = https://gitlab.liris.cnrs.fr/sharefair/copalink.git
+[submodule "external/sharefair/copalink-experiments"]
+	path = external/sharefair/copalink-experiments
+	url = https://gitlab.liris.cnrs.fr/sharefair/copalink-experiments.git

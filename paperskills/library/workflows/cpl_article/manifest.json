@@ -1,0 +1,218 @@
+{
+  "version": "2026-05-01",
+  "description": "CPL-Article 26 papers - PMID list (not method papers, workflow descriptions)",
+  "source": "Zenodo 10.5281/zenodo.18526700",
+  "license": "CC BY-NC-SA 2.0",
+  "count": 26,
+  "entries": [
+    {
+      "pmid": "PMID31647547",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID31647547",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID32256520",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID32256520",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID32269765",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID32269765",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID32866155",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID32866155",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID33193602",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID33193602",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID33324401",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID33324401",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID33561126",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID33561126",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID33772539",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID33772539",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID33777521",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID33777521",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID33978747",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID33978747",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID34172000",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID34172000",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID34383887",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID34383887",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID34394197",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID34394197",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID34788790",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID34788790",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID34900230",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID34900230",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID35118380",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID35118380",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID35136576",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID35136576",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID35157051",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID35157051",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID35171290",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID35171290",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID35205129",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID35205129",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID35207751",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID35207751",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID35501696",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID35501696",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID35574063",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID35574063",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID35979446",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID35979446",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID36071521",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID36071521",
+      "brat_annotated": true
+    },
+    {
+      "pmid": "PMID37835427",
+      "doi": "",
+      "title": "",
+      "status": "pending_mapping",
+      "corpus_path": "literature/cpl_corpus/_extract/CPL-Article/PMID37835427",
+      "brat_annotated": true
+    }
+  ],
+  "note": "These are workflow-description papers with tool NER annotations, NOT method papers like DESeq2/MACS2. Use as supplementary context for tool mention styles, not as primary analysis skills."
+}

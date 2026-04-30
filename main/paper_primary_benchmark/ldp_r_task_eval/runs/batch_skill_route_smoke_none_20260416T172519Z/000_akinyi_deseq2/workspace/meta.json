@@ -1,0 +1,21 @@
+{
+  "task_id": "akinyi_deseq2",
+  "kind": "real",
+  "workflow_id": "akinyi-onyango-rna_seq_pipeline-finish",
+  "family": "rna",
+  "stage": "late",
+  "difficulty": 2,
+  "paper_covered": true,
+  "wrapper_kind": "commandArgs",
+  "description": "DESeq2 differential expression on featureCounts output (Akinyi RNA-seq pipeline).",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/Akinyi-Onyango__rna_seq_pipeline/scripts/deseq_analysis.r",
+  "ground_truth_dir": "tasks/real_ground_truth/akinyi_deseq2",
+  "success_glob": "output/deseq2_up.txt",
+  "reference_output_files": [
+    "deseq2_up.txt",
+    "deseq2_down.txt"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

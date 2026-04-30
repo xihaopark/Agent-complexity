@@ -1,0 +1,15 @@
+{
+  "pdf": "main/paper_primary_benchmark/literature/pdfs/10.1186_s12859-016-0950-8.pdf",
+  "out_dir": "main/paper_primary_benchmark/experiments/skills/10.1186_s12859-016-0950-8",
+  "pages_processed": 8,
+  "dpi": 130,
+  "model": "openai/gpt-4o",
+  "render_seconds": 0.5,
+  "llm_seconds": 11.41,
+  "total_seconds": 11.91,
+  "usage": {
+    "prompt_tokens": 6412,
+    "completion_tokens": 286,
+    "total_tokens": 6698
+  }
+}

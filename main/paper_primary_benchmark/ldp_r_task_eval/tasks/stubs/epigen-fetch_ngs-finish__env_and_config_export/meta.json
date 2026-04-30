@@ -1,0 +1,17 @@
+{
+  "workflow_id": "epigen-fetch_ngs-finish",
+  "pipeline_task_id": "env_and_config_export",
+  "order": 1,
+  "manifest_path": "finish/epigen-fetch_ngs-finish/manifest.json",
+  "step_ids": [
+    "env_export",
+    "config_export"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.974340+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_02",
+  "prepared_at": "2026-04-16T12:46:05.791130+00:00",
+  "micro_task": "sum_of_values_txt"
+}

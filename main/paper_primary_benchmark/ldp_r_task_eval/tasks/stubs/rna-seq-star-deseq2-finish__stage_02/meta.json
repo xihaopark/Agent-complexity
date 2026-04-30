@@ -1,0 +1,13 @@
+{
+  "workflow_id": "rna-seq-star-deseq2-finish",
+  "pipeline_task_id": "stage_02",
+  "order": 2,
+  "manifest_path": "finish/rna-seq-star-deseq2-finish/manifest.json",
+  "step_ids": [
+    "count_matrix",
+    "differential_expression",
+    "pca_plot"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.012857+00:00"
+}

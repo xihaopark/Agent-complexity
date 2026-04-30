@@ -1,0 +1,14 @@
+{
+  "workflow_id": "rna-seq-star-deseq2-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/rna-seq-star-deseq2-finish/manifest.json",
+  "step_ids": [
+    "trimming",
+    "alignment",
+    "rseqc_qc",
+    "multiqc_report"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.011101+00:00"
+}

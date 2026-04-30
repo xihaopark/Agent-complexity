@@ -1,0 +1,274 @@
+{
+  "workflow_id": "snakemake-workflows-chipseq-finish",
+  "workflow_dir": "/Users/park/code/Paper2Skills-main/main/finish/workflow_candidates/snakemake-workflows__chipseq",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills_pipeline/snakemake-workflows-chipseq-finish",
+  "status": "ok",
+  "generated_at": "2026-04-16T19:32:24Z",
+  "model": "openrouter/openai/gpt-4o",
+  "resolved_model": "openai/gpt-4o",
+  "max_per_file": 8000,
+  "max_total": 80000,
+  "prompt_tokens": 20711,
+  "completion_tokens": 1149,
+  "total_tokens": 21860,
+  "runtime_seconds": 19.97,
+  "llm_seconds": 19.97,
+  "chars_used": 80000,
+  "truncated": true,
+  "files_considered": [
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "bytes": 706,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/common.smk",
+      "kind": "snakefile",
+      "bytes": 21768,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/consensus_peak_analysis.smk",
+      "kind": "snakefile",
+      "bytes": 10883,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/cutadapt.smk",
+      "kind": "snakefile",
+      "bytes": 979,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/filtering.smk",
+      "kind": "snakefile",
+      "bytes": 2949,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/mapping.smk",
+      "kind": "snakefile",
+      "bytes": 1306,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/peak_analysis.smk",
+      "kind": "snakefile",
+      "bytes": 10510,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/post-analysis.smk",
+      "kind": "snakefile",
+      "bytes": 9157,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/qc.smk",
+      "kind": "snakefile",
+      "bytes": 514,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/ref.smk",
+      "kind": "snakefile",
+      "bytes": 4314,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/stats.smk",
+      "kind": "snakefile",
+      "bytes": 931,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/utils.smk",
+      "kind": "snakefile",
+      "bytes": 301,
+      "priority": 0
+    },
+    {
+      "path": "workflow/scripts/featurecounts_deseq2.R",
+      "kind": "r",
+      "bytes": 18515,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/phantompeak_correlation.R",
+      "kind": "r",
+      "bytes": 355,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/plot_annotatepeaks_summary_homer.R",
+      "kind": "r",
+      "bytes": 635,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/plot_frip_score.R",
+      "kind": "r",
+      "bytes": 667,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/plot_homer_annotatepeaks.R",
+      "kind": "r",
+      "bytes": 9548,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/plot_macs_qc.R",
+      "kind": "r",
+      "bytes": 8375,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/plot_peak_intersect.R",
+      "kind": "r",
+      "bytes": 3942,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/plot_peaks_count_macs2.R",
+      "kind": "r",
+      "bytes": 664,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/run_spp.R",
+      "kind": "r",
+      "bytes": 37368,
+      "priority": 1
+    }
+  ],
+  "files_included": [
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "chars_used": 706,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/common.smk",
+      "kind": "snakefile",
+      "chars_used": 8042,
+      "partial": true
+    },
+    {
+      "path": "workflow/rules/consensus_peak_analysis.smk",
+      "kind": "snakefile",
+      "chars_used": 8042,
+      "partial": true
+    },
+    {
+      "path": "workflow/rules/cutadapt.smk",
+      "kind": "snakefile",
+      "chars_used": 979,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/filtering.smk",
+      "kind": "snakefile",
+      "chars_used": 2949,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/mapping.smk",
+      "kind": "snakefile",
+      "chars_used": 1306,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/peak_analysis.smk",
+      "kind": "snakefile",
+      "chars_used": 8042,
+      "partial": true
+    },
+    {
+      "path": "workflow/rules/post-analysis.smk",
+      "kind": "snakefile",
+      "chars_used": 8041,
+      "partial": true
+    },
+    {
+      "path": "workflow/rules/qc.smk",
+      "kind": "snakefile",
+      "chars_used": 514,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/ref.smk",
+      "kind": "snakefile",
+      "chars_used": 4314,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/stats.smk",
+      "kind": "snakefile",
+      "chars_used": 931,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/utils.smk",
+      "kind": "snakefile",
+      "chars_used": 301,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/featurecounts_deseq2.R",
+      "kind": "r",
+      "chars_used": 8042,
+      "partial": true
+    },
+    {
+      "path": "workflow/scripts/phantompeak_correlation.R",
+      "kind": "r",
+      "chars_used": 355,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/plot_annotatepeaks_summary_homer.R",
+      "kind": "r",
+      "chars_used": 635,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/plot_frip_score.R",
+      "kind": "r",
+      "chars_used": 667,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/plot_homer_annotatepeaks.R",
+      "kind": "r",
+      "chars_used": 8041,
+      "partial": true
+    },
+    {
+      "path": "workflow/scripts/plot_macs_qc.R",
+      "kind": "r",
+      "chars_used": 8041,
+      "partial": true
+    },
+    {
+      "path": "workflow/scripts/plot_peak_intersect.R",
+      "kind": "r",
+      "chars_used": 3942,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/plot_peaks_count_macs2.R",
+      "kind": "r",
+      "chars_used": 664,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/run_spp.R",
+      "kind": "r",
+      "chars_used": 4444,
+      "partial": true
+    }
+  ]
+}

@@ -6,7 +6,7 @@
   "updated_at": "2026-04-23",
   "verified_tasks": [
     "deseq2_apeglm_small_n",
-    "deseq2_lrt_interaction", 
+    "deseq2_lrt_interaction",
     "deseq2_shrinkage_comparison",
     "limma_voom_weights",
     "limma_duplicatecorrelation"
@@ -19,7 +19,7 @@
   "tasks": [
     {
       "id": "deseq2_apeglm_small_n",
-      "work_dir": "tasks/paper_sensitive_v1/real/deseq2_apeglm_small_n",
+      "work_dir": "ldp_r_task_eval/tasks/paper_sensitive_v1/real/deseq2_apeglm_small_n",
       "status": "ready",
       "verified": true,
       "family": "rna",
@@ -30,7 +30,7 @@
     },
     {
       "id": "deseq2_lrt_interaction",
-      "work_dir": "tasks/paper_sensitive_v1/real/deseq2_lrt_interaction",
+      "work_dir": "ldp_r_task_eval/tasks/paper_sensitive_v1/real/deseq2_lrt_interaction",
       "status": "ready",
       "verified": true,
       "family": "rna",
@@ -41,7 +41,7 @@
     },
     {
       "id": "limma_voom_weights",
-      "work_dir": "tasks/paper_sensitive_v1/real/limma_voom_weights",
+      "work_dir": "ldp_r_task_eval/tasks/paper_sensitive_v1/real/limma_voom_weights",
       "status": "ready",
       "verified": true,
       "family": "rna",
@@ -52,7 +52,7 @@
     },
     {
       "id": "macs2_broad_histone",
-      "work_dir": "tasks/paper_sensitive_v1/real/macs2_broad_histone",
+      "work_dir": "ldp_r_task_eval/tasks/paper_sensitive_v1/real/macs2_broad_histone",
       "status": "scaffold",
       "family": "epigenomics",
       "primary_doi": "10.1186/gb-2008-9-9-r137",
@@ -60,7 +60,7 @@
     },
     {
       "id": "combat_seq_batch",
-      "work_dir": "tasks/paper_sensitive_v1/real/combat_seq_batch",
+      "work_dir": "ldp_r_task_eval/tasks/paper_sensitive_v1/real/combat_seq_batch",
       "status": "scaffold",
       "family": "rna",
       "primary_doi": "TBD_sva",
@@ -68,7 +68,7 @@
     },
     {
       "id": "seurat_sctransform_scaling",
-      "work_dir": "tasks/paper_sensitive_v1/real/seurat_sctransform_scaling",
+      "work_dir": "ldp_r_task_eval/tasks/paper_sensitive_v1/real/seurat_sctransform_scaling",
       "status": "scaffold",
       "family": "single-cell",
       "primary_doi": "10.1101/2020.10.12.335331",
@@ -76,7 +76,7 @@
     },
     {
       "id": "clusterprofiler_gsea_vs_ora",
-      "work_dir": "tasks/paper_sensitive_v1/real/clusterprofiler_gsea_vs_ora",
+      "work_dir": "ldp_r_task_eval/tasks/paper_sensitive_v1/real/clusterprofiler_gsea_vs_ora",
       "status": "scaffold",
       "family": "other",
       "primary_doi": "10.1089/omi.2011.0118",
@@ -84,7 +84,7 @@
     },
     {
       "id": "edger_robust_filtering",
-      "work_dir": "tasks/paper_sensitive_v1/real/edger_robust_filtering",
+      "work_dir": "ldp_r_task_eval/tasks/paper_sensitive_v1/real/edger_robust_filtering",
       "status": "scaffold",
       "family": "rna",
       "primary_doi": "TBD_edgeR",
@@ -92,7 +92,7 @@
     },
     {
       "id": "methylkit_diffmeth_params",
-      "work_dir": "tasks/paper_sensitive_v1/real/methylkit_diffmeth_params",
+      "work_dir": "ldp_r_task_eval/tasks/paper_sensitive_v1/real/methylkit_diffmeth_params",
       "status": "scaffold",
       "family": "methylation",
       "primary_doi": "TBD_methylKit",
@@ -100,7 +100,7 @@
     },
     {
       "id": "limma_duplicatecorrelation",
-      "work_dir": "tasks/paper_sensitive_v1/real/limma_duplicatecorrelation",
+      "work_dir": "ldp_r_task_eval/tasks/paper_sensitive_v1/real/limma_duplicatecorrelation",
       "status": "ready",
       "verified": true,
       "family": "rna",
@@ -111,7 +111,7 @@
     },
     {
       "id": "seurat_integration_method",
-      "work_dir": "tasks/paper_sensitive_v1/real/seurat_integration_method",
+      "work_dir": "ldp_r_task_eval/tasks/paper_sensitive_v1/real/seurat_integration_method",
       "status": "scaffold",
       "family": "single-cell",
       "primary_doi": "10.1101/2020.10.12.335331",
@@ -119,7 +119,7 @@
     },
     {
       "id": "deseq2_shrinkage_comparison",
-      "work_dir": "tasks/paper_sensitive_v1/real/deseq2_shrinkage_comparison",
+      "work_dir": "ldp_r_task_eval/tasks/paper_sensitive_v1/real/deseq2_shrinkage_comparison",
       "status": "ready",
       "verified": true,
       "family": "rna",

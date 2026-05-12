@@ -1,0 +1,19 @@
+{
+  "workflow_id": "cite-seq-alevin-fry-seurat-finish",
+  "pipeline_task_id": "stage_02",
+  "order": 2,
+  "manifest_path": "finish/cite-seq-alevin-fry-seurat-finish/manifest.json",
+  "step_ids": [
+    "build_splici_transcriptome",
+    "spoof_t2g",
+    "salmon_index",
+    "salmon_alevin"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.955678+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_01",
+  "prepared_at": "2026-04-16T12:46:05.781814+00:00",
+  "micro_task": "sum_of_values_txt"
+}

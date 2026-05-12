@@ -1,0 +1,9 @@
+[
+  "Rscript",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_merge_fc/reference/script.R",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_merge_fc/reference_output/merged_counts.tsv",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/snakepipes_merge_fc/input/sampleA.counts.txt",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/snakepipes_merge_fc/input/sampleB.counts.txt",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/snakepipes_merge_fc/input/sampleC.counts.txt",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/snakepipes_merge_fc/input/sampleD.counts.txt"
+]

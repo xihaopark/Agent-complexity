@@ -1,0 +1,19 @@
+{
+  "workflow_id": "epigen-spilterlize_integrate-finish",
+  "pipeline_task_id": "stage_02",
+  "order": 2,
+  "manifest_path": "finish/epigen-spilterlize_integrate-finish/manifest.json",
+  "step_ids": [
+    "norm_cqn",
+    "norm_voom",
+    "integrate_limma",
+    "plot_cfa"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.984210+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_02",
+  "prepared_at": "2026-04-16T12:46:05.796508+00:00",
+  "micro_task": "sum_of_values_txt"
+}

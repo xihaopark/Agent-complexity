@@ -1,0 +1,27 @@
+{
+  "task_id": "clean_histoneHMM",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/clean_histoneHMM",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_llm_plan_20260416T194356Z/031_clean_histoneHMM/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_v3_llm_plan_20260416T194356Z",
+  "registry_index": 31,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "arm": "llm_plan",
+    "injected": true,
+    "manifest_version": 3,
+    "skill_sha256": "17ae3ba165b0c5979bf8855b5138f3f7e291ded7ed777e4ab7c5a7b74aa33aca",
+    "skill_char_len": 2032,
+    "skill_md_path": "experiments/skills_llm_plan/clean_histoneHMM/SKILL.md",
+    "lookup_field": "by_task_id",
+    "lookup_key": "clean_histoneHMM",
+    "source_task_id": "clean_histoneHMM",
+    "source_model": "openrouter/openai/gpt-4o"
+  }
+}

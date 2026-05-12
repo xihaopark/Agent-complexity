@@ -1,0 +1,14 @@
+{
+  "workflow_id": "tgirke-systempiperdata-riboseq-finish",
+  "pipeline_task_id": "stage_08",
+  "order": 8,
+  "manifest_path": "finish/tgirke-systempiperdata-riboseq-finish/manifest.json",
+  "step_ids": [
+    "diff_loading",
+    "diff_translational_eff",
+    "heatmap",
+    "sessionInfo"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.027098+00:00"
+}

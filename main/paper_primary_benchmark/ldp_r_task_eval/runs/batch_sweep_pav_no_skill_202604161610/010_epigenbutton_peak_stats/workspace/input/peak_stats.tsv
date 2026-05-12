@@ -1,0 +1,7 @@
+Line	Tissue	Sample	Selected_peaks	Peaks_in_Rep1	Peaks_in_Rep2	Peaks_in_merged	Peaks_in_pseudo_reps	Peaks_in_idr
+B73	leaf	H3K27ac	6807 selected	28952	11648	24664	19978	7186
+B73	leaf	H3K4me3	5308 selected	25870	10848	28535	20337	6271
+Mo17	leaf	H3K27ac	5960 selected	27726	8869	28118	27735	6743
+Mo17	leaf	H3K4me3	14697 selected	22719	27309	34191	35822	17667
+B73	root	H3K27ac	12238 selected	21848	19149	28015	22023	14917
+Mo17	root	H3K4me3	5684 selected	20449	11169	22375	18740	7029

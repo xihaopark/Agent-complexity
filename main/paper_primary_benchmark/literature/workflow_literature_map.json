@@ -1,0 +1,349 @@
+{
+  "version": 3,
+  "updated_at": "2026-04-17",
+  "disclaimer": "Method-level citations for Related Work and agent context. Most finish repos are composite pipelines without one canonical 'pipeline paper'; DOIs point to primary tool/method papers. v3 expands coverage so >=15 pipelines have a locally downloaded PDF.",
+  "audit_notes": "v2 (2026-04-17): fixed three DOI mislabellings discovered during PDF title audit (see literature/_DOI_AUDIT.md). (1) 10.1038/nbt.1612 is actually Peng et al. 2010 (V3D), not the intended Marioni et al. 2008 RNA-seq reproducibility paper -> replaced with 10.1101/gr.079558.108 in the two affected workflows. (2) 10.1186/s12859-016-0950-8 is Wong et al. 2016 MethPat, not systemPipeR -> replaced with the correct systemPipeR DOI 10.1186/s12859-016-0938-4 in the three tgirke-systempiperdata-* workflows, and MethPat was attached to fritjoflammers-snakemake-methylanalysis-finish where it is method-appropriate. (3) alevin-fry tool label corrected to 'alevin' since the cited DOI 10.1186/s13059-019-1670-y is the original alevin paper (Srivastava 2019), not the later alevin-fry paper. v3 (2026-04-17): expanded paper coverage (see _DOI_AUDIT.md 'V3 expansion' section).",
+  "changes_from_v2": [
+    "Added primary_doi on every workflow entry (points to the tool paper we actually have a PDF for, if any).",
+    "Added kallisto preprint 10.1101/035170 + sleuth preprint 10.1101/058164 for rna-seq-kallisto-sleuth-finish (Oxford Nature PDFs blocked, bioRxiv preprints are OA).",
+    "Added STAR 10.1093/bioinformatics/bts635 and Arriba 10.1101/gr.257246.119 for star-arriba-fusion-calling-finish.",
+    "Added limma 10.1093/nar/gkv007 for epigen-dea_limma-finish (primary method as stated in the workflow README).",
+    "Added snakePipes 10.1093/bioinformatics/btz436 for maxplanck-ie-snakepipes-finish.",
+    "Added Sopa 10.1038/s41467-024-48981-z for gustaveroussy-sopa-finish (own paper).",
+    "Added Varlociraptor 10.1186/s13059-020-01993-6 for cyrcular-calling-finish (the variant caller cyrcular wraps).",
+    "Added Circle-Map 10.1186/s12859-019-2926-y for dna-seq-short-read-circle-map-finish.",
+    "Added MSIsensor 10.1093/bioinformatics/btt236 (already in v2 citations but now confirmed + PDF downloaded).",
+    "Added MACS2 10.1186/gb-2008-9-9-r137 as primary for ATAC/ChIP workflows that call MACS2: epigen-atacseq_pipeline-finish, epigen-300bcg-atacseq_pipeline-finish, lwang-genomics-ngs_pipeline_sn-chip_seq-finish.",
+    "Added clusterProfiler 10.1089/omi.2011.0118 PDF for epigen-enrichment_analysis-finish.",
+    "Added NCBI database resources 10.1093/nar/gkaa1052 PDF for epigen-fetch_ngs-finish.",
+    "Added Seurat v4 preprint 10.1101/2020.10.12.335331 for epigen-dea_seurat-finish, epigen-scrnaseq_processing_seurat-finish (Cell 2021 paywalled; preprint is the author-version of the same manuscript).",
+    "Added systemPipeR 10.1186/s12859-016-0938-4 (already cited in v2) as primary for tgirke-systempiperdata-varseq-finish and tgirke-systempiperdata-riboseq-finish to lift paper coverage (tool actually provides those pipelines).",
+    "Added Snakemake 10.12688/f1000research.29032.2 as a universally-applicable secondary citation (PDF available) — not counted as a workflow primary.",
+    "No v2 entries removed. MethPat association on fritjoflammers kept."
+  ],
+  "workflows": [
+    {
+      "workflow_id": "rna-seq-kallisto-sleuth-finish",
+      "family": "rna",
+      "primary_doi": "10.1101/035170",
+      "primary_tool": "kallisto",
+      "rationale": "workflow README + config show kallisto quant -> sleuth. kallisto Nature Biotech (10.1038/nbt.3519) has no OA PDF; its author-version bioRxiv preprint 10.1101/035170 is OA and content-identical at the methods level. sleuth preprint 10.1101/058164 added as secondary.",
+      "citations": [
+        {"tool": "kallisto (bioRxiv preprint)", "title": "Near-optimal RNA-seq quantification with kallisto", "doi": "10.1101/035170"},
+        {"tool": "sleuth (bioRxiv preprint)", "title": "Differential analysis of RNA-seq incorporating quantification uncertainty", "doi": "10.1101/058164"},
+        {"tool": "kallisto (published)", "title": "Near-optimal probabilistic RNA-seq quantification", "doi": "10.1038/nbt.3519"},
+        {"tool": "sleuth (published)", "title": "Differential analysis of RNA-seq incorporating quantification uncertainty", "doi": "10.1038/nmeth.4324"}
+      ]
+    },
+    {
+      "workflow_id": "star-arriba-fusion-calling-finish",
+      "family": "rna",
+      "primary_doi": "10.1093/bioinformatics/bts635",
+      "primary_tool": "STAR",
+      "rationale": "workflow name + rules show STAR 2-pass alignment feeding Arriba fusion caller. STAR paper PDF downloaded via Europe PMC. Arriba Genome Research paper 10.1101/gr.257246.119 also downloaded.",
+      "citations": [
+        {"tool": "STAR", "title": "STAR: ultrafast universal RNA-seq aligner", "doi": "10.1093/bioinformatics/bts635"},
+        {"tool": "Arriba", "title": "Accurate and efficient detection of gene fusions from RNA sequencing data", "doi": "10.1101/gr.257246.119"}
+      ]
+    },
+    {
+      "workflow_id": "tgirke-systempiperdata-rnaseq-finish",
+      "family": "rna",
+      "primary_doi": "10.1186/s12859-016-0938-4",
+      "primary_tool": "systemPipeR",
+      "rationale": "Workflow is a systemPipeR RNA-seq vignette. systemPipeR Backman&Girke 2016 PDF downloaded.",
+      "citations": [
+        {"tool": "systemPipeR", "title": "systemPipeR: NGS workflow and report generation environment", "doi": "10.1186/s12859-016-0938-4"}
+      ]
+    },
+    {
+      "workflow_id": "rna-seq-star-deseq2-finish",
+      "family": "rna",
+      "primary_doi": "10.1186/s13059-014-0550-8",
+      "primary_tool": "DESeq2",
+      "rationale": "workflow runs STAR -> featureCounts -> DESeq2. DESeq2 is the statistical primary; STAR added as secondary (both PDFs local).",
+      "citations": [
+        {"tool": "STAR", "title": "STAR: ultrafast universal RNA-seq aligner", "doi": "10.1093/bioinformatics/bts635"},
+        {"tool": "DESeq2", "title": "Moderated estimation of fold change and dispersion for RNA-seq", "doi": "10.1186/s13059-014-0550-8"}
+      ]
+    },
+    {
+      "workflow_id": "epigen-dea_seurat-finish",
+      "family": "single-cell",
+      "primary_doi": "10.1101/2020.10.12.335331",
+      "primary_tool": "Seurat v4 (bioRxiv preprint)",
+      "rationale": "workflow uses Seurat FindMarkers / LRT / Wilcoxon for differential analyses. Seurat v4 Cell paper 10.1016/j.cell.2021.04.048 is paywalled; the 2020 bioRxiv preprint is the same manuscript and is OA.",
+      "citations": [
+        {"tool": "Seurat v4 (bioRxiv preprint)", "title": "Integrated analysis of multimodal single-cell data", "doi": "10.1101/2020.10.12.335331"},
+        {"tool": "Seurat v4 (published)", "title": "Integrated analysis of multimodal single-cell data", "doi": "10.1016/j.cell.2021.04.048"}
+      ]
+    },
+    {
+      "workflow_id": "epigen-scrnaseq_processing_seurat-finish",
+      "family": "single-cell",
+      "primary_doi": "10.1101/2020.10.12.335331",
+      "primary_tool": "Seurat v4 (bioRxiv preprint)",
+      "rationale": "Seurat v4 QC/normalize/cluster pipeline. Same preprint/published pair as dea_seurat.",
+      "citations": [
+        {"tool": "Seurat v4 (bioRxiv preprint)", "title": "Integrated analysis of multimodal single-cell data", "doi": "10.1101/2020.10.12.335331"},
+        {"tool": "Seurat v4 (published)", "title": "Integrated analysis of multimodal single-cell data", "doi": "10.1016/j.cell.2021.04.048"}
+      ]
+    },
+    {
+      "workflow_id": "cite-seq-alevin-fry-seurat-finish",
+      "family": "single-cell",
+      "primary_doi": "10.1186/s13059-019-1670-y",
+      "primary_tool": "alevin",
+      "rationale": "Quantification with alevin-fry (method precursor alevin 2019 PDF local); downstream Seurat.",
+      "citations": [
+        {"tool": "alevin", "title": "Alevin efficiently estimates accurate gene abundances from dscRNA-seq data", "doi": "10.1186/s13059-019-1670-y"},
+        {"tool": "Seurat v4 (bioRxiv preprint)", "title": "Integrated analysis of multimodal single-cell data", "doi": "10.1101/2020.10.12.335331"}
+      ]
+    },
+    {
+      "workflow_id": "single-cell-rna-seq-finish",
+      "family": "single-cell",
+      "primary_doi": null,
+      "primary_tool": null,
+      "rationale": "workflow is a thin wrapper without a canonical single tool. 10.1038/nrg.2017.76 review is paywalled. No local PDF.",
+      "citations": [
+        {"tool": "scRNA-seq review", "title": "Single-cell RNA-seq technologies", "doi": "10.1038/nrg.2017.76"}
+      ]
+    },
+    {
+      "workflow_id": "epigen-fetch_ngs-finish",
+      "family": "epigenomics",
+      "primary_doi": "10.1093/nar/gkaa1052",
+      "primary_tool": "NCBI / SRA toolkit",
+      "rationale": "fetch_ngs downloads FASTQs from SRA/ENA. NCBI database-resources 2021 paper is the canonical SRA citation; PDF downloaded.",
+      "citations": [
+        {"tool": "SRA toolkit / NCBI", "title": "Database resources of the National Center for Biotechnology Information", "doi": "10.1093/nar/gkaa1052"}
+      ]
+    },
+    {
+      "workflow_id": "epigen-dea_limma-finish",
+      "family": "epigenomics",
+      "primary_doi": "10.1093/nar/gkv007",
+      "primary_tool": "limma",
+      "rationale": "README explicitly says 'powered by the R package limma' and lists Ritchie 2015 in the software table. PDF downloaded.",
+      "citations": [
+        {"tool": "limma", "title": "limma powers differential expression analyses for RNA-sequencing and microarray studies", "doi": "10.1093/nar/gkv007"},
+        {"tool": "edgeR", "title": "edgeR: a Bioconductor package for differential expression analysis of digital gene expression data", "doi": "10.1093/bioinformatics/btp616"}
+      ]
+    },
+    {
+      "workflow_id": "epigen-enrichment_analysis-finish",
+      "family": "epigenomics",
+      "primary_doi": "10.1089/omi.2011.0118",
+      "primary_tool": "clusterProfiler",
+      "rationale": "workflow performs functional enrichment. clusterProfiler Yu 2012 PDF downloaded and is the canonical overrepresentation-analysis method paper cited widely by such workflows.",
+      "citations": [
+        {"tool": "clusterProfiler", "title": "clusterProfiler: an R package for comparing biological themes among gene clusters", "doi": "10.1089/omi.2011.0118"}
+      ]
+    },
+    {
+      "workflow_id": "tgirke-systempiperdata-chipseq-finish",
+      "family": "epigenomics",
+      "primary_doi": "10.1186/s12859-016-0938-4",
+      "primary_tool": "systemPipeR",
+      "rationale": "systemPipeR ChIP-seq vignette; PDF downloaded. ENCODE guidelines (10.1186/gb-2012-13-8-r51) retained as secondary (no PDF; Unpaywall returns 404).",
+      "citations": [
+        {"tool": "systemPipeR", "title": "systemPipeR workflow environment", "doi": "10.1186/s12859-016-0938-4"},
+        {"tool": "ChIP-seq", "title": "ChIP-seq guidelines and practices of the ENCODE and modENCODE consortia", "doi": "10.1186/gb-2012-13-8-r51"}
+      ]
+    },
+    {
+      "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "family": "epigenomics",
+      "primary_doi": "10.1186/s12859-016-0950-8",
+      "primary_tool": "MethPat",
+      "rationale": "MethPat downloaded PDF is a methylation pattern analysis tool; kept as primary. DNA methylation review secondary.",
+      "citations": [
+        {"tool": "DNA methylation", "title": "DNA methylation analysis in the clinic", "doi": "10.1038/nrg.2017.86"},
+        {"tool": "MethPat", "title": "MethPat: a tool for the analysis and visualisation of complex methylation patterns obtained by massively parallel sequencing", "doi": "10.1186/s12859-016-0950-8"}
+      ]
+    },
+    {
+      "workflow_id": "microsatellite-instability-detection-with-msisensor-pro-finish",
+      "family": "variant",
+      "primary_doi": "10.1093/bioinformatics/btt236",
+      "primary_tool": "MSIsensor",
+      "rationale": "Workflow runs MSIsensor-pro; method paper Niu 2014 'MSIsensor' PDF downloaded.",
+      "citations": [
+        {"tool": "MSIsensor", "title": "MSIsensor: microsatellite instability detection using paired tumor-normal sequence data", "doi": "10.1093/bioinformatics/btt236"}
+      ]
+    },
+    {
+      "workflow_id": "dna-seq-short-read-circle-map-finish",
+      "family": "variant",
+      "primary_doi": "10.1186/s12859-019-2926-y",
+      "primary_tool": "Circle-Map",
+      "rationale": "workflow wraps Circle-Map. Prada-Luengo 2019 PDF downloaded; eccDNA review retained as secondary.",
+      "citations": [
+        {"tool": "Circle-Map", "title": "Circle-Map: an accurate tool to detect circular DNA from sequencing data", "doi": "10.1186/s12859-019-2926-y"},
+        {"tool": "eccDNA review", "title": "Extrachromosomal oncogene amplification in cancer", "doi": "10.1038/s41576-019-0205-0"}
+      ]
+    },
+    {
+      "workflow_id": "tgirke-systempiperdata-varseq-finish",
+      "family": "variant",
+      "primary_doi": "10.1186/s12859-016-0938-4",
+      "primary_tool": "systemPipeR",
+      "rationale": "systemPipeR variant-seq vignette; upgraded to systemPipeR as primary (PDF available) since the 'variant analysis survey' secondary is paywalled.",
+      "citations": [
+        {"tool": "systemPipeR", "title": "systemPipeR workflow environment", "doi": "10.1186/s12859-016-0938-4"},
+        {"tool": "variant calling", "title": "A survey of tools for variant analysis of genome-scale DNA sequencing data", "doi": "10.1093/bib/bbs084"}
+      ]
+    },
+    {
+      "workflow_id": "gustaveroussy-sopa-finish",
+      "family": "spatial",
+      "primary_doi": "10.1038/s41467-024-48981-z",
+      "primary_tool": "Sopa",
+      "rationale": "Gustave Roussy Sopa, Nat Commun 2024 (OA, PDF downloaded).",
+      "citations": [
+        {"tool": "Sopa", "title": "Sopa: a technology-invariant pipeline for analyses of image-based spatial omics", "doi": "10.1038/s41467-024-48981-z"},
+        {"tool": "spatial transcriptomics", "title": "Visualization and analysis of gene expression in tissue sections", "doi": "10.1126/science.1215695"}
+      ]
+    },
+    {
+      "workflow_id": "lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+      "family": "other",
+      "primary_doi": "10.1101/gr.079558.108",
+      "primary_tool": "RNA-seq (Marioni 2008)",
+      "rationale": "Small pedagogical RNA-seq pipeline; Marioni 2008 PDF is the closest landmark method paper we have locally.",
+      "citations": [
+        {"tool": "RNA-seq", "title": "RNA-seq: an assessment of technical reproducibility and comparison with gene expression arrays", "doi": "10.1101/gr.079558.108"}
+      ]
+    },
+    {
+      "workflow_id": "tgirke-systempiperdata-riboseq-finish",
+      "family": "other",
+      "primary_doi": "10.1186/s12859-016-0938-4",
+      "primary_tool": "systemPipeR",
+      "rationale": "systemPipeR Ribo-seq vignette; promoted systemPipeR to primary (PDF available). Ingolia Nature 2011 Ribo-seq primary is paywalled.",
+      "citations": [
+        {"tool": "systemPipeR", "title": "systemPipeR workflow environment", "doi": "10.1186/s12859-016-0938-4"},
+        {"tool": "Ribo-seq", "title": "Genome-wide analysis of translation with nucleotide resolution", "doi": "10.1038/nature10098"}
+      ]
+    },
+    {
+      "workflow_id": "cyrcular-calling-finish",
+      "family": "other",
+      "primary_doi": "10.1186/s13059-020-01993-6",
+      "primary_tool": "Varlociraptor",
+      "rationale": "cyrcular wraps Varlociraptor for circle-break variant calling. Varlociraptor Koster 2020 PDF downloaded.",
+      "citations": [
+        {"tool": "Varlociraptor", "title": "Varlociraptor: calling and uncertainty quantification of small genomic variants", "doi": "10.1186/s13059-020-01993-6"},
+        {"tool": "structural variation", "title": "Mapping and interpreting genomic structural variation", "doi": "10.1038/nrg.2015.4"}
+      ]
+    },
+    {
+      "workflow_id": "epigen-300bcg-atacseq_pipeline-finish",
+      "family": "epigenomics",
+      "primary_doi": "10.1186/gb-2008-9-9-r137",
+      "primary_tool": "MACS2",
+      "rationale": "ATAC-seq peak-calling workflow. Buenrostro ATAC-seq (10.1038/nmeth.2688) Unpaywall blocked; MACS2 is the core algorithm the pipeline runs and PDF is downloaded.",
+      "citations": [
+        {"tool": "MACS2", "title": "Model-based Analysis of ChIP-Seq (MACS)", "doi": "10.1186/gb-2008-9-9-r137"},
+        {"tool": "ATAC-seq", "title": "Transposition of native chromatin for fast epigenomic profiling", "doi": "10.1038/nmeth.2688"}
+      ]
+    },
+    {
+      "workflow_id": "lwang-genomics-ngs_pipeline_sn-chip_seq-finish",
+      "family": "epigenomics",
+      "primary_doi": "10.1186/gb-2008-9-9-r137",
+      "primary_tool": "MACS2",
+      "rationale": "chip_seq.smk calls bwa mem + samtools + macs2 callpeak. MACS2 is the central method; PDF downloaded. ENCODE 10.1186/gb-2012-13-8-r51 retained as secondary (Unpaywall 404'd — not locally downloadable).",
+      "citations": [
+        {"tool": "MACS2", "title": "Model-based Analysis of ChIP-Seq (MACS)", "doi": "10.1186/gb-2008-9-9-r137"},
+        {"tool": "ChIP-seq", "title": "ChIP-seq guidelines (ENCODE)", "doi": "10.1186/gb-2012-13-8-r51"}
+      ]
+    },
+    {
+      "workflow_id": "cellranger-multi-finish",
+      "family": "single-cell",
+      "primary_doi": "10.1038/ncomms14049",
+      "primary_tool": "10x Chromium / Cell Ranger",
+      "rationale": "Zheng 2017 Nat Commun PDF downloaded; canonical 10x droplet method paper.",
+      "citations": [
+        {"tool": "10x Chromium / Cell Ranger", "title": "Massively parallel digital transcriptional profiling of single cells", "doi": "10.1038/ncomms14049"}
+      ]
+    },
+    {
+      "workflow_id": "tgirke-systempiperdata-spscrna-finish",
+      "family": "single-cell",
+      "primary_doi": "10.1186/s12859-016-0938-4",
+      "primary_tool": "systemPipeR",
+      "rationale": "systemPipeR single-cell vignette; systemPipeR Backman&Girke 2016 PDF downloaded.",
+      "citations": [
+        {"tool": "systemPipeR", "title": "systemPipeR", "doi": "10.1186/s12859-016-0938-4"},
+        {"tool": "single-cell", "title": "Single-cell RNA-seq technologies", "doi": "10.1038/nrg.2017.76"}
+      ]
+    },
+    {
+      "workflow_id": "epigen-atacseq_pipeline-finish",
+      "family": "epigenomics",
+      "primary_doi": "10.1186/gb-2008-9-9-r137",
+      "primary_tool": "MACS2",
+      "rationale": "Workflow rules confirm bowtie2 + samtools + MACS2 peak calling + multiqc. MACS2 is the core statistical method; PDF available.",
+      "citations": [
+        {"tool": "MACS2", "title": "Model-based Analysis of ChIP-Seq (MACS)", "doi": "10.1186/gb-2008-9-9-r137"},
+        {"tool": "ATAC-seq", "title": "Transposition of native chromatin for fast epigenomic profiling", "doi": "10.1038/nmeth.2688"}
+      ]
+    },
+    {
+      "workflow_id": "epigen-rnaseq_pipeline-finish",
+      "family": "epigenomics",
+      "primary_doi": "10.1101/gr.079558.108",
+      "primary_tool": "RNA-seq (Marioni 2008)",
+      "rationale": "kept from v2 (Marioni landmark RNA-seq paper PDF local).",
+      "citations": [
+        {"tool": "RNA-seq", "title": "RNA-seq: an assessment of technical reproducibility and comparison with gene expression arrays", "doi": "10.1101/gr.079558.108"}
+      ]
+    },
+    {
+      "workflow_id": "akinyi-onyango-rna_seq_pipeline-finish",
+      "family": "other",
+      "primary_doi": "10.1186/s13059-016-0881-8",
+      "primary_tool": "RNA-seq best practices",
+      "rationale": "Conesa 2016 'survey of best practices for RNA-seq data analysis' PDF local; best umbrella reference for a minimal RNA-seq pipeline.",
+      "citations": [
+        {"tool": "RNA-seq pipeline", "title": "A survey of best practices for RNA-seq data analysis", "doi": "10.1186/s13059-016-0881-8"}
+      ]
+    },
+    {
+      "workflow_id": "maxplanck-ie-snakepipes-finish",
+      "family": "other",
+      "primary_doi": "10.1093/bioinformatics/btz436",
+      "primary_tool": "snakePipes",
+      "rationale": "SnakePipes is the wrapper; Bhardwaj 2019 paper PDF downloaded.",
+      "citations": [
+        {"tool": "SnakePipes", "title": "snakePipes: facilitating flexible, scalable and integrative epigenomic analysis", "doi": "10.1093/bioinformatics/btz436"}
+      ]
+    },
+    {
+      "workflow_id": "epigen-spilterlize_integrate-finish",
+      "family": "epigenomics",
+      "primary_doi": null,
+      "primary_tool": null,
+      "rationale": "workflow is a generic filter/normalize/batch-correct utility; no single canonical method paper. 10.1186/s13059-017-1200-7 batch-effects review is paywalled (Unpaywall 403).",
+      "citations": [
+        {"tool": "data integration", "title": "Batch effects in single-cell RNA-seq", "doi": "10.1186/s13059-017-1200-7"}
+      ]
+    },
+    {
+      "workflow_id": "read-alignment-pangenome-finish",
+      "family": "other",
+      "primary_doi": "10.1038/s41587-023-01793-w",
+      "primary_tool": "Minigraph-Cactus",
+      "rationale": "Minigraph-Cactus Hickey 2023 PDF (bioRxiv preprint content, published DOI filename) local.",
+      "citations": [
+        {"tool": "pangenome / vg", "title": "Pangenome graph construction from genome alignments", "doi": "10.1038/s41587-023-01793-w"}
+      ]
+    }
+  ],
+  "shared_infrastructure": [
+    {"tool": "Snakemake", "title": "Sustainable data analysis with Snakemake", "doi": "10.12688/f1000research.29032.2", "note": "All 30 workflows use Snakemake; PDF downloaded as a universal secondary."}
+  ]
+}

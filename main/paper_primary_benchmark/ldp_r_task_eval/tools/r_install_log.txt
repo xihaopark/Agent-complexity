@@ -1,0 +1,9 @@
+=== R install run started 2026-04-17 03:39:52 === 
+SKIP edgeR (already installed) elapsed=0.0s 
+SKIP genefilter (already installed) elapsed=0.0s 
+=== R install run2 started 2026-04-17 03:40:06 === 
+SKIP GenomicRanges (already installed) elapsed=0.0s 
+SKIP rtracklayer (already installed) elapsed=0.0s 
+SKIP Biostrings (already installed) elapsed=0.0s 
+FAIL IHW type=bioc elapsed=killed (install stalled in bg)
+SKIP edgeR genefilter GenomicRanges rtracklayer Biostrings (already installed)

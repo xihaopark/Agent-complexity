@@ -1,0 +1,19 @@
+{
+  "workflow_id": "epigen-dea_limma-finish",
+  "pipeline_task_id": "stage_02",
+  "order": 2,
+  "manifest_path": "finish/epigen-dea_limma-finish/manifest.json",
+  "step_ids": [
+    "fetch_file",
+    "volcanos",
+    "lfc_heatmap",
+    "env_export"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.970180+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_02",
+  "prepared_at": "2026-04-16T12:46:05.788286+00:00",
+  "micro_task": "sum_of_values_txt"
+}

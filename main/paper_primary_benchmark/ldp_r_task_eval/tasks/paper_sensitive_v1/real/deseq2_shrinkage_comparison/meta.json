@@ -1,0 +1,16 @@
+{
+  "task_id": "deseq2_shrinkage_comparison",
+  "kind": "paper_sensitive",
+  "blueprint_version": "v1",
+  "workflow_id": "rna-seq-star-deseq2-finish",
+  "family": "rna",
+  "stage": "late",
+  "difficulty": 3,
+  "paper_covered": true,
+  "primary_method_paper_doi": "10.1186/s13059-014-0550-8",
+  "primary_tool": "DESeq2",
+  "description": "DESeq2 lfcShrink with type=apeglm for final export.",
+  "status": "scaffold",
+  "success_glob": "output/shrunk_de.csv",
+  "reference_output_files": ["shrunk_de.csv"]
+}

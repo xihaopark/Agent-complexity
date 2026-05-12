@@ -1,0 +1,13 @@
+{
+  "workflow_id": "dna-seq-short-read-circle-map-finish",
+  "pipeline_task_id": "stage_04",
+  "order": 4,
+  "manifest_path": "finish/dna-seq-short-read-circle-map-finish/manifest.json",
+  "step_ids": [
+    "apply_bqsr",
+    "samtools_queryname_sort",
+    "circle_map_extract_reads"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.963410+00:00"
+}

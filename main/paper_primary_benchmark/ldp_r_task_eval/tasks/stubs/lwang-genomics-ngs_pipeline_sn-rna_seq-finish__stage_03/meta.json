@@ -1,0 +1,18 @@
+{
+  "workflow_id": "lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+  "pipeline_task_id": "stage_03",
+  "order": 3,
+  "manifest_path": "finish/lwang-genomics-ngs_pipeline_sn-rna_seq-finish/manifest.json",
+  "step_ids": [
+    "qualimap_qc",
+    "multiqc",
+    "all"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.996450+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_03",
+  "prepared_at": "2026-04-16T12:46:05.801771+00:00",
+  "micro_task": "sum_of_values_txt"
+}

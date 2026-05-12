@@ -1,0 +1,14 @@
+{
+  "workflow_id": "tgirke-systempiperdata-rnaseq-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/tgirke-systempiperdata-rnaseq-finish/manifest.json",
+  "step_ids": [
+    "load_SPR",
+    "preprocessing",
+    "custom_preprocessing_function",
+    "trimming"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.028088+00:00"
+}

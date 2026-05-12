@@ -1,0 +1,20 @@
+{
+  "task_id": "star_deseq2_init",
+  "task_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/star_deseq2_init",
+  "out_dir": "main/paper_primary_benchmark/experiments/skills_llm_plan/star_deseq2_init",
+  "model": "openrouter/openai/gpt-4o",
+  "model_resolved": "openai/gpt-4o",
+  "temperature": 0.1,
+  "prompt_tokens": 1034,
+  "completion_tokens": 517,
+  "total_tokens": 1551,
+  "runtime_seconds": 6.38,
+  "inputs_listed": [
+    "counts.tsv",
+    "samples.tsv"
+  ],
+  "inputs_previewed": [
+    "samples.tsv"
+  ],
+  "generated_at": "2026-04-16T17:22:11Z"
+}

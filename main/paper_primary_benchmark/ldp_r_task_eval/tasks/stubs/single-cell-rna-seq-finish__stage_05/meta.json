@@ -1,0 +1,13 @@
+{
+  "workflow_id": "single-cell-rna-seq-finish",
+  "pipeline_task_id": "stage_05",
+  "order": 5,
+  "manifest_path": "finish/single-cell-rna-seq-finish/manifest.json",
+  "step_ids": [
+    "plot_cellassign",
+    "celltype_tsne",
+    "plot_celltype_expressions"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.015867+00:00"
+}

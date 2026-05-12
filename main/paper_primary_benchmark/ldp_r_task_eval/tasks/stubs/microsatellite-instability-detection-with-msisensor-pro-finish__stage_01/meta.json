@@ -1,0 +1,14 @@
+{
+  "workflow_id": "microsatellite-instability-detection-with-msisensor-pro-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/microsatellite-instability-detection-with-msisensor-pro-finish/manifest.json",
+  "step_ids": [
+    "samtools_index",
+    "download_genome",
+    "msisensor_pro_scan",
+    "msisensor_pro_pro_preprocessing_baseline"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.000983+00:00"
+}

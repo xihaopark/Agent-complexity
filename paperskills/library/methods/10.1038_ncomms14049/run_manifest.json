@@ -1,0 +1,15 @@
+{
+  "pdf": "main/paper_primary_benchmark/literature/pdfs/10.1038_ncomms14049.pdf",
+  "out_dir": "main/paper_primary_benchmark/experiments/skills/10.1038_ncomms14049",
+  "pages_processed": 8,
+  "dpi": 130,
+  "model": "openai/gpt-4o",
+  "render_seconds": 0.56,
+  "llm_seconds": 12.66,
+  "total_seconds": 13.23,
+  "usage": {
+    "prompt_tokens": 6407,
+    "completion_tokens": 401,
+    "total_tokens": 6808
+  }
+}

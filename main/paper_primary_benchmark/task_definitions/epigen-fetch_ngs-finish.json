@@ -1,0 +1,124 @@
+{
+  "workflow_id": "epigen-fetch_ngs-finish",
+  "manifest_path": "finish/epigen-fetch_ngs-finish/manifest.json",
+  "version": "1",
+  "updated_at": "2026-04-16",
+  "notes": "Smaller workflow: export env/config → download & convert → merge metadata & finalize. step_snapshots optional copies from finish manifest.",
+  "tasks": [
+    {
+      "task_id": "env_and_config_export",
+      "pipeline_stage_label": "环境与配置导出",
+      "order": 1,
+      "step_ids": ["env_export", "config_export"],
+      "metadata": {
+        "summary": "Export conda env and workflow config for reproducibility checkpoints."
+      },
+      "inputs": [
+        {
+          "role": "upstream_config",
+          "path_glob": "../workflow_candidates/epigen__fetch_ngs/config/config.yaml",
+          "description": "Points at vendored candidate config (see finish manifest input_hints)."
+        }
+      ],
+      "outputs": [
+        {
+          "role": "checkpoint",
+          "path_glob": "results/finish/config_export.done",
+          "derived_from_step_ids": ["config_export"]
+        }
+      ],
+      "step_snapshots": [
+        {
+          "id": "env_export",
+          "name": "env export",
+          "outputs": ["results/finish/env_export.done"],
+          "depends_on": []
+        },
+        {
+          "id": "config_export",
+          "name": "config export",
+          "outputs": ["results/finish/config_export.done"],
+          "depends_on": ["env_export"]
+        }
+      ]
+    },
+    {
+      "task_id": "download_and_convert",
+      "pipeline_stage_label": "公共数据下载与格式转换",
+      "order": 2,
+      "step_ids": ["iseq_download", "fastq_to_bam", "fetch_file"],
+      "metadata": {
+        "summary": "Download sequencing data and convert to BAM; additional file fetch."
+      },
+      "inputs": [
+        {
+          "role": "config_after_export",
+          "derived_from_step_ids": ["config_export"]
+        }
+      ],
+      "outputs": [
+        {
+          "role": "intermediate_fetch",
+          "path_glob": "results/finish/fetch_file.done",
+          "derived_from_step_ids": ["fetch_file"]
+        }
+      ],
+      "step_snapshots": [
+        {
+          "id": "iseq_download",
+          "name": "iseq download",
+          "outputs": ["results/finish/iseq_download.done"],
+          "depends_on": ["config_export"]
+        },
+        {
+          "id": "fastq_to_bam",
+          "name": "fastq to bam",
+          "outputs": ["results/finish/fastq_to_bam.done"],
+          "depends_on": ["iseq_download"]
+        },
+        {
+          "id": "fetch_file",
+          "name": "fetch file",
+          "outputs": ["results/finish/fetch_file.done"],
+          "depends_on": ["fastq_to_bam"]
+        }
+      ]
+    },
+    {
+      "task_id": "merge_and_finalize",
+      "pipeline_stage_label": "元数据合并与收尾",
+      "order": 3,
+      "step_ids": ["merge_metadata", "all"],
+      "metadata": {
+        "summary": "Merge metadata and run final aggregate target."
+      },
+      "inputs": [
+        {
+          "role": "fetch_outputs",
+          "derived_from_step_ids": ["fetch_file"]
+        }
+      ],
+      "outputs": [
+        {
+          "role": "final_checkpoint",
+          "path_glob": "results/finish/all.done",
+          "derived_from_step_ids": ["all"]
+        }
+      ],
+      "step_snapshots": [
+        {
+          "id": "merge_metadata",
+          "name": "merge metadata",
+          "outputs": ["results/finish/merge_metadata.done"],
+          "depends_on": ["fetch_file"]
+        },
+        {
+          "id": "all",
+          "name": "all",
+          "outputs": ["results/finish/all.done"],
+          "depends_on": ["merge_metadata"]
+        }
+      ]
+    }
+  ]
+}

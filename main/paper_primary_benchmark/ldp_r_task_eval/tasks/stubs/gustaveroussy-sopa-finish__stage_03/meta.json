@@ -1,0 +1,19 @@
+{
+  "workflow_id": "gustaveroussy-sopa-finish",
+  "pipeline_task_id": "stage_03",
+  "order": 3,
+  "manifest_path": "finish/gustaveroussy-sopa-finish/manifest.json",
+  "step_ids": [
+    "explorer",
+    "report",
+    "patch_segmentation_cellpose",
+    "resolve_cellpose"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.989984+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_03",
+  "prepared_at": "2026-04-16T12:46:05.800733+00:00",
+  "micro_task": "sum_of_values_txt"
+}

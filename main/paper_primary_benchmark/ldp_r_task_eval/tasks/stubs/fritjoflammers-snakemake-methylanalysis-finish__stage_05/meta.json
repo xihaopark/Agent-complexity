@@ -1,0 +1,13 @@
+{
+  "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+  "pipeline_task_id": "stage_05",
+  "order": 5,
+  "manifest_path": "finish/fritjoflammers-snakemake-methylanalysis-finish/manifest.json",
+  "step_ids": [
+    "macau_prep_variables_file",
+    "macau_prep_covariate_file",
+    "macau_run"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.988004+00:00"
+}

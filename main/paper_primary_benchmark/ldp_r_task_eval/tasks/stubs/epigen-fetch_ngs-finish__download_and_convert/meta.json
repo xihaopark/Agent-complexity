@@ -1,0 +1,13 @@
+{
+  "workflow_id": "epigen-fetch_ngs-finish",
+  "pipeline_task_id": "download_and_convert",
+  "order": 2,
+  "manifest_path": "finish/epigen-fetch_ngs-finish/manifest.json",
+  "step_ids": [
+    "iseq_download",
+    "fastq_to_bam",
+    "fetch_file"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.974737+00:00"
+}

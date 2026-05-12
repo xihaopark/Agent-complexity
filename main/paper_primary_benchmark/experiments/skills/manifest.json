@@ -1,0 +1,508 @@
+{
+  "version": 3,
+  "generated_at": "2026-04-17",
+  "by_workflow_id": {
+    "rna-seq-kallisto-sleuth-finish": [
+      "10.1101_035170"
+    ],
+    "star-arriba-fusion-calling-finish": [
+      "10.1093_bioinformatics_bts635"
+    ],
+    "tgirke-systempiperdata-rnaseq-finish": [
+      "10.1186_s12859-016-0938-4"
+    ],
+    "tgirke-systempiperdata-chipseq-finish": [
+      "10.1186_s12859-016-0938-4"
+    ],
+    "tgirke-systempiperdata-varseq-finish": [
+      "10.1186_s12859-016-0938-4"
+    ],
+    "tgirke-systempiperdata-riboseq-finish": [
+      "10.1186_s12859-016-0938-4"
+    ],
+    "tgirke-systempiperdata-spscrna-finish": [
+      "10.1186_s12859-016-0938-4"
+    ],
+    "rna-seq-star-deseq2-finish": [
+      "10.1186_s13059-014-0550-8"
+    ],
+    "epigen-dea_seurat-finish": [
+      "10.1101_2020.10.12.335331"
+    ],
+    "epigen-scrnaseq_processing_seurat-finish": [
+      "10.1101_2020.10.12.335331"
+    ],
+    "cite-seq-alevin-fry-seurat-finish": [
+      "10.1186_s13059-019-1670-y"
+    ],
+    "epigen-fetch_ngs-finish": [
+      "10.1093_nar_gkaa1052"
+    ],
+    "epigen-dea_limma-finish": [
+      "10.1093_nar_gkv007"
+    ],
+    "epigen-enrichment_analysis-finish": [
+      "10.1089_omi.2011.0118"
+    ],
+    "fritjoflammers-snakemake-methylanalysis-finish": [
+      "10.1186_s12859-016-0950-8"
+    ],
+    "microsatellite-instability-detection-with-msisensor-pro-finish": [
+      "10.1093_bioinformatics_btt236"
+    ],
+    "dna-seq-short-read-circle-map-finish": [
+      "10.1186_s12859-019-2926-y"
+    ],
+    "gustaveroussy-sopa-finish": [
+      "10.1038_s41467-024-48981-z"
+    ],
+    "lwang-genomics-ngs_pipeline_sn-rna_seq-finish": [
+      "10.1101_gr.079558.108"
+    ],
+    "epigen-rnaseq_pipeline-finish": [
+      "10.1101_gr.079558.108"
+    ],
+    "cyrcular-calling-finish": [
+      "10.1186_s13059-020-01993-6"
+    ],
+    "epigen-300bcg-atacseq_pipeline-finish": [
+      "10.1186_gb-2008-9-9-r137"
+    ],
+    "lwang-genomics-ngs_pipeline_sn-chip_seq-finish": [
+      "10.1186_gb-2008-9-9-r137"
+    ],
+    "epigen-atacseq_pipeline-finish": [
+      "10.1186_gb-2008-9-9-r137"
+    ],
+    "cellranger-multi-finish": [
+      "10.1038_ncomms14049"
+    ],
+    "akinyi-onyango-rna_seq_pipeline-finish": [
+      "10.1186_s13059-016-0881-8"
+    ],
+    "maxplanck-ie-snakepipes-finish": [
+      "10.1093_bioinformatics_btz436"
+    ],
+    "read-alignment-pangenome-finish": [
+      "10.1038_s41587-023-01793-w"
+    ],
+    "snakemake-workflows-msisensor-pro-finish": [
+      "10.1093_bioinformatics_btt236"
+    ]
+  },
+  "by_task_id": {
+    "akinyi_deseq2": {
+      "skill_md_path": "experiments/skills/10.1186_s13059-016-0881-8/SKILL.md",
+      "skill_md_inline": "## Method\nThe paper provides a comprehensive review of best practices for RNA-seq data analysis, covering various stages from experimental design to advanced analysis. The core computational methods include transcript quantification and differential expression analysis. Transcript quantification is primarily based on counting mapped reads per transcript, with methods like RPKM, FPKM, and TPM used for normalization. Differential expression analysis often employs statistical models such as the negative binomial distribution to account for overdispersion in count data. The paper also discusses alternative splicing analysis, which can be performed using hierarchical Bayesian models or exon-based approaches.\n\n## Parameters\n- **Sequencing Depth**: Number of reads per sample, affecting the power to detect expression differences.\n- **Number of Replicates**: Influences the statistical power and reliability of the results.\n- **Normalization Method**: Options include RPKM, FPKM, TPM, TMM, and batch effect removal.\n- **Statistical Model**: Choice of distribution (e.g., Poisson, negative binomial) for differential expression analysis.\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- Consider using R packages like DESeq2 or edgeR for differential expression analysis, which handle negative binomial models.\n- Ensure proper normalization of data using methods like TMM or RPKM/FPKM/TPM.\n- Verify the sequencing depth and number of replicates to ensure sufficient statistical power.\n- Check for batch effects and apply correction methods if necessary.\n- For transcript quantification, tools like HTSeq-count or featureCounts can be used.",
+      "source_doi": "10.1186/s13059-016-0881-8",
+      "source_tool": "RNA-seq best practices",
+      "pipeline_workflow_id": "akinyi-onyango-rna_seq_pipeline-finish"
+    },
+    "star_deseq2_init": {
+      "skill_md_path": "experiments/skills/10.1186_s13059-014-0550-8/SKILL.md",
+      "skill_md_inline": "## Method\nDESeq2 is a method for differential analysis of count data, particularly RNA-seq data, which uses shrinkage estimation for dispersions and fold changes to improve stability and interpretability. It employs a generalized linear model (GLM) framework with a negative binomial distribution to model count data. The method involves empirical Bayes shrinkage to estimate dispersion and fold changes, which helps in handling the variability between replicates and low count data. The shrinkage is applied to the dispersion estimates and logarithmic fold changes (LFCs), reducing noise and bias, especially for genes with low counts. DESeq2 also uses a Wald test for hypothesis testing of differential expression, and it incorporates automatic independent filtering to control the false discovery rate (FDR).\n\n## Parameters\n- **Normalization factors (sij)**: Used to account for differences in sequencing depth and other technical biases.\n- **Shrinkage degree (di)**: Controls the amount of shrinkage applied based on sample size and degrees of freedom.\n- **Threshold for LFC (\u03b8)**: Used for hypothesis testing to determine significant differential expression.\n\n## Commands / Code Snippets\n```r\n# Example DESeq2 usage in R\nlibrary(DESeq2)\ndds <- DESeqDataSetFromMatrix(countData = count_matrix, colData = col_data, design = ~ condition)\ndds <- DESeq(dds)\nres <- results(dds)\n```\n\n## Notes for R-analysis agent\n- Use the `DESeq2` package in R for implementation.\n- Ensure input count data is in a matrix format with genes as rows and samples as columns.\n- Check for appropriate normalization factors to account for technical biases.\n- Be cautious of low count genes as they may require additional filtering or adjustment.\n- Verify the assumptions of the negative binomial distribution for the data.\n- Consider using the `rlog` transformation for variance stabilization if needed.",
+      "source_doi": "10.1186/s13059-014-0550-8",
+      "source_tool": "DESeq2",
+      "pipeline_workflow_id": "rna-seq-star-deseq2-finish"
+    },
+    "star_deseq2_contrast": {
+      "skill_md_path": "experiments/skills/10.1186_s13059-014-0550-8/SKILL.md",
+      "skill_md_inline": "## Method\nDESeq2 is a method for differential analysis of count data, particularly RNA-seq data, which uses shrinkage estimation for dispersions and fold changes to improve stability and interpretability. It employs a generalized linear model (GLM) framework with a negative binomial distribution to model count data. The method involves empirical Bayes shrinkage to estimate dispersion and fold changes, which helps in handling the variability between replicates and low count data. The shrinkage is applied to the dispersion estimates and logarithmic fold changes (LFCs), reducing noise and bias, especially for genes with low counts. DESeq2 also uses a Wald test for hypothesis testing of differential expression, and it incorporates automatic independent filtering to control the false discovery rate (FDR).\n\n## Parameters\n- **Normalization factors (sij)**: Used to account for differences in sequencing depth and other technical biases.\n- **Shrinkage degree (di)**: Controls the amount of shrinkage applied based on sample size and degrees of freedom.\n- **Threshold for LFC (\u03b8)**: Used for hypothesis testing to determine significant differential expression.\n\n## Commands / Code Snippets\n```r\n# Example DESeq2 usage in R\nlibrary(DESeq2)\ndds <- DESeqDataSetFromMatrix(countData = count_matrix, colData = col_data, design = ~ condition)\ndds <- DESeq(dds)\nres <- results(dds)\n```\n\n## Notes for R-analysis agent\n- Use the `DESeq2` package in R for implementation.\n- Ensure input count data is in a matrix format with genes as rows and samples as columns.\n- Check for appropriate normalization factors to account for technical biases.\n- Be cautious of low count genes as they may require additional filtering or adjustment.\n- Verify the assumptions of the negative binomial distribution for the data.\n- Consider using the `rlog` transformation for variance stabilization if needed.",
+      "source_doi": "10.1186/s13059-014-0550-8",
+      "source_tool": "DESeq2",
+      "pipeline_workflow_id": "rna-seq-star-deseq2-finish"
+    },
+    "methylkit_load": {
+      "skill_md_path": "experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+      "skill_md_inline": "## Method\nMethPat is a software tool designed to analyze and visualize complex methylation patterns from bisulfite sequencing data. The tool processes data aligned using Bismark, extracting and summarizing methylation states of CpG sites across multiple epialleles. MethPat provides a visual representation of these patterns, allowing for the identification of methylation heterogeneity within samples. The tool is particularly useful for visualizing the diversity of epiallelic DNA methylation patterns, which are often obscured when data is summarized as average methylation percentages.\n\n## Parameters\n- **Input File**: Path to the Bismark-aligned bisulfite sequencing data.\n- **Output Format**: Specifies the format for visualizations (e.g., PNG).\n- **Visualization Type**: Determines how data is displayed (e.g., by count or percentage).\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- MethPat is not directly implemented in R but processes Bismark output, which can be integrated into R workflows.\n- Ensure Bismark alignment is performed prior to using MethPat.\n- Input data should be in a tab-delimited format compatible with MethPat.\n- Visualization outputs can be used in R for further analysis or presentation.\n- Double-check the bisulfite conversion efficiency, as it impacts the accuracy of methylation state determination.",
+      "source_doi": "10.1186/s12859-016-0950-8",
+      "source_tool": "MethPat",
+      "pipeline_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+    },
+    "methylkit_unite": {
+      "skill_md_path": "experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+      "skill_md_inline": "## Method\nMethPat is a software tool designed to analyze and visualize complex methylation patterns from bisulfite sequencing data. The tool processes data aligned using Bismark, extracting and summarizing methylation states of CpG sites across multiple epialleles. MethPat provides a visual representation of these patterns, allowing for the identification of methylation heterogeneity within samples. The tool is particularly useful for visualizing the diversity of epiallelic DNA methylation patterns, which are often obscured when data is summarized as average methylation percentages.\n\n## Parameters\n- **Input File**: Path to the Bismark-aligned bisulfite sequencing data.\n- **Output Format**: Specifies the format for visualizations (e.g., PNG).\n- **Visualization Type**: Determines how data is displayed (e.g., by count or percentage).\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- MethPat is not directly implemented in R but processes Bismark output, which can be integrated into R workflows.\n- Ensure Bismark alignment is performed prior to using MethPat.\n- Input data should be in a tab-delimited format compatible with MethPat.\n- Visualization outputs can be used in R for further analysis or presentation.\n- Double-check the bisulfite conversion efficiency, as it impacts the accuracy of methylation state determination.",
+      "source_doi": "10.1186/s12859-016-0950-8",
+      "source_tool": "MethPat",
+      "pipeline_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+    },
+    "methylkit_to_tibble": {
+      "skill_md_path": "experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+      "skill_md_inline": "## Method\nMethPat is a software tool designed to analyze and visualize complex methylation patterns from bisulfite sequencing data. The tool processes data aligned using Bismark, extracting and summarizing methylation states of CpG sites across multiple epialleles. MethPat provides a visual representation of these patterns, allowing for the identification of methylation heterogeneity within samples. The tool is particularly useful for visualizing the diversity of epiallelic DNA methylation patterns, which are often obscured when data is summarized as average methylation percentages.\n\n## Parameters\n- **Input File**: Path to the Bismark-aligned bisulfite sequencing data.\n- **Output Format**: Specifies the format for visualizations (e.g., PNG).\n- **Visualization Type**: Determines how data is displayed (e.g., by count or percentage).\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- MethPat is not directly implemented in R but processes Bismark output, which can be integrated into R workflows.\n- Ensure Bismark alignment is performed prior to using MethPat.\n- Input data should be in a tab-delimited format compatible with MethPat.\n- Visualization outputs can be used in R for further analysis or presentation.\n- Double-check the bisulfite conversion efficiency, as it impacts the accuracy of methylation state determination.",
+      "source_doi": "10.1186/s12859-016-0950-8",
+      "source_tool": "MethPat",
+      "pipeline_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+    },
+    "snakepipes_merge_fc": {
+      "skill_md_path": "experiments/skills/10.1093_bioinformatics_btz436/SKILL.md",
+      "skill_md_inline": "## Method\nsnakePipes is a workflow package designed to facilitate the processing and analysis of epigenomic data from various assays such as ChIP-seq, RNA-seq, and ATAC-seq. It leverages the Snakemake workflow management system, which allows for easy readability and scalability. The workflows are modular, enabling users to customize and integrate different tools and resources by altering YAML configuration files. This modularity supports the processing of data from multiple assays using consistent tool versions, enhancing reproducibility and flexibility. snakePipes also incorporates conda environments to manage dependencies and tool installations seamlessly.\n\n## Parameters\n- **cluster.yaml**: Configuration for cluster execution.\n- **<organism>.yaml**: Genome, indexes, and annotations.\n- **env.yaml**: Conda environment specifications.\n- **defaults.yaml**: Workflow default settings.\n- **User-specified files/parameters**: Custom inputs for specific analyses.\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- snakePipes is implemented using Snakemake, which is not directly available in R. However, the outputs from snakePipes can be analyzed in R.\n- Ensure that input data is pre-processed according to the specifications in the YAML configuration files.\n- Check compatibility of the conda environment with the R environment if integrating outputs.\n- Verify that the genome annotations and indices are correctly specified for the organism of interest.",
+      "source_doi": "10.1093/bioinformatics/btz436",
+      "source_tool": "snakePipes",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish"
+    },
+    "snakepipes_merge_ct": {
+      "skill_md_path": "experiments/skills/10.1093_bioinformatics_btz436/SKILL.md",
+      "skill_md_inline": "## Method\nsnakePipes is a workflow package designed to facilitate the processing and analysis of epigenomic data from various assays such as ChIP-seq, RNA-seq, and ATAC-seq. It leverages the Snakemake workflow management system, which allows for easy readability and scalability. The workflows are modular, enabling users to customize and integrate different tools and resources by altering YAML configuration files. This modularity supports the processing of data from multiple assays using consistent tool versions, enhancing reproducibility and flexibility. snakePipes also incorporates conda environments to manage dependencies and tool installations seamlessly.\n\n## Parameters\n- **cluster.yaml**: Configuration for cluster execution.\n- **<organism>.yaml**: Genome, indexes, and annotations.\n- **env.yaml**: Conda environment specifications.\n- **defaults.yaml**: Workflow default settings.\n- **User-specified files/parameters**: Custom inputs for specific analyses.\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- snakePipes is implemented using Snakemake, which is not directly available in R. However, the outputs from snakePipes can be analyzed in R.\n- Ensure that input data is pre-processed according to the specifications in the YAML configuration files.\n- Check compatibility of the conda environment with the R environment if integrating outputs.\n- Verify that the genome annotations and indices are correctly specified for the organism of interest.",
+      "source_doi": "10.1093/bioinformatics/btz436",
+      "source_tool": "snakePipes",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish"
+    },
+    "snakepipes_scrna_merge_coutt": {
+      "skill_md_path": "experiments/skills/10.1093_bioinformatics_btz436/SKILL.md",
+      "skill_md_inline": "## Method\nsnakePipes is a workflow package designed to facilitate the processing and analysis of epigenomic data from various assays such as ChIP-seq, RNA-seq, and ATAC-seq. It leverages the Snakemake workflow management system, which allows for easy readability and scalability. The workflows are modular, enabling users to customize and integrate different tools and resources by altering YAML configuration files. This modularity supports the processing of data from multiple assays using consistent tool versions, enhancing reproducibility and flexibility. snakePipes also incorporates conda environments to manage dependencies and tool installations seamlessly.\n\n## Parameters\n- **cluster.yaml**: Configuration for cluster execution.\n- **<organism>.yaml**: Genome, indexes, and annotations.\n- **env.yaml**: Conda environment specifications.\n- **defaults.yaml**: Workflow default settings.\n- **User-specified files/parameters**: Custom inputs for specific analyses.\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- snakePipes is implemented using Snakemake, which is not directly available in R. However, the outputs from snakePipes can be analyzed in R.\n- Ensure that input data is pre-processed according to the specifications in the YAML configuration files.\n- Check compatibility of the conda environment with the R environment if integrating outputs.\n- Verify that the genome annotations and indices are correctly specified for the organism of interest.",
+      "source_doi": "10.1093/bioinformatics/btz436",
+      "source_tool": "snakePipes",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish"
+    },
+    "snakepipes_scrna_qc": {
+      "skill_md_path": "experiments/skills/10.1093_bioinformatics_btz436/SKILL.md",
+      "skill_md_inline": "## Method\nsnakePipes is a workflow package designed to facilitate the processing and analysis of epigenomic data from various assays such as ChIP-seq, RNA-seq, and ATAC-seq. It leverages the Snakemake workflow management system, which allows for easy readability and scalability. The workflows are modular, enabling users to customize and integrate different tools and resources by altering YAML configuration files. This modularity supports the processing of data from multiple assays using consistent tool versions, enhancing reproducibility and flexibility. snakePipes also incorporates conda environments to manage dependencies and tool installations seamlessly.\n\n## Parameters\n- **cluster.yaml**: Configuration for cluster execution.\n- **<organism>.yaml**: Genome, indexes, and annotations.\n- **env.yaml**: Conda environment specifications.\n- **defaults.yaml**: Workflow default settings.\n- **User-specified files/parameters**: Custom inputs for specific analyses.\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- snakePipes is implemented using Snakemake, which is not directly available in R. However, the outputs from snakePipes can be analyzed in R.\n- Ensure that input data is pre-processed according to the specifications in the YAML configuration files.\n- Check compatibility of the conda environment with the R environment if integrating outputs.\n- Verify that the genome annotations and indices are correctly specified for the organism of interest.",
+      "source_doi": "10.1093/bioinformatics/btz436",
+      "source_tool": "snakePipes",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish"
+    },
+    "dea_limma": {
+      "skill_md_path": "experiments/skills/10.1093_nar_gkv007/SKILL.md",
+      "skill_md_inline": "## Method\nThe paper describes the `limma` package, which is a part of Bioconductor, designed for differential expression analysis of RNA-seq and microarray data. The core methodology involves fitting linear models to expression data, allowing for the analysis of complex experimental designs. `limma` uses empirical Bayes methods to borrow information across genes, improving variance estimation and statistical power, particularly in small sample sizes. The package supports both RNA-seq and microarray data, using a common analysis pipeline. It incorporates variance modeling to handle technical and biological variability and uses quantitative weights to account for unequal quality in data.\n\n## Parameters\n- **voom**: Converts RNA-seq data to log-counts per million with associated precision weights.\n- **normalizeBetweenArrays**: Normalizes expression values between samples.\n- **arrayWeights**: Estimates relative array variances for weighted analysis.\n- **duplicateCorrelation**: Estimates correlation between replicate arrays or samples.\n- **makeContrasts**: Defines contrasts for hypothesis testing in linear models.\n\n## Commands / Code Snippets\n```r\n# Example functions from limma\nlibrary(limma)\ndesign <- model.matrix(~ 0 + factor(c(1,1,2,2)))\nfit <- lmFit(expressionData, design)\nfit <- eBayes(fit)\ntopTable(fit)\n```\n\n## Notes for R-analysis agent\n- Use the `limma` package in R for implementation.\n- Ensure input data is properly normalized and pre-processed.\n- Check for appropriate experimental design matrix setup.\n- Verify assumptions of linear modeling and empirical Bayes are met.\n- Consider using `voom` for RNA-seq data to handle mean-variance relationships.\n- Be cautious of batch effects and include them in the model if necessary.",
+      "source_doi": "10.1093/nar/gkv007",
+      "source_tool": "limma",
+      "pipeline_workflow_id": "epigen-dea_limma-finish"
+    },
+    "methylkit_filt_norm": {
+      "skill_md_path": "experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+      "skill_md_inline": "## Method\nMethPat is a software tool designed to analyze and visualize complex methylation patterns from bisulfite sequencing data. The tool processes data aligned using Bismark, extracting and summarizing methylation states of CpG sites across multiple epialleles. MethPat provides a visual representation of these patterns, allowing for the identification of methylation heterogeneity within samples. The tool is particularly useful for visualizing the diversity of epiallelic DNA methylation patterns, which are often obscured when data is summarized as average methylation percentages.\n\n## Parameters\n- **Input File**: Path to the Bismark-aligned bisulfite sequencing data.\n- **Output Format**: Specifies the format for visualizations (e.g., PNG).\n- **Visualization Type**: Determines how data is displayed (e.g., by count or percentage).\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- MethPat is not directly implemented in R but processes Bismark output, which can be integrated into R workflows.\n- Ensure Bismark alignment is performed prior to using MethPat.\n- Input data should be in a tab-delimited format compatible with MethPat.\n- Visualization outputs can be used in R for further analysis or presentation.\n- Double-check the bisulfite conversion efficiency, as it impacts the accuracy of methylation state determination.",
+      "source_doi": "10.1186/s12859-016-0950-8",
+      "source_tool": "MethPat",
+      "pipeline_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+    },
+    "methylkit2tibble_split": {
+      "skill_md_path": "experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+      "skill_md_inline": "## Method\nMethPat is a software tool designed to analyze and visualize complex methylation patterns from bisulfite sequencing data. The tool processes data aligned using Bismark, extracting and summarizing methylation states of CpG sites across multiple epialleles. MethPat provides a visual representation of these patterns, allowing for the identification of methylation heterogeneity within samples. The tool is particularly useful for visualizing the diversity of epiallelic DNA methylation patterns, which are often obscured when data is summarized as average methylation percentages.\n\n## Parameters\n- **Input File**: Path to the Bismark-aligned bisulfite sequencing data.\n- **Output Format**: Specifies the format for visualizations (e.g., PNG).\n- **Visualization Type**: Determines how data is displayed (e.g., by count or percentage).\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- MethPat is not directly implemented in R but processes Bismark output, which can be integrated into R workflows.\n- Ensure Bismark alignment is performed prior to using MethPat.\n- Input data should be in a tab-delimited format compatible with MethPat.\n- Visualization outputs can be used in R for further analysis or presentation.\n- Double-check the bisulfite conversion efficiency, as it impacts the accuracy of methylation state determination.",
+      "source_doi": "10.1186/s12859-016-0950-8",
+      "source_tool": "MethPat",
+      "pipeline_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+    },
+    "methylkit_remove_snvs": {
+      "skill_md_path": "experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+      "skill_md_inline": "## Method\nMethPat is a software tool designed to analyze and visualize complex methylation patterns from bisulfite sequencing data. The tool processes data aligned using Bismark, extracting and summarizing methylation states of CpG sites across multiple epialleles. MethPat provides a visual representation of these patterns, allowing for the identification of methylation heterogeneity within samples. The tool is particularly useful for visualizing the diversity of epiallelic DNA methylation patterns, which are often obscured when data is summarized as average methylation percentages.\n\n## Parameters\n- **Input File**: Path to the Bismark-aligned bisulfite sequencing data.\n- **Output Format**: Specifies the format for visualizations (e.g., PNG).\n- **Visualization Type**: Determines how data is displayed (e.g., by count or percentage).\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- MethPat is not directly implemented in R but processes Bismark output, which can be integrated into R workflows.\n- Ensure Bismark alignment is performed prior to using MethPat.\n- Input data should be in a tab-delimited format compatible with MethPat.\n- Visualization outputs can be used in R for further analysis or presentation.\n- Double-check the bisulfite conversion efficiency, as it impacts the accuracy of methylation state determination.",
+      "source_doi": "10.1186/s12859-016-0950-8",
+      "source_tool": "MethPat",
+      "pipeline_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+    },
+    "nearest_gene": {
+      "skill_md_path": "experiments/skills/10.1093_bioinformatics_btz436/SKILL.md",
+      "skill_md_inline": "## Method\nsnakePipes is a workflow package designed to facilitate the processing and analysis of epigenomic data from various assays such as ChIP-seq, RNA-seq, and ATAC-seq. It leverages the Snakemake workflow management system, which allows for easy readability and scalability. The workflows are modular, enabling users to customize and integrate different tools and resources by altering YAML configuration files. This modularity supports the processing of data from multiple assays using consistent tool versions, enhancing reproducibility and flexibility. snakePipes also incorporates conda environments to manage dependencies and tool installations seamlessly.\n\n## Parameters\n- **cluster.yaml**: Configuration for cluster execution.\n- **<organism>.yaml**: Genome, indexes, and annotations.\n- **env.yaml**: Conda environment specifications.\n- **defaults.yaml**: Workflow default settings.\n- **User-specified files/parameters**: Custom inputs for specific analyses.\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- snakePipes is implemented using Snakemake, which is not directly available in R. However, the outputs from snakePipes can be analyzed in R.\n- Ensure that input data is pre-processed according to the specifications in the YAML configuration files.\n- Check compatibility of the conda environment with the R environment if integrating outputs.\n- Verify that the genome annotations and indices are correctly specified for the organism of interest.",
+      "source_doi": "10.1093/bioinformatics/btz436",
+      "source_tool": "snakePipes",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish"
+    },
+    "snakepipes_scrna_report": {
+      "skill_md_path": "experiments/skills/10.1093_bioinformatics_btz436/SKILL.md",
+      "skill_md_inline": "## Method\nsnakePipes is a workflow package designed to facilitate the processing and analysis of epigenomic data from various assays such as ChIP-seq, RNA-seq, and ATAC-seq. It leverages the Snakemake workflow management system, which allows for easy readability and scalability. The workflows are modular, enabling users to customize and integrate different tools and resources by altering YAML configuration files. This modularity supports the processing of data from multiple assays using consistent tool versions, enhancing reproducibility and flexibility. snakePipes also incorporates conda environments to manage dependencies and tool installations seamlessly.\n\n## Parameters\n- **cluster.yaml**: Configuration for cluster execution.\n- **<organism>.yaml**: Genome, indexes, and annotations.\n- **env.yaml**: Conda environment specifications.\n- **defaults.yaml**: Workflow default settings.\n- **User-specified files/parameters**: Custom inputs for specific analyses.\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- snakePipes is implemented using Snakemake, which is not directly available in R. However, the outputs from snakePipes can be analyzed in R.\n- Ensure that input data is pre-processed according to the specifications in the YAML configuration files.\n- Check compatibility of the conda environment with the R environment if integrating outputs.\n- Verify that the genome annotations and indices are correctly specified for the organism of interest.",
+      "source_doi": "10.1093/bioinformatics/btz436",
+      "source_tool": "snakePipes",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish"
+    },
+    "clean_histoneHMM": {
+      "skill_md_path": "experiments/skills/10.1093_bioinformatics_btz436/SKILL.md",
+      "skill_md_inline": "## Method\nsnakePipes is a workflow package designed to facilitate the processing and analysis of epigenomic data from various assays such as ChIP-seq, RNA-seq, and ATAC-seq. It leverages the Snakemake workflow management system, which allows for easy readability and scalability. The workflows are modular, enabling users to customize and integrate different tools and resources by altering YAML configuration files. This modularity supports the processing of data from multiple assays using consistent tool versions, enhancing reproducibility and flexibility. snakePipes also incorporates conda environments to manage dependencies and tool installations seamlessly.\n\n## Parameters\n- **cluster.yaml**: Configuration for cluster execution.\n- **<organism>.yaml**: Genome, indexes, and annotations.\n- **env.yaml**: Conda environment specifications.\n- **defaults.yaml**: Workflow default settings.\n- **User-specified files/parameters**: Custom inputs for specific analyses.\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- snakePipes is implemented using Snakemake, which is not directly available in R. However, the outputs from snakePipes can be analyzed in R.\n- Ensure that input data is pre-processed according to the specifications in the YAML configuration files.\n- Check compatibility of the conda environment with the R environment if integrating outputs.\n- Verify that the genome annotations and indices are correctly specified for the organism of interest.",
+      "source_doi": "10.1093/bioinformatics/btz436",
+      "source_tool": "snakePipes",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish"
+    },
+    "msisensor_merge": {
+      "skill_md_path": "experiments/skills/10.1093_bioinformatics_btt236/SKILL.md",
+      "skill_md_inline": "## Method\nThe paper presents a supervised machine-learning approach using random forests to predict functional misannotations in metabolic networks. The method involves constructing bipartite graphs from metabolic networks, where nodes represent compounds and reactions. Topological features of these graphs are used as input for the random forest classifier, which is trained to distinguish between correct and incorrect enzyme annotations. The random forest algorithm selects a random subset of features for each decision tree, and the final prediction is made based on the majority vote of all trees. Cross-validation is employed to assess the model's performance, using both 5-fold and superfamily-based approaches.\n\n## Parameters\n- **type**: `prob` (default) \u2014 Specifies the type of prediction function used in the randomForest package.\n- **importance**: Function from the randomForest package used to assess feature importance after training.\n\n## Commands / Code Snippets\n```r\n# Example usage of randomForest in R\nlibrary(randomForest)\nmodel <- randomForest(x, y, type=\"prob\")\nimportance(model)\n```\n\n## Notes for R-analysis agent\n- The method is implemented using the `randomForest` package in R.\n- Ensure input data is formatted as bipartite graphs with nodes representing compounds and reactions.\n- Cross-validation should be performed to validate the model, using both 5-fold and superfamily-based methods.\n- Check the importance of features using the `importance` function to understand which topological properties are most predictive.\n- Verify the input data includes the necessary topological features as described in the paper (local, semi-local, global).",
+      "source_doi": "10.1093/bioinformatics_btt236",
+      "source_tool": "MSIsensor",
+      "pipeline_workflow_id": "snakemake-workflows-msisensor-pro-finish"
+    }
+  },
+  "by_doi": {
+    "10.1101_035170": {
+      "skill_md_path": "experiments/skills/10.1101_035170/SKILL.md",
+      "skill_md_inline": "## Method\nThe paper describes the creation of a reference panel of 64,976 haplotypes at 39,235,157 SNPs using whole genome sequence data from 20 studies. The method involves combining genotype calls from each study to form a union set of SNP sites with a minor allele count (MAC) of at least 2. Genotype likelihoods were calculated using the 'samtools mpileup' command, and the resulting BCF files were merged. The panel was refined by re-phasing genotypes using the SHAPEIT3 method to improve imputation accuracy. Site filtering was applied to ensure quality, using criteria such as Hardy-Weinberg Equilibrium and inbreeding coefficients.\n\n## Parameters\n- **MAC threshold**: Minimum minor allele count for inclusion.\n- **MAF threshold**: Minimum minor allele frequency for site inclusion.\n- **Ts/Tv ratio**: Transition-to-transversion ratio used for filtering.\n- **HWE p-value**: Hardy-Weinberg Equilibrium p-value threshold for filtering.\n- **Inbreeding coefficient**: Threshold for filtering sites based on inbreeding.\n\n## Commands / Code Snippets\n```bash\n# Genotype likelihood calculation\nsamtools mpileup -g -f reference.fa sample.bam > sample.bcf\n\n# Merging BCF files\nbcftools merge file1.bcf file2.bcf -o merged.bcf\n\n# Genotype calling\nbcftools call -m -v -o calls.vcf merged.bcf\n\n# Checking for duplicates\nbcftools gtcheck -g calls.vcf\n```\n\n## Notes for R-analysis agent\n- Consider using the `impute` package in R for genotype imputation.\n- Ensure input VCF files are pre-processed to match the reference panel's requirements.\n- Verify that the input data meets the MAC and MAF thresholds specified.\n- Double-check the filtering criteria, especially the Ts/Tv ratio and HWE p-value, to ensure quality control.\n- The SHAPEIT3 method is crucial for re-phasing; ensure compatibility with R tools.",
+      "source_doi": "10.1101/035170",
+      "source_tool": "kallisto",
+      "workflow_ids": [
+        "rna-seq-kallisto-sleuth-finish"
+      ],
+      "pages_processed": 8,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 5301,
+      "completion_tokens": 435
+    },
+    "10.1093_bioinformatics_bts635": {
+      "skill_md_path": "experiments/skills/10.1093_bioinformatics_bts635/SKILL.md",
+      "skill_md_inline": "## Method\nThe STAR (Spliced Transcripts Alignment to a Reference) algorithm is designed to align non-contiguous RNA-seq reads to a reference genome. It uses a two-step process: seed searching and clustering/stitching/scoring. The seed search employs a Maximum Mappable Prefix (MMP) strategy using uncompressed suffix arrays (SAs) to find the longest match of a read to the genome, which helps in detecting splice junctions. This method allows for mismatches and is efficient in terms of computational resources. The clustering and stitching step involves aligning seeds to the genome, using a frugal dynamic programming algorithm to stitch seeds within genomic windows, allowing for gaps and mismatches.\n\n## Parameters\n- **MMP search direction**: Forward and reverse directions.\n- **Genome window size**: Determines the maximum size for spliced alignments.\n- **Mismatch allowance**: Maximum number of mismatches allowed during alignment.\n- **Thread count**: Number of threads used for parallel processing.\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- STAR is implemented in C++ and can be downloaded from the provided URL.\n- Ensure the input RNA-seq data is in the correct format for STAR alignment.\n- Check the computational resources, as STAR requires significant RAM, especially for large genomes.\n- Verify the alignment parameters, such as mismatch allowance and window size, to optimize for specific datasets.\n- Consider using the R package `Rsubread` for similar functionality if STAR is not directly usable in R.",
+      "source_doi": "10.1093/bioinformatics/bts635",
+      "source_tool": "STAR",
+      "workflow_ids": [
+        "star-arriba-fusion-calling-finish"
+      ],
+      "pages_processed": 7,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 4677,
+      "completion_tokens": 322
+    },
+    "10.1186_s12859-016-0938-4": {
+      "skill_md_path": "experiments/skills/10.1186_s12859-016-0938-4/SKILL.md",
+      "skill_md_inline": "## Method\nSeqinspector is a bioinformatics tool designed for the functional enrichment of user-defined lists of genes, transcripts, and ChIP-seq peaks. It utilizes a coverage-based approach to calculate enrichment statistics by analyzing raw genomic bigwig tracks instead of converting genomic coordinates to gene annotations. The tool employs a two-sample t-test to compare ChIP-seq track coverages derived from user-provided genomic ranges against a background set. The background set consists of 1000 random genomic regions, which can be customized by the user. The statistical significance is assessed using a parametric z-score for single-gene exploration.\n\n## Parameters\n- **Genome Assembly**: Selection between Mus musculus (mm9, mm10) and Homo sapiens (hg19).\n- **Query Input**: Genomic coordinates in bed format or gene symbols.\n- **Background Set**: Default is 1000 random genomic regions; user-defined sets are allowed.\n- **Statistical Test**: Two-sample t-test for comparing coverage.\n- **Output Options**: Includes stack plots, histograms, and gene lists.\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- Consider using packages like `rtracklayer` for handling bigwig files and `GenomicRanges` for genomic range operations.\n- Ensure the input genomic coordinates are in the correct format (bed or gene symbols).\n- Double-check the compatibility of genome assemblies (mm9, mm10, hg19) with the datasets being analyzed.\n- Be aware of the statistical assumptions of the two-sample t-test and ensure the data meets these requirements.\n- Verify the background set is appropriately defined if not using the default.",
+      "source_doi": "10.1186/s12859-016-0938-4",
+      "source_tool": "systemPipeR",
+      "workflow_ids": [
+        "tgirke-systempiperdata-rnaseq-finish",
+        "tgirke-systempiperdata-chipseq-finish",
+        "tgirke-systempiperdata-varseq-finish",
+        "tgirke-systempiperdata-riboseq-finish",
+        "tgirke-systempiperdata-spscrna-finish"
+      ],
+      "pages_processed": 7,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 5647,
+      "completion_tokens": 354
+    },
+    "10.1186_s13059-014-0550-8": {
+      "skill_md_path": "experiments/skills/10.1186_s13059-014-0550-8/SKILL.md",
+      "skill_md_inline": "## Method\nDESeq2 is a method for differential analysis of count data, particularly RNA-seq data, which uses shrinkage estimation for dispersions and fold changes to improve stability and interpretability. It employs a generalized linear model (GLM) framework with a negative binomial distribution to model count data. The method involves empirical Bayes shrinkage to estimate dispersion and fold changes, which helps in handling the variability between replicates and low count data. The shrinkage is applied to the dispersion estimates and logarithmic fold changes (LFCs), reducing noise and bias, especially for genes with low counts. DESeq2 also uses a Wald test for hypothesis testing of differential expression, and it incorporates automatic independent filtering to control the false discovery rate (FDR).\n\n## Parameters\n- **Normalization factors (sij)**: Used to account for differences in sequencing depth and other technical biases.\n- **Shrinkage degree (di)**: Controls the amount of shrinkage applied based on sample size and degrees of freedom.\n- **Threshold for LFC (\u03b8)**: Used for hypothesis testing to determine significant differential expression.\n\n## Commands / Code Snippets\n```r\n# Example DESeq2 usage in R\nlibrary(DESeq2)\ndds <- DESeqDataSetFromMatrix(countData = count_matrix, colData = col_data, design = ~ condition)\ndds <- DESeq(dds)\nres <- results(dds)\n```\n\n## Notes for R-analysis agent\n- Use the `DESeq2` package in R for implementation.\n- Ensure input count data is in a matrix format with genes as rows and samples as columns.\n- Check for appropriate normalization factors to account for technical biases.\n- Be cautious of low count genes as they may require additional filtering or adjustment.\n- Verify the assumptions of the negative binomial distribution for the data.\n- Consider using the `rlog` transformation for variance stabilization if needed.",
+      "source_doi": "10.1186/s13059-014-0550-8",
+      "source_tool": "DESeq2",
+      "workflow_ids": [
+        "rna-seq-star-deseq2-finish"
+      ],
+      "pages_processed": 8,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 6412,
+      "completion_tokens": 388
+    },
+    "10.1101_2020.10.12.335331": {
+      "skill_md_path": "experiments/skills/10.1101_2020.10.12.335331/SKILL.md",
+      "skill_md_inline": "## Method\nThe paper introduces a \"weighted-nearest neighbor\" (WNN) analysis for integrating multimodal single-cell data. This unsupervised framework assigns weights to different data types measured within each cell, reflecting their relative utility in defining cellular states. The method involves calculating modality weights using a softmax transformation, ensuring they are non-negative and sum to one for each cell. The WNN graph is constructed by calculating a new set of k-nearest cells based on a metric that averages normalized RNA and protein similarities. This approach enhances the ability to resolve cellular states and supports downstream analyses like clustering and trajectory inference.\n\n## Parameters\n- **k**: Default set to 20. Number of nearest neighbors considered for each modality.\n- **Modality weights**: Calculated using a softmax transformation, unique to each cell.\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- The method is implemented in the Seurat package, version 4.\n- Ensure input data includes multiple modalities (e.g., RNA and protein measurements).\n- Verify the calculation of modality weights using softmax transformation.\n- Check compatibility with UMAP visualization and clustering functions in Seurat.\n- Confirm robustness to changes in parameter k and data quality differences across modalities.",
+      "source_doi": "10.1101/2020.10.12.335331",
+      "source_tool": "Seurat v4 (bioRxiv preprint)",
+      "workflow_ids": [
+        "epigen-dea_seurat-finish",
+        "epigen-scrnaseq_processing_seurat-finish"
+      ],
+      "pages_processed": 8,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 5308,
+      "completion_tokens": 266
+    },
+    "10.1186_s13059-019-1670-y": {
+      "skill_md_path": "experiments/skills/10.1186_s13059-019-1670-y/SKILL.md",
+      "skill_md_inline": "## Method\nAlevin is an end-to-end pipeline designed to process droplet-based single-cell RNA sequencing data. It performs several key tasks: cell barcode detection, read mapping, unique molecular identifier (UMI) deduplication, gene count estimation, and cell barcode whitelisting. Alevin introduces a novel UMI deduplication algorithm that constructs a parsimonious UMI graph (PUG) to resolve UMI collisions by considering transcript-level information. This approach accounts for both gene-unique reads and reads that map to multiple genes, addressing biases in existing tools that discard gene-ambiguous reads. The pipeline uses a two-step whitelisting procedure to identify cell barcodes, followed by mapping reads to a target transcriptome and deduplicating UMIs using an expectation-maximization algorithm.\n\n## Parameters\n- **--keepDuplicates**: Flag to retain duplicate reads even when multiple sequence-identical transcripts exist in the annotation.\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- Alevin is implemented in the `salmon` tool, which can be accessed via the `tximport` package in R for downstream analysis.\n- Ensure input FASTQ files are sample-demultiplexed.\n- Be aware of the memory and thread usage; Alevin is optimized for multi-threading.\n- Double-check the whitelisting step and UMI deduplication settings, as these are crucial for accurate gene abundance estimation.\n- Consider the impact of discarding multimapping reads on gene count accuracy, especially for genes with low sequence uniqueness.",
+      "source_doi": "10.1186/s13059-019-1670-y",
+      "source_tool": "alevin",
+      "workflow_ids": [
+        "cite-seq-alevin-fry-seurat-finish"
+      ],
+      "pages_processed": 8,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 6411,
+      "completion_tokens": 330
+    },
+    "10.1093_nar_gkaa1052": {
+      "skill_md_path": "experiments/skills/10.1093_nar_gkaa1052/SKILL.md",
+      "skill_md_inline": "## Method\nThe Asymmetron toolkit is designed to identify strand asymmetry patterns in biological sequences. It operates on BED-formatted files and uses the Python-based package `pybedtools`. The toolkit provides four main functions: `consecutive_patterns.py`, `contained_asymmetries.py`, `pairwise_asymmetries.py`, and `orientation.py`. These functions analyze strand asymmetries by calculating the frequency of motifs in specific orientations and comparing them to expected distributions. The toolkit evaluates strand asymmetries in non-palindromic sequences by comparing motif occurrences on complementary DNA strands. Statistical significance is assessed using simulations and empirical P-values.\n\n## Parameters\n- **N**: Default 1000, number of simulations for calculating strand asymmetry.\n- **dmax**: Maximum distance considered for consecutive occurrences.\n- **p**: Default 0.5, probability for same strand orientation in binomial tests.\n- **BED file inputs**: Required for specifying genomic features and motifs.\n\n## Commands / Code Snippets\n```python\npython contained_asymmetries.py gencode.v33.annotation.bed LINES.bed\npython orientation.py Bg02es.Rep1strand.bed LINES.bed\npython contained_asymmetries.py Bg02es.Rep1strand.bed LINES.bed gnomad.v2.1.sv.sites.LINES.bed --expected.asym = 0.524\n```\n\n## Notes for R-analysis agent\n- The method is implemented in Python using `pybedtools`; consider using R packages like `GenomicRanges` for similar operations.\n- Ensure BED files are correctly formatted and contain necessary strand information.\n- Validate the number of simulations (N) and adjust if computational resources are limited.\n- Double-check the orientation assignment of motifs before analysis to ensure accurate results.\n- Consider using `ggplot2` for visualization of strand asymmetry results in R.",
+      "source_doi": "10.1093/nar/gkaa1052",
+      "source_tool": "NCBI / SRA toolkit",
+      "workflow_ids": [
+        "epigen-fetch_ngs-finish"
+      ],
+      "pages_processed": 8,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 6408,
+      "completion_tokens": 396
+    },
+    "10.1093_nar_gkv007": {
+      "skill_md_path": "experiments/skills/10.1093_nar_gkv007/SKILL.md",
+      "skill_md_inline": "## Method\nThe paper describes the `limma` package, which is a part of Bioconductor, designed for differential expression analysis of RNA-seq and microarray data. The core methodology involves fitting linear models to expression data, allowing for the analysis of complex experimental designs. `limma` uses empirical Bayes methods to borrow information across genes, improving variance estimation and statistical power, particularly in small sample sizes. The package supports both RNA-seq and microarray data, using a common analysis pipeline. It incorporates variance modeling to handle technical and biological variability and uses quantitative weights to account for unequal quality in data.\n\n## Parameters\n- **voom**: Converts RNA-seq data to log-counts per million with associated precision weights.\n- **normalizeBetweenArrays**: Normalizes expression values between samples.\n- **arrayWeights**: Estimates relative array variances for weighted analysis.\n- **duplicateCorrelation**: Estimates correlation between replicate arrays or samples.\n- **makeContrasts**: Defines contrasts for hypothesis testing in linear models.\n\n## Commands / Code Snippets\n```r\n# Example functions from limma\nlibrary(limma)\ndesign <- model.matrix(~ 0 + factor(c(1,1,2,2)))\nfit <- lmFit(expressionData, design)\nfit <- eBayes(fit)\ntopTable(fit)\n```\n\n## Notes for R-analysis agent\n- Use the `limma` package in R for implementation.\n- Ensure input data is properly normalized and pre-processed.\n- Check for appropriate experimental design matrix setup.\n- Verify assumptions of linear modeling and empirical Bayes are met.\n- Consider using `voom` for RNA-seq data to handle mean-variance relationships.\n- Be cautious of batch effects and include them in the model if necessary.",
+      "source_doi": "10.1093/nar/gkv007",
+      "source_tool": "limma",
+      "workflow_ids": [
+        "epigen-dea_limma-finish"
+      ],
+      "pages_processed": 8,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 6407,
+      "completion_tokens": 366
+    },
+    "10.1089_omi.2011.0118": {
+      "skill_md_path": "experiments/skills/10.1089_omi.2011.0118/SKILL.md",
+      "skill_md_inline": "## Method\nThe `clusterProfiler` package is designed for comparing biological themes among gene clusters. It implements a gene classification method using the functions `groupGO`, `enrichGO`, and `enrichKEGG` to classify genes based on their projection at a specific level of the Gene Ontology (GO) corpus. The package calculates enrichment tests for GO terms and KEGG pathways using a hypergeometric distribution. To control for false discovery rates, the package applies the Benjamini-Hochberg method for multiple testing corrections. Additionally, `clusterProfiler` provides a function, `compareCluster`, to automatically calculate enriched functional categories for each gene cluster and visualize the results.\n\n## Parameters\n- `pvalueCutoff`: Default not specified; threshold for p-value significance.\n- `qvalueCutoff`: Default not specified; threshold for q-value significance.\n- `ontology`: Specifies the ontology to use (e.g., \"BP\" for Biological Process).\n- `organism`: Specifies the organism database to use (e.g., \"hsa\" for Homo sapiens).\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- The `clusterProfiler` package is available on Bioconductor and should be installed from there.\n- Ensure the input data is formatted correctly with gene identifiers compatible with the selected organism database.\n- Double-check the p-value and q-value cutoffs to ensure they align with the study's significance thresholds.\n- Visualization functions are available and should be used to interpret the results effectively.",
+      "source_doi": "10.1089/omi.2011.0118",
+      "source_tool": "clusterProfiler",
+      "workflow_ids": [
+        "epigen-enrichment_analysis-finish"
+      ],
+      "pages_processed": 4,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 3350,
+      "completion_tokens": 319
+    },
+    "10.1186_s12859-016-0950-8": {
+      "skill_md_path": "experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+      "skill_md_inline": "## Method\nMethPat is a software tool designed to analyze and visualize complex methylation patterns from bisulfite sequencing data. The tool processes data aligned using Bismark, extracting and summarizing methylation states of CpG sites across multiple epialleles. MethPat provides a visual representation of these patterns, allowing for the identification of methylation heterogeneity within samples. The tool is particularly useful for visualizing the diversity of epiallelic DNA methylation patterns, which are often obscured when data is summarized as average methylation percentages.\n\n## Parameters\n- **Input File**: Path to the Bismark-aligned bisulfite sequencing data.\n- **Output Format**: Specifies the format for visualizations (e.g., PNG).\n- **Visualization Type**: Determines how data is displayed (e.g., by count or percentage).\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- MethPat is not directly implemented in R but processes Bismark output, which can be integrated into R workflows.\n- Ensure Bismark alignment is performed prior to using MethPat.\n- Input data should be in a tab-delimited format compatible with MethPat.\n- Visualization outputs can be used in R for further analysis or presentation.\n- Double-check the bisulfite conversion efficiency, as it impacts the accuracy of methylation state determination.",
+      "source_doi": "10.1186/s12859-016-0950-8",
+      "source_tool": "MethPat",
+      "workflow_ids": [
+        "fritjoflammers-snakemake-methylanalysis-finish"
+      ],
+      "pages_processed": 8,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 6412,
+      "completion_tokens": 286
+    },
+    "10.1093_bioinformatics_btt236": {
+      "skill_md_path": "experiments/skills/10.1093_bioinformatics_btt236/SKILL.md",
+      "skill_md_inline": "## Method\nThe paper presents a supervised machine-learning approach using random forests to predict functional misannotations in metabolic networks. The method involves constructing bipartite graphs from metabolic networks, where nodes represent compounds and reactions. Topological features of these graphs are used as input for the random forest classifier, which is trained to distinguish between correct and incorrect enzyme annotations. The random forest algorithm selects a random subset of features for each decision tree, and the final prediction is made based on the majority vote of all trees. Cross-validation is employed to assess the model's performance, using both 5-fold and superfamily-based approaches.\n\n## Parameters\n- **type**: `prob` (default) \u2014 Specifies the type of prediction function used in the randomForest package.\n- **importance**: Function from the randomForest package used to assess feature importance after training.\n\n## Commands / Code Snippets\n```r\n# Example usage of randomForest in R\nlibrary(randomForest)\nmodel <- randomForest(x, y, type=\"prob\")\nimportance(model)\n```\n\n## Notes for R-analysis agent\n- The method is implemented using the `randomForest` package in R.\n- Ensure input data is formatted as bipartite graphs with nodes representing compounds and reactions.\n- Cross-validation should be performed to validate the model, using both 5-fold and superfamily-based methods.\n- Check the importance of features using the `importance` function to understand which topological properties are most predictive.\n- Verify the input data includes the necessary topological features as described in the paper (local, semi-local, global).",
+      "source_doi": "10.1093/bioinformatics/btt236",
+      "source_tool": "MSIsensor",
+      "workflow_ids": [
+        "microsatellite-instability-detection-with-msisensor-pro-finish"
+      ],
+      "pages_processed": 8,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 5304,
+      "completion_tokens": 322
+    },
+    "10.1186_s12859-019-2926-y": {
+      "skill_md_path": "experiments/skills/10.1186_s12859-019-2926-y/SKILL.md",
+      "skill_md_inline": "## Method\nAutoCryoPicker is an unsupervised learning framework designed for automated particle picking in cryo-EM images. The method comprises three main stages: preprocessing, clustering, and particle picking. \n\n1. **Preprocessing**: This stage involves converting cryo-EM images from MRC format to PNG using EMAN2, followed by several image enhancement techniques. These include global and local contrast enhancement, intensity adjustment, and particle edge enhancement. The goal is to improve image quality and contrast, making particles more distinguishable from the background.\n\n2. **Clustering**: The enhanced images undergo intensity-based clustering (IBC) to identify potential particle candidates. This method is more accurate than traditional k-means and Fuzzy C-means (FCM) clustering, as it uses an intensity distribution model to better handle the noise and variability in cryo-EM images.\n\n3. **Particle Picking**: A modified Circular Hough Transform (CHT) algorithm is used to detect and encapsulate particles within bounding boxes. This stage involves generating and cleaning binary masks, followed by measuring particle properties to finalize detection.\n\n## Parameters\n- **Image Resolution**: Affects preprocessing steps like intensity adjustment.\n- **Clustering Method**: Intensity-based clustering (IBC) is used, but parameters for clustering are not specified.\n- **Contrast Enhancement**: Parameters for global and local contrast adjustments are applied but not detailed.\n- **Edge Enhancement**: Uses guided image filtering, but specific parameters are not mentioned.\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- Consider using image processing libraries in R, such as `EBImage`, for preprocessing steps.\n- Clustering can be implemented using `stats::kmeans` or `cluster::fanny` for Fuzzy C-means, but note that IBC is a custom method.\n- The Circular Hough Transform might be implemented using packages like `OpenImageR`.\n- Ensure input images are converted to a suitable format (e.g., PNG) before processing.\n- Verify the intensity normalization and contrast enhancement steps are correctly applied to match the preprocessing described.",
+      "source_doi": "10.1186/s12859-019-2926-y",
+      "source_tool": "Circle-Map",
+      "workflow_ids": [
+        "dna-seq-short-read-circle-map-finish"
+      ],
+      "pages_processed": 8,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 6411,
+      "completion_tokens": 441
+    },
+    "10.1038_s41467-024-48981-z": {
+      "skill_md_path": "experiments/skills/10.1038_s41467-024-48981-z/SKILL.md",
+      "skill_md_inline": "## Method\nSopa is a computational framework designed to enhance the accessibility, efficiency, and interpretability of image-based spatial omics data. It operates across various spatial omics technologies, transforming input data into a unified format called a SpatialData object. The pipeline involves several key steps: segmentation, annotation, and spatial statistics. Segmentation is performed using models like Cellpose and Baysor, which handle both transcript-based and staining-based data. The framework supports interactive region of interest (ROI) selection and resolves conflicts in overlapping patches by merging or keeping distinct cell boundaries based on intersection-over-min-area (IOMA) metrics. Sopa also includes geometric and spatial analysis capabilities, allowing for comprehensive data visualization and integration with community tools.\n\n## Parameters\n- **Segmentation Model**: Choice between Cellpose, Baysor, or custom models.\n- **IOMA Threshold**: Determines conflict resolution in overlapping patches.\n- **Channel Averaging Method**: Options for transcript or staining intensity aggregation.\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- Sopa is implemented as a Python package; integration with R may require reticulate or similar interfaces.\n- Ensure compatibility with input data formats (e.g., SpatialData objects).\n- Verify segmentation model selection and parameter settings (e.g., IOMA threshold) for accurate conflict resolution.\n- Check for dependencies on external tools like Cellpose or Baysor for segmentation tasks.",
+      "source_doi": "10.1038/s41467-024-48981-z",
+      "source_tool": "Sopa",
+      "workflow_ids": [
+        "gustaveroussy-sopa-finish"
+      ],
+      "pages_processed": 8,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 5331,
+      "completion_tokens": 300
+    },
+    "10.1101_gr.079558.108": {
+      "skill_md_path": "experiments/skills/10.1101_gr.079558.108/SKILL.md",
+      "skill_md_inline": "## Method\nThe study employs RNA sequencing (RNA-seq) to assess technical reproducibility and compare gene expression levels with microarray data. The core method involves sequencing RNA samples from liver and kidney tissues using the Illumina platform. A Poisson model is used to identify differentially expressed genes, assuming that the number of reads mapping to a gene follows a Poisson distribution. The study also uses a \u03c7\u00b2 goodness-of-fit test to evaluate lane effects and employs a likelihood ratio test to compare expression levels between groups. The analysis includes identifying novel splice forms by examining exon-exon junctions.\n\n## Parameters\n- **Concentration**: 1.5 pM and 3 pM (cDNA concentrations used in sequencing).\n- **False Discovery Rate (FDR)**: 0.1% (used for identifying differentially expressed genes).\n- **Read Mapping**: Parameters for alignment using ELAND (not specified in detail).\n\n## Commands / Code Snippets\n```r\n# Poisson model for differential expression\np(x|m) = Hyper(x; C1, C2, x1 + x2)\n\n# \u03c7\u00b2 goodness-of-fit test\nX_ij = \u03a3 ((x_ijk - \u03bc\u0302_ij)\u00b2 / \u03bc\u0302_ij)\n\n# Likelihood ratio test\n\u03bb\u0302_j^A = x_j^A / n_j^A\n```\n\n## Notes for R-analysis agent\n- Consider using the `edgeR` or `DESeq2` package for differential expression analysis, which can handle Poisson and negative binomial models.\n- Ensure input data is pre-processed to remove low-quality reads and align using a suitable aligner like `Bowtie` or `STAR`.\n- Validate the assumptions of the Poisson model, especially for genes with low read counts.\n- Check for lane effects using the \u03c7\u00b2 goodness-of-fit test and adjust for batch effects if necessary.\n- For splicing analysis, ensure exon-exon junctions are correctly annotated and consider using `rMATS` or similar tools for alternative splicing detection.",
+      "source_doi": "10.1101/gr.079558.108",
+      "source_tool": "RNA-seq (Marioni 2008)",
+      "workflow_ids": [
+        "lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+        "epigen-rnaseq_pipeline-finish"
+      ],
+      "pages_processed": 8,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 6408,
+      "completion_tokens": 425
+    },
+    "10.1186_s13059-020-01993-6": {
+      "skill_md_path": "experiments/skills/10.1186_s13059-020-01993-6/SKILL.md",
+      "skill_md_inline": "## Method\nVarlociraptor employs a Bayesian latent variable model to enhance sensitivity and control the false discovery rate (FDR) in somatic indel discovery. The model integrates various sources of uncertainty, such as cancer heterogeneity, strand bias, and read alignment ambiguities, into a unified statistical framework. It computes the likelihood of allele frequencies and strand bias given read data, allowing for efficient uncertainty quantification. The method involves a two-step process: first, discovering putative variants, and second, classifying these variants into somatic, germline, or noise categories. The model supports the estimation of variant allele frequencies (VAF) and provides posterior probabilities for each variant, enabling precise FDR control.\n\n## Parameters\n- **VAF threshold**: Minimum variant allele frequency for considering a variant.\n- **FDR threshold (\u03b3)**: Maximum allowable false discovery rate.\n- **Read coverage**: Coverage depth for the tumor and control samples.\n- **Strand bias indicator (\u03b2)**: Indicator for strand bias in variant calling.\n\n## Commands / Code Snippets\n```r\n# (No code snippets visible on provided pages.)\n```\n\n## Notes for R-analysis agent\n- Consider using the `VarDict` or `Mutect2` packages in R for similar variant calling methodologies.\n- Ensure input data is in VCF or BCF format, with aligned reads in BAM/CRAM format.\n- Verify that the input data includes necessary coverage and quality metrics for accurate VAF estimation.\n- Double-check the assumptions regarding cancer heterogeneity and strand bias in the dataset.\n- Be aware of the computational demands due to the Bayesian model, especially with large datasets.",
+      "source_doi": "10.1186/s13059-020-01993-6",
+      "source_tool": "Varlociraptor",
+      "workflow_ids": [
+        "cyrcular-calling-finish"
+      ],
+      "pages_processed": 8,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 5332,
+      "completion_tokens": 343
+    },
+    "10.1186_gb-2008-9-9-r137": {
+      "skill_md_path": "experiments/skills/10.1186_gb-2008-9-9-r137/SKILL.md",
+      "skill_md_inline": "## Method\nMACS (Model-based Analysis of ChIP-Seq) is designed to analyze ChIP-Seq data by empirically modeling the shift size of ChIP-Seq tags to improve the spatial resolution of predicted binding sites. It uses a dynamic Poisson distribution to capture local biases in the genome, enhancing the robustness and specificity of peak detection. The method involves aligning tags by their midpoint between Watson and Crick tag centers, estimating the shift size `d` by the distance between these centers. MACS uses this shift size to adjust the tag positions, improving the accuracy of peak predictions.\n\n## Parameters\n- `--treatment`: Path to the ChIP tags file (required).\n- `--control`: Path to the control tags file (optional).\n- `--format`: Format of input file (`BED` or `ELAND`).\n- `--name`: Name of the run.\n- `--gsize`: Mappable genome size (default `2.7e9`).\n- `--tsize`: Tag size (default `25`).\n- `--bw`: Bandwidth, half of the estimated sonication size (default `300`).\n- `--pvalue`: P-value cutoff for peak calls (default `1e-5`).\n- `--mfold`: High-confidence fold-enrichment (default `32`).\n- `--diag`: Flag for generating diagnostic plots.\n- `--shiftsize`: Arbitrary shift size without MACS model.\n- `--nolambda`: Use a global lambda for peak calls.\n- `--verbose`: Debugging and warning messages.\n\n## Commands / Code Snippets\n```shell\nmacs -t <treatment_file> -c <control_file> --format=<format> --name=<name> --gsize=<gsize> --tsize=<tsize> --bw=<bw> --pvalue=<pvalue> --mfold=<mfold> --diag\n```\n\n## Notes for R-analysis agent\n- Use the `MACS` package in R for implementation.\n- Ensure input files are in the correct format (`BED` or `ELAND`).\n- Verify the mappable genome size (`gsize`) is appropriate for the organism.\n- Check for the presence of control data to improve peak calling accuracy.\n- Be aware of potential biases in tag alignment and adjust parameters accordingly.\n- Confirm that the `shiftsize` parameter is set if not using the MACS model.",
+      "source_doi": "10.1186/gb-2008-9-9-r137",
+      "source_tool": "MACS2",
+      "workflow_ids": [
+        "epigen-300bcg-atacseq_pipeline-finish",
+        "lwang-genomics-ngs_pipeline_sn-chip_seq-finish",
+        "epigen-atacseq_pipeline-finish"
+      ],
+      "pages_processed": 8,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 6413,
+      "completion_tokens": 506
+    },
+    "10.1038_ncomms14049": {
+      "skill_md_path": "experiments/skills/10.1038_ncomms14049/SKILL.md",
+      "skill_md_inline": "## Method\nThe paper describes a droplet-based system for massively parallel digital transcriptional profiling of single cells using 3' mRNA counting. This method involves encapsulating cells into droplets with barcoded gel beads, enabling reverse transcription and cDNA amplification. The system uses a microfluidic chip to combine cells, reagents, and gel beads, forming Gel Bead-in-Emulsions (GEMs). Each bead is loaded with oligonucleotides containing a unique barcode, a unique molecular identifier (UMI), and poly(dT) sequences for capturing mRNA. The cDNA is then sequenced using Illumina short-read sequencing, and the data is processed to align reads, correct barcodes, and count UMIs, resulting in a gene-barcode matrix for analysis.\n\n## Parameters\n- **Cell load**: Number of cells loaded into the system.\n- **Bead load**: Number of beads used, affecting the multiplet rate.\n- **Sequencing depth**: Number of reads per cell, influencing sensitivity and accuracy.\n- **Barcode length**: Length of the barcode used for cell identification.\n- **UMI length**: Length of the unique molecular identifier for transcript counting.\n\n## Commands / Code Snippets\n```r\n# (No code snippets visible on provided pages.)\n```\n\n## Notes for R-analysis agent\n- The method is implemented in the `CellRanger` software by 10x Genomics, often used with the `Seurat` or `SingleCellExperiment` packages in R for downstream analysis.\n- Ensure input data is in the form of a gene-barcode matrix, typically output from the CellRanger pipeline.\n- Verify the quality of barcodes and UMIs to minimize multiplet rates and ensure accurate cell identification.\n- Check sequencing depth and adjust parameters to balance between sensitivity and cost.\n- Consider using dimensionality reduction techniques like PCA or t-SNE for visualization and clustering of single-cell data.",
+      "source_doi": "10.1038/ncomms14049",
+      "source_tool": "10x Chromium / Cell Ranger",
+      "workflow_ids": [
+        "cellranger-multi-finish"
+      ],
+      "pages_processed": 8,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 6407,
+      "completion_tokens": 401
+    },
+    "10.1186_s13059-016-0881-8": {
+      "skill_md_path": "experiments/skills/10.1186_s13059-016-0881-8/SKILL.md",
+      "skill_md_inline": "## Method\nThe paper provides a comprehensive review of best practices for RNA-seq data analysis, covering various stages from experimental design to advanced analysis. The core computational methods include transcript quantification and differential expression analysis. Transcript quantification is primarily based on counting mapped reads per transcript, with methods like RPKM, FPKM, and TPM used for normalization. Differential expression analysis often employs statistical models such as the negative binomial distribution to account for overdispersion in count data. The paper also discusses alternative splicing analysis, which can be performed using hierarchical Bayesian models or exon-based approaches.\n\n## Parameters\n- **Sequencing Depth**: Number of reads per sample, affecting the power to detect expression differences.\n- **Number of Replicates**: Influences the statistical power and reliability of the results.\n- **Normalization Method**: Options include RPKM, FPKM, TPM, TMM, and batch effect removal.\n- **Statistical Model**: Choice of distribution (e.g., Poisson, negative binomial) for differential expression analysis.\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- Consider using R packages like DESeq2 or edgeR for differential expression analysis, which handle negative binomial models.\n- Ensure proper normalization of data using methods like TMM or RPKM/FPKM/TPM.\n- Verify the sequencing depth and number of replicates to ensure sufficient statistical power.\n- Check for batch effects and apply correction methods if necessary.\n- For transcript quantification, tools like HTSeq-count or featureCounts can be used.",
+      "source_doi": "10.1186/s13059-016-0881-8",
+      "source_tool": "RNA-seq best practices",
+      "workflow_ids": [
+        "akinyi-onyango-rna_seq_pipeline-finish"
+      ],
+      "pages_processed": 8,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 6412,
+      "completion_tokens": 333
+    },
+    "10.1093_bioinformatics_btz436": {
+      "skill_md_path": "experiments/skills/10.1093_bioinformatics_btz436/SKILL.md",
+      "skill_md_inline": "## Method\nsnakePipes is a workflow package designed to facilitate the processing and analysis of epigenomic data from various assays such as ChIP-seq, RNA-seq, and ATAC-seq. It leverages the Snakemake workflow management system, which allows for easy readability and scalability. The workflows are modular, enabling users to customize and integrate different tools and resources by altering YAML configuration files. This modularity supports the processing of data from multiple assays using consistent tool versions, enhancing reproducibility and flexibility. snakePipes also incorporates conda environments to manage dependencies and tool installations seamlessly.\n\n## Parameters\n- **cluster.yaml**: Configuration for cluster execution.\n- **<organism>.yaml**: Genome, indexes, and annotations.\n- **env.yaml**: Conda environment specifications.\n- **defaults.yaml**: Workflow default settings.\n- **User-specified files/parameters**: Custom inputs for specific analyses.\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- snakePipes is implemented using Snakemake, which is not directly available in R. However, the outputs from snakePipes can be analyzed in R.\n- Ensure that input data is pre-processed according to the specifications in the YAML configuration files.\n- Check compatibility of the conda environment with the R environment if integrating outputs.\n- Verify that the genome annotations and indices are correctly specified for the organism of interest.",
+      "source_doi": "10.1093/bioinformatics/btz436",
+      "source_tool": "snakePipes",
+      "workflow_ids": [
+        "maxplanck-ie-snakepipes-finish"
+      ],
+      "pages_processed": 3,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 2583,
+      "completion_tokens": 299
+    },
+    "10.1038_s41587-023-01793-w": {
+      "skill_md_path": "experiments/skills/10.1038_s41587-023-01793-w/SKILL.md",
+      "skill_md_inline": "## Method\nThe Minigraph-Cactus pipeline constructs pangenome graphs by combining Minigraph's fast assembly-to-graph mapping with Cactus's base alignment. The process begins with the construction of an SV-only graph using Minigraph, which includes variants affecting sequences of 50bp or more. Minigraph uses a minimizer-based seeding and chaining strategy for base-level alignment, which is efficient for similar input genomes. The pipeline then employs Cactus to refine these alignments, creating a base-resolution graph. Cactus aligns sequences by \"pinching\" matching bases together, forming a sequence graph that is transformed into a Cactus graph. This method allows for the representation of genetic variation consistently across multiple genomes, improving mapping and variant detection.\n\n## Parameters\n- **SV size threshold**: 50bp (default) - Minimum size of structural variants included in the graph.\n- **Sequence filter threshold**: 10kb - Threshold for clipping out stretches of sequences not aligning to the Minigraph.\n\n## Commands / Code Snippets\n(No code snippets visible on provided pages.)\n\n## Notes for R-analysis agent\n- The method is implemented in the Cactus software suite, utilizing Toil for distributed computation.\n- Ensure input genome assemblies are in FASTA format.\n- The pipeline outputs graphs in GFA and VCF formats, with indexes for vg giraffe.\n- Check for compatibility with the `vg` toolkit for mapping and variant calling.\n- Be aware of potential issues with highly repetitive sequences, which may require additional filtering.",
+      "source_doi": "10.1038/s41587-023-01793-w",
+      "source_tool": "Minigraph-Cactus",
+      "workflow_ids": [
+        "read-alignment-pangenome-finish"
+      ],
+      "pages_processed": 8,
+      "model": "openai/gpt-4o",
+      "prompt_tokens": 5307,
+      "completion_tokens": 310
+    }
+  },
+  "tasks_without_skill": [
+    "longseq_deseq2_init",
+    "longseq_deseq2_contrast",
+    "riya_limma",
+    "chipseq_plot_macs_qc",
+    "chipseq_plot_homer_annot",
+    "spilterlize_filter_features",
+    "spilterlize_norm_voom",
+    "spilterlize_limma_rbe",
+    "spilterlize_norm_edger",
+    "phantompeak_correlation",
+    "chipseq_plot_frip_score",
+    "chipseq_plot_peaks_count_macs2",
+    "chipseq_plot_annotatepeaks_summary_homer",
+    "epibtn_rpkm"
+  ],
+  "notes": "V3 paper-skills manifest generated by D3. skill_md_inline is SKILL.md with YAML front matter (and any leading ```markdown fence) stripped, truncated to 4000 chars. by_workflow_id keys use literature_map workflow_ids; note that registry 'pipeline_workflow_id' may differ for some entries (e.g. 'snakemake-workflows-msisensor-pro-finish' vs 'microsatellite-instability-detection-with-msisensor-pro-finish')."
+}

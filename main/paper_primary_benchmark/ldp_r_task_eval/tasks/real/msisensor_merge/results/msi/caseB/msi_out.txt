@@ -1,0 +1,2 @@
+Total_Number_of_Sites	Number_of_Unstable_Sites	%
+240	15	4.4642

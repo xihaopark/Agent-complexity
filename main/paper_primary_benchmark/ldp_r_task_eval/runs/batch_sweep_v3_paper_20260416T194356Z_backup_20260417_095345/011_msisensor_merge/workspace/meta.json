@@ -1,0 +1,20 @@
+{
+  "task_id": "msisensor_merge",
+  "kind": "real",
+  "workflow_id": "snakemake-workflows-msisensor-pro-finish",
+  "family": "variant",
+  "stage": "late",
+  "difficulty": 2,
+  "paper_covered": false,
+  "wrapper_kind": "snakemake",
+  "description": "Merge per-sample MSIsensor-pro outputs into a single summary TSV.",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/snakemake-workflows__microsatellite-instability-detection-with-msisensor-pro/workflow/scripts/merge_msi_results.R",
+  "ground_truth_dir": "tasks/real_ground_truth/msisensor_merge",
+  "success_glob": "output/merged_msi.tsv",
+  "reference_output_files": [
+    "merged_msi.tsv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

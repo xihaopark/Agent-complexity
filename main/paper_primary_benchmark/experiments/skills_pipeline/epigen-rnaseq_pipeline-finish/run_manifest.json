@@ -1,0 +1,214 @@
+{
+  "workflow_id": "epigen-rnaseq_pipeline-finish",
+  "workflow_dir": "main/finish/workflow_candidates/epigen__rnaseq_pipeline",
+  "out_dir": "main/paper_primary_benchmark/experiments/skills_pipeline/epigen-rnaseq_pipeline-finish",
+  "status": "ok",
+  "generated_at": "2026-04-16T16:56:30Z",
+  "model": "openrouter/openai/gpt-4o",
+  "resolved_model": "openai/gpt-4o",
+  "max_per_file": 8000,
+  "max_total": 80000,
+  "prompt_tokens": 12930,
+  "completion_tokens": 1290,
+  "total_tokens": 14220,
+  "runtime_seconds": 22.4,
+  "llm_seconds": 22.4,
+  "chars_used": 51282,
+  "truncated": false,
+  "files_considered": [
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "bytes": 2522,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/common.smk",
+      "kind": "snakefile",
+      "bytes": 463,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/export.smk",
+      "kind": "snakefile",
+      "bytes": 2667,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/processing.smk",
+      "kind": "snakefile",
+      "bytes": 6463,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/qc.smk",
+      "kind": "snakefile",
+      "bytes": 7974,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/quantification.smk",
+      "kind": "snakefile",
+      "bytes": 2513,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/ref.smk",
+      "kind": "snakefile",
+      "bytes": 1944,
+      "priority": 0
+    },
+    {
+      "path": "workflow/scripts/annotate_genes.R",
+      "kind": "r",
+      "bytes": 3859,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/plot_sample_annotation.R",
+      "kind": "r",
+      "bytes": 9491,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/count_matrix.py",
+      "kind": "python",
+      "bytes": 1283,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/gtf2bed.py",
+      "kind": "python",
+      "bytes": 520,
+      "priority": 2
+    },
+    {
+      "path": "config/config.yaml",
+      "kind": "yaml",
+      "bytes": 1601,
+      "priority": 3
+    },
+    {
+      "path": "workflow/profiles/default/config.yaml",
+      "kind": "yaml",
+      "bytes": 80,
+      "priority": 3
+    },
+    {
+      "path": "workflow/schemas/config.schema.yaml",
+      "kind": "yaml",
+      "bytes": 681,
+      "priority": 3
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "bytes": 19144,
+      "priority": 4
+    },
+    {
+      "path": "config/README.md",
+      "kind": "readme",
+      "bytes": 1952,
+      "priority": 4
+    }
+  ],
+  "files_included": [
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "chars_used": 2522,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/common.smk",
+      "kind": "snakefile",
+      "chars_used": 463,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/export.smk",
+      "kind": "snakefile",
+      "chars_used": 2667,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/processing.smk",
+      "kind": "snakefile",
+      "chars_used": 6463,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/qc.smk",
+      "kind": "snakefile",
+      "chars_used": 7974,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/quantification.smk",
+      "kind": "snakefile",
+      "chars_used": 2513,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/ref.smk",
+      "kind": "snakefile",
+      "chars_used": 1944,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/annotate_genes.R",
+      "kind": "r",
+      "chars_used": 3859,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/plot_sample_annotation.R",
+      "kind": "r",
+      "chars_used": 8041,
+      "partial": true
+    },
+    {
+      "path": "workflow/scripts/count_matrix.py",
+      "kind": "python",
+      "chars_used": 1283,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/gtf2bed.py",
+      "kind": "python",
+      "chars_used": 520,
+      "partial": false
+    },
+    {
+      "path": "config/config.yaml",
+      "kind": "yaml",
+      "chars_used": 1601,
+      "partial": false
+    },
+    {
+      "path": "workflow/profiles/default/config.yaml",
+      "kind": "yaml",
+      "chars_used": 80,
+      "partial": false
+    },
+    {
+      "path": "workflow/schemas/config.schema.yaml",
+      "kind": "yaml",
+      "chars_used": 681,
+      "partial": false
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "chars_used": 8042,
+      "partial": true
+    },
+    {
+      "path": "config/README.md",
+      "kind": "readme",
+      "chars_used": 1952,
+      "partial": false
+    }
+  ]
+}

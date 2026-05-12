@@ -1,0 +1,20 @@
+{
+  "task_id": "dea_limma",
+  "task_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/dea_limma",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills_llm_plan/dea_limma",
+  "model": "openrouter/openai/gpt-4o",
+  "model_resolved": "openai/gpt-4o",
+  "temperature": 0.1,
+  "prompt_tokens": 983,
+  "completion_tokens": 602,
+  "total_tokens": 1585,
+  "runtime_seconds": 6.48,
+  "inputs_listed": [
+    "counts.tsv",
+    "metadata.tsv"
+  ],
+  "inputs_previewed": [
+    "metadata.tsv"
+  ],
+  "generated_at": "2026-04-16T19:34:11Z"
+}

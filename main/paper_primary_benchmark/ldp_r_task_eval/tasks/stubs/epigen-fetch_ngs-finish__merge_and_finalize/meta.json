@@ -1,0 +1,12 @@
+{
+  "workflow_id": "epigen-fetch_ngs-finish",
+  "pipeline_task_id": "merge_and_finalize",
+  "order": 3,
+  "manifest_path": "finish/epigen-fetch_ngs-finish/manifest.json",
+  "step_ids": [
+    "merge_metadata",
+    "all"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.975674+00:00"
+}

@@ -1,0 +1,3 @@
+# CPL-Article：本地放置 Zenodo 同名 zip，或运行 README 中的 curl；解压树不纳入版本控制。
+CPL-Article.zip
+_extract/

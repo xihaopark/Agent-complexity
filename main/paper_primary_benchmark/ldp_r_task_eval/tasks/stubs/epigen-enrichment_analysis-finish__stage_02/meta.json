@@ -1,0 +1,14 @@
+{
+  "workflow_id": "epigen-enrichment_analysis-finish",
+  "pipeline_task_id": "stage_02",
+  "order": 2,
+  "manifest_path": "finish/epigen-enrichment_analysis-finish/manifest.json",
+  "step_ids": [
+    "gene_ORA_GSEApy",
+    "gene_motif_enrichment_analysis_RcisTarget",
+    "gene_preranked_GSEApy",
+    "plot_enrichment_result"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.973000+00:00"
+}

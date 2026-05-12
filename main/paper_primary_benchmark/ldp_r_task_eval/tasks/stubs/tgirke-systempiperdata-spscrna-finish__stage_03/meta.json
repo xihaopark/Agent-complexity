@@ -1,0 +1,14 @@
+{
+  "workflow_id": "tgirke-systempiperdata-spscrna-finish",
+  "pipeline_task_id": "stage_03",
+  "order": 3,
+  "manifest_path": "finish/tgirke-systempiperdata-spscrna-finish/manifest.json",
+  "step_ids": [
+    "scaling",
+    "pca",
+    "pca_plots",
+    "choose_pcs"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.032070+00:00"
+}

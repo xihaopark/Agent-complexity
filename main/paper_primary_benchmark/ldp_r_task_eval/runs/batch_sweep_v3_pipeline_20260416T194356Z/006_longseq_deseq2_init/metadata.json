@@ -1,0 +1,26 @@
+{
+  "task_id": "longseq_deseq2_init",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/longseq_deseq2_init",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/006_longseq_deseq2_init/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+  "registry_index": 6,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "arm": "pipeline",
+    "injected": true,
+    "manifest_version": 3,
+    "skill_sha256": "ed7db6c130411dac5f3ceb9e638f08cce9da45715c714bea6679e11c4a76a6e0",
+    "skill_char_len": 4000,
+    "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-rna-longseq-de-isoform/SKILL.md",
+    "lookup_field": "by_workflow_id",
+    "lookup_key": "snakemake-workflows-rna-longseq-de-isoform",
+    "source_workflow_id": "snakemake-workflows-rna-longseq-de-isoform"
+  }
+}

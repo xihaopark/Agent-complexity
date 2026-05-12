@@ -1,0 +1,82 @@
+{
+  "workflow_id": "lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+  "workflow_dir": "main/finish/workflow_candidates/lwang-genomics__NGS_pipeline_sn",
+  "out_dir": "main/paper_primary_benchmark/experiments/skills_pipeline/lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+  "status": "ok",
+  "generated_at": "2026-04-16T16:55:58Z",
+  "model": "openrouter/openai/gpt-4o",
+  "resolved_model": "openai/gpt-4o",
+  "max_per_file": 8000,
+  "max_total": 80000,
+  "prompt_tokens": 7746,
+  "completion_tokens": 601,
+  "total_tokens": 8347,
+  "runtime_seconds": 11.02,
+  "llm_seconds": 11.02,
+  "chars_used": 28339,
+  "truncated": false,
+  "files_considered": [
+    {
+      "path": "atac_seq.smk",
+      "kind": "snakefile",
+      "bytes": 5104,
+      "priority": 0
+    },
+    {
+      "path": "chip_seq.smk",
+      "kind": "snakefile",
+      "bytes": 6115,
+      "priority": 0
+    },
+    {
+      "path": "rna_seq.smk",
+      "kind": "snakefile",
+      "bytes": 13262,
+      "priority": 0
+    },
+    {
+      "path": "config.yaml",
+      "kind": "yaml",
+      "bytes": 902,
+      "priority": 3
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "bytes": 8267,
+      "priority": 4
+    }
+  ],
+  "files_included": [
+    {
+      "path": "atac_seq.smk",
+      "kind": "snakefile",
+      "chars_used": 5104,
+      "partial": false
+    },
+    {
+      "path": "chip_seq.smk",
+      "kind": "snakefile",
+      "chars_used": 6115,
+      "partial": false
+    },
+    {
+      "path": "rna_seq.smk",
+      "kind": "snakefile",
+      "chars_used": 8042,
+      "partial": true
+    },
+    {
+      "path": "config.yaml",
+      "kind": "yaml",
+      "chars_used": 902,
+      "partial": false
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "chars_used": 8041,
+      "partial": true
+    }
+  ]
+}

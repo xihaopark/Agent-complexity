@@ -1,0 +1,22 @@
+{
+  "task_id": "nearest_gene",
+  "task_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/nearest_gene",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills_llm_plan/nearest_gene",
+  "model": "openrouter/openai/gpt-4o",
+  "model_resolved": "openai/gpt-4o",
+  "temperature": 0.1,
+  "prompt_tokens": 1299,
+  "completion_tokens": 675,
+  "total_tokens": 1974,
+  "runtime_seconds": 7.53,
+  "inputs_listed": [
+    "gene_symbol.tsv",
+    "peaks_with_nearest.bed",
+    "t2g.tsv"
+  ],
+  "inputs_previewed": [
+    "gene_symbol.tsv",
+    "t2g.tsv"
+  ],
+  "generated_at": "2026-04-16T19:34:50Z"
+}

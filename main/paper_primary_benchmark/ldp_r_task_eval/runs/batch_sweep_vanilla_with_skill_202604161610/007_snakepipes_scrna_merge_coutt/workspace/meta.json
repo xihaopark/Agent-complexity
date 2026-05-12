@@ -1,0 +1,17 @@
+{
+  "task_id": "snakepipes_scrna_merge_coutt",
+  "kind": "real",
+  "workflow_id": "maxplanck-ie-snakepipes-finish",
+  "family": "scrna",
+  "description": "Merge per-library scRNA-seq `*.corrected.txt` coutt tables into one matrix.",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/scRNAseq/scRNAseq_merge_coutt_files2.R",
+  "ground_truth_dir": "tasks/real_ground_truth/snakepipes_scrna_merge_coutt",
+  "success_glob": "output/merged_coutt.tsv",
+  "reference_output_files": [
+    "merged_coutt.tsv",
+    "merged_coutt.cell_names.tsv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

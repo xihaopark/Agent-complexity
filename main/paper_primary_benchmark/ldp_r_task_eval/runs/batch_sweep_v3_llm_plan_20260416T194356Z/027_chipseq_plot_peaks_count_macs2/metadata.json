@@ -1,0 +1,27 @@
+{
+  "task_id": "chipseq_plot_peaks_count_macs2",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/chipseq_plot_peaks_count_macs2",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_llm_plan_20260416T194356Z/027_chipseq_plot_peaks_count_macs2/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_v3_llm_plan_20260416T194356Z",
+  "registry_index": 27,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "arm": "llm_plan",
+    "injected": true,
+    "manifest_version": 3,
+    "skill_sha256": "c811981f64a297ffe1891abeee78c883494d63a0e1a33f1760e2790c04740809",
+    "skill_char_len": 2020,
+    "skill_md_path": "experiments/skills_llm_plan/chipseq_plot_peaks_count_macs2/SKILL.md",
+    "lookup_field": "by_task_id",
+    "lookup_key": "chipseq_plot_peaks_count_macs2",
+    "source_task_id": "chipseq_plot_peaks_count_macs2",
+    "source_model": "openrouter/openai/gpt-4o"
+  }
+}

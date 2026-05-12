@@ -1,0 +1,13 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Test/cache
+.pytest_cache/
+
+# Tooling artifacts
+run_creator.log
+.todos.json
+
+# OS
+.DS_Store

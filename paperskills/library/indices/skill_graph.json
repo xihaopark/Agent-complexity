@@ -1,0 +1,181 @@
+{
+  "version": "2026-05-01-discovery",
+  "description": "Skill Discovery Graph - Agent-oriented semantic network for flexible skill retrieval",
+  "ontology": {
+    "analysis_types": [
+      "differential_expression",
+      "peak_calling",
+      "normalization",
+      "batch_correction",
+      "dimensionality_reduction",
+      "clustering",
+      "pathway_enrichment",
+      "variant_calling",
+      "methylation_analysis",
+      "quality_control"
+    ],
+    "data_types": [
+      "rna_seq_counts",
+      "scrna_expression",
+      "chip_seq_reads",
+      "methylation_data",
+      "genomic_variants",
+      "proteomics",
+      "metabolomics"
+    ],
+    "experimental_designs": [
+      "two_group_comparison",
+      "time_series",
+      "paired_samples",
+      "multi_factor",
+      "batch_effects",
+      "small_sample"
+    ]
+  },
+  "skills": {
+    "10.1186/s13059-014-0550-8": {
+      "doi": "10.1186/s13059-014-0550-8",
+      "tool": "DESeq2",
+      "primary_analysis": "differential_expression",
+      "applicable_data_types": ["rna_seq_counts"],
+      "experimental_designs": ["two_group_comparison", "multi_factor", "time_series"],
+      "tags": ["counts", "negative_binomial", "shrinkage", "LRT", "Wald_test"],
+      "strengths": ["handles_count_data", "variance_shrinkage", "robust_for_small_samples_with_apeglm"],
+      "limitations": ["requires_replicates", "count_data_only"],
+      "related_tools": {
+        "alternatives": ["10.1093/nar/gkv007", "TBD_edgeR"],
+        "complements": ["10.1101/035170"],
+        "downstream": ["10.1089/omi.2011.0118"]
+      },
+      "use_when": [
+        "You have raw count data from RNA-seq",
+        "Need to compare expression between conditions",
+        "Want appropriate statistical testing for count data"
+      ],
+      "not_when": [
+        "Data is already normalized (TPM/RPKM)",
+        "Sample size is extremely small without apeglm"
+      ]
+    },
+    "10.1093/nar/gkv007": {
+      "doi": "10.1093/nar/gkv007",
+      "tool": "limma",
+      "primary_analysis": "differential_expression",
+      "applicable_data_types": ["rna_seq_counts", "microarray"],
+      "experimental_designs": ["two_group_comparison", "multi_factor", "paired_samples", "batch_effects"],
+      "tags": ["linear_model", "voom", "precision_weights", "empirical_bayes"],
+      "strengths": ["flexible_design_matrices", "handles_continuous_data", "quality_weights", "duplicate_correlation"],
+      "limitations": ["requires_log_transformation_for_counts"],
+      "related_tools": {
+        "alternatives": ["10.1186/s13059-014-0550-8", "TBD_edgeR"],
+        "complements": ["10.1186/s12859-016-0938-4"],
+        "integrated_in": ["10.1186/s13059-016-0881-8"]
+      },
+      "use_when": [
+        "Need flexible experimental designs",
+        "Data may have quality variations (use voomWithQualityWeights)",
+        "Have paired or correlated samples (use duplicateCorrelation)"
+      ],
+      "not_when": [
+        "Want to stay purely in count space"
+      ]
+    },
+    "10.1101/2020.10.12.335331": {
+      "doi": "10.1101/2020.10.12.335331",
+      "tool": "Seurat",
+      "primary_analysis": "scrna_analysis",
+      "applicable_data_types": ["scrna_expression"],
+      "experimental_designs": ["clustering", "integration", "trajectory"],
+      "tags": ["single_cell", "normalization", "SCTransform", "integration", "RPCA", "CCA"],
+      "strengths": ["comprehensive_workflow", "SCTransform_normalization", "multiple_integration_methods"],
+      "limitations": ["computationally_intensive", "many_parameters_to_tune"],
+      "related_tools": {
+        "alternatives": ["10.1186/s13059-019-1670-y"],
+        "components": ["10.1038/ncomms14049"]
+      },
+      "use_when": [
+        "Analyzing single-cell RNA-seq data",
+        "Need clustering and visualization",
+        "Integrating multiple samples/batches"
+      ],
+      "not_when": [
+        "Bulk RNA-seq analysis"
+      ]
+    },
+    "10.1186/gb-2008-9-9-r137": {
+      "doi": "10.1186/gb-2008-9-9-r137",
+      "tool": "MACS2",
+      "primary_analysis": "peak_calling",
+      "applicable_data_types": ["chip_seq_reads", "atac_seq_reads"],
+      "experimental_designs": ["two_group_comparison"],
+      "tags": ["chip_seq", "atac_seq", "peak_calling", "broad_peaks", "narrow_peaks"],
+      "strengths": ["handles_broad_and_narrow_peaks", "empirical_modeling"],
+      "limitations": ["requires_controls_for_best_results"],
+      "related_tools": {
+        "complements": ["10.1093/bioinformatics/btz436"]
+      },
+      "use_when": [
+        "Calling peaks from ChIP-seq or ATAC-seq",
+        "Need to distinguish broad vs narrow marks"
+      ],
+      "not_when": [
+        "RNA-seq analysis"
+      ]
+    },
+    "10.1089/omi.2011.0118": {
+      "doi": "10.1089/omi.2011.0118",
+      "tool": "clusterProfiler",
+      "primary_analysis": "pathway_enrichment",
+      "applicable_data_types": ["gene_lists", "expression_rankings"],
+      "experimental_designs": ["pathway_analysis"],
+      "tags": ["GO_enrichment", "KEGG", "GSEA", "ORA"],
+      "strengths": ["multiple_enrichment_methods", "GSEA_support", "visualization"],
+      "limitations": ["requires_appropriate_background_gene_set"],
+      "related_tools": {
+        "upstream_of": ["10.1186/s13059-014-0550-8", "10.1093/nar/gkv007"]
+      },
+      "use_when": [
+        "Have differential expression results",
+        "Want pathway or GO enrichment analysis",
+        "Prefer GSEA over simple ORA"
+      ],
+      "not_when": [
+        "Primary differential analysis"
+      ]
+    }
+  },
+  "discovery_rules": {
+    "scenario_to_skills": {
+      "rna_de_analysis": {
+        "description": "Differential expression analysis of RNA-seq data",
+        "relevant_skills": ["10.1186/s13059-014-0550-8", "10.1093/nar/gkv007"],
+        "decision_guide": "Use DESeq2 for count-based analysis with built-in normalization. Use limma+voom if you need flexible designs or have quality variations."
+      },
+      "scrna_analysis": {
+        "description": "Single-cell RNA-seq analysis",
+        "relevant_skills": ["10.1101/2020.10.12.335331"],
+        "decision_guide": "Start with Seurat for comprehensive workflow. Consider SCTransform for normalization."
+      },
+      "chip_peak_calling": {
+        "description": "ChIP-seq peak calling",
+        "relevant_skills": ["10.1186/gb-2008-9-9-r137"],
+        "decision_guide": "Use MACS2. Choose --broad for histone marks, narrow for TFs."
+      },
+      "small_sample_rna": {
+        "description": "RNA-seq with very few replicates",
+        "relevant_skills": ["10.1186/s13059-014-0550-8"],
+        "decision_guide": "Use DESeq2 with type='apeglm' in lfcShrink() for stable estimates with n<5 per group."
+      },
+      "paired_design_rna": {
+        "description": "Paired or matched RNA-seq samples",
+        "relevant_skills": ["10.1093/nar/gkv007"],
+        "decision_guide": "Use limma with duplicateCorrelation() to properly model within-subject correlation."
+      },
+      "batch_correction_needed": {
+        "description": "RNA-seq with known batch effects",
+        "relevant_skills": ["TBD_sva"],
+        "decision_guide": "NEEDS SKILL: sva/ComBat-seq for count-based batch correction."
+      }
+    }
+  }
+}

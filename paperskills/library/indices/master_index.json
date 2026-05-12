@@ -1,0 +1,398 @@
+{
+  "version": "2026-05-01",
+  "description": "Paper Skills Library - Migrated from experiments/skills",
+  "count": 20,
+  "generated_from": "main/paper_primary_benchmark/experiments/skills/manifest.json",
+  "entries": [
+    {
+      "doi": "10.1101/035170",
+      "doi_slug": "10.1101_035170",
+      "title": "kallisto",
+      "authors": [],
+      "year": 0,
+      "tool": "kallisto",
+      "family": "rna",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1101_035170/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [],
+      "workflow_ids": [
+        "rna-seq-kallisto-sleuth-finish"
+      ]
+    },
+    {
+      "doi": "10.1093/bioinformatics/bts635",
+      "doi_slug": "10.1093_bioinformatics_bts635",
+      "title": "STAR",
+      "authors": [],
+      "year": 0,
+      "tool": "STAR",
+      "family": "rna",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1093_bioinformatics_bts635/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [],
+      "workflow_ids": [
+        "star-arriba-fusion-calling-finish"
+      ]
+    },
+    {
+      "doi": "10.1186/s12859-016-0938-4",
+      "doi_slug": "10.1186_s12859-016-0938-4",
+      "title": "systemPipeR",
+      "authors": [],
+      "year": 938,
+      "tool": "systemPipeR",
+      "family": "multi",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1186_s12859-016-0938-4/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [],
+      "workflow_ids": [
+        "tgirke-systempiperdata-rnaseq-finish",
+        "tgirke-systempiperdata-chipseq-finish",
+        "tgirke-systempiperdata-varseq-finish",
+        "tgirke-systempiperdata-riboseq-finish",
+        "tgirke-systempiperdata-spscrna-finish"
+      ]
+    },
+    {
+      "doi": "10.1186/s13059-014-0550-8",
+      "doi_slug": "10.1186_s13059-014-0550-8",
+      "title": "DESeq2",
+      "authors": [],
+      "year": 550,
+      "tool": "DESeq2",
+      "family": "rna",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1186_s13059-014-0550-8/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [
+        "star_deseq2_init",
+        "star_deseq2_contrast"
+      ],
+      "workflow_ids": [
+        "rna-seq-star-deseq2-finish"
+      ]
+    },
+    {
+      "doi": "10.1101/2020.10.12.335331",
+      "doi_slug": "10.1101_2020.10.12.335331",
+      "title": "Seurat v4 (bioRxiv preprint)",
+      "authors": [],
+      "year": 0,
+      "tool": "Seurat",
+      "family": "scrna",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1101_2020.10.12.335331/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [],
+      "workflow_ids": [
+        "epigen-dea_seurat-finish",
+        "epigen-scrnaseq_processing_seurat-finish"
+      ]
+    },
+    {
+      "doi": "10.1186/s13059-019-1670-y",
+      "doi_slug": "10.1186_s13059-019-1670-y",
+      "title": "alevin",
+      "authors": [],
+      "year": 1670,
+      "tool": "alevin",
+      "family": "scrna",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1186_s13059-019-1670-y/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [],
+      "workflow_ids": [
+        "cite-seq-alevin-fry-seurat-finish"
+      ]
+    },
+    {
+      "doi": "10.1093/nar/gkaa1052",
+      "doi_slug": "10.1093_nar_gkaa1052",
+      "title": "NCBI / SRA toolkit",
+      "authors": [],
+      "year": 0,
+      "tool": "NCBI Resources",
+      "family": "database",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1093_nar_gkaa1052/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [],
+      "workflow_ids": [
+        "epigen-fetch_ngs-finish"
+      ]
+    },
+    {
+      "doi": "10.1093/nar/gkv007",
+      "doi_slug": "10.1093_nar_gkv007",
+      "title": "limma",
+      "authors": [],
+      "year": 0,
+      "tool": "limma",
+      "family": "rna",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1093_nar_gkv007/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [
+        "dea_limma"
+      ],
+      "workflow_ids": [
+        "epigen-dea_limma-finish"
+      ]
+    },
+    {
+      "doi": "10.1089/omi.2011.0118",
+      "doi_slug": "10.1089_omi.2011.0118",
+      "title": "clusterProfiler",
+      "authors": [],
+      "year": 0,
+      "tool": "clusterProfiler",
+      "family": "enrichment",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1089_omi.2011.0118/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [],
+      "workflow_ids": [
+        "epigen-enrichment_analysis-finish"
+      ]
+    },
+    {
+      "doi": "10.1186/s12859-016-0950-8",
+      "doi_slug": "10.1186_s12859-016-0950-8",
+      "title": "MethPat",
+      "authors": [],
+      "year": 950,
+      "tool": "MethPat",
+      "family": "methyl",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1186_s12859-016-0950-8/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [
+        "methylkit_load",
+        "methylkit_unite",
+        "methylkit_to_tibble",
+        "methylkit_filt_norm",
+        "methylkit2tibble_split",
+        "methylkit_remove_snvs"
+      ],
+      "workflow_ids": [
+        "fritjoflammers-snakemake-methylanalysis-finish"
+      ]
+    },
+    {
+      "doi": "10.1093/bioinformatics/btt236",
+      "doi_slug": "10.1093_bioinformatics_btt236",
+      "title": "MSIsensor",
+      "authors": [],
+      "year": 0,
+      "tool": "MSIsensor",
+      "family": "variant",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1093_bioinformatics_btt236/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [],
+      "workflow_ids": [
+        "microsatellite-instability-detection-with-msisensor-pro-finish"
+      ]
+    },
+    {
+      "doi": "10.1186/s12859-019-2926-y",
+      "doi_slug": "10.1186_s12859-019-2926-y",
+      "title": "Circle-Map",
+      "authors": [],
+      "year": 2926,
+      "tool": "Circle-Map",
+      "family": "variant",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1186_s12859-019-2926-y/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [],
+      "workflow_ids": [
+        "dna-seq-short-read-circle-map-finish"
+      ]
+    },
+    {
+      "doi": "10.1038/s41467-024-48981-z",
+      "doi_slug": "10.1038_s41467-024-48981-z",
+      "title": "Sopa",
+      "authors": [],
+      "year": 0,
+      "tool": "Sopa",
+      "family": "spatial",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1038_s41467-024-48981-z/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [],
+      "workflow_ids": [
+        "gustaveroussy-sopa-finish"
+      ]
+    },
+    {
+      "doi": "10.1101/gr.079558.108",
+      "doi_slug": "10.1101_gr.079558.108",
+      "title": "RNA-seq (Marioni 2008)",
+      "authors": [],
+      "year": 0,
+      "tool": "DESeq2",
+      "family": "rna",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1101_gr.079558.108/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [],
+      "workflow_ids": [
+        "lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+        "epigen-rnaseq_pipeline-finish"
+      ]
+    },
+    {
+      "doi": "10.1186/s13059-020-01993-6",
+      "doi_slug": "10.1186_s13059-020-01993-6",
+      "title": "Varlociraptor",
+      "authors": [],
+      "year": 0,
+      "tool": "Varlociraptor",
+      "family": "variant",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1186_s13059-020-01993-6/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [],
+      "workflow_ids": [
+        "cyrcular-calling-finish"
+      ]
+    },
+    {
+      "doi": "10.1186/gb-2008-9-9-r137",
+      "doi_slug": "10.1186_gb-2008-9-9-r137",
+      "title": "MACS2",
+      "authors": [],
+      "year": 2008,
+      "tool": "MACS2",
+      "family": "chip",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1186_gb-2008-9-9-r137/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [],
+      "workflow_ids": [
+        "epigen-300bcg-atacseq_pipeline-finish",
+        "lwang-genomics-ngs_pipeline_sn-chip_seq-finish",
+        "epigen-atacseq_pipeline-finish"
+      ]
+    },
+    {
+      "doi": "10.1038/ncomms14049",
+      "doi_slug": "10.1038_ncomms14049",
+      "title": "10x Chromium / Cell Ranger",
+      "authors": [],
+      "year": 0,
+      "tool": "Seurat",
+      "family": "scrna",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1038_ncomms14049/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [],
+      "workflow_ids": [
+        "cellranger-multi-finish"
+      ]
+    },
+    {
+      "doi": "10.1186/s13059-016-0881-8",
+      "doi_slug": "10.1186_s13059-016-0881-8",
+      "title": "RNA-seq best practices",
+      "authors": [],
+      "year": 881,
+      "tool": "DESeq2",
+      "family": "rna",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1186_s13059-016-0881-8/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [
+        "akinyi_deseq2"
+      ],
+      "workflow_ids": [
+        "akinyi-onyango-rna_seq_pipeline-finish"
+      ]
+    },
+    {
+      "doi": "10.1093/bioinformatics/btz436",
+      "doi_slug": "10.1093_bioinformatics_btz436",
+      "title": "snakePipes",
+      "authors": [],
+      "year": 0,
+      "tool": "snakePipes",
+      "family": "epigenomics",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1093_bioinformatics_btz436/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [
+        "snakepipes_merge_fc",
+        "snakepipes_merge_ct",
+        "snakepipes_scrna_merge_coutt",
+        "snakepipes_scrna_qc",
+        "nearest_gene",
+        "snakepipes_scrna_report",
+        "clean_histoneHMM"
+      ],
+      "workflow_ids": [
+        "maxplanck-ie-snakepipes-finish"
+      ]
+    },
+    {
+      "doi": "10.1038/s41587-023-01793-w",
+      "doi_slug": "10.1038_s41587-023-01793-w",
+      "title": "Minigraph-Cactus",
+      "authors": [],
+      "year": 0,
+      "tool": "Minigraph-Cactus",
+      "family": "pangenome",
+      "kind": "method",
+      "source": "extracted_pdf",
+      "skill_md_path": "paperskills/library/methods/10.1038_s41587-023-01793-w/SKILL.md",
+      "pdf_path": "",
+      "brat_annotated": false,
+      "tasks_recommended": [],
+      "workflow_ids": [
+        "read-alignment-pangenome-finish"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "workflow_id": "cyrcular-calling-finish",
+  "pipeline_task_id": "stage_02",
+  "order": 2,
+  "manifest_path": "finish/cyrcular-calling-finish/manifest.json",
+  "step_ids": [
+    "download_gene_annotation",
+    "minimap2_bam",
+    "merge_fastqs",
+    "samtools_index",
+    "samtools_faidx"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.957841+00:00"
+}

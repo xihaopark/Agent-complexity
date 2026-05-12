@@ -1,0 +1,15 @@
+{
+  "workflow_id": "tgirke-systempiperdata-varseq-finish",
+  "pipeline_task_id": "stage_02",
+  "order": 2,
+  "manifest_path": "finish/tgirke-systempiperdata-varseq-finish/manifest.json",
+  "step_ids": [
+    "bwa_index",
+    "fasta_index",
+    "faidx_index",
+    "bwa_alignment",
+    "align_stats"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.035514+00:00"
+}

@@ -1,0 +1,20 @@
+{
+  "task_id": "methylkit_remove_snvs",
+  "kind": "real",
+  "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+  "family": "methylation",
+  "stage": "late",
+  "difficulty": 3,
+  "paper_covered": true,
+  "wrapper_kind": "snakemake",
+  "description": "Anti-join an SNV exclusion bed against a united-tibble; writes stats TSV.",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/scripts/methylkit_remove_snvs.R",
+  "ground_truth_dir": "tasks/real_ground_truth/methylkit_remove_snvs",
+  "success_glob": "output/snv_stats.tsv",
+  "reference_output_files": [
+    "snv_stats.tsv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

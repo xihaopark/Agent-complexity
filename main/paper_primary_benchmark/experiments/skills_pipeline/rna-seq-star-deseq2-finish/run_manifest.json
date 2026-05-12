@@ -1,0 +1,274 @@
+{
+  "workflow_id": "rna-seq-star-deseq2-finish",
+  "workflow_dir": "main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2",
+  "out_dir": "main/paper_primary_benchmark/experiments/skills_pipeline/rna-seq-star-deseq2-finish",
+  "status": "ok",
+  "generated_at": "2026-04-16T16:55:27Z",
+  "model": "openrouter/openai/gpt-4o",
+  "resolved_model": "openai/gpt-4o",
+  "max_per_file": 8000,
+  "max_total": 80000,
+  "prompt_tokens": 11447,
+  "completion_tokens": 1043,
+  "total_tokens": 12490,
+  "runtime_seconds": 9.42,
+  "llm_seconds": 9.42,
+  "chars_used": 41966,
+  "truncated": false,
+  "files_considered": [
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "bytes": 656,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/align.smk",
+      "kind": "snakefile",
+      "bytes": 884,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/common.smk",
+      "kind": "snakefile",
+      "bytes": 4322,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/diffexp.smk",
+      "kind": "snakefile",
+      "bytes": 1811,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/qc.smk",
+      "kind": "snakefile",
+      "bytes": 6099,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/ref.smk",
+      "kind": "snakefile",
+      "bytes": 1594,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/trim.smk",
+      "kind": "snakefile",
+      "bytes": 2875,
+      "priority": 0
+    },
+    {
+      "path": "workflow/scripts/deseq2-init.R",
+      "kind": "r",
+      "bytes": 2479,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/deseq2.R",
+      "kind": "r",
+      "bytes": 2819,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/gene2symbol.R",
+      "kind": "r",
+      "bytes": 2258,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/plot-pca.R",
+      "kind": "r",
+      "bytes": 319,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/common/__init__.py",
+      "kind": "python",
+      "bytes": 94,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/count-matrix.py",
+      "kind": "python",
+      "bytes": 1129,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/gtf2bed.py",
+      "kind": "python",
+      "bytes": 520,
+      "priority": 2
+    },
+    {
+      "path": ".test/config_basic/config.yaml",
+      "kind": "yaml",
+      "bytes": 612,
+      "priority": 3
+    },
+    {
+      "path": ".test/config_complex/config.yaml",
+      "kind": "yaml",
+      "bytes": 920,
+      "priority": 3
+    },
+    {
+      "path": ".test/config_sra/config.yaml",
+      "kind": "yaml",
+      "bytes": 747,
+      "priority": 3
+    },
+    {
+      "path": "config/config.yaml",
+      "kind": "yaml",
+      "bytes": 612,
+      "priority": 3
+    },
+    {
+      "path": "workflow/schemas/config.schema.yaml",
+      "kind": "yaml",
+      "bytes": 1213,
+      "priority": 3
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "bytes": 1095,
+      "priority": 4
+    },
+    {
+      "path": "config/README.md",
+      "kind": "readme",
+      "bytes": 9784,
+      "priority": 4
+    }
+  ],
+  "files_included": [
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "chars_used": 656,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/align.smk",
+      "kind": "snakefile",
+      "chars_used": 884,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/common.smk",
+      "kind": "snakefile",
+      "chars_used": 4322,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/diffexp.smk",
+      "kind": "snakefile",
+      "chars_used": 1811,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/qc.smk",
+      "kind": "snakefile",
+      "chars_used": 6099,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/ref.smk",
+      "kind": "snakefile",
+      "chars_used": 1594,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/trim.smk",
+      "kind": "snakefile",
+      "chars_used": 2875,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/deseq2-init.R",
+      "kind": "r",
+      "chars_used": 2479,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/deseq2.R",
+      "kind": "r",
+      "chars_used": 2819,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/gene2symbol.R",
+      "kind": "r",
+      "chars_used": 2258,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/plot-pca.R",
+      "kind": "r",
+      "chars_used": 319,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/common/__init__.py",
+      "kind": "python",
+      "chars_used": 94,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/count-matrix.py",
+      "kind": "python",
+      "chars_used": 1129,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/gtf2bed.py",
+      "kind": "python",
+      "chars_used": 520,
+      "partial": false
+    },
+    {
+      "path": ".test/config_basic/config.yaml",
+      "kind": "yaml",
+      "chars_used": 612,
+      "partial": false
+    },
+    {
+      "path": ".test/config_complex/config.yaml",
+      "kind": "yaml",
+      "chars_used": 920,
+      "partial": false
+    },
+    {
+      "path": ".test/config_sra/config.yaml",
+      "kind": "yaml",
+      "chars_used": 747,
+      "partial": false
+    },
+    {
+      "path": "config/config.yaml",
+      "kind": "yaml",
+      "chars_used": 612,
+      "partial": false
+    },
+    {
+      "path": "workflow/schemas/config.schema.yaml",
+      "kind": "yaml",
+      "chars_used": 1213,
+      "partial": false
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "chars_used": 1093,
+      "partial": false
+    },
+    {
+      "path": "config/README.md",
+      "kind": "readme",
+      "chars_used": 8041,
+      "partial": true
+    }
+  ]
+}

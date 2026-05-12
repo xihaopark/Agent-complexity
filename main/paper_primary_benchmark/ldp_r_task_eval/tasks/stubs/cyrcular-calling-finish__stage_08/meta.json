@@ -1,0 +1,14 @@
+{
+  "workflow_id": "cyrcular-calling-finish",
+  "pipeline_task_id": "stage_08",
+  "order": 8,
+  "manifest_path": "finish/cyrcular-calling-finish/manifest.json",
+  "step_ids": [
+    "copy_qc_plots_for_datavzrd",
+    "copy_graph_plots_for_datavzrd",
+    "datavzrd_circle_calls",
+    "all"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.960765+00:00"
+}

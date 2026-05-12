@@ -1,0 +1,14 @@
+{
+  "workflow_id": "epigen-atacseq_pipeline-finish",
+  "pipeline_task_id": "stage_03",
+  "order": 3,
+  "manifest_path": "finish/epigen-atacseq_pipeline-finish/manifest.json",
+  "step_ids": [
+    "symlink_stats",
+    "multiqc",
+    "plot_sample_annotation",
+    "sample_annotation"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.966925+00:00"
+}

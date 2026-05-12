@@ -1,0 +1,20 @@
+{
+  "task_id": "methylkit_unite",
+  "kind": "real",
+  "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+  "family": "methylation",
+  "stage": "mid",
+  "difficulty": 2,
+  "paper_covered": true,
+  "wrapper_kind": "snakemake",
+  "description": "methylKit::unite of per-sample bismark coverage data into a methylBase + stats TSV.",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/scripts/methylkit_unite.R",
+  "ground_truth_dir": "tasks/real_ground_truth/methylkit_unite",
+  "success_glob": "output/unite_stats.tsv",
+  "reference_output_files": [
+    "unite_stats.tsv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

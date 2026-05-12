@@ -1,0 +1,418 @@
+{
+  "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+  "workflow_dir": "main/finish/workflow_candidates/fritjoflammers__snakemake-methylanalysis",
+  "out_dir": "main/paper_primary_benchmark/experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish",
+  "status": "ok",
+  "generated_at": "2026-04-16T16:55:46Z",
+  "model": "openrouter/openai/gpt-4o",
+  "resolved_model": "openai/gpt-4o",
+  "max_per_file": 8000,
+  "max_total": 80000,
+  "prompt_tokens": 22846,
+  "completion_tokens": 968,
+  "total_tokens": 23814,
+  "runtime_seconds": 18.77,
+  "llm_seconds": 18.76,
+  "chars_used": 80000,
+  "truncated": true,
+  "files_considered": [
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "bytes": 1956,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/common.smk",
+      "kind": "snakefile",
+      "bytes": 1978,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/destrand.smk",
+      "kind": "snakefile",
+      "bytes": 1912,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/dss.smk",
+      "kind": "snakefile",
+      "bytes": 1227,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/macau.smk",
+      "kind": "snakefile",
+      "bytes": 4883,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/meta.smk",
+      "kind": "snakefile",
+      "bytes": 296,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/methylkit.smk",
+      "kind": "snakefile",
+      "bytes": 11699,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/multiqc.smk",
+      "kind": "snakefile",
+      "bytes": 783,
+      "priority": 0
+    },
+    {
+      "path": "workflow/scripts/calc_pca.R",
+      "kind": "r",
+      "bytes": 5029,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/load_metadata.R",
+      "kind": "r",
+      "bytes": 3774,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/methylkit2tibble.R",
+      "kind": "r",
+      "bytes": 2033,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/methylkit2tibble_split.R",
+      "kind": "r",
+      "bytes": 2191,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/methylkit_clustering.R",
+      "kind": "r",
+      "bytes": 4166,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/methylkit_common.R",
+      "kind": "r",
+      "bytes": 4196,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/methylkit_dmr.R",
+      "kind": "r",
+      "bytes": 4936,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/methylkit_filt_norm.R",
+      "kind": "r",
+      "bytes": 1179,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/methylkit_get_repeats.R",
+      "kind": "r",
+      "bytes": 1677,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/methylkit_load.R",
+      "kind": "r",
+      "bytes": 1526,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/methylkit_pca.R",
+      "kind": "r",
+      "bytes": 2212,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/methylkit_remove_snvs.R",
+      "kind": "r",
+      "bytes": 945,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/methylkit_split.R",
+      "kind": "r",
+      "bytes": 664,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/methylkit_unite.R",
+      "kind": "r",
+      "bytes": 1395,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/methylkit_unite_from_bgz.R",
+      "kind": "r",
+      "bytes": 1301,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/methylkit_unite_per_chr.R",
+      "kind": "r",
+      "bytes": 2601,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/parse_macau.R",
+      "kind": "r",
+      "bytes": 2338,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/species_correlation.R",
+      "kind": "r",
+      "bytes": 3010,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/extract_column_from_spreadsheet.py",
+      "kind": "python",
+      "bytes": 1465,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/macau_prepare_counts_file.py",
+      "kind": "python",
+      "bytes": 1698,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/macau_prepare_covariates_file.py",
+      "kind": "python",
+      "bytes": 2585,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/macau_prepare_variables_file.py",
+      "kind": "python",
+      "bytes": 2536,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/macau_run.py",
+      "kind": "python",
+      "bytes": 884,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/macau_subset_rel_matrix.py",
+      "kind": "python",
+      "bytes": 2197,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/quarto-data_structure.py",
+      "kind": "python",
+      "bytes": 1871,
+      "priority": 2
+    }
+  ],
+  "files_included": [
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "chars_used": 1956,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/common.smk",
+      "kind": "snakefile",
+      "chars_used": 1978,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/destrand.smk",
+      "kind": "snakefile",
+      "chars_used": 1912,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/dss.smk",
+      "kind": "snakefile",
+      "chars_used": 1227,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/macau.smk",
+      "kind": "snakefile",
+      "chars_used": 4883,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/meta.smk",
+      "kind": "snakefile",
+      "chars_used": 296,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/methylkit.smk",
+      "kind": "snakefile",
+      "chars_used": 8042,
+      "partial": true
+    },
+    {
+      "path": "workflow/rules/multiqc.smk",
+      "kind": "snakefile",
+      "chars_used": 783,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/calc_pca.R",
+      "kind": "r",
+      "chars_used": 5029,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/load_metadata.R",
+      "kind": "r",
+      "chars_used": 3774,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/methylkit2tibble.R",
+      "kind": "r",
+      "chars_used": 2033,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/methylkit2tibble_split.R",
+      "kind": "r",
+      "chars_used": 2191,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/methylkit_clustering.R",
+      "kind": "r",
+      "chars_used": 4166,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/methylkit_common.R",
+      "kind": "r",
+      "chars_used": 4196,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/methylkit_dmr.R",
+      "kind": "r",
+      "chars_used": 4936,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/methylkit_filt_norm.R",
+      "kind": "r",
+      "chars_used": 1179,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/methylkit_get_repeats.R",
+      "kind": "r",
+      "chars_used": 1677,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/methylkit_load.R",
+      "kind": "r",
+      "chars_used": 1526,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/methylkit_pca.R",
+      "kind": "r",
+      "chars_used": 2212,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/methylkit_remove_snvs.R",
+      "kind": "r",
+      "chars_used": 945,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/methylkit_split.R",
+      "kind": "r",
+      "chars_used": 664,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/methylkit_unite.R",
+      "kind": "r",
+      "chars_used": 1395,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/methylkit_unite_from_bgz.R",
+      "kind": "r",
+      "chars_used": 1301,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/methylkit_unite_per_chr.R",
+      "kind": "r",
+      "chars_used": 2601,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/parse_macau.R",
+      "kind": "r",
+      "chars_used": 2338,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/species_correlation.R",
+      "kind": "r",
+      "chars_used": 3010,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/extract_column_from_spreadsheet.py",
+      "kind": "python",
+      "chars_used": 1465,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/macau_prepare_counts_file.py",
+      "kind": "python",
+      "chars_used": 1698,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/macau_prepare_covariates_file.py",
+      "kind": "python",
+      "chars_used": 2585,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/macau_prepare_variables_file.py",
+      "kind": "python",
+      "chars_used": 2536,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/macau_run.py",
+      "kind": "python",
+      "chars_used": 884,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/macau_subset_rel_matrix.py",
+      "kind": "python",
+      "chars_used": 2197,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/quarto-data_structure.py",
+      "kind": "python",
+      "chars_used": 713,
+      "partial": true
+    }
+  ]
+}

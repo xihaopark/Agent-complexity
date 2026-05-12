@@ -1,0 +1,15 @@
+{
+  "workflow_id": "read-alignment-pangenome-finish",
+  "pipeline_task_id": "stage_03",
+  "order": 3,
+  "manifest_path": "finish/read-alignment-pangenome-finish/manifest.json",
+  "step_ids": [
+    "fastp_pipe",
+    "fastp_se",
+    "fastp_pe",
+    "merge_trimmed_fastqs",
+    "map_reads_bwa"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.004106+00:00"
+}

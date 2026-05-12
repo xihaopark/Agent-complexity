@@ -1,0 +1,26 @@
+{
+  "task_id": "snakepipes_scrna_qc",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/snakepipes_scrna_qc",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/014_snakepipes_scrna_qc/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+  "registry_index": 14,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "arm": "pipeline",
+    "injected": true,
+    "manifest_version": 3,
+    "skill_sha256": "9ee3a3d5b6210107cb54712269ebc4115c753753c9975d186ec891d89cccb2d6",
+    "skill_char_len": 3603,
+    "skill_md_path": "experiments/skills_pipeline/maxplanck-ie-snakepipes-finish/SKILL.md",
+    "lookup_field": "by_workflow_id",
+    "lookup_key": "maxplanck-ie-snakepipes-finish",
+    "source_workflow_id": "maxplanck-ie-snakepipes-finish"
+  }
+}

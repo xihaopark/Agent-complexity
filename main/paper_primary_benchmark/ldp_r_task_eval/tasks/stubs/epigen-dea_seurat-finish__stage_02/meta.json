@@ -1,0 +1,13 @@
+{
+  "workflow_id": "epigen-dea_seurat-finish",
+  "pipeline_task_id": "stage_02",
+  "order": 2,
+  "manifest_path": "finish/epigen-dea_seurat-finish/manifest.json",
+  "step_ids": [
+    "heatmap",
+    "env_export",
+    "config_export"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.971635+00:00"
+}

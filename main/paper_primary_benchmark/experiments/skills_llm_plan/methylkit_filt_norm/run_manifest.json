@@ -1,0 +1,20 @@
+{
+  "task_id": "methylkit_filt_norm",
+  "task_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/methylkit_filt_norm",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills_llm_plan/methylkit_filt_norm",
+  "model": "openrouter/openai/gpt-4o",
+  "model_resolved": "openai/gpt-4o",
+  "temperature": 0.1,
+  "prompt_tokens": 921,
+  "completion_tokens": 503,
+  "total_tokens": 1424,
+  "runtime_seconds": 5.85,
+  "inputs_listed": [
+    "mk_raw.rds",
+    "sampleA.bismark.cov",
+    "sampleB.bismark.cov",
+    "sampleC.bismark.cov"
+  ],
+  "inputs_previewed": [],
+  "generated_at": "2026-04-16T19:34:24Z"
+}

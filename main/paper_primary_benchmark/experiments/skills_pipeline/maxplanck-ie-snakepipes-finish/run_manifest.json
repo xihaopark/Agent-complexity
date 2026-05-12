@@ -1,0 +1,238 @@
+{
+  "workflow_id": "maxplanck-ie-snakepipes-finish",
+  "workflow_dir": "/Users/park/code/Paper2Skills-main/main/finish/workflow_candidates/maxplanck-ie__snakePipes",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills_pipeline/maxplanck-ie-snakepipes-finish",
+  "status": "ok",
+  "generated_at": "2026-04-16T19:32:04Z",
+  "model": "openrouter/openai/gpt-4o",
+  "resolved_model": "openai/gpt-4o",
+  "max_per_file": 8000,
+  "max_total": 80000,
+  "prompt_tokens": 20924,
+  "completion_tokens": 845,
+  "total_tokens": 21769,
+  "runtime_seconds": 8.0,
+  "llm_seconds": 7.99,
+  "chars_used": 80000,
+  "truncated": true,
+  "files_considered": [
+    {
+      "path": "snakePipes/shared/rules/ATAC.snakefile",
+      "kind": "snakefile",
+      "bytes": 5354,
+      "priority": 0
+    },
+    {
+      "path": "snakePipes/shared/rules/ATAC_qc.snakefile",
+      "kind": "snakefile",
+      "bytes": 3721,
+      "priority": 0
+    },
+    {
+      "path": "snakePipes/shared/rules/Bowtie2.snakefile",
+      "kind": "snakefile",
+      "bytes": 2903,
+      "priority": 0
+    },
+    {
+      "path": "snakePipes/shared/rules/Bowtie2_allelic.snakefile",
+      "kind": "snakefile",
+      "bytes": 3401,
+      "priority": 0
+    },
+    {
+      "path": "snakePipes/shared/rules/CSAW.multiComp.snakefile",
+      "kind": "snakefile",
+      "bytes": 11965,
+      "priority": 0
+    },
+    {
+      "path": "snakePipes/shared/rules/CSAW.singleComp.snakefile",
+      "kind": "snakefile",
+      "bytes": 9517,
+      "priority": 0
+    },
+    {
+      "path": "snakePipes/shared/rules/ChIP_peak_calling.snakefile",
+      "kind": "snakefile",
+      "bytes": 12778,
+      "priority": 0
+    },
+    {
+      "path": "snakePipes/shared/rules/ChIP_peak_calling_spikein.snakefile",
+      "kind": "snakefile",
+      "bytes": 12271,
+      "priority": 0
+    },
+    {
+      "path": "snakePipes/shared/rules/ChiP-seq_qc_report.snakefile",
+      "kind": "snakefile",
+      "bytes": 1212,
+      "priority": 0
+    },
+    {
+      "path": "snakePipes/shared/rules/DESeq2.multipleComp.snakefile",
+      "kind": "snakefile",
+      "bytes": 4075,
+      "priority": 0
+    },
+    {
+      "path": "snakePipes/shared/rules/DESeq2.singleComp.snakefile",
+      "kind": "snakefile",
+      "bytes": 4441,
+      "priority": 0
+    },
+    {
+      "path": "snakePipes/shared/rules/FASTQ.snakefile",
+      "kind": "snakefile",
+      "bytes": 2984,
+      "priority": 0
+    },
+    {
+      "path": "snakePipes/shared/rules/FastQC.snakefile",
+      "kind": "snakefile",
+      "bytes": 1472,
+      "priority": 0
+    },
+    {
+      "path": "snakePipes/shared/rules/GenomicContamination.snakefile",
+      "kind": "snakefile",
+      "bytes": 1650,
+      "priority": 0
+    },
+    {
+      "path": "snakePipes/shared/rules/LinkBam.snakefile",
+      "kind": "snakefile",
+      "bytes": 3926,
+      "priority": 0
+    },
+    {
+      "path": "snakePipes/shared/rules/Qualimap_bamqc.snakefile",
+      "kind": "snakefile",
+      "bytes": 1380,
+      "priority": 0
+    },
+    {
+      "path": "snakePipes/shared/rules/RNA_mapping.snakefile",
+      "kind": "snakefile",
+      "bytes": 7393,
+      "priority": 0
+    },
+    {
+      "path": "snakePipes/shared/rules/RNA_mapping_allelic.snakefile",
+      "kind": "snakefile",
+      "bytes": 4402,
+      "priority": 0
+    }
+  ],
+  "files_included": [
+    {
+      "path": "snakePipes/shared/rules/ATAC.snakefile",
+      "kind": "snakefile",
+      "chars_used": 5354,
+      "partial": false
+    },
+    {
+      "path": "snakePipes/shared/rules/ATAC_qc.snakefile",
+      "kind": "snakefile",
+      "chars_used": 3721,
+      "partial": false
+    },
+    {
+      "path": "snakePipes/shared/rules/Bowtie2.snakefile",
+      "kind": "snakefile",
+      "chars_used": 2903,
+      "partial": false
+    },
+    {
+      "path": "snakePipes/shared/rules/Bowtie2_allelic.snakefile",
+      "kind": "snakefile",
+      "chars_used": 3401,
+      "partial": false
+    },
+    {
+      "path": "snakePipes/shared/rules/CSAW.multiComp.snakefile",
+      "kind": "snakefile",
+      "chars_used": 8042,
+      "partial": true
+    },
+    {
+      "path": "snakePipes/shared/rules/CSAW.singleComp.snakefile",
+      "kind": "snakefile",
+      "chars_used": 8041,
+      "partial": true
+    },
+    {
+      "path": "snakePipes/shared/rules/ChIP_peak_calling.snakefile",
+      "kind": "snakefile",
+      "chars_used": 8042,
+      "partial": true
+    },
+    {
+      "path": "snakePipes/shared/rules/ChIP_peak_calling_spikein.snakefile",
+      "kind": "snakefile",
+      "chars_used": 8042,
+      "partial": true
+    },
+    {
+      "path": "snakePipes/shared/rules/ChiP-seq_qc_report.snakefile",
+      "kind": "snakefile",
+      "chars_used": 1212,
+      "partial": false
+    },
+    {
+      "path": "snakePipes/shared/rules/DESeq2.multipleComp.snakefile",
+      "kind": "snakefile",
+      "chars_used": 4075,
+      "partial": false
+    },
+    {
+      "path": "snakePipes/shared/rules/DESeq2.singleComp.snakefile",
+      "kind": "snakefile",
+      "chars_used": 4441,
+      "partial": false
+    },
+    {
+      "path": "snakePipes/shared/rules/FASTQ.snakefile",
+      "kind": "snakefile",
+      "chars_used": 2984,
+      "partial": false
+    },
+    {
+      "path": "snakePipes/shared/rules/FastQC.snakefile",
+      "kind": "snakefile",
+      "chars_used": 1472,
+      "partial": false
+    },
+    {
+      "path": "snakePipes/shared/rules/GenomicContamination.snakefile",
+      "kind": "snakefile",
+      "chars_used": 1650,
+      "partial": false
+    },
+    {
+      "path": "snakePipes/shared/rules/LinkBam.snakefile",
+      "kind": "snakefile",
+      "chars_used": 3926,
+      "partial": false
+    },
+    {
+      "path": "snakePipes/shared/rules/Qualimap_bamqc.snakefile",
+      "kind": "snakefile",
+      "chars_used": 1380,
+      "partial": false
+    },
+    {
+      "path": "snakePipes/shared/rules/RNA_mapping.snakefile",
+      "kind": "snakefile",
+      "chars_used": 7393,
+      "partial": false
+    },
+    {
+      "path": "snakePipes/shared/rules/RNA_mapping_allelic.snakefile",
+      "kind": "snakefile",
+      "chars_used": 2781,
+      "partial": true
+    }
+  ]
+}

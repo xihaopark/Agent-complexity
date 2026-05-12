@@ -1,0 +1,20 @@
+{
+  "task_id": "star_deseq2_init",
+  "kind": "real",
+  "workflow_id": "rna-seq-star-deseq2-finish",
+  "family": "rna",
+  "stage": "mid",
+  "difficulty": 2,
+  "paper_covered": true,
+  "wrapper_kind": "snakemake",
+  "description": "DESeq2 initialisation + normalised counts (rna-seq-star-deseq2 workflow).",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/snakemake-workflows__rna-seq-star-deseq2/workflow/scripts/deseq2-init.R",
+  "ground_truth_dir": "tasks/real_ground_truth/star_deseq2_init",
+  "success_glob": "output/normalized_counts.tsv",
+  "reference_output_files": [
+    "normalized_counts.tsv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

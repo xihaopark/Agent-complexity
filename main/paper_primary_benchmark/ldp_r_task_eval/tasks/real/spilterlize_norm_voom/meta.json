@@ -1,0 +1,20 @@
+{
+  "task_id": "spilterlize_norm_voom",
+  "kind": "real",
+  "workflow_id": "epigen-spilterlize_integrate-finish",
+  "family": "rna",
+  "stage": "mid",
+  "difficulty": 2,
+  "paper_covered": false,
+  "wrapper_kind": "snakemake",
+  "description": "limma::voom normalisation (PNG plot redirected to tempfile).",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/epigen__spilterlize_integrate/workflow/scripts/norm_voom.R",
+  "ground_truth_dir": "tasks/real_ground_truth/spilterlize_norm_voom",
+  "success_glob": "output/normalized_counts.csv",
+  "reference_output_files": [
+    "normalized_counts.csv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

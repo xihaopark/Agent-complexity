@@ -1,0 +1,25 @@
+{
+  "version": 3,
+  "kind": "real",
+  "description": "Real R-centric tasks derived from workflow_candidates source code. Each task has synthetic-but-realistic inputs and a ground-truth reference output produced by actually running the original R script against those inputs.",
+  "generated_by": "ldp_r_task_eval/tools/build_real_r_tasks.py",
+  "tasks": [
+    {
+      "id": "akinyi_deseq2",
+      "work_dir": "ldp_r_task_eval/tasks/real/akinyi_deseq2",
+      "success_artifact_glob": "output/deseq2_up.txt",
+      "status": "ready",
+      "kind": "real",
+      "pipeline_workflow_id": "akinyi-onyango-rna_seq_pipeline-finish",
+      "family": "rna",
+      "r_script_src": "main/finish/workflow_candidates/Akinyi-Onyango__rna_seq_pipeline/scripts/deseq_analysis.r",
+      "evaluation": {
+        "reference_dir": "evaluation/reference_output",
+        "expected_files": [
+          "deseq2_up.txt",
+          "deseq2_down.txt"
+        ]
+      }
+    }
+  ]
+}

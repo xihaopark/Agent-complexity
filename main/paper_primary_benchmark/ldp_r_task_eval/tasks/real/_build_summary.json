@@ -1,0 +1,329 @@
+{
+  "results": [
+    {
+      "task": "akinyi_deseq2",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/akinyi_deseq2",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/akinyi_deseq2",
+      "produced": [
+        "deseq2_up.txt",
+        "deseq2_down.txt"
+      ],
+      "missing": []
+    },
+    {
+      "task": "star_deseq2_init",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/star_deseq2_init",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/star_deseq2_init",
+      "produced": [
+        "normalized_counts.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "star_deseq2_contrast",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/star_deseq2_contrast",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/star_deseq2_contrast",
+      "produced": [
+        "contrast_results.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "methylkit_load",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/methylkit_load",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_load",
+      "produced": [
+        "mk_raw.rds"
+      ],
+      "missing": []
+    },
+    {
+      "task": "methylkit_unite",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/methylkit_unite",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_unite",
+      "produced": [
+        "unite_stats.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "methylkit_to_tibble",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/methylkit_to_tibble",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_to_tibble",
+      "produced": [
+        "mean_mcpg.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "longseq_deseq2_init",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/longseq_deseq2_init",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/longseq_deseq2_init",
+      "produced": [
+        "normalized_counts.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "longseq_deseq2_contrast",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/longseq_deseq2_contrast",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/longseq_deseq2_contrast",
+      "produced": [
+        "contrast_results.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "snakepipes_merge_fc",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/snakepipes_merge_fc",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_merge_fc",
+      "produced": [
+        "merged_counts.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "snakepipes_merge_ct",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/snakepipes_merge_ct",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_merge_ct",
+      "produced": [
+        "merged_tpm.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "riya_limma",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/riya_limma",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/riya_limma",
+      "produced": [
+        "deg_results.csv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "chipseq_plot_macs_qc",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/chipseq_plot_macs_qc",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_macs_qc",
+      "produced": [
+        "macs_qc_summary.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "chipseq_plot_homer_annot",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/chipseq_plot_homer_annot",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_homer_annot",
+      "produced": [
+        "homer_annot_summary.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "snakepipes_scrna_merge_coutt",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/snakepipes_scrna_merge_coutt",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_scrna_merge_coutt",
+      "produced": [
+        "merged_coutt.tsv",
+        "merged_coutt.cell_names.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "snakepipes_scrna_qc",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/snakepipes_scrna_qc",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_scrna_qc",
+      "produced": [
+        "scqc.libstats_reads.tsv",
+        "scqc.libstats_pct.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "spilterlize_filter_features",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/spilterlize_filter_features",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/spilterlize_filter_features",
+      "produced": [
+        "filtered_counts.csv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "spilterlize_norm_voom",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/spilterlize_norm_voom",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/spilterlize_norm_voom",
+      "produced": [
+        "normalized_counts.csv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "spilterlize_limma_rbe",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/spilterlize_limma_rbe",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/spilterlize_limma_rbe",
+      "produced": [
+        "integrated_data.csv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "spilterlize_norm_edger",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/spilterlize_norm_edger",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/spilterlize_norm_edger",
+      "produced": [
+        "all/normTMM.csv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "dea_limma",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/dea_limma",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/dea_limma",
+      "produced": [
+        "dea_results.csv",
+        "model_matrix.csv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "msisensor_merge",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/msisensor_merge",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/msisensor_merge",
+      "produced": [
+        "merged_msi.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "methylkit_filt_norm",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/methylkit_filt_norm",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_filt_norm",
+      "produced": [
+        "filt_norm_stats.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "methylkit2tibble_split",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/methylkit2tibble_split",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit2tibble_split",
+      "produced": [
+        "mean_mcpg_split.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "methylkit_remove_snvs",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/methylkit_remove_snvs",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_remove_snvs",
+      "produced": [
+        "snv_stats.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "phantompeak_correlation",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/phantompeak_correlation",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/phantompeak_correlation",
+      "produced": [
+        "crosscorr.csv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "nearest_gene",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/nearest_gene",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/nearest_gene",
+      "produced": [
+        "annotated.bed"
+      ],
+      "missing": []
+    },
+    {
+      "task": "chipseq_plot_frip_score",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/chipseq_plot_frip_score",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_frip_score",
+      "produced": [
+        "frip_scores.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "chipseq_plot_peaks_count_macs2",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/chipseq_plot_peaks_count_macs2",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_peaks_count_macs2",
+      "produced": [
+        "peaks_count.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "chipseq_plot_annotatepeaks_summary_homer",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/chipseq_plot_annotatepeaks_summary_homer",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_annotatepeaks_summary_homer",
+      "produced": [
+        "homer_long.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "epibtn_rpkm",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/epibtn_rpkm",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/epibtn_rpkm",
+      "produced": [
+        "results/RNA/DEG/genes_rpkm__runX__mockref.txt"
+      ],
+      "missing": []
+    },
+    {
+      "task": "snakepipes_scrna_report",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/snakepipes_scrna_report",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_scrna_report",
+      "produced": [
+        "scrna_report.tsv"
+      ],
+      "missing": []
+    },
+    {
+      "task": "clean_histoneHMM",
+      "status": "ready",
+      "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/clean_histoneHMM",
+      "gt_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/clean_histoneHMM",
+      "produced": [
+        "sampleA_avgp0.5.bed",
+        "sampleB_avgp0.5.bed"
+      ],
+      "missing": []
+    }
+  ]
+}

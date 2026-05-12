@@ -1,0 +1,21 @@
+{
+  "task_id": "clean_histoneHMM",
+  "kind": "real",
+  "workflow_id": "maxplanck-ie-snakepipes-finish",
+  "family": "chipseq",
+  "stage": "late",
+  "difficulty": 2,
+  "paper_covered": false,
+  "wrapper_kind": "snakemake",
+  "description": "Filter histoneHMM GFF outputs by avg_posterior >= 0.5 and emit GFF3/BED (plots stripped via redirect).",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/maxplanck-ie__snakePipes/snakePipes/shared/rscripts/clean_histoneHMM_result.R",
+  "ground_truth_dir": "tasks/real_ground_truth/clean_histoneHMM",
+  "success_glob": "output/sampleA_avgp0.5.bed",
+  "reference_output_files": [
+    "sampleA_avgp0.5.bed",
+    "sampleB_avgp0.5.bed"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

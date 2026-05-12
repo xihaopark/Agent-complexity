@@ -1,0 +1,7 @@
+Feature	n_A	n_B	Count_C
+3'	36	41	42
+Intergenic	42	29	27
+TTS	34	35	41
+exon	45	35	35
+intron	44	40	36
+promoter-TSS	30	37	35

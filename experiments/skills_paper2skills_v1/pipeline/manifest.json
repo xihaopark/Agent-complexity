@@ -1,0 +1,12 @@
+{
+  "arm": "pipeline",
+  "description": "Code templates from similar workflows",
+  "skills": {
+    "deseq2_apeglm_small_n": "pipeline/deseq2_apeglm_small_n/SKILL.md",
+    "deseq2_lrt_interaction": "pipeline/deseq2_lrt_interaction/SKILL.md",
+    "deseq2_shrinkage_comparison": "pipeline/deseq2_shrinkage_comparison/SKILL.md",
+    "limma_voom_weights": "pipeline/limma_voom_weights/SKILL.md",
+    "limma_duplicatecorrelation": "pipeline/limma_duplicatecorrelation/SKILL.md"
+  },
+  "sys_prompt_addition": "A code template from similar bioinformatics workflows is provided. Adapt the template pattern to your task."
+}

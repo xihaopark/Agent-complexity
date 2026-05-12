@@ -1,0 +1,20 @@
+{
+  "task_id": "methylkit_filt_norm",
+  "kind": "real",
+  "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+  "family": "methylation",
+  "stage": "mid",
+  "difficulty": 2,
+  "paper_covered": true,
+  "wrapper_kind": "snakemake",
+  "description": "methylKit filterByCoverage + normalizeCoverage (plot_methylkit_histograms stripped).",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/scripts/methylkit_filt_norm.R",
+  "ground_truth_dir": "tasks/real_ground_truth/methylkit_filt_norm",
+  "success_glob": "output/filt_norm_stats.tsv",
+  "reference_output_files": [
+    "filt_norm_stats.tsv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

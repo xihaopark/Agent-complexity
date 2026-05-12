@@ -1,0 +1,17 @@
+{
+  "task_id": "chipseq_plot_homer_annot",
+  "kind": "real",
+  "workflow_id": "snakemake-workflows-chipseq",
+  "family": "chipseq",
+  "description": "HOMER annotatePeaks peak-to-feature distribution and TSS plots.",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/snakemake-workflows__chipseq/workflow/scripts/plot_homer_annotatepeaks.R",
+  "ground_truth_dir": "tasks/real_ground_truth/chipseq_plot_homer_annot",
+  "success_glob": "output/homer_annot.pdf",
+  "reference_output_files": [
+    "homer_annot.pdf",
+    "homer_annot_summary.tsv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

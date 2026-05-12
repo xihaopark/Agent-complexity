@@ -1,0 +1,20 @@
+{
+  "task_id": "spilterlize_filter_features",
+  "kind": "real",
+  "workflow_id": "epigen-spilterlize_integrate-finish",
+  "family": "rna",
+  "stage": "early",
+  "difficulty": 2,
+  "paper_covered": false,
+  "wrapper_kind": "snakemake",
+  "description": "edgeR filterByExpr feature filtering of a counts matrix (epigen spilterlize).",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/epigen__spilterlize_integrate/workflow/scripts/filter_features.R",
+  "ground_truth_dir": "tasks/real_ground_truth/spilterlize_filter_features",
+  "success_glob": "output/filtered_counts.csv",
+  "reference_output_files": [
+    "filtered_counts.csv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

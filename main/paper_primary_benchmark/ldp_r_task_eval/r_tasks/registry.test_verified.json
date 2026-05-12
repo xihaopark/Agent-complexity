@@ -1,0 +1,62 @@
+{
+  "version": "test",
+  "kind": "test_subset",
+  "description": "Test subset with 5 verified tasks",
+  "tasks": [
+    {
+      "id": "deseq2_apeglm_small_n",
+      "work_dir": "ldp_r_task_eval/tasks/paper_sensitive_v1/real/deseq2_apeglm_small_n",
+      "status": "ready",
+      "verified": true,
+      "family": "rna",
+      "primary_doi": "10.1186/s13059-014-0550-8",
+      "success_artifact_glob": "output/de_results.csv",
+      "paper_arm_score": 1.0,
+      "key_method": "apeglm shrinkage for small samples"
+    },
+    {
+      "id": "deseq2_lrt_interaction",
+      "work_dir": "ldp_r_task_eval/tasks/paper_sensitive_v1/real/deseq2_lrt_interaction",
+      "status": "ready",
+      "verified": true,
+      "family": "rna",
+      "primary_doi": "10.1186/s13059-014-0550-8",
+      "success_artifact_glob": "output/interaction_de.csv",
+      "paper_arm_score": 1.0,
+      "key_method": "LRT for interaction testing"
+    },
+    {
+      "id": "limma_voom_weights",
+      "work_dir": "ldp_r_task_eval/tasks/paper_sensitive_v1/real/limma_voom_weights",
+      "status": "ready",
+      "verified": true,
+      "family": "rna",
+      "primary_doi": "10.1093/nar/gkv007",
+      "success_artifact_glob": "output/de_results_weighted.csv",
+      "paper_arm_score": 1.0,
+      "key_method": "voomWithQualityWeights"
+    },
+    {
+      "id": "limma_duplicatecorrelation",
+      "work_dir": "ldp_r_task_eval/tasks/paper_sensitive_v1/real/limma_duplicatecorrelation",
+      "status": "ready",
+      "verified": true,
+      "family": "rna",
+      "primary_doi": "10.1093/nar/gkv007",
+      "success_artifact_glob": "output/paired_de.csv",
+      "paper_arm_score": 1.0,
+      "key_method": "duplicateCorrelation for paired design"
+    },
+    {
+      "id": "deseq2_shrinkage_comparison",
+      "work_dir": "ldp_r_task_eval/tasks/paper_sensitive_v1/real/deseq2_shrinkage_comparison",
+      "status": "ready",
+      "verified": true,
+      "family": "rna",
+      "primary_doi": "10.1186/s13059-014-0550-8",
+      "success_artifact_glob": "output/shrunk_de.csv",
+      "paper_arm_score": 1.0,
+      "key_method": "apeglm vs ashr vs normal comparison"
+    }
+  ]
+}

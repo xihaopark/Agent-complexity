@@ -1,0 +1,250 @@
+{
+  "workflow_id": "read-alignment-pangenome-finish",
+  "workflow_dir": "main/finish/workflow_candidates/snakemake-workflows__read-alignment-pangenome",
+  "out_dir": "main/paper_primary_benchmark/experiments/skills_pipeline/read-alignment-pangenome-finish",
+  "status": "ok",
+  "generated_at": "2026-04-16T16:56:45Z",
+  "model": "openrouter/openai/gpt-4o",
+  "resolved_model": "openai/gpt-4o",
+  "max_per_file": 8000,
+  "max_total": 80000,
+  "prompt_tokens": 12749,
+  "completion_tokens": 743,
+  "total_tokens": 13492,
+  "runtime_seconds": 6.58,
+  "llm_seconds": 6.57,
+  "chars_used": 46391,
+  "truncated": false,
+  "files_considered": [
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "bytes": 940,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/common.smk",
+      "kind": "snakefile",
+      "bytes": 14092,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/mapping.smk",
+      "kind": "snakefile",
+      "bytes": 8038,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/primers.smk",
+      "kind": "snakefile",
+      "bytes": 3015,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/ref.smk",
+      "kind": "snakefile",
+      "bytes": 2250,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/trimming.smk",
+      "kind": "snakefile",
+      "bytes": 1987,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/utils.smk",
+      "kind": "snakefile",
+      "bytes": 488,
+      "priority": 0
+    },
+    {
+      "path": "workflow/scripts/build_primer_regions.py",
+      "kind": "python",
+      "bytes": 2043,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/validate_fasta.py",
+      "kind": "python",
+      "bytes": 862,
+      "priority": 2
+    },
+    {
+      "path": ".test/config_pangenome/config.yaml",
+      "kind": "yaml",
+      "bytes": 550,
+      "priority": 3
+    },
+    {
+      "path": ".test/config_primers/config.yaml",
+      "kind": "yaml",
+      "bytes": 839,
+      "priority": 3
+    },
+    {
+      "path": ".test/config_simple/config.yaml",
+      "kind": "yaml",
+      "bytes": 718,
+      "priority": 3
+    },
+    {
+      "path": ".test/config_sra/config.yaml",
+      "kind": "yaml",
+      "bytes": 680,
+      "priority": 3
+    },
+    {
+      "path": "config/config.yaml",
+      "kind": "yaml",
+      "bytes": 1968,
+      "priority": 3
+    },
+    {
+      "path": "workflow/schemas/config.schema.yaml",
+      "kind": "yaml",
+      "bytes": 2024,
+      "priority": 3
+    },
+    {
+      "path": ".test/config_sra/README.md",
+      "kind": "readme",
+      "bytes": 1588,
+      "priority": 4
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "bytes": 3565,
+      "priority": 4
+    },
+    {
+      "path": "config/README.md",
+      "kind": "readme",
+      "bytes": 4164,
+      "priority": 4
+    },
+    {
+      "path": "profiles/README.md",
+      "kind": "readme",
+      "bytes": 1838,
+      "priority": 4
+    }
+  ],
+  "files_included": [
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "chars_used": 940,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/common.smk",
+      "kind": "snakefile",
+      "chars_used": 8042,
+      "partial": true
+    },
+    {
+      "path": "workflow/rules/mapping.smk",
+      "kind": "snakefile",
+      "chars_used": 8041,
+      "partial": true
+    },
+    {
+      "path": "workflow/rules/primers.smk",
+      "kind": "snakefile",
+      "chars_used": 3015,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/ref.smk",
+      "kind": "snakefile",
+      "chars_used": 2250,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/trimming.smk",
+      "kind": "snakefile",
+      "chars_used": 1987,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/utils.smk",
+      "kind": "snakefile",
+      "chars_used": 488,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/build_primer_regions.py",
+      "kind": "python",
+      "chars_used": 2043,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/validate_fasta.py",
+      "kind": "python",
+      "chars_used": 862,
+      "partial": false
+    },
+    {
+      "path": ".test/config_pangenome/config.yaml",
+      "kind": "yaml",
+      "chars_used": 550,
+      "partial": false
+    },
+    {
+      "path": ".test/config_primers/config.yaml",
+      "kind": "yaml",
+      "chars_used": 839,
+      "partial": false
+    },
+    {
+      "path": ".test/config_simple/config.yaml",
+      "kind": "yaml",
+      "chars_used": 718,
+      "partial": false
+    },
+    {
+      "path": ".test/config_sra/config.yaml",
+      "kind": "yaml",
+      "chars_used": 680,
+      "partial": false
+    },
+    {
+      "path": "config/config.yaml",
+      "kind": "yaml",
+      "chars_used": 1968,
+      "partial": false
+    },
+    {
+      "path": "workflow/schemas/config.schema.yaml",
+      "kind": "yaml",
+      "chars_used": 2024,
+      "partial": false
+    },
+    {
+      "path": ".test/config_sra/README.md",
+      "kind": "readme",
+      "chars_used": 1588,
+      "partial": false
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "chars_used": 3561,
+      "partial": false
+    },
+    {
+      "path": "config/README.md",
+      "kind": "readme",
+      "chars_used": 4164,
+      "partial": false
+    },
+    {
+      "path": "profiles/README.md",
+      "kind": "readme",
+      "chars_used": 1838,
+      "partial": false
+    }
+  ]
+}

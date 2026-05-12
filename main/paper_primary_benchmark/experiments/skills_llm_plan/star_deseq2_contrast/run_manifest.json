@@ -1,0 +1,24 @@
+{
+  "task_id": "star_deseq2_contrast",
+  "task_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/star_deseq2_contrast",
+  "out_dir": "main/paper_primary_benchmark/experiments/skills_llm_plan/star_deseq2_contrast",
+  "model": "openrouter/openai/gpt-4o",
+  "model_resolved": "openai/gpt-4o",
+  "temperature": 0.1,
+  "prompt_tokens": 1037,
+  "completion_tokens": 488,
+  "total_tokens": 1525,
+  "runtime_seconds": 5.72,
+  "inputs_listed": [
+    "_prep_dds.R",
+    "_prep_dds.log",
+    "_prep_normalized_counts.tsv",
+    "counts.tsv",
+    "dds.rds",
+    "samples.tsv"
+  ],
+  "inputs_previewed": [
+    "samples.tsv"
+  ],
+  "generated_at": "2026-04-16T17:22:17Z"
+}

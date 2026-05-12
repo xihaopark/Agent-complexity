@@ -1,0 +1,20 @@
+{
+  "task_id": "spilterlize_limma_rbe",
+  "kind": "real",
+  "workflow_id": "epigen-spilterlize_integrate-finish",
+  "family": "rna",
+  "stage": "late",
+  "difficulty": 3,
+  "paper_covered": false,
+  "wrapper_kind": "snakemake",
+  "description": "limma::removeBatchEffect (batch + design from annotation).",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/epigen__spilterlize_integrate/workflow/scripts/limma_removeBatchEffect.R",
+  "ground_truth_dir": "tasks/real_ground_truth/spilterlize_limma_rbe",
+  "success_glob": "output/integrated_data.csv",
+  "reference_output_files": [
+    "integrated_data.csv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

@@ -1,0 +1,13 @@
+{
+  "workflow_id": "cite-seq-alevin-fry-seurat-finish",
+  "pipeline_task_id": "stage_05",
+  "order": 5,
+  "manifest_path": "finish/cite-seq-alevin-fry-seurat-finish/manifest.json",
+  "step_ids": [
+    "plot_umap_singlets_doublets",
+    "filter_to_singlets",
+    "all"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.956725+00:00"
+}

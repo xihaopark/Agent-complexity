@@ -1,0 +1,13 @@
+{
+  "workflow_id": "tgirke-systempiperdata-chipseq-finish",
+  "pipeline_task_id": "stage_05",
+  "order": 5,
+  "manifest_path": "finish/tgirke-systempiperdata-chipseq-finish/manifest.json",
+  "step_ids": [
+    "count_peak_ranges",
+    "diff_bind_analysis",
+    "go_enrich"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.020605+00:00"
+}

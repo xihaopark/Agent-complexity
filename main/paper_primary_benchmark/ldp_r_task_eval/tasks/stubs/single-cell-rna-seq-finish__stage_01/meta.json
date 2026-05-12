@@ -1,0 +1,14 @@
+{
+  "workflow_id": "single-cell-rna-seq-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/single-cell-rna-seq-finish/manifest.json",
+  "step_ids": [
+    "all_qc",
+    "load_counts",
+    "qc",
+    "explained_variance"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.013444+00:00"
+}

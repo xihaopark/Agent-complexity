@@ -1,0 +1,17 @@
+{
+  "task_id": "chipseq_plot_macs_qc",
+  "kind": "real",
+  "workflow_id": "snakemake-workflows-chipseq",
+  "family": "chipseq",
+  "description": "MACS2 narrowPeak QC: summary stats + violin plots of peak metrics.",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/snakemake-workflows__chipseq/workflow/scripts/plot_macs_qc.R",
+  "ground_truth_dir": "tasks/real_ground_truth/chipseq_plot_macs_qc",
+  "success_glob": "output/macs_qc.pdf",
+  "reference_output_files": [
+    "macs_qc.pdf",
+    "macs_qc_summary.tsv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

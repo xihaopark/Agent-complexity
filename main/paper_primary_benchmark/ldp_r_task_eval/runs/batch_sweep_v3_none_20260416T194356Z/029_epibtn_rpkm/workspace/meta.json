@@ -1,0 +1,20 @@
+{
+  "task_id": "epibtn_rpkm",
+  "kind": "real",
+  "workflow_id": "joncahn-epigeneticbutton-finish",
+  "family": "rna",
+  "stage": "late",
+  "difficulty": 2,
+  "paper_covered": false,
+  "wrapper_kind": "commandArgs",
+  "description": "Per-genotype RPKM table derived from featureCounts (joncahn epigeneticbutton).",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/joncahn__epigeneticbutton/workflow/scripts/R_gene_expression_rpkm.R",
+  "ground_truth_dir": "tasks/real_ground_truth/epibtn_rpkm",
+  "success_glob": "output/results/RNA/DEG/genes_rpkm__runX__mockref.txt",
+  "reference_output_files": [
+    "results/RNA/DEG/genes_rpkm__runX__mockref.txt"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

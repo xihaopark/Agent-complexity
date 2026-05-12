@@ -1,0 +1,14 @@
+{
+  "workflow_id": "tgirke-systempiperdata-riboseq-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/tgirke-systempiperdata-riboseq-finish/manifest.json",
+  "step_ids": [
+    "load_SPR",
+    "preprocessing",
+    "fastq_report",
+    "hisat2_index"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.021892+00:00"
+}

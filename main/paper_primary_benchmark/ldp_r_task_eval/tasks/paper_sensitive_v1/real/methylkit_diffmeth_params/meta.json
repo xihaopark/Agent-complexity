@@ -1,0 +1,16 @@
+{
+  "task_id": "methylkit_diffmeth_params",
+  "kind": "paper_sensitive",
+  "blueprint_version": "v1",
+  "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+  "family": "methylation",
+  "stage": "late",
+  "difficulty": 4,
+  "paper_covered": true,
+  "primary_method_paper_doi": "TBD_methylKit_not_MethPat",
+  "primary_tool": "methylKit",
+  "description": "Region DM with explicit methylKit test/overdispersion choices; TSV output.",
+  "status": "scaffold",
+  "success_glob": "output/diff_meth.tsv",
+  "reference_output_files": ["diff_meth.tsv"]
+}

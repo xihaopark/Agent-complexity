@@ -1,0 +1,20 @@
+{
+  "task_id": "methylkit_load",
+  "kind": "real",
+  "workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+  "family": "methylation",
+  "stage": "early",
+  "difficulty": 1,
+  "paper_covered": true,
+  "wrapper_kind": "snakemake",
+  "description": "methylKit::methRead of per-sample bismark coverage files (plot calls stripped).",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/fritjoflammers__snakemake-methylanalysis/workflow/scripts/methylkit_load.R",
+  "ground_truth_dir": "tasks/real_ground_truth/methylkit_load",
+  "success_glob": "output/mk_raw.rds",
+  "reference_output_files": [
+    "mk_raw.rds"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

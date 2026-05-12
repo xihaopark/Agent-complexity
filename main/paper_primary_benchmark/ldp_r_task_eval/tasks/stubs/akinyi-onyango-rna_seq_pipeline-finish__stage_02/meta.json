@@ -1,0 +1,14 @@
+{
+  "workflow_id": "akinyi-onyango-rna_seq_pipeline-finish",
+  "pipeline_task_id": "stage_02",
+  "order": 2,
+  "manifest_path": "finish/akinyi-onyango-rna_seq_pipeline-finish/manifest.json",
+  "step_ids": [
+    "read_mapping",
+    "read_counts",
+    "differential_expression",
+    "all"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.953276+00:00"
+}

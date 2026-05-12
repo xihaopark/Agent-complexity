@@ -1,0 +1,14 @@
+{
+  "workflow_id": "epigen-enrichment_analysis-finish",
+  "pipeline_task_id": "stage_03",
+  "order": 3,
+  "manifest_path": "finish/epigen-enrichment_analysis-finish/manifest.json",
+  "step_ids": [
+    "prepare_databases",
+    "process_results_pycisTarget",
+    "region_enrichment_analysis_GREAT",
+    "region_enrichment_analysis_LOLA"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.973387+00:00"
+}

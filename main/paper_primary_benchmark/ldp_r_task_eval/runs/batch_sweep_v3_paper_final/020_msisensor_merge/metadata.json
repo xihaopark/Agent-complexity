@@ -1,0 +1,29 @@
+{
+  "task_id": "msisensor_merge",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/msisensor_merge",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_final/020_msisensor_merge/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_v3_paper_final",
+  "registry_index": 20,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1,
+      "max_tokens": 2048
+    }
+  },
+  "skill": {
+    "arm": "paper",
+    "injected": true,
+    "manifest_version": 3,
+    "skill_sha256": "efabb82fe1ca2c20e0b4f55404c982d808c72982c06ecba524c73f07781cf419",
+    "skill_char_len": 1669,
+    "skill_md_path": "experiments/skills/10.1093_bioinformatics_btt236/SKILL.md",
+    "lookup_field": "by_task_id",
+    "lookup_key": "msisensor_merge",
+    "source_doi": "10.1093/bioinformatics_btt236",
+    "source_tool": "MSIsensor",
+    "source_workflow_id": "snakemake-workflows-msisensor-pro-finish"
+  }
+}

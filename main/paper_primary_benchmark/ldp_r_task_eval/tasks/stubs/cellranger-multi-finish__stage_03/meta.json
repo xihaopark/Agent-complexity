@@ -1,0 +1,13 @@
+{
+  "workflow_id": "cellranger-multi-finish",
+  "pipeline_task_id": "stage_03",
+  "order": 3,
+  "manifest_path": "finish/cellranger-multi-finish/manifest.json",
+  "step_ids": [
+    "cellranger_multi_files_gene_expression_global",
+    "cellranger_multi_files_gene_expression_per_sample",
+    "cellranger_multi_files_vdj_reference"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.954509+00:00"
+}

@@ -1,0 +1,21 @@
+{
+  "task_id": "dea_limma",
+  "kind": "real",
+  "workflow_id": "epigen-dea_limma-finish",
+  "family": "rna",
+  "stage": "late",
+  "difficulty": 3,
+  "paper_covered": false,
+  "wrapper_kind": "snakemake",
+  "description": "limma+voom DE pipeline producing DEA table, lmfit RDS, model matrix (PDFs redirected).",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/epigen__dea_limma/workflow/scripts/limma.R",
+  "ground_truth_dir": "tasks/real_ground_truth/dea_limma",
+  "success_glob": "output/dea_results.csv",
+  "reference_output_files": [
+    "dea_results.csv",
+    "model_matrix.csv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

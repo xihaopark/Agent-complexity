@@ -1,0 +1,7 @@
+[
+  "Rscript",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/riya_limma/reference/script.R",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/riya_limma/input/exprs.csv",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/riya_limma/input/meta.csv",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/riya_limma/reference_output/deg_results.csv"
+]

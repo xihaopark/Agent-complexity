@@ -1,0 +1,14 @@
+{
+  "workflow_id": "gustaveroussy-sopa-finish",
+  "pipeline_task_id": "stage_02",
+  "order": 2,
+  "manifest_path": "finish/gustaveroussy-sopa-finish/manifest.json",
+  "step_ids": [
+    "aggregate",
+    "annotate",
+    "scanpy_preprocess",
+    "explorer_raw"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.989557+00:00"
+}

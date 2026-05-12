@@ -1,0 +1,154 @@
+{
+  "batch_run_id": "real_no_skill_v2",
+  "batch_root": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_real_no_skill_v2",
+  "n_tasks": 4,
+  "n_pass": 2,
+  "n_partial": 2,
+  "n_fail": 0,
+  "pass_rate": 50.0,
+  "results": [
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_real_no_skill_v2/000_akinyi_deseq2",
+      "task_id": "akinyi_deseq2",
+      "batch_run_id": "real_no_skill_v2",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "smoke": false,
+      "n_expected": 2,
+      "n_exists": 2,
+      "n_byte_identical": 2,
+      "n_table_full_match": 0,
+      "verdict": "pass",
+      "files": {
+        "deseq2_up.txt": {
+          "exists": true,
+          "byte_size_agent": 2481,
+          "byte_size_gt": 2481,
+          "sha256_agent": "78680c80c12234eb997072df2af4cc3f5c55def64305970c9287a0c3238bd0cf",
+          "sha256_gt": "78680c80c12234eb997072df2af4cc3f5c55def64305970c9287a0c3238bd0cf",
+          "byte_identical": true
+        },
+        "deseq2_down.txt": {
+          "exists": true,
+          "byte_size_agent": 1524,
+          "byte_size_gt": 1524,
+          "sha256_agent": "03a8e9d4f39ef17df8bfef769905e3f3ef6b34a76e31c3bcf1c1d746206a7013",
+          "sha256_gt": "03a8e9d4f39ef17df8bfef769905e3f3ef6b34a76e31c3bcf1c1d746206a7013",
+          "byte_identical": true
+        }
+      }
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_real_no_skill_v2/001_riya_limma",
+      "task_id": "riya_limma",
+      "batch_run_id": "real_no_skill_v2",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "smoke": false,
+      "n_expected": 2,
+      "n_exists": 2,
+      "n_byte_identical": 0,
+      "n_table_full_match": 1,
+      "verdict": "partial",
+      "files": {
+        "deg_results.csv": {
+          "exists": true,
+          "byte_size_agent": 26944,
+          "byte_size_gt": 26961,
+          "sha256_agent": "74bf35eb565a3b76cfba01ee3a972d8cca3b23aa2375abd0125443cb6d2f2a0d",
+          "sha256_gt": "11087902902ba877c3b0e8ad42e449304c1a234cb96cd71d773c60065c8ec637",
+          "byte_identical": false,
+          "table": {
+            "same_shape": true,
+            "rows": 251,
+            "cells_total": 1757,
+            "cells_numeric": 1500,
+            "cells_numeric_match": 1500,
+            "cells_numeric_pct": 100.0,
+            "cells_string_total": 257,
+            "cells_string_match": 257,
+            "cells_string_pct": 100.0
+          }
+        },
+        "volcano.png": {
+          "exists": true,
+          "byte_size_agent": 31483,
+          "byte_size_gt": 91209,
+          "sha256_agent": "42d43f7709415d69cd94870dda17009496c530fa0ee1173e13a708efea1d991e",
+          "sha256_gt": "891c389bf8408cdbe01adb367b15a247738f86d53450035d7f7aade9f06b7925",
+          "byte_identical": false
+        }
+      }
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_real_no_skill_v2/002_snakepipes_merge_fc",
+      "task_id": "snakepipes_merge_fc",
+      "batch_run_id": "real_no_skill_v2",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "smoke": false,
+      "n_expected": 1,
+      "n_exists": 1,
+      "n_byte_identical": 1,
+      "n_table_full_match": 1,
+      "verdict": "pass",
+      "files": {
+        "merged_counts.tsv": {
+          "exists": true,
+          "byte_size_agent": 7753,
+          "byte_size_gt": 7753,
+          "sha256_agent": "59fe8de0f7fea538c12913ad6e19269824ee524dc5366866c50f704ed837ff70",
+          "sha256_gt": "59fe8de0f7fea538c12913ad6e19269824ee524dc5366866c50f704ed837ff70",
+          "byte_identical": true,
+          "table": {
+            "same_shape": true,
+            "rows": 301,
+            "cells_total": 1204,
+            "cells_numeric": 900,
+            "cells_numeric_match": 900,
+            "cells_numeric_pct": 100.0,
+            "cells_string_total": 304,
+            "cells_string_match": 304,
+            "cells_string_pct": 100.0
+          }
+        }
+      }
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_real_no_skill_v2/003_snakepipes_merge_ct",
+      "task_id": "snakepipes_merge_ct",
+      "batch_run_id": "real_no_skill_v2",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "smoke": false,
+      "n_expected": 1,
+      "n_exists": 1,
+      "n_byte_identical": 0,
+      "n_table_full_match": 0,
+      "verdict": "partial",
+      "files": {
+        "merged_tpm.tsv": {
+          "exists": true,
+          "byte_size_agent": 15143,
+          "byte_size_gt": 11238,
+          "sha256_agent": "bdb481b9c1925f47921096dc5f655915114890a0525b3bc1691d990e5e93bbe4",
+          "sha256_gt": "78961f78882fb1cdf51e1171ec5c1573ed371fa15445b791182942bde6ac7508",
+          "byte_identical": false,
+          "table": {
+            "same_shape": false,
+            "agent_rows": 301,
+            "gt_rows": 301
+          }
+        }
+      }
+    }
+  ]
+}

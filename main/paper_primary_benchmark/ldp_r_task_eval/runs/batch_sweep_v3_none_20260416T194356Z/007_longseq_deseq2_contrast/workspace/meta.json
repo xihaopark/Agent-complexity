@@ -1,0 +1,20 @@
+{
+  "task_id": "longseq_deseq2_contrast",
+  "kind": "real",
+  "workflow_id": "snakemake-workflows-rna-longseq-de-isoform",
+  "family": "rna",
+  "stage": "late",
+  "difficulty": 3,
+  "paper_covered": false,
+  "wrapper_kind": "snakemake",
+  "description": "DESeq2 contrast + lfcShrink(ashr) for long-read isoform workflow (SVG/pheatmap stripped).",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/snakemake-workflows__rna-longseq-de-isoform/workflow/scripts/deseq2.R",
+  "ground_truth_dir": "tasks/real_ground_truth/longseq_deseq2_contrast",
+  "success_glob": "output/contrast_results.tsv",
+  "reference_output_files": [
+    "contrast_results.tsv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

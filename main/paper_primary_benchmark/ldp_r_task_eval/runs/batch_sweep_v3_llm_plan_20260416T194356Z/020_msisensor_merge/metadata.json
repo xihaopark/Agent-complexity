@@ -1,0 +1,27 @@
+{
+  "task_id": "msisensor_merge",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/msisensor_merge",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_llm_plan_20260416T194356Z/020_msisensor_merge/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_v3_llm_plan_20260416T194356Z",
+  "registry_index": 20,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "arm": "llm_plan",
+    "injected": true,
+    "manifest_version": 3,
+    "skill_sha256": "d01bde3c2ecca5410f4f11a1c01b85e83dd957d3314d656125195e3a2e6c6efc",
+    "skill_char_len": 1976,
+    "skill_md_path": "experiments/skills_llm_plan/msisensor_merge/SKILL.md",
+    "lookup_field": "by_task_id",
+    "lookup_key": "msisensor_merge",
+    "source_task_id": "msisensor_merge",
+    "source_model": "openrouter/openai/gpt-4o"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "workflow_id": "tgirke-systempiperdata-riboseq-finish",
+  "pipeline_task_id": "stage_04",
+  "order": 4,
+  "manifest_path": "finish/tgirke-systempiperdata-riboseq-finish/manifest.json",
+  "step_ids": [
+    "translate",
+    "add_features",
+    "pred_sORFs",
+    "binned_CDS_coverage"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.023428+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_05",
+  "prepared_at": "2026-04-16T12:46:05.813842+00:00",
+  "micro_task": "sum_of_values_txt"
+}

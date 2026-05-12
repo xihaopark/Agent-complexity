@@ -1,0 +1,15 @@
+{
+  "pdf": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/literature/pdfs/10.1093_bioinformatics_bts635.pdf",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills/10.1093_bioinformatics_bts635",
+  "pages_processed": 7,
+  "dpi": 130,
+  "model": "openai/gpt-4o",
+  "render_seconds": 0.35,
+  "llm_seconds": 11.57,
+  "total_seconds": 11.92,
+  "usage": {
+    "prompt_tokens": 4677,
+    "completion_tokens": 322,
+    "total_tokens": 4999
+  }
+}

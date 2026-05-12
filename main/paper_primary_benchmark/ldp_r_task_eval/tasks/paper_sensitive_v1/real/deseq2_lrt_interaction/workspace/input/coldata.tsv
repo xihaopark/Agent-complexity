@@ -1,0 +1,9 @@
+sample	treatment	time
+SX1	ctrl	t0
+SX2	ctrl	t0
+SX3	trt	t0
+SX4	trt	t0
+SX5	ctrl	t1
+SX6	ctrl	t1
+SX7	trt	t1
+SX8	trt	t1

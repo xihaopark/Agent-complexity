@@ -1,0 +1,1 @@
+Task uses the CPSM R package (TCGA LGG survival modeling example). No extra input files are required beyond installing R dependencies; data ship inside the CPSM package as Example_TCGA_LGG_FPKM_data.

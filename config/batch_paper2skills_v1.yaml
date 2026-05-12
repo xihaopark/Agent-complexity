@@ -1,0 +1,117 @@
+# 4-Arm Paper2Skills Experiment Configuration
+# Tier A: 5 paper-sensitive tasks
+
+experiment_id: paper2skills_v1_tiera
+description: "4-arm ablation testing paper-derived skills on tasks where paper knowledge is critical"
+
+# Model configuration
+model:
+  name: qwen3-32b  # 或你的本地 vLLM endpoint
+  provider: vllm  # 或 openrouter
+  endpoint: http://localhost:8000/v1  # 根据你的 vLLM 设置调整
+  temperature: 0.1
+  max_tokens: 2048
+
+# Agent configuration
+agent:
+  max_steps: 15
+  timeout_per_step: 120
+  
+  # Base system prompt (all arms get this)
+  base_sys_prompt: |
+    You are a bioinformatics data analyst. You solve R-centric analysis tasks using available tools.
+    
+    Available tools:
+    - read_text_file: Read files (OBJECTIVE.md, input data, etc.)
+    - write_text_file: Write output files
+    - run_rscript: Execute R code
+    - list_workdir: List directory contents
+    
+    Instructions:
+    1. Read OBJECTIVE.md carefully to understand the task
+    2. Inspect input data files
+    3. Write R code to perform the analysis
+    4. Execute R code and verify outputs
+    5. Submit results when complete
+    
+    Important:
+    - Do not use Snakemake or workflow systems
+    - Do not assume internet access
+    - Produce the exact output files specified in OBJECTIVE.md
+
+# Arms configuration
+arms:
+  none:
+    name: "none"
+    description: "No skill injection - baseline"
+    sys_prompt_suffix: |
+      Use your best knowledge to complete this task. Follow standard practices but adapt to the specific requirements.
+    skill_manifest: null
+
+  llm_plan:
+    name: "llm_plan"
+    description: "LLM-generated execution plan as skill"
+    sys_prompt_suffix: |
+      A step-by-step execution plan has been generated for this task. Follow the plan's guidance:
+      
+      {{SKILL_MD}}
+      
+      Adapt the plan based on actual data inspection, but use it as your primary guide.
+    skill_manifest: experiments/skills_paper2skills_v1/llm_plan/manifest.json
+
+  pipeline:
+    name: "pipeline"
+    description: "Code templates from similar workflows"
+    sys_prompt_suffix: |
+      A code template from similar bioinformatics workflows is provided. Adapt this pattern to your task:
+      
+      {{SKILL_MD}}
+      
+      Key patterns to follow:
+      - Data loading approach
+      - Analysis workflow structure
+      - Output formatting
+    skill_manifest: experiments/skills_paper2skills_v1/pipeline/manifest.json
+
+  paper:
+    name: "paper"
+    description: "Methods from primary literature (PDF-extracted)"
+    sys_prompt_suffix: |
+      The following method description is extracted from the primary literature for this analysis type:
+      
+      {{SKILL_MD}}
+      
+      Trust the paper's guidance on:
+      - Specific parameter choices
+      - Method selection (e.g., which shrinkage estimator to use)
+      - Non-obvious implementation details
+      
+      When the paper's recommendation differs from general knowledge, follow the paper.
+    skill_manifest: experiments/skills_paper2skills_v1/paper/manifest.json
+
+# Tasks to run
+tasks:
+  - deseq2_apeglm_small_n
+  - deseq2_lrt_interaction
+  - deseq2_shrinkage_comparison
+  - limma_voom_weights
+  - limma_duplicatecorrelation
+
+# Execution configuration
+execution:
+  parallel: 1  # Sequential execution to avoid resource conflicts
+  retry_count: 1
+  cleanup_on_success: false  # Keep workspace for debugging
+
+# Paths
+paths:
+  base_dir: main/paper_primary_benchmark/ldp_r_task_eval
+  task_dir: tasks/paper_sensitive_v1/real
+  output_dir: runs/batch_paper2skills_v1
+  registry: r_tasks/registry.paper_sensitive_v1.json
+
+# Evaluation
+evaluation:
+  rtol: 0.001
+  atol: 1e-05
+  evaluator_version: v3

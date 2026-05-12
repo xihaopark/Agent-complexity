@@ -1,0 +1,13 @@
+{
+  "workflow_id": "tgirke-systempiperdata-chipseq-finish",
+  "pipeline_task_id": "stage_04",
+  "order": 4,
+  "manifest_path": "finish/tgirke-systempiperdata-chipseq-finish/manifest.json",
+  "step_ids": [
+    "annotation_ChIPseeker",
+    "ChIPseeker_plots",
+    "annotation_ChIPpeakAnno"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.020042+00:00"
+}

@@ -1,0 +1,14 @@
+{
+  "workflow_id": "epigen-enrichment_analysis-finish",
+  "pipeline_task_id": "stage_04",
+  "order": 4,
+  "manifest_path": "finish/epigen-enrichment_analysis-finish/manifest.json",
+  "step_ids": [
+    "region_gene_association_GREAT",
+    "region_motif_enrichment_analysis_pycisTarget",
+    "visualize",
+    "all"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.973767+00:00"
+}

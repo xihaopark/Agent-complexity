@@ -1,0 +1,34 @@
+task_id, none,llm_plan,pipeline,paper ,winner_arms
+akinyi_deseq2,1.000,1.000,1.000,1.000,none|llm_plan|pipeline|paper
+chipseq_plot_annotatepeaks_summary_homer,1.000,1.000,1.000,1.000,none|llm_plan|pipeline|paper
+chipseq_plot_frip_score,1.000,1.000,1.000,0.993,none|llm_plan|pipeline
+chipseq_plot_homer_annot,0.475,0.475,0.475,0.475,none|llm_plan|pipeline|paper
+chipseq_plot_macs_qc,0.673,0.475,0.475,0.993,paper
+chipseq_plot_peaks_count_macs2,1.000,1.000,1.000,1.000,none|llm_plan|pipeline|paper
+clean_histoneHMM,1.000,1.000,1.000,1.000,none|llm_plan|pipeline|paper
+dea_limma,0.562,0.562,0.734,0.562,pipeline
+epibtn_rpkm,0.475,1.000,0.475,0.475,llm_plan
+longseq_deseq2_contrast,0.883,1.000,1.000,1.000,llm_plan|pipeline|paper
+longseq_deseq2_init,1.000,0.720,1.000,1.000,none|pipeline|paper
+methylkit2tibble_split,0.692,0.225,0.650,0.075,none
+methylkit_filt_norm,0.150,0.993,0.225,0.993,llm_plan|paper
+methylkit_load,0.075,0.075,0.150,0.075,pipeline
+methylkit_remove_snvs,1.000,1.000,1.000,1.000,none|llm_plan|pipeline|paper
+methylkit_to_tibble,0.150,0.475,0.225,0.225,llm_plan
+methylkit_unite,0.075,0.075,0.075,0.075,none|llm_plan|pipeline|paper
+msisensor_merge,0.993,0.993,0.993,0.993,none|llm_plan|pipeline|paper
+nearest_gene,0.475,0.075,0.475,0.475,none|pipeline|paper
+phantompeak_correlation,0.993,1.000,1.000,0.993,llm_plan|pipeline
+riya_limma,0.993,1.000,1.000,0.993,llm_plan|pipeline
+snakepipes_merge_ct,0.993,0.075,0.475,0.475,none
+snakepipes_merge_fc,0.475,0.075,0.475,0.475,none|pipeline|paper
+snakepipes_scrna_merge_coutt,0.734,0.734,0.734,0.734,none|llm_plan|pipeline|paper
+snakepipes_scrna_qc,1.000,0.650,1.000,1.000,none|pipeline|paper
+snakepipes_scrna_report,1.000,1.000,1.000,1.000,none|llm_plan|pipeline|paper
+spilterlize_filter_features,1.000,1.000,0.900,1.000,none|llm_plan|paper
+spilterlize_limma_rbe,1.000,1.000,0.993,1.000,none|llm_plan|paper
+spilterlize_norm_edger,1.000,0.900,1.000,1.000,none|pipeline|paper
+spilterlize_norm_voom,1.000,0.900,0.900,1.000,none|paper
+star_deseq2_contrast,1.000,1.000,1.000,1.000,none|llm_plan|pipeline|paper
+star_deseq2_init,0.993,1.000,1.000,1.000,llm_plan|pipeline|paper
+=== wins === {'none': 22, 'llm_plan': 21, 'pipeline': 23, 'paper': 23}

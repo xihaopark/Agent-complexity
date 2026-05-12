@@ -1,0 +1,20 @@
+{
+  "task_id": "snakepipes_scrna_report",
+  "kind": "real",
+  "workflow_id": "maxplanck-ie-snakepipes-finish",
+  "family": "scrna",
+  "stage": "late",
+  "difficulty": 1,
+  "paper_covered": false,
+  "wrapper_kind": "snakemake",
+  "description": "Outer-merge per-library scRNA metric CSVs into a unified TSV report.",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/maxplanck-ie__snakePipes/snakePipes/shared/rscripts/scRNAseq_report.R",
+  "ground_truth_dir": "tasks/real_ground_truth/snakepipes_scrna_report",
+  "success_glob": "output/scrna_report.tsv",
+  "reference_output_files": [
+    "scrna_report.tsv"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

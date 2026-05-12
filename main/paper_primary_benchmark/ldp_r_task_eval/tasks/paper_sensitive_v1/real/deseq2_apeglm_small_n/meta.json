@@ -1,0 +1,17 @@
+{
+  "task_id": "deseq2_apeglm_small_n",
+  "kind": "paper_sensitive",
+  "blueprint_version": "v1",
+  "workflow_id": "rna-seq-star-deseq2-finish",
+  "family": "rna",
+  "stage": "late",
+  "difficulty": 4,
+  "paper_covered": true,
+  "primary_method_paper_doi": "10.1186/s13059-014-0550-8",
+  "primary_tool": "DESeq2",
+  "description": "Small-replicate DE with DESeq2; shrink logFC with lfcShrink(type='apeglm').",
+  "status": "scaffold",
+  "success_glob": "output/de_results.csv",
+  "reference_output_files": ["de_results.csv"],
+  "notes": "Ground truth to be generated under real_ground_truth/ after a frozen reference R script is run on input/."
+}

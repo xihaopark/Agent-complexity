@@ -1,0 +1,21 @@
+{
+  "task_id": "snakepipes_scrna_qc",
+  "kind": "real",
+  "workflow_id": "maxplanck-ie-snakepipes-finish",
+  "family": "scrna",
+  "description": "Per-plate scRNA-seq QC: library stats + plate heatmaps (PNG).",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/maxplanck-ie__snakePipes/snakePipes/workflows/scRNAseq/scRNAseq_QC_metrics2.R",
+  "ground_truth_dir": "tasks/real_ground_truth/snakepipes_scrna_qc",
+  "success_glob": "output/scrna_qc.reads_UMI_plot.png",
+  "reference_output_files": [
+    "scrna_qc.libstats_reads.tsv",
+    "scrna_qc.libstats_pct.tsv",
+    "scrna_qc.reads_UMI_plot.png",
+    "scrna_qc.plate_cUPM.png",
+    "scrna_qc.plate_cRPM.png",
+    "scrna_qc.plate_abs_transcripts.png"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

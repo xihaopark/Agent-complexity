@@ -1,0 +1,12 @@
+{
+  "workflow_id": "rna-seq-kallisto-sleuth-finish",
+  "pipeline_task_id": "references_and_reads",
+  "order": 2,
+  "manifest_path": "finish/rna-seq-kallisto-sleuth-finish/manifest.json",
+  "step_ids": [
+    "prepare_references",
+    "prepare_reads"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.009064+00:00"
+}

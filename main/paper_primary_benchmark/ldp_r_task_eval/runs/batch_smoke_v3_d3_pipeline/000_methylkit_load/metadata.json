@@ -1,0 +1,26 @@
+{
+  "task_id": "methylkit_load",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/methylkit_load",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_smoke_v3_d3_pipeline/000_methylkit_load/workspace",
+  "smoke": false,
+  "batch_run_id": "smoke_v3_d3_pipeline",
+  "registry_index": 0,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "arm": "pipeline",
+    "injected": true,
+    "manifest_version": 3,
+    "skill_sha256": "5df053f68ebf9417c6d9fde6aeb314e0e5be324abdfe62e7a49037a68cfd6bd1",
+    "skill_char_len": 3835,
+    "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+    "lookup_field": "by_workflow_id",
+    "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+    "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "task_id": "methylkit_load",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/methylkit_load",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_smoke_v3_d3_llm_plan/000_methylkit_load/workspace",
+  "smoke": false,
+  "batch_run_id": "smoke_v3_d3_llm_plan",
+  "registry_index": 0,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "arm": "llm_plan",
+    "injected": true,
+    "manifest_version": 3,
+    "skill_sha256": "db18cc3a9c933e6fb14c294e2dbef9b01c0dbf11fa1efc1dd2a2e246186a7acd",
+    "skill_char_len": 1903,
+    "skill_md_path": "experiments/skills_llm_plan/methylkit_load/SKILL.md",
+    "lookup_field": "by_task_id",
+    "lookup_key": "methylkit_load",
+    "source_task_id": "methylkit_load",
+    "source_model": "openrouter/openai/gpt-4o"
+  }
+}

@@ -1,0 +1,1423 @@
+{
+  "version": 2,
+  "description": "R-task registry: pilot_hello (ready) + 145 pipeline-stage stubs. Paths relative to paper_primary_benchmark/.",
+  "updated_at": "2026-04-16",
+  "task_definitions_note": "Stubs generated from paper_primary_benchmark/task_definitions/*.json; see each stub OBJECTIVE.md and meta.json.",
+  "tasks": [
+    {
+      "id": "pilot_hello",
+      "work_dir": "ldp_r_task_eval/tasks/pilot_hello",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": null,
+      "pipeline_task_id": null,
+      "family": null
+    },
+    {
+      "id": "akinyi-onyango-rna_seq_pipeline-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/akinyi-onyango-rna_seq_pipeline-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "akinyi-onyango-rna_seq_pipeline-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "other",
+      "agent_batch": "agent_01",
+      "evaluation_ready": true
+    },
+    {
+      "id": "akinyi-onyango-rna_seq_pipeline-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/akinyi-onyango-rna_seq_pipeline-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "akinyi-onyango-rna_seq_pipeline-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "other"
+    },
+    {
+      "id": "cellranger-multi-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/cellranger-multi-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "cellranger-multi-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "single-cell",
+      "agent_batch": "agent_01",
+      "evaluation_ready": true
+    },
+    {
+      "id": "cellranger-multi-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/cellranger-multi-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "cellranger-multi-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "single-cell"
+    },
+    {
+      "id": "cellranger-multi-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/cellranger-multi-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "cellranger-multi-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "single-cell"
+    },
+    {
+      "id": "cellranger-multi-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/cellranger-multi-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "cellranger-multi-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "single-cell"
+    },
+    {
+      "id": "cite-seq-alevin-fry-seurat-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/cite-seq-alevin-fry-seurat-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "cite-seq-alevin-fry-seurat-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "single-cell",
+      "agent_batch": "agent_01",
+      "evaluation_ready": true
+    },
+    {
+      "id": "cite-seq-alevin-fry-seurat-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/cite-seq-alevin-fry-seurat-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "cite-seq-alevin-fry-seurat-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "single-cell",
+      "agent_batch": "agent_01",
+      "evaluation_ready": true
+    },
+    {
+      "id": "cite-seq-alevin-fry-seurat-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/cite-seq-alevin-fry-seurat-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "cite-seq-alevin-fry-seurat-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "single-cell"
+    },
+    {
+      "id": "cite-seq-alevin-fry-seurat-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/cite-seq-alevin-fry-seurat-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "cite-seq-alevin-fry-seurat-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "single-cell"
+    },
+    {
+      "id": "cite-seq-alevin-fry-seurat-finish__stage_05",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/cite-seq-alevin-fry-seurat-finish__stage_05",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "cite-seq-alevin-fry-seurat-finish",
+      "pipeline_task_id": "stage_05",
+      "family": "single-cell"
+    },
+    {
+      "id": "cyrcular-calling-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/cyrcular-calling-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "cyrcular-calling-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "other"
+    },
+    {
+      "id": "cyrcular-calling-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/cyrcular-calling-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "cyrcular-calling-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "other"
+    },
+    {
+      "id": "cyrcular-calling-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/cyrcular-calling-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "cyrcular-calling-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "other"
+    },
+    {
+      "id": "cyrcular-calling-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/cyrcular-calling-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "cyrcular-calling-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "other"
+    },
+    {
+      "id": "cyrcular-calling-finish__stage_05",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/cyrcular-calling-finish__stage_05",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "cyrcular-calling-finish",
+      "pipeline_task_id": "stage_05",
+      "family": "other"
+    },
+    {
+      "id": "cyrcular-calling-finish__stage_06",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/cyrcular-calling-finish__stage_06",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "cyrcular-calling-finish",
+      "pipeline_task_id": "stage_06",
+      "family": "other"
+    },
+    {
+      "id": "cyrcular-calling-finish__stage_07",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/cyrcular-calling-finish__stage_07",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "cyrcular-calling-finish",
+      "pipeline_task_id": "stage_07",
+      "family": "other",
+      "agent_batch": "agent_01",
+      "evaluation_ready": true
+    },
+    {
+      "id": "cyrcular-calling-finish__stage_08",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/cyrcular-calling-finish__stage_08",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "cyrcular-calling-finish",
+      "pipeline_task_id": "stage_08",
+      "family": "other"
+    },
+    {
+      "id": "dna-seq-short-read-circle-map-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/dna-seq-short-read-circle-map-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "dna-seq-short-read-circle-map-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "variant"
+    },
+    {
+      "id": "dna-seq-short-read-circle-map-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/dna-seq-short-read-circle-map-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "dna-seq-short-read-circle-map-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "variant"
+    },
+    {
+      "id": "dna-seq-short-read-circle-map-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/dna-seq-short-read-circle-map-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "dna-seq-short-read-circle-map-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "variant"
+    },
+    {
+      "id": "dna-seq-short-read-circle-map-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/dna-seq-short-read-circle-map-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "dna-seq-short-read-circle-map-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "variant"
+    },
+    {
+      "id": "dna-seq-short-read-circle-map-finish__stage_05",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/dna-seq-short-read-circle-map-finish__stage_05",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "dna-seq-short-read-circle-map-finish",
+      "pipeline_task_id": "stage_05",
+      "family": "variant"
+    },
+    {
+      "id": "dna-seq-short-read-circle-map-finish__stage_06",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/dna-seq-short-read-circle-map-finish__stage_06",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "dna-seq-short-read-circle-map-finish",
+      "pipeline_task_id": "stage_06",
+      "family": "variant",
+      "agent_batch": "agent_01",
+      "evaluation_ready": true
+    },
+    {
+      "id": "epigen-300bcg-atacseq_pipeline-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-300bcg-atacseq_pipeline-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-300bcg-atacseq_pipeline-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-300bcg-atacseq_pipeline-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-300bcg-atacseq_pipeline-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-300bcg-atacseq_pipeline-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-300bcg-atacseq_pipeline-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-300bcg-atacseq_pipeline-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-300bcg-atacseq_pipeline-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-atacseq_pipeline-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-atacseq_pipeline-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "epigen-atacseq_pipeline-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "epigenomics",
+      "agent_batch": "agent_01",
+      "evaluation_ready": true
+    },
+    {
+      "id": "epigen-atacseq_pipeline-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-atacseq_pipeline-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "epigen-atacseq_pipeline-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "epigenomics",
+      "agent_batch": "agent_01",
+      "evaluation_ready": true
+    },
+    {
+      "id": "epigen-atacseq_pipeline-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-atacseq_pipeline-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-atacseq_pipeline-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-atacseq_pipeline-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-atacseq_pipeline-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-atacseq_pipeline-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-atacseq_pipeline-finish__stage_05",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-atacseq_pipeline-finish__stage_05",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-atacseq_pipeline-finish",
+      "pipeline_task_id": "stage_05",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-atacseq_pipeline-finish__stage_06",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-atacseq_pipeline-finish__stage_06",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-atacseq_pipeline-finish",
+      "pipeline_task_id": "stage_06",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-atacseq_pipeline-finish__stage_07",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-atacseq_pipeline-finish__stage_07",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "epigen-atacseq_pipeline-finish",
+      "pipeline_task_id": "stage_07",
+      "family": "epigenomics",
+      "agent_batch": "agent_01",
+      "evaluation_ready": true
+    },
+    {
+      "id": "epigen-dea_limma-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-dea_limma-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "epigen-dea_limma-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "epigenomics",
+      "agent_batch": "agent_01",
+      "evaluation_ready": true
+    },
+    {
+      "id": "epigen-dea_limma-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-dea_limma-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "epigen-dea_limma-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "epigenomics",
+      "agent_batch": "agent_02",
+      "evaluation_ready": true
+    },
+    {
+      "id": "epigen-dea_limma-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-dea_limma-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "epigen-dea_limma-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "epigenomics",
+      "agent_batch": "agent_02",
+      "evaluation_ready": true
+    },
+    {
+      "id": "epigen-dea_seurat-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-dea_seurat-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "epigen-dea_seurat-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "single-cell",
+      "agent_batch": "agent_02",
+      "evaluation_ready": true
+    },
+    {
+      "id": "epigen-dea_seurat-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-dea_seurat-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-dea_seurat-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "single-cell"
+    },
+    {
+      "id": "epigen-dea_seurat-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-dea_seurat-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "epigen-dea_seurat-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "single-cell",
+      "agent_batch": "agent_02",
+      "evaluation_ready": true
+    },
+    {
+      "id": "epigen-enrichment_analysis-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-enrichment_analysis-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-enrichment_analysis-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-enrichment_analysis-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-enrichment_analysis-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-enrichment_analysis-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-enrichment_analysis-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-enrichment_analysis-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-enrichment_analysis-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-enrichment_analysis-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-enrichment_analysis-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-enrichment_analysis-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-fetch_ngs-finish__env_and_config_export",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-fetch_ngs-finish__env_and_config_export",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "epigen-fetch_ngs-finish",
+      "pipeline_task_id": "env_and_config_export",
+      "family": "epigenomics",
+      "agent_batch": "agent_02",
+      "evaluation_ready": true
+    },
+    {
+      "id": "epigen-fetch_ngs-finish__download_and_convert",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-fetch_ngs-finish__download_and_convert",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-fetch_ngs-finish",
+      "pipeline_task_id": "download_and_convert",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-fetch_ngs-finish__merge_and_finalize",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-fetch_ngs-finish__merge_and_finalize",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-fetch_ngs-finish",
+      "pipeline_task_id": "merge_and_finalize",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-rnaseq_pipeline-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-rnaseq_pipeline-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-rnaseq_pipeline-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-rnaseq_pipeline-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-rnaseq_pipeline-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "epigen-rnaseq_pipeline-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "epigenomics",
+      "agent_batch": "agent_02",
+      "evaluation_ready": true
+    },
+    {
+      "id": "epigen-rnaseq_pipeline-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-rnaseq_pipeline-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-rnaseq_pipeline-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-rnaseq_pipeline-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-rnaseq_pipeline-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "epigen-rnaseq_pipeline-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "epigenomics",
+      "agent_batch": "agent_02",
+      "evaluation_ready": true
+    },
+    {
+      "id": "epigen-rnaseq_pipeline-finish__stage_05",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-rnaseq_pipeline-finish__stage_05",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "epigen-rnaseq_pipeline-finish",
+      "pipeline_task_id": "stage_05",
+      "family": "epigenomics",
+      "agent_batch": "agent_02",
+      "evaluation_ready": true
+    },
+    {
+      "id": "epigen-rnaseq_pipeline-finish__stage_06",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-rnaseq_pipeline-finish__stage_06",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-rnaseq_pipeline-finish",
+      "pipeline_task_id": "stage_06",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-rnaseq_pipeline-finish__stage_07",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-rnaseq_pipeline-finish__stage_07",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-rnaseq_pipeline-finish",
+      "pipeline_task_id": "stage_07",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-scrnaseq_processing_seurat-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-scrnaseq_processing_seurat-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-scrnaseq_processing_seurat-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "single-cell"
+    },
+    {
+      "id": "epigen-scrnaseq_processing_seurat-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-scrnaseq_processing_seurat-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-scrnaseq_processing_seurat-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "single-cell"
+    },
+    {
+      "id": "epigen-scrnaseq_processing_seurat-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-scrnaseq_processing_seurat-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "epigen-scrnaseq_processing_seurat-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "single-cell",
+      "agent_batch": "agent_02",
+      "evaluation_ready": true
+    },
+    {
+      "id": "epigen-scrnaseq_processing_seurat-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-scrnaseq_processing_seurat-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-scrnaseq_processing_seurat-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "single-cell"
+    },
+    {
+      "id": "epigen-spilterlize_integrate-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-spilterlize_integrate-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-spilterlize_integrate-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-spilterlize_integrate-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-spilterlize_integrate-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "epigen-spilterlize_integrate-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "epigenomics",
+      "agent_batch": "agent_02",
+      "evaluation_ready": true
+    },
+    {
+      "id": "epigen-spilterlize_integrate-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-spilterlize_integrate-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-spilterlize_integrate-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "epigenomics"
+    },
+    {
+      "id": "epigen-spilterlize_integrate-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/epigen-spilterlize_integrate-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "epigen-spilterlize_integrate-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "epigenomics"
+    },
+    {
+      "id": "fritjoflammers-snakemake-methylanalysis-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/fritjoflammers-snakemake-methylanalysis-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "epigenomics"
+    },
+    {
+      "id": "fritjoflammers-snakemake-methylanalysis-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/fritjoflammers-snakemake-methylanalysis-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "epigenomics",
+      "agent_batch": "agent_03",
+      "evaluation_ready": true
+    },
+    {
+      "id": "fritjoflammers-snakemake-methylanalysis-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/fritjoflammers-snakemake-methylanalysis-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "epigenomics",
+      "agent_batch": "agent_03",
+      "evaluation_ready": true
+    },
+    {
+      "id": "fritjoflammers-snakemake-methylanalysis-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/fritjoflammers-snakemake-methylanalysis-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "epigenomics"
+    },
+    {
+      "id": "fritjoflammers-snakemake-methylanalysis-finish__stage_05",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/fritjoflammers-snakemake-methylanalysis-finish__stage_05",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "pipeline_task_id": "stage_05",
+      "family": "epigenomics"
+    },
+    {
+      "id": "fritjoflammers-snakemake-methylanalysis-finish__stage_06",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/fritjoflammers-snakemake-methylanalysis-finish__stage_06",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "pipeline_task_id": "stage_06",
+      "family": "epigenomics",
+      "agent_batch": "agent_03",
+      "evaluation_ready": true
+    },
+    {
+      "id": "gustaveroussy-sopa-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/gustaveroussy-sopa-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "gustaveroussy-sopa-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "spatial",
+      "agent_batch": "agent_03",
+      "evaluation_ready": true
+    },
+    {
+      "id": "gustaveroussy-sopa-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/gustaveroussy-sopa-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "gustaveroussy-sopa-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "spatial"
+    },
+    {
+      "id": "gustaveroussy-sopa-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/gustaveroussy-sopa-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "gustaveroussy-sopa-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "spatial",
+      "agent_batch": "agent_03",
+      "evaluation_ready": true
+    },
+    {
+      "id": "gustaveroussy-sopa-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/gustaveroussy-sopa-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "gustaveroussy-sopa-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "spatial"
+    },
+    {
+      "id": "gustaveroussy-sopa-finish__stage_05",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/gustaveroussy-sopa-finish__stage_05",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "gustaveroussy-sopa-finish",
+      "pipeline_task_id": "stage_05",
+      "family": "spatial"
+    },
+    {
+      "id": "lwang-genomics-ngs_pipeline_sn-chip_seq-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/lwang-genomics-ngs_pipeline_sn-chip_seq-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "lwang-genomics-ngs_pipeline_sn-chip_seq-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "epigenomics"
+    },
+    {
+      "id": "lwang-genomics-ngs_pipeline_sn-chip_seq-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/lwang-genomics-ngs_pipeline_sn-chip_seq-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "lwang-genomics-ngs_pipeline_sn-chip_seq-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "epigenomics"
+    },
+    {
+      "id": "lwang-genomics-ngs_pipeline_sn-rna_seq-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/lwang-genomics-ngs_pipeline_sn-rna_seq-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "other",
+      "agent_batch": "agent_03",
+      "evaluation_ready": true
+    },
+    {
+      "id": "lwang-genomics-ngs_pipeline_sn-rna_seq-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/lwang-genomics-ngs_pipeline_sn-rna_seq-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "other"
+    },
+    {
+      "id": "lwang-genomics-ngs_pipeline_sn-rna_seq-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/lwang-genomics-ngs_pipeline_sn-rna_seq-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "other",
+      "agent_batch": "agent_03",
+      "evaluation_ready": true
+    },
+    {
+      "id": "maxplanck-ie-snakepipes-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/maxplanck-ie-snakepipes-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "other",
+      "agent_batch": "agent_03",
+      "evaluation_ready": true
+    },
+    {
+      "id": "maxplanck-ie-snakepipes-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/maxplanck-ie-snakepipes-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "other",
+      "agent_batch": "agent_03",
+      "evaluation_ready": true
+    },
+    {
+      "id": "maxplanck-ie-snakepipes-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/maxplanck-ie-snakepipes-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "other",
+      "agent_batch": "agent_03",
+      "evaluation_ready": true
+    },
+    {
+      "id": "maxplanck-ie-snakepipes-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/maxplanck-ie-snakepipes-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "other",
+      "agent_batch": "agent_04",
+      "evaluation_ready": true
+    },
+    {
+      "id": "maxplanck-ie-snakepipes-finish__stage_05",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/maxplanck-ie-snakepipes-finish__stage_05",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish",
+      "pipeline_task_id": "stage_05",
+      "family": "other"
+    },
+    {
+      "id": "maxplanck-ie-snakepipes-finish__stage_06",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/maxplanck-ie-snakepipes-finish__stage_06",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish",
+      "pipeline_task_id": "stage_06",
+      "family": "other"
+    },
+    {
+      "id": "maxplanck-ie-snakepipes-finish__stage_07",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/maxplanck-ie-snakepipes-finish__stage_07",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish",
+      "pipeline_task_id": "stage_07",
+      "family": "other"
+    },
+    {
+      "id": "maxplanck-ie-snakepipes-finish__stage_08",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/maxplanck-ie-snakepipes-finish__stage_08",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "maxplanck-ie-snakepipes-finish",
+      "pipeline_task_id": "stage_08",
+      "family": "other"
+    },
+    {
+      "id": "microsatellite-instability-detection-with-msisensor-pro-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/microsatellite-instability-detection-with-msisensor-pro-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "microsatellite-instability-detection-with-msisensor-pro-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "variant"
+    },
+    {
+      "id": "microsatellite-instability-detection-with-msisensor-pro-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/microsatellite-instability-detection-with-msisensor-pro-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "microsatellite-instability-detection-with-msisensor-pro-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "variant",
+      "agent_batch": "agent_04",
+      "evaluation_ready": true
+    },
+    {
+      "id": "microsatellite-instability-detection-with-msisensor-pro-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/microsatellite-instability-detection-with-msisensor-pro-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "microsatellite-instability-detection-with-msisensor-pro-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "variant",
+      "agent_batch": "agent_04",
+      "evaluation_ready": true
+    },
+    {
+      "id": "read-alignment-pangenome-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/read-alignment-pangenome-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "read-alignment-pangenome-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "other"
+    },
+    {
+      "id": "read-alignment-pangenome-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/read-alignment-pangenome-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "read-alignment-pangenome-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "other"
+    },
+    {
+      "id": "read-alignment-pangenome-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/read-alignment-pangenome-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "read-alignment-pangenome-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "other"
+    },
+    {
+      "id": "read-alignment-pangenome-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/read-alignment-pangenome-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "read-alignment-pangenome-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "other"
+    },
+    {
+      "id": "read-alignment-pangenome-finish__stage_05",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/read-alignment-pangenome-finish__stage_05",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "read-alignment-pangenome-finish",
+      "pipeline_task_id": "stage_05",
+      "family": "other",
+      "agent_batch": "agent_04",
+      "evaluation_ready": true
+    },
+    {
+      "id": "read-alignment-pangenome-finish__stage_06",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/read-alignment-pangenome-finish__stage_06",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "read-alignment-pangenome-finish",
+      "pipeline_task_id": "stage_06",
+      "family": "other"
+    },
+    {
+      "id": "read-alignment-pangenome-finish__stage_07",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/read-alignment-pangenome-finish__stage_07",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "read-alignment-pangenome-finish",
+      "pipeline_task_id": "stage_07",
+      "family": "other",
+      "agent_batch": "agent_04",
+      "evaluation_ready": true
+    },
+    {
+      "id": "read-alignment-pangenome-finish__stage_08",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/read-alignment-pangenome-finish__stage_08",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "read-alignment-pangenome-finish",
+      "pipeline_task_id": "stage_08",
+      "family": "other"
+    },
+    {
+      "id": "rna-seq-kallisto-sleuth-finish__setup_config_and_inputs",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/rna-seq-kallisto-sleuth-finish__setup_config_and_inputs",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "rna-seq-kallisto-sleuth-finish",
+      "pipeline_task_id": "setup_config_and_inputs",
+      "family": "rna"
+    },
+    {
+      "id": "rna-seq-kallisto-sleuth-finish__references_and_reads",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/rna-seq-kallisto-sleuth-finish__references_and_reads",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "rna-seq-kallisto-sleuth-finish",
+      "pipeline_task_id": "references_and_reads",
+      "family": "rna"
+    },
+    {
+      "id": "rna-seq-kallisto-sleuth-finish__quantify_and_init_sleuth",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/rna-seq-kallisto-sleuth-finish__quantify_and_init_sleuth",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "rna-seq-kallisto-sleuth-finish",
+      "pipeline_task_id": "quantify_and_init_sleuth",
+      "family": "rna",
+      "agent_batch": "agent_04",
+      "evaluation_ready": true
+    },
+    {
+      "id": "rna-seq-kallisto-sleuth-finish__de_analysis_and_delivery",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/rna-seq-kallisto-sleuth-finish__de_analysis_and_delivery",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "rna-seq-kallisto-sleuth-finish",
+      "pipeline_task_id": "de_analysis_and_delivery",
+      "family": "rna",
+      "agent_batch": "agent_04",
+      "evaluation_ready": true
+    },
+    {
+      "id": "rna-seq-star-deseq2-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/rna-seq-star-deseq2-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "rna-seq-star-deseq2-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "rna"
+    },
+    {
+      "id": "rna-seq-star-deseq2-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/rna-seq-star-deseq2-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "rna-seq-star-deseq2-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "rna"
+    },
+    {
+      "id": "single-cell-rna-seq-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/single-cell-rna-seq-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "single-cell-rna-seq-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "single-cell"
+    },
+    {
+      "id": "single-cell-rna-seq-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/single-cell-rna-seq-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "single-cell-rna-seq-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "single-cell",
+      "agent_batch": "agent_04",
+      "evaluation_ready": true
+    },
+    {
+      "id": "single-cell-rna-seq-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/single-cell-rna-seq-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "single-cell-rna-seq-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "single-cell",
+      "agent_batch": "agent_04",
+      "evaluation_ready": true
+    },
+    {
+      "id": "single-cell-rna-seq-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/single-cell-rna-seq-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "single-cell-rna-seq-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "single-cell"
+    },
+    {
+      "id": "single-cell-rna-seq-finish__stage_05",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/single-cell-rna-seq-finish__stage_05",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "single-cell-rna-seq-finish",
+      "pipeline_task_id": "stage_05",
+      "family": "single-cell"
+    },
+    {
+      "id": "single-cell-rna-seq-finish__stage_06",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/single-cell-rna-seq-finish__stage_06",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "single-cell-rna-seq-finish",
+      "pipeline_task_id": "stage_06",
+      "family": "single-cell",
+      "agent_batch": "agent_04",
+      "evaluation_ready": true
+    },
+    {
+      "id": "star-arriba-fusion-calling-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/star-arriba-fusion-calling-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "star-arriba-fusion-calling-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "rna"
+    },
+    {
+      "id": "star-arriba-fusion-calling-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/star-arriba-fusion-calling-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "star-arriba-fusion-calling-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "rna"
+    },
+    {
+      "id": "tgirke-systempiperdata-chipseq-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-chipseq-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-chipseq-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "epigenomics"
+    },
+    {
+      "id": "tgirke-systempiperdata-chipseq-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-chipseq-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-chipseq-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "epigenomics"
+    },
+    {
+      "id": "tgirke-systempiperdata-chipseq-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-chipseq-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-chipseq-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "epigenomics"
+    },
+    {
+      "id": "tgirke-systempiperdata-chipseq-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-chipseq-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-chipseq-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "epigenomics"
+    },
+    {
+      "id": "tgirke-systempiperdata-chipseq-finish__stage_05",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-chipseq-finish__stage_05",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-chipseq-finish",
+      "pipeline_task_id": "stage_05",
+      "family": "epigenomics"
+    },
+    {
+      "id": "tgirke-systempiperdata-chipseq-finish__stage_06",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-chipseq-finish__stage_06",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "tgirke-systempiperdata-chipseq-finish",
+      "pipeline_task_id": "stage_06",
+      "family": "epigenomics",
+      "agent_batch": "agent_05",
+      "evaluation_ready": true
+    },
+    {
+      "id": "tgirke-systempiperdata-riboseq-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-riboseq-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-riboseq-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "other"
+    },
+    {
+      "id": "tgirke-systempiperdata-riboseq-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-riboseq-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "tgirke-systempiperdata-riboseq-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "other",
+      "agent_batch": "agent_05",
+      "evaluation_ready": true
+    },
+    {
+      "id": "tgirke-systempiperdata-riboseq-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-riboseq-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "tgirke-systempiperdata-riboseq-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "other",
+      "agent_batch": "agent_05",
+      "evaluation_ready": true
+    },
+    {
+      "id": "tgirke-systempiperdata-riboseq-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-riboseq-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "tgirke-systempiperdata-riboseq-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "other",
+      "agent_batch": "agent_05",
+      "evaluation_ready": true
+    },
+    {
+      "id": "tgirke-systempiperdata-riboseq-finish__stage_05",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-riboseq-finish__stage_05",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-riboseq-finish",
+      "pipeline_task_id": "stage_05",
+      "family": "other"
+    },
+    {
+      "id": "tgirke-systempiperdata-riboseq-finish__stage_06",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-riboseq-finish__stage_06",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-riboseq-finish",
+      "pipeline_task_id": "stage_06",
+      "family": "other"
+    },
+    {
+      "id": "tgirke-systempiperdata-riboseq-finish__stage_07",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-riboseq-finish__stage_07",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-riboseq-finish",
+      "pipeline_task_id": "stage_07",
+      "family": "other"
+    },
+    {
+      "id": "tgirke-systempiperdata-riboseq-finish__stage_08",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-riboseq-finish__stage_08",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-riboseq-finish",
+      "pipeline_task_id": "stage_08",
+      "family": "other"
+    },
+    {
+      "id": "tgirke-systempiperdata-rnaseq-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-rnaseq-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-rnaseq-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "rna"
+    },
+    {
+      "id": "tgirke-systempiperdata-rnaseq-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-rnaseq-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "tgirke-systempiperdata-rnaseq-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "rna",
+      "agent_batch": "agent_05",
+      "evaluation_ready": true
+    },
+    {
+      "id": "tgirke-systempiperdata-rnaseq-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-rnaseq-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "tgirke-systempiperdata-rnaseq-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "rna",
+      "agent_batch": "agent_05",
+      "evaluation_ready": true
+    },
+    {
+      "id": "tgirke-systempiperdata-rnaseq-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-rnaseq-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-rnaseq-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "rna"
+    },
+    {
+      "id": "tgirke-systempiperdata-rnaseq-finish__stage_05",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-rnaseq-finish__stage_05",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "tgirke-systempiperdata-rnaseq-finish",
+      "pipeline_task_id": "stage_05",
+      "family": "rna",
+      "agent_batch": "agent_05",
+      "evaluation_ready": true
+    },
+    {
+      "id": "tgirke-systempiperdata-rnaseq-finish__stage_06",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-rnaseq-finish__stage_06",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-rnaseq-finish",
+      "pipeline_task_id": "stage_06",
+      "family": "rna"
+    },
+    {
+      "id": "tgirke-systempiperdata-spscrna-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-spscrna-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-spscrna-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "single-cell"
+    },
+    {
+      "id": "tgirke-systempiperdata-spscrna-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-spscrna-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-spscrna-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "single-cell"
+    },
+    {
+      "id": "tgirke-systempiperdata-spscrna-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-spscrna-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-spscrna-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "single-cell"
+    },
+    {
+      "id": "tgirke-systempiperdata-spscrna-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-spscrna-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-spscrna-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "single-cell"
+    },
+    {
+      "id": "tgirke-systempiperdata-spscrna-finish__stage_05",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-spscrna-finish__stage_05",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-spscrna-finish",
+      "pipeline_task_id": "stage_05",
+      "family": "single-cell"
+    },
+    {
+      "id": "tgirke-systempiperdata-varseq-finish__stage_01",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-varseq-finish__stage_01",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "tgirke-systempiperdata-varseq-finish",
+      "pipeline_task_id": "stage_01",
+      "family": "variant",
+      "agent_batch": "agent_05",
+      "evaluation_ready": true
+    },
+    {
+      "id": "tgirke-systempiperdata-varseq-finish__stage_02",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-varseq-finish__stage_02",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-varseq-finish",
+      "pipeline_task_id": "stage_02",
+      "family": "variant"
+    },
+    {
+      "id": "tgirke-systempiperdata-varseq-finish__stage_03",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-varseq-finish__stage_03",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-varseq-finish",
+      "pipeline_task_id": "stage_03",
+      "family": "variant"
+    },
+    {
+      "id": "tgirke-systempiperdata-varseq-finish__stage_04",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-varseq-finish__stage_04",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-varseq-finish",
+      "pipeline_task_id": "stage_04",
+      "family": "variant"
+    },
+    {
+      "id": "tgirke-systempiperdata-varseq-finish__stage_05",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-varseq-finish__stage_05",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "tgirke-systempiperdata-varseq-finish",
+      "pipeline_task_id": "stage_05",
+      "family": "variant",
+      "agent_batch": "agent_05",
+      "evaluation_ready": true
+    },
+    {
+      "id": "tgirke-systempiperdata-varseq-finish__stage_06",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-varseq-finish__stage_06",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-varseq-finish",
+      "pipeline_task_id": "stage_06",
+      "family": "variant"
+    },
+    {
+      "id": "tgirke-systempiperdata-varseq-finish__stage_07",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-varseq-finish__stage_07",
+      "success_artifact_glob": "output/result.txt",
+      "status": "stub",
+      "pipeline_workflow_id": "tgirke-systempiperdata-varseq-finish",
+      "pipeline_task_id": "stage_07",
+      "family": "variant"
+    },
+    {
+      "id": "tgirke-systempiperdata-varseq-finish__stage_08",
+      "work_dir": "ldp_r_task_eval/tasks/stubs/tgirke-systempiperdata-varseq-finish__stage_08",
+      "success_artifact_glob": "output/result.txt",
+      "status": "ready",
+      "pipeline_workflow_id": "tgirke-systempiperdata-varseq-finish",
+      "pipeline_task_id": "stage_08",
+      "family": "variant",
+      "agent_batch": "agent_05",
+      "evaluation_ready": true
+    }
+  ],
+  "sample_50_note": "50 tasks prepared for micro-eval; see ldp_r_task_eval/experiments/sample_50/manifest.json"
+}

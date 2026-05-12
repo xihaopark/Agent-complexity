@@ -1,0 +1,1617 @@
+{
+  "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+  "batch_root": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z",
+  "evaluator_version": "v2",
+  "ts": "2026-04-16T21:00:15Z",
+  "rtol": 0.001,
+  "atol": 1e-05,
+  "legacy_active": false,
+  "n_tasks": 32,
+  "mean_score": 0.2029,
+  "verdict_counts": {
+    "pass": 5,
+    "partial_pass": 1,
+    "partial_fail": 1,
+    "fail": 2,
+    "error": 23
+  },
+  "verdict_counts_legacy": {
+    "pass": 3,
+    "partial": 4,
+    "fail": 25
+  },
+  "tasks": {
+    "akinyi_deseq2": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/000_akinyi_deseq2",
+      "task_id": "akinyi_deseq2",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "paper",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "67a57f2556ecfd4cbeb34f29ec4c5211dc4b6451d81e0161f819cc697db128fc",
+        "skill_char_len": 1700,
+        "skill_md_path": "experiments/skills/10.1186_s13059-016-0881-8/SKILL.md",
+        "lookup_field": "by_task_id",
+        "lookup_key": "akinyi_deseq2",
+        "source_doi": "10.1186/s13059-016-0881-8",
+        "source_tool": "RNA-seq best practices",
+        "source_workflow_id": "akinyi-onyango-rna_seq_pipeline-finish"
+      },
+      "n_expected": 2,
+      "n_files_scored": 2,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 6,
+        "tool_calls_meaningful": 6,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "deseq2_up.txt",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/akinyi_deseq2/reference_output/deseq2_up.txt",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/000_akinyi_deseq2/workspace/output/deseq2_up.txt",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 2481,
+          "size_ref": 2481,
+          "notes": [],
+          "details": {}
+        },
+        {
+          "filename": "deseq2_down.txt",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/akinyi_deseq2/reference_output/deseq2_down.txt",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/000_akinyi_deseq2/workspace/output/deseq2_down.txt",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 1524,
+          "size_ref": 1524,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "star_deseq2_init": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/001_star_deseq2_init",
+      "task_id": "star_deseq2_init",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "paper",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "4aaf2fb8e8e3715f75894085c76684f2620931003b04aefc3dec56b5f9159d41",
+        "skill_char_len": 1881,
+        "skill_md_path": "experiments/skills/10.1186_s13059-014-0550-8/SKILL.md",
+        "lookup_field": "by_task_id",
+        "lookup_key": "star_deseq2_init",
+        "source_doi": "10.1186/s13059-014-0550-8",
+        "source_tool": "DESeq2",
+        "source_workflow_id": "rna-seq-star-deseq2-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 6,
+        "tool_calls_meaningful": 6,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "normalized_counts.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/star_deseq2_init/reference_output/normalized_counts.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/001_star_deseq2_init/workspace/output/normalized_counts.tsv",
+          "strategy_used": "normalized_table_equal",
+          "strategy_score": 1.0,
+          "bytes_identical": false,
+          "size_agent": 64217,
+          "size_ref": 58217,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "star_deseq2_contrast": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/002_star_deseq2_contrast",
+      "task_id": "star_deseq2_contrast",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "paper",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "4aaf2fb8e8e3715f75894085c76684f2620931003b04aefc3dec56b5f9159d41",
+        "skill_char_len": 1881,
+        "skill_md_path": "experiments/skills/10.1186_s13059-014-0550-8/SKILL.md",
+        "lookup_field": "by_task_id",
+        "lookup_key": "star_deseq2_contrast",
+        "source_doi": "10.1186/s13059-014-0550-8",
+        "source_tool": "DESeq2",
+        "source_workflow_id": "rna-seq-star-deseq2-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 4,
+        "tool_calls_meaningful": 4,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "contrast_results.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/star_deseq2_contrast/reference_output/contrast_results.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/002_star_deseq2_contrast/workspace/output/contrast_results.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 53764,
+          "size_ref": 53764,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "methylkit_load": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/003_methylkit_load",
+      "task_id": "methylkit_load",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "paper",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "7a926c67d6927cfd0bc97b373cb35e592f6078928d3d0ece4f5805c1d0596232",
+        "skill_char_len": 1395,
+        "skill_md_path": "experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+        "lookup_field": "by_task_id",
+        "lookup_key": "methylkit_load",
+        "source_doi": "10.1186/s12859-016-0950-8",
+        "source_tool": "MethPat",
+        "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.075,
+      "verdict": "fail",
+      "verdict_legacy": "fail",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 0.0,
+        "submit_done_called": 0.0,
+        "outputs_dir_nonempty_and_valid": 0.0
+      },
+      "process_mean": 0.25,
+      "process_counts": {
+        "tool_calls_total": 15,
+        "tool_calls_meaningful": 15,
+        "rscript_ok": 0,
+        "rscript_err": 23
+      },
+      "file_scores_mean": 0.0,
+      "per_file": [
+        {
+          "filename": "mk_raw.rds",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_load/reference_output/mk_raw.rds",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/003_methylkit_load/workspace/output/mk_raw.rds",
+          "strategy_used": "missing",
+          "strategy_score": 0.0,
+          "bytes_identical": false,
+          "size_agent": null,
+          "size_ref": 3529,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "methylkit_unite": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/004_methylkit_unite",
+      "task_id": "methylkit_unite",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "paper",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "7a926c67d6927cfd0bc97b373cb35e592f6078928d3d0ece4f5805c1d0596232",
+        "skill_char_len": 1395,
+        "skill_md_path": "experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+        "lookup_field": "by_task_id",
+        "lookup_key": "methylkit_unite",
+        "source_doi": "10.1186/s12859-016-0950-8",
+        "source_tool": "MethPat",
+        "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.075,
+      "verdict": "fail",
+      "verdict_legacy": "fail",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 0.0,
+        "submit_done_called": 0.0,
+        "outputs_dir_nonempty_and_valid": 0.0
+      },
+      "process_mean": 0.25,
+      "process_counts": {
+        "tool_calls_total": 15,
+        "tool_calls_meaningful": 14,
+        "rscript_ok": 0,
+        "rscript_err": 13
+      },
+      "file_scores_mean": 0.0,
+      "per_file": [
+        {
+          "filename": "unite_stats.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_unite/reference_output/unite_stats.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/004_methylkit_unite/workspace/output/unite_stats.tsv",
+          "strategy_used": "missing",
+          "strategy_score": 0.0,
+          "bytes_identical": false,
+          "size_agent": null,
+          "size_ref": 83,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "methylkit_to_tibble": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/005_methylkit_to_tibble",
+      "task_id": "methylkit_to_tibble",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "paper",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "7a926c67d6927cfd0bc97b373cb35e592f6078928d3d0ece4f5805c1d0596232",
+        "skill_char_len": 1395,
+        "skill_md_path": "experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+        "lookup_field": "by_task_id",
+        "lookup_key": "methylkit_to_tibble",
+        "source_doi": "10.1186/s12859-016-0950-8",
+        "source_tool": "MethPat",
+        "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.475,
+      "verdict": "partial_fail",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 15,
+        "tool_calls_meaningful": 15,
+        "rscript_ok": 6,
+        "rscript_err": 8
+      },
+      "file_scores_mean": 0.25,
+      "per_file": [
+        {
+          "filename": "mean_mcpg.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_to_tibble/reference_output/mean_mcpg.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/005_methylkit_to_tibble/workspace/output/mean_mcpg.tsv",
+          "strategy_used": "process_credit",
+          "strategy_score": 0.25,
+          "bytes_identical": false,
+          "size_agent": 102,
+          "size_ref": 406,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 3,
+              "cols_b": 3,
+              "cols_shared": 3,
+              "rows_a": 3,
+              "rows_b": 12,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 6,
+              "cells_total": 9,
+              "cell_match_fraction": 0.6666666666666666,
+              "row_overlap": 0.25,
+              "effective_fraction": 0.16666666666666666,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    "longseq_deseq2_init": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/006_longseq_deseq2_init",
+      "task_id": "longseq_deseq2_init",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "paper",
+        "injected": false,
+        "reason": "no_skill_for_task",
+        "manifest_version": 3,
+        "lookup_field": "by_task_id",
+        "lookup_key": "longseq_deseq2_init"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.993,
+      "verdict": "pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 6,
+        "tool_calls_meaningful": 6,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 0.99,
+      "per_file": [
+        {
+          "filename": "normalized_counts.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/longseq_deseq2_init/reference_output/normalized_counts.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/006_longseq_deseq2_init/workspace/output/normalized_counts.tsv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.99,
+          "bytes_identical": false,
+          "size_agent": 56240,
+          "size_ref": 56240,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 7,
+              "cols_b": 7,
+              "cols_shared": 7,
+              "rows_a": 500,
+              "rows_b": 500,
+              "rows_matched": 500,
+              "row_match_fraction": 1.0,
+              "cells_matched": 3500,
+              "cells_total": 3500,
+              "cell_match_fraction": 1.0,
+              "row_overlap": 1.0,
+              "effective_fraction": 1.0,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    "longseq_deseq2_contrast": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/007_longseq_deseq2_contrast",
+      "task_id": "longseq_deseq2_contrast",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "paper",
+        "injected": false,
+        "reason": "no_skill_for_task",
+        "manifest_version": 3,
+        "lookup_field": "by_task_id",
+        "lookup_key": "longseq_deseq2_contrast"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.8833,
+      "verdict": "partial_pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 4,
+        "tool_calls_meaningful": 4,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 0.8333,
+      "per_file": [
+        {
+          "filename": "contrast_results.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/longseq_deseq2_contrast/reference_output/contrast_results.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/007_longseq_deseq2_contrast/workspace/output/contrast_results.tsv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.8333,
+          "bytes_identical": false,
+          "size_agent": 50476,
+          "size_ref": 50518,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 6,
+              "cols_b": 6,
+              "cols_shared": 6,
+              "rows_a": 500,
+              "rows_b": 500,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 2500,
+              "cells_total": 3000,
+              "cell_match_fraction": 0.8333333333333334,
+              "row_overlap": 1.0,
+              "effective_fraction": 0.8333333333333334,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    "snakepipes_merge_fc": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/008_snakepipes_merge_fc",
+      "task_id": "snakepipes_merge_fc",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "paper",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "9283ae25bc6e5dd2ad8886a01bf8406cd9784c16ecb740a6186e4e1de78f0671",
+        "skill_char_len": 1521,
+        "skill_md_path": "experiments/skills/10.1093_bioinformatics_btz436/SKILL.md",
+        "lookup_field": "by_task_id",
+        "lookup_key": "snakepipes_merge_fc",
+        "source_doi": "10.1093/bioinformatics/btz436",
+        "source_tool": "snakePipes",
+        "source_workflow_id": "maxplanck-ie-snakepipes-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.993,
+      "verdict": "pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 8,
+        "tool_calls_meaningful": 8,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 0.99,
+      "per_file": [
+        {
+          "filename": "merged_counts.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_merge_fc/reference_output/merged_counts.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/008_snakepipes_merge_fc/workspace/output/merged_counts.tsv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.99,
+          "bytes_identical": false,
+          "size_agent": 11569,
+          "size_ref": 11553,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_position",
+              "cols_a": 5,
+              "cols_b": 5,
+              "cols_shared": 5,
+              "rows_a": 400,
+              "rows_b": 400,
+              "rows_matched": 400,
+              "row_match_fraction": 1.0,
+              "cells_matched": 2000,
+              "cells_total": 2000,
+              "cell_match_fraction": 1.0,
+              "row_overlap": 1.0,
+              "effective_fraction": 1.0,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    "unknown_9": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/009_snakepipes_merge_ct",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_10": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/010_riya_limma",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_11": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/011_chipseq_plot_macs_qc",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_12": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/012_chipseq_plot_homer_annot",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_13": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/013_snakepipes_scrna_merge_coutt",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_14": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/014_snakepipes_scrna_qc",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_15": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/015_spilterlize_filter_features",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_16": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/016_spilterlize_norm_voom",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_17": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/017_spilterlize_limma_rbe",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_18": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/018_spilterlize_norm_edger",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_19": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/019_dea_limma",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_20": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/020_msisensor_merge",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_21": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/021_methylkit_filt_norm",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_22": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/022_methylkit2tibble_split",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_23": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/023_methylkit_remove_snvs",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_24": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/024_phantompeak_correlation",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_25": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/025_nearest_gene",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_26": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/026_chipseq_plot_frip_score",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_27": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/027_chipseq_plot_peaks_count_macs2",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_28": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/028_chipseq_plot_annotatepeaks_summary_homer",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_29": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/029_epibtn_rpkm",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_30": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/030_snakepipes_scrna_report",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    "unknown_31": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/031_clean_histoneHMM",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    }
+  },
+  "results": [
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/000_akinyi_deseq2",
+      "task_id": "akinyi_deseq2",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "paper",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "67a57f2556ecfd4cbeb34f29ec4c5211dc4b6451d81e0161f819cc697db128fc",
+        "skill_char_len": 1700,
+        "skill_md_path": "experiments/skills/10.1186_s13059-016-0881-8/SKILL.md",
+        "lookup_field": "by_task_id",
+        "lookup_key": "akinyi_deseq2",
+        "source_doi": "10.1186/s13059-016-0881-8",
+        "source_tool": "RNA-seq best practices",
+        "source_workflow_id": "akinyi-onyango-rna_seq_pipeline-finish"
+      },
+      "n_expected": 2,
+      "n_files_scored": 2,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 6,
+        "tool_calls_meaningful": 6,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "deseq2_up.txt",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/akinyi_deseq2/reference_output/deseq2_up.txt",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/000_akinyi_deseq2/workspace/output/deseq2_up.txt",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 2481,
+          "size_ref": 2481,
+          "notes": [],
+          "details": {}
+        },
+        {
+          "filename": "deseq2_down.txt",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/akinyi_deseq2/reference_output/deseq2_down.txt",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/000_akinyi_deseq2/workspace/output/deseq2_down.txt",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 1524,
+          "size_ref": 1524,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/001_star_deseq2_init",
+      "task_id": "star_deseq2_init",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "paper",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "4aaf2fb8e8e3715f75894085c76684f2620931003b04aefc3dec56b5f9159d41",
+        "skill_char_len": 1881,
+        "skill_md_path": "experiments/skills/10.1186_s13059-014-0550-8/SKILL.md",
+        "lookup_field": "by_task_id",
+        "lookup_key": "star_deseq2_init",
+        "source_doi": "10.1186/s13059-014-0550-8",
+        "source_tool": "DESeq2",
+        "source_workflow_id": "rna-seq-star-deseq2-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 6,
+        "tool_calls_meaningful": 6,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "normalized_counts.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/star_deseq2_init/reference_output/normalized_counts.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/001_star_deseq2_init/workspace/output/normalized_counts.tsv",
+          "strategy_used": "normalized_table_equal",
+          "strategy_score": 1.0,
+          "bytes_identical": false,
+          "size_agent": 64217,
+          "size_ref": 58217,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/002_star_deseq2_contrast",
+      "task_id": "star_deseq2_contrast",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "paper",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "4aaf2fb8e8e3715f75894085c76684f2620931003b04aefc3dec56b5f9159d41",
+        "skill_char_len": 1881,
+        "skill_md_path": "experiments/skills/10.1186_s13059-014-0550-8/SKILL.md",
+        "lookup_field": "by_task_id",
+        "lookup_key": "star_deseq2_contrast",
+        "source_doi": "10.1186/s13059-014-0550-8",
+        "source_tool": "DESeq2",
+        "source_workflow_id": "rna-seq-star-deseq2-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 4,
+        "tool_calls_meaningful": 4,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "contrast_results.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/star_deseq2_contrast/reference_output/contrast_results.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/002_star_deseq2_contrast/workspace/output/contrast_results.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 53764,
+          "size_ref": 53764,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/003_methylkit_load",
+      "task_id": "methylkit_load",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "paper",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "7a926c67d6927cfd0bc97b373cb35e592f6078928d3d0ece4f5805c1d0596232",
+        "skill_char_len": 1395,
+        "skill_md_path": "experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+        "lookup_field": "by_task_id",
+        "lookup_key": "methylkit_load",
+        "source_doi": "10.1186/s12859-016-0950-8",
+        "source_tool": "MethPat",
+        "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.075,
+      "verdict": "fail",
+      "verdict_legacy": "fail",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 0.0,
+        "submit_done_called": 0.0,
+        "outputs_dir_nonempty_and_valid": 0.0
+      },
+      "process_mean": 0.25,
+      "process_counts": {
+        "tool_calls_total": 15,
+        "tool_calls_meaningful": 15,
+        "rscript_ok": 0,
+        "rscript_err": 23
+      },
+      "file_scores_mean": 0.0,
+      "per_file": [
+        {
+          "filename": "mk_raw.rds",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_load/reference_output/mk_raw.rds",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/003_methylkit_load/workspace/output/mk_raw.rds",
+          "strategy_used": "missing",
+          "strategy_score": 0.0,
+          "bytes_identical": false,
+          "size_agent": null,
+          "size_ref": 3529,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/004_methylkit_unite",
+      "task_id": "methylkit_unite",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "paper",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "7a926c67d6927cfd0bc97b373cb35e592f6078928d3d0ece4f5805c1d0596232",
+        "skill_char_len": 1395,
+        "skill_md_path": "experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+        "lookup_field": "by_task_id",
+        "lookup_key": "methylkit_unite",
+        "source_doi": "10.1186/s12859-016-0950-8",
+        "source_tool": "MethPat",
+        "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.075,
+      "verdict": "fail",
+      "verdict_legacy": "fail",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 0.0,
+        "submit_done_called": 0.0,
+        "outputs_dir_nonempty_and_valid": 0.0
+      },
+      "process_mean": 0.25,
+      "process_counts": {
+        "tool_calls_total": 15,
+        "tool_calls_meaningful": 14,
+        "rscript_ok": 0,
+        "rscript_err": 13
+      },
+      "file_scores_mean": 0.0,
+      "per_file": [
+        {
+          "filename": "unite_stats.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_unite/reference_output/unite_stats.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/004_methylkit_unite/workspace/output/unite_stats.tsv",
+          "strategy_used": "missing",
+          "strategy_score": 0.0,
+          "bytes_identical": false,
+          "size_agent": null,
+          "size_ref": 83,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/005_methylkit_to_tibble",
+      "task_id": "methylkit_to_tibble",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "paper",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "7a926c67d6927cfd0bc97b373cb35e592f6078928d3d0ece4f5805c1d0596232",
+        "skill_char_len": 1395,
+        "skill_md_path": "experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+        "lookup_field": "by_task_id",
+        "lookup_key": "methylkit_to_tibble",
+        "source_doi": "10.1186/s12859-016-0950-8",
+        "source_tool": "MethPat",
+        "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.475,
+      "verdict": "partial_fail",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 15,
+        "tool_calls_meaningful": 15,
+        "rscript_ok": 6,
+        "rscript_err": 8
+      },
+      "file_scores_mean": 0.25,
+      "per_file": [
+        {
+          "filename": "mean_mcpg.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_to_tibble/reference_output/mean_mcpg.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/005_methylkit_to_tibble/workspace/output/mean_mcpg.tsv",
+          "strategy_used": "process_credit",
+          "strategy_score": 0.25,
+          "bytes_identical": false,
+          "size_agent": 102,
+          "size_ref": 406,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 3,
+              "cols_b": 3,
+              "cols_shared": 3,
+              "rows_a": 3,
+              "rows_b": 12,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 6,
+              "cells_total": 9,
+              "cell_match_fraction": 0.6666666666666666,
+              "row_overlap": 0.25,
+              "effective_fraction": 0.16666666666666666,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/006_longseq_deseq2_init",
+      "task_id": "longseq_deseq2_init",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "paper",
+        "injected": false,
+        "reason": "no_skill_for_task",
+        "manifest_version": 3,
+        "lookup_field": "by_task_id",
+        "lookup_key": "longseq_deseq2_init"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.993,
+      "verdict": "pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 6,
+        "tool_calls_meaningful": 6,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 0.99,
+      "per_file": [
+        {
+          "filename": "normalized_counts.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/longseq_deseq2_init/reference_output/normalized_counts.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/006_longseq_deseq2_init/workspace/output/normalized_counts.tsv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.99,
+          "bytes_identical": false,
+          "size_agent": 56240,
+          "size_ref": 56240,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 7,
+              "cols_b": 7,
+              "cols_shared": 7,
+              "rows_a": 500,
+              "rows_b": 500,
+              "rows_matched": 500,
+              "row_match_fraction": 1.0,
+              "cells_matched": 3500,
+              "cells_total": 3500,
+              "cell_match_fraction": 1.0,
+              "row_overlap": 1.0,
+              "effective_fraction": 1.0,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/007_longseq_deseq2_contrast",
+      "task_id": "longseq_deseq2_contrast",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "paper",
+        "injected": false,
+        "reason": "no_skill_for_task",
+        "manifest_version": 3,
+        "lookup_field": "by_task_id",
+        "lookup_key": "longseq_deseq2_contrast"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.8833,
+      "verdict": "partial_pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 4,
+        "tool_calls_meaningful": 4,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 0.8333,
+      "per_file": [
+        {
+          "filename": "contrast_results.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/longseq_deseq2_contrast/reference_output/contrast_results.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/007_longseq_deseq2_contrast/workspace/output/contrast_results.tsv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.8333,
+          "bytes_identical": false,
+          "size_agent": 50476,
+          "size_ref": 50518,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 6,
+              "cols_b": 6,
+              "cols_shared": 6,
+              "rows_a": 500,
+              "rows_b": 500,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 2500,
+              "cells_total": 3000,
+              "cell_match_fraction": 0.8333333333333334,
+              "row_overlap": 1.0,
+              "effective_fraction": 0.8333333333333334,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/008_snakepipes_merge_fc",
+      "task_id": "snakepipes_merge_fc",
+      "batch_run_id": "sweep_v3_paper_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "paper",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "9283ae25bc6e5dd2ad8886a01bf8406cd9784c16ecb740a6186e4e1de78f0671",
+        "skill_char_len": 1521,
+        "skill_md_path": "experiments/skills/10.1093_bioinformatics_btz436/SKILL.md",
+        "lookup_field": "by_task_id",
+        "lookup_key": "snakepipes_merge_fc",
+        "source_doi": "10.1093/bioinformatics/btz436",
+        "source_tool": "snakePipes",
+        "source_workflow_id": "maxplanck-ie-snakepipes-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.993,
+      "verdict": "pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 8,
+        "tool_calls_meaningful": 8,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 0.99,
+      "per_file": [
+        {
+          "filename": "merged_counts.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_merge_fc/reference_output/merged_counts.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/008_snakepipes_merge_fc/workspace/output/merged_counts.tsv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.99,
+          "bytes_identical": false,
+          "size_agent": 11569,
+          "size_ref": 11553,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_position",
+              "cols_a": 5,
+              "cols_b": 5,
+              "cols_shared": 5,
+              "rows_a": 400,
+              "rows_b": 400,
+              "rows_matched": 400,
+              "row_match_fraction": 1.0,
+              "cells_matched": 2000,
+              "cells_total": 2000,
+              "cell_match_fraction": 1.0,
+              "row_overlap": 1.0,
+              "effective_fraction": 1.0,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/009_snakepipes_merge_ct",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/010_riya_limma",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/011_chipseq_plot_macs_qc",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/012_chipseq_plot_homer_annot",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/013_snakepipes_scrna_merge_coutt",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/014_snakepipes_scrna_qc",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/015_spilterlize_filter_features",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/016_spilterlize_norm_voom",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/017_spilterlize_limma_rbe",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/018_spilterlize_norm_edger",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/019_dea_limma",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/020_msisensor_merge",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/021_methylkit_filt_norm",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/022_methylkit2tibble_split",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/023_methylkit_remove_snvs",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/024_phantompeak_correlation",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/025_nearest_gene",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/026_chipseq_plot_frip_score",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/027_chipseq_plot_peaks_count_macs2",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/028_chipseq_plot_annotatepeaks_summary_homer",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/029_epibtn_rpkm",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/030_snakepipes_scrna_report",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_paper_20260416T194356Z/031_clean_histoneHMM",
+      "task_id": null,
+      "error": "no_metadata",
+      "overall_score": 0.0,
+      "verdict": "error",
+      "verdict_legacy": "fail",
+      "process_signals": {},
+      "per_file": []
+    }
+  ]
+}

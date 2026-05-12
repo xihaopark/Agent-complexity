@@ -1,0 +1,262 @@
+{
+  "workflow_id": "epigen-spilterlize_integrate-finish",
+  "workflow_dir": "/Users/park/code/Paper2Skills-main/main/finish/workflow_candidates/epigen__spilterlize_integrate",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills_pipeline/epigen-spilterlize_integrate-finish",
+  "status": "ok",
+  "generated_at": "2026-04-16T19:31:38Z",
+  "model": "openrouter/openai/gpt-4o",
+  "resolved_model": "openai/gpt-4o",
+  "max_per_file": 8000,
+  "max_total": 80000,
+  "prompt_tokens": 17153,
+  "completion_tokens": 1317,
+  "total_tokens": 18470,
+  "runtime_seconds": 28.63,
+  "llm_seconds": 28.63,
+  "chars_used": 68023,
+  "truncated": false,
+  "files_considered": [
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "bytes": 3934,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/envs_export.smk",
+      "kind": "snakefile",
+      "bytes": 2119,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/integrate.smk",
+      "kind": "snakefile",
+      "bytes": 906,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/normalize.smk",
+      "kind": "snakefile",
+      "bytes": 3009,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/process.smk",
+      "kind": "snakefile",
+      "bytes": 2310,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/visualize.smk",
+      "kind": "snakefile",
+      "bytes": 3851,
+      "priority": 0
+    },
+    {
+      "path": "workflow/scripts/confounding_factor_analysis.R",
+      "kind": "r",
+      "bytes": 4540,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/filter_features.R",
+      "kind": "r",
+      "bytes": 1559,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/limma_removeBatchEffect.R",
+      "kind": "r",
+      "bytes": 3488,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/norm_cqn.R",
+      "kind": "r",
+      "bytes": 2077,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/norm_edgeR.R",
+      "kind": "r",
+      "bytes": 2955,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/norm_voom.R",
+      "kind": "r",
+      "bytes": 2082,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/plot_diagnostics.R",
+      "kind": "r",
+      "bytes": 10534,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/plot_heatmap.R",
+      "kind": "r",
+      "bytes": 5711,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/select_hvf.py",
+      "kind": "python",
+      "bytes": 4827,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/split_data.py",
+      "kind": "python",
+      "bytes": 1785,
+      "priority": 2
+    },
+    {
+      "path": "config/config.yaml",
+      "kind": "yaml",
+      "bytes": 5183,
+      "priority": 3
+    },
+    {
+      "path": "workflow/profiles/default/config.yaml",
+      "kind": "yaml",
+      "bytes": 80,
+      "priority": 3
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "bytes": 22279,
+      "priority": 4
+    },
+    {
+      "path": "config/README.md",
+      "kind": "readme",
+      "bytes": 633,
+      "priority": 4
+    }
+  ],
+  "files_included": [
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "chars_used": 3934,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/envs_export.smk",
+      "kind": "snakefile",
+      "chars_used": 2119,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/integrate.smk",
+      "kind": "snakefile",
+      "chars_used": 906,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/normalize.smk",
+      "kind": "snakefile",
+      "chars_used": 3009,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/process.smk",
+      "kind": "snakefile",
+      "chars_used": 2310,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/visualize.smk",
+      "kind": "snakefile",
+      "chars_used": 3851,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/confounding_factor_analysis.R",
+      "kind": "r",
+      "chars_used": 4540,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/filter_features.R",
+      "kind": "r",
+      "chars_used": 1559,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/limma_removeBatchEffect.R",
+      "kind": "r",
+      "chars_used": 3488,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/norm_cqn.R",
+      "kind": "r",
+      "chars_used": 2077,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/norm_edgeR.R",
+      "kind": "r",
+      "chars_used": 2955,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/norm_voom.R",
+      "kind": "r",
+      "chars_used": 2082,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/plot_diagnostics.R",
+      "kind": "r",
+      "chars_used": 8042,
+      "partial": true
+    },
+    {
+      "path": "workflow/scripts/plot_heatmap.R",
+      "kind": "r",
+      "chars_used": 5711,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/select_hvf.py",
+      "kind": "python",
+      "chars_used": 4827,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/split_data.py",
+      "kind": "python",
+      "chars_used": 1785,
+      "partial": false
+    },
+    {
+      "path": "config/config.yaml",
+      "kind": "yaml",
+      "chars_used": 5183,
+      "partial": false
+    },
+    {
+      "path": "workflow/profiles/default/config.yaml",
+      "kind": "yaml",
+      "chars_used": 80,
+      "partial": false
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "chars_used": 8042,
+      "partial": true
+    },
+    {
+      "path": "config/README.md",
+      "kind": "readme",
+      "chars_used": 633,
+      "partial": false
+    }
+  ]
+}

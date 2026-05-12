@@ -1,0 +1,12 @@
+{
+  "workflow_id": "rna-seq-kallisto-sleuth-finish",
+  "pipeline_task_id": "setup_config_and_inputs",
+  "order": 1,
+  "manifest_path": "finish/rna-seq-kallisto-sleuth-finish/manifest.json",
+  "step_ids": [
+    "validate_config",
+    "normalize_inputs"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.007975+00:00"
+}

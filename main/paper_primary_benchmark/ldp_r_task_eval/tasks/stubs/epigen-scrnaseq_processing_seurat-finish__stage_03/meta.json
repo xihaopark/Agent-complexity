@@ -1,0 +1,19 @@
+{
+  "workflow_id": "epigen-scrnaseq_processing_seurat-finish",
+  "pipeline_task_id": "stage_03",
+  "order": 3,
+  "manifest_path": "finish/epigen-scrnaseq_processing_seurat-finish/manifest.json",
+  "step_ids": [
+    "metadata_plots",
+    "seurat_plots",
+    "env_export",
+    "config_export"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.982306+00:00",
+  "evaluation_ready": true,
+  "sample_50": true,
+  "agent_batch": "agent_02",
+  "prepared_at": "2026-04-16T12:46:05.795660+00:00",
+  "micro_task": "sum_of_values_txt"
+}

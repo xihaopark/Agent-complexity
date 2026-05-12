@@ -1,0 +1,14 @@
+{
+  "workflow_id": "tgirke-systempiperdata-spscrna-finish",
+  "pipeline_task_id": "stage_02",
+  "order": 2,
+  "manifest_path": "finish/tgirke-systempiperdata-spscrna-finish/manifest.json",
+  "step_ids": [
+    "qc_seurat",
+    "filter_cells",
+    "normalize",
+    "find_var_genes"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.031666+00:00"
+}

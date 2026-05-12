@@ -1,0 +1,14 @@
+{
+  "workflow_id": "gustaveroussy-sopa-finish",
+  "pipeline_task_id": "stage_04",
+  "order": 4,
+  "manifest_path": "finish/gustaveroussy-sopa-finish/manifest.json",
+  "step_ids": [
+    "patch_segmentation_comseg",
+    "resolve_comseg",
+    "patch_segmentation_baysor",
+    "resolve_baysor"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.991148+00:00"
+}

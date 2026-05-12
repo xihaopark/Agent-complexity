@@ -1,0 +1,1178 @@
+{
+  "ts": "20260416T173242Z",
+  "arms": {
+    "none": {
+      "batch_run_id": "sweep_v2_none_20260416T173242Z",
+      "n_tasks": 6,
+      "n_pass": 2,
+      "n_partial": 2,
+      "n_fail": 2,
+      "n_error": 0,
+      "pass_rate": 33.33333333333333,
+      "per_task": {
+        "akinyi_deseq2": {
+          "verdict": "pass",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 2,
+          "n_table_full_match": 0,
+          "family": "rna",
+          "difficulty": 2,
+          "steps": 5,
+          "skill": {
+            "arm": "none",
+            "injected": false
+          }
+        },
+        "star_deseq2_init": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "rna",
+          "difficulty": 2,
+          "steps": 5,
+          "skill": {
+            "arm": "none",
+            "injected": false
+          }
+        },
+        "star_deseq2_contrast": {
+          "verdict": "pass",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 1,
+          "n_table_full_match": 1,
+          "family": "rna",
+          "difficulty": 3,
+          "steps": 4,
+          "skill": {
+            "arm": "none",
+            "injected": false
+          }
+        },
+        "methylkit_load": {
+          "verdict": "fail",
+          "n_expected": 1,
+          "n_exists": 0,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "methylation",
+          "difficulty": 1,
+          "steps": 32,
+          "skill": {
+            "arm": "none",
+            "injected": false
+          }
+        },
+        "methylkit_unite": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "methylation",
+          "difficulty": 2,
+          "steps": 13,
+          "skill": {
+            "arm": "none",
+            "injected": false
+          }
+        },
+        "methylkit_to_tibble": {
+          "verdict": "fail",
+          "n_expected": 1,
+          "n_exists": 0,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "methylation",
+          "difficulty": 3,
+          "steps": 32,
+          "skill": {
+            "arm": "none",
+            "injected": false
+          }
+        }
+      }
+    },
+    "paper": {
+      "batch_run_id": "sweep_v2_paper_20260416T173242Z",
+      "n_tasks": 6,
+      "n_pass": 3,
+      "n_partial": 2,
+      "n_fail": 1,
+      "n_error": 0,
+      "pass_rate": 50.0,
+      "per_task": {
+        "akinyi_deseq2": {
+          "verdict": "pass",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 2,
+          "n_table_full_match": 0,
+          "family": "rna",
+          "difficulty": 2,
+          "steps": 5,
+          "skill": {
+            "arm": "paper",
+            "injected": true,
+            "manifest_version": 1,
+            "skill_sha256": "482a34902260b65139534da51f43a74c04931d3d36e0b78a1497f21931f3bd75",
+            "skill_char_len": 1701,
+            "skill_md_path": "experiments/skills/10.1186_s13059-016-0881-8/SKILL.md",
+            "lookup_field": "by_task_id",
+            "lookup_key": "akinyi_deseq2",
+            "source_doi": "10.1186/s13059-016-0881-8",
+            "source_tool": "RNA-seq pipeline",
+            "source_workflow_id": "akinyi-onyango-rna_seq_pipeline-finish"
+          }
+        },
+        "star_deseq2_init": {
+          "verdict": "pass",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 1,
+          "n_table_full_match": 1,
+          "family": "rna",
+          "difficulty": 2,
+          "steps": 5,
+          "skill": {
+            "arm": "paper",
+            "injected": true,
+            "manifest_version": 1,
+            "skill_sha256": "4aaf2fb8e8e3715f75894085c76684f2620931003b04aefc3dec56b5f9159d41",
+            "skill_char_len": 1881,
+            "skill_md_path": "main/paper_primary_benchmark/experiments/skills/10.1186_s13059-014-0550-8/SKILL.md",
+            "lookup_field": "by_workflow_id",
+            "lookup_key": "rna-seq-star-deseq2-finish",
+            "source_doi": "10.1186/s13059-014-0550-8",
+            "source_workflow_id": "rna-seq-star-deseq2-finish"
+          }
+        },
+        "star_deseq2_contrast": {
+          "verdict": "pass",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 1,
+          "n_table_full_match": 1,
+          "family": "rna",
+          "difficulty": 3,
+          "steps": 4,
+          "skill": {
+            "arm": "paper",
+            "injected": true,
+            "manifest_version": 1,
+            "skill_sha256": "4aaf2fb8e8e3715f75894085c76684f2620931003b04aefc3dec56b5f9159d41",
+            "skill_char_len": 1881,
+            "skill_md_path": "main/paper_primary_benchmark/experiments/skills/10.1186_s13059-014-0550-8/SKILL.md",
+            "lookup_field": "by_workflow_id",
+            "lookup_key": "rna-seq-star-deseq2-finish",
+            "source_doi": "10.1186/s13059-014-0550-8",
+            "source_workflow_id": "rna-seq-star-deseq2-finish"
+          }
+        },
+        "methylkit_load": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "methylation",
+          "difficulty": 1,
+          "steps": 12,
+          "skill": {
+            "arm": "paper",
+            "injected": true,
+            "manifest_version": 1,
+            "skill_sha256": "7a926c67d6927cfd0bc97b373cb35e592f6078928d3d0ece4f5805c1d0596232",
+            "skill_char_len": 1395,
+            "skill_md_path": "main/paper_primary_benchmark/experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+            "lookup_field": "by_workflow_id",
+            "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+            "source_doi": "10.1186/s12859-016-0950-8",
+            "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+          }
+        },
+        "methylkit_unite": {
+          "verdict": "fail",
+          "n_expected": 1,
+          "n_exists": 0,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "methylation",
+          "difficulty": 2,
+          "steps": 32,
+          "skill": {
+            "arm": "paper",
+            "injected": true,
+            "manifest_version": 1,
+            "skill_sha256": "7a926c67d6927cfd0bc97b373cb35e592f6078928d3d0ece4f5805c1d0596232",
+            "skill_char_len": 1395,
+            "skill_md_path": "main/paper_primary_benchmark/experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+            "lookup_field": "by_workflow_id",
+            "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+            "source_doi": "10.1186/s12859-016-0950-8",
+            "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+          }
+        },
+        "methylkit_to_tibble": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "methylation",
+          "difficulty": 3,
+          "steps": 9,
+          "skill": {
+            "arm": "paper",
+            "injected": true,
+            "manifest_version": 1,
+            "skill_sha256": "7a926c67d6927cfd0bc97b373cb35e592f6078928d3d0ece4f5805c1d0596232",
+            "skill_char_len": 1395,
+            "skill_md_path": "main/paper_primary_benchmark/experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+            "lookup_field": "by_workflow_id",
+            "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+            "source_doi": "10.1186/s12859-016-0950-8",
+            "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+          }
+        }
+      }
+    },
+    "pipeline": {
+      "batch_run_id": "sweep_v2_pipeline_20260416T173242Z",
+      "n_tasks": 6,
+      "n_pass": 3,
+      "n_partial": 0,
+      "n_fail": 3,
+      "n_error": 0,
+      "pass_rate": 50.0,
+      "per_task": {
+        "akinyi_deseq2": {
+          "verdict": "pass",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 2,
+          "n_table_full_match": 0,
+          "family": "rna",
+          "difficulty": 2,
+          "steps": 5,
+          "skill": {
+            "arm": "pipeline",
+            "injected": true,
+            "manifest_version": 1,
+            "skill_sha256": "4efe17fd7df11376246934964eab79717ef5270a66b8805dea21d1576217ae12",
+            "skill_char_len": 3077,
+            "skill_md_path": "experiments/skills_pipeline/akinyi-onyango-rna_seq_pipeline-finish/SKILL.md",
+            "lookup_field": "by_workflow_id",
+            "lookup_key": "akinyi-onyango-rna_seq_pipeline-finish",
+            "source_workflow_id": "akinyi-onyango-rna_seq_pipeline-finish"
+          }
+        },
+        "star_deseq2_init": {
+          "verdict": "pass",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 1,
+          "n_table_full_match": 1,
+          "family": "rna",
+          "difficulty": 2,
+          "steps": 6,
+          "skill": {
+            "arm": "pipeline",
+            "injected": true,
+            "manifest_version": 1,
+            "skill_sha256": "e9a3bc65829d098e0dfccef55961b0e01c31157f2080b27e6f8e6aec86e54435",
+            "skill_char_len": 4000,
+            "skill_md_path": "experiments/skills_pipeline/rna-seq-star-deseq2-finish/SKILL.md",
+            "lookup_field": "by_workflow_id",
+            "lookup_key": "rna-seq-star-deseq2-finish",
+            "source_workflow_id": "rna-seq-star-deseq2-finish"
+          }
+        },
+        "star_deseq2_contrast": {
+          "verdict": "pass",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 1,
+          "n_table_full_match": 1,
+          "family": "rna",
+          "difficulty": 3,
+          "steps": 5,
+          "skill": {
+            "arm": "pipeline",
+            "injected": true,
+            "manifest_version": 1,
+            "skill_sha256": "e9a3bc65829d098e0dfccef55961b0e01c31157f2080b27e6f8e6aec86e54435",
+            "skill_char_len": 4000,
+            "skill_md_path": "experiments/skills_pipeline/rna-seq-star-deseq2-finish/SKILL.md",
+            "lookup_field": "by_workflow_id",
+            "lookup_key": "rna-seq-star-deseq2-finish",
+            "source_workflow_id": "rna-seq-star-deseq2-finish"
+          }
+        },
+        "methylkit_load": {
+          "verdict": "fail",
+          "n_expected": 1,
+          "n_exists": 0,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "methylation",
+          "difficulty": 1,
+          "steps": 32,
+          "skill": {
+            "arm": "pipeline",
+            "injected": true,
+            "manifest_version": 1,
+            "skill_sha256": "9866678739f12ccdf614fb95a370872b9b7e4efa5c7ab0013534c3cbb1a9e9b9",
+            "skill_char_len": 3836,
+            "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+            "lookup_field": "by_workflow_id",
+            "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+            "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+          }
+        },
+        "methylkit_unite": {
+          "verdict": "fail",
+          "n_expected": 1,
+          "n_exists": 0,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "methylation",
+          "difficulty": 2,
+          "steps": 32,
+          "skill": {
+            "arm": "pipeline",
+            "injected": true,
+            "manifest_version": 1,
+            "skill_sha256": "9866678739f12ccdf614fb95a370872b9b7e4efa5c7ab0013534c3cbb1a9e9b9",
+            "skill_char_len": 3836,
+            "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+            "lookup_field": "by_workflow_id",
+            "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+            "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+          }
+        },
+        "methylkit_to_tibble": {
+          "verdict": "fail",
+          "n_expected": 1,
+          "n_exists": 0,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "methylation",
+          "difficulty": 3,
+          "steps": 32,
+          "skill": {
+            "arm": "pipeline",
+            "injected": true,
+            "manifest_version": 1,
+            "skill_sha256": "9866678739f12ccdf614fb95a370872b9b7e4efa5c7ab0013534c3cbb1a9e9b9",
+            "skill_char_len": 3836,
+            "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+            "lookup_field": "by_workflow_id",
+            "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+            "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+          }
+        }
+      }
+    },
+    "llm_plan": {
+      "batch_run_id": "sweep_v2_llm_plan_20260416T173242Z",
+      "n_tasks": 6,
+      "n_pass": 2,
+      "n_partial": 2,
+      "n_fail": 2,
+      "n_error": 0,
+      "pass_rate": 33.33333333333333,
+      "per_task": {
+        "akinyi_deseq2": {
+          "verdict": "pass",
+          "n_expected": 2,
+          "n_exists": 2,
+          "n_byte_identical": 2,
+          "n_table_full_match": 0,
+          "family": "rna",
+          "difficulty": 2,
+          "steps": 7,
+          "skill": {
+            "arm": "llm_plan",
+            "injected": true,
+            "manifest_version": 1,
+            "skill_sha256": "3a889efdb0a60bc75114a420dab948b43bbf5bab49cdeeaa8ead1b3ad5f4d356",
+            "skill_char_len": 2418,
+            "skill_md_path": "experiments/skills_llm_plan/akinyi_deseq2/SKILL.md",
+            "lookup_field": "by_task_id",
+            "lookup_key": "akinyi_deseq2",
+            "source_task_id": "akinyi_deseq2",
+            "source_model": "openrouter/openai/gpt-4o"
+          }
+        },
+        "star_deseq2_init": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "rna",
+          "difficulty": 2,
+          "steps": 4,
+          "skill": {
+            "arm": "llm_plan",
+            "injected": true,
+            "manifest_version": 1,
+            "skill_sha256": "f169268d4c6c287a8b5f5e1e4e9194881441230661cb4372f2ee58879de8a430",
+            "skill_char_len": 2217,
+            "skill_md_path": "experiments/skills_llm_plan/star_deseq2_init/SKILL.md",
+            "lookup_field": "by_task_id",
+            "lookup_key": "star_deseq2_init",
+            "source_task_id": "star_deseq2_init",
+            "source_model": "openrouter/openai/gpt-4o"
+          }
+        },
+        "star_deseq2_contrast": {
+          "verdict": "pass",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 1,
+          "family": "rna",
+          "difficulty": 3,
+          "steps": 4,
+          "skill": {
+            "arm": "llm_plan",
+            "injected": true,
+            "manifest_version": 1,
+            "skill_sha256": "06cd791a2615b206c08ff9054f4ace3e5f6ef805fda667fab3dbc67fec44d2ae",
+            "skill_char_len": 1987,
+            "skill_md_path": "experiments/skills_llm_plan/star_deseq2_contrast/SKILL.md",
+            "lookup_field": "by_task_id",
+            "lookup_key": "star_deseq2_contrast",
+            "source_task_id": "star_deseq2_contrast",
+            "source_model": "openrouter/openai/gpt-4o"
+          }
+        },
+        "methylkit_load": {
+          "verdict": "fail",
+          "n_expected": 1,
+          "n_exists": 0,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "methylation",
+          "difficulty": 1,
+          "steps": 32,
+          "skill": {
+            "arm": "llm_plan",
+            "injected": true,
+            "manifest_version": 1,
+            "skill_sha256": "db18cc3a9c933e6fb14c294e2dbef9b01c0dbf11fa1efc1dd2a2e246186a7acd",
+            "skill_char_len": 1903,
+            "skill_md_path": "experiments/skills_llm_plan/methylkit_load/SKILL.md",
+            "lookup_field": "by_task_id",
+            "lookup_key": "methylkit_load",
+            "source_task_id": "methylkit_load",
+            "source_model": "openrouter/openai/gpt-4o"
+          }
+        },
+        "methylkit_unite": {
+          "verdict": "fail",
+          "n_expected": 1,
+          "n_exists": 0,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "methylation",
+          "difficulty": 2,
+          "steps": 32,
+          "skill": {
+            "arm": "llm_plan",
+            "injected": true,
+            "manifest_version": 1,
+            "skill_sha256": "dc8aedc7c717eab728e0fa5ce1f2ed3a332371441d13509c742d529311dfbeb4",
+            "skill_char_len": 2708,
+            "skill_md_path": "experiments/skills_llm_plan/methylkit_unite/SKILL.md",
+            "lookup_field": "by_task_id",
+            "lookup_key": "methylkit_unite",
+            "source_task_id": "methylkit_unite",
+            "source_model": "openrouter/openai/gpt-4o"
+          }
+        },
+        "methylkit_to_tibble": {
+          "verdict": "partial",
+          "n_expected": 1,
+          "n_exists": 1,
+          "n_byte_identical": 0,
+          "n_table_full_match": 0,
+          "family": "methylation",
+          "difficulty": 3,
+          "steps": 12,
+          "skill": {
+            "arm": "llm_plan",
+            "injected": true,
+            "manifest_version": 1,
+            "skill_sha256": "0da2c67386215963553978b2aac97c9fff4cdf7590f354b8a87609de236f4542",
+            "skill_char_len": 2267,
+            "skill_md_path": "experiments/skills_llm_plan/methylkit_to_tibble/SKILL.md",
+            "lookup_field": "by_task_id",
+            "lookup_key": "methylkit_to_tibble",
+            "source_task_id": "methylkit_to_tibble",
+            "source_model": "openrouter/openai/gpt-4o"
+          }
+        }
+      }
+    }
+  },
+  "matrix": [
+    {
+      "task_id": "akinyi_deseq2",
+      "family": "rna",
+      "difficulty": 2,
+      "none": "pass",
+      "paper": "pass",
+      "pipeline": "pass",
+      "llm_plan": "pass"
+    },
+    {
+      "task_id": "star_deseq2_init",
+      "family": "rna",
+      "difficulty": 2,
+      "none": "partial",
+      "paper": "pass",
+      "pipeline": "pass",
+      "llm_plan": "partial"
+    },
+    {
+      "task_id": "star_deseq2_contrast",
+      "family": "rna",
+      "difficulty": 3,
+      "none": "pass",
+      "paper": "pass",
+      "pipeline": "pass",
+      "llm_plan": "pass"
+    },
+    {
+      "task_id": "methylkit_load",
+      "family": "methylation",
+      "difficulty": 1,
+      "none": "fail",
+      "paper": "partial",
+      "pipeline": "fail",
+      "llm_plan": "fail"
+    },
+    {
+      "task_id": "methylkit_unite",
+      "family": "methylation",
+      "difficulty": 2,
+      "none": "partial",
+      "paper": "fail",
+      "pipeline": "fail",
+      "llm_plan": "fail"
+    },
+    {
+      "task_id": "methylkit_to_tibble",
+      "family": "methylation",
+      "difficulty": 3,
+      "none": "fail",
+      "paper": "partial",
+      "pipeline": "fail",
+      "llm_plan": "partial"
+    }
+  ],
+  "stratified": {
+    "by_family": {
+      "none": {
+        "rna": {
+          "pass": 2,
+          "partial": 1,
+          "fail": 0,
+          "error": 0,
+          "n": 3
+        },
+        "methylation": {
+          "pass": 0,
+          "partial": 1,
+          "fail": 2,
+          "error": 0,
+          "n": 3
+        }
+      },
+      "paper": {
+        "rna": {
+          "pass": 3,
+          "partial": 0,
+          "fail": 0,
+          "error": 0,
+          "n": 3
+        },
+        "methylation": {
+          "pass": 0,
+          "partial": 2,
+          "fail": 1,
+          "error": 0,
+          "n": 3
+        }
+      },
+      "pipeline": {
+        "rna": {
+          "pass": 3,
+          "partial": 0,
+          "fail": 0,
+          "error": 0,
+          "n": 3
+        },
+        "methylation": {
+          "pass": 0,
+          "partial": 0,
+          "fail": 3,
+          "error": 0,
+          "n": 3
+        }
+      },
+      "llm_plan": {
+        "rna": {
+          "pass": 2,
+          "partial": 1,
+          "fail": 0,
+          "error": 0,
+          "n": 3
+        },
+        "methylation": {
+          "pass": 0,
+          "partial": 1,
+          "fail": 2,
+          "error": 0,
+          "n": 3
+        }
+      }
+    },
+    "by_difficulty": {
+      "none": {
+        "2": {
+          "pass": 1,
+          "partial": 2,
+          "fail": 0,
+          "error": 0,
+          "n": 3
+        },
+        "3": {
+          "pass": 1,
+          "partial": 0,
+          "fail": 1,
+          "error": 0,
+          "n": 2
+        },
+        "1": {
+          "pass": 0,
+          "partial": 0,
+          "fail": 1,
+          "error": 0,
+          "n": 1
+        }
+      },
+      "paper": {
+        "2": {
+          "pass": 2,
+          "partial": 0,
+          "fail": 1,
+          "error": 0,
+          "n": 3
+        },
+        "3": {
+          "pass": 1,
+          "partial": 1,
+          "fail": 0,
+          "error": 0,
+          "n": 2
+        },
+        "1": {
+          "pass": 0,
+          "partial": 1,
+          "fail": 0,
+          "error": 0,
+          "n": 1
+        }
+      },
+      "pipeline": {
+        "2": {
+          "pass": 2,
+          "partial": 0,
+          "fail": 1,
+          "error": 0,
+          "n": 3
+        },
+        "3": {
+          "pass": 1,
+          "partial": 0,
+          "fail": 1,
+          "error": 0,
+          "n": 2
+        },
+        "1": {
+          "pass": 0,
+          "partial": 0,
+          "fail": 1,
+          "error": 0,
+          "n": 1
+        }
+      },
+      "llm_plan": {
+        "2": {
+          "pass": 1,
+          "partial": 1,
+          "fail": 1,
+          "error": 0,
+          "n": 3
+        },
+        "3": {
+          "pass": 1,
+          "partial": 1,
+          "fail": 0,
+          "error": 0,
+          "n": 2
+        },
+        "1": {
+          "pass": 0,
+          "partial": 0,
+          "fail": 1,
+          "error": 0,
+          "n": 1
+        }
+      }
+    }
+  },
+  "cost_est": {
+    "none": {
+      "steps_total": 91,
+      "est_tokens_in": 227500,
+      "est_tokens_out": 22750,
+      "est_usd": 0.7962
+    },
+    "paper": {
+      "steps_total": 67,
+      "est_tokens_in": 180900,
+      "est_tokens_out": 16750,
+      "est_usd": 0.6198
+    },
+    "pipeline": {
+      "steps_total": 112,
+      "est_tokens_in": 302400,
+      "est_tokens_out": 28000,
+      "est_usd": 1.036
+    },
+    "llm_plan": {
+      "steps_total": 91,
+      "est_tokens_in": 245700,
+      "est_tokens_out": 22750,
+      "est_usd": 0.8417
+    }
+  },
+  "audit": [
+    {
+      "arm": "none",
+      "task_id": "akinyi_deseq2",
+      "arm_meta": "none",
+      "injected": false,
+      "skill_sha256": "",
+      "skill_sha256_8": "",
+      "expected_sha8": "",
+      "skill_char_len": null,
+      "skill_md_path": null,
+      "lookup_field": null,
+      "lookup_key": null,
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "none",
+      "task_id": "star_deseq2_init",
+      "arm_meta": "none",
+      "injected": false,
+      "skill_sha256": "",
+      "skill_sha256_8": "",
+      "expected_sha8": "",
+      "skill_char_len": null,
+      "skill_md_path": null,
+      "lookup_field": null,
+      "lookup_key": null,
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "none",
+      "task_id": "star_deseq2_contrast",
+      "arm_meta": "none",
+      "injected": false,
+      "skill_sha256": "",
+      "skill_sha256_8": "",
+      "expected_sha8": "",
+      "skill_char_len": null,
+      "skill_md_path": null,
+      "lookup_field": null,
+      "lookup_key": null,
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "none",
+      "task_id": "methylkit_load",
+      "arm_meta": "none",
+      "injected": false,
+      "skill_sha256": "",
+      "skill_sha256_8": "",
+      "expected_sha8": "",
+      "skill_char_len": null,
+      "skill_md_path": null,
+      "lookup_field": null,
+      "lookup_key": null,
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "none",
+      "task_id": "methylkit_unite",
+      "arm_meta": "none",
+      "injected": false,
+      "skill_sha256": "",
+      "skill_sha256_8": "",
+      "expected_sha8": "",
+      "skill_char_len": null,
+      "skill_md_path": null,
+      "lookup_field": null,
+      "lookup_key": null,
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "none",
+      "task_id": "methylkit_to_tibble",
+      "arm_meta": "none",
+      "injected": false,
+      "skill_sha256": "",
+      "skill_sha256_8": "",
+      "expected_sha8": "",
+      "skill_char_len": null,
+      "skill_md_path": null,
+      "lookup_field": null,
+      "lookup_key": null,
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "paper",
+      "task_id": "akinyi_deseq2",
+      "arm_meta": "paper",
+      "injected": true,
+      "skill_sha256": "482a34902260b65139534da51f43a74c04931d3d36e0b78a1497f21931f3bd75",
+      "skill_sha256_8": "482a3490",
+      "expected_sha8": "482a3490",
+      "skill_char_len": 1701,
+      "skill_md_path": "experiments/skills/10.1186_s13059-016-0881-8/SKILL.md",
+      "lookup_field": "by_task_id",
+      "lookup_key": "akinyi_deseq2",
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "paper",
+      "task_id": "star_deseq2_init",
+      "arm_meta": "paper",
+      "injected": true,
+      "skill_sha256": "4aaf2fb8e8e3715f75894085c76684f2620931003b04aefc3dec56b5f9159d41",
+      "skill_sha256_8": "4aaf2fb8",
+      "expected_sha8": "4aaf2fb8",
+      "skill_char_len": 1881,
+      "skill_md_path": "main/paper_primary_benchmark/experiments/skills/10.1186_s13059-014-0550-8/SKILL.md",
+      "lookup_field": "by_workflow_id",
+      "lookup_key": "rna-seq-star-deseq2-finish",
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "paper",
+      "task_id": "star_deseq2_contrast",
+      "arm_meta": "paper",
+      "injected": true,
+      "skill_sha256": "4aaf2fb8e8e3715f75894085c76684f2620931003b04aefc3dec56b5f9159d41",
+      "skill_sha256_8": "4aaf2fb8",
+      "expected_sha8": "4aaf2fb8",
+      "skill_char_len": 1881,
+      "skill_md_path": "main/paper_primary_benchmark/experiments/skills/10.1186_s13059-014-0550-8/SKILL.md",
+      "lookup_field": "by_workflow_id",
+      "lookup_key": "rna-seq-star-deseq2-finish",
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "paper",
+      "task_id": "methylkit_load",
+      "arm_meta": "paper",
+      "injected": true,
+      "skill_sha256": "7a926c67d6927cfd0bc97b373cb35e592f6078928d3d0ece4f5805c1d0596232",
+      "skill_sha256_8": "7a926c67",
+      "expected_sha8": "7a926c67",
+      "skill_char_len": 1395,
+      "skill_md_path": "main/paper_primary_benchmark/experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+      "lookup_field": "by_workflow_id",
+      "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "paper",
+      "task_id": "methylkit_unite",
+      "arm_meta": "paper",
+      "injected": true,
+      "skill_sha256": "7a926c67d6927cfd0bc97b373cb35e592f6078928d3d0ece4f5805c1d0596232",
+      "skill_sha256_8": "7a926c67",
+      "expected_sha8": "7a926c67",
+      "skill_char_len": 1395,
+      "skill_md_path": "main/paper_primary_benchmark/experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+      "lookup_field": "by_workflow_id",
+      "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "paper",
+      "task_id": "methylkit_to_tibble",
+      "arm_meta": "paper",
+      "injected": true,
+      "skill_sha256": "7a926c67d6927cfd0bc97b373cb35e592f6078928d3d0ece4f5805c1d0596232",
+      "skill_sha256_8": "7a926c67",
+      "expected_sha8": "7a926c67",
+      "skill_char_len": 1395,
+      "skill_md_path": "main/paper_primary_benchmark/experiments/skills/10.1186_s12859-016-0950-8/SKILL.md",
+      "lookup_field": "by_workflow_id",
+      "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "akinyi_deseq2",
+      "arm_meta": "pipeline",
+      "injected": true,
+      "skill_sha256": "4efe17fd7df11376246934964eab79717ef5270a66b8805dea21d1576217ae12",
+      "skill_sha256_8": "4efe17fd",
+      "expected_sha8": "4efe17fd",
+      "skill_char_len": 3077,
+      "skill_md_path": "experiments/skills_pipeline/akinyi-onyango-rna_seq_pipeline-finish/SKILL.md",
+      "lookup_field": "by_workflow_id",
+      "lookup_key": "akinyi-onyango-rna_seq_pipeline-finish",
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "star_deseq2_init",
+      "arm_meta": "pipeline",
+      "injected": true,
+      "skill_sha256": "e9a3bc65829d098e0dfccef55961b0e01c31157f2080b27e6f8e6aec86e54435",
+      "skill_sha256_8": "e9a3bc65",
+      "expected_sha8": "e9a3bc65",
+      "skill_char_len": 4000,
+      "skill_md_path": "experiments/skills_pipeline/rna-seq-star-deseq2-finish/SKILL.md",
+      "lookup_field": "by_workflow_id",
+      "lookup_key": "rna-seq-star-deseq2-finish",
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "star_deseq2_contrast",
+      "arm_meta": "pipeline",
+      "injected": true,
+      "skill_sha256": "e9a3bc65829d098e0dfccef55961b0e01c31157f2080b27e6f8e6aec86e54435",
+      "skill_sha256_8": "e9a3bc65",
+      "expected_sha8": "e9a3bc65",
+      "skill_char_len": 4000,
+      "skill_md_path": "experiments/skills_pipeline/rna-seq-star-deseq2-finish/SKILL.md",
+      "lookup_field": "by_workflow_id",
+      "lookup_key": "rna-seq-star-deseq2-finish",
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "methylkit_load",
+      "arm_meta": "pipeline",
+      "injected": true,
+      "skill_sha256": "9866678739f12ccdf614fb95a370872b9b7e4efa5c7ab0013534c3cbb1a9e9b9",
+      "skill_sha256_8": "98666787",
+      "expected_sha8": "98666787",
+      "skill_char_len": 3836,
+      "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+      "lookup_field": "by_workflow_id",
+      "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "methylkit_unite",
+      "arm_meta": "pipeline",
+      "injected": true,
+      "skill_sha256": "9866678739f12ccdf614fb95a370872b9b7e4efa5c7ab0013534c3cbb1a9e9b9",
+      "skill_sha256_8": "98666787",
+      "expected_sha8": "98666787",
+      "skill_char_len": 3836,
+      "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+      "lookup_field": "by_workflow_id",
+      "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "pipeline",
+      "task_id": "methylkit_to_tibble",
+      "arm_meta": "pipeline",
+      "injected": true,
+      "skill_sha256": "9866678739f12ccdf614fb95a370872b9b7e4efa5c7ab0013534c3cbb1a9e9b9",
+      "skill_sha256_8": "98666787",
+      "expected_sha8": "98666787",
+      "skill_char_len": 3836,
+      "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+      "lookup_field": "by_workflow_id",
+      "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "akinyi_deseq2",
+      "arm_meta": "llm_plan",
+      "injected": true,
+      "skill_sha256": "3a889efdb0a60bc75114a420dab948b43bbf5bab49cdeeaa8ead1b3ad5f4d356",
+      "skill_sha256_8": "3a889efd",
+      "expected_sha8": "3a889efd",
+      "skill_char_len": 2418,
+      "skill_md_path": "experiments/skills_llm_plan/akinyi_deseq2/SKILL.md",
+      "lookup_field": "by_task_id",
+      "lookup_key": "akinyi_deseq2",
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "star_deseq2_init",
+      "arm_meta": "llm_plan",
+      "injected": true,
+      "skill_sha256": "f169268d4c6c287a8b5f5e1e4e9194881441230661cb4372f2ee58879de8a430",
+      "skill_sha256_8": "f169268d",
+      "expected_sha8": "f169268d",
+      "skill_char_len": 2217,
+      "skill_md_path": "experiments/skills_llm_plan/star_deseq2_init/SKILL.md",
+      "lookup_field": "by_task_id",
+      "lookup_key": "star_deseq2_init",
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "star_deseq2_contrast",
+      "arm_meta": "llm_plan",
+      "injected": true,
+      "skill_sha256": "06cd791a2615b206c08ff9054f4ace3e5f6ef805fda667fab3dbc67fec44d2ae",
+      "skill_sha256_8": "06cd791a",
+      "expected_sha8": "06cd791a",
+      "skill_char_len": 1987,
+      "skill_md_path": "experiments/skills_llm_plan/star_deseq2_contrast/SKILL.md",
+      "lookup_field": "by_task_id",
+      "lookup_key": "star_deseq2_contrast",
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "methylkit_load",
+      "arm_meta": "llm_plan",
+      "injected": true,
+      "skill_sha256": "db18cc3a9c933e6fb14c294e2dbef9b01c0dbf11fa1efc1dd2a2e246186a7acd",
+      "skill_sha256_8": "db18cc3a",
+      "expected_sha8": "db18cc3a",
+      "skill_char_len": 1903,
+      "skill_md_path": "experiments/skills_llm_plan/methylkit_load/SKILL.md",
+      "lookup_field": "by_task_id",
+      "lookup_key": "methylkit_load",
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "methylkit_unite",
+      "arm_meta": "llm_plan",
+      "injected": true,
+      "skill_sha256": "dc8aedc7c717eab728e0fa5ce1f2ed3a332371441d13509c742d529311dfbeb4",
+      "skill_sha256_8": "dc8aedc7",
+      "expected_sha8": "dc8aedc7",
+      "skill_char_len": 2708,
+      "skill_md_path": "experiments/skills_llm_plan/methylkit_unite/SKILL.md",
+      "lookup_field": "by_task_id",
+      "lookup_key": "methylkit_unite",
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    },
+    {
+      "arm": "llm_plan",
+      "task_id": "methylkit_to_tibble",
+      "arm_meta": "llm_plan",
+      "injected": true,
+      "skill_sha256": "0da2c67386215963553978b2aac97c9fff4cdf7590f354b8a87609de236f4542",
+      "skill_sha256_8": "0da2c673",
+      "expected_sha8": "0da2c673",
+      "skill_char_len": 2267,
+      "skill_md_path": "experiments/skills_llm_plan/methylkit_to_tibble/SKILL.md",
+      "lookup_field": "by_task_id",
+      "lookup_key": "methylkit_to_tibble",
+      "arm_match": true,
+      "injected_expected": true,
+      "sha_match": true,
+      "ok": true
+    }
+  ]
+}

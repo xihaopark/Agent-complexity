@@ -1,0 +1,7 @@
+[
+  "Rscript",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/akinyi_deseq2/reference/script.R",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/akinyi_deseq2/input/featureCounts_output.txt",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/akinyi_deseq2/reference_output/deseq2_up.txt",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/akinyi_deseq2/reference_output/deseq2_down.txt"
+]

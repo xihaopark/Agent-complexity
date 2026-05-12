@@ -1,0 +1,14 @@
+{
+  "workflow_id": "cellranger-multi-finish",
+  "pipeline_task_id": "stage_02",
+  "order": 2,
+  "manifest_path": "finish/cellranger-multi-finish/manifest.json",
+  "step_ids": [
+    "cellranger_multi_files_multiplexing_global",
+    "cellranger_multi_files_multiplexing_per_sample",
+    "cellranger_multi_files_multiplexing_antibody_global",
+    "cellranger_multi_files_multiplexing_crispr_global"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.954136+00:00"
+}

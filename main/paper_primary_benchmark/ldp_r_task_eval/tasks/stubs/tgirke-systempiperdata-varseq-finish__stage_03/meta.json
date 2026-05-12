@@ -1,0 +1,15 @@
+{
+  "workflow_id": "tgirke-systempiperdata-varseq-finish",
+  "pipeline_task_id": "stage_03",
+  "order": 3,
+  "manifest_path": "finish/tgirke-systempiperdata-varseq-finish/manifest.json",
+  "step_ids": [
+    "bam_urls",
+    "fastq2ubam",
+    "merge_bam",
+    "sort",
+    "mark_dup"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.036071+00:00"
+}

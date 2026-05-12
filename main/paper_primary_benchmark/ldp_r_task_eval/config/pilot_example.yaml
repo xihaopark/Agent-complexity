@@ -1,0 +1,19 @@
+# Example config for ldp SimpleAgent + RTaskEvalEnv (paper_primary_benchmark/ldp_r_task_eval).
+# Paths are relative to main/paper_primary_benchmark/ unless absolute.
+
+max_steps: 32
+
+task:
+  id: pilot_hello
+  work_dir: ldp_r_task_eval/tasks/pilot_hello
+  success_artifact_glob: output/result.txt
+
+agent:
+  llm_model:
+    name: gpt-4o
+    temperature: 0.1
+  sys_prompt: |
+    You solve R-centric analysis tasks in a sandbox workspace. Use only the provided tools:
+    run_shell, read_text_file, write_text_file, run_rscript, list_workdir, submit_done.
+    Prefer R for numeric/statistical work. Do not assume Snakemake or external clusters.
+    When the objective is satisfied, call submit_done(success=true).

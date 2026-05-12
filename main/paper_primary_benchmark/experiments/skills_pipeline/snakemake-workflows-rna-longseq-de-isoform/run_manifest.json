@@ -1,0 +1,358 @@
+{
+  "workflow_id": "snakemake-workflows-rna-longseq-de-isoform",
+  "workflow_dir": "/Users/park/code/Paper2Skills-main/main/finish/workflow_candidates/snakemake-workflows__rna-longseq-de-isoform",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills_pipeline/snakemake-workflows-rna-longseq-de-isoform",
+  "status": "ok",
+  "generated_at": "2026-04-16T19:32:40Z",
+  "model": "openrouter/openai/gpt-4o",
+  "resolved_model": "openai/gpt-4o",
+  "max_per_file": 8000,
+  "max_total": 80000,
+  "prompt_tokens": 20834,
+  "completion_tokens": 1277,
+  "total_tokens": 22111,
+  "runtime_seconds": 9.84,
+  "llm_seconds": 9.84,
+  "chars_used": 80000,
+  "truncated": true,
+  "files_considered": [
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "bytes": 727,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/alignment.smk",
+      "kind": "snakefile",
+      "bytes": 834,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/alignmod.smk",
+      "kind": "snakefile",
+      "bytes": 961,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/commons.smk",
+      "kind": "snakefile",
+      "bytes": 7541,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/datamod.smk",
+      "kind": "snakefile",
+      "bytes": 1895,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/diffexp.smk",
+      "kind": "snakefile",
+      "bytes": 2949,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/isoform_analysis.smk",
+      "kind": "snakefile",
+      "bytes": 7961,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/proteinanno.smk",
+      "kind": "snakefile",
+      "bytes": 2473,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/qc.smk",
+      "kind": "snakefile",
+      "bytes": 3285,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/quantification.smk",
+      "kind": "snakefile",
+      "bytes": 1824,
+      "priority": 0
+    },
+    {
+      "path": "workflow/rules/ref.smk",
+      "kind": "snakefile",
+      "bytes": 2709,
+      "priority": 0
+    },
+    {
+      "path": "workflow/scripts/deseq2-init.R",
+      "kind": "r",
+      "bytes": 2361,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/deseq2.R",
+      "kind": "r",
+      "bytes": 3310,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/pca.R",
+      "kind": "r",
+      "bytes": 625,
+      "priority": 1
+    },
+    {
+      "path": "workflow/scripts/de_analysis.py",
+      "kind": "python",
+      "bytes": 7498,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/extract_refs.py",
+      "kind": "python",
+      "bytes": 1225,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/get_de_genes.py",
+      "kind": "python",
+      "bytes": 1585,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/make_archive.py",
+      "kind": "python",
+      "bytes": 434,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/merge_count_tsvs.py",
+      "kind": "python",
+      "bytes": 952,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/plot_isoforms.py",
+      "kind": "python",
+      "bytes": 3334,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/query_uniref_ids.py",
+      "kind": "python",
+      "bytes": 2063,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/read_filter.py",
+      "kind": "python",
+      "bytes": 1216,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/reads_manifest.py",
+      "kind": "python",
+      "bytes": 1799,
+      "priority": 2
+    },
+    {
+      "path": "workflow/scripts/transcriptid_to_gene.py",
+      "kind": "python",
+      "bytes": 3354,
+      "priority": 2
+    },
+    {
+      "path": ".test/config-simple/config.yml",
+      "kind": "yaml",
+      "bytes": 4936,
+      "priority": 3
+    },
+    {
+      "path": ".test/profile/config.yaml",
+      "kind": "yaml",
+      "bytes": 40,
+      "priority": 3
+    },
+    {
+      "path": "config/Ch_rip_male_v_female/config.yml",
+      "kind": "yaml",
+      "bytes": 5604,
+      "priority": 3
+    },
+    {
+      "path": "config/Drosophila_trl/config.yml",
+      "kind": "yaml",
+      "bytes": 5401,
+      "priority": 3
+    }
+  ],
+  "files_included": [
+    {
+      "path": "workflow/Snakefile",
+      "kind": "snakefile",
+      "chars_used": 727,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/alignment.smk",
+      "kind": "snakefile",
+      "chars_used": 834,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/alignmod.smk",
+      "kind": "snakefile",
+      "chars_used": 961,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/commons.smk",
+      "kind": "snakefile",
+      "chars_used": 7541,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/datamod.smk",
+      "kind": "snakefile",
+      "chars_used": 1895,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/diffexp.smk",
+      "kind": "snakefile",
+      "chars_used": 2949,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/isoform_analysis.smk",
+      "kind": "snakefile",
+      "chars_used": 7961,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/proteinanno.smk",
+      "kind": "snakefile",
+      "chars_used": 2473,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/qc.smk",
+      "kind": "snakefile",
+      "chars_used": 3285,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/quantification.smk",
+      "kind": "snakefile",
+      "chars_used": 1824,
+      "partial": false
+    },
+    {
+      "path": "workflow/rules/ref.smk",
+      "kind": "snakefile",
+      "chars_used": 2709,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/deseq2-init.R",
+      "kind": "r",
+      "chars_used": 2361,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/deseq2.R",
+      "kind": "r",
+      "chars_used": 3310,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/pca.R",
+      "kind": "r",
+      "chars_used": 625,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/de_analysis.py",
+      "kind": "python",
+      "chars_used": 7498,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/extract_refs.py",
+      "kind": "python",
+      "chars_used": 1225,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/get_de_genes.py",
+      "kind": "python",
+      "chars_used": 1585,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/make_archive.py",
+      "kind": "python",
+      "chars_used": 434,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/merge_count_tsvs.py",
+      "kind": "python",
+      "chars_used": 952,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/plot_isoforms.py",
+      "kind": "python",
+      "chars_used": 3334,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/query_uniref_ids.py",
+      "kind": "python",
+      "chars_used": 2063,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/read_filter.py",
+      "kind": "python",
+      "chars_used": 1216,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/reads_manifest.py",
+      "kind": "python",
+      "chars_used": 1799,
+      "partial": false
+    },
+    {
+      "path": "workflow/scripts/transcriptid_to_gene.py",
+      "kind": "python",
+      "chars_used": 3354,
+      "partial": false
+    },
+    {
+      "path": ".test/config-simple/config.yml",
+      "kind": "yaml",
+      "chars_used": 4936,
+      "partial": false
+    },
+    {
+      "path": ".test/profile/config.yaml",
+      "kind": "yaml",
+      "chars_used": 40,
+      "partial": false
+    },
+    {
+      "path": "config/Ch_rip_male_v_female/config.yml",
+      "kind": "yaml",
+      "chars_used": 5604,
+      "partial": false
+    },
+    {
+      "path": "config/Drosophila_trl/config.yml",
+      "kind": "yaml",
+      "chars_used": 5226,
+      "partial": true
+    }
+  ]
+}

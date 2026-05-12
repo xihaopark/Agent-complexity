@@ -1,0 +1,27 @@
+{
+  "task_id": "longseq_deseq2_contrast",
+  "canonical_work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/longseq_deseq2_contrast",
+  "work_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_llm_plan_20260416T194356Z/007_longseq_deseq2_contrast/workspace",
+  "smoke": false,
+  "batch_run_id": "sweep_v3_llm_plan_20260416T194356Z",
+  "registry_index": 7,
+  "git_sha": "5a58dc2aa8f57dc3c8922855e38d392d8763603b",
+  "agent": {
+    "llm_model": {
+      "name": "openrouter/openai/gpt-4o",
+      "temperature": 0.1
+    }
+  },
+  "skill": {
+    "arm": "llm_plan",
+    "injected": true,
+    "manifest_version": 3,
+    "skill_sha256": "758e6aa4ff17324d42d913c3d3f2c8eafafece67aa886f04a98903b9fcf4f811",
+    "skill_char_len": 1710,
+    "skill_md_path": "experiments/skills_llm_plan/longseq_deseq2_contrast/SKILL.md",
+    "lookup_field": "by_task_id",
+    "lookup_key": "longseq_deseq2_contrast",
+    "source_task_id": "longseq_deseq2_contrast",
+    "source_model": "openrouter/openai/gpt-4o"
+  }
+}

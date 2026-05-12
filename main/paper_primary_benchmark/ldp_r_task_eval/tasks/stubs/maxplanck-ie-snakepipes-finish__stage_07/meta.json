@@ -1,0 +1,15 @@
+{
+  "workflow_id": "maxplanck-ie-snakepipes-finish",
+  "pipeline_task_id": "stage_07",
+  "order": 7,
+  "manifest_path": "finish/maxplanck-ie-snakepipes-finish/manifest.json",
+  "step_ids": [
+    "plot_heatmap_cov_CSAW",
+    "CSAW_report",
+    "get_nearest_transcript",
+    "get_nearest_gene",
+    "split_sampleSheet"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.000047+00:00"
+}

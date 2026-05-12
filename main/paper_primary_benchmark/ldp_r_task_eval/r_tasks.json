@@ -1,0 +1,5 @@
+{
+  "version": 2,
+  "_deprecated": "Use ldp_r_task_eval/r_tasks/registry.json (146 tasks: pilot + 145 stubs). See ldp_r_task_eval/r_tasks/README.md",
+  "tasks": []
+}

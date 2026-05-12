@@ -1,0 +1,14 @@
+{
+  "workflow_id": "epigen-spilterlize_integrate-finish",
+  "pipeline_task_id": "stage_01",
+  "order": 1,
+  "manifest_path": "finish/epigen-spilterlize_integrate-finish/manifest.json",
+  "step_ids": [
+    "split",
+    "filter_features",
+    "select_hvf",
+    "norm_edgeR"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.983704+00:00"
+}

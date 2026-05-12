@@ -1,0 +1,17 @@
+{
+  "task_id": "akinyi_deseq2",
+  "task_dir": "main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/akinyi_deseq2",
+  "out_dir": "main/paper_primary_benchmark/experiments/skills_llm_plan/akinyi_deseq2",
+  "model": "openrouter/openai/gpt-4o",
+  "model_resolved": "openai/gpt-4o",
+  "temperature": 0.1,
+  "prompt_tokens": 942,
+  "completion_tokens": 620,
+  "total_tokens": 1562,
+  "runtime_seconds": 5.66,
+  "inputs_listed": [
+    "featureCounts_output.txt"
+  ],
+  "inputs_previewed": [],
+  "generated_at": "2026-04-16T16:54:11Z"
+}

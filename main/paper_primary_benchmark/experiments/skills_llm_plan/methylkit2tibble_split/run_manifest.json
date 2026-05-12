@@ -1,0 +1,24 @@
+{
+  "task_id": "methylkit2tibble_split",
+  "task_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/methylkit2tibble_split",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills_llm_plan/methylkit2tibble_split",
+  "model": "openrouter/openai/gpt-4o",
+  "model_resolved": "openai/gpt-4o",
+  "temperature": 0.1,
+  "prompt_tokens": 1066,
+  "completion_tokens": 567,
+  "total_tokens": 1633,
+  "runtime_seconds": 5.42,
+  "inputs_listed": [
+    "grp1__a1.bismark.cov",
+    "grp1__a2.bismark.cov",
+    "grp1__a3.bismark.cov",
+    "grp1_mku.rds",
+    "grp2__b1.bismark.cov",
+    "grp2__b2.bismark.cov",
+    "grp2__b3.bismark.cov",
+    "grp2_mku.rds"
+  ],
+  "inputs_previewed": [],
+  "generated_at": "2026-04-16T19:34:29Z"
+}

@@ -1,0 +1,2 @@
+n_samples	n_sites	min_per_group	destrand	use_db	db_path
+4	399	1	FALSE	FALSE	output

@@ -1,0 +1,16 @@
+{
+  "task_id": "chipseq_plot_peak_intersect",
+  "kind": "real",
+  "workflow_id": "snakemake-workflows-chipseq",
+  "family": "chipseq",
+  "description": "UpSetR visualisation of ChIP-seq peak-set overlaps across samples.",
+  "status": "ready",
+  "r_script_src": "main/finish/workflow_candidates/snakemake-workflows__chipseq/workflow/scripts/plot_peak_intersect.R",
+  "ground_truth_dir": "tasks/real_ground_truth/chipseq_plot_peak_intersect",
+  "success_glob": "output/peak_intersect_upset.pdf",
+  "reference_output_files": [
+    "peak_intersect_upset.pdf"
+  ],
+  "missing_reference_files": [],
+  "seed": 42
+}

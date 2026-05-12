@@ -1,0 +1,276 @@
+{
+  "version": "v2",
+  "updated_at": "2026-04-14",
+  "description": "Paper primary benchmark: 30 main workflows + 3 smoke. Symlinks under workflows/ and smoke_workflows/ point at main/finish/<id> (no file duplication).",
+  "provenance": "main/refine-logs/MAIN_WORKFLOW_SET.md",
+  "main_workflow_count": 30,
+  "main_workflows": [
+    {
+      "id": "rna-seq-kallisto-sleuth-finish",
+      "path_from_main": "finish/rna-seq-kallisto-sleuth-finish",
+      "symlink": "paper_primary_benchmark/workflows/rna-seq-kallisto-sleuth-finish",
+      "steps": 22,
+      "family": "rna",
+      "kind": "auto"
+    },
+    {
+      "id": "star-arriba-fusion-calling-finish",
+      "path_from_main": "finish/star-arriba-fusion-calling-finish",
+      "symlink": "paper_primary_benchmark/workflows/star-arriba-fusion-calling-finish",
+      "steps": 8,
+      "family": "rna",
+      "kind": "auto"
+    },
+    {
+      "id": "tgirke-systempiperdata-rnaseq-finish",
+      "path_from_main": "finish/tgirke-systempiperdata-rnaseq-finish",
+      "symlink": "paper_primary_benchmark/workflows/tgirke-systempiperdata-rnaseq-finish",
+      "steps": 21,
+      "family": "rna",
+      "kind": "manual-special"
+    },
+    {
+      "id": "rna-seq-star-deseq2-finish",
+      "path_from_main": "finish/rna-seq-star-deseq2-finish",
+      "symlink": "paper_primary_benchmark/workflows/rna-seq-star-deseq2-finish",
+      "steps": 25,
+      "family": "rna",
+      "kind": "auto"
+    },
+    {
+      "id": "epigen-dea_seurat-finish",
+      "path_from_main": "finish/epigen-dea_seurat-finish",
+      "symlink": "paper_primary_benchmark/workflows/epigen-dea_seurat-finish",
+      "steps": 10,
+      "family": "single-cell",
+      "kind": "auto"
+    },
+    {
+      "id": "epigen-scrnaseq_processing_seurat-finish",
+      "path_from_main": "finish/epigen-scrnaseq_processing_seurat-finish",
+      "symlink": "paper_primary_benchmark/workflows/epigen-scrnaseq_processing_seurat-finish",
+      "steps": 15,
+      "family": "single-cell",
+      "kind": "auto"
+    },
+    {
+      "id": "cite-seq-alevin-fry-seurat-finish",
+      "path_from_main": "finish/cite-seq-alevin-fry-seurat-finish",
+      "symlink": "paper_primary_benchmark/workflows/cite-seq-alevin-fry-seurat-finish",
+      "steps": 18,
+      "family": "single-cell",
+      "kind": "auto"
+    },
+    {
+      "id": "single-cell-rna-seq-finish",
+      "path_from_main": "finish/single-cell-rna-seq-finish",
+      "symlink": "paper_primary_benchmark/workflows/single-cell-rna-seq-finish",
+      "steps": 22,
+      "family": "single-cell",
+      "kind": "auto"
+    },
+    {
+      "id": "epigen-fetch_ngs-finish",
+      "path_from_main": "finish/epigen-fetch_ngs-finish",
+      "symlink": "paper_primary_benchmark/workflows/epigen-fetch_ngs-finish",
+      "steps": 7,
+      "family": "epigenomics",
+      "kind": "auto"
+    },
+    {
+      "id": "epigen-dea_limma-finish",
+      "path_from_main": "finish/epigen-dea_limma-finish",
+      "symlink": "paper_primary_benchmark/workflows/epigen-dea_limma-finish",
+      "steps": 12,
+      "family": "epigenomics",
+      "kind": "auto"
+    },
+    {
+      "id": "epigen-enrichment_analysis-finish",
+      "path_from_main": "finish/epigen-enrichment_analysis-finish",
+      "symlink": "paper_primary_benchmark/workflows/epigen-enrichment_analysis-finish",
+      "steps": 16,
+      "family": "epigenomics",
+      "kind": "auto"
+    },
+    {
+      "id": "tgirke-systempiperdata-chipseq-finish",
+      "path_from_main": "finish/tgirke-systempiperdata-chipseq-finish",
+      "symlink": "paper_primary_benchmark/workflows/tgirke-systempiperdata-chipseq-finish",
+      "steps": 21,
+      "family": "epigenomics",
+      "kind": "manual-special"
+    },
+    {
+      "id": "fritjoflammers-snakemake-methylanalysis-finish",
+      "path_from_main": "finish/fritjoflammers-snakemake-methylanalysis-finish",
+      "symlink": "paper_primary_benchmark/workflows/fritjoflammers-snakemake-methylanalysis-finish",
+      "steps": 22,
+      "family": "epigenomics",
+      "kind": "auto"
+    },
+    {
+      "id": "microsatellite-instability-detection-with-msisensor-pro-finish",
+      "path_from_main": "finish/microsatellite-instability-detection-with-msisensor-pro-finish",
+      "symlink": "paper_primary_benchmark/workflows/microsatellite-instability-detection-with-msisensor-pro-finish",
+      "steps": 10,
+      "family": "variant",
+      "kind": "auto"
+    },
+    {
+      "id": "dna-seq-short-read-circle-map-finish",
+      "path_from_main": "finish/dna-seq-short-read-circle-map-finish",
+      "symlink": "paper_primary_benchmark/workflows/dna-seq-short-read-circle-map-finish",
+      "steps": 21,
+      "family": "variant",
+      "kind": "auto"
+    },
+    {
+      "id": "tgirke-systempiperdata-varseq-finish",
+      "path_from_main": "finish/tgirke-systempiperdata-varseq-finish",
+      "symlink": "paper_primary_benchmark/workflows/tgirke-systempiperdata-varseq-finish",
+      "steps": 35,
+      "family": "variant",
+      "kind": "manual-special"
+    },
+    {
+      "id": "gustaveroussy-sopa-finish",
+      "path_from_main": "finish/gustaveroussy-sopa-finish",
+      "symlink": "paper_primary_benchmark/workflows/gustaveroussy-sopa-finish",
+      "steps": 20,
+      "family": "spatial",
+      "kind": "auto"
+    },
+    {
+      "id": "lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+      "path_from_main": "finish/lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+      "symlink": "paper_primary_benchmark/workflows/lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+      "steps": 9,
+      "family": "other",
+      "kind": "manual-special"
+    },
+    {
+      "id": "tgirke-systempiperdata-riboseq-finish",
+      "path_from_main": "finish/tgirke-systempiperdata-riboseq-finish",
+      "symlink": "paper_primary_benchmark/workflows/tgirke-systempiperdata-riboseq-finish",
+      "steps": 32,
+      "family": "other",
+      "kind": "manual-special"
+    },
+    {
+      "id": "cyrcular-calling-finish",
+      "path_from_main": "finish/cyrcular-calling-finish",
+      "symlink": "paper_primary_benchmark/workflows/cyrcular-calling-finish",
+      "steps": 34,
+      "family": "other",
+      "kind": "auto"
+    },
+    {
+      "id": "epigen-300bcg-atacseq_pipeline-finish",
+      "path_from_main": "finish/epigen-300bcg-atacseq_pipeline-finish",
+      "symlink": "paper_primary_benchmark/workflows/epigen-300bcg-atacseq_pipeline-finish",
+      "steps": 10,
+      "family": "epigenomics",
+      "kind": "manual-special"
+    },
+    {
+      "id": "lwang-genomics-ngs_pipeline_sn-chip_seq-finish",
+      "path_from_main": "finish/lwang-genomics-ngs_pipeline_sn-chip_seq-finish",
+      "symlink": "paper_primary_benchmark/workflows/lwang-genomics-ngs_pipeline_sn-chip_seq-finish",
+      "steps": 8,
+      "family": "epigenomics",
+      "kind": "manual-special"
+    },
+    {
+      "id": "cellranger-multi-finish",
+      "path_from_main": "finish/cellranger-multi-finish",
+      "symlink": "paper_primary_benchmark/workflows/cellranger-multi-finish",
+      "steps": 14,
+      "family": "single-cell",
+      "kind": "auto"
+    },
+    {
+      "id": "tgirke-systempiperdata-spscrna-finish",
+      "path_from_main": "finish/tgirke-systempiperdata-spscrna-finish",
+      "symlink": "paper_primary_benchmark/workflows/tgirke-systempiperdata-spscrna-finish",
+      "steps": 18,
+      "family": "single-cell",
+      "kind": "manual-special"
+    },
+    {
+      "id": "epigen-atacseq_pipeline-finish",
+      "path_from_main": "finish/epigen-atacseq_pipeline-finish",
+      "symlink": "paper_primary_benchmark/workflows/epigen-atacseq_pipeline-finish",
+      "steps": 26,
+      "family": "epigenomics",
+      "kind": "auto"
+    },
+    {
+      "id": "epigen-rnaseq_pipeline-finish",
+      "path_from_main": "finish/epigen-rnaseq_pipeline-finish",
+      "symlink": "paper_primary_benchmark/workflows/epigen-rnaseq_pipeline-finish",
+      "steps": 26,
+      "family": "epigenomics",
+      "kind": "auto"
+    },
+    {
+      "id": "akinyi-onyango-rna_seq_pipeline-finish",
+      "path_from_main": "finish/akinyi-onyango-rna_seq_pipeline-finish",
+      "symlink": "paper_primary_benchmark/workflows/akinyi-onyango-rna_seq_pipeline-finish",
+      "steps": 8,
+      "family": "other",
+      "kind": "auto"
+    },
+    {
+      "id": "maxplanck-ie-snakepipes-finish",
+      "path_from_main": "finish/maxplanck-ie-snakepipes-finish",
+      "symlink": "paper_primary_benchmark/workflows/maxplanck-ie-snakepipes-finish",
+      "steps": 39,
+      "family": "other",
+      "kind": "auto"
+    },
+    {
+      "id": "epigen-spilterlize_integrate-finish",
+      "path_from_main": "finish/epigen-spilterlize_integrate-finish",
+      "symlink": "paper_primary_benchmark/workflows/epigen-spilterlize_integrate-finish",
+      "steps": 14,
+      "family": "epigenomics",
+      "kind": "auto"
+    },
+    {
+      "id": "read-alignment-pangenome-finish",
+      "path_from_main": "finish/read-alignment-pangenome-finish",
+      "symlink": "paper_primary_benchmark/workflows/read-alignment-pangenome-finish",
+      "steps": 38,
+      "family": "other",
+      "kind": "auto"
+    }
+  ],
+  "smoke_workflow_count": 3,
+  "smoke_workflows": [
+    {
+      "id": "rna-seq-star-deseq2-finish",
+      "path_from_main": "finish/rna-seq-star-deseq2-finish",
+      "symlink": "paper_primary_benchmark/smoke_workflows/rna-seq-star-deseq2-finish",
+      "steps": 25,
+      "family": "rna",
+      "kind": "auto"
+    },
+    {
+      "id": "epigen-scrnaseq_processing_seurat-finish",
+      "path_from_main": "finish/epigen-scrnaseq_processing_seurat-finish",
+      "symlink": "paper_primary_benchmark/smoke_workflows/epigen-scrnaseq_processing_seurat-finish",
+      "steps": 15,
+      "family": "single-cell",
+      "kind": "auto"
+    },
+    {
+      "id": "dna-seq-varlociraptor-finish",
+      "path_from_main": "finish/dna-seq-varlociraptor-finish",
+      "symlink": "paper_primary_benchmark/smoke_workflows/dna-seq-varlociraptor-finish",
+      "steps": 18,
+      "family": "variant",
+      "kind": "auto"
+    }
+  ]
+}

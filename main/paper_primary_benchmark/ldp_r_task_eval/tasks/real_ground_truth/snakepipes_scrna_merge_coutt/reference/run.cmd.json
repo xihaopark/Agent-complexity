@@ -1,0 +1,8 @@
+[
+  "Rscript",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_scrna_merge_coutt/reference/script.R",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/snakepipes_scrna_merge_coutt/input/coutt",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_scrna_merge_coutt/reference_output/merged_coutt.tsv",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_scrna_merge_coutt/reference_output/merged_coutt.cell_names.tsv",
+  "FALSE"
+]

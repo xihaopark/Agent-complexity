@@ -1,0 +1,82 @@
+{
+  "workflow_id": "RiyaDua-cervical-cancer-snakemake-workflow",
+  "workflow_dir": "/Users/park/code/Paper2Skills-main/main/finish/workflow_candidates/RiyaDua__cervical-cancer-snakemake-workflow",
+  "out_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/experiments/skills_pipeline/RiyaDua-cervical-cancer-snakemake-workflow",
+  "status": "ok",
+  "generated_at": "2026-04-16T19:31:00Z",
+  "model": "openrouter/openai/gpt-4o",
+  "resolved_model": "openai/gpt-4o",
+  "max_per_file": 8000,
+  "max_total": 80000,
+  "prompt_tokens": 2119,
+  "completion_tokens": 822,
+  "total_tokens": 2941,
+  "runtime_seconds": 7.3,
+  "llm_seconds": 7.3,
+  "chars_used": 6785,
+  "truncated": false,
+  "files_considered": [
+    {
+      "path": "Snakefile",
+      "kind": "snakefile",
+      "bytes": 1142,
+      "priority": 0
+    },
+    {
+      "path": "scripts/differential_expression.R",
+      "kind": "r",
+      "bytes": 1325,
+      "priority": 1
+    },
+    {
+      "path": "scripts/preprocessing.R",
+      "kind": "r",
+      "bytes": 1077,
+      "priority": 1
+    },
+    {
+      "path": "config.yaml",
+      "kind": "yaml",
+      "bytes": 47,
+      "priority": 3
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "bytes": 3089,
+      "priority": 4
+    }
+  ],
+  "files_included": [
+    {
+      "path": "Snakefile",
+      "kind": "snakefile",
+      "chars_used": 1142,
+      "partial": false
+    },
+    {
+      "path": "scripts/differential_expression.R",
+      "kind": "r",
+      "chars_used": 1325,
+      "partial": false
+    },
+    {
+      "path": "scripts/preprocessing.R",
+      "kind": "r",
+      "chars_used": 1077,
+      "partial": false
+    },
+    {
+      "path": "config.yaml",
+      "kind": "yaml",
+      "chars_used": 47,
+      "partial": false
+    },
+    {
+      "path": "README.md",
+      "kind": "readme",
+      "chars_used": 3029,
+      "partial": false
+    }
+  ]
+}

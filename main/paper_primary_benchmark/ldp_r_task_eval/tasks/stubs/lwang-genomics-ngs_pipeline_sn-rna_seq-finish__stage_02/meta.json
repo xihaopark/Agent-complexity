@@ -1,0 +1,13 @@
+{
+  "workflow_id": "lwang-genomics-ngs_pipeline_sn-rna_seq-finish",
+  "pipeline_task_id": "stage_02",
+  "order": 2,
+  "manifest_path": "finish/lwang-genomics-ngs_pipeline_sn-rna_seq-finish/manifest.json",
+  "step_ids": [
+    "filter_sort_index",
+    "convert_bw",
+    "count_gene"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.995949+00:00"
+}

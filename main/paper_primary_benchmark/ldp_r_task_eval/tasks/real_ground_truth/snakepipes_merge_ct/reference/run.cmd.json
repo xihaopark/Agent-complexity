@@ -1,0 +1,11 @@
+[
+  "Rscript",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_merge_ct/reference/script.R",
+  "Name",
+  "TPM",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_merge_ct/reference_output/merged_tpm.tsv",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/snakepipes_merge_ct/input/KO_A.quant.sf",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/snakepipes_merge_ct/input/KO_B.quant.sf",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/snakepipes_merge_ct/input/WT_A.quant.sf",
+  "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real/snakepipes_merge_ct/input/WT_B.quant.sf"
+]

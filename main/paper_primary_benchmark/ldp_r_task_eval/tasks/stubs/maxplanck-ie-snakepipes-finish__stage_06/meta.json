@@ -1,0 +1,15 @@
+{
+  "workflow_id": "maxplanck-ie-snakepipes-finish",
+  "pipeline_task_id": "stage_06",
+  "order": 6,
+  "manifest_path": "finish/maxplanck-ie-snakepipes-finish/manifest.json",
+  "step_ids": [
+    "MACS2_peak_qc",
+    "CSAW",
+    "calc_matrix_log2r_CSAW",
+    "plot_heatmap_log2r_CSAW",
+    "calc_matrix_cov_CSAW"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.999535+00:00"
+}

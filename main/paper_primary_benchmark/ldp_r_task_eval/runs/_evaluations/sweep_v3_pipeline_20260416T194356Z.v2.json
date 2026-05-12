@@ -1,0 +1,4015 @@
+{
+  "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+  "batch_root": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z",
+  "evaluator_version": "v2",
+  "ts": "2026-04-16T20:26:57Z",
+  "rtol": 0.001,
+  "atol": 1e-05,
+  "legacy_active": false,
+  "n_tasks": 32,
+  "mean_score": 0.7634,
+  "verdict_counts": {
+    "pass": 17,
+    "partial_pass": 5,
+    "partial_fail": 6,
+    "fail": 4,
+    "error": 0
+  },
+  "verdict_counts_legacy": {
+    "pass": 15,
+    "partial": 13,
+    "fail": 4
+  },
+  "tasks": {
+    "akinyi_deseq2": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/000_akinyi_deseq2",
+      "task_id": "akinyi_deseq2",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "c92cfb051e592382173638cdb4a52e1356a6f588cb991453cf3408bbbb9fc41b",
+        "skill_char_len": 3076,
+        "skill_md_path": "experiments/skills_pipeline/akinyi-onyango-rna_seq_pipeline-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "akinyi-onyango-rna_seq_pipeline-finish",
+        "source_workflow_id": "akinyi-onyango-rna_seq_pipeline-finish"
+      },
+      "n_expected": 2,
+      "n_files_scored": 2,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 5,
+        "tool_calls_meaningful": 4,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "deseq2_up.txt",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/akinyi_deseq2/reference_output/deseq2_up.txt",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/000_akinyi_deseq2/workspace/output/deseq2_up.txt",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 2481,
+          "size_ref": 2481,
+          "notes": [],
+          "details": {}
+        },
+        {
+          "filename": "deseq2_down.txt",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/akinyi_deseq2/reference_output/deseq2_down.txt",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/000_akinyi_deseq2/workspace/output/deseq2_down.txt",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 1524,
+          "size_ref": 1524,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "star_deseq2_init": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/001_star_deseq2_init",
+      "task_id": "star_deseq2_init",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "e9a3bc65829d098e0dfccef55961b0e01c31157f2080b27e6f8e6aec86e54435",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/rna-seq-star-deseq2-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "rna-seq-star-deseq2-finish",
+        "source_workflow_id": "rna-seq-star-deseq2-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 7,
+        "tool_calls_meaningful": 7,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "normalized_counts.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/star_deseq2_init/reference_output/normalized_counts.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/001_star_deseq2_init/workspace/output/normalized_counts.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 58217,
+          "size_ref": 58217,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "star_deseq2_contrast": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/002_star_deseq2_contrast",
+      "task_id": "star_deseq2_contrast",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "e9a3bc65829d098e0dfccef55961b0e01c31157f2080b27e6f8e6aec86e54435",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/rna-seq-star-deseq2-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "rna-seq-star-deseq2-finish",
+        "source_workflow_id": "rna-seq-star-deseq2-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 4,
+        "tool_calls_meaningful": 4,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "contrast_results.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/star_deseq2_contrast/reference_output/contrast_results.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/002_star_deseq2_contrast/workspace/output/contrast_results.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 53764,
+          "size_ref": 53764,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "methylkit_load": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/003_methylkit_load",
+      "task_id": "methylkit_load",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "5df053f68ebf9417c6d9fde6aeb314e0e5be324abdfe62e7a49037a68cfd6bd1",
+        "skill_char_len": 3835,
+        "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+        "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.15,
+      "verdict": "fail",
+      "verdict_legacy": "fail",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 0.0,
+        "outputs_dir_nonempty_and_valid": 0.0
+      },
+      "process_mean": 0.5,
+      "process_counts": {
+        "tool_calls_total": 15,
+        "tool_calls_meaningful": 15,
+        "rscript_ok": 6,
+        "rscript_err": 19
+      },
+      "file_scores_mean": 0.0,
+      "per_file": [
+        {
+          "filename": "mk_raw.rds",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_load/reference_output/mk_raw.rds",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/003_methylkit_load/workspace/output/mk_raw.rds",
+          "strategy_used": "missing",
+          "strategy_score": 0.0,
+          "bytes_identical": false,
+          "size_agent": null,
+          "size_ref": 3529,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "methylkit_unite": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/004_methylkit_unite",
+      "task_id": "methylkit_unite",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "5df053f68ebf9417c6d9fde6aeb314e0e5be324abdfe62e7a49037a68cfd6bd1",
+        "skill_char_len": 3835,
+        "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+        "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.075,
+      "verdict": "fail",
+      "verdict_legacy": "fail",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 0.0,
+        "submit_done_called": 0.0,
+        "outputs_dir_nonempty_and_valid": 0.0
+      },
+      "process_mean": 0.25,
+      "process_counts": {
+        "tool_calls_total": 15,
+        "tool_calls_meaningful": 15,
+        "rscript_ok": 0,
+        "rscript_err": 27
+      },
+      "file_scores_mean": 0.0,
+      "per_file": [
+        {
+          "filename": "unite_stats.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_unite/reference_output/unite_stats.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/004_methylkit_unite/workspace/output/unite_stats.tsv",
+          "strategy_used": "missing",
+          "strategy_score": 0.0,
+          "bytes_identical": false,
+          "size_agent": null,
+          "size_ref": 83,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "methylkit_to_tibble": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/005_methylkit_to_tibble",
+      "task_id": "methylkit_to_tibble",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "5df053f68ebf9417c6d9fde6aeb314e0e5be324abdfe62e7a49037a68cfd6bd1",
+        "skill_char_len": 3835,
+        "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+        "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.225,
+      "verdict": "fail",
+      "verdict_legacy": "fail",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 0.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 0.75,
+      "process_counts": {
+        "tool_calls_total": 15,
+        "tool_calls_meaningful": 15,
+        "rscript_ok": 2,
+        "rscript_err": 25
+      },
+      "file_scores_mean": 0.0,
+      "per_file": [
+        {
+          "filename": "mean_mcpg.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_to_tibble/reference_output/mean_mcpg.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/005_methylkit_to_tibble/workspace/output/mean_mcpg.tsv",
+          "strategy_used": "missing",
+          "strategy_score": 0.0,
+          "bytes_identical": false,
+          "size_agent": null,
+          "size_ref": 406,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "longseq_deseq2_init": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/006_longseq_deseq2_init",
+      "task_id": "longseq_deseq2_init",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "ed7db6c130411dac5f3ceb9e638f08cce9da45715c714bea6679e11c4a76a6e0",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-rna-longseq-de-isoform/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "snakemake-workflows-rna-longseq-de-isoform",
+        "source_workflow_id": "snakemake-workflows-rna-longseq-de-isoform"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 6,
+        "tool_calls_meaningful": 6,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "normalized_counts.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/longseq_deseq2_init/reference_output/normalized_counts.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/006_longseq_deseq2_init/workspace/output/normalized_counts.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 56240,
+          "size_ref": 56240,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "longseq_deseq2_contrast": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/007_longseq_deseq2_contrast",
+      "task_id": "longseq_deseq2_contrast",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "ed7db6c130411dac5f3ceb9e638f08cce9da45715c714bea6679e11c4a76a6e0",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-rna-longseq-de-isoform/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "snakemake-workflows-rna-longseq-de-isoform",
+        "source_workflow_id": "snakemake-workflows-rna-longseq-de-isoform"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 4,
+        "tool_calls_meaningful": 4,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "contrast_results.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/longseq_deseq2_contrast/reference_output/contrast_results.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/007_longseq_deseq2_contrast/workspace/output/contrast_results.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 50518,
+          "size_ref": 50518,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "snakepipes_merge_fc": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/008_snakepipes_merge_fc",
+      "task_id": "snakepipes_merge_fc",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "9ee3a3d5b6210107cb54712269ebc4115c753753c9975d186ec891d89cccb2d6",
+        "skill_char_len": 3603,
+        "skill_md_path": "experiments/skills_pipeline/maxplanck-ie-snakepipes-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "maxplanck-ie-snakepipes-finish",
+        "source_workflow_id": "maxplanck-ie-snakepipes-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.475,
+      "verdict": "partial_fail",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 8,
+        "tool_calls_meaningful": 8,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 0.25,
+      "per_file": [
+        {
+          "filename": "merged_counts.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_merge_fc/reference_output/merged_counts.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/008_snakepipes_merge_fc/workspace/output/merged_counts.tsv",
+          "strategy_used": "process_credit",
+          "strategy_score": 0.25,
+          "bytes_identical": false,
+          "size_agent": 13052,
+          "size_ref": 11553,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 6,
+              "cols_b": 5,
+              "cols_shared": 5,
+              "rows_a": 400,
+              "rows_b": 400,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 1598,
+              "cells_total": 2000,
+              "cell_match_fraction": 0.799,
+              "row_overlap": 1.0,
+              "effective_fraction": 0.4660833333333334,
+              "cols_mismatch": true
+            }
+          }
+        }
+      ]
+    },
+    "snakepipes_merge_ct": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/009_snakepipes_merge_ct",
+      "task_id": "snakepipes_merge_ct",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "9ee3a3d5b6210107cb54712269ebc4115c753753c9975d186ec891d89cccb2d6",
+        "skill_char_len": 3603,
+        "skill_md_path": "experiments/skills_pipeline/maxplanck-ie-snakepipes-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "maxplanck-ie-snakepipes-finish",
+        "source_workflow_id": "maxplanck-ie-snakepipes-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.475,
+      "verdict": "partial_fail",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 9,
+        "tool_calls_meaningful": 9,
+        "rscript_ok": 2,
+        "rscript_err": 2
+      },
+      "file_scores_mean": 0.25,
+      "per_file": [
+        {
+          "filename": "merged_tpm.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_merge_ct/reference_output/merged_tpm.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/009_snakepipes_merge_ct/workspace/output/merged_tpm.tsv",
+          "strategy_used": "process_credit",
+          "strategy_score": 0.25,
+          "bytes_identical": false,
+          "size_agent": 14268,
+          "size_ref": 13171,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 6,
+              "cols_b": 5,
+              "cols_shared": 5,
+              "rows_a": 300,
+              "rows_b": 300,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 1200,
+              "cells_total": 1500,
+              "cell_match_fraction": 0.8,
+              "row_overlap": 1.0,
+              "effective_fraction": 0.46666666666666673,
+              "cols_mismatch": true
+            }
+          }
+        }
+      ]
+    },
+    "riya_limma": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/010_riya_limma",
+      "task_id": "riya_limma",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "a94e9936cdf9815b15be9969d8892e049b0a40553b2894190f130502bdf6aadb",
+        "skill_char_len": 3342,
+        "skill_md_path": "experiments/skills_pipeline/RiyaDua-cervical-cancer-snakemake-workflow/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "RiyaDua-cervical-cancer-snakemake-workflow",
+        "source_workflow_id": "RiyaDua-cervical-cancer-snakemake-workflow"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 7,
+        "tool_calls_meaningful": 7,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "deg_results.csv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/riya_limma/reference_output/deg_results.csv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/010_riya_limma/workspace/output/deg_results.csv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 27697,
+          "size_ref": 27697,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "chipseq_plot_macs_qc": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/011_chipseq_plot_macs_qc",
+      "task_id": "chipseq_plot_macs_qc",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "a232a8cb2ae39bcd4d696a9bb577952407102f8abb5734420aa51069dd282955",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-chipseq-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "snakemake-workflows-chipseq-finish",
+        "source_workflow_id": "snakemake-workflows-chipseq-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.475,
+      "verdict": "partial_fail",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 7,
+        "tool_calls_meaningful": 7,
+        "rscript_ok": 2,
+        "rscript_err": 2
+      },
+      "file_scores_mean": 0.25,
+      "per_file": [
+        {
+          "filename": "macs_qc_summary.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_macs_qc/reference_output/macs_qc_summary.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/011_chipseq_plot_macs_qc/workspace/output/macs_qc_summary.tsv",
+          "strategy_used": "process_credit",
+          "strategy_score": 0.25,
+          "bytes_identical": false,
+          "size_agent": 2033,
+          "size_ref": 824,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 3,
+              "cols_b": 9,
+              "cols_shared": 2,
+              "rows_a": 75,
+              "rows_b": 12,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 12,
+              "cells_total": 24,
+              "cell_match_fraction": 0.5,
+              "row_overlap": 0.16,
+              "effective_fraction": 0.012444444444444442,
+              "cols_mismatch": true
+            }
+          }
+        }
+      ]
+    },
+    "chipseq_plot_homer_annot": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/012_chipseq_plot_homer_annot",
+      "task_id": "chipseq_plot_homer_annot",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "a232a8cb2ae39bcd4d696a9bb577952407102f8abb5734420aa51069dd282955",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-chipseq-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "snakemake-workflows-chipseq-finish",
+        "source_workflow_id": "snakemake-workflows-chipseq-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.475,
+      "verdict": "partial_fail",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 8,
+        "tool_calls_meaningful": 8,
+        "rscript_ok": 2,
+        "rscript_err": 2
+      },
+      "file_scores_mean": 0.25,
+      "per_file": [
+        {
+          "filename": "homer_annot_summary.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_homer_annot/reference_output/homer_annot_summary.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/012_chipseq_plot_homer_annot/workspace/output/homer_annot_summary.tsv",
+          "strategy_used": "process_credit",
+          "strategy_score": 0.25,
+          "bytes_identical": false,
+          "size_agent": 139,
+          "size_ref": 143,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_position",
+              "cols_a": 4,
+              "cols_b": 9,
+              "cols_shared": 4,
+              "rows_a": 7,
+              "rows_b": 3,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 9,
+              "cells_total": 12,
+              "cell_match_fraction": 0.75,
+              "row_overlap": 0.42857142857142855,
+              "effective_fraction": 0.09999999999999998,
+              "cols_mismatch": true
+            }
+          }
+        }
+      ]
+    },
+    "snakepipes_scrna_merge_coutt": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/013_snakepipes_scrna_merge_coutt",
+      "task_id": "snakepipes_scrna_merge_coutt",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "9ee3a3d5b6210107cb54712269ebc4115c753753c9975d186ec891d89cccb2d6",
+        "skill_char_len": 3603,
+        "skill_md_path": "experiments/skills_pipeline/maxplanck-ie-snakepipes-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "maxplanck-ie-snakepipes-finish",
+        "source_workflow_id": "maxplanck-ie-snakepipes-finish"
+      },
+      "n_expected": 2,
+      "n_files_scored": 2,
+      "overall_score": 0.734,
+      "verdict": "partial_pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 6,
+        "tool_calls_meaningful": 6,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 0.62,
+      "per_file": [
+        {
+          "filename": "merged_coutt.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_scrna_merge_coutt/reference_output/merged_coutt.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/013_snakepipes_scrna_merge_coutt/workspace/output/merged_coutt.tsv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.99,
+          "bytes_identical": false,
+          "size_agent": 9042,
+          "size_ref": 9234,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_position",
+              "cols_a": 25,
+              "cols_b": 25,
+              "cols_shared": 25,
+              "rows_a": 120,
+              "rows_b": 120,
+              "rows_matched": 120,
+              "row_match_fraction": 1.0,
+              "cells_matched": 3000,
+              "cells_total": 3000,
+              "cell_match_fraction": 1.0,
+              "row_overlap": 1.0,
+              "effective_fraction": 1.0,
+              "cols_mismatch": false
+            }
+          }
+        },
+        {
+          "filename": "merged_coutt.cell_names.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_scrna_merge_coutt/reference_output/merged_coutt.cell_names.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/013_snakepipes_scrna_merge_coutt/workspace/output/merged_coutt.cell_names.tsv",
+          "strategy_used": "process_credit",
+          "strategy_score": 0.25,
+          "bytes_identical": false,
+          "size_agent": 781,
+          "size_ref": 868,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 5,
+              "cols_b": 5,
+              "cols_shared": 5,
+              "rows_a": 24,
+              "rows_b": 24,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 24,
+              "cells_total": 120,
+              "cell_match_fraction": 0.2,
+              "row_overlap": 1.0,
+              "effective_fraction": 0.2,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    "snakepipes_scrna_qc": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/014_snakepipes_scrna_qc",
+      "task_id": "snakepipes_scrna_qc",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "9ee3a3d5b6210107cb54712269ebc4115c753753c9975d186ec891d89cccb2d6",
+        "skill_char_len": 3603,
+        "skill_md_path": "experiments/skills_pipeline/maxplanck-ie-snakepipes-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "maxplanck-ie-snakepipes-finish",
+        "source_workflow_id": "maxplanck-ie-snakepipes-finish"
+      },
+      "n_expected": 2,
+      "n_files_scored": 2,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 6,
+        "tool_calls_meaningful": 6,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "scqc.libstats_reads.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_scrna_qc/reference_output/scqc.libstats_reads.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/014_snakepipes_scrna_qc/workspace/output/scqc.libstats_reads.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 144,
+          "size_ref": 144,
+          "notes": [],
+          "details": {}
+        },
+        {
+          "filename": "scqc.libstats_pct.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_scrna_qc/reference_output/scqc.libstats_pct.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/014_snakepipes_scrna_qc/workspace/output/scqc.libstats_pct.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 128,
+          "size_ref": 128,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "spilterlize_filter_features": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/015_spilterlize_filter_features",
+      "task_id": "spilterlize_filter_features",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "89bb0a4e9dc35cfccdcf12447bd3e423d7a9f6c7948ba55a7a286aa7eeb86a57",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/epigen-spilterlize_integrate-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "epigen-spilterlize_integrate-finish",
+        "source_workflow_id": "epigen-spilterlize_integrate-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.9,
+      "verdict": "partial_pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 8,
+        "tool_calls_meaningful": 8,
+        "rscript_ok": 2,
+        "rscript_err": 2
+      },
+      "file_scores_mean": 0.8571,
+      "per_file": [
+        {
+          "filename": "filtered_counts.csv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/spilterlize_filter_features/reference_output/filtered_counts.csv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/015_spilterlize_filter_features/workspace/output/filtered_counts.csv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.8571,
+          "bytes_identical": false,
+          "size_agent": 11932,
+          "size_ref": 14840,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 7,
+              "cols_b": 7,
+              "cols_shared": 7,
+              "rows_a": 400,
+              "rows_b": 400,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 2400,
+              "cells_total": 2800,
+              "cell_match_fraction": 0.8571428571428571,
+              "row_overlap": 1.0,
+              "effective_fraction": 0.8571428571428571,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    "spilterlize_norm_voom": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/016_spilterlize_norm_voom",
+      "task_id": "spilterlize_norm_voom",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "89bb0a4e9dc35cfccdcf12447bd3e423d7a9f6c7948ba55a7a286aa7eeb86a57",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/epigen-spilterlize_integrate-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "epigen-spilterlize_integrate-finish",
+        "source_workflow_id": "epigen-spilterlize_integrate-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.9,
+      "verdict": "partial_pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 6,
+        "tool_calls_meaningful": 6,
+        "rscript_ok": 2,
+        "rscript_err": 2
+      },
+      "file_scores_mean": 0.8571,
+      "per_file": [
+        {
+          "filename": "normalized_counts.csv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/spilterlize_norm_voom/reference_output/normalized_counts.csv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/016_spilterlize_norm_voom/workspace/output/normalized_counts.csv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.8571,
+          "bytes_identical": false,
+          "size_agent": 31507,
+          "size_ref": 33715,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 7,
+              "cols_b": 7,
+              "cols_shared": 7,
+              "rows_a": 300,
+              "rows_b": 300,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 1800,
+              "cells_total": 2100,
+              "cell_match_fraction": 0.8571428571428571,
+              "row_overlap": 1.0,
+              "effective_fraction": 0.8571428571428571,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    "spilterlize_limma_rbe": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/017_spilterlize_limma_rbe",
+      "task_id": "spilterlize_limma_rbe",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "89bb0a4e9dc35cfccdcf12447bd3e423d7a9f6c7948ba55a7a286aa7eeb86a57",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/epigen-spilterlize_integrate-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "epigen-spilterlize_integrate-finish",
+        "source_workflow_id": "epigen-spilterlize_integrate-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.993,
+      "verdict": "pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 7,
+        "tool_calls_meaningful": 7,
+        "rscript_ok": 2,
+        "rscript_err": 2
+      },
+      "file_scores_mean": 0.99,
+      "per_file": [
+        {
+          "filename": "integrated_data.csv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/spilterlize_limma_rbe/reference_output/integrated_data.csv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/017_spilterlize_limma_rbe/workspace/output/integrated_data.csv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.99,
+          "bytes_identical": false,
+          "size_agent": 21188,
+          "size_ref": 21188,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 9,
+              "cols_b": 9,
+              "cols_shared": 8,
+              "rows_a": 250,
+              "rows_b": 250,
+              "rows_matched": 250,
+              "row_match_fraction": 1.0,
+              "cells_matched": 2000,
+              "cells_total": 2000,
+              "cell_match_fraction": 1.0,
+              "row_overlap": 1.0,
+              "effective_fraction": 1.0,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    "spilterlize_norm_edger": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/018_spilterlize_norm_edger",
+      "task_id": "spilterlize_norm_edger",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "89bb0a4e9dc35cfccdcf12447bd3e423d7a9f6c7948ba55a7a286aa7eeb86a57",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/epigen-spilterlize_integrate-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "epigen-spilterlize_integrate-finish",
+        "source_workflow_id": "epigen-spilterlize_integrate-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 7,
+        "tool_calls_meaningful": 7,
+        "rscript_ok": 2,
+        "rscript_err": 4
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "all/normTMM.csv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/spilterlize_norm_edger/reference_output/all/normTMM.csv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/018_spilterlize_norm_edger/workspace/output/all/normTMM.csv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 33698,
+          "size_ref": 33698,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "dea_limma": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/019_dea_limma",
+      "task_id": "dea_limma",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "0479b9f6934d37998d47891d573a29010b9c1f40d7b5112bd404689cfb4e03f0",
+        "skill_char_len": 3421,
+        "skill_md_path": "experiments/skills_pipeline/epigen-dea_limma-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "epigen-dea_limma-finish",
+        "source_workflow_id": "epigen-dea_limma-finish"
+      },
+      "n_expected": 2,
+      "n_files_scored": 2,
+      "overall_score": 0.734,
+      "verdict": "partial_pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 8,
+        "tool_calls_meaningful": 8,
+        "rscript_ok": 2,
+        "rscript_err": 2
+      },
+      "file_scores_mean": 0.62,
+      "per_file": [
+        {
+          "filename": "dea_results.csv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/dea_limma/reference_output/dea_results.csv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/019_dea_limma/workspace/output/dea_results.csv",
+          "strategy_used": "process_credit",
+          "strategy_score": 0.25,
+          "bytes_identical": false,
+          "size_agent": 48523,
+          "size_ref": 56606,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 8,
+              "cols_b": 9,
+              "cols_shared": 8,
+              "rows_a": 400,
+              "rows_b": 400,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 2000,
+              "cells_total": 3200,
+              "cell_match_fraction": 0.625,
+              "row_overlap": 1.0,
+              "effective_fraction": 0.38888888888888884,
+              "cols_mismatch": true
+            }
+          }
+        },
+        {
+          "filename": "model_matrix.csv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/dea_limma/reference_output/model_matrix.csv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/019_dea_limma/workspace/output/model_matrix.csv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.99,
+          "bytes_identical": false,
+          "size_agent": 107,
+          "size_ref": 107,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 3,
+              "cols_b": 3,
+              "cols_shared": 2,
+              "rows_a": 10,
+              "rows_b": 10,
+              "rows_matched": 10,
+              "row_match_fraction": 1.0,
+              "cells_matched": 20,
+              "cells_total": 20,
+              "cell_match_fraction": 1.0,
+              "row_overlap": 1.0,
+              "effective_fraction": 1.0,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    "msisensor_merge": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/020_msisensor_merge",
+      "task_id": "msisensor_merge",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "ace956488d3bc135d6d27e949054672d6e166e5e733cf2b1f81b9959a3d35c86",
+        "skill_char_len": 2598,
+        "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-msisensor-pro-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "snakemake-workflows-msisensor-pro-finish",
+        "source_workflow_id": "snakemake-workflows-msisensor-pro-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.993,
+      "verdict": "pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 8,
+        "tool_calls_meaningful": 7,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 0.99,
+      "per_file": [
+        {
+          "filename": "merged_msi.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/msisensor_merge/reference_output/merged_msi.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/020_msisensor_merge/workspace/output/merged_msi.tsv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.99,
+          "bytes_identical": false,
+          "size_agent": 103,
+          "size_ref": 103,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 4,
+              "cols_b": 4,
+              "cols_shared": 4,
+              "rows_a": 3,
+              "rows_b": 3,
+              "rows_matched": 3,
+              "row_match_fraction": 1.0,
+              "cells_matched": 12,
+              "cells_total": 12,
+              "cell_match_fraction": 1.0,
+              "row_overlap": 1.0,
+              "effective_fraction": 1.0,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    "methylkit_filt_norm": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/021_methylkit_filt_norm",
+      "task_id": "methylkit_filt_norm",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "5df053f68ebf9417c6d9fde6aeb314e0e5be324abdfe62e7a49037a68cfd6bd1",
+        "skill_char_len": 3835,
+        "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+        "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.225,
+      "verdict": "fail",
+      "verdict_legacy": "fail",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 0.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 0.75,
+      "process_counts": {
+        "tool_calls_total": 15,
+        "tool_calls_meaningful": 15,
+        "rscript_ok": 2,
+        "rscript_err": 25
+      },
+      "file_scores_mean": 0.0,
+      "per_file": [
+        {
+          "filename": "filt_norm_stats.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_filt_norm/reference_output/filt_norm_stats.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/021_methylkit_filt_norm/workspace/output/filt_norm_stats.tsv",
+          "strategy_used": "missing",
+          "strategy_score": 0.0,
+          "bytes_identical": false,
+          "size_agent": null,
+          "size_ref": 211,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "methylkit2tibble_split": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/022_methylkit2tibble_split",
+      "task_id": "methylkit2tibble_split",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "5df053f68ebf9417c6d9fde6aeb314e0e5be324abdfe62e7a49037a68cfd6bd1",
+        "skill_char_len": 3835,
+        "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+        "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.65,
+      "verdict": "partial_pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 12,
+        "tool_calls_meaningful": 11,
+        "rscript_ok": 8,
+        "rscript_err": 8
+      },
+      "file_scores_mean": 0.5,
+      "per_file": [
+        {
+          "filename": "mean_mcpg_split.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit2tibble_split/reference_output/mean_mcpg_split.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/022_methylkit2tibble_split/workspace/output/mean_mcpg_split.tsv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.5,
+          "bytes_identical": false,
+          "size_agent": 225,
+          "size_ref": 345,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 3,
+              "cols_b": 3,
+              "cols_shared": 2,
+              "rows_a": 6,
+              "rows_b": 12,
+              "rows_matched": 6,
+              "row_match_fraction": 0.5,
+              "cells_matched": 9,
+              "cells_total": 12,
+              "cell_match_fraction": 0.75,
+              "row_overlap": 0.5,
+              "effective_fraction": 0.5,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    "methylkit_remove_snvs": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/023_methylkit_remove_snvs",
+      "task_id": "methylkit_remove_snvs",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "5df053f68ebf9417c6d9fde6aeb314e0e5be324abdfe62e7a49037a68cfd6bd1",
+        "skill_char_len": 3835,
+        "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+        "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 7,
+        "tool_calls_meaningful": 7,
+        "rscript_ok": 4,
+        "rscript_err": 2
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "snv_stats.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_remove_snvs/reference_output/snv_stats.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/023_methylkit_remove_snvs/workspace/output/snv_stats.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 45,
+          "size_ref": 45,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "phantompeak_correlation": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/024_phantompeak_correlation",
+      "task_id": "phantompeak_correlation",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "a232a8cb2ae39bcd4d696a9bb577952407102f8abb5734420aa51069dd282955",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-chipseq-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "snakemake-workflows-chipseq-finish",
+        "source_workflow_id": "snakemake-workflows-chipseq-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 6,
+        "tool_calls_meaningful": 6,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "crosscorr.csv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/phantompeak_correlation/reference_output/crosscorr.csv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/024_phantompeak_correlation/workspace/output/crosscorr.csv",
+          "strategy_used": "normalized_text_equal",
+          "strategy_score": 1.0,
+          "bytes_identical": false,
+          "size_agent": 295,
+          "size_ref": 296,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "nearest_gene": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/025_nearest_gene",
+      "task_id": "nearest_gene",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "9ee3a3d5b6210107cb54712269ebc4115c753753c9975d186ec891d89cccb2d6",
+        "skill_char_len": 3603,
+        "skill_md_path": "experiments/skills_pipeline/maxplanck-ie-snakepipes-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "maxplanck-ie-snakepipes-finish",
+        "source_workflow_id": "maxplanck-ie-snakepipes-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.475,
+      "verdict": "partial_fail",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 8,
+        "tool_calls_meaningful": 8,
+        "rscript_ok": 2,
+        "rscript_err": 2
+      },
+      "file_scores_mean": 0.25,
+      "per_file": [
+        {
+          "filename": "annotated.bed",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/nearest_gene/reference_output/annotated.bed",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/025_nearest_gene/workspace/output/annotated.bed",
+          "strategy_used": "process_credit",
+          "strategy_score": 0.25,
+          "bytes_identical": false,
+          "size_agent": 4814,
+          "size_ref": 5118,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "chipseq_plot_frip_score": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/026_chipseq_plot_frip_score",
+      "task_id": "chipseq_plot_frip_score",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "a232a8cb2ae39bcd4d696a9bb577952407102f8abb5734420aa51069dd282955",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-chipseq-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "snakemake-workflows-chipseq-finish",
+        "source_workflow_id": "snakemake-workflows-chipseq-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 9,
+        "tool_calls_meaningful": 8,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "frip_scores.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_frip_score/reference_output/frip_scores.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/026_chipseq_plot_frip_score/workspace/output/frip_scores.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 120,
+          "size_ref": 120,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "chipseq_plot_peaks_count_macs2": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/027_chipseq_plot_peaks_count_macs2",
+      "task_id": "chipseq_plot_peaks_count_macs2",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "a232a8cb2ae39bcd4d696a9bb577952407102f8abb5734420aa51069dd282955",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-chipseq-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "snakemake-workflows-chipseq-finish",
+        "source_workflow_id": "snakemake-workflows-chipseq-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 8,
+        "tool_calls_meaningful": 8,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "peaks_count.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_peaks_count_macs2/reference_output/peaks_count.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/027_chipseq_plot_peaks_count_macs2/workspace/output/peaks_count.tsv",
+          "strategy_used": "normalized_table_equal",
+          "strategy_score": 1.0,
+          "bytes_identical": false,
+          "size_agent": 117,
+          "size_ref": 105,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "chipseq_plot_annotatepeaks_summary_homer": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/028_chipseq_plot_annotatepeaks_summary_homer",
+      "task_id": "chipseq_plot_annotatepeaks_summary_homer",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "a232a8cb2ae39bcd4d696a9bb577952407102f8abb5734420aa51069dd282955",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-chipseq-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "snakemake-workflows-chipseq-finish",
+        "source_workflow_id": "snakemake-workflows-chipseq-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 6,
+        "tool_calls_meaningful": 5,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "homer_long.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_annotatepeaks_summary_homer/reference_output/homer_long.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/028_chipseq_plot_annotatepeaks_summary_homer/workspace/output/homer_long.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 330,
+          "size_ref": 330,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "epibtn_rpkm": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/029_epibtn_rpkm",
+      "task_id": "epibtn_rpkm",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "ed45355a5ea5f94d6e568c7725ed4dc7d8ab6542f7ec583e8d9c1ae5380583a4",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/joncahn-epigeneticbutton-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "joncahn-epigeneticbutton-finish",
+        "source_workflow_id": "joncahn-epigeneticbutton-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.475,
+      "verdict": "partial_fail",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 9,
+        "tool_calls_meaningful": 9,
+        "rscript_ok": 2,
+        "rscript_err": 4
+      },
+      "file_scores_mean": 0.25,
+      "per_file": [
+        {
+          "filename": "results/RNA/DEG/genes_rpkm__runX__mockref.txt",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/epibtn_rpkm/reference_output/results/RNA/DEG/genes_rpkm__runX__mockref.txt",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/029_epibtn_rpkm/workspace/output/results/RNA/DEG/genes_rpkm__runX__mockref.txt",
+          "strategy_used": "process_credit",
+          "strategy_score": 0.25,
+          "bytes_identical": false,
+          "size_agent": 16,
+          "size_ref": 11131,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_position",
+              "cols_a": 3,
+              "cols_b": 3,
+              "cols_shared": 3,
+              "rows_a": 1,
+              "rows_b": 360,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 0,
+              "cells_total": 3,
+              "cell_match_fraction": 0.0,
+              "row_overlap": 0.002777777777777778,
+              "effective_fraction": 0.0,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    "snakepipes_scrna_report": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/030_snakepipes_scrna_report",
+      "task_id": "snakepipes_scrna_report",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "9ee3a3d5b6210107cb54712269ebc4115c753753c9975d186ec891d89cccb2d6",
+        "skill_char_len": 3603,
+        "skill_md_path": "experiments/skills_pipeline/maxplanck-ie-snakepipes-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "maxplanck-ie-snakepipes-finish",
+        "source_workflow_id": "maxplanck-ie-snakepipes-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 4,
+        "tool_calls_meaningful": 4,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "scrna_report.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_scrna_report/reference_output/scrna_report.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/030_snakepipes_scrna_report/workspace/output/scrna_report.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 299,
+          "size_ref": 299,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    "clean_histoneHMM": {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/031_clean_histoneHMM",
+      "task_id": "clean_histoneHMM",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "9ee3a3d5b6210107cb54712269ebc4115c753753c9975d186ec891d89cccb2d6",
+        "skill_char_len": 3603,
+        "skill_md_path": "experiments/skills_pipeline/maxplanck-ie-snakepipes-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "maxplanck-ie-snakepipes-finish",
+        "source_workflow_id": "maxplanck-ie-snakepipes-finish"
+      },
+      "n_expected": 2,
+      "n_files_scored": 2,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 4,
+        "tool_calls_meaningful": 4,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "sampleA_avgp0.5.bed",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/clean_histoneHMM/reference_output/sampleA_avgp0.5.bed",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/031_clean_histoneHMM/workspace/output/sampleA_avgp0.5.bed",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 1120,
+          "size_ref": 1120,
+          "notes": [],
+          "details": {}
+        },
+        {
+          "filename": "sampleB_avgp0.5.bed",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/clean_histoneHMM/reference_output/sampleB_avgp0.5.bed",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/031_clean_histoneHMM/workspace/output/sampleB_avgp0.5.bed",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 1020,
+          "size_ref": 1020,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    }
+  },
+  "results": [
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/000_akinyi_deseq2",
+      "task_id": "akinyi_deseq2",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "c92cfb051e592382173638cdb4a52e1356a6f588cb991453cf3408bbbb9fc41b",
+        "skill_char_len": 3076,
+        "skill_md_path": "experiments/skills_pipeline/akinyi-onyango-rna_seq_pipeline-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "akinyi-onyango-rna_seq_pipeline-finish",
+        "source_workflow_id": "akinyi-onyango-rna_seq_pipeline-finish"
+      },
+      "n_expected": 2,
+      "n_files_scored": 2,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 5,
+        "tool_calls_meaningful": 4,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "deseq2_up.txt",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/akinyi_deseq2/reference_output/deseq2_up.txt",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/000_akinyi_deseq2/workspace/output/deseq2_up.txt",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 2481,
+          "size_ref": 2481,
+          "notes": [],
+          "details": {}
+        },
+        {
+          "filename": "deseq2_down.txt",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/akinyi_deseq2/reference_output/deseq2_down.txt",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/000_akinyi_deseq2/workspace/output/deseq2_down.txt",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 1524,
+          "size_ref": 1524,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/001_star_deseq2_init",
+      "task_id": "star_deseq2_init",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "e9a3bc65829d098e0dfccef55961b0e01c31157f2080b27e6f8e6aec86e54435",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/rna-seq-star-deseq2-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "rna-seq-star-deseq2-finish",
+        "source_workflow_id": "rna-seq-star-deseq2-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 7,
+        "tool_calls_meaningful": 7,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "normalized_counts.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/star_deseq2_init/reference_output/normalized_counts.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/001_star_deseq2_init/workspace/output/normalized_counts.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 58217,
+          "size_ref": 58217,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/002_star_deseq2_contrast",
+      "task_id": "star_deseq2_contrast",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "e9a3bc65829d098e0dfccef55961b0e01c31157f2080b27e6f8e6aec86e54435",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/rna-seq-star-deseq2-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "rna-seq-star-deseq2-finish",
+        "source_workflow_id": "rna-seq-star-deseq2-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 4,
+        "tool_calls_meaningful": 4,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "contrast_results.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/star_deseq2_contrast/reference_output/contrast_results.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/002_star_deseq2_contrast/workspace/output/contrast_results.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 53764,
+          "size_ref": 53764,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/003_methylkit_load",
+      "task_id": "methylkit_load",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "5df053f68ebf9417c6d9fde6aeb314e0e5be324abdfe62e7a49037a68cfd6bd1",
+        "skill_char_len": 3835,
+        "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+        "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.15,
+      "verdict": "fail",
+      "verdict_legacy": "fail",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 0.0,
+        "outputs_dir_nonempty_and_valid": 0.0
+      },
+      "process_mean": 0.5,
+      "process_counts": {
+        "tool_calls_total": 15,
+        "tool_calls_meaningful": 15,
+        "rscript_ok": 6,
+        "rscript_err": 19
+      },
+      "file_scores_mean": 0.0,
+      "per_file": [
+        {
+          "filename": "mk_raw.rds",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_load/reference_output/mk_raw.rds",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/003_methylkit_load/workspace/output/mk_raw.rds",
+          "strategy_used": "missing",
+          "strategy_score": 0.0,
+          "bytes_identical": false,
+          "size_agent": null,
+          "size_ref": 3529,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/004_methylkit_unite",
+      "task_id": "methylkit_unite",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "5df053f68ebf9417c6d9fde6aeb314e0e5be324abdfe62e7a49037a68cfd6bd1",
+        "skill_char_len": 3835,
+        "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+        "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.075,
+      "verdict": "fail",
+      "verdict_legacy": "fail",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 0.0,
+        "submit_done_called": 0.0,
+        "outputs_dir_nonempty_and_valid": 0.0
+      },
+      "process_mean": 0.25,
+      "process_counts": {
+        "tool_calls_total": 15,
+        "tool_calls_meaningful": 15,
+        "rscript_ok": 0,
+        "rscript_err": 27
+      },
+      "file_scores_mean": 0.0,
+      "per_file": [
+        {
+          "filename": "unite_stats.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_unite/reference_output/unite_stats.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/004_methylkit_unite/workspace/output/unite_stats.tsv",
+          "strategy_used": "missing",
+          "strategy_score": 0.0,
+          "bytes_identical": false,
+          "size_agent": null,
+          "size_ref": 83,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/005_methylkit_to_tibble",
+      "task_id": "methylkit_to_tibble",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "5df053f68ebf9417c6d9fde6aeb314e0e5be324abdfe62e7a49037a68cfd6bd1",
+        "skill_char_len": 3835,
+        "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+        "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.225,
+      "verdict": "fail",
+      "verdict_legacy": "fail",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 0.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 0.75,
+      "process_counts": {
+        "tool_calls_total": 15,
+        "tool_calls_meaningful": 15,
+        "rscript_ok": 2,
+        "rscript_err": 25
+      },
+      "file_scores_mean": 0.0,
+      "per_file": [
+        {
+          "filename": "mean_mcpg.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_to_tibble/reference_output/mean_mcpg.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/005_methylkit_to_tibble/workspace/output/mean_mcpg.tsv",
+          "strategy_used": "missing",
+          "strategy_score": 0.0,
+          "bytes_identical": false,
+          "size_agent": null,
+          "size_ref": 406,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/006_longseq_deseq2_init",
+      "task_id": "longseq_deseq2_init",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "ed7db6c130411dac5f3ceb9e638f08cce9da45715c714bea6679e11c4a76a6e0",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-rna-longseq-de-isoform/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "snakemake-workflows-rna-longseq-de-isoform",
+        "source_workflow_id": "snakemake-workflows-rna-longseq-de-isoform"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 6,
+        "tool_calls_meaningful": 6,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "normalized_counts.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/longseq_deseq2_init/reference_output/normalized_counts.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/006_longseq_deseq2_init/workspace/output/normalized_counts.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 56240,
+          "size_ref": 56240,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/007_longseq_deseq2_contrast",
+      "task_id": "longseq_deseq2_contrast",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "ed7db6c130411dac5f3ceb9e638f08cce9da45715c714bea6679e11c4a76a6e0",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-rna-longseq-de-isoform/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "snakemake-workflows-rna-longseq-de-isoform",
+        "source_workflow_id": "snakemake-workflows-rna-longseq-de-isoform"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 4,
+        "tool_calls_meaningful": 4,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "contrast_results.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/longseq_deseq2_contrast/reference_output/contrast_results.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/007_longseq_deseq2_contrast/workspace/output/contrast_results.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 50518,
+          "size_ref": 50518,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/008_snakepipes_merge_fc",
+      "task_id": "snakepipes_merge_fc",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "9ee3a3d5b6210107cb54712269ebc4115c753753c9975d186ec891d89cccb2d6",
+        "skill_char_len": 3603,
+        "skill_md_path": "experiments/skills_pipeline/maxplanck-ie-snakepipes-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "maxplanck-ie-snakepipes-finish",
+        "source_workflow_id": "maxplanck-ie-snakepipes-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.475,
+      "verdict": "partial_fail",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 8,
+        "tool_calls_meaningful": 8,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 0.25,
+      "per_file": [
+        {
+          "filename": "merged_counts.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_merge_fc/reference_output/merged_counts.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/008_snakepipes_merge_fc/workspace/output/merged_counts.tsv",
+          "strategy_used": "process_credit",
+          "strategy_score": 0.25,
+          "bytes_identical": false,
+          "size_agent": 13052,
+          "size_ref": 11553,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 6,
+              "cols_b": 5,
+              "cols_shared": 5,
+              "rows_a": 400,
+              "rows_b": 400,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 1598,
+              "cells_total": 2000,
+              "cell_match_fraction": 0.799,
+              "row_overlap": 1.0,
+              "effective_fraction": 0.4660833333333334,
+              "cols_mismatch": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/009_snakepipes_merge_ct",
+      "task_id": "snakepipes_merge_ct",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "9ee3a3d5b6210107cb54712269ebc4115c753753c9975d186ec891d89cccb2d6",
+        "skill_char_len": 3603,
+        "skill_md_path": "experiments/skills_pipeline/maxplanck-ie-snakepipes-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "maxplanck-ie-snakepipes-finish",
+        "source_workflow_id": "maxplanck-ie-snakepipes-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.475,
+      "verdict": "partial_fail",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 9,
+        "tool_calls_meaningful": 9,
+        "rscript_ok": 2,
+        "rscript_err": 2
+      },
+      "file_scores_mean": 0.25,
+      "per_file": [
+        {
+          "filename": "merged_tpm.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_merge_ct/reference_output/merged_tpm.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/009_snakepipes_merge_ct/workspace/output/merged_tpm.tsv",
+          "strategy_used": "process_credit",
+          "strategy_score": 0.25,
+          "bytes_identical": false,
+          "size_agent": 14268,
+          "size_ref": 13171,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 6,
+              "cols_b": 5,
+              "cols_shared": 5,
+              "rows_a": 300,
+              "rows_b": 300,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 1200,
+              "cells_total": 1500,
+              "cell_match_fraction": 0.8,
+              "row_overlap": 1.0,
+              "effective_fraction": 0.46666666666666673,
+              "cols_mismatch": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/010_riya_limma",
+      "task_id": "riya_limma",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "a94e9936cdf9815b15be9969d8892e049b0a40553b2894190f130502bdf6aadb",
+        "skill_char_len": 3342,
+        "skill_md_path": "experiments/skills_pipeline/RiyaDua-cervical-cancer-snakemake-workflow/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "RiyaDua-cervical-cancer-snakemake-workflow",
+        "source_workflow_id": "RiyaDua-cervical-cancer-snakemake-workflow"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 7,
+        "tool_calls_meaningful": 7,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "deg_results.csv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/riya_limma/reference_output/deg_results.csv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/010_riya_limma/workspace/output/deg_results.csv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 27697,
+          "size_ref": 27697,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/011_chipseq_plot_macs_qc",
+      "task_id": "chipseq_plot_macs_qc",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "a232a8cb2ae39bcd4d696a9bb577952407102f8abb5734420aa51069dd282955",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-chipseq-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "snakemake-workflows-chipseq-finish",
+        "source_workflow_id": "snakemake-workflows-chipseq-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.475,
+      "verdict": "partial_fail",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 7,
+        "tool_calls_meaningful": 7,
+        "rscript_ok": 2,
+        "rscript_err": 2
+      },
+      "file_scores_mean": 0.25,
+      "per_file": [
+        {
+          "filename": "macs_qc_summary.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_macs_qc/reference_output/macs_qc_summary.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/011_chipseq_plot_macs_qc/workspace/output/macs_qc_summary.tsv",
+          "strategy_used": "process_credit",
+          "strategy_score": 0.25,
+          "bytes_identical": false,
+          "size_agent": 2033,
+          "size_ref": 824,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 3,
+              "cols_b": 9,
+              "cols_shared": 2,
+              "rows_a": 75,
+              "rows_b": 12,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 12,
+              "cells_total": 24,
+              "cell_match_fraction": 0.5,
+              "row_overlap": 0.16,
+              "effective_fraction": 0.012444444444444442,
+              "cols_mismatch": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/012_chipseq_plot_homer_annot",
+      "task_id": "chipseq_plot_homer_annot",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "a232a8cb2ae39bcd4d696a9bb577952407102f8abb5734420aa51069dd282955",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-chipseq-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "snakemake-workflows-chipseq-finish",
+        "source_workflow_id": "snakemake-workflows-chipseq-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.475,
+      "verdict": "partial_fail",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 8,
+        "tool_calls_meaningful": 8,
+        "rscript_ok": 2,
+        "rscript_err": 2
+      },
+      "file_scores_mean": 0.25,
+      "per_file": [
+        {
+          "filename": "homer_annot_summary.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_homer_annot/reference_output/homer_annot_summary.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/012_chipseq_plot_homer_annot/workspace/output/homer_annot_summary.tsv",
+          "strategy_used": "process_credit",
+          "strategy_score": 0.25,
+          "bytes_identical": false,
+          "size_agent": 139,
+          "size_ref": 143,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_position",
+              "cols_a": 4,
+              "cols_b": 9,
+              "cols_shared": 4,
+              "rows_a": 7,
+              "rows_b": 3,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 9,
+              "cells_total": 12,
+              "cell_match_fraction": 0.75,
+              "row_overlap": 0.42857142857142855,
+              "effective_fraction": 0.09999999999999998,
+              "cols_mismatch": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/013_snakepipes_scrna_merge_coutt",
+      "task_id": "snakepipes_scrna_merge_coutt",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "9ee3a3d5b6210107cb54712269ebc4115c753753c9975d186ec891d89cccb2d6",
+        "skill_char_len": 3603,
+        "skill_md_path": "experiments/skills_pipeline/maxplanck-ie-snakepipes-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "maxplanck-ie-snakepipes-finish",
+        "source_workflow_id": "maxplanck-ie-snakepipes-finish"
+      },
+      "n_expected": 2,
+      "n_files_scored": 2,
+      "overall_score": 0.734,
+      "verdict": "partial_pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 6,
+        "tool_calls_meaningful": 6,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 0.62,
+      "per_file": [
+        {
+          "filename": "merged_coutt.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_scrna_merge_coutt/reference_output/merged_coutt.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/013_snakepipes_scrna_merge_coutt/workspace/output/merged_coutt.tsv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.99,
+          "bytes_identical": false,
+          "size_agent": 9042,
+          "size_ref": 9234,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_position",
+              "cols_a": 25,
+              "cols_b": 25,
+              "cols_shared": 25,
+              "rows_a": 120,
+              "rows_b": 120,
+              "rows_matched": 120,
+              "row_match_fraction": 1.0,
+              "cells_matched": 3000,
+              "cells_total": 3000,
+              "cell_match_fraction": 1.0,
+              "row_overlap": 1.0,
+              "effective_fraction": 1.0,
+              "cols_mismatch": false
+            }
+          }
+        },
+        {
+          "filename": "merged_coutt.cell_names.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_scrna_merge_coutt/reference_output/merged_coutt.cell_names.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/013_snakepipes_scrna_merge_coutt/workspace/output/merged_coutt.cell_names.tsv",
+          "strategy_used": "process_credit",
+          "strategy_score": 0.25,
+          "bytes_identical": false,
+          "size_agent": 781,
+          "size_ref": 868,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 5,
+              "cols_b": 5,
+              "cols_shared": 5,
+              "rows_a": 24,
+              "rows_b": 24,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 24,
+              "cells_total": 120,
+              "cell_match_fraction": 0.2,
+              "row_overlap": 1.0,
+              "effective_fraction": 0.2,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/014_snakepipes_scrna_qc",
+      "task_id": "snakepipes_scrna_qc",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "9ee3a3d5b6210107cb54712269ebc4115c753753c9975d186ec891d89cccb2d6",
+        "skill_char_len": 3603,
+        "skill_md_path": "experiments/skills_pipeline/maxplanck-ie-snakepipes-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "maxplanck-ie-snakepipes-finish",
+        "source_workflow_id": "maxplanck-ie-snakepipes-finish"
+      },
+      "n_expected": 2,
+      "n_files_scored": 2,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 6,
+        "tool_calls_meaningful": 6,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "scqc.libstats_reads.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_scrna_qc/reference_output/scqc.libstats_reads.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/014_snakepipes_scrna_qc/workspace/output/scqc.libstats_reads.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 144,
+          "size_ref": 144,
+          "notes": [],
+          "details": {}
+        },
+        {
+          "filename": "scqc.libstats_pct.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_scrna_qc/reference_output/scqc.libstats_pct.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/014_snakepipes_scrna_qc/workspace/output/scqc.libstats_pct.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 128,
+          "size_ref": 128,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/015_spilterlize_filter_features",
+      "task_id": "spilterlize_filter_features",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "89bb0a4e9dc35cfccdcf12447bd3e423d7a9f6c7948ba55a7a286aa7eeb86a57",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/epigen-spilterlize_integrate-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "epigen-spilterlize_integrate-finish",
+        "source_workflow_id": "epigen-spilterlize_integrate-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.9,
+      "verdict": "partial_pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 8,
+        "tool_calls_meaningful": 8,
+        "rscript_ok": 2,
+        "rscript_err": 2
+      },
+      "file_scores_mean": 0.8571,
+      "per_file": [
+        {
+          "filename": "filtered_counts.csv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/spilterlize_filter_features/reference_output/filtered_counts.csv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/015_spilterlize_filter_features/workspace/output/filtered_counts.csv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.8571,
+          "bytes_identical": false,
+          "size_agent": 11932,
+          "size_ref": 14840,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 7,
+              "cols_b": 7,
+              "cols_shared": 7,
+              "rows_a": 400,
+              "rows_b": 400,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 2400,
+              "cells_total": 2800,
+              "cell_match_fraction": 0.8571428571428571,
+              "row_overlap": 1.0,
+              "effective_fraction": 0.8571428571428571,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/016_spilterlize_norm_voom",
+      "task_id": "spilterlize_norm_voom",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "89bb0a4e9dc35cfccdcf12447bd3e423d7a9f6c7948ba55a7a286aa7eeb86a57",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/epigen-spilterlize_integrate-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "epigen-spilterlize_integrate-finish",
+        "source_workflow_id": "epigen-spilterlize_integrate-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.9,
+      "verdict": "partial_pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 6,
+        "tool_calls_meaningful": 6,
+        "rscript_ok": 2,
+        "rscript_err": 2
+      },
+      "file_scores_mean": 0.8571,
+      "per_file": [
+        {
+          "filename": "normalized_counts.csv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/spilterlize_norm_voom/reference_output/normalized_counts.csv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/016_spilterlize_norm_voom/workspace/output/normalized_counts.csv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.8571,
+          "bytes_identical": false,
+          "size_agent": 31507,
+          "size_ref": 33715,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 7,
+              "cols_b": 7,
+              "cols_shared": 7,
+              "rows_a": 300,
+              "rows_b": 300,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 1800,
+              "cells_total": 2100,
+              "cell_match_fraction": 0.8571428571428571,
+              "row_overlap": 1.0,
+              "effective_fraction": 0.8571428571428571,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/017_spilterlize_limma_rbe",
+      "task_id": "spilterlize_limma_rbe",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "89bb0a4e9dc35cfccdcf12447bd3e423d7a9f6c7948ba55a7a286aa7eeb86a57",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/epigen-spilterlize_integrate-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "epigen-spilterlize_integrate-finish",
+        "source_workflow_id": "epigen-spilterlize_integrate-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.993,
+      "verdict": "pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 7,
+        "tool_calls_meaningful": 7,
+        "rscript_ok": 2,
+        "rscript_err": 2
+      },
+      "file_scores_mean": 0.99,
+      "per_file": [
+        {
+          "filename": "integrated_data.csv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/spilterlize_limma_rbe/reference_output/integrated_data.csv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/017_spilterlize_limma_rbe/workspace/output/integrated_data.csv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.99,
+          "bytes_identical": false,
+          "size_agent": 21188,
+          "size_ref": 21188,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 9,
+              "cols_b": 9,
+              "cols_shared": 8,
+              "rows_a": 250,
+              "rows_b": 250,
+              "rows_matched": 250,
+              "row_match_fraction": 1.0,
+              "cells_matched": 2000,
+              "cells_total": 2000,
+              "cell_match_fraction": 1.0,
+              "row_overlap": 1.0,
+              "effective_fraction": 1.0,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/018_spilterlize_norm_edger",
+      "task_id": "spilterlize_norm_edger",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "89bb0a4e9dc35cfccdcf12447bd3e423d7a9f6c7948ba55a7a286aa7eeb86a57",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/epigen-spilterlize_integrate-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "epigen-spilterlize_integrate-finish",
+        "source_workflow_id": "epigen-spilterlize_integrate-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 7,
+        "tool_calls_meaningful": 7,
+        "rscript_ok": 2,
+        "rscript_err": 4
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "all/normTMM.csv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/spilterlize_norm_edger/reference_output/all/normTMM.csv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/018_spilterlize_norm_edger/workspace/output/all/normTMM.csv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 33698,
+          "size_ref": 33698,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/019_dea_limma",
+      "task_id": "dea_limma",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "0479b9f6934d37998d47891d573a29010b9c1f40d7b5112bd404689cfb4e03f0",
+        "skill_char_len": 3421,
+        "skill_md_path": "experiments/skills_pipeline/epigen-dea_limma-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "epigen-dea_limma-finish",
+        "source_workflow_id": "epigen-dea_limma-finish"
+      },
+      "n_expected": 2,
+      "n_files_scored": 2,
+      "overall_score": 0.734,
+      "verdict": "partial_pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 8,
+        "tool_calls_meaningful": 8,
+        "rscript_ok": 2,
+        "rscript_err": 2
+      },
+      "file_scores_mean": 0.62,
+      "per_file": [
+        {
+          "filename": "dea_results.csv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/dea_limma/reference_output/dea_results.csv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/019_dea_limma/workspace/output/dea_results.csv",
+          "strategy_used": "process_credit",
+          "strategy_score": 0.25,
+          "bytes_identical": false,
+          "size_agent": 48523,
+          "size_ref": 56606,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 8,
+              "cols_b": 9,
+              "cols_shared": 8,
+              "rows_a": 400,
+              "rows_b": 400,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 2000,
+              "cells_total": 3200,
+              "cell_match_fraction": 0.625,
+              "row_overlap": 1.0,
+              "effective_fraction": 0.38888888888888884,
+              "cols_mismatch": true
+            }
+          }
+        },
+        {
+          "filename": "model_matrix.csv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/dea_limma/reference_output/model_matrix.csv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/019_dea_limma/workspace/output/model_matrix.csv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.99,
+          "bytes_identical": false,
+          "size_agent": 107,
+          "size_ref": 107,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 3,
+              "cols_b": 3,
+              "cols_shared": 2,
+              "rows_a": 10,
+              "rows_b": 10,
+              "rows_matched": 10,
+              "row_match_fraction": 1.0,
+              "cells_matched": 20,
+              "cells_total": 20,
+              "cell_match_fraction": 1.0,
+              "row_overlap": 1.0,
+              "effective_fraction": 1.0,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/020_msisensor_merge",
+      "task_id": "msisensor_merge",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "ace956488d3bc135d6d27e949054672d6e166e5e733cf2b1f81b9959a3d35c86",
+        "skill_char_len": 2598,
+        "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-msisensor-pro-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "snakemake-workflows-msisensor-pro-finish",
+        "source_workflow_id": "snakemake-workflows-msisensor-pro-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.993,
+      "verdict": "pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 8,
+        "tool_calls_meaningful": 7,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 0.99,
+      "per_file": [
+        {
+          "filename": "merged_msi.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/msisensor_merge/reference_output/merged_msi.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/020_msisensor_merge/workspace/output/merged_msi.tsv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.99,
+          "bytes_identical": false,
+          "size_agent": 103,
+          "size_ref": 103,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 4,
+              "cols_b": 4,
+              "cols_shared": 4,
+              "rows_a": 3,
+              "rows_b": 3,
+              "rows_matched": 3,
+              "row_match_fraction": 1.0,
+              "cells_matched": 12,
+              "cells_total": 12,
+              "cell_match_fraction": 1.0,
+              "row_overlap": 1.0,
+              "effective_fraction": 1.0,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/021_methylkit_filt_norm",
+      "task_id": "methylkit_filt_norm",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "5df053f68ebf9417c6d9fde6aeb314e0e5be324abdfe62e7a49037a68cfd6bd1",
+        "skill_char_len": 3835,
+        "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+        "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.225,
+      "verdict": "fail",
+      "verdict_legacy": "fail",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 0.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 0.75,
+      "process_counts": {
+        "tool_calls_total": 15,
+        "tool_calls_meaningful": 15,
+        "rscript_ok": 2,
+        "rscript_err": 25
+      },
+      "file_scores_mean": 0.0,
+      "per_file": [
+        {
+          "filename": "filt_norm_stats.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_filt_norm/reference_output/filt_norm_stats.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/021_methylkit_filt_norm/workspace/output/filt_norm_stats.tsv",
+          "strategy_used": "missing",
+          "strategy_score": 0.0,
+          "bytes_identical": false,
+          "size_agent": null,
+          "size_ref": 211,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/022_methylkit2tibble_split",
+      "task_id": "methylkit2tibble_split",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "5df053f68ebf9417c6d9fde6aeb314e0e5be324abdfe62e7a49037a68cfd6bd1",
+        "skill_char_len": 3835,
+        "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+        "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.65,
+      "verdict": "partial_pass",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 12,
+        "tool_calls_meaningful": 11,
+        "rscript_ok": 8,
+        "rscript_err": 8
+      },
+      "file_scores_mean": 0.5,
+      "per_file": [
+        {
+          "filename": "mean_mcpg_split.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit2tibble_split/reference_output/mean_mcpg_split.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/022_methylkit2tibble_split/workspace/output/mean_mcpg_split.tsv",
+          "strategy_used": "tabular_tolerance",
+          "strategy_score": 0.5,
+          "bytes_identical": false,
+          "size_agent": 225,
+          "size_ref": 345,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_name",
+              "cols_a": 3,
+              "cols_b": 3,
+              "cols_shared": 2,
+              "rows_a": 6,
+              "rows_b": 12,
+              "rows_matched": 6,
+              "row_match_fraction": 0.5,
+              "cells_matched": 9,
+              "cells_total": 12,
+              "cell_match_fraction": 0.75,
+              "row_overlap": 0.5,
+              "effective_fraction": 0.5,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/023_methylkit_remove_snvs",
+      "task_id": "methylkit_remove_snvs",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "5df053f68ebf9417c6d9fde6aeb314e0e5be324abdfe62e7a49037a68cfd6bd1",
+        "skill_char_len": 3835,
+        "skill_md_path": "experiments/skills_pipeline/fritjoflammers-snakemake-methylanalysis-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "fritjoflammers-snakemake-methylanalysis-finish",
+        "source_workflow_id": "fritjoflammers-snakemake-methylanalysis-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 7,
+        "tool_calls_meaningful": 7,
+        "rscript_ok": 4,
+        "rscript_err": 2
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "snv_stats.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/methylkit_remove_snvs/reference_output/snv_stats.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/023_methylkit_remove_snvs/workspace/output/snv_stats.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 45,
+          "size_ref": 45,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/024_phantompeak_correlation",
+      "task_id": "phantompeak_correlation",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "a232a8cb2ae39bcd4d696a9bb577952407102f8abb5734420aa51069dd282955",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-chipseq-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "snakemake-workflows-chipseq-finish",
+        "source_workflow_id": "snakemake-workflows-chipseq-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 6,
+        "tool_calls_meaningful": 6,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "crosscorr.csv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/phantompeak_correlation/reference_output/crosscorr.csv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/024_phantompeak_correlation/workspace/output/crosscorr.csv",
+          "strategy_used": "normalized_text_equal",
+          "strategy_score": 1.0,
+          "bytes_identical": false,
+          "size_agent": 295,
+          "size_ref": 296,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/025_nearest_gene",
+      "task_id": "nearest_gene",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "9ee3a3d5b6210107cb54712269ebc4115c753753c9975d186ec891d89cccb2d6",
+        "skill_char_len": 3603,
+        "skill_md_path": "experiments/skills_pipeline/maxplanck-ie-snakepipes-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "maxplanck-ie-snakepipes-finish",
+        "source_workflow_id": "maxplanck-ie-snakepipes-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.475,
+      "verdict": "partial_fail",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 8,
+        "tool_calls_meaningful": 8,
+        "rscript_ok": 2,
+        "rscript_err": 2
+      },
+      "file_scores_mean": 0.25,
+      "per_file": [
+        {
+          "filename": "annotated.bed",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/nearest_gene/reference_output/annotated.bed",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/025_nearest_gene/workspace/output/annotated.bed",
+          "strategy_used": "process_credit",
+          "strategy_score": 0.25,
+          "bytes_identical": false,
+          "size_agent": 4814,
+          "size_ref": 5118,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/026_chipseq_plot_frip_score",
+      "task_id": "chipseq_plot_frip_score",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "a232a8cb2ae39bcd4d696a9bb577952407102f8abb5734420aa51069dd282955",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-chipseq-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "snakemake-workflows-chipseq-finish",
+        "source_workflow_id": "snakemake-workflows-chipseq-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 9,
+        "tool_calls_meaningful": 8,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "frip_scores.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_frip_score/reference_output/frip_scores.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/026_chipseq_plot_frip_score/workspace/output/frip_scores.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 120,
+          "size_ref": 120,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/027_chipseq_plot_peaks_count_macs2",
+      "task_id": "chipseq_plot_peaks_count_macs2",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "a232a8cb2ae39bcd4d696a9bb577952407102f8abb5734420aa51069dd282955",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-chipseq-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "snakemake-workflows-chipseq-finish",
+        "source_workflow_id": "snakemake-workflows-chipseq-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 8,
+        "tool_calls_meaningful": 8,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "peaks_count.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_peaks_count_macs2/reference_output/peaks_count.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/027_chipseq_plot_peaks_count_macs2/workspace/output/peaks_count.tsv",
+          "strategy_used": "normalized_table_equal",
+          "strategy_score": 1.0,
+          "bytes_identical": false,
+          "size_agent": 117,
+          "size_ref": 105,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/028_chipseq_plot_annotatepeaks_summary_homer",
+      "task_id": "chipseq_plot_annotatepeaks_summary_homer",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "a232a8cb2ae39bcd4d696a9bb577952407102f8abb5734420aa51069dd282955",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/snakemake-workflows-chipseq-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "snakemake-workflows-chipseq-finish",
+        "source_workflow_id": "snakemake-workflows-chipseq-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 6,
+        "tool_calls_meaningful": 5,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "homer_long.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/chipseq_plot_annotatepeaks_summary_homer/reference_output/homer_long.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/028_chipseq_plot_annotatepeaks_summary_homer/workspace/output/homer_long.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 330,
+          "size_ref": 330,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/029_epibtn_rpkm",
+      "task_id": "epibtn_rpkm",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "ed45355a5ea5f94d6e568c7725ed4dc7d8ab6542f7ec583e8d9c1ae5380583a4",
+        "skill_char_len": 4000,
+        "skill_md_path": "experiments/skills_pipeline/joncahn-epigeneticbutton-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "joncahn-epigeneticbutton-finish",
+        "source_workflow_id": "joncahn-epigeneticbutton-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 0.475,
+      "verdict": "partial_fail",
+      "verdict_legacy": "partial",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 9,
+        "tool_calls_meaningful": 9,
+        "rscript_ok": 2,
+        "rscript_err": 4
+      },
+      "file_scores_mean": 0.25,
+      "per_file": [
+        {
+          "filename": "results/RNA/DEG/genes_rpkm__runX__mockref.txt",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/epibtn_rpkm/reference_output/results/RNA/DEG/genes_rpkm__runX__mockref.txt",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/029_epibtn_rpkm/workspace/output/results/RNA/DEG/genes_rpkm__runX__mockref.txt",
+          "strategy_used": "process_credit",
+          "strategy_score": 0.25,
+          "bytes_identical": false,
+          "size_agent": 16,
+          "size_ref": 11131,
+          "notes": [],
+          "details": {
+            "tabular": {
+              "alignment": "by_position",
+              "cols_a": 3,
+              "cols_b": 3,
+              "cols_shared": 3,
+              "rows_a": 1,
+              "rows_b": 360,
+              "rows_matched": 0,
+              "row_match_fraction": 0.0,
+              "cells_matched": 0,
+              "cells_total": 3,
+              "cell_match_fraction": 0.0,
+              "row_overlap": 0.002777777777777778,
+              "effective_fraction": 0.0,
+              "cols_mismatch": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/030_snakepipes_scrna_report",
+      "task_id": "snakepipes_scrna_report",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "9ee3a3d5b6210107cb54712269ebc4115c753753c9975d186ec891d89cccb2d6",
+        "skill_char_len": 3603,
+        "skill_md_path": "experiments/skills_pipeline/maxplanck-ie-snakepipes-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "maxplanck-ie-snakepipes-finish",
+        "source_workflow_id": "maxplanck-ie-snakepipes-finish"
+      },
+      "n_expected": 1,
+      "n_files_scored": 1,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 4,
+        "tool_calls_meaningful": 4,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "scrna_report.tsv",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/snakepipes_scrna_report/reference_output/scrna_report.tsv",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/030_snakepipes_scrna_report/workspace/output/scrna_report.tsv",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 299,
+          "size_ref": 299,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    },
+    {
+      "run_dir": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/031_clean_histoneHMM",
+      "task_id": "clean_histoneHMM",
+      "batch_run_id": "sweep_v3_pipeline_20260416T194356Z",
+      "model": {
+        "name": "openrouter/openai/gpt-4o",
+        "temperature": 0.1
+      },
+      "skill": {
+        "arm": "pipeline",
+        "injected": true,
+        "manifest_version": 3,
+        "skill_sha256": "9ee3a3d5b6210107cb54712269ebc4115c753753c9975d186ec891d89cccb2d6",
+        "skill_char_len": 3603,
+        "skill_md_path": "experiments/skills_pipeline/maxplanck-ie-snakepipes-finish/SKILL.md",
+        "lookup_field": "by_workflow_id",
+        "lookup_key": "maxplanck-ie-snakepipes-finish",
+        "source_workflow_id": "maxplanck-ie-snakepipes-finish"
+      },
+      "n_expected": 2,
+      "n_files_scored": 2,
+      "overall_score": 1.0,
+      "verdict": "pass",
+      "verdict_legacy": "pass",
+      "process_signals": {
+        "tool_calls_executed_meaningful": 1.0,
+        "rscript_invoked_and_exited_zero": 1.0,
+        "submit_done_called": 1.0,
+        "outputs_dir_nonempty_and_valid": 1.0
+      },
+      "process_mean": 1.0,
+      "process_counts": {
+        "tool_calls_total": 4,
+        "tool_calls_meaningful": 4,
+        "rscript_ok": 2,
+        "rscript_err": 0
+      },
+      "file_scores_mean": 1.0,
+      "per_file": [
+        {
+          "filename": "sampleA_avgp0.5.bed",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/clean_histoneHMM/reference_output/sampleA_avgp0.5.bed",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/031_clean_histoneHMM/workspace/output/sampleA_avgp0.5.bed",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 1120,
+          "size_ref": 1120,
+          "notes": [],
+          "details": {}
+        },
+        {
+          "filename": "sampleB_avgp0.5.bed",
+          "expected_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/tasks/real_ground_truth/clean_histoneHMM/reference_output/sampleB_avgp0.5.bed",
+          "got_path": "/Users/park/code/Paper2Skills-main/main/paper_primary_benchmark/ldp_r_task_eval/runs/batch_sweep_v3_pipeline_20260416T194356Z/031_clean_histoneHMM/workspace/output/sampleB_avgp0.5.bed",
+          "strategy_used": "byte_identical",
+          "strategy_score": 1.0,
+          "bytes_identical": true,
+          "size_agent": 1020,
+          "size_ref": 1020,
+          "notes": [],
+          "details": {}
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "workflow_id": "tgirke-systempiperdata-varseq-finish",
+  "pipeline_task_id": "stage_06",
+  "order": 6,
+  "manifest_path": "finish/tgirke-systempiperdata-varseq-finish/manifest.json",
+  "step_ids": [
+    "annotate_vcf",
+    "combine_var",
+    "summary_var",
+    "plot_var_consequence"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:39.037988+00:00"
+}

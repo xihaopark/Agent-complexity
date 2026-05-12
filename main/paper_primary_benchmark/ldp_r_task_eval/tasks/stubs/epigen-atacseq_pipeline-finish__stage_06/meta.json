@@ -1,0 +1,13 @@
+{
+  "workflow_id": "epigen-atacseq_pipeline-finish",
+  "pipeline_task_id": "stage_06",
+  "order": 6,
+  "manifest_path": "finish/epigen-atacseq_pipeline-finish/manifest.json",
+  "step_ids": [
+    "uropa_gencode",
+    "uropa_reg",
+    "homer_region_annotation"
+  ],
+  "status": "stub",
+  "generated_at": "2026-04-16T12:19:38.968541+00:00"
+}

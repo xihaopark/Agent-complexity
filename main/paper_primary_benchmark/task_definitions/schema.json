@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://paper2skills.local/paper_primary_benchmark/task_definitions.schema.json",
+  "title": "Paper primary benchmark pipeline task overlay",
+  "description": "Pipeline stages as tasks; steps reference finish manifest.json only (no edits under main/finish/).",
+  "type": "object",
+  "required": ["workflow_id", "manifest_path", "tasks"],
+  "additionalProperties": false,
+  "properties": {
+    "workflow_id": {
+      "type": "string",
+      "description": "Matches main/finish/<workflow_id>/ directory name."
+    },
+    "manifest_path": {
+      "type": "string",
+      "description": "Path relative to main/ pointing at finish manifest.",
+      "pattern": "^finish/[a-zA-Z0-9_.-]+/manifest\\.json$"
+    },
+    "version": { "type": "string" },
+    "updated_at": { "type": "string", "description": "ISO date YYYY-MM-DD" },
+    "notes": { "type": "string" },
+    "tasks": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/task" }
+    }
+  },
+  "$defs": {
+    "ioItem": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "role": { "type": "string" },
+        "path_glob": { "type": "string" },
+        "description": { "type": "string" },
+        "derived_from_step_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "stepSnapshot": {
+      "type": "object",
+      "description": "Optional copy from finish manifest step for offline review.",
+      "additionalProperties": true,
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "outputs": { "type": "array", "items": { "type": "string" } },
+        "depends_on": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "task": {
+      "type": "object",
+      "required": ["task_id", "pipeline_stage_label", "order", "step_ids"],
+      "additionalProperties": false,
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$",
+          "description": "Stable snake_case id, e.g. ingest_qc."
+        },
+        "pipeline_stage_label": { "type": "string" },
+        "order": { "type": "integer", "minimum": 1 },
+        "step_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "inputs": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ioItem" }
+        },
+        "outputs": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ioItem" }
+        },
+        "step_snapshots": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/stepSnapshot" }
+        }
+      }
+    }
+  }
+}
